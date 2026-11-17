@@ -1,0 +1,2623 @@
+{
+  "name": "timm_30_original_eva",
+  "task": {
+    "kind": "generator_calibration",
+    "seed": 30,
+    "order": "original",
+    "representation": "eva"
+  },
+  "representation": "eva",
+  "frozen_utc": "2026-11-17T11:20:01.714339+00:00",
+  "alphabet": [
+    "a",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "x",
+    "y"
+  ],
+  "universe_size": 1027,
+  "escape_size": 1007,
+  "train_tokens": 5323,
+  "dev_tokens": 2753,
+  "baseline_order": 4,
+  "baseline_alpha": 100,
+  "baseline_weights": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "baseline_tuning": [
+    {
+      "loss": 11.132120992396144,
+      "weights": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "loss": 11.072624990995568,
+      "weights": [
+        0.0,
+        0.25,
+        0.75
+      ]
+    },
+    {
+      "loss": 11.045179288075108,
+      "weights": [
+        0.0,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "loss": 11.02950042651788,
+      "weights": [
+        0.0,
+        0.75,
+        0.25
+      ]
+    },
+    {
+      "loss": 11.024624356725205,
+      "weights": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "loss": 11.072624990995568,
+      "weights": [
+        0.25,
+        0.0,
+        0.75
+      ]
+    },
+    {
+      "loss": 11.045179288075108,
+      "weights": [
+        0.25,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "loss": 11.02950042651788,
+      "weights": [
+        0.25,
+        0.5,
+        0.25
+      ]
+    },
+    {
+      "loss": 11.024624356725205,
+      "weights": [
+        0.25,
+        0.75,
+        0.0
+      ]
+    },
+    {
+      "loss": 11.045179288075108,
+      "weights": [
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "loss": 11.02950042651788,
+      "weights": [
+        0.5,
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "loss": 11.024624356725205,
+      "weights": [
+        0.5,
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "loss": 11.02950042651788,
+      "weights": [
+        0.75,
+        0.0,
+        0.25
+      ]
+    },
+    {
+      "loss": 11.024624356725205,
+      "weights": [
+        0.75,
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "loss": 11.024624356725205,
+      "weights": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "selected": {
+    "edit_HV": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.912395606157792,
+      "kernel": "edit"
+    },
+    "exact_HV_matched": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.946145836758003,
+      "kernel": "exact"
+    },
+    "edit_H_matched": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.971968852134326,
+      "kernel": "edit"
+    },
+    "edit_V_matched": {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.95552497917707,
+      "kernel": "edit"
+    },
+    "exact_H_matched": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.995061558791635,
+      "kernel": "exact"
+    },
+    "exact_V_matched": {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.970275649816811,
+      "kernel": "exact"
+    },
+    "edit_H_independent": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.971968852134326,
+      "kernel": "edit"
+    },
+    "exact_HV_independent": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.946145836758003,
+      "kernel": "exact"
+    }
+  },
+  "copy_tuning": [
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 11.009262525915913,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 11.026622860057117,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 11.074920146479963,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.197609028793556,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.524987515076246,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 11.013190010741107,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 11.031771715715154,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 11.081856022839725,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.207018747426789,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.537692381239964,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 11.020367048735979,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 11.041264609313929,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 11.094535110014169,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.22404260847507,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.560685595354975,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 11.045548742421621,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 11.075469745694157,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.141098179270454,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.288323291258108,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 1,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.653631354597636,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.988413730181978,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.99736063305619,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 11.032936513269004,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.135240593248763,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.425821454949013,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.984520985578396,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.9923955545608,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 11.026987836668406,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.129187963491887,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.422261341295242,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.985633066372896,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.994274522688318,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 11.03055849205415,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.136436248390158,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.437427580534111,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 11.003366033607382,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 11.019166808712287,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.066171097246663,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.189140182172789,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 4,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.521256447879631,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.976753748652548,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.982270807045849,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 11.012666210946186,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.106638236205592,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.381806103894386,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.971968852134326,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.975806094918648,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 11.004292192908506,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.09684809234868,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.373099321520328,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.972838099191307,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.977069707906475,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 11.006760900069564,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.102486114408858,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.38665366743195,
+      "kernel": "edit"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.995061558791635,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 11.006985750675383,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.048096516090267,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.162174044821185,
+      "kernel": "exact"
+    },
+    {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.48040779776837,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.99371678290819,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 11.005994619568625,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 11.044995113771014,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.148993902433373,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.432188238190767,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.989264514279846,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 11.001332352837188,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 11.040673738410181,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.145896335303462,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.431680145327876,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.988925780986074,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 11.002072839234962,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 11.043295936737914,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.151491165175857,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.442057030244767,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.997199905007765,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 11.01529066959188,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.06393524129619,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.183473157299188,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.493360802907766,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.962955029385817,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.964180570794168,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.986973902631465,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.066086021775213,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.307137432737056,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.956185401209535,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.955979464175815,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.977487165843465,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.056428105601196,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.300230387569059,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.95552497917707,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.956026678614423,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.979324085868459,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.062182718855494,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.314103476360602,
+      "kernel": "edit"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.970275649816811,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.978071127472852,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.012588549097616,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.113464242594036,
+      "kernel": "exact"
+    },
+    {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.39781498093885,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.976330754873262,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.986496284552965,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 11.027255995083229,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.144272322050025,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.475126029413197,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.975558969662886,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.986201878834544,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 11.028155677606954,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.147688240265392,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.483228976575521,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.980382218403244,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.993389660074149,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 11.039048530607921,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.164347652176458,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.509029815436378,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 11.005018449795791,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 11.028458468473865,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.089142650955608,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.236999704125596,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.619900502316467,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.954054760620739,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.956651018340063,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.986320267786109,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.085985997575493,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.386158020478698,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.951221701866737,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.953364392580113,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.982797254397598,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.083110042635937,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.386449073716292,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.955437533078658,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.959454259297111,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.992030105710224,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.097878017657887,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.41154090309685,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.984079696829603,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.99976711338606,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.04919464468937,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.180993054475325,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 1,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.54028919346126,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.961759688155567,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.966082304249662,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.998103537388696,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.100961658096322,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.405270746331018,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.954643135698968,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.957623870072746,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.988458941976438,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.09106528056629,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.397848921771033,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.954503175006561,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.9584420828149,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.991374893300614,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.098332389919266,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.414295078480157,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.972823603612833,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.985381937744986,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.031272397236494,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.158903031964883,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.512598444480075,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.940746190649053,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.938190042875286,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.960176249739686,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.047267894931242,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.32358129681358,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.931405450411594,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.926501756401684,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.945777189107709,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.030656635262105,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.307805762054087,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.930437696136009,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.92587812281219,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.946503173362336,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.03526932087896,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.322423811180128,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.95217778566017,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.957210347476627,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 10.992178588808075,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.10425145349095,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 4,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.435129836813521,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.95258140359279,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.954394449121656,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.982652861604421,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.079370804338486,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.372041679484203,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.944881000608191,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.94485831473333,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.971112262262963,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.066328390128632,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.359786636789838,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.944660996856705,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.945253768196972,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.97308968958729,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.071993968303874,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.374060663951285,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.966749477457627,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.97638926163687,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 11.017650419771982,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.137941497974042,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 1,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.479402608963282,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.025,
+      "dev_bits": 10.931158643015644,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.05,
+      "dev_bits": 10.92601928872962,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.1,
+      "dev_bits": 10.944193270136978,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.2,
+      "dev_bits": 11.025166793254746,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.25,
+      "weight": 0.4,
+      "dev_bits": 11.290009735505596,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.025,
+      "dev_bits": 10.921295124457197,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.05,
+      "dev_bits": 10.913339686192092,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.1,
+      "dev_bits": 10.92801042479544,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.2,
+      "dev_bits": 11.005530268471135,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.5,
+      "weight": 0.4,
+      "dev_bits": 11.269495379930644,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.920329033365933,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.912395606157792,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.1,
+      "dev_bits": 10.927910043808305,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.2,
+      "dev_bits": 11.008625839989884,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.4,
+      "dev_bits": 11.281944182945734,
+      "kernel": "edit"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0,
+      "dev_bits": 11.024624356725205,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.946145836758003,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.05,
+      "dev_bits": 10.948303628401613,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.1,
+      "dev_bits": 10.978699476350346,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.2,
+      "dev_bits": 11.08348861039005,
+      "kernel": "exact"
+    },
+    {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.4,
+      "dev_bits": 11.402175779802345,
+      "kernel": "exact"
+    }
+  ],
+  "train_input_sha256": "7f83e02f574cbf04f5ad3a0f5a7304769c3ec8fd5e0dae34a4a64ffec8811138",
+  "dev_input_sha256": "ae01c3ecf6c063c3631cc62cb460c1a1bf078460eba0fbdb3fb13e5616ce9b00",
+  "protocol_receipt_sha256": "895687625e9e3bb351cce75a416e06625d3bf05835edcb798b9dc3c3706f083d",
+  "execution_receipt_sha256": "0329dcb123284caf5450be52321c638e4f699d76e8655694de02adab3f03c067",
+  "fit_seconds": 0.2707677079999993
+}

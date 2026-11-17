@@ -149,5 +149,45 @@
       "§4.1，PDF pp7–8",
       "§5，PDF p9"
     ]
+  },
+  {
+    "id": "rozanova_temerev_2026_units",
+    "title": "A Glyph Is Not a Letter, a Token Is Not a Word, a Space Is Not a Space: What the Units of Voynichese Are Not",
+    "authors": [
+      "Liudmila Rozanova",
+      "Alexander Temerev"
+    ],
+    "year": 2026,
+    "url": "https://arxiv.org/html/2608.17096v1",
+    "doi": "10.48550/arXiv.2608.17096",
+    "status": "2026-08-17 arXiv v1；原始相关章节与固定commit代码已核查，未独立重跑整篇",
+    "category": "直接先例：单位、边界与生成器校准",
+    "claim": "以边界、单位学习、词序和密码对照约束字母/词/空格的解释；有明文密码与自复制都能复现多项统计，单项相似不足以辨认机制。",
+    "evidence": [
+      "§3.2/A.8：末字形→后词首字形关系；§3.6/A.7：段首行与其他行分开；§3.9/A.5：Naibbe与自复制对照；§3.7/A.5：合成密码校准。",
+      "固定commit的edge_order.py使用原样本plug-in互信息减去行内整词置换均值；不是训练/开发/测试预测增益。",
+      "selfcitation驱动明确标为简化Python移植；Naibbe驱动也明确未执行原仓库代码。"
+    ],
+    "limitations": [
+      "是直接研究先例，不能把本轮边界/段首现象或跨机制低熵重现称首次发现。",
+      "本文生成与统计协议不等于我们作者Java实跑、严格可逆Naibbe分支、完整词归一化预测或源行条件扰动；数值不可直接并列排名。",
+      "该文Python selfcitation校准loss显式含词长、词型数和hapax三项；同seed用于选择与报告，没有独立机制验证。"
+    ],
+    "reproduction_plan": [
+      "只补先例说明，不据此改变已冻结模型或reserve方案。",
+      "未来若逐项复现，另冻结作者移植版与原Java、相同清洗/单位/样本及独立评估划分；先核验已知机制，不能直接把本文负结果外推所有密码或所有复制模型。"
+    ],
+    "reviewed": "primary_relevant_sections_and_pinned_code",
+    "checked_utc": "2026-11-17T11:58:35.556134+00:00",
+    "relation_to_current": "direct_prior_art_not_claimed_novel",
+    "locations": [
+      "§2.2",
+      "§2.10",
+      "§3.2",
+      "§3.6–3.9",
+      "Appendix A.5/A.7/A.8"
+    ],
+    "code_url": "https://github.com/lrozanova/voynich-units",
+    "code_commit": "956a7c4fc39981f4d116fa3f4edfccce6d065571"
   }
 ]

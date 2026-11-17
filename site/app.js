@@ -8,6 +8,7 @@ const groups = {herbal:'草药图', cosmological:'宇宙图', zodiac:'黄道图'
 const splits = {discovery:'探索组', validation:'验证组'};
 const state = {folio:'f2v', group:'all', split:'all', metric:'H2', representation:'primary', experimentSplit:'validation', diffOnly:false, raw:false, literatureQuery:'', literatureCategory:'all', folioCache:new Map()};
 let data;
+const highres = {page:null, record:null, loaded:false, request:0, timer:null, zoom:1};
 
 const metrics = {
   H1: {key:'H1_conditional_entropy_ratio', title:'词内排列的约束', short:'词内条件熵', subtitle:'前一个编码单位，能在多大程度上预测后一个？', unit:'条件熵比值', format:n=>number(n,3), null:'逐词打乱编码单位，保留每个词形的长度与单位频数。', interpretation:'比值较低，表示相邻编码单位的排列更受限制。EVA 单位不等于已知语言的字母或音素。', conclusion:'在两种转写与合并编码单位的检查中，词内约束都存在。这不提供词义，也不能单独判断语言或密码。'},
@@ -63,6 +64,7 @@ function renderOverview() {
     <article class="finding"><span class="finding-number">04</span><div><h3>“行末更短”尚未成立</h3><p>主检验未获支持，且结果对转写版本敏感。没有把换版本后的阳性结果当作结论。</p><span class="pill neutral">主检验未支持</span></div></article>
   </div>
   <div class="note-strip"><strong>研究边界：</strong>${esc(data.overview.review_scope)} EVA 拉丁字母是字形编码；空格间片段暂称“词形”，不承诺是真实语言中的词。</div>
+  ${data.overview.high_resolution_review?`<div class="note-strip"><strong>新增高清核对：20 页 / 332 个转写位置。</strong>可逐位置查看两版读法、未决观察与耶鲁原图阅读框；不是独立盲转写、逐字认证或译文。<a href="#manuscript">打开高清复核入口 →</a></div>`:''}
   <div class="overview-bottom"><div><span class="eyebrow">WHY THIS NOTEBOOK</span><h2>让证据可以被重新检查</h2><p>每个页面保留两版读法和疑难位置；每项实验显示观察值、随机对照与未获支持的结果。文献中的候选解读另行标注，避免把作者的主张当作已知答案。</p><a href="#journal">查看研究记录与下载资料 →</a></div><div><span class="eyebrow">PRIMARY SOURCES</span><div class="source-links">${data.overview.sources.map(s=>externalLink(s.url,s.title)).join('')}</div><p class="small-text" style="margin-top:18px">${esc(data.overview.source_note)}</p></div></div>`;
 }
 
@@ -93,12 +95,14 @@ async function loadFolio(folio) {
     $('#folio-detail').innerHTML=`<div class="panel"><div class="folio-title"><div><h2>${p.folio}</h2><p>PDF 第 ${p.pdf_page} 页 · ${p.loci} 个转写位置 · ${p.differences} 处字符串不同</p></div><div class="chips"><span class="pill">${groups[p.illustration_group]}</span><span class="pill">书手 ${p.attributes.H??'未定'}</span>${p.attributes.L?`<span class="pill">Currier ${p.attributes.L}</span>`:''}</div></div>
       <div class="folio-columns"><div class="image-pane"><button class="image-button" id="open-folio-image" aria-label="放大查看 ${p.folio} 原图"><img src="${p.image}" alt="伏尼契手稿 ${p.folio}，${groups[p.illustration_group]}页"></button><div class="image-caption"><span>点击放大 · 保留原始扫描</span><span>${p.image_width} × ${p.image_height}</span></div>${p.yale_image?`<p class="small-text" style="margin:10px 0 0">${externalLink(p.yale_image.source_url,'耶鲁高清原图')} <span class="muted">${p.yale_image.width} × ${p.yale_image.height}</span></p>`:''}</div><div class="transcription-pane"><div class="transcription-controls"><label><input type="checkbox" id="differences-only" ${state.diffOnly?'checked':''}>仅看分歧</label><label><input type="checkbox" id="raw-notation" ${state.raw?'checked':''}>显示原始标记</label></div><div id="locus-rows"></div></div></div>
       <div class="folio-note"><strong>版面观察：</strong>${esc(p.layout_observation)}<br>此页已做版面与行位核对；未完成逐字终审。Currier A/B 是继承的结构分组，不是已识别的语言名。</div></div>
+      ${highresReviewPanel(p)}
       <div class="focus-grid">${p.focus_cases.map(c=>`<article class="panel focus-card" id="focus-${c.locator.replace('.','-')}"><h3>${esc(c.locator)} <span class="pill caution">保留分歧</span></h3><button class="image-button" data-crop="${esc(c.crop)}" data-title="${esc(c.locator)}" aria-label="放大 ${esc(c.locator)} 复核区域"><img src="${esc(c.crop)}" alt="${esc(c.locator)} 的近似阅读区域" loading="lazy"></button><p>${esc(c.note)}</p><p class="small-text">裁剪框是近似阅读区域，不是精确字形分割标注。</p></article>`).join('')}</div>`;
     renderLoci(p);
     $('#differences-only').addEventListener('change',e=>{state.diffOnly=e.target.checked;renderLoci(p)});
     $('#raw-notation').addEventListener('change',e=>{state.raw=e.target.checked;renderLoci(p)});
     $('#open-folio-image').addEventListener('click',()=>openImage(p.image,p.folio));
     $$('[data-crop]').forEach(b=>b.addEventListener('click',()=>openImage(b.dataset.crop,b.dataset.title)));
+    $$('[data-highres-locus]').forEach(b=>b.addEventListener('click',()=>openHighres(p,b.dataset.highresLocus)));
   } catch(error) {$('#folio-detail').innerHTML=`<div class="notice error">页面数据载入失败：${esc(error.message)}</div>`;}
 }
 function diffMarkup(a,b) {
@@ -113,10 +117,79 @@ function diffMarkup(a,b) {
 }
 function renderLoci(p) {
   const rows=p.rows.filter(r=>!state.diffOnly||r.different);
-  $('#locus-rows').innerHTML=rows.length?rows.map(r=>{const focus=p.focus_cases.some(c=>c.locator===r.locator);const [zl,it]=diffMarkup(state.raw?r.zl_raw:r.zl,state.raw?r.it_raw:r.it);return `<article class="locus ${r.different?'different':''} ${focus?'focused':''}"><div class="locus-header"><span>${esc(r.locator)} · ${esc(r.kind)}</span><span>${r.different?'两版不同':'两版一致'}</span></div><div class="locus-code"><span>ZL</span><code>${zl}</code></div><div class="locus-code"><span>IT</span><code>${it}</code></div>${focus?`<button class="locus-focus-button" data-focus="focus-${r.locator.replace('.','-')}">查看重点复核 ↓</button>`:''}</article>`;}).join(''):'<p style="padding:20px">此页没有符合筛选的字符串分歧。</p>';
+  $('#locus-rows').innerHTML=rows.length?rows.map(r=>{const focus=p.focus_cases.some(c=>c.locator===r.locator);const [zl,it]=diffMarkup(state.raw?r.zl_raw:r.zl,state.raw?r.it_raw:r.it);return `<article class="locus ${r.different?'different':''} ${focus?'focused':''}"><div class="locus-header"><span>${esc(r.locator)} · ${esc(r.kind)}</span><span>${r.different?'两版不同':'两版一致'}</span></div><div class="locus-code"><span>ZL</span><code>${zl}</code></div><div class="locus-code"><span>IT</span><code>${it}</code></div>${focus?`<button class="locus-focus-button" data-focus="focus-${r.locator.replace('.','-')}">查看重点复核 ↓</button>`:''}${p.high_resolution_review?`<button class="locus-focus-button" data-locus-highres="${esc(r.locator)}">高清定位 ↗</button>`:''}</article>`;}).join(''):'<p style="padding:20px">此页没有符合筛选的字符串分歧。</p>';
   $$('[data-focus]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.focus).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})));
+  $$('[data-locus-highres]').forEach(b=>b.addEventListener('click',()=>openHighres(p,b.dataset.locusHighres)));
 }
 function openImage(src,title) {$('#dialog-title').textContent=title;$('#dialog-image').src=src;$('#dialog-image').alt=`${title} 原图放大`;$('#original-download').href=src;$('#image-dialog').showModal();}
+
+function reviewStatus(record) {
+  return {normalized_agreement:'两版一致 · 未逐字认证',spacing_only:'空格分组未裁决',glyph_or_annotation_difference:'字形 / 标记分歧未裁决'}[record.category]||'已核对位置 · 读法未裁决';
+}
+function highresReviewPanel(p) {
+  const review=p.high_resolution_review;if(!review?.records?.length||!p.yale_image)return '';
+  return `<details class="panel highres-review"><summary><span>耶鲁高清逐位置复核</span><span>${review.records.length} 处 · 展开记录</span></summary><div class="highres-review-intro"><p>全套 <strong>20 页 / 332 处</strong>已核对位置。不是独立盲转写、逐字认证或译文；两版原始转写保持不变。阅读框是近似区域，可包含邻近笔画。</p><p>展开记录不会加载高清图；点击某一位置的按钮才从耶鲁加载该页。${externalLink(p.yale_image.source_url,'耶鲁官方原图')}</p><div class="paper-links"><a href="data/high-resolution-review.json" download>全部复核记录 ↓</a><a href="downloads/high-resolution-verification.json" download>覆盖与坐标检查 ↓</a></div></div><div class="highres-record-list">${review.records.map(r=>`<article class="highres-record"><div class="locus-header"><strong>${esc(r.locator)} · ${esc(r.locus_type)}</strong><span>${esc(reviewStatus(r))}</span></div><div class="review-code" tabindex="0" aria-label="${esc(r.locator)} 两版转写"><div><span>ZL</span><code>${esc(r.zl)}</code></div><div><span>IT</span><code>${esc(r.it)}</code></div></div><p>${esc(r.observation)}</p><button type="button" class="button secondary small" data-highres-locus="${esc(r.locator)}">加载高清图并定位 ${esc(r.locator)}</button><span class="legend"> ${r.approximate_regions_normalized.length} 个阅读框</span></article>`).join('')}</div>${review.additional_visible_text?.length?`<div class="highres-review-intro"><p class="small-text muted">补充可见内容：${review.additional_visible_text.map(r=>esc(r.description)).join('；')} 此项未计入 332 个转写位置。</p></div>`:''}</details>`;
+}
+function validHighresRegions(record) {
+  return (record?.approximate_regions_normalized||[]).filter(b=>Array.isArray(b)&&b.length===4&&b.every(Number.isFinite)&&b[0]>=0&&b[1]>=0&&b[2]<=1&&b[3]<=1&&b[0]<b[2]&&b[1]<b[3]);
+}
+function regionUnion(regions) {
+  return [Math.min(...regions.map(b=>b[0])),Math.min(...regions.map(b=>b[1])),Math.max(...regions.map(b=>b[2])),Math.max(...regions.map(b=>b[3]))];
+}
+function setHighresZoom(zoom,box=regionUnion(validHighresRegions(highres.record))) {
+  if(!highres.loaded)return;
+  const p=highres.page.yale_image,viewport=$('#highres-viewport');
+  highres.zoom=Math.min(3,Math.max(.05,zoom));
+  $('#highres-stage').style.width=`${p.width*highres.zoom}px`;
+  $('#highres-stage').style.height=`${p.height*highres.zoom}px`;
+  $('#highres-scale').textContent=`${Math.round(highres.zoom*100)}%`;
+  requestAnimationFrame(()=>viewport.scrollTo({left:(box[0]+box[2])/2*p.width*highres.zoom-viewport.clientWidth/2,top:(box[1]+box[3])/2*p.height*highres.zoom-viewport.clientHeight/2,behavior:'instant'}));
+}
+function fitHighres(box=regionUnion(validHighresRegions(highres.record))) {
+  if(!highres.loaded)return;
+  const p=highres.page.yale_image,v=$('#highres-viewport');
+  setHighresZoom(Math.min(2,(v.clientWidth-36)/((box[2]-box[0])*p.width),(v.clientHeight-36)/((box[3]-box[1])*p.height)),box);
+}
+function highresFailure(message) {
+  highres.loaded=false;clearTimeout(highres.timer);
+  $('#highres-viewport').hidden=true;$('#highres-retry').hidden=false;
+  $('#highres-status').textContent=message+' 官方原图链接仍可打开，也可关闭窗口继续低清对照。';
+  $$('.highres-zoom button').forEach(b=>b.disabled=true);
+}
+function loadHighresImage() {
+  const id=++highres.request,p=highres.page.yale_image,img=$('#highres-image');
+  highres.loaded=false;clearTimeout(highres.timer);$('#highres-viewport').hidden=true;$('#highres-retry').hidden=true;
+  $('#highres-status').textContent='正在从耶鲁加载高清 JPEG，仅此页将被请求…';
+  $$('.highres-zoom button').forEach(b=>b.disabled=true);
+  img.onload=()=>{
+    if(id!==highres.request)return;
+    clearTimeout(highres.timer);
+    if(img.naturalWidth!==p.width||img.naturalHeight!==p.height){highresFailure('收到的图片尺寸与已核对的原图不一致，已停用坐标叠加。');return;}
+    highres.loaded=true;$('#highres-viewport').hidden=false;$('#highres-retry').hidden=true;
+    $('#highres-status').textContent=`官方 JPEG · ${p.width} × ${p.height}；橙色框为 ${highres.record.locator} 的近似阅读区。`;
+    $$('.highres-zoom button').forEach(b=>b.disabled=false);fitHighres();
+  };
+  img.onerror=()=>{if(id===highres.request)highresFailure('高清图暂时无法载入，可能是网络或图源限制。');};
+  highres.timer=setTimeout(()=>{if(id===highres.request&&!highres.loaded)highresFailure('高清图加载时间较长，可以稍后重试。');},40000);
+  img.alt=`耶鲁官方 ${highres.page.folio} 未经裁切的高清原图`;
+  img.src=p.source_url;
+}
+function openHighres(p,locator) {
+  const record=p.high_resolution_review?.records.find(r=>r.locator===locator);
+  if(!record||!validHighresRegions(record).length||!/^https:\/\/collections\.library\.yale\.edu\/iiif\/2\/\d+\/full\/full\/0\/default\.jpg$/.test(p.yale_image?.source_url||''))return;
+  const reuse=highres.page?.folio===p.folio&&highres.loaded;
+  highres.page=p;highres.record=record;
+  $('#highres-title').textContent=`${locator} · 高清定位`;
+  $('#highres-source').href=p.yale_image.source_url;
+  $('#highres-reading').innerHTML=`<p><span class="pill caution">${esc(reviewStatus(record))}</span> <span class="legend">位置核对，不是译文</span></p><div class="review-code" tabindex="0" aria-label="当前行位两版转写"><div><span>ZL</span><code>${esc(record.zl)}</code></div><div><span>IT</span><code>${esc(record.it)}</code></div></div><p class="highres-observation">${esc(record.observation)}</p>`;
+  const regions=validHighresRegions(record);
+  $('#highres-boxes').innerHTML=regions.map((b,i)=>`<div class="highres-box" style="left:${b[0]*100}%;top:${b[1]*100}%;width:${(b[2]-b[0])*100}%;height:${(b[3]-b[1])*100}%"><span>${i+1}</span></div>`).join('');
+  $('#highres-region-buttons').innerHTML=regions.length>1?`<span>分区定位：</span>${regions.map((b,i)=>`<button type="button" class="button secondary small" data-region-index="${i}">第 ${i+1} 区</button>`).join('')}`:'';
+  $$('[data-region-index]').forEach(b=>b.addEventListener('click',()=>fitHighres(regions[Number(b.dataset.regionIndex)])));
+  if(!$('#highres-dialog').open)$('#highres-dialog').showModal();
+  if(reuse){$('#highres-status').textContent=`官方 JPEG · ${p.yale_image.width} × ${p.yale_image.height}；橙色框为 ${locator} 的近似阅读区。`;fitHighres();}
+  else loadHighresImage();
+}
 
 function renderExperiments() {
   $('#experiments').innerHTML=`<div class="page-heading"><div><span class="eyebrow">02 / CONTROLLED EXPERIMENTS</span><h1 id="experiments-heading">让规律接受对照</h1><p>选择指标、转写版本和样本分组，查看观察值与随机重排的分布。所有图形使用已保存的计算结果，切换选项不会重新拟合或生成数据。</p></div><a class="button secondary small" href="data/statistics.json" download>完整统计数据</a></div>
@@ -237,8 +310,24 @@ function boundaryCalibrationPanel(c) {
   const rows=c.groups.filter(g=>g.order==='original'&&g.representation==='eva');
   return `<article class="panel journal-panel stage2-wide"><span class="eyebrow">SENSITIVITY CALIBRATION / ARTIFICIAL LINES</span><h2>边界指标也会漏掉已知语言</h2><p>同预算预测器在小样本拉丁原文上没有检出正优势。这提醒我们：弱结果可能来自检验灵敏度，不能据此排除语言或语义。</p><p class="small-text muted">${esc(c.task_count)} 次运行；每次 1,665 / 830 / 830 个训练、开发、测试词对，统一为 12 词人工行。此处已知目标词长，仅预测下一词首单位，<strong>不与真实手稿叶均完整词结果共轴比较</strong>。</p><div class="sensitivity-table-wrap"><table class="data-table"><thead><tr><th>原顺序 / EVA</th><th>运行数</th><th>平均节省 bits / 首单位</th><th>选择零权重次数</th></tr></thead><tbody>${rows.map(g=>`<tr><td>${esc(names[g.generator]||g.generator)}</td><td>${g.n}</td><td>${number(g.metrics.last.gain.mean,4)}</td><td>${g.metrics.last.zero_weight_count} / ${g.n}</td></tr>`).join('')}</tbody></table></div><div class="note-strip">Naibbe 的 20 个种子共用一段拉丁明文，不能当作 20 篇独立语言样本。零权重是开发集选择的结果，表示此配置下未采用该特征。Timm 的部分关联也不证明语义；各次运行内校正不控制全部 ${esc(c.task_count)} 次比较。</div>${studyFigure(c.assets,'人工12词行中边界预测器的灵敏度校准，独立于真实手稿叶均分析')}${studyAssetLinks(c.assets)}<details class="study-details"><summary>完整适用范围与限制</summary>${(c.caveats||[]).map(t=>`<p class="small-text muted">${esc(t)}</p>`).join('')}</details></article>`;
 }
+function copyPredictionPanel(c) {
+  if(!c?.verification?.all_passed||!c.primary_table?.length)return '';
+  const names={ZL_EVA:'ZL / EVA',ZL_merged:'ZL / 合并单位',IT_EVA:'IT / EVA'};
+  const labels={base__minus__edit_HV:'复制 + 单编辑，相对书手/位置基线',exact_HV_matched__minus__edit_HV:'单编辑，相对精确复制',edit_H_matched__minus__edit_HV:'增加上一行来源'};
+  const interval=x=>`[${number(x[0],4)}, ${number(x[1],4)}]`;
+  const rows=c.primary_table.filter(r=>r.comparison==='base__minus__edit_HV');
+  const secondary=c.primary_table.filter(r=>r.comparison!=='base__minus__edit_HV');
+  const resultTable=(items,withComparison=false)=>`<div class="sensitivity-table-wrap"><table class="data-table"><thead><tr><th>转写 / 表示</th>${withComparison?'<th>增量比较</th>':''}<th>叶均节省</th><th>95% 区间</th><th>保守 98.333% 区间</th></tr></thead><tbody>${items.map(r=>`<tr><td>${esc(names[r.representation]||r.representation)}</td>${withComparison?`<td>${esc(labels[r.comparison]||r.label)}</td>`:''}<td>${number(r.mean_leaf_bits_saved,4)}</td><td>${interval(r.ci95)}</td><td>${interval(r.ci98_333)}</td></tr>`).join('')}</tbody></table></div>`;
+  return `<article class="panel journal-panel stage2-wide" id="copy-prediction"><span class="eyebrow">FULL-WORD COPY PREDICTION</span><h2>复制模型有响应，手稿证据仍弱</h2><p><span class="pill good">预测实验已复算</span></p><p>${esc(c.main_result)}</p><p class="small-text muted">模型从先前已写词形作精确复制或一次单位插入、删除、替换；计算包含词尾、非空条件化和未知单位身份成本的完整词概率。节省越大，表示在当前条件下预测更好，不表示读出了词义。</p>
+  <h3>正控：能否检测到已知复制生成结构？</h3><p class="small-text muted">Timm 作者程序的真实行/页布局，20 个固定种子、EVA 与合并单位共 80 次运行。每个原顺序及打乱条件都重新训练，并独立选择基线参数。以下是各自测试集的总预测增益中位数，单位为 bits / 完整词。</p><div class="sensitivity-table-wrap"><table class="data-table"><thead><tr><th>表示</th><th>原顺序中位数</th><th>打乱中位数</th><th>原顺序优于打乱</th></tr></thead><tbody>${(c.calibration?.groups||[]).map(g=>{const m=g.metrics.base__minus__edit_HV;return `<tr><td>${g.representation==='eva'?'EVA':'合并单位'}</td><td>${number(m.original.median,4)}</td><td>${number(m.shuffled.median,4)}</td><td>${m.positive_paired_seeds} / ${m.original.n} 个种子</td></tr>`;}).join('')}</tbody></table></div><p class="small-text muted">打乱在各训练/开发/测试划分内进行，保留布局；正控证明观察器会响应这些生成配置。20 个种子共用同一作者配置与起始短句，不构成手稿置信区间，也不是已经验证的语义分类器。</p>
+  <h3>手稿：总改善较小，转写版本影响结论</h3><p class="small-text muted">同一 28 页 / 13 叶确认集，ZL 5,025 词、IT 5,047 词。下表为“复制 + 单编辑”相对书手/位置完整词基线的叶等权节省，单位 bits / 完整词。</p>${resultTable(rows)}<div class="note-strip"><strong>IT 的 95% 区间跨零；单编辑也没有稳定胜过精确复制。</strong>主 ZL 总增益约 0.0258 bits / 词。增加上一行来源的普通 95% 区间为正，但保守区间跨零。这些结果不足以认定历史上采用了复制生成法。</div>
+  <details class="study-details"><summary>查看单编辑与上一行来源的全部增量比较</summary><p class="small-text muted">相对精确复制的比较保持候选来源窗口相同；上一行比较保持横向窗口相同。横向坐标是词形槽位，不是真实像素。独立在开发集选择的横向/精确复制配置，本次恰与匹配配置一致。</p>${resultTable(secondary,true)}</details>
+  <p class="small-text muted" style="margin-top:18px">95% 与 98.333% 区间均按叶组重采样；较保守区间针对每种表示的三个预定主差，不控制全部历史研究和敏感性比较。方案是在看过此前确认集发现后冻结，不能称全项目盲测；22 页 reserve 未被请求或评分。</p>
+  ${studyFigure(c.assets,'完整词复制预测：Timm正控响应与手稿三种表示的预测增益，普通及保守区间')}${studyAssetLinks(c.assets)}<p class="updated-label">实验快照：${esc(dateText(c.completed_utc))}。独立逐编辑路径与标量概率复算误差不超过 1.43 × 10⁻¹⁴ bits，未重新读取确认集选参。</p><details class="study-details"><summary>完整方法限制</summary>${(c.limitations||[]).map(t=>`<p class="small-text muted">${esc(t)}</p>`).join('')}</details></article>`;
+}
 function stage2Panel() {
   const s=data.stage2;if(!s)return '';
+  const directPrior=literatureItems().find(p=>p.id==='rozanova_temerev_2026_units');
   const f=s.paragraph_factor||{},g=s.generator_controls||{},b=s.boundary_fullword||{},diagnostic=s.boundary_diagnostic||{};
   if(!f.primary&&!g.models&&!b.variants)return '';
   const run=s.ongoing_work||{},factorModels={body_full:'正文完整词基线',position_full:'位置条件完整词',gallows_selected:'Gallows 前缀因子',any_first_selected:'任意首单位分离'};
@@ -247,10 +336,11 @@ function stage2Panel() {
   const improvement=bw?.results.last.improvement;
   const generatorNames={naibbe:'Naibbe（原规则）',naibbe_strict_unique:'Naibbe（严格唯一适配）',timm:'Timm（A 分支适配）'};
   const generatorRows=g.models?[{...g.manuscript,name:'手稿训练/既有样本'},...g.models.filter(m=>Object.hasOwn(generatorNames,m.name)).map(m=>({...m,name:generatorNames[m.name]}))]:[];
-  return `<section class="stage2-section"><div class="section-heading"><div><span class="eyebrow">STAGE 2 / MECHANISM TESTS</span><h2>进一步区分几种解释</h2></div><span class="pill caution">第二阶段进行中</span></div><div class="note-strip"><strong>${esc(s.status_note)}</strong><br>${esc(run.title)}：计划 ${esc(run.planned_searches)} 次搜索；快照记录为进行中，预计 ${esc(dateText(run.estimated_completion_utc))} 完成。${esc(run.note)}<br>本轮总研究截止：${esc(dateText(s.deadline_utc))}。</div><div class="stage2-grid">
+  return `<section class="stage2-section"><div class="section-heading"><div><span class="eyebrow">STAGE 2 / MECHANISM TESTS</span><h2>进一步区分几种解释</h2></div><span class="pill caution">第二阶段进行中</span></div><div class="note-strip"><strong>${esc(s.status_note)}</strong><br>${esc(run.title)}：计划 ${esc(run.planned_searches)} 次搜索；快照记录为进行中，预计 ${esc(dateText(run.estimated_completion_utc))} 完成。${esc(run.note)}<br>本轮总研究截止：${esc(dateText(s.deadline_utc))}。</div>${directPrior?`<div class="note-strip"><strong>直接研究先例：</strong>Rozanova 与 Temerev（2026）已研究跨词边界、段首及 Naibbe / 自复制校准。本项目复核相关现象，并使用不同的冻结预测与原实现对照，不主张这些规律首次发现；不同协议的数值不直接排名。<br>${externalLink(directPrior.url,'阅读原论文')} · <a href="#literature">查看原始证据与代码口径</a></div>`:''}<div class="stage2-grid">
   ${f.primary?`<article class="panel journal-panel"><span class="eyebrow">REVERSIBLE PREFIX FACTOR</span><h2>段首字形能直接去掉吗？</h2><p class="small-text muted">${esc(f.scope)}</p><p>计入完整前缀身份成本后，Gallows 因子仍未超过位置完整词模型。段首需要特殊建模，并不意味着这些字形可以免费删除。</p><table class="data-table"><thead><tr><th>模型</th><th>bits / 段首完整词</th></tr></thead><tbody>${Object.entries(factorModels).map(([k,label])=>`<tr><td>${label}</td><td>${number(f.primary.complete_token_bits[k],3)}</td></tr>`).join('')}</tbody></table><div class="note-strip">root ${number(f.primary.factor_cost_components.body_raw_bits,3)} + 前缀 ${number(f.primary.factor_cost_components.prefix_bits,3)} + 归一化 ${number(f.primary.factor_cost_components.support_normalization_bits,3)} = <strong>${number(f.primary.factor_cost_components.total_bits,3)} bits</strong>。只计算删字后的 root 会产生虚假改善。root 指剩余单位串，不代表已识别的语义词根。</div><p class="small-text muted">G 因子对位置模型的主 ZL 叶均差为 −0.950 bits，描述性区间 [−1.986, +0.017]，略跨零；两个敏感性版本点估计同向。它比任意首单位对照略好，仍不提供词义。</p>${studyFigure(f.assets,'段首可逆前缀因子的完整成本与按叶对照')}${studyAssetLinks(f.assets)}</article>`:''}
   ${bw?`<article class="panel journal-panel"><span class="eyebrow">CROSS-TOKEN BOUNDARY</span><h2>前词结尾有多少预测信息？</h2><p class="small-text muted">主 ZL：${bw.pairs.toLocaleString()} 个不重叠词对，28 页 / 13 叶。后续模型不以目标词长为输入，并计算含 EOS 的完整词概率。</p><p>加入前词末单位后，主 ZL 叶均节省 <strong>${number(improvement.mean_leaf_bits_saved,3)} bits / 完整词</strong>，区间 [${number(improvement.bootstrap95[0],3)}, ${number(improvement.bootstrap95[1],3)}]。</p><table class="data-table"><thead><tr><th>版本 / 处理</th><th>叶均节省</th><th>95% 区间</th></tr></thead><tbody>${b.variants.map(v=>{const x=v.results.last.improvement;return `<tr><td>${variantName(v)}</td><td>${number(x.mean_leaf_bits_saved,3)}</td><td>[${number(x.bootstrap95[0],3)}, ${number(x.bootstrap95[1],3)}]</td></tr>`;}).join('')}</tbody></table><div class="note-strip">IT 点估计同向，但区间略跨零。后续设计使用了同一确认集的已有发现，<strong>不是独立复现</strong>；未知单位合并为 UNK，仍没有恢复明文。</div>${studyFigure(b.assets,'不输入目标词长的完整词形边界预测结果')}${studyAssetLinks(b.assets)}${boundaryPriorArtPanel(s.boundary_prior_art)}<details class="study-details"><summary>先前诊断：已知词长时预测下一词首单位</summary><p class="small-text muted">该诊断使用目标词长作为已知信息，预测的是一个首单位，不能把它的 bits 与上面的完整词成本直接比较。严格条件置换实际移动的上下文比例有限。</p>${studyFigure(diagnostic.assets,'已知目标长度的跨词首单位诊断')}${studyAssetLinks(diagnostic.assets)}</details></article>`:''}
-  ${g.models?`<article class="panel journal-panel stage2-wide"><span class="eyebrow">GENERATIVE CONTROLS</span><h2>有明文和无指定明文，都能产生低熵</h2><p>${esc(g.headline)}</p><p class="small-text muted">20 个预定随机种子；下表为当前 EVA 描述值。手稿参照为 train+legacy 的前 8,000 个确定词形，未使用 confirm / reserve 调参或评分。</p><div class="sensitivity-table-wrap"><table class="data-table"><thead><tr><th>材料 / 机制</th><th>词内条件熵比值</th><th>平均编码长度</th><th>重排后近形相邻超额</th></tr></thead><tbody>${generatorRows.map(m=>`<tr><td>${esc(m.name)}</td><td>${number(m.h2_ratio,3)}</td><td>${number(m.length_mean,3)}</td><td>${number(m.near_excess*100,2)} pp</td></tr>`).join('')}</tbody></table></div><div class="method-grid"><div><h3>有明确明文的构造</h3><p class="small-text muted">Naibbe 原解密器的真值候选覆盖率为 100%，逐词唯一解约 99.14%–99.41%。额外拒绝多解词形的<strong>严格适配版</strong>，20 份各 24,000 个归一化拉丁字母全部唯一往返；不能把这一结论归给未经修改的原规则。</p></div><div><h3>没有输入明文的构造</h3><p class="small-text muted">Timm 对照从既有起始片段进入作者的 A 分支，不编码指定明文，也产生低词内熵。它仍与手稿在词形数量等指标上不同；这不是证明手稿无意义。</p></div></div><div class="note-strip">这些固定表与规则本身来自手稿研究，不是独立盲验证。近形相邻指标来自<strong>统一每行 12 词的人工重排</strong>，不等于根任务对原生物理行的确认检验。模拟范围也不是等价性证明或历史参数区间。</div>${studyFigure(g.assets,'Naibbe、Timm与手稿参照的描述性生成机制对照')}${studyAssetLinks(g.assets)}</article>`:''}
+  ${g.models?`<article class="panel journal-panel stage2-wide"><span class="eyebrow">GENERATIVE CONTROLS</span><h2>有明文和无指定明文，都能产生低熵</h2><p>${esc(g.headline)}</p><p class="small-text muted">20 个预定随机种子；下表为当前 EVA 描述值。手稿参照为 train+legacy 的前 8,000 个确定词形，未使用 confirm / reserve 调参或评分。</p><div class="sensitivity-table-wrap"><table class="data-table"><thead><tr><th>材料 / 机制</th><th>词内条件熵比值</th><th>平均编码长度</th><th>人工分行近形相邻超额</th></tr></thead><tbody>${generatorRows.map(m=>`<tr><td>${esc(m.name)}</td><td>${number(m.h2_ratio,3)}</td><td>${number(m.length_mean,3)}</td><td>${number(m.near_excess*100,2)} pp</td></tr>`).join('')}</tbody></table></div><div class="method-grid"><div><h3>有明确明文的构造</h3><p class="small-text muted">Naibbe 原解密器的真值候选覆盖率为 100%，逐词唯一解约 99.14%–99.41%。额外拒绝多解词形的<strong>严格适配版</strong>，20 份各 24,000 个归一化拉丁字母全部唯一往返；不能把这一结论归给未经修改的原规则。</p></div><div><h3>没有输入明文的构造</h3><p class="small-text muted">Timm 对照从既有起始片段进入作者的 A 分支，不编码指定明文，也产生低词内熵。它仍与手稿在词形数量等指标上不同；这不是证明手稿无意义。</p></div></div><div class="note-strip">这些固定表与规则本身来自手稿研究，不是独立盲验证。近形相邻指标来自<strong>保留词序、统一每行 12 词排版</strong>，不等于根任务对原生物理行的确认检验。模拟范围也不是等价性证明或历史参数区间。</div>${studyFigure(g.assets,'Naibbe、Timm与手稿参照的描述性生成机制对照')}${studyAssetLinks(g.assets)}</article>`:''}
+  ${copyPredictionPanel(s.copy_prediction)}
   ${boundaryCalibrationPanel(s.boundary_calibration)}
   </div><p class="small-text muted">已完成子实验与仍在计算的任务分开标记。压缩、低熵或字典命中均不自动构成破译；所有当前结果仍以规范化转写及限定模型为对象。</p></section>`;
 }
@@ -269,7 +359,7 @@ function renderJournal() {
   const findings=Array.isArray(summary.findings)?summary.findings:[];
   $('#journal').innerHTML=`<div class="page-heading"><div><span class="eyebrow">04 / RESEARCH LOG & REPRODUCIBILITY</span><h1 id="journal-heading">保留过程，也保留负结果</h1><p>研究记录标明哪些工作已完成，哪些仍是计划。下载的数据与代码用于复查处理规则、随机对照和结论，而不是把统计相似误称为译文。</p></div><span class="pill caution">快照记录：${status}</span></div>
   ${stage2Panel()}
-  <div class="journal-grid"><div><div class="panel journal-panel"><h2 style="font-size:26px">研究进展</h2><ol class="timeline"><li><h3>原始资料与已发表转写整理</h3><p>建立 PDF 页码关联，保留 ZL3b / IT2a 的版本信息。正文沿用学术转写；现代附文未在此公开。</p></li><li><h3>20 页核对与 40 处重点复核</h3><p>核查版面、转写位置与重点疑难处，保留未决读法。未宣称逐字符终审或双专家独立转写。</p></li><li><h3>四项结构检验完成</h3><p>17 页、188 行、1,648 个保留词形。固定随机种子，保存对照分布；主要数值和随机数组已完整复现。</p></li><li class="pending"><h3>7 小时扩展研究</h3><p>窗口：${esc(dateText(session.start_utc))} 至 ${esc(dateText(session.deadline_utc))}。全书分层验证、历史文献核查与已知答案密码校准并行推进。</p></li></ol><div class="note-strip" style="margin-bottom:0">${esc(data.research.snapshot_note)}<br>数据整理时间：${esc(dateText(data.overview.updated_at))}</div></div>
+  <div class="journal-grid"><div><div class="panel journal-panel"><h2 style="font-size:26px">研究进展</h2><ol class="timeline"><li><h3>原始资料与已发表转写整理</h3><p>建立 PDF 页码关联，保留 ZL3b / IT2a 的版本信息。正文沿用学术转写；现代附文未在此公开。</p></li><li><h3>20 页核对与 40 处重点复核</h3><p>核查版面、转写位置与重点疑难处，保留未决读法。未宣称逐字符终审或双专家独立转写。</p></li>${data.overview.high_resolution_review?`<li><h3>20 页 / 332 处高清对应核对</h3><p>逐位置保留 ZL/IT、未决观察和耶鲁原图近似阅读框；有 32 处交叉抽查并修订 11 个框。不是独立盲转写、逐字认证或译文。<a href="#manuscript">打开逐位置复核</a></p></li>`:''}<li><h3>四项结构检验完成</h3><p>17 页、188 行、1,648 个保留词形。固定随机种子，保存对照分布；主要数值和随机数组已完整复现。</p></li><li class="pending"><h3>7 小时扩展研究</h3><p>窗口：${esc(dateText(session.start_utc))} 至 ${esc(dateText(session.deadline_utc))}。全书分层验证、历史文献核查与已知答案密码校准并行推进。</p></li></ol><div class="note-strip" style="margin-bottom:0">${esc(data.research.snapshot_note)}<br>数据整理时间：${esc(dateText(data.overview.updated_at))}</div></div>
   ${stage1Panel(summary,findings)}</div>
   <div><div class="panel journal-panel"><h2 style="font-size:26px">数据与研究记录</h2><div class="downloads"><a class="download-item" href="downloads/study20-report.txt" download>第一轮完整研究报告 <span>TXT ↗</span></a><a class="download-item" href="downloads/study20-protocol.txt" download>实验方案与预处理约定 <span>TXT ↗</span></a><a class="download-item" href="downloads/study20-audit.json" download>20 页 / 40 处校对记录 <span>JSON ↗</span></a><a class="download-item" href="data/statistics.json" download>全部统计与随机对照 <span>JSON ↗</span></a><a class="download-item" href="downloads/study20-verification.json" download>复现与一致性检查 <span>JSON ↗</span></a><a class="download-item" href="data/literature.json" download>原始论文证据表 <span>JSON ↗</span></a><a class="download-item" href="data/candidate_claims.json" download>候选解读核查记录 <span>JSON ↗</span></a><a class="download-item" href="data/sources.json" download>原始材料来源与许可 <span>JSON ↗</span></a><a class="download-item" href="data/manifest.json" download>公开文件校验值 <span>SHA-256 ↗</span></a></div></div><div class="panel journal-panel" style="margin-top:20px"><h3>怎样独立复查</h3><p class="small-text muted">研究脚本、数据来源和复现说明随仓库维护。网页是结果的阅读入口；原始假设、清洗规则与失败结果同样属于研究输出。</p><a href="https://github.com/HaibinLai/Voynich-manuscript" target="_blank" rel="noopener noreferrer">进入代码与复现说明 ↗</a><p class="small-text muted" style="margin-top:20px">一一符号替换会保留熵与相似关系。仅凭这些指标无法确定读音、语言或词义；可靠解读必须提供固定规则与跨页可重复预测。</p></div></div></div>`;
 }
@@ -291,6 +381,14 @@ function route() {
 window.addEventListener('hashchange',route);
 $('#close-dialog').addEventListener('click',()=>$('#image-dialog').close());
 $('#image-dialog').addEventListener('click',e=>{if(e.target===$('#image-dialog'))$('#image-dialog').close()});
+$('#close-highres').addEventListener('click',()=>$('#highres-dialog').close());
+$('#highres-dialog').addEventListener('click',e=>{if(e.target===$('#highres-dialog'))$('#highres-dialog').close()});
+$('#highres-fit').addEventListener('click',()=>fitHighres());
+$('#highres-page').addEventListener('click',()=>fitHighres([0,0,1,1]));
+$('#highres-native').addEventListener('click',()=>setHighresZoom(1));
+$('#highres-out').addEventListener('click',()=>setHighresZoom(highres.zoom/1.4));
+$('#highres-in').addEventListener('click',()=>setHighresZoom(highres.zoom*1.4));
+$('#highres-retry').addEventListener('click',loadHighresImage);
 
 async function init() {
   try{

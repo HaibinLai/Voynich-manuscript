@@ -6,14 +6,15 @@
 
 ## 当前内容
 
-- 20 页原图与 ZL / IT 转写对照，332 个位置、40 处重点复核；这是版面与局部字形审查，不是逐字终审。
+- 20 页原图与 ZL / IT 转写对照，332 个位置的高清阅读记录和近似定位框；保留最初 40 处重点裁图。这是视觉对应复核，不是独立盲转写或逐字认证。
 - 第一轮 17 页线性正文的四项结构实验，含原始随机对照数组与版本敏感性。
 - 扩展阶段一：按整叶划分数据，28 页 / 13 叶组 / 5,025 词形的确认集；22 页保留给后续实验。段首格式信号保持，相邻相似在更强对照下减弱。
 - 已知答案密码校准：普通一一替换、词内排序/重排与全局打乱；恢复字母对应不等于还原语言和语义。
-- 22 项文献及 Bax / Hauer–Kondrak 候选解读核查表。作者主张与已验证结论分开记录。
+- 23 项文献及 Bax / Hauer–Kondrak 候选解读核查表。作者主张与已验证结论分开记录。
 - 第二阶段：段首前缀的完整概率比较、跨词末字形→后词首预测、去掉目标词长后的完整词模型。预测收益不等于词义，未获支持的模型同样展示。
 - 有明文的 Naibbe 与无指定明文的 Timm 生成对照：20 个固定种子；另有 181 次跨词预测校准。原作者机制、适配规则和已知局限均保留。
-- 20 页已连接耶鲁官方高清图；高清逐位置复核仍在进行。来源清单可重下载，原始两版转写保持不变。
+- 完整词复制模型：80 次原生版面正控、三种手稿表示；随后固定模型检验上一行同位置来源。原先小幅收益在同长度词换位后大多保留，未得到清晰位置特异性证据。
+- 高清定位按需加载对应耶鲁官方图，可查看每处双版字串、未决问题及多框阅读区域。来源清单可重下载，原始转写保持不变。
 
 研究仍在进行。网站显示静态结果快照，更新时刻可见；它不是后台运行监控。
 
@@ -50,6 +51,16 @@ python3 research/research7h/validate_boundary_word.py
 python3 research/research7h/paragraph_factor/replay.py
 ```
 
+完整词复制预测的公开复现入口会核验已记录的路径转换，并把结果写入新的目录；原冻结脚本与结果不改写：
+
+```sh
+python3 research/research7h/copy_prediction/public_reproduce.py preflight
+python3 research/research7h/copy_prediction/public_reproduce.py replay --output /tmp/voynich-copy-replay-new
+python3 research/research7h/copy_prediction/public_reproduce.py calibrate --seeds 19 --representation eva --output /tmp/voynich-copy-calibration-new
+```
+
+完整说明见 `copy_prediction/PUBLIC_REPRODUCTION.txt`。逐词上下文与位置实验输入使用无损压缩及双重哈希，恢复工具在各包内；不会用压缩替代原始证据。`position_specificity/研究报告.txt` 展示全部六组扰动结果。
+
 完整评分脚本为 `boundary.py`、`boundary_word.py` 和 `paragraph_factor/run.py`（依次传入 `prepare`、`evaluate`），协议与逐词结果在同目录。生成对照另需 Java 8 或更高版本；可用 `VOYNICH_JAVA`、`VOYNICH_JAVAC` 指定程序路径：
 
 ```sh
@@ -77,7 +88,7 @@ EVA 是字形编码，不是已知发音；空格间片段不保证等于语言�
 
 公开语料和原图早已可读；“留出”特指不参与该实验拟合/参数选择，不代表整个项目完全盲审。保留集的开启必须记录，未获支持的假说同样保留。所有置信/随机化区间都需要连同其条件和样本读。
 
-边界依赖已有 Currier、Smith–Ponzi 等直接先例，本项目的结果是带固定预测与重配对照的复核，未声称首次发现。Bax 的公开 f15v 锚词曾被文献线查看；详细边界见 `reserve_exposure_log.txt`。条件重配、叶重采样和生成器种子分布回答不同问题，不混为同一种置信区间。
+边界依赖已有 Currier、Smith–Ponzi 等直接先例；[Rozanova–Temerev 2026](https://arxiv.org/abs/2608.17096) 与本轮边界、段首、生成机制及替换测试也直接相关。本项目重叠部分属于独立复核或不同口径的预测检查，不主张首次发现，不将各文不同统计量直接排名。Bax 的公开 f15v 锚词曾被文献线查看；详细边界见 `reserve_exposure_log.txt`。条件重配、叶重采样和生成器种子分布回答不同问题，不混为同一种置信区间。
 
 ## 来源与许可
 

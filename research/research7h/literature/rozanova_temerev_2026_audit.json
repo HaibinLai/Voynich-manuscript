@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-11-17T11:58:35.556134+00:00",
+  "publication": {
+    "id": "rozanova_temerev_2026_units",
+    "title": "A Glyph Is Not a Letter, a Token Is Not a Word, a Space Is Not a Space: What the Units of Voynichese Are Not",
+    "authors": [
+      "Liudmila Rozanova",
+      "Alexander Temerev"
+    ],
+    "year": 2026,
+    "url": "https://arxiv.org/html/2608.17096v1",
+    "doi": "10.48550/arXiv.2608.17096",
+    "status": "2026-08-17 arXiv v1；原始相关章节与固定commit代码已核查，未独立重跑整篇",
+    "category": "直接先例：单位、边界与生成器校准",
+    "claim": "以边界、单位学习、词序和密码对照约束字母/词/空格的解释；有明文密码与自复制都能复现多项统计，单项相似不足以辨认机制。",
+    "evidence": [
+      "§3.2/A.8：末字形→后词首字形关系；§3.6/A.7：段首行与其他行分开；§3.9/A.5：Naibbe与自复制对照；§3.7/A.5：合成密码校准。",
+      "固定commit的edge_order.py使用原样本plug-in互信息减去行内整词置换均值；不是训练/开发/测试预测增益。",
+      "selfcitation驱动明确标为简化Python移植；Naibbe驱动也明确未执行原仓库代码。"
+    ],
+    "limitations": [
+      "是直接研究先例，不能把本轮边界/段首现象或跨机制低熵重现称首次发现。",
+      "本文生成与统计协议不等于我们作者Java实跑、严格可逆Naibbe分支、完整词归一化预测或源行条件扰动；数值不可直接并列排名。",
+      "该文Python selfcitation校准loss显式含词长、词型数和hapax三项；同seed用于选择与报告，没有独立机制验证。"
+    ],
+    "reproduction_plan": [
+      "只补先例说明，不据此改变已冻结模型或reserve方案。",
+      "未来若逐项复现，另冻结作者移植版与原Java、相同清洗/单位/样本及独立评估划分；先核验已知机制，不能直接把本文负结果外推所有密码或所有复制模型。"
+    ],
+    "reviewed": "primary_relevant_sections_and_pinned_code",
+    "checked_utc": "2026-11-17T11:58:35.556134+00:00",
+    "relation_to_current": "direct_prior_art_not_claimed_novel",
+    "locations": [
+      "§2.2",
+      "§2.10",
+      "§3.2",
+      "§3.6–3.9",
+      "Appendix A.5/A.7/A.8"
+    ],
+    "code_url": "https://github.com/lrozanova/voynich-units",
+    "code_commit": "956a7c4fc39981f4d116fa3f4edfccce6d065571"
+  },
+  "code_audit": [
+    {
+      "topic": "selfcitation implementation",
+      "url": "https://github.com/lrozanova/voynich-units/blob/956a7c4fc39981f4d116fa3f4edfccce6d065571/analysis/reproduce_selfcitation_control.py",
+      "lines": "15–17, 327–344, 892–968",
+      "finding": "Python simplified port; glyph tables/grammar copied from author mechanisms, token-count Voynich page/line/paragraph template, explicit unchanged-copy probability, 35% line-final rewrite; not author Java execution.",
+      "implication": "Our author-Java native-layout controls are related but not a bit-identical replication."
+    },
+    {
+      "topic": "selfcitation fitted targets",
+      "url": "https://github.com/lrozanova/voynich-units/blob/956a7c4fc39981f4d116fa3f4edfccce6d065571/analysis/reproduce_selfcitation_control.py",
+      "lines": "1174–1205, 1246–1280",
+      "finding": "Loss = ((mean length−target)/.25)^2 + ((types−target)/500)^2 + ((hapax−target)/.03)^2; 4 copy probabilities × 4 replacement-multiplicity settings, same seeds for selection and reported streams; default 3 seeds.",
+      "implication": "Hapax is a fit target too, despite short prose describing length/vocabulary calibration. Do not present its tail comparison as wholly untouched validation."
+    },
+    {
+      "topic": "same-position branch",
+      "url": "https://github.com/lrozanova/voynich-units/blob/956a7c4fc39981f4d116fa3f4edfccce6d065571/analysis/reproduce_selfcitation_control.py",
+      "lines": "412–471",
+      "finding": "Python port draws rand(100) <= p; p=28 therefore 29% at ordinary LOCALY calls and 15% at line-initial calls. It has simplified page-top fallback and no Java min(10,...) floor for low settings.",
+      "implication": "Paper shorthand .28 is a configuration description; actual branch probability and native Java intervention differ at low settings. We did not modify our frozen code."
+    },
+    {
+      "topic": "Naibbe reimplementation",
+      "url": "https://github.com/lrozanova/voynich-units/blob/956a7c4fc39981f4d116fa3f4edfccce6d065571/analysis/reproduce_naibbe_control.py",
+      "lines": "1–43, 67–91",
+      "finding": "Reimplemented from tables, no original repository code executed; stream-level respacing, v→u, 3% optional space deletion omitted; driver can compare original shipped Pliny ciphertext.",
+      "implication": "Distinct from our official-source run plus explicitly restricted strict-unique variant; neither is a historical decipherment."
+    },
+    {
+      "topic": "edge estimator",
+      "url": "https://github.com/lrozanova/voynich-units/blob/956a7c4fc39981f4d116fa3f4edfccce6d065571/analysis/reproduce_edge_order.py",
+      "lines": "180–251, 354–431",
+      "finding": "All adjacent same-line pairs, full-sample empirical feature marginals and plug-in MI; shuffle whole token identities within each line 100 times, report observed−mean null and divide by target entropy. Token identity capped at 2000; edge features uncapped.",
+      "implication": "Our boundary predictors estimate fixed conditional held-out log-probability gain, with style/length/position controls and nonoverlapping pairs in the initial model. Different estimand, scale, sample, dependence and null."
+    }
+  ],
+  "comparison_map": [
+    {
+      "our_work": "boundary / boundary_word",
+      "precedent": "§3.2 / A.8; edge_order.py",
+      "shared": "末→首依赖、词身份与边缘单位区分",
+      "difference": "固定开发选择后的条件完整词预测；其描述性互信息不是相同分数"
+    },
+    {
+      "our_work": "paragraph_factor",
+      "precedent": "§3.6 / A.7",
+      "shared": "区分段首行与其他行位置",
+      "difference": "我们以已知位置/书手混合预测并进行留出评分；不能宣称段首现象新发现"
+    },
+    {
+      "our_work": "generator_controls / boundary_calibration",
+      "precedent": "§3.9 / A.5",
+      "shared": "Naibbe与Timm机制共享部分结构统计；比较跨词边界",
+      "difference": "我们原作者代码、20seed、指定切分和独立归一化预测；其Python移植+匹配全语料模板"
+    },
+    {
+      "our_work": "copy_prediction / position_specificity",
+      "precedent": "Timm规则及该文相似词/空间来源复现",
+      "shared": "复制和变异机制",
+      "difference": "归一化完整词核、过去上下文、固定长度源行身份通道扰动；不是该文原统计的复现"
+    },
+    {
+      "our_work": "cipher search calibration",
+      "precedent": "§3.7 / A.5",
+      "shared": "已知密码与匹配无意义对照下校准攻击响应",
+      "difference": "先例已有同类思路，具体密码族/搜索预算/归一化与留出协议须逐项区分"
+    }
+  ],
+  "scope": {
+    "manuscript_data_from_repository_downloaded": false,
+    "author_code_executed": false,
+    "new_confirm_scores": false,
+    "reserve_scored": false,
+    "source_exposure": "Code includes author default f103v seed line already encountered in prior source audit; no reserve full page or new scoring. General reserve is not claimed never seen."
+  },
+  "source_files": [
+    {
+      "path": "sources/rozanova_LICENSE",
+      "sha256": "7134c72d918d8b90d143e7a4b2af1f2df5ad1fc66608d655152820c5b2d1a33c"
+    },
+    {
+      "path": "sources/rozanova_reproduce_edge_order.py",
+      "sha256": "cbc924755925951a5cac8597dc48e200a03ac05c9440dc7aa3c8b4d3cb9c6b09"
+    },
+    {
+      "path": "sources/rozanova_reproduce_naibbe_control.py",
+      "sha256": "af67eec8215eee881f455c52e65a58db1d011949cd90d5d3a14263fb8b451ad9"
+    },
+    {
+      "path": "sources/rozanova_reproduce_scale_transition.py",
+      "sha256": "4c5b01e048774f10f72e8fd0a287f35d3a609643061302401ff8483ee7a91356"
+    },
+    {
+      "path": "sources/rozanova_reproduce_selfcitation_control.py",
+      "sha256": "96880608f68e5aae25d5a8a3afba4b1a0f885b78e04f8fbd849154a610436f6d"
+    }
+  ]
+}

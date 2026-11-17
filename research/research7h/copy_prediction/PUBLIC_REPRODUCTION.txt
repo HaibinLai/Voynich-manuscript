@@ -1,0 +1,40 @@
+Public reproduction entry point
+
+The frozen run.py intentionally retains its original strict SHA checks. It cannot
+be launched unchanged against the public generator receipt: publication replaced
+personal absolute paths by package-relative paths. The original source hash is
+retained, but the public receipt necessarily has different bytes. Do not edit the
+frozen scripts/receipts or disable their assertions to work around this.
+
+Use the added public_reproduce.py wrapper instead, from this directory:
+
+  python3 public_reproduce.py preflight
+  python3 public_reproduce.py calibrate --seeds 19 --representation eva --output /tmp/voynich-copy-calibration-new
+  python3 public_reproduce.py replay --output /tmp/voynich-copy-replay-new
+
+Omit --seeds/--representation to rerun all 20 seeds × 2 representations × original
+and shuffled orders. Every original/shuffled run refits counts and repeats the
+same independent development searches. Python 3.9+ and NumPy are required.
+
+The wrapper requires a NEW, nonexistent output directory outside this frozen
+package, writes a new execution receipt there, and never overwrites original
+configs/results/confirm markers. Calibration uses published generated inputs.
+Saved-result replay decompresses only three manuscript target archives into the
+new output, verifies their hashes, rebuilds train+legacy counts, and independently
+recomputes saved target probabilities. It does not load confirm or reserve anew.
+A fresh manuscript fitting/scoring mode is deliberately not provided here.
+
+Preflight checks every original frozen source hash. Exactly one exception is
+allowed: ../generator_controls/protocol_receipt.json, and only when the parent
+stage2_publication_manifest.json explicitly records its original SHA, current
+public SHA, and the named path-only transformation. The public receipt must also
+record the original SHA; all files referenced by that public receipt are checked.
+The manifest is a publication record, not a digital signature. Any other changed
+frozen source, invalid public SHA, or modified referenced input fails closed.
+Use --publication-manifest PATH only for the matching publication manifest.
+
+Checks performed locally: original and public preflight passed; a deliberately
+wrong public receipt SHA was rejected; seed 19 original and shuffled EVA fully
+refit/reselected with exactly the original gains; saved-result independent replay
+passed for ZL/EVA, ZL/merged, IT/EVA. See public_portability_verification.json and
+public_reproduction_verification.json. None of these checks scored reserve.

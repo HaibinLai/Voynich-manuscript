@@ -1,0 +1,63 @@
+--- de/voynich/text/StatisticHelper.java
++++ de/voynich/text/StatisticHelper.java
+@@ -13,7 +13,7 @@
+  */
+ public class StatisticHelper {
+ 
+-    private I_CanFollow vmsCanFollow = new VoynichCanFollow();
++    // Disable full-manuscript membership diagnostics only.
+ 
+     public final int suggestionsProbability;
+ 
+@@ -108,13 +108,7 @@
+         linesInParagraph = 0;
+     }
+ 
+-    void countGlyphGroup(GlyphGroup glyphGroup) {
+-        if (!vmsCanFollow.isValid(glyphGroup)) {
+-            existsNotInVmsCount++;
+-        } else {
+-            existsInVmsCount++;
+-        }
+-    }
++    void countGlyphGroup(GlyphGroup glyphGroup) { }
+ 
+     /**
+      * if a `glyhGroup` is not to complex or invalid store it in the validGroupDictionary
+@@ -412,14 +406,7 @@
+         return (int) ((float) 100 * (float) existsInVmsCount / (float) (existsNotInVmsCount + existsInVmsCount));
+     }
+ 
+-    public String vmsCountAsString() {
+-        StringBuilder sb = new StringBuilder();
+-        int ratio = getVmsGroupPercent();
+-        sb.append("None vms token count: ").append(existsNotInVmsCount).append(" (" + (100 - ratio)+ " %)").append(Constants.ENTER);
+-        sb.append("VMS tokens count: ").append(existsInVmsCount).append(" (" + ratio + " %)").append(Constants.ENTER);
+-
+-        return sb.toString();
+-    }
++    public String vmsCountAsString() { return "Diagnostics disabled" + Constants.ENTER; }
+ 
+     public String toString() {
+         StringBuilder sb = new StringBuilder();
+--- de/voynich/text/SelfCitationTextGenerator.java
++++ de/voynich/text/SelfCitationTextGenerator.java
+@@ -121,6 +121,7 @@
+         config.statistics.linesInPage = generatedText.size();
+ 
+         // generate <code>linesToCreate</code> numbers of text
++        int auditPageIndex = 0;
+         for (int i = config.statistics.linesInParagraph; i < linesToCreate; i++) {
+             boolean isParagraphInitial = config.statistics.linesInParagraph == 0;
+             boolean isParagraphFinal = false;
+@@ -141,7 +142,10 @@
+             }
+ 
+             // generate a new line
++            boolean auditPageEnd = config.statistics.linesInPage == 0;
+             generatedText.add(generateLine(isParagraphInitial, isParagraphFinal, initialLineCount));
++            System.out.println("COPY_LAYOUT\t" + i + "\t" + auditPageIndex + "\t" + isParagraphInitial + "\t" + isParagraphFinal + "\t" + auditPageEnd);
++            if (auditPageEnd) { auditPageIndex++; }
+         }
+     }
+ 

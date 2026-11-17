@@ -46,17 +46,39 @@ def main():
     target=dest/'generator_controls/protocol_receipt.json'
     target.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
     entries.append(dict(path='generator_controls/protocol_receipt.json',source_sha256=digest(receipt_source),public_sha256=digest(target),transformation='absolute source paths -> package-relative; source hash recorded'))
-    for name in ['boundary_prior_art.json','边界先例附录.txt','stolfi_candidate_audit.json','Stolfi候选可执行性审查.txt','PUBLIC_EXPORT.txt']:
+    for name in ['literature.json','rights_notes.json','boundary_prior_art.json','边界先例附录.txt',
+                 'stolfi_candidate_audit.json','Stolfi候选可执行性审查.txt','PUBLIC_EXPORT.txt',
+                 '新先例与代码口径附录.txt','rozanova_temerev_2026_audit.json']:
         if (src/'literature'/name).is_file():copy(Path('literature')/name)
+    # The copy-model package retains frozen code and compressed, hash-checked
+    # context archives. Never export the 420 MB uncompressed duplicate targets.
+    copy_root=src/'copy_prediction'
+    if copy_root.exists():
+        for path in sorted(copy_root.iterdir()):
+            if path.is_file() and path.suffix in ['.py','.txt','.json','.patch','.png','.svg'] and path.name!='protocol_draft.txt':
+                copy(path.relative_to(src))
+        if (copy_root/'.gitignore').is_file():copy(Path('copy_prediction/.gitignore'))
+        for folder,pattern in [('calibration_inputs','*.json'),('configs','*.json'),('runs','*.json'),('scores','*.npz'),('targets','*.json.gz')]:
+            for path in sorted((copy_root/folder).glob(pattern)):copy(path.relative_to(src))
+        position=copy_root/'position_specificity'
+        if (position/'confirm_complete.json').is_file():
+            for path in sorted(position.iterdir()):
+                if path.is_file() and path.suffix in ['.py','.txt','.json','.patch','.png','.svg']:copy(path.relative_to(src))
+            for folder,pattern in [('configs','*.json'),('runs','*.json'),('nulls','*.npz'),('inputs','*.json.gz')]:
+                for path in sorted((position/folder).glob(pattern)):copy(path.relative_to(src))
     # Publish metadata and retrieval script, not the 49 MB full-size image bundle.
-    for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json']:
+    for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',
+                 'high_resolution_review.json','review_agent.json','review_agent_verification.json','root_review_spotcheck.json',
+                 'review_combined.json','review_verification.json','merge_reviews.py','prepare_circular_views.py',
+                 'manual_label_regions.json','f57v_repeat_alignment.py','f57v_repeat_alignment.json','f57v_repeat_alignment.png',
+                 '高清复核报告.txt','f57v重复序列说明.txt']:
         if (src/'visual_audit'/name).is_file():copy(Path('visual_audit')/name)
     for e in entries:
         path=dest/e['path']
         if path.suffix in ['.txt','.json','.py','.md','.csv','.xml','.html']:
             if '/Users/' in path.read_text():raise ValueError('Unexpected personal path in '+e['path'])
     result=dict(exported_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        purpose='Reviewable second-stage snapshot. Ongoing cipher search and in-progress visual reviews are not marked complete.',
+        purpose='Reviewable second-stage snapshot. Completed analyses and 20-page visual review are distinct from the ongoing cipher search.',
         files=entries,
         note='Source artifact manifests describe the original local run. This publication manifest records the exact exported bytes and any path-only transformation.')
     (dest/'stage2_publication_manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')

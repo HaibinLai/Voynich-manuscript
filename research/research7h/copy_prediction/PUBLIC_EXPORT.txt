@@ -1,0 +1,44 @@
+Public copy-prediction package
+
+Include:
+protocol.txt, protocol_receipt.json, execution_receipt.json,
+reference_models.py, reference_corpus.py,
+copy_models.py, run.py, prepare_timm.py, replay.py,
+summarize_calibration.py, report.py,
+timm_layout_logging.patch, layout_verification.json, verification.json,
+toy_verification.json, replay_verification.json, calibration_complete.json,
+calibration_summary.json, manuscript_complete.json,
+all_manuscript_configs_frozen.json, confirm_scoring_started.json,
+summary.json, website_data.json, audit.json, artifact_manifest.json,
+研究报告.txt, 完整词复制预测.png, 完整词复制预测.svg,
+PUBLIC_EXPORT.txt, .gitignore,
+calibration_inputs/*.json, configs/*.json, targets/*.json.gz, scores/*.npz, runs/*.json.
+
+Exclude build/, __pycache__/, *.log, protocol_draft.txt, and uncompressed targets/*.json.
+Include target_archives.json and restore_target_archives.py. Public gzip archives
+restore byte-exact originals and validate original frozen hashes; original JSON
+files remain local. Run restore_target_archives.py before replay.py in a public bundle.
+All receipt paths are relative; preserve parent research7h/generator_controls,
+study20 and source layout for full reruns. Replaying existing results uses only
+train+legacy transcription plus saved test artifacts, never a new confirm load.
+run.py intentionally refuses silent overwriting of an existing confirm marker.
+
+Licenses/provenance: preserve Timm MIT license and the parent generator_controls/
+THIRD_PARTY_NOTICES.txt. The logging patch only disables manuscript-membership
+printing and adds layout logging; all 20 original generated texts are unchanged.
+ZL/IT transcription derivatives follow the publicly declared CC0 release cited in
+../literature/rights_notes.json. Credit their authors and Yale Beinecke MS 408.
+No manuscript images, modern paper PDFs, or EVA font are bundled here.
+
+Additional public audit/planning files:
+  public_summary.json (same complete schema as website_data.json)
+  baseline_refit_audit.json
+  next_stage_draft.txt (proposal only; no reserve evaluation)
+
+Portable public reproduction (additional files):
+  public_reproduce.py, PUBLIC_REPRODUCTION.txt,
+  public_portability_verification.json, public_reproduction_verification.json.
+Use public_reproduce.py, not the unchanged original run.py, for the path-redacted
+public package. The wrapper checks the exact publication-manifest exception and
+writes independent outputs with new receipts. Saved-result replay and generator
+calibration reruns are supported; no fresh manuscript confirm/reserve mode.

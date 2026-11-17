@@ -1,0 +1,179 @@
+{
+  "name": "p100_s21_eva",
+  "task": {
+    "config": 100,
+    "seed": 21,
+    "representation": "eva"
+  },
+  "completed_utc": "2026-11-17T11:41:33.409013+00:00",
+  "test_scoring_started_utc": "2026-11-17T11:41:32.590714+00:00",
+  "config_path": "configs/p100_s21_eva.json",
+  "config_sha256": "af3c49d67746d46e4db2749dca1093107d58681c22d5f555d6be2f9443fe241b",
+  "execution_receipt_sha256": "2ad4b84846774a79db44b3c1700a0c5fc4b82b07cd6dc6bbb7cb4011e1b5e3bb",
+  "selected": {
+    "edit_HV": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.05,
+      "dev_bits": 10.802912943033155,
+      "kernel": "edit"
+    },
+    "edit_H_matched": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.863805204836485,
+      "kernel": "edit"
+    }
+  },
+  "baseline_weights": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "results": {
+    "exact": {
+      "stratum": "exact_unit_length",
+      "replicates": 399,
+      "seed": 14514485819517925771,
+      "observed_V_gain": 0.11801549941097064,
+      "null_mean": 0.07160358780187105,
+      "null95": [
+        0.058879209231829197,
+        0.08346678375735592
+      ],
+      "alignment_specificity_D": 0.04641191160909959,
+      "monte_carlo_reference_p": 0.0025,
+      "source_rows": 233,
+      "source_valid_slots": 2303,
+      "source_actual_slots": 2303,
+      "source_fixed_invalid_slots": 0,
+      "internal_array_padding_slots": 726,
+      "source_strata": 1185,
+      "singleton_strata": 526,
+      "singleton_slot_fraction": 0.22839774207555363,
+      "movable_slot_fraction": 0.7716022579244464,
+      "source_identity_moved_mean": 0.4660217630485245,
+      "V_available_targets": 2070,
+      "V_available_fraction": 0.7817220543806647,
+      "target_assignment_changed_mean_all_targets": 0.6178493817625637,
+      "target_multiset_changed_mean_all_targets": 0.5757094776215462,
+      "target_multiset_changed_mean_given_V": 0.736463138522635,
+      "H_channel_bitwise_unchanged": true,
+      "shared_single_source_line_permutation": true,
+      "scalar_max_log2_error": 1.3877787807814457e-17,
+      "null_array": "nulls/p100_s21_eva_exact.npz",
+      "null_sha256": "e76aeb14cf0449dc846d12bbdae335580e2339f2442ccc475ce226380cda3a2e"
+    },
+    "coarse": {
+      "stratum": "coarse_1_3_4_6_7_9_10plus",
+      "replicates": 399,
+      "seed": 16709867867647571116,
+      "observed_V_gain": 0.11801549941097064,
+      "null_mean": 0.06331647140441404,
+      "null95": [
+        0.04578018782953233,
+        0.08126188480380828
+      ],
+      "alignment_specificity_D": 0.0546990280065566,
+      "monte_carlo_reference_p": 0.0025,
+      "source_rows": 233,
+      "source_valid_slots": 2303,
+      "source_actual_slots": 2303,
+      "source_fixed_invalid_slots": 0,
+      "internal_array_padding_slots": 726,
+      "source_strata": 619,
+      "singleton_strata": 145,
+      "singleton_slot_fraction": 0.06296135475466783,
+      "movable_slot_fraction": 0.9370386452453322,
+      "source_identity_moved_mean": 0.7193298051903532,
+      "V_available_targets": 2070,
+      "V_available_fraction": 0.7817220543806647,
+      "target_assignment_changed_mean_all_targets": 0.7502224216129447,
+      "target_multiset_changed_mean_all_targets": 0.7287781387002249,
+      "target_multiset_changed_mean_given_V": 0.9322727107624132,
+      "H_channel_bitwise_unchanged": true,
+      "shared_single_source_line_permutation": true,
+      "scalar_max_log2_error": 0.0,
+      "null_array": "nulls/p100_s21_eva_coarse.npz",
+      "null_sha256": "8afa51d9adb8632892b75f8cf54113e227d6a729e49b1e14ffcdd9bd97bf8967"
+    }
+  },
+  "test_words": 2648,
+  "test_vocabulary": 886,
+  "test_mean_unit_length": 4.682401812688822,
+  "test_length_histogram": {
+    "5": 645,
+    "4": 580,
+    "3": 305,
+    "7": 212,
+    "6": 496,
+    "2": 294,
+    "8": 84,
+    "9": 20,
+    "1": 9,
+    "10": 3
+  },
+  "test_unknown_units": 0,
+  "test_source_events": {
+    "all_source_choice_calls": 5720,
+    "mode_counts": {
+      "PARAGRAPH_INITIAL": 529,
+      "LOCALY": 5139,
+      "SUGGESTION": 52
+    },
+    "localy_fraction": 0.8984265734265734,
+    "localy_line_lag_counts": {
+      "1": 2355,
+      "2": 470,
+      "3": 334,
+      "4": 256,
+      "5": 222,
+      "6": 187,
+      "7": 147,
+      "8": 162,
+      "9": 118,
+      "10": 122,
+      "11": 102,
+      "13": 65,
+      "12": 81,
+      "14": 89,
+      "16": 59,
+      "15": 72,
+      "18": 45,
+      "17": 52,
+      "20": 41,
+      "21": 38,
+      "19": 33,
+      "22": 34,
+      "24": 15,
+      "25": 11,
+      "26": 6,
+      "23": 23
+    },
+    "conditional": {
+      "non_initial": {
+        "calls": 4789,
+        "alignment_branch_calls": 4789,
+        "alignment_branch_fraction": 1.0,
+        "position_equal_calc_fraction": 1.0
+      },
+      "line_initial": {
+        "calls": 350,
+        "alignment_branch_calls": 177,
+        "alignment_branch_fraction": 0.5057142857142857,
+        "position_equal_calc_fraction": 0.56
+      }
+    }
+  },
+  "actual_branch_probability_given_LOCALY": {
+    "non_initial": 1.0,
+    "line_initial": 0.51
+  },
+  "elapsed_seconds": 0.9750510000000006,
+  "interpretation": "V-source channel perturbation only; H and targets fixed. Author parameter intervention changes later RNG trajectory; 0 is not off. No manuscript reserve or new dev tuning."
+}

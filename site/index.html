@@ -38,5 +38,23 @@
     <div class="dialog-toolbar"><strong id="dialog-title"></strong><a id="original-download" download>下载原图</a><button id="close-dialog" class="button small">关闭 <span aria-hidden="true">×</span></button></div>
     <div class="dialog-image-wrap"><img id="dialog-image" alt=""></div>
   </dialog>
+  <dialog id="highres-dialog" aria-labelledby="highres-title" class="highres-dialog">
+    <div class="dialog-toolbar"><strong id="highres-title">高清位置复核</strong><button id="close-highres" class="button small">关闭 ×</button></div>
+    <div class="highres-reading" id="highres-reading"></div>
+    <div class="highres-toolbar"><div class="highres-zoom" aria-label="高清图缩放">
+      <button type="button" id="highres-fit" class="button secondary small" disabled>适合阅读区</button>
+      <button type="button" id="highres-page" class="button secondary small" disabled>整页</button>
+      <button type="button" id="highres-out" class="button secondary small" aria-label="缩小高清图" disabled>−</button>
+      <span id="highres-scale">—</span>
+      <button type="button" id="highres-in" class="button secondary small" aria-label="放大高清图" disabled>＋</button>
+      <button type="button" id="highres-native" class="button secondary small" disabled>100%</button>
+    </div><a id="highres-source" target="_blank" rel="noopener noreferrer">打开耶鲁官方原图 ↗</a></div>
+    <p id="highres-status" class="highres-status" role="status" aria-live="polite"></p>
+    <div id="highres-region-buttons" class="highres-region-buttons"></div>
+    <div id="highres-viewport" class="highres-viewport" tabindex="0" aria-label="耶鲁高清图，可上下左右滚动" hidden>
+      <div id="highres-stage" class="highres-stage"><img id="highres-image" alt="" referrerpolicy="no-referrer"><div id="highres-boxes" class="highres-boxes" aria-hidden="true"></div></div>
+    </div>
+    <div class="highres-footer"><button type="button" id="highres-retry" class="button secondary small" hidden>重新加载高清图</button><p>阅读框对应未经裁切的耶鲁 JPEG，可能包含邻近笔画；不叠加到 PDF 扫描上。可横向滚动、用键盘方向键阅读。关闭后继续低清原图与转写对照。</p></div>
+  </dialog>
 </body>
 </html>

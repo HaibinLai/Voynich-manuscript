@@ -108,7 +108,11 @@ def main():
         "generator_controls/boundary_calibration/跨词预测校准.png",
         "generator_controls/boundary_calibration/跨词预测校准.svg",
         "literature/boundary_prior_art.json", "literature/边界先例附录.txt",
-        "visual_audit/yale_image_receipt.json"]
+        "copy_prediction/website_data.json", "copy_prediction/研究报告.txt",
+        "copy_prediction/完整词复制预测.png", "copy_prediction/完整词复制预测.svg",
+        "copy_prediction/protocol.txt", "copy_prediction/replay_verification.json",
+        "visual_audit/yale_image_receipt.json", "visual_audit/review_combined.json",
+        "visual_audit/review_verification.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -133,6 +137,27 @@ def main():
     statistics = read(study / "results/statistics.json")
     yale_receipt = read(research / "visual_audit/yale_image_receipt.json", {})
     yale_images = {item["folio"]: item for item in yale_receipt.get("images", [])}
+    highres_review = read(research / "visual_audit/review_combined.json", {})
+    highres_verification = read(research / "visual_audit/review_verification.json", {})
+    highres_by_folio = {}
+    highres_summary = None
+    if highres_review and highres_verification.get("all_passed"):
+        review_hash = hashlib.sha256((research / "visual_audit/review_combined.json").read_bytes()).hexdigest()
+        if review_hash != highres_verification.get("combined_sha256"):
+            raise ValueError("The high-resolution review has changed since verification.")
+        for record in highres_review["records"]:
+            public_record = {k: record[k] for k in ["locator", "folio", "locus_type", "zl", "it",
+                "category", "review_status", "approximate_regions_normalized", "observation",
+                "geometry_note", "independent_blind_transcription", "authoritative_glyph_correction",
+                "all_glyphs_certified"] if k in record}
+            highres_by_folio.setdefault(record["folio"], []).append(public_record)
+        highres_summary = {"pages": len(highres_by_folio), "loci": len(highres_review["records"]),
+            "completed_utc": highres_review.get("completed_utc"),
+            "categories": highres_review.get("categories"),
+            "scope": "20 页耶鲁高清图的 332 个转写位置对应核对；不是独立盲转写、逐字认证或译文。",
+            "regions": "阅读框相对于未经裁切的耶鲁官方 JPEG；是粗略阅读区，可含邻近笔画。"}
+        write(site / "data/high-resolution-review.json", highres_review)
+        write(site / "downloads/high-resolution-verification.json", highres_verification)
     folios = []
     for page in selection:
         folio = page["folio"]
@@ -160,14 +185,21 @@ def main():
             yi = yale_images[folio]
             summary["yale_image"] = {k: yi[k] for k in ["source_url", "width", "height", "image_sha256", "attribution"] if k in yi}
         folios.append(summary)
-        write(site / f"data/folios/{folio}.json", {**summary, "rows": rows,
+        public_folio = {**summary, "rows": rows,
             "layout_observation": audit["layout_observation"], "focus_cases": cases,
             "review_scope": audit["review_scope"], "all_glyphs_certified": False,
             "independent_double_transcription": False,
-            "source_image_sha256": hashlib.sha256(image_src.read_bytes()).hexdigest()})
+            "source_image_sha256": hashlib.sha256(image_src.read_bytes()).hexdigest()}
+        if folio in highres_by_folio:
+            public_folio["high_resolution_review"] = {
+                "completed_utc": highres_review.get("completed_utc"),
+                "records": highres_by_folio[folio],
+                "additional_visible_text": [r for r in highres_review.get("additional_visible_text_not_in_inventory", []) if r["folio"] == folio]}
+        write(site / f"data/folios/{folio}.json", public_folio)
     write(site / "data/overview.json", {
         "schema_version": 1, "title": "伏尼契手稿研究台",
         "updated_at": snapshot_time,
+        "high_resolution_review": highres_summary,
         "decipherment_status": "尚无可靠译文",
         "review_scope": "20 页版面与转写位置核对，40 个重点字形及空格复核；不是逐字终审。",
         "pages": 20, "focused_cases": 40, "paragraph_pages": 17,
@@ -242,6 +274,20 @@ def main():
     prior_assets = export_assets(research / "literature", site, [
         ("report", "边界先例附录.txt", "downloads/boundary-prior-art.txt")])
     prior_assets["summary"] = "data/boundary-prior-art.json"
+    copy_raw = read(research / "copy_prediction/website_data.json", {})
+    copy_prediction = {}
+    if copy_raw.get("verification", {}).get("all_passed"):
+        write(site / "data/copy-prediction.json", copy_raw)
+        copy_prediction = {**copy_raw, "calibration": {
+            k: v for k, v in copy_raw.get("calibration", {}).items() if k != "all_runs"}}
+        copy_prediction["assets"] = export_assets(research / "copy_prediction", site, [
+            ("report", "研究报告.txt", "downloads/copy-prediction-report.txt"),
+            ("figure_png", "完整词复制预测.png", "assets/copy-prediction-results.png"),
+            ("figure_svg", "完整词复制预测.svg", "assets/copy-prediction-results.svg"),
+            ("protocol", "protocol.txt", "downloads/copy-prediction-protocol.txt"),
+            ("checks", "replay_verification.json", "downloads/copy-prediction-verification.json")])
+        copy_prediction["assets"]["summary"] = "data/copy-prediction.json"
+        copy_prediction["assets"]["notices"] = "downloads/generator-third-party-notices.txt"
     write(site / "data/stage2.json", {
         "overall_status": session.get("status", "active"),
         "deadline_utc": session.get("deadline_utc"),
@@ -252,6 +298,7 @@ def main():
         "paragraph_factor": factor, "generator_controls": generators,
         "boundary_diagnostic": boundary, "boundary_fullword": boundary_word,
         "boundary_calibration": boundary_calibration,
+        "copy_prediction": copy_prediction,
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
     literature = read(research / "literature/literature.json", [])
     write(site / "data/literature.json", literature)

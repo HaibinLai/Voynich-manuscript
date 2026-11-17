@@ -1,0 +1,36 @@
+--- layout_only_generator
++++ event_logged_generator
+@@ -143,6 +143,7 @@
+ 
+             // generate a new line
+             boolean auditPageEnd = config.statistics.linesInPage == 0;
++            System.out.println("COPY_LINE_BEGIN\t" + i);
+             generatedText.add(generateLine(isParagraphInitial, isParagraphFinal, initialLineCount));
+             System.out.println("COPY_LAYOUT\t" + i + "\t" + auditPageIndex + "\t" + isParagraphInitial + "\t" + isParagraphFinal + "\t" + auditPageEnd);
+             if (auditPageEnd) { auditPageIndex++; }
+--- original_page_chooser
++++ event_logged_page_chooser
+@@ -57,6 +57,7 @@
+         }
+ 
+         List<GlyphGroup> ret;
++        System.out.println("COPY_MODE\t" + mode);
+         switch (mode) {
+             case RANDOM:
+                 ret = chooseRandomly(statistics.validGroupDictionary);
+@@ -110,12 +111,14 @@
+         int rand = randomNumberGenerator.rand(100);
+         int probability = isLineInitial ? lineInitialSamePositionProbability : samePositionProbability;
+         // check chance for picking a group in the same position
+-        if (rand <= probability) {
++        boolean auditAligned = rand <= probability;
++        if (auditAligned) {
+             pos = ChooserHelper.calcLinePosition(actualLineList, sourceLine);
+         } else {
+             pos = randomNumberGenerator.rand(sourceLine.size());
+         }
+ 
++        System.out.println("COPY_LOCAL\t" + isLineInitial + "\t" + auditAligned + "\t" + (generatedLinesList.size()-line) + "\t" + (pos == ChooserHelper.calcLinePosition(actualLineList, sourceLine)));
+         // pick first source group
+         ret.add(sourceLine.get(pos));
+         // pick second source group
