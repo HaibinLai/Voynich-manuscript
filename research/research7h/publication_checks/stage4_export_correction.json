@@ -1,0 +1,9 @@
+{
+  "recorded_utc": "2026-11-17T15:35:34.959065+00:00",
+  "initial_commit": "69d7457f2c2dae8ac2102a572c9c550d22133567",
+  "problem": "Crossline result and design manifests overlap. Publication exporter recorded duplicate path entries; verify_release rejected a duplicate PUBLIC_EXPORT.txt.",
+  "process_note": "Initial shell did not stop on verification failure and pushed the commit. Subsequent release commands use fail-fast and separately inspect verification before committing.",
+  "fix": "Deduplicate identical path declarations while asserting unchanged source and copied hashes; preserve each scientific source manifest.",
+  "corrected_verification": "All9 integrity manifests passed.",
+  "scientific_code_or_scores_changed": false
+}

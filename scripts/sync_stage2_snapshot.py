@@ -7,11 +7,18 @@ def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--source',type=Path,required=True);args=ap.parse_args()
     source=args.source.resolve();repo=Path(__file__).resolve().parent.parent
-    src=source/'research7h';dest=repo/'research/research7h';entries=[]
+    src=source/'research7h';dest=repo/'research/research7h';entries=[];copied={}
     def copy(rel):
         original=src/rel;target=dest/rel
+        # Explicit subpackage manifests can overlap. One public path gets one
+        # receipt, and repeated declarations must agree with the saved bytes.
+        key=str(rel)
+        if key in copied:
+            assert digest(original)==copied[key] and digest(target)==copied[key]
+            return
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(original,target)
+        copied[key]=digest(original)
         entries.append(dict(path=str(rel),source_sha256=digest(original),public_sha256=digest(target),transformation=None))
     root_files=['boundary.py','boundary_protocol.txt','boundary_receipt.json','validate_boundary.py','make_boundary_report.py',
         'boundary_public_summary.json','跨词边界研究报告.txt','跨词边界结果.png','跨词边界结果.svg',
