@@ -1,0 +1,1 @@
+Initial weighted dot products emitted numerical RuntimeWarnings despite finite outputs. Replaced only weighted aggregation with explicit elementwise sum; verified independently with math.fsum. Frozen protocol/model choices unchanged. Original arrays kept here for comparison.

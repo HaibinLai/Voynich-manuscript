@@ -1,0 +1,44 @@
+{
+  "checked_utc": "2026-11-17T10:30:00.726064+00:00",
+  "naibbe": {
+    "commit": "5145f526b52741a6dca14201147f687e62c7162e",
+    "files": [
+      "naibbe.py",
+      "decrypt_naibbe.py",
+      "references/naibbe_tables.csv",
+      "README.md",
+      "LICENSE"
+    ],
+    "behavior": "Reads one local CSV at import; encryption uses Python random, static maps and local text; file writing occurs in main or our wrapper. No network calls in the executed author functions.",
+    "published_decryption_assumptions": {
+      "source": "https://www.tandfonline.com/doi/full/10.1080/01611194.2025.2566408",
+      "sections": [
+        "2.5",
+        "2.6",
+        "2.7"
+      ],
+      "card_history_required": false,
+      "context_disambiguation_explicit": true,
+      "scratch_reencryption_suggested": true,
+      "caution": "Our unique-token criterion is stricter than the paper; finding ambiguity is not a novel refutation."
+    },
+    "strict_adapter": "The runtime unigram-rejection set is augmented with 99 nonunique bigram ciphertext forms, identified exhaustively using the official decoder. No mapping or weights changed.",
+    "side_information_used_by_inverse": "Ciphertext tokens and public decoding tables only. Saved truth is used for evaluation, never to choose a decoder alternative.",
+    "license": "Root LICENSE is standard MIT; source headers and README additionally request paper citation. Both preserved verbatim."
+  },
+  "timm": {
+    "commit": "a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7",
+    "behavior": "Default curveline/page/slim/top generation uses handwritten glyph rules and generated history; fixed morphological priors were designed by the author using VMS observations.",
+    "dictionary_dependency": "StatisticHelper originally instantiates VoynichCanFollow and increments whole-VMS membership counters. Source search found those counters used only in printable diagnostics, not generation decisions.",
+    "adaptation": "Isolated source copy removes the dictionary diagnostic and prints an explicit disabled notice. Original third-party source is untouched; diff saved in build/timm_diagnostic_only.patch.",
+    "seed_change": "Original seed f103v is in reserve. It is not generated or scored here; use legacy f1r.1 first six certain tokens, remove that copied initial line from scored output.",
+    "no_model_tuning": "Rates, source choice and morphology remain author defaults. Seeds 19..38 are predeclared; none selected for fit.",
+    "license": "MIT; original LICENSE preserved.",
+    "currier_branch": "A: Config.java lines204–209 selects B only when initial seed contains ed; f1r seed does not. This follows the declared seed substitution, not outcome tuning."
+  },
+  "provenance_limitations": [
+    "Author priors used full-manuscript observations before our study; generated similarity is not an independent held-out validation.",
+    "Source text was obtained via GitHub connector and normalized to UTF-8/LF; local SHA256 is recorded, repository commit pins semantic source version.",
+    "No original paper-wide Latin/Italian corpus sweep was reproduced."
+  ]
+}

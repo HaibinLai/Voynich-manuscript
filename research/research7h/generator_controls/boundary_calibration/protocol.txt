@@ -1,0 +1,77 @@
+Boundary predictor calibration v1 — 2026-11-17, frozen before control scores
+
+Question: Does the root study's conditional predictor detect a previous-word
+last-unit connection in known-message and no-supplied-message generators, and
+does it also report gains after token order is independently destroyed?
+This is calibration on synthetic controls, not a further manuscript test.
+No manuscript text, confirm statistics or reserve outcomes may be loaded.
+
+Pinned implementation: copy the current root boundary.py to reference_boundary.py;
+record SHA256 of that exact file and root boundary_protocol.txt. Use its records,
+contexts, Conditional, tuning and permutation code, including explicit weighted
+sum (not BLAS dot). Override only its output ROOT within this private imported
+module; never call its run() and never edit the original root files.
+Alphabet comes only from training words, with the same UNK handling as root.
+Alpha grid [1,5,20,100,500], mixing weights [0,.25,.5,.75,1], and exact root tie
+breaking apply to every fit. Compare previous last and previous first features
+separately against the same hierarchy of baseline contexts.
+
+Inputs: the already generated strict-unique Naibbe and Timm f1r/A outputs for
+seeds19..38, first8000 complete tokens, with no parameter or seed selection.
+The directly copied Timm initial seed line was already removed by generation.
+Naibbe uses one shared Caesar passage across seeds; 20 encoder random seeds do
+not constitute20 independent meaningful texts. Verify that within each seed,
+the concatenated truth fragments for logical train/dev/test are disjoint
+contiguous character spans of the normalized plaintext, in order.
+
+Logical split: tokens0..3999 train,4000..5999 dev,6000..7999 test. Split BEFORE
+any shuffling or geometry. Each split is independently reflowed to12-token
+complete lines. Discard each split's incomplete trailing line, report4/8/8
+discarded tokens separately. No line or pair ever crosses a split boundary.
+Each split is one artificial page/leaf; hand and section are constant 'control',
+all paragraph_start=False. These are geometry conventions, not real pages.
+Root nonoverlapping internal pairs only: target slots2,4,6,8,10, previous slots
+1,3,5,7,9. Expected pair counts1665/830/830. Keep all exact length and position
+conditioning in the root model. Do not use fabricated paragraph effects.
+
+Two order conditions per generator/seed/representation:
+O: preserve the original token order in every logical split.
+S: independently permute whole tokens inside train,dev,test with separate
+deterministic RNG streams based on seed, generator and split. No token crosses
+logical splits. Shuffle the full logical split BEFORE dropping the trailing
+incomplete artificial line. Refit baseline and both feature models and retune
+on that condition's dev data using exactly the same grid/search budget.
+The order control therefore also changes which4/8/8 tail words are omitted;
+the omitted positions and counts are disclosed. The unused words are never
+moved across partitions, and comparison is paired by source/seed.
+
+Main representation: basicEVA. Predeclared sensitivity: merged units for both
+generators. Natural Latin baseline: first8000 ordinary Caesar words from the
+existing XML control and its standard study20 extraction, basic letters only.
+Fit the original Latin ordering once; fit20 independently shuffled Latin
+controls. These20 permutations are not20 independent Latin passages.
+
+Configuration freeze: save each fitted alpha/weight/grid with a checksum before
+scoring that task's test records. Training/dev input hashes and original text
+spans are recorded. No test data selects features, smoothing or presentation.
+
+Scores: test bits per target for base,last,first; signed improvement of each
+feature over base; signed last-minus-first difference; selected hyperparameters;
+unknown-unit counts; discarded-token counts and target counts. Report all seeds,
+median, minimum/maximum and2.5/97.5 simulation percentiles, never a manuscript
+confidence interval. With one artificial page, root leaf-weight and pooled
+means coincide; do not perform or present fake page-bootstrap uncertainty.
+
+Conditional reassignment: use the root primary1999 permutations, per artificial
+test page and exact two-word lengths/position/paragraph flags. Keep paired
+first/last contexts together; report actual changed fractions, p values and
+two-feature Holm values. Use identical prespecified permutation seed schedules
+for paired O/S fits. These are within-control conditional-exchangeability tests;
+do not convert them into a family-wide discovery claim over all synthetic runs.
+
+Verification: exact nonoverlap and split boundaries, pair counts, alphabet
+origin, distribution normalization, equality of direct and matrix scores,
+unchanged source snapshot hash, and reproducible input hashes. The root known
+dependency/independence toy verification is retained. Data and fits live only
+under this boundary_calibration directory. Source transcript loaders and root
+save are disabled in the imported module to catch accidental manuscript access.

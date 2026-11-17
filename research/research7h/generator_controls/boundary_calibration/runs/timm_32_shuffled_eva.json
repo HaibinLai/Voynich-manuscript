@@ -1,0 +1,166 @@
+{
+  "task": {
+    "generator": "timm",
+    "seed": 32,
+    "order": "shuffled",
+    "representation": "eva"
+  },
+  "name": "timm_32_shuffled_eva",
+  "scores": {
+    "base": {
+      "bits_per_target": 2.7794629980838224
+    },
+    "last": {
+      "bits_per_target": 2.7817347968538475,
+      "bits_saved": -0.0022717987700245834
+    },
+    "first": {
+      "bits_per_target": 2.776392267199108,
+      "bits_saved": 0.003070730884715325
+    }
+  },
+  "last_minus_first_bits": -0.0053425296547399085,
+  "selected": {
+    "base_alpha": 100,
+    "features": {
+      "last": {
+        "alpha": 500,
+        "weight": 0.25
+      },
+      "first": {
+        "alpha": 100,
+        "weight": 0.25
+      }
+    }
+  },
+  "targets": {
+    "train": 1665,
+    "dev": 830,
+    "test": 830
+  },
+  "metadata": {
+    "source": {
+      "path": "../data/seed_32/timm.txt",
+      "sha256": "086b6037d4b7fc4d5e9a90ade7d58d4beebf5d6c49152220e5fd0ca333f24bec",
+      "first8000_tokens_sha256": "886438129fd3a9223076b231a8ce17cf548070beafa4ab7426fb8336d66b471e",
+      "logical_tokens": 8000
+    },
+    "splits": {
+      "train": {
+        "logical_range": [
+          0,
+          4000
+        ],
+        "logical_tokens": 4000,
+        "used_tokens": 3996,
+        "discarded_tokens": 4,
+        "discarded_original_token_positions": [
+          954,
+          701,
+          3532,
+          1085
+        ],
+        "ordered_used_tokens_sha256": "6bd6c35b79e792bd750e84bfc6536f506191c7aeeed72749a66de9f242d94f1e",
+        "permutation_positions_sha256": "426a8aacc20e8e9caf4ef24bfaa0db650d32ecf6a28a2fbb088f54abe672c646",
+        "artificial_lines": 333
+      },
+      "dev": {
+        "logical_range": [
+          4000,
+          6000
+        ],
+        "logical_tokens": 2000,
+        "used_tokens": 1992,
+        "discarded_tokens": 8,
+        "discarded_original_token_positions": [
+          5882,
+          4933,
+          4715,
+          4703,
+          5044,
+          5413,
+          5294,
+          5397
+        ],
+        "ordered_used_tokens_sha256": "01a30c3c0f3ffde9f3fac3799eca9eb1380e5a579c1783b457295e79fa6133f0",
+        "permutation_positions_sha256": "32024777c559ba209befcecbe0e46afd42edd8232764b66d42d16ff095acc62d",
+        "artificial_lines": 166
+      },
+      "test": {
+        "logical_range": [
+          6000,
+          8000
+        ],
+        "logical_tokens": 2000,
+        "used_tokens": 1992,
+        "discarded_tokens": 8,
+        "discarded_original_token_positions": [
+          6842,
+          6422,
+          7909,
+          6454,
+          7039,
+          7014,
+          6323,
+          6227
+        ],
+        "ordered_used_tokens_sha256": "e8e37bddcf4f9685dba8e5a74ba5c67fdea69a9133ed4ebd82a6c9068afe4fd6",
+        "permutation_positions_sha256": "97e268ef46fa5701cf88aa7826685124c7279d7052a9d40fe58471b90ebc659d",
+        "artificial_lines": 166
+      }
+    }
+  },
+  "unknown_units": {
+    "train": 0,
+    "dev": 0,
+    "test": 0
+  },
+  "test_target_unknowns": 0,
+  "permutation": {
+    "replicates": 1999,
+    "seed": 12569536137635384864,
+    "broad": false,
+    "targets": 830,
+    "bucket_count": 134,
+    "singleton_buckets": 30,
+    "non_singleton_target_fraction": 0.963855421686747,
+    "joint_actual_changed_fraction": 0.7710499828227366,
+    "per_page_movable_fraction": {
+      "timm_32_shuffled_eva_test": 0.963855421686747
+    },
+    "null_array": "results/timm_32_shuffled_eva_nulls.npz",
+    "null_sha256": "6aa1dd8064031127f05c54d4366a6060b52c50e163b5e34c6656c10a6e534b67",
+    "tests": {
+      "last": {
+        "observed_leaf_bits_saved": -0.0022717987700245825,
+        "null_mean": -0.0035875713948858544,
+        "null95": [
+          -0.00621286934025002,
+          -0.0008518454113915108
+        ],
+        "raw_p": 0.1655,
+        "holm_p": 0.331,
+        "actual_context_changed_fraction": 0.6402930380853077
+      },
+      "first": {
+        "observed_leaf_bits_saved": 0.0030707308847153273,
+        "null_mean": 0.0007193503376684892,
+        "null95": [
+          -0.005122484378304352,
+          0.006816320177252054
+        ],
+        "raw_p": 0.2115,
+        "holm_p": 0.331,
+        "actual_context_changed_fraction": 0.6569923515974855
+      }
+    }
+  },
+  "config_path": "configs/timm_32_shuffled_eva.json",
+  "config_sha256": "7791e66e5cc4886329067f4654adcce0ca45d3abef8d5a67fb77b2ad2a7f17bc",
+  "test_scoring_started_utc": "2026-11-17T10:51:47.187500+00:00",
+  "completed_utc": "2026-11-17T10:51:47.476941+00:00",
+  "protocol_receipt_sha256": "022f3824105ec89e495dcf75ac50fa449dabd85bb1b841164dcc5451ac86a1be",
+  "code_sha256": "7d3da807361d784cc578ab2ad78f43e023bc358c28c9fbcf7e6b5161a981a5c0",
+  "elapsed_seconds": 0.4675951659999953,
+  "interpretation": "Conditional first-unit score with both word lengths known; artificial geometry; no semantic or manuscript confidence claim."
+}

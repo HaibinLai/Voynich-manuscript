@@ -1,0 +1,143 @@
+{
+  "title": "段首可逆前缀因子",
+  "status": "completed_subexperiment",
+  "overall_research_status": "active",
+  "scope": "28 页确认集 / 13 叶；ZL 100 个段首首词，IT 106 个。与旧 20 页实验不同。",
+  "primary": {
+    "variant": "ZL_EVA",
+    "paragraph_tokens": 100,
+    "all_tokens": 5025,
+    "complete_token_bits": {
+      "body_full": 21.766690563015366,
+      "position_full": 16.45011213096152,
+      "gallows_selected": 17.252518242322907,
+      "any_first_selected": 17.514644771825964
+    },
+    "factor_cost_components": {
+      "prefix_bits": 1.7653024313117915,
+      "body_raw_bits": 15.494359319973562,
+      "support_normalization_bits": -0.007143508962453788,
+      "total_bits": 17.2525182423229
+    }
+  },
+  "variants": {
+    "ZL_EVA": {
+      "paragraph_tokens": 100,
+      "complete_token_bits": {
+        "body_full": 21.766690563015366,
+        "position_full": 16.45011213096152,
+        "gallows_selected": 17.252518242322907,
+        "any_first_selected": 17.514644771825964
+      },
+      "comparisons": {
+        "position_full__minus__gallows_selected": {
+          "mean_leaf_bits_saved": -0.9502031310630417,
+          "bootstrap95": [
+            -1.9861499291471787,
+            0.016610221180412547
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        },
+        "any_first_selected__minus__gallows_selected": {
+          "mean_leaf_bits_saved": 0.22322265700538912,
+          "bootstrap95": [
+            0.08834302007385288,
+            0.3392382927875101
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        }
+      }
+    },
+    "ZL_merged": {
+      "paragraph_tokens": 100,
+      "complete_token_bits": {
+        "body_full": 21.761680772250575,
+        "position_full": 16.262169722370256,
+        "gallows_selected": 17.303404656019808,
+        "any_first_selected": 17.565134518363667
+      },
+      "comparisons": {
+        "position_full__minus__gallows_selected": {
+          "mean_leaf_bits_saved": -1.3469269240943285,
+          "bootstrap95": [
+            -2.29865607455999,
+            -0.5275860556901567
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        },
+        "any_first_selected__minus__gallows_selected": {
+          "mean_leaf_bits_saved": 0.22255652857875796,
+          "bootstrap95": [
+            0.08817983943682735,
+            0.33705887523814315
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        }
+      }
+    },
+    "IT_EVA": {
+      "paragraph_tokens": 106,
+      "complete_token_bits": {
+        "body_full": 20.447874356590354,
+        "position_full": 15.904409207445733,
+        "gallows_selected": 16.197301823470447,
+        "any_first_selected": 16.43661986597914
+      },
+      "comparisons": {
+        "position_full__minus__gallows_selected": {
+          "mean_leaf_bits_saved": -0.43637722040566185,
+          "bootstrap95": [
+            -0.8281061654225867,
+            -0.06213825987797342
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        },
+        "any_first_selected__minus__gallows_selected": {
+          "mean_leaf_bits_saved": 0.18138886678057425,
+          "bootstrap95": [
+            0.05273128782821303,
+            0.2913198351898388
+          ],
+          "replicates": 9999,
+          "interpretation": "Positive saves bits with the second model. Descriptive conditional leaf-bootstrap interval; not semantic evidence or a multiple-testing-adjusted significance claim."
+        }
+      }
+    }
+  },
+  "findings": [
+    {
+      "title": "段首需要特殊分布，但不能直接删字",
+      "summary": "支付完整前缀成本后，G 因子为17.253 bits/词，位置完整词模型为16.450；前者未超过后者。",
+      "limitation": "只针对规范化单位串预测，没有词义或历史机制证明。"
+    },
+    {
+      "title": "前缀成本不可遗漏",
+      "summary": "G因子的平均前缀身份成本1.765 bits；只看root会产生虚假改善。",
+      "limitation": "已计入EOS、支持归一化与训练外单位escape。"
+    },
+    {
+      "title": "比任意首单位分离略好",
+      "summary": "主ZL按叶平均节省0.223 bits/段首词，描述性95%区间[0.088,0.339]；两个敏感性版本同向。",
+      "limitation": "不把有限预测优势解释成音值、语法或译文。"
+    }
+  ],
+  "verification": "独立从冻结计数重算逐词概率及全部bootstrap；最大逐词差小于3e-14 bits。reserve未使用。",
+  "files": {
+    "report": "研究报告.txt",
+    "figure_png": "段首因子结果.png",
+    "figure_svg": "段首因子结果.svg",
+    "protocol": "protocol.txt",
+    "checks": "replay_verification.json"
+  },
+  "limits": [
+    "确认集的上一阶段结果已见，不是全盲研究。",
+    "段落标记继承转写，可能参考高字形。",
+    "描述性叶bootstrap，未作多重假说显著性宣称。",
+    "固定模型预测成本未包含模型参数传输成本。"
+  ]
+}

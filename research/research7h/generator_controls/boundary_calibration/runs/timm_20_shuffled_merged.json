@@ -1,0 +1,166 @@
+{
+  "task": {
+    "generator": "timm",
+    "seed": 20,
+    "order": "shuffled",
+    "representation": "merged"
+  },
+  "name": "timm_20_shuffled_merged",
+  "scores": {
+    "base": {
+      "bits_per_target": 3.1054251789982996
+    },
+    "last": {
+      "bits_per_target": 3.119471573320967,
+      "bits_saved": -0.014046394322667568
+    },
+    "first": {
+      "bits_per_target": 3.1054251789982996,
+      "bits_saved": 0.0
+    }
+  },
+  "last_minus_first_bits": -0.014046394322667568,
+  "selected": {
+    "base_alpha": 500,
+    "features": {
+      "last": {
+        "alpha": 500,
+        "weight": 0.25
+      },
+      "first": {
+        "alpha": 500,
+        "weight": 0
+      }
+    }
+  },
+  "targets": {
+    "train": 1665,
+    "dev": 830,
+    "test": 830
+  },
+  "metadata": {
+    "source": {
+      "path": "../data/seed_20/timm.txt",
+      "sha256": "bb7019975001c02cb248c48a713eebd910c88143db03b5dfccddf7694ca2df66",
+      "first8000_tokens_sha256": "de890be8593e6ec07e3857b556c9e26f6162c62b108c3b8f9f08a7fe5e059031",
+      "logical_tokens": 8000
+    },
+    "splits": {
+      "train": {
+        "logical_range": [
+          0,
+          4000
+        ],
+        "logical_tokens": 4000,
+        "used_tokens": 3996,
+        "discarded_tokens": 4,
+        "discarded_original_token_positions": [
+          1345,
+          753,
+          582,
+          2721
+        ],
+        "ordered_used_tokens_sha256": "f54f59b45d9d26c21b2825b72a29de7f14a9622df981f0a0d19c4596d0d076a8",
+        "permutation_positions_sha256": "11ea83d32b5440e9b2f1c544063965cb557bb2a4af9ca6ac3d17246f0c6c1d8d",
+        "artificial_lines": 333
+      },
+      "dev": {
+        "logical_range": [
+          4000,
+          6000
+        ],
+        "logical_tokens": 2000,
+        "used_tokens": 1992,
+        "discarded_tokens": 8,
+        "discarded_original_token_positions": [
+          4682,
+          5471,
+          4208,
+          5582,
+          4651,
+          5804,
+          4025,
+          4915
+        ],
+        "ordered_used_tokens_sha256": "13cb004cf58bc9fd448fcd44497405b9c6dd07d6e02eaaa89e23b5d29185a0ab",
+        "permutation_positions_sha256": "7cc73edd36069dc93a3edf58b10d151e3e415fdb9fb9052ddd1faa82db724921",
+        "artificial_lines": 166
+      },
+      "test": {
+        "logical_range": [
+          6000,
+          8000
+        ],
+        "logical_tokens": 2000,
+        "used_tokens": 1992,
+        "discarded_tokens": 8,
+        "discarded_original_token_positions": [
+          7944,
+          6562,
+          6060,
+          6369,
+          7577,
+          6188,
+          6846,
+          6628
+        ],
+        "ordered_used_tokens_sha256": "c472e0c9f5849b6977c3812e939814c102392367bc11917a7917af2e43ccbf98",
+        "permutation_positions_sha256": "7a27194c96a1ce5a4a8894265a14b3304fa6f93267ef3fb93bf893097fb9cec0",
+        "artificial_lines": 166
+      }
+    }
+  },
+  "unknown_units": {
+    "train": 0,
+    "dev": 0,
+    "test": 0
+  },
+  "test_target_unknowns": 0,
+  "permutation": {
+    "replicates": 1999,
+    "seed": 15980290386278323446,
+    "broad": false,
+    "targets": 830,
+    "bucket_count": 115,
+    "singleton_buckets": 28,
+    "non_singleton_target_fraction": 0.9662650602409638,
+    "joint_actual_changed_fraction": 0.8246098953091003,
+    "per_page_movable_fraction": {
+      "timm_20_shuffled_merged_test": 0.9662650602409638
+    },
+    "null_array": "results/timm_20_shuffled_merged_nulls.npz",
+    "null_sha256": "d5b6a60303e3b845cbe96790fbe8286d487d4f9a0d59f0a331416a0d234cd41b",
+    "tests": {
+      "last": {
+        "observed_leaf_bits_saved": -0.014046394322667568,
+        "null_mean": -0.015456651728131725,
+        "null95": [
+          -0.019306172353713368,
+          -0.01173054820025229
+        ],
+        "raw_p": 0.237,
+        "holm_p": 0.474,
+        "actual_context_changed_fraction": 0.7149598895833459
+      },
+      "first": {
+        "observed_leaf_bits_saved": 0.0,
+        "null_mean": 0.0,
+        "null95": [
+          0.0,
+          0.0
+        ],
+        "raw_p": 1.0,
+        "holm_p": 1.0,
+        "actual_context_changed_fraction": 0.7206983009577078
+      }
+    }
+  },
+  "config_path": "configs/timm_20_shuffled_merged.json",
+  "config_sha256": "bc6b5dae19d297723e9c021e4e57c95e78c3e6a52eead5effc6812d774a9c488",
+  "test_scoring_started_utc": "2026-11-17T10:51:35.729797+00:00",
+  "completed_utc": "2026-11-17T10:51:35.989122+00:00",
+  "protocol_receipt_sha256": "022f3824105ec89e495dcf75ac50fa449dabd85bb1b841164dcc5451ac86a1be",
+  "code_sha256": "7d3da807361d784cc578ab2ad78f43e023bc358c28c9fbcf7e6b5161a981a5c0",
+  "elapsed_seconds": 0.4313596249999989,
+  "interpretation": "Conditional first-unit score with both word lengths known; artificial geometry; no semantic or manuscript confidence claim."
+}

@@ -1,0 +1,46 @@
+{
+  "status": "proposed_not_run",
+  "scope": "机制区分用控制实验，不是新增确认性手稿检验；不使用confirm/reserve。",
+  "mechanisms": [
+    {
+      "id": "naibbe_line_reset",
+      "observation_from_code": "encrypt_naibbe每次调用新建牌堆；官方main逐行调用，切分单/双字母也在行尾结束。",
+      "prediction": "即使有连续明文，编码状态也会在换行重置。跨行关联衰减不能单独排除有义密码。",
+      "controlled_experiment": "同一固定拉丁字母流，预先选40/80/160字母输入行，与跨行保留牌堆状态的显式适配版比较；其他映射、种子与字母流相同。",
+      "measure": "相同词长/位置条件下的词尾→下词首依赖；将真实编码行界与随机伪行界分开。",
+      "source": "third_party/naibbe/naibbe.py:encrypt_naibbe/create_card_deck/main"
+    },
+    {
+      "id": "naibbe_deck_dependence",
+      "observation_from_code": "52张牌按权重无放回使用，用尽再洗；各token用1或2张牌，歧义重抽还会消耗牌。",
+      "prediction": "相邻词的表选择可带负相关，不应把有明文对照等同于独立抽样或期望所有相邻指标为正。",
+      "controlled_experiment": "固定同一明文及切分，比较作者无放回牌堆与相同边缘权重的有放回抽取；仅用于解释已观测Naibbe负超额，不对手稿拟合权重。",
+      "measure": "表ID相邻关系、完全重复率、尾首互信息及长度条件残差。",
+      "source": "third_party/naibbe/naibbe.py:create_card_deck/encrypt_naibbe"
+    },
+    {
+      "id": "timm_vertical_copy",
+      "observation_from_code": "PageSourceGroupChooser从先前行取词，按固定概率偏好当前列附近，并可能连带相邻第二词。",
+      "prediction": "可产生竖向近形相似和短词序片段复现。单纯横向缓存不是该模型的完整代理。",
+      "controlled_experiment": "作者默认同位置概率28，与预先指定0/100的机制消融；保持相同seed/输入行/字形规则；比较生成器，不调参追手稿。",
+      "measure": "按行长和相对横坐标匹配的上一行近形率；横向滞后率；整页重排控制。",
+      "source": "third_party/timm/source/src/main/java/de/voynich/text/sourcechooser/PageSourceGroupChooser.java:98"
+    },
+    {
+      "id": "timm_paragraph_gallows",
+      "observation_from_code": "AbstractBaseGroupMorpher.handleGallows显式使用isParagraphInitial/isLineInitial处理高杆字形。",
+      "prediction": "若生成文本复现段首高杆，部分是规则直接写入，不应称独立涌现或语法证明。",
+      "controlled_experiment": "在生成器中单独禁用此处理，维持其他复制变异规则；只作已知机制消融。",
+      "measure": "主研究同定义的段首与普通行首高杆效应，以及词长分布是否同时变化。",
+      "source": "third_party/timm/source/src/main/java/de/voynich/text/morph/AbstractBaseGroupMorpher.java:174"
+    },
+    {
+      "id": "shape_vs_sequence",
+      "observation_from_completed_control": "全词打乱保留低词内熵与位置互信息；字素内打乱破坏它们。",
+      "prediction": "词内形态指标与跨词序列指标应是不同证据组；一个总分会掩盖各模型的不同失败。",
+      "controlled_experiment": "按现有根研究协议比较独立词形模型、最近词缓存、词尾条件模型；用已知答案密文与无指定明文生成器校准。",
+      "measure": "分组报告词内、跨词、竖向与段落效应；未拟合指标单列；不按结果重选聚合权重。",
+      "source": "summary.json 与 results.json"
+    }
+  ]
+}

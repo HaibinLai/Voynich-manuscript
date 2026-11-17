@@ -1,0 +1,38 @@
+--- de/voynich/text/StatisticHelper.java
++++ de/voynich/text/StatisticHelper.java
+@@ -13,7 +13,7 @@
+  */
+ public class StatisticHelper {
+ 
+-    private I_CanFollow vmsCanFollow = new VoynichCanFollow();
++    // Study adaptation: no full-manuscript dictionary diagnostic.
+ 
+     public final int suggestionsProbability;
+ 
+@@ -109,11 +109,7 @@
+     }
+ 
+     void countGlyphGroup(GlyphGroup glyphGroup) {
+-        if (!vmsCanFollow.isValid(glyphGroup)) {
+-            existsNotInVmsCount++;
+-        } else {
+-            existsInVmsCount++;
+-        }
++        // Diagnostic removed; no generation state or RNG is changed.
+     }
+ 
+     /**
+@@ -413,12 +409,7 @@
+     }
+ 
+     public String vmsCountAsString() {
+-        StringBuilder sb = new StringBuilder();
+-        int ratio = getVmsGroupPercent();
+-        sb.append("None vms token count: ").append(existsNotInVmsCount).append(" (" + (100 - ratio)+ " %)").append(Constants.ENTER);
+-        sb.append("VMS tokens count: ").append(existsInVmsCount).append(" (" + ratio + " %)").append(Constants.ENTER);
+-
+-        return sb.toString();
++        return "VMS dictionary membership diagnostic disabled" + Constants.ENTER;
+     }
+ 
+     public String toString() {

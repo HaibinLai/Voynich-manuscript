@@ -1,0 +1,33 @@
+Recommended public website bundle:
+  website_data.json
+  summary.json
+  generation_checks.json
+  naibbe_table_audit.json
+  strict_unique_rejection_set.json
+  implementation_audit.json
+  verification.json
+  protocol.txt
+  amendment_01.txt
+  研究报告.txt
+  生成机制对照.png
+  生成机制对照.svg
+  THIRD_PARTY_NOTICES.txt
+  mechanism_predictions.json
+
+Optional reproducibility bundle:
+  generate.py, analyze_generators.py, make_report.py
+  results.json, manuscript_baselines.json
+  protocol_receipt.json, amendment_01_receipt.json, run_manifest.json
+  artifact_manifest.json
+  timm_diagnostic_only.patch
+  third_party/naibbe/{README.md,LICENSE,naibbe.py,decrypt_naibbe.py,references/naibbe_tables.csv}
+  third_party/timm/{LICENSE,retrieval.json,source/,executable/conf.properties}
+  third_party/perseus/license.md
+  data/ (with THIRD_PARTY_NOTICES.txt and its CC BY-SA attribution)
+
+Do not bundle build/, __pycache__/, unrelated modern papers, or credentials.
+Receipts contain local original-source paths as provenance; a public renderer
+can show source basenames and hashes. Do not change the original frozen receipts.
+The runners use the shared ../corpus.py and ../../study20/analyze.py preprocessing
+and their frozen sources/split manifest. Preserve that relative research layout
+when reproducing. VOYNICH_JAVA and VOYNICH_JAVAC can override executable paths.

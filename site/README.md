@@ -29,10 +29,18 @@ python3 -m http.server 8000 --directory site
 - `data/candidate_claims.json`：候选解读核查记录。
 - `data/calibration.json`：已知答案的人工密码校准；恢复映射不等于手稿译文。
 - `data/research.json`：研究状态的静态快照，不是后台实时监控。
+- `data/stage2.json`：段首完整成本、完整词边界预测、生成机制与灵敏度校准，保留各自样本范围。
+- `data/boundary-diagnostic.json`、`data/boundary-fullword.json`：边界诊断与完整词后续模型的原始公开摘要。
+- `data/boundary-calibration.json`：人工 12 词行的 181 次灵敏度校准，不与真实叶组分析混合。
+- `data/boundary-prior-art.json`：边界依赖的直接先例、位置混杂研究与相关假说；条目注明与本轮工作的关系。
 - `data/sources.json`：公开原始材料、来源 URL、转写校验值与许可范围。
 - `data/manifest.json`：公开数据和图像的 SHA-256 校验值。
 
 阶段一的 `downloads/stage1-report.txt` 与 `assets/stage1-results.png/.svg` 由构建器明确复制，并在进展页标注 28 页确认集、13 个叶组与 5,025 个词形。这是与旧 20 页研究不同的实验。阶段一完成不会将总研究状态改为完成。
+
+第二阶段的报告、图和核验资料也使用明确清单导出；实验各自完成不会修改总研究状态。边界依赖已有 Currier、Smith–Ponzi 等直接先例，本轮属于复核和模型外推。小样本人工行校准独立展示，不与真实手稿叶均值放在同一尺度比较；自然拉丁文本未检出优势也不能用于排除语言。
+
+每页 `yale_image.source_url` 提供官方高清原图链接及尺寸/哈希。默认页面仍用原有扫描，不将整套高清图重复打包。官方图像清单为 `https://collections.library.yale.edu/manifests/2002046`；图像权利信息与转写 CC0 许可分开记录。
 
 构建器的快照时间取源材料的最新修改时间，不使用构建时钟；源材料不变时，连续运行产生逐字节一致的公开文件和校验清单。
 

@@ -1,0 +1,90 @@
+{
+  "title": "有明文与无指定明文的生成对照",
+  "status": "completed_descriptive_controls",
+  "headline": "两种不同机制都能产生低词内熵；它们仍未共同解释手稿的全部结构。",
+  "manuscript": {
+    "name": "ZL train+legacy前8000确定词",
+    "h2_ratio": 0.5713139474112343,
+    "length_mean": 4.804375,
+    "glyph_position_mi": 0.7108567281102216,
+    "exact_excess": 0.004594665544804376,
+    "near_excess": 0.02118355069415229,
+    "vocabulary": 2618
+  },
+  "models": [
+    {
+      "name": "naibbe",
+      "h2_ratio": 0.537300338473231,
+      "length_mean": 5.2469375,
+      "glyph_position_mi": 0.6872549626852833,
+      "exact_excess": -0.0025967468975862536,
+      "near_excess": -0.00264445452066003,
+      "vocabulary": 2645.5
+    },
+    {
+      "name": "naibbe_strict_unique",
+      "h2_ratio": 0.5366510353968686,
+      "length_mean": 5.265,
+      "glyph_position_mi": 0.6869013457834621,
+      "exact_excess": -0.002588561980090004,
+      "near_excess": -0.0019958243556525293,
+      "vocabulary": 2627.0
+    },
+    {
+      "name": "timm",
+      "h2_ratio": 0.5453461880019521,
+      "length_mean": 4.4945,
+      "glyph_position_mi": 0.623966406469926,
+      "exact_excess": 0.0015262314196099825,
+      "near_excess": 0.017513140597299876,
+      "vocabulary": 1765.0
+    },
+    {
+      "name": "naibbe_token_shuffle",
+      "h2_ratio": 0.5373003384732309,
+      "length_mean": 5.2469375,
+      "glyph_position_mi": 0.6872549626852829,
+      "exact_excess": -0.00018253511523251033,
+      "near_excess": -0.0003820919132687846,
+      "vocabulary": 2645.5
+    },
+    {
+      "name": "naibbe_glyph_shuffle",
+      "h2_ratio": 0.9321007423745737,
+      "length_mean": 5.2469375,
+      "glyph_position_mi": 0.007032492230734544,
+      "exact_excess": -0.00039000000000000005,
+      "near_excess": -0.000342671485067503,
+      "vocabulary": 6433.0
+    }
+  ],
+  "evidence": [
+    "20个预先指定随机种子；EVA和合并字素两种表示；训练/既有样本及开发集分别对照。",
+    "官方Naibbe解密器的真值候选覆盖率100%；逐词唯一解约99.14%–99.41%，论文原本允许用语境消歧。",
+    "额外拒绝多解词形的严格适配版，20份各24000个归一化拉丁字母全部精确往返。",
+    "Timm对照不编码输入明文；legacy起始片段触发作者A分支，关闭全书词典命中诊断。"
+  ],
+  "limitations": [
+    "External manuscript-derived fixed tables/rules; not independent validation",
+    "One Latin passage only",
+    "Artificial common reflow; no native paragraph claim",
+    "No tuning or scoring on confirm/reserve",
+    "Simulation ranges are not equivalence tests or historical confidence intervals",
+    "这是单篇Caesar拉丁文本；没有复现论文的完整多语言语料实验。",
+    "低熵或近似词长都不能单独证明有义或无义。",
+    "原始拼写和词间空格已归一化，100%往返仅指归一化字母流。"
+  ],
+  "metric_definitions": {
+    "h2_ratio": "仅词内相邻字素：H(后一字素|前字素) / H(后一字素)，分母不是全体位置的H1。",
+    "glyph_position_mi": "字形与single/first/interior/last词内位置类别的互信息。",
+    "near_excess": "统一12词槽重排行后，不同的一编辑相邻词率减随机词对率；不是原生行统计。"
+  },
+  "figure": "生成机制对照.png",
+  "details": [
+    "summary.json",
+    "generation_checks.json",
+    "implementation_audit.json",
+    "protocol.txt",
+    "amendment_01.txt"
+  ]
+}

@@ -1,0 +1,82 @@
+Generator controls v1 — frozen before manuscript/generator outcome statistics
+2026-11-17
+
+Question: Can both an encoding of known Latin plaintext and a generator with no
+plaintext produce structured word shapes? This is a constructive control study,
+not an identification of the manuscript's historical mechanism or language.
+
+Sources pinned:
+Naibbe, Michael A. Greshko: commit 5145f526b52741a6dca14201147f687e62c7162e.
+SelfCitationTextgenerator, Torsten Timm: commit a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7.
+Original LICENSE, README where applicable, source files and tables retained.
+Both models contain external manuscript-derived priors; neither is an independent
+held-out discovery. This experiment does not use confirm or reserve outcomes.
+
+Naibbe: use original Python functions/table. RESPACING=17, 52-card deck,
+UNAMBIGUOUS=True. Primary version retains token boundaries; secondary version
+uses the author's 0.03 random space removal. Normalize Latin with the original
+clean_line (including J->I, K->C, W->UU); original spelling and word spaces are
+not claimed recoverable. Read Caesar from the existing study20 control after
+the same XML/body/editorial-note exclusions. Use its first 24000 normalized
+letters, divided into fixed 80-letter lines before encoding. This artificial
+line division is a declared adaptation to keep line endings reproducible;
+main metrics below concern word shape and a common reflow, not historical layout.
+Seeds 19 through 38 inclusive. No seed selection based on fit.
+Check all available single-letter and double-letter table encodings for ambiguity;
+verify each generated unmerged token against its recorded plaintext segment and
+the author's decoder. Report exact unique recovery, ambiguity and outright errors.
+For merged words, measure decoder unknown/ambiguity rate separately. Do not call
+the lossy-spacing output uniquely reversible without evidence.
+
+Timm: compile the original Java source. Author default curveline/page/slim/top
+mechanisms and rates unchanged. 1200 generated lines per run; seeds 19..38.
+The author's default seed line f103v belongs to our reserved leaf split. Replace
+it with the first six fully certain tokens of legacy f1r.1, by the existing parser.
+This seed substitution is disclosed, not an exact reproduction of the paper.
+Inspect dictionary dependencies. Original whole-VMS membership counters are
+external descriptive diagnostics, not held-out evidence; suppress this unrelated
+diagnostic in an isolated build if it can be removed without changing generation.
+If generation itself needs the full dictionary, retain the fixed external prior
+and label the output a demonstration only. Never tune it against our withheld pages.
+
+Length control: first 8000 complete tokens of each generator run. If any run has
+fewer, report the failure instead of choosing a convenient shorter sample. Remove
+the copied initial Timm seed line before scoring. Also report full-output counts.
+The same first-8000 rule applies to pooled train+legacy and to pooled dev, each
+in original folio order. Preserve missing slots when forming adjacent pairs.
+ZL primary, IT sensitivity. No manuscript parameter fitting is performed.
+
+Representations: basic EVA, and the existing merged units cth/ckh/cph/cfh/ch/sh;
+extended numeric EVA codes are atomic. Same representation on all generators.
+Do not interpret EVA letters as phonemes.
+
+Metrics, all descriptive:
+1. Character entropy H1, conditional entropy H(next|previous) within tokens,
+   and conditional/marginal-next entropy ratio, excluding interword transitions.
+2. Mean/SD word length and complete length histogram.
+3. Mutual information between glyph identity and within-token position bin
+   (single, first, interior, last); distributions by bin.
+4. Exact and distinct edit-distance-one adjacent-token rates, with a common
+   fixed 12-token reflow and missing masks retained. Also a 100000 fixed-seed
+   random-pair baseline and observed-minus-baseline differences. These artificial
+   lines isolate sequencing from native line lengths; no paragraph claim.
+5. Vocabulary size, hapax fraction, top-10 share, and fitted log-rank/log-count
+   slope for ranks 1..min(500,number of types), explicitly descriptive.
+6. Jensen-Shannon divergences of length and position-glyph distributions to
+   train+legacy and dev; no scalar winner selected post hoc.
+
+Independent uniform-order controls: for each Naibbe output, deterministically
+shuffle whole tokens (same vocabulary/morphology, destroyed sequence); and
+shuffle glyphs within each token (same length and character counts, lost order).
+These controls expose which statistics test morphology versus ordering.
+They are not meant to simulate a historical scribe.
+
+Summaries: report all 20 seeds, median and 2.5/97.5 percentiles (simulation spread,
+not confidence intervals for the historical manuscript). Do not treat overlapping
+ranges as an equivalence test or use a single matched statistic as proof.
+Report failures and systematic discrepancies. Any change after freezing this
+file gets a dated amendment before affected outputs are inspected.
+
+Reproducibility: source hashes, protocol receipt, split/source/control hashes,
+environment, generated outputs, inverse checks, implementation audit, JSON results
+and Chinese report. No outside API receives manuscript contents.

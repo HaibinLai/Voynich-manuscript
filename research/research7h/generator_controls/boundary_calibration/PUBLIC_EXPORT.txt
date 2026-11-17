@@ -1,0 +1,22 @@
+Public calibration package whitelist
+
+Include:
+protocol.txt, protocol_receipt.json, execution_receipt.json,
+reference_boundary.py, reference_boundary_protocol.txt,
+calibrate.py, summarize.py, verification.json, audit.json,
+summary.json, all_runs.csv, website_data.json, 研究报告.txt,
+跨词预测校准.png, 跨词预测校准.svg, artifact_manifest.json,
+PUBLIC_EXPORT.txt, .gitignore,
+configs/*.json, runs/*.json, results/*_nulls.npz.
+
+Exclude __pycache__/, run.log. No original manuscript transcript or modern paper PDF
+is present in this calibration directory.
+
+Keep relative directory layout under generator_controls/boundary_calibration.
+Required parents: generator_controls/data/seed_19..38 strict Naibbe/truth and Timm
+files, data/latin_normalized.txt; research7h/corpus.py;
+study20/analyze.py, study20/controls/latin_caesar.xml and dependency build_corpus.py.
+These existing parent files are hash checked by the frozen receipt where declared;
+no manuscript-loader function is called. Permission/provenance follow the parent
+THIRD_PARTY_NOTICES.txt. Retain upstream Naibbe/Timm notices and Perseus/Tufts
+attribution/CC BY-SA 4.0. Do not flatten paths or replace frozen receipts silently.

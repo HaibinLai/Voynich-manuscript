@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-11-17T11:03:38.657157+00:00",
+  "source": {
+    "url": "https://www.ic.unicamp.br/~stolfi/EXPORT/projects/papers/voynich/2026-02-10-sps-is-sbj.pdf",
+    "local_pdf_sha256": "0bc5c02e427307514eaa049f7f264869ae85f20827eb719fbc847ddac5fa5160",
+    "pages": 10,
+    "version": "PDF末页2026-02-10；作者网站稿",
+    "checked_locations": [
+      "pp4–9原文",
+      "p7 Fig6及p8 Fig7视觉检查"
+    ]
+  },
+  "verdict": "尚不足以组成无需逐段调参的语义解码器或完整段落匹配算法。只有查找固定子串这一小步可直接执行。",
+  "independent_prediction_ready": false,
+  "heldout_test_run": false,
+  "manuscript_scoring_performed": false,
+  "rules": [
+    {
+      "id": "text_identity",
+      "status": "author_hypothesis_not_decoder",
+      "source": "§2、§6",
+      "rule": "SPS末节对应神农本草经某版本。",
+      "evidence_type": "章节外观/统计与候选匹配",
+      "fixed": false,
+      "missing": [
+        "具体版本对应与段落排列映射",
+        "缺页/新增/遗漏的固定规则"
+      ],
+      "failure_condition": "只有固定对应版本、允许编辑预算和段落映射后，才能定义此命题在新段落上的失败；目前不能把任意差别事后归为版本变化。"
+    },
+    {
+      "id": "core_mapping",
+      "status": "partial_set_valued_mapping",
+      "source": "§4 p7、§6 p9",
+      "rule": "daiin候选对应主；结论又允许主治。",
+      "source_patterns": [
+        "daiin"
+      ],
+      "target_alternatives": [
+        "主",
+        "主治"
+      ],
+      "fixed": false,
+      "missing": [
+        "两种目标何时选哪一种",
+        "是否覆盖每次出现",
+        "其他字形/词的规则"
+      ],
+      "failure_condition": "固定为一对一完整覆盖后，系统性无法满足对应将否定该严格版本；本文没有给出可直接适用全书的完整覆盖承诺。"
+    },
+    {
+      "id": "space_removal",
+      "status": "computable_suboperation",
+      "source": "§4 p7",
+      "rule": "去除手稿词空格后查找子串daiin，允许它嵌在更长串中。",
+      "fixed": true,
+      "operation": "remove only declared word separators, then locate exact substring occurrences; preserve glyph sequence",
+      "missing": [
+        "作者转写中的注释/不确定字形/标点的完整预处理实现"
+      ],
+      "failure_condition": "在同版输入及同一预处理下，如不能复现公布的次数，则计数子命题未复现；不能悄悄换转写补齐。"
+    },
+    {
+      "id": "relaxed_patterns",
+      "status": "finite_but_post_selected_pattern_set",
+      "source": "§4.1 p7",
+      "rule": "对展示段允许daiin、dair、laiin三个字串。",
+      "source_patterns": [
+        "daiin",
+        "dair",
+        "laiin"
+      ],
+      "target_alternatives": [
+        "主",
+        "主治"
+      ],
+      "fixed_for_demonstration": true,
+      "author_possible_explanations": [
+        "近似同音",
+        "词形变化",
+        "拼写差异",
+        "转写差异"
+      ],
+      "missing": [
+        "选择这些解释的条件",
+        "是否所有段落同样处理",
+        "是否再允许其他近形字"
+      ],
+      "failure_condition": "未来若冻结此集合，不得在测试后增删变体。超集合才能匹配的结果不支持这个已冻结集合。"
+    },
+    {
+      "id": "anchor_selection",
+      "status": "observed_anchor_not_holdout",
+      "source": "§4.1 p7",
+      "rule": "将f105v.32开始段与丹雄鸡条配对。",
+      "manuscript_folio": "f105v",
+      "manuscript_start_locus": "f105v.32",
+      "known_split": "train",
+      "target_entry": "丹雄鸡",
+      "author_anchor_counts": {
+        "strict_manuscript_occurrences": 5,
+        "relaxed_manuscript_occurrences": 8,
+        "target_main_character_occurrences": 7
+      },
+      "fixed": false,
+      "missing": [
+        "统一的段尾定位规则和作者版本逐段数据",
+        "额外的独立词义锚点"
+      ],
+      "failure_condition": "5/7和8/7已经排除“展示例中所有符号严格无遗漏一对一”这个额外强版本；这不等于驳倒作者允许变体/遗漏的较松主张。"
+    },
+    {
+      "id": "positional_alignment",
+      "status": "numerically_incomplete",
+      "source": "§4.1 p7、Fig6",
+      "rule": "两边重复出现位置按各自平均段长归一化，再允许约0.15个平均手稿段长的统一平移。",
+      "fixed": false,
+      "missing": [
+        "归一化均值的确切数值及字符单位",
+        "位置取字串起点/终点的定义",
+        "平移符号与确值",
+        "容差",
+        "未匹配点及缺失点罚则",
+        "同一平移是否跨段固定"
+      ],
+      "failure_condition": "无容差与缺失罚则就没有明确定义的通过/失败；不能用肉眼接近替代预注册损失。"
+    },
+    {
+      "id": "optional_omissions",
+      "status": "post_alignment_explanation",
+      "source": "p8 Fig7后",
+      "rule": "作者猜测开头味性温寒字段和末尾产地可能被省略，以解释平移/长度差别。",
+      "fixed": false,
+      "missing": [
+        "可执行字段界定",
+        "所有条目是否统一省略",
+        "具体手稿一侧何处删除"
+      ],
+      "failure_condition": "若将省略作为未来规则，必须在看新段落前固定且统一实施；逐段增减省略会使主张无法证伪。"
+    },
+    {
+      "id": "display_not_dictionary",
+      "status": "negative_scope_check",
+      "source": "p8 Fig7、p9 §6",
+      "rule": "Fig7的中文、拼音和英文来自候选明文展示；未给每个手稿词的独立解码。",
+      "fixed": true,
+      "missing": [
+        "可将未知字串映射到新词义的规则"
+      ],
+      "failure_condition": "不得把并排排版、Google Translate的候选中文译文，或开头poarkeeo的位置当作已证明的逐词译文/固定词典。"
+    }
+  ],
+  "asset_status": {
+    "file": "stolfi_resource_availability.json",
+    "summary": "论文列8项资源；HEAD检查仅段落划分报告200，其余7项404；两项核心数据追加有限GET核查。未读取任何外部手稿数据正文。"
+  },
+  "author_prior_exposure": [
+    "作者用全SPS统计和自己的2025–2026转写提出候选；不能把本轮root划分追溯为作者历史上未见数据。",
+    "f105r/v在本轮train；本次只核对split名单，没有载入或评分这些页。",
+    "Bax f15v在reserve，但先前论文及词锚已被阅读；reserve仅指未参与本轮拟合/评分，不指从未见过。"
+  ],
+  "required_before_any_heldout_evaluation": [
+    "找回作者确切359条本草及SPS逐段文件，记录版本/许可；核对f105v训练锚点的公布计数与图。",
+    "先锁定主还是主治、三个变体的适用范围、去空格和不确定字形规则。",
+    "锁定位置单位、全局平移、匹配损失、容差、缺失/额外点罚则及固定省略字段；这些若由我们补充，必须标为新代理检验。",
+    "规定新段落与候选条目如何一一配对，并冻结比较候选库及搜索预算；一个常见字的重复模式不足以独立确认词义。",
+    "只有以上条件成立，再选择未用于本轮设计的非reserve目标，并把作者历史暴露与本轮未拟合分别披露；本次不提出立刻消耗保留集的语义测试。"
+  ],
+  "not_inferred": [
+    "未把作者声望当证据",
+    "未给新字形猜义",
+    "未把本文部分计数不符当成对一切中文假说的反证",
+    "未声明此候选已破解"
+  ],
+  "deliverable_type": "有限规则审查，非复现实验或语义翻译"
+}

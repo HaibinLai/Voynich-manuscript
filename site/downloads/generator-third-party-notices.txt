@@ -1,0 +1,49 @@
+﻿Third-party code and data attribution
+
+1. Naibbe
+Michael A. Greshko, naibbe-cipher, commit
+5145f526b52741a6dca14201147f687e62c7162e.
+https://github.com/greshko/naibbe-cipher
+Original files preserved under third_party/naibbe/.
+The repository root LICENSE is standard MIT. The source headers and README
+include an additional citation requirement. Both are retained, without replacing
+them with this project's own code license.
+Required citation: Greshko, Michael A. (2025). The Naibbe cipher: a substitution
+cipher that encrypts Latin and Italian as Voynich Manuscript-like ciphertext.
+Cryptologia. https://doi.org/10.1080/01611194.2025.2566408
+The strict-unique rejection extension is our experiment adaptation, clearly
+separated from the original author's unmodified source files.
+
+2. SelfCitationTextgenerator
+Copyright (c) 2019 Torsten Timm; MIT license retained at third_party/timm/LICENSE.
+Commit a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7.
+https://github.com/TorstenTimm/SelfCitationTextgenerator
+Citation: Timm, Torsten, and Andreas Schinner. A possible generating algorithm
+of the Voynich manuscript. Cryptologia 44(1), 1–19 (2020; online 2019).
+https://doi.org/10.1080/01611194.2019.1596999
+Original Java source remains intact. An isolated build disables its unrelated
+whole-manuscript dictionary diagnostic, and run configurations change the seed
+line/output path/random seed as documented. Seed f1r activates the author's A
+branch; the original default f103v activates B.
+
+3. Latin plaintext
+Julius Caesar, De bello Gallico, edited by T. Rice Holmes, Oxford: Clarendon,
+1914; electronic edition from the Perseus Project, Tufts University.
+https://github.com/PerseusDL/canonical-latinLit/blob/master/data/phi0448/phi001/phi0448.phi001.perseus-lat2.xml
+The source XML explicitly states CC BY-SA 4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+Upstream license text retained at third_party/perseus/license.md.
+Changes: remove editorial note/head/speaker elements, normalize to ASCII and
+lowercase; Naibbe additionally merges J/I and K/C and rewrites W as UU, removes
+word boundaries and punctuation, and selects the first 24000 letters. Encoded,
+decoded and normalized Caesar-derived text files in data/ are distributed under
+CC BY-SA 4.0 with this attribution. Summary numbers and original project code
+are separate from the upstream text license.
+
+4. Voynich transliterations used for comparison
+Zandbergen–Landini: René Zandbergen and Gabriel Landini.
+Takahashi: Takeshi Takahashi. IVTFF distributions by René Zandbergen.
+https://www.voynich.nu/transcr.html
+The distributor explicitly makes these transliterations available under CC0:
+https://www.voynich.nu/roadmap.html (Licences and copyright).
+No EVA font is bundled. No modern paper PDF or manuscript image is bundled here.

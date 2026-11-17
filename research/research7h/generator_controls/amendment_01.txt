@@ -1,0 +1,25 @@
+Amendment 01 — 2026-11-17, after inverse-code audit, before morphology outcome scoring
+
+The official UNAMBIGUOUS=True rule prevents bigram ciphertext from colliding
+with unigram ciphertext. It does not prevent distinct prefix/suffix splits from
+representing different bigrams. Exhaustive table inspection found 202 accepted
+table-pair encodings with a nonunique decoder output, out of 18913 accepted
+table-pair encodings; several encodings can produce the same ciphertext.
+The first generated Latin test consequently did not have a unique direct inverse.
+
+Retain the official variant unchanged and report ambiguity. Add a separately
+named strict-unique variant: extend the official rejected-glyph set with every
+bigram ciphertext whose official basic decoder has multiple readings. Keep the
+tables, card weights and all other rules unchanged. This deterministic change
+is motivated solely by inversion, not by any manuscript-statistic fit.
+This variant is our adaptation, not the published Naibbe implementation.
+Require 100% unique token decoding and exact normalized plaintext recovery for
+the strict-unique positive control. Candidate inclusion and unique decoding are
+reported separately for the official version. The existing spacing-deletion
+variant remains separately reported and is never assumed to be uniquely reversible.
+
+Sample-size clarification: if a permitted manuscript pool has fewer than 8000
+valid tokens, compare it in a separate panel where every generator is truncated
+to that same smaller N. Do not choose N from fit quality. The 8000-token generator
+minimum and original 20-seed schedule remain unchanged. This addresses corpus
+availability, not outcome matching. All confirm/reserve outcomes remain excluded.

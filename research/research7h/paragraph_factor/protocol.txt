@@ -1,0 +1,50 @@
+段首可逆前缀因子：冻结方案 v1
+批准：root 于本次会话批准后冻结。继承 split_manifest.json；确认集的上一阶段结构和预测结果已被查看，不能称为全盲验证。
+
+数据与目标
+train+legacy 拟合；dev 选参；冻结选定配置后对 confirm 一次评估。reserve 22 页不用于任何拟合、调参或评分。
+paragraph_first = 转写标记 paragraph_start 行的第 0 槽。第 0 槽缺失时不拿第一个可读词补位。line_first = 其他行第 0 槽；其余为 other。
+body LM 排除 paragraph_first 词，只用另外两个位置类的完整词。不是排除整条段首行。
+主结论对象是 paragraph_first 的完整规范化单位串；同时报告全部词形，但所有模型对非 paragraph_first 的分布完全一致，因此不会把作用范围扩展后的收益混入主目标。
+来源、分叶、分词与不确定值处理沿用 corpus.py。主 ZL/EVA；ZL/merged 与 IT/EVA 分别独立在 dev 选同样网格，用相同分叶。它们是敏感性分析，不是独立语义证据。
+
+单位宇宙与未知单位的真实代价
+固定语法编码上界 Ω_EVA = 26 个 a-z + apostrophe + @000; 至 @999;，共 1027 类。它是编码语法的有限上界，不声称每类字形存在。merged 增加 ch/sh/cth/ckh/cph/cfh 六个原子单位，共 1033 类。
+训练字母表来自 train+legacy 全部保留词形；未从 dev/confirm 获取字符表。训练外 Ω 单位映射到 UNK 类，并另支付 log2(|Ω\alphabet_train|) 的均匀 escape 成本，每次出现均计费。
+结果须报告训练字符表、训练外集合大小、dev/confirm 实际未知单位数及合法宇宙覆盖；未知单位保留身份，不能直接不可逆地合并。
+可逆性只针对规范化单位序列；不恢复 IVTFF 不确定标记/连写/原始字迹。merged 序列保留显式原子边界，不能将不同切分的串偷偷视作同一个生成结果。
+
+正文分布 B
+B 是允许空串、含 EOS 的有限状态平滑单位 n-gram。P(c|h)=(n(h,c)+alpha P(c|suffix(h)))/(n(h)+alpha)，空历史回退均匀分布，预测字母表包括 EOS 与有需要时的 UNK。
+训练每个完整词重置 BOS。包括末尾 EOS；未知单位的 escape 身份成本另计。order∈{1,2,3,4}、alpha∈{1,5,20,100}，以 dev 的非段首词平均 bits/完整词选择，平局先低阶、再小 alpha。
+每个条件概率均归一化；alpha>0，有限上下文状态且 EOS 在所有状态有正概率下界，故最终终止概率为 1。需保存证明所用保守下界及实际归一化误差。
+基线 M0(w)=B(w)/(1−B(empty))，定义于非空完整单位串。所有可比较模型均对完整非空词形编码。
+
+位置条件的完整词模型 M1
+另以 train+legacy 的 paragraph_first 完整词训练同 order/alpha 的模型 C，并条件化为非空。
+段首使用 (1−lambda)M0(w)+lambda C_nonempty(w)，lambda∈{0,.25,.5,.75,1}，只按 dev 段首完整词平均 bits 选择；非段首仍 M0。
+这允许段首有独立拼写分布，不先假定前缀因子。
+
+Gallows 因子 M2
+G={k,t,p,f}。唯一分解：首单位 g∈G 时为 (g,r=w[1:])；r 可为空，对应一个单位的完整词。否则唯一表示为 (NONE,w)，其 root 必须非空且首单位不在 G。
+G 分支：F_G(w)=pi(g) B(r)。NONE 分支：F_G(w)=pi(NONE) B(w)/Z_NONE，其中 Z_NONE=Σ_{c∈Ω\G}P_B(c|BOS)，不含 EOS。这个限制使 G 与 NONE 支持互斥，不存在两条编码路径。
+pi 按 paragraph_first / line_first / other 三类分别拟合，五个前缀类别都保留。先验是 M0 的首单位类别概率。pi_j=(count_j+beta prior_j)/(N+beta)，beta∈{1,5,20,100}。
+主模型只在 paragraph_first 使用因子，其他位置仍 M0；另外两类 pi 保存用于完整审计，不加入主评分收益。
+分别报告直接因子 F_G（选 beta）和与 M0 混合的 (1−lambda)M0+lambda F_G（选 beta、lambda）。lambda 使用与 M1 相同网格；平局先小 lambda、再小 beta。正文 B 不用移除前缀后的段首 root 重新训练。
+逐词保存 prefix_bits、body_raw_bits（含 escape）、support_normalization_bits，以及三者的和。NONE 的 normalization_bits=log2 Z_NONE，可能为负；不能漏掉 prefix 或 EOS。
+
+任意首单位分离对照 M3
+唯一分解为 (c=w[0],r=w[1:])，r 可为空。F_A(w)=pi(c) B(r)。pi 对 Ω 全部单位归一化，先验为 M0 的首单位分布，按相同三个位置类分别拟合。
+其 beta 网格、lambda 网格、调参目标、训练数据与 M2 完全相同。未知首单位在 pi 的先验项中支付 uniform escape；不混淆成同一个可免费编码的 UNK。
+直接因子和混合因子均报告。此对照检验收益是否仅来自重置首单位后的上下文，而非 gallows 的特殊性。
+
+报告与不确定性
+主比较：G 混合因子 vs 位置完整词 LM；G 混合因子 vs 任意首单位混合因子。另报所有模型相对 M0 的差值及直接因子，不按结果删项。
+报告 pooled bits/词、逐页与逐叶 bits/词、每个确认叶的配对差。对有有效目标的叶组等权重采样 9999 次，固定 seed=2026111718（EVA）、2026111719（merged）、2026111720（IT）。每种表示中的所有比较使用相同重采样索引。
+保存完整重采样结果。区间为选定叶和已固定模型条件下的描述性 bootstrap 95% 区间，不是所有语言/手稿的参数区间，不以多个探索区间冒充独立确认或语义证据。模型/字典参数传输成本未计入，只讨论固定训练后的留出预测成本。
+不同单位表示的裸 bits 不直接横比，比较各自模型差值。全部来源/协议/代码/配置哈希保留。
+
+验证要求
+评分 confirm 前：所有已存上下文条件概率归一化；未知类展开后归一化；G/NONE 互斥和完整覆盖；未知首单位与空 root；人工短字母表枚举与有限长度概率质量恒等式；三项成本与完整概率一致。
+冻结 dev 配置及其校验值后才加载 confirm。保存逐词完整分解/成本、条件概率表与足以重建模型的计数/公式。
+用已存模型、计数与逐词输入另写独立概率计算路径重放 confirm，验证所有模型总分与逐词概率；不得用确认结果重新选择规则、字母表或参数。
