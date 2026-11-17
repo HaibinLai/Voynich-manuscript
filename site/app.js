@@ -388,7 +388,7 @@ function renderJournal() {
   const status={active:'研究进行中',complete:'本阶段已完成',blocked:'等待外部条件',paused:'已暂停'}[session.status]||'状态未记录';
   const findings=Array.isArray(summary.findings)?summary.findings:[];
   $('#journal').innerHTML=`<div class="page-heading"><div><span class="eyebrow">04 / RESEARCH LOG & REPRODUCIBILITY</span><h1 id="journal-heading">保留过程，也保留负结果</h1><p>研究记录标明哪些工作已完成，哪些仍是计划。下载的数据与代码用于复查处理规则、随机对照和结论，而不是把统计相似误称为译文。</p></div><span class="pill caution">快照记录：${status}</span></div>
-  ${finalReservePanel(data.finalReserve)}${releaseVerificationPanel()}${metadataScopeNotice()}
+  ${finalReservePanel(data.finalReserve)}${crosslinePanel(data.stage2?.crossline)}${releaseVerificationPanel()}${metadataScopeNotice()}
   ${stage2Panel()}
   <div class="journal-grid"><div><div class="panel journal-panel"><h2 style="font-size:26px">研究进展</h2><ol class="timeline"><li><h3>原始资料与已发表转写整理</h3><p>建立 PDF 页码关联，保留 ZL3b / IT2a 的版本信息。正文沿用学术转写；现代附文未在此公开。</p></li><li><h3>20 页核对与 40 处重点复核</h3><p>核查版面、转写位置与重点疑难处，保留未决读法。未宣称逐字符终审或双专家独立转写。</p></li>${data.overview.high_resolution_review?`<li><h3>20 页 / 332 处高清对应核对</h3><p>逐位置保留 ZL/IT、未决观察和耶鲁原图近似阅读框；有 32 处交叉抽查并修订 11 个框。不是独立盲转写、逐字认证或译文。<a href="#manuscript">打开逐位置复核</a></p></li>`:''}<li><h3>四项结构检验完成</h3><p>17 页、188 行、1,648 个保留词形。固定随机种子，保存对照分布；主要数值和随机数组已完整复现。</p></li><li class="pending"><h3>7 小时扩展研究</h3><p>窗口：${esc(dateText(session.start_utc))} 至 ${esc(dateText(session.deadline_utc))}。全书分层验证、历史文献核查与已知答案密码校准并行推进。</p></li></ol><div class="note-strip" style="margin-bottom:0">${esc(data.research.snapshot_note)}<br>数据整理时间：${esc(dateText(data.overview.updated_at))}</div></div>
   ${stage1Panel(summary,findings)}</div>

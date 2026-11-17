@@ -1,0 +1,38 @@
+跨行完整词预测：独立标量复算报告
+
+正式运行完成后，对冻结run_v1保存结果进行了独立复算。全部核验通过；不新增调参、抽样或目标评分。
+共3种表示、1950条目标记录（ZL两表示各647条、IT 656条）；来自相同手稿，不能当1950个独立语言样本。
+完整重算每表示5个基线及25个混合候选的pooled折外损失，共90个汇总网格点；每个候选的3折概率和训练限定字母表均重建。
+
+ZL_EVA:
+  目标数=647；选定[base alpha, feature alpha, weight]=[100, 100, 0.5]。
+  CV损失最大绝对差=8.8817841970012523e-16 bits；逐目标各成本最大差=1.4210854715202004e-14 bits；各页/叶及留一叶汇总最大差=3.5527136788005009e-15 bits。
+  全部逐数组误差：{"base_bits": 1.4210854715202004e-14, "model_bits": 1.4210854715202004e-14, "continuation_bits": 1.4210854715202004e-14, "target_escape_bits": 0.0, "first_target_escape_bits": 0.0, "first_base_class_bits": 0.0, "first_model_class_bits": 0.0, "first_base_actual_bits": 0.0, "first_model_actual_bits": 0.0}
+  全部聚合误差：{"base_cost": 3.552713678800501e-15, "model_cost": 3.552713678800501e-15, "gain": 7.771561172376096e-16, "first_base_class_cost": 0.0, "first_model_class_cost": 4.440892098500626e-16, "first_base_actual_cost": 0.0, "first_model_actual_cost": 4.440892098500626e-16}
+
+ZL_merged:
+  目标数=647；选定[base alpha, feature alpha, weight]=[100, 100, 0.5]。
+  CV损失最大绝对差=8.8817841970012523e-16 bits；逐目标各成本最大差=7.1054273576010019e-15 bits；各页/叶及留一叶汇总最大差=3.5527136788005009e-15 bits。
+  全部逐数组误差：{"base_bits": 7.105427357601002e-15, "model_bits": 7.105427357601002e-15, "continuation_bits": 5.329070518200751e-15, "target_escape_bits": 0.0, "first_target_escape_bits": 0.0, "first_base_class_bits": 0.0, "first_model_class_bits": 0.0, "first_base_actual_bits": 0.0, "first_model_actual_bits": 0.0}
+  全部聚合误差：{"base_cost": 3.552713678800501e-15, "model_cost": 3.552713678800501e-15, "gain": 8.881784197001252e-16, "first_base_class_cost": 4.440892098500626e-16, "first_model_class_cost": 4.440892098500626e-16, "first_base_actual_cost": 4.440892098500626e-16, "first_model_actual_cost": 4.440892098500626e-16}
+
+IT_EVA:
+  目标数=656；选定[base alpha, feature alpha, weight]=[100, 100, 0.5]。
+  CV损失最大绝对差=4.4408920985006262e-16 bits；逐目标各成本最大差=7.1054273576010019e-15 bits；各页/叶及留一叶汇总最大差=3.5527136788005009e-15 bits。
+  全部逐数组误差：{"base_bits": 7.105427357601002e-15, "model_bits": 7.105427357601002e-15, "continuation_bits": 7.105427357601002e-15, "target_escape_bits": 0.0, "first_target_escape_bits": 0.0, "first_base_class_bits": 0.0, "first_model_class_bits": 0.0, "first_base_actual_bits": 0.0, "first_model_actual_bits": 0.0}
+  全部聚合误差：{"base_cost": 3.552713678800501e-15, "model_cost": 3.552713678800501e-15, "gain": 8.881784197001252e-16, "first_base_class_cost": 4.440892098500626e-16, "first_model_class_cost": 4.440892098500626e-16, "first_base_actual_cost": 4.440892098500626e-16, "first_model_actual_cost": 4.440892098500626e-16}
+
+核验细目
+重新读取且只读取规定的train_legacy/dev保存gzip，核验四份原文件SHA；未调用confirm/reserve或全书加载器。
+重新构造跨行目标，原词/映射词、坐标、来源H/目标H、缺失槽、段块筛选及训练/dev完整叶集合均一致。三折alphabet仅由各折拟合叶构造，持出叶没有进入字母表。
+独立标量Q层级及4gram续写/EOS与作者缓存分布无共享；首类成本、首未知身份费、实际首单位成本、全词escape分别匹配。来源UNK不收费，首身份费只计入全词一次。
+全部每目标支持层计数、最深有数据层、末层未见标志逐值一致；逐页/叶目标数、排除原因、UNK数和无合格目标页一致。
+所有选中alpha/权重与原设置精确一致；没有用复算结果重新选择参数。页后叶等权、pooled、留一叶范围全部核验。
+
+独立性与边界
+本审计者不是跨行模型作者；先阅读冻结定义再另写标量程序，因此是实现独立复算，不是盲于原算法的独立研究。没有import作者Conditional、CharLM、contexts、score、select或main；numpy只读npz。
+运行前replay.py及审阅源的SHA已在preparation_binding.json绑定；真实执行前先检查complete、summary、配置与freeze收据。人工例子在真实复算前通过。
+误差界只验证当前实现和保存输出，不增加语言/语义/因果证据。dev此前已用于探索，不因复算变成全新盲测试；增益不是条件互信息。
+本审计没有读取confirm/reserve目标。之前发表措辞审查另读过reserve汇总，不应将本次范围描述成整个agent从未接触保留信息。
+
+完整数值与每折字母表见audit_report.json；准备来源与脚本哈希见preparation_binding.json。

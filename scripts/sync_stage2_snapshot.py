@@ -147,6 +147,17 @@ def main():
             assert path.suffix not in ['.log','.pdf','.pyc']
             copy(rel)
         copy(Path('reserve_publication_manifest.json'))
+    crossline=src/'line_boundary_prediction'
+    crossline_manifest=crossline/'results_artifact_manifest.json'
+    if crossline_manifest.exists():
+        for item in json.loads(crossline_manifest.read_text())['files']:
+            rel=Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            path=crossline/rel
+            assert digest(path)==item['sha256'] and path.stat().st_size==item['bytes']
+            assert path.suffix not in ['.log','.pdf','.pyc']
+            copy(path.relative_to(src))
+        copy(crossline_manifest.relative_to(src))
     for path in sorted((src/'publication_checks').glob('*')):
         if path.is_file() and path.suffix in ['.json','.txt','.py']:copy(path.relative_to(src))
     for name in ['site_status.json','homepage_curated.json']:

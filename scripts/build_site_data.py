@@ -7,6 +7,7 @@ The source PDF, modern essays, local paths, and private folder metadata are not.
 from pathlib import Path
 import argparse
 import datetime
+import gzip
 import hashlib
 import json
 import math
@@ -241,6 +242,39 @@ def final_reserve_payload(research, site, execution):
             "research_url": "https://github.com/HaibinLai/Voynich-manuscript/tree/main/research/research7h/final_reserve"}
 
 
+def crossline_payload(research, site):
+    root = research / "line_boundary_prediction"
+    complete = read(root / "run_v1/complete.json", {})
+    audit = read(root / "independent_audit/audit_report.json", {})
+    if not complete.get("all_three_complete") or not audit.get("all_passed"):
+        return {"available": False}
+    summary_path = root / "run_v1/summary.json"
+    digest = hashlib.sha256(summary_path.read_bytes()).hexdigest()
+    assert complete["summary_sha256"] == audit["original_summary_sha256"] == digest
+    assert audit["candidate_grid_points"] == 90 and audit["confirm_or_reserve_loaded"] is False
+    summary = read(summary_path)
+    assert summary["new_confirm_or_reserve_scoring"] is False and summary["within_vs_cross_difference_not_tested"] is True
+    assert [r["name"] for r in summary["representations"]] == ["ZL_EVA", "ZL_merged", "IT_EVA"]
+    configs, support = {}, {}
+    for r in summary["representations"]:
+        name = r["name"]
+        config_path = root / f"run_v1/configs/{name}.json"
+        assert hashlib.sha256(config_path.read_bytes()).hexdigest() == r["config_sha256"]
+        configs[name] = read(config_path)
+        raw = json.loads(gzip.decompress((root / f"run_v1/{name}_support.json.gz").read_bytes()))
+        support[name] = {k: {a:b for a,b in v.items() if a != "rows"} for k,v in raw.items()}
+    assets = export_assets(root, site, [
+        ("report", "研究报告.txt", "downloads/crossline-report.txt"),
+        ("figure_png", "crossline_results.png", "assets/crossline-results.png"),
+        ("figure_svg", "crossline_results.svg", "assets/crossline-results.svg"),
+        ("protocol", "protocol.txt", "downloads/crossline-protocol.txt"),
+        ("checks", "independent_audit/audit_report.json", "downloads/crossline-verification.json"),
+        ("summary", "run_v1/summary.json", "downloads/crossline-summary.json")])
+    return dict(available=True, independent_review_passed=True, completed_utc=complete["completed_utc"],
+                results=summary["representations"], configs=configs, support=support, assets=assets,
+                summary_sha256=digest, audit_sha256=hashlib.sha256((root/"independent_audit/audit_report.json").read_bytes()).hexdigest())
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True,
@@ -302,6 +336,9 @@ def main():
         "final_reserve/reserve_v1/independent_review.json", "metadata_sensitivity/reserve_v1/complete.json",
         "metadata_sensitivity/reserve_v1/replay_verification.json",
         "publication_checks/unified_saved_replay_20261117.json", "synthesis_audit/claims_checklist.json"]
+    stage2_input_names += ["line_boundary_prediction/run_v1/complete.json",
+                          "line_boundary_prediction/independent_audit/audit_report.json",
+                          "line_boundary_prediction/website_data.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -596,6 +633,7 @@ def main():
         "allograph_factor": allograph_factor,
         "synthetic_boundary": synthetic_boundary,
         "cipher_search": cipher_search,
+        "crossline": crossline_payload(research, site),
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
     # Interpretive audits are separate from frozen predictive experiments. Only
     # named Yale crops are bundled; modern-paper screenshots and full JPEGs are not.

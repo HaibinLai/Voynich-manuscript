@@ -1,0 +1,1546 @@
+{
+  "schema_version": 1,
+  "commit": "e146676870121afb1f3f7d9e65f505f22f78322b",
+  "started_utc": "2026-11-17T15:15:48.022384+00:00",
+  "completed_utc": "2026-11-17T15:16:38.344704+00:00",
+  "all_commands_passed": true,
+  "public_export_unchanged": true,
+  "changed_export_paths": [],
+  "export_file_count": 4470,
+  "archive_sha256": "d316b50ad0f1b8420bf90feb162684fb1ca6c5c17fc2be3fab983154a698f346",
+  "files_before_sha256": "682821317b7feff76f3816bae60da2300e415e741012e598a034181712d6e974",
+  "files_after_sha256": "682821317b7feff76f3816bae60da2300e415e741012e598a034181712d6e974",
+  "audit_driver_sha256": "bb67cc2b6aaf597ae544e1376ae024db13336f08ec047def77fc8aeb52111532",
+  "environment": {
+    "python_version": "3.9.6",
+    "numpy_version": "2.0.2",
+    "fresh_dependency_installation": false,
+    "inherited_pythonpath_removed": true,
+    "bytecode_writes_disabled": true
+  },
+  "scope": {
+    "git_archive_only": true,
+    "local_output_voynich_read": false,
+    "original_raw_corpus_reopened": false,
+    "saved_reserve_packet_read": true,
+    "new_target_selection": false,
+    "new_parameter_search": false,
+    "new_independent_method": false,
+    "notes": "Four existing verification/replay commands run from the exact committed archive using already installed Python dependencies. Source publication_checks is only the destination for this audit report. No local research source package is used by the commands.",
+    "integrity_reads_raw_source_bytes_for_hash_only": true,
+    "raw_transcription_parsed_by_replay": false
+  },
+  "runs": [
+    {
+      "name": "release_integrity",
+      "command": [
+        "python3",
+        "scripts/verify_release.py"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.450600208,
+      "log": "release_integrity.log",
+      "log_sha256": "e5cd439a0ca3c0a2f7d4a0782575a10312d3c8495f9a990d2cc5035167553e93",
+      "receipt": {
+        "passed": true,
+        "checked_utc": "2026-11-17T15:15:50.932282+00:00",
+        "checks": [
+          {
+            "manifest": "research/sources/provenance.json",
+            "sha256": "9c81689bf734b652d4184f8372d652331dc16b904686effc00cede1f24d4d05f",
+            "entries_checked": 3,
+            "bytes_checked": 1116148,
+            "passed": true
+          },
+          {
+            "manifest": "site/data/manifest.json",
+            "sha256": "6046aa94e6e2c503912536f541b5ef00ae2a28d13bafdd52f18d526687cd1a37",
+            "entries_checked": 207,
+            "bytes_checked": 34154052,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/stage2_publication_manifest.json",
+            "sha256": "8b97b8d6a9948df6340219978665fd8b6ef3866edb8de7b62bafbeb03a472662",
+            "entries_checked": 3936,
+            "bytes_checked": 190906536,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/allograph_factor/artifact_manifest.json",
+            "sha256": "6820be334da4021c7d094518658db066c64d91c324cb8abecede51ef0b674f75",
+            "entries_checked": 229,
+            "bytes_checked": 5335440,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/metadata_sensitivity/artifact_manifest.json",
+            "sha256": "7bf3104ef19ca1b2bfd147a6303392359cc88c39f964821ae1021d6f82ba50d4",
+            "entries_checked": 72,
+            "bytes_checked": 5579472,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/line_boundary_calibration/artifact_manifest.json",
+            "sha256": "de116f1ae4b61a74834cdbc7774c97f1744beb38da3885fd0018cd355b91cb5b",
+            "entries_checked": 222,
+            "bytes_checked": 4298684,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/reserve_publication_manifest.json",
+            "sha256": "b7ee0a938293380c391c0a78b676730cee6cc22cfc6f68c20eadd57975f1b988",
+            "entries_checked": 125,
+            "bytes_checked": 40467666,
+            "passed": true
+          },
+          {
+            "manifest": "research/research7h/cipher_controls/voynich_substitution/artifact_manifest.json",
+            "sha256": "893da79c96cd281edd457cb9309e6897f88f560edaef46bdb553d06dd0c50032",
+            "entries_checked": 1010,
+            "bytes_checked": 7438618,
+            "passed": true
+          }
+        ],
+        "manifests_overlap": true,
+        "limitation": "Integrity checks validate recorded bytes, not scientific claims or semantic decipherment. Manifest counts overlap; do not sum them as unique files.",
+        "snapshot_stage": 3,
+        "snapshot_status": "active",
+        "snapshot_updated_utc": "2026-11-17T15:09:07.995156+00:00",
+        "research_deadline_utc": "2026-11-17T16:50:25Z",
+        "raw_text_interpreted": false,
+        "new_split_scored": false
+      }
+    },
+    {
+      "name": "primary_aggregate",
+      "command": [
+        "python3",
+        "research/research7h/final_reserve/saved_output_audit.py",
+        "--run",
+        "research/research7h/final_reserve/reserve_v1",
+        "--mode",
+        "reserve",
+        "--output",
+        "$AUDIT/primary_aggregate.json"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.289509625,
+      "log": "primary_aggregate.log",
+      "log_sha256": "ea426fe1251450ce6fa3cd65c141a943593b45ac3434fd70de0bee4b296b4e04",
+      "receipt_path": "primary_aggregate.json",
+      "receipt_sha256": "26563142bf15f014caea5abe321c09a187f1a037fae68f06a5a90c4de7d4d145",
+      "receipt": {
+        "completed_utc": "2026-11-17T15:15:52.195393+00:00",
+        "passed": true,
+        "mode": "reserve",
+        "split": "reserve",
+        "recommendation": "Saved eligibility and aggregate audit passed; independent probability and permutation replay is a separate check.",
+        "freeze_sha256": "b3995e3e230957319b4dca04518b81e58dbca1ac8d4ab35b141498dda23d9a55",
+        "source_complete_sha256": "084b31bd1f43402c2062fc32df07555d19791830a3a046510cf5d8d803bb9eab",
+        "summary_sha256": "d794aee0993a511100e26af74149c73e8983a42560f51be584cb27c9f2e7b904",
+        "script_sha256": "c2446f8e57db51b0e5625926c5c4e54d6a7cb5338db8e2eabb03400ddc29a5c5",
+        "frozen_dependencies_rehashed": 75,
+        "full_transcription_files_not_reopened": [
+          {
+            "path": "sources/IT2a-n.txt",
+            "sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+          },
+          {
+            "path": "sources/ZL3b-n.txt",
+            "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc"
+          }
+        ],
+        "completed_family_jobs": 12,
+        "primary_contrasts": 30,
+        "supplementary_contrasts": 9,
+        "position_conditions": 6,
+        "bootstrap_replicates": 99999,
+        "shared_bootstrap_groups": 3,
+        "independent_tail_interpolation": true,
+        "copy_past_source_references_checked": 82041,
+        "core_score_arrays": [
+          {
+            "path": "copy_ZL_EVA.npz",
+            "sha256": "b85afad67540417b42fbf17659b96678511560cd22905e0db66e7e760296d6e6"
+          },
+          {
+            "path": "allograph_ZL_EVA.npz",
+            "sha256": "e4c03c1a78302fe2f232c1c4874d252e18bfaf27395475f6fdcf4cc39746a17d"
+          },
+          {
+            "path": "paragraph_ZL_EVA.npz",
+            "sha256": "02c93362993b50ee2ee2bfa5e0be1af14fb94086254f0eef3297bb9ba1b700af"
+          },
+          {
+            "path": "boundary_ZL_EVA.npz",
+            "sha256": "2253af812cec1eaa1c3011274807a116c7f0a1cbb64c5e72a14dd65793fd9c00"
+          },
+          {
+            "path": "copy_ZL_merged.npz",
+            "sha256": "78586662b972e194e8c308d7338a757a543ee8680cded8bf52e35391e4dc5203"
+          },
+          {
+            "path": "allograph_ZL_merged.npz",
+            "sha256": "5f064c67a14032cb478e4d0190275fe033ba1a2f8b85b9ad7f01ae52ea5b7634"
+          },
+          {
+            "path": "paragraph_ZL_merged.npz",
+            "sha256": "1d21be35fa03e7678b86151cec6fd41677ea11bc0c7a420b6c8b22ac2232d286"
+          },
+          {
+            "path": "boundary_ZL_merged.npz",
+            "sha256": "a1358de7e6e47e897e435c7212bdcae1fff3a904c3b64f6c94e62288ab36c3c6"
+          },
+          {
+            "path": "copy_IT_EVA.npz",
+            "sha256": "34e2bffaa9b20e6566127eb64bf1f7f42acfd79d2173f0eff817b23ede3e7142"
+          },
+          {
+            "path": "allograph_IT_EVA.npz",
+            "sha256": "1a12fff2f74c57a4a13b25f1318648e6b3ef3446fa231fbc7101e2158b10e936"
+          },
+          {
+            "path": "paragraph_IT_EVA.npz",
+            "sha256": "57545e40904a90bd561163748acb1d0cbe0f733ab200df0c736fc2452847b2bf"
+          },
+          {
+            "path": "boundary_IT_EVA.npz",
+            "sha256": "82a3838ac32569d8947fd5ad9a8302964f2b22cfa53ec4a0b82a634955df9253"
+          }
+        ],
+        "family_eligibility": [
+          {
+            "name": "ZL_EVA",
+            "family": "copy",
+            "targets": 4168,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "allograph",
+            "targets": 4168,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "paragraph",
+            "targets": 99,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "boundary",
+            "targets": 1448,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_merged",
+            "family": "copy",
+            "targets": 4168,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_merged",
+            "family": "allograph",
+            "targets": 4168,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_merged",
+            "family": "paragraph",
+            "targets": 99,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "ZL_merged",
+            "family": "boundary",
+            "targets": 1448,
+            "missing_slots": 84,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "IT_EVA",
+            "family": "copy",
+            "targets": 4163,
+            "missing_slots": 7,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "IT_EVA",
+            "family": "allograph",
+            "targets": 4163,
+            "missing_slots": 7,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "IT_EVA",
+            "family": "paragraph",
+            "targets": 101,
+            "missing_slots": 7,
+            "eligibility_reconstructed": true
+          },
+          {
+            "name": "IT_EVA",
+            "family": "boundary",
+            "targets": 1455,
+            "missing_slots": 7,
+            "eligibility_reconstructed": true
+          }
+        ],
+        "contrasts": [
+          {
+            "name": "ZL_EVA",
+            "contrast": "style",
+            "leaf_mean": 0.44255365403560615,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "boundary_last",
+            "leaf_mean": 0.1390255183093687,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "gallows_vs_position",
+            "leaf_mean": -0.7989935012043798,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "gallows_vs_any_first",
+            "leaf_mean": 0.16669346640882532,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "copy_total",
+            "leaf_mean": 0.0208715108921432,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "copy_edit_vs_exact",
+            "leaf_mean": 0.017062383995816933,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "copy_vertical",
+            "leaf_mean": 0.015093048460350846,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_FP",
+            "leaf_mean": 0.009208741743418987,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_KT",
+            "leaf_mean": 0.02794371689446741,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_both",
+            "leaf_mean": 0.03779911300923257,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_FP_global_restore",
+            "leaf_mean": 0.007102715255690482,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_KT_global_restore",
+            "leaf_mean": -0.0071631389284741226,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_EVA",
+            "contrast": "allograph_both_global_restore",
+            "leaf_mean": -9.102619890814442e-05,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "style",
+            "leaf_mean": 0.43716438467597113,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "boundary_last",
+            "leaf_mean": 0.12042211281850045,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "gallows_vs_position",
+            "leaf_mean": -1.0699121727422616,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "gallows_vs_any_first",
+            "leaf_mean": 0.16592929785224456,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "copy_total",
+            "leaf_mean": 0.01766787590189162,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "copy_edit_vs_exact",
+            "leaf_mean": 0.014321731161506762,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "copy_vertical",
+            "leaf_mean": 0.012663790976408913,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_FP",
+            "leaf_mean": 0.010856634661445179,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_KT",
+            "leaf_mean": 0.03193297857952822,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_both",
+            "leaf_mean": 0.04273928504010097,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_FP_global_restore",
+            "leaf_mean": 0.007987679775690081,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_KT_global_restore",
+            "leaf_mean": -0.0009141790465461304,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "ZL_merged",
+            "contrast": "allograph_both_global_restore",
+            "leaf_mean": 0.007167607503995033,
+            "leaves": 11,
+            "bootstrap_draw_key": "ZL_merged_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "style",
+            "leaf_mean": 0.4320541028458512,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "boundary_last",
+            "leaf_mean": 0.11471265609764457,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "gallows_vs_position",
+            "leaf_mean": -0.16521907702014227,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "gallows_vs_any_first",
+            "leaf_mean": 0.1865198056556183,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "copy_total",
+            "leaf_mean": 0.007481057210758423,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "copy_edit_vs_exact",
+            "leaf_mean": 0.0011690098549796421,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "copy_vertical",
+            "leaf_mean": 0.007504961548013051,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_FP",
+            "leaf_mean": 0.010299964296763471,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_KT",
+            "leaf_mean": 0.02486463362907092,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_both",
+            "leaf_mean": 0.034410959433627576,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_FP_global_restore",
+            "leaf_mean": 0.008557118895822273,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_KT_global_restore",
+            "leaf_mean": -0.013850365993935443,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          },
+          {
+            "name": "IT_EVA",
+            "contrast": "allograph_both_global_restore",
+            "leaf_mean": -0.005314281727500382,
+            "leaves": 11,
+            "bootstrap_draw_key": "IT_EVA_1147d7e36fc7",
+            "quantile_and_loo_verified": true
+          }
+        ],
+        "position_tail_holm": {
+          "ZL_merged_coarse": 0.063,
+          "ZL_EVA_coarse": 0.065,
+          "IT_EVA_exact": 0.065,
+          "IT_EVA_coarse": 0.069,
+          "ZL_EVA_exact": 0.073,
+          "ZL_merged_exact": 0.073
+        },
+        "no_corpus_loader_imported": true,
+        "raw_corpus_loaded": false,
+        "new_target_pages_loaded": false,
+        "saved_reserve_packet_read": true,
+        "scope": "Saved complete packet eligibility, legal past sources, all 39 aggregate contrasts, bootstrap draws/tails, leave-one-leaf, exposure omission and six stored position null summaries/Holm. Full transcription files deliberately not reopened. Does not independently reconstruct probability models or permutation scores; those require separate replays."
+      }
+    },
+    {
+      "name": "primary_probability_position",
+      "command": [
+        "python3",
+        "research/research7h/final_reserve/new_saved_replay/replay.py",
+        "--run",
+        "research/research7h/final_reserve/reserve_v1",
+        "--output",
+        "$AUDIT/primary_probability_position"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 34.204367458,
+      "log": "primary_probability_position.log",
+      "log_sha256": "072f256f2c834404351799bca6210e934cb73b2da562e18ecf96c994363de758",
+      "receipt_path": "primary_probability_position/verification.json",
+      "receipt_sha256": "52f7cc1a89d2c792b0d911858a23cfe02380b1ece0b644afe6edb6b3a4c26dc2",
+      "receipt": {
+        "all_passed": true,
+        "completed_utc": "2026-11-17T15:16:26.417143+00:00",
+        "mode": "reserve",
+        "input_run_name": "reserve_v1",
+        "complete_sha256": "084b31bd1f43402c2062fc32df07555d19791830a3a046510cf5d8d803bb9eab",
+        "probability_tasks": [
+          {
+            "name": "ZL_EVA",
+            "family": "copy",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "global": 2.1316282072803006e-14,
+              "edit_HV": 1.4210854715202004e-14,
+              "exact_HV_matched": 1.4210854715202004e-14,
+              "edit_H_matched": 1.4210854715202004e-14,
+              "edit_V_matched": 1.4210854715202004e-14,
+              "exact_H_matched": 1.4210854715202004e-14,
+              "exact_V_matched": 1.4210854715202004e-14,
+              "edit_H_independent": 1.4210854715202004e-14,
+              "exact_HV_independent": 1.4210854715202004e-14
+            }
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "allograph",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "FP_quotient": 1.4210854715202004e-14,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 1.4210854715202004e-14,
+              "FP_complete_global": 1.4210854715202004e-14,
+              "KT_quotient": 1.4210854715202004e-14,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 1.4210854715202004e-14,
+              "KT_complete_global": 1.4210854715202004e-14,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 7.105427357601002e-15,
+              "both_complete_global": 7.105427357601002e-15,
+              "base_escape": 0.0,
+              "FP_quotient_escape": 0.0,
+              "KT_quotient_escape": 0.0,
+              "both_quotient_escape": 0.0
+            }
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "boundary",
+            "targets": 1448,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            }
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "paragraph",
+            "targets": 99,
+            "errors": {
+              "body_full": 1.4210854715202004e-14,
+              "position_full": 0.0,
+              "gallows_selected": 1.4210854715202004e-14,
+              "any_first_selected": 1.4210854715202004e-14
+            },
+            "prefix_probability_max_error": 0.0,
+            "table_max_error": 0.0,
+            "original_word_identity_and_none_support_checked": true
+          },
+          {
+            "name": "ZL_merged",
+            "family": "copy",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "global": 1.4210854715202004e-14,
+              "edit_HV": 1.4210854715202004e-14,
+              "exact_HV_matched": 1.4210854715202004e-14,
+              "edit_H_matched": 1.4210854715202004e-14,
+              "edit_V_matched": 1.4210854715202004e-14,
+              "exact_H_matched": 1.4210854715202004e-14,
+              "exact_V_matched": 1.4210854715202004e-14,
+              "edit_H_independent": 1.4210854715202004e-14,
+              "exact_HV_independent": 1.4210854715202004e-14
+            }
+          },
+          {
+            "name": "ZL_merged",
+            "family": "allograph",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "FP_quotient": 7.105427357601002e-15,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 7.105427357601002e-15,
+              "FP_complete_global": 7.105427357601002e-15,
+              "KT_quotient": 7.105427357601002e-15,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 7.105427357601002e-15,
+              "KT_complete_global": 7.105427357601002e-15,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 7.105427357601002e-15,
+              "both_complete_global": 7.105427357601002e-15,
+              "base_escape": 0.0,
+              "FP_quotient_escape": 0.0,
+              "KT_quotient_escape": 0.0,
+              "both_quotient_escape": 0.0
+            }
+          },
+          {
+            "name": "ZL_merged",
+            "family": "boundary",
+            "targets": 1448,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            }
+          },
+          {
+            "name": "ZL_merged",
+            "family": "paragraph",
+            "targets": 99,
+            "errors": {
+              "body_full": 0.0,
+              "position_full": 0.0,
+              "gallows_selected": 2.842170943040401e-14,
+              "any_first_selected": 3.552713678800501e-15
+            },
+            "prefix_probability_max_error": 0.0,
+            "table_max_error": 0.0,
+            "original_word_identity_and_none_support_checked": true
+          },
+          {
+            "name": "IT_EVA",
+            "family": "copy",
+            "targets": 4163,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "global": 7.105427357601002e-15,
+              "edit_HV": 7.105427357601002e-15,
+              "exact_HV_matched": 7.105427357601002e-15,
+              "edit_H_matched": 7.105427357601002e-15,
+              "edit_V_matched": 7.105427357601002e-15,
+              "exact_H_matched": 7.105427357601002e-15,
+              "exact_V_matched": 7.105427357601002e-15,
+              "edit_H_independent": 7.105427357601002e-15,
+              "exact_HV_independent": 7.105427357601002e-15
+            }
+          },
+          {
+            "name": "IT_EVA",
+            "family": "allograph",
+            "targets": 4163,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "FP_quotient": 7.105427357601002e-15,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 7.105427357601002e-15,
+              "FP_complete_global": 7.105427357601002e-15,
+              "KT_quotient": 7.105427357601002e-15,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 7.105427357601002e-15,
+              "KT_complete_global": 7.105427357601002e-15,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 7.105427357601002e-15,
+              "both_complete_global": 7.105427357601002e-15,
+              "base_escape": 0.0,
+              "FP_quotient_escape": 0.0,
+              "KT_quotient_escape": 0.0,
+              "both_quotient_escape": 0.0
+            }
+          },
+          {
+            "name": "IT_EVA",
+            "family": "boundary",
+            "targets": 1455,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            }
+          },
+          {
+            "name": "IT_EVA",
+            "family": "paragraph",
+            "targets": 101,
+            "errors": {
+              "body_full": 0.0,
+              "position_full": 3.552713678800501e-15,
+              "gallows_selected": 7.105427357601002e-15,
+              "any_first_selected": 7.105427357601002e-15
+            },
+            "prefix_probability_max_error": 0.0,
+            "table_max_error": 0.0,
+            "original_word_identity_and_none_support_checked": true
+          }
+        ],
+        "position_tasks": [
+          {
+            "name": "ZL_EVA",
+            "findings": [
+              {
+                "strata": "exact",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.1796119636642288e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.01509304846035098,
+                "independent_edit_enumeration": true
+              },
+              {
+                "strata": "coarse",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.1796119636642288e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.01509304846035098,
+                "independent_edit_enumeration": true
+              }
+            ],
+            "source_rows": 395,
+            "valid_slots": 3457
+          },
+          {
+            "name": "ZL_merged",
+            "findings": [
+              {
+                "strata": "exact",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.214306433183765e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.012663790976409076,
+                "independent_edit_enumeration": true
+              },
+              {
+                "strata": "coarse",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.214306433183765e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.012663790976409076,
+                "independent_edit_enumeration": true
+              }
+            ],
+            "source_rows": 395,
+            "valid_slots": 3457
+          },
+          {
+            "name": "IT_EVA",
+            "findings": [
+              {
+                "strata": "exact",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.222980050563649e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.007504961548013187,
+                "independent_edit_enumeration": true
+              },
+              {
+                "strata": "coarse",
+                "all_permutations": 1999,
+                "max_gain_difference": 1.222980050563649e-16,
+                "max_movement_difference": 0.0,
+                "original_gain": 0.007504961548013187,
+                "independent_edit_enumeration": true
+              }
+            ],
+            "source_rows": 396,
+            "valid_slots": 3475
+          }
+        ],
+        "maximum_probability_cost_error": 2.842170943040401e-14,
+        "position_permutations": 11994,
+        "maximum_position_gain_error": 1.222980050563649e-16,
+        "maximum_position_movement_error": 0.0,
+        "reused_metadata_scalar_functions": [
+          "allograph_replay",
+          "boundary_replay",
+          "compare",
+          "copy_replay",
+          "train_rows",
+          "word"
+        ],
+        "input_and_helper_hashes": [
+          {
+            "path": "allograph_factor/configs/IT_EVA_FP.json",
+            "bytes": 6074,
+            "sha256": "6f350336e00e194a459765ec395df90f52cb5fb070531a27b5534b2bcd54c66a"
+          },
+          {
+            "path": "allograph_factor/configs/IT_EVA_KT.json",
+            "bytes": 6063,
+            "sha256": "99e3ed1987be5fcb30698cf351612afd0ada357b434c5b92761d3a0b45e25d9a"
+          },
+          {
+            "path": "allograph_factor/configs/IT_EVA_both.json",
+            "bytes": 6067,
+            "sha256": "fafebbcb3c6cee60bcac8bc7ae7d6825fd8312920cc01c6e72030c41c1e21789"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_EVA_FP.json",
+            "bytes": 7334,
+            "sha256": "c79a3c15679ec345f1a0d694b6eefb671c66e8057f6632f19e1f87cbcb9dc2a1"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_EVA_KT.json",
+            "bytes": 7317,
+            "sha256": "7b45a993febc0f718e12b74c307d9d06367d370c259d68cb76a55c03fbb939f1"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_EVA_both.json",
+            "bytes": 7330,
+            "sha256": "2c8bcc79f0142e30bd83556717e8de66eeeb23a4e8cabf74337f4dbdfaa5ca72"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_merged_FP.json",
+            "bytes": 7485,
+            "sha256": "ef4cb4dffafc37df236a058e6f1ffb5c3a2188c235de3b4f6aeed1a4dfb2499a"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_merged_KT.json",
+            "bytes": 7462,
+            "sha256": "592e9433af051d09009809747631a919ee7001ee23266c59559378661d937ba3"
+          },
+          {
+            "path": "allograph_factor/configs/ZL_merged_both.json",
+            "bytes": 7477,
+            "sha256": "4277d09673a569b02273be34c17afa2c0ea4c63cb08493c87468969511a637cc"
+          },
+          {
+            "path": "allograph_factor/inputs/IT_EVA_train_dev.json.gz",
+            "bytes": 167586,
+            "sha256": "c5194c69e84504f602852ba310612b3d0caf44c14b50faa2f7739eb26c55028f"
+          },
+          {
+            "path": "allograph_factor/inputs/ZL_EVA_train_dev.json.gz",
+            "bytes": 166881,
+            "sha256": "700de289a4f460b6e4adff082f490b59f2600156008787560527751caf9e556a"
+          },
+          {
+            "path": "allograph_factor/inputs/ZL_merged_train_dev.json.gz",
+            "bytes": 166102,
+            "sha256": "03583a3b93bb4576a63bffc7a88658ea3942cca31e1e07c815ab1a1c77dade25"
+          },
+          {
+            "path": "allograph_factor/replay.py",
+            "bytes": 5774,
+            "sha256": "72bb97a0a905c86f76c9f32699bfaaade0d5c291078ddb4d1c9a0863b7b27dec"
+          },
+          {
+            "path": "copy_prediction/configs/IT_EVA.json",
+            "bytes": 47229,
+            "sha256": "01e1e3f04ae35d2b31cf9570318a37b96cac17d93b31d8fe948e152dbe379d23"
+          },
+          {
+            "path": "copy_prediction/configs/ZL_EVA.json",
+            "bytes": 47858,
+            "sha256": "050324d07af692c2548b82798a936bad4fa7e4ada763877c40ef8a3aed991959"
+          },
+          {
+            "path": "copy_prediction/configs/ZL_merged.json",
+            "bytes": 47933,
+            "sha256": "3acd1881bff5162ec97841dea3f90fc5bf5c3cb213b79cd45b4c215ba94ad816"
+          },
+          {
+            "path": "final_reserve/freeze.json",
+            "bytes": 13047,
+            "sha256": "b3995e3e230957319b4dca04518b81e58dbca1ac8d4ab35b141498dda23d9a55"
+          },
+          {
+            "path": "final_reserve/new_saved_replay/position_adapter.py",
+            "bytes": 5638,
+            "sha256": "4ff4ac3f337750a9dea3bf2b4f6476f75773702e6a2548a06bca25887dce902d"
+          },
+          {
+            "path": "final_reserve/new_saved_replay/replay.py",
+            "bytes": 12806,
+            "sha256": "6b9c379b370da206d2711db7a656ea0bd260270aee33a17693e51e698ad8a414"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_IT_EVA.json",
+            "bytes": 1278,
+            "sha256": "e453c1910b492929b5e6747cd854a91a44d79e05c18d93e163253b8baf7a5095"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_IT_EVA.npz",
+            "bytes": 213853,
+            "sha256": "1a12fff2f74c57a4a13b25f1318648e6b3ef3446fa231fbc7101e2158b10e936"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_IT_EVA_rows.json.gz",
+            "bytes": 27868,
+            "sha256": "9191ff0d9b834fffe73838562c44fed71755bceab5bad154d1cdc7bfa4a2b968"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_EVA.json",
+            "bytes": 1279,
+            "sha256": "11db3a6b3f85c33b1c5a7b43f4b1d70d3d31530163a663eea289d7de48273f95"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_EVA.npz",
+            "bytes": 211023,
+            "sha256": "e4c03c1a78302fe2f232c1c4874d252e18bfaf27395475f6fdcf4cc39746a17d"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_EVA_rows.json.gz",
+            "bytes": 27868,
+            "sha256": "1a7692f1cfdff56f3d8690351a2da1314116ef0085b29954469fd08f03fe7be6"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_merged.json",
+            "bytes": 1288,
+            "sha256": "9f21eaf40df6193bb72b98d7c1a054c1abaf5d23ffe88b0bc2c59ebcd8871b27"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_merged.npz",
+            "bytes": 213244,
+            "sha256": "5f064c67a14032cb478e4d0190275fe033ba1a2f8b85b9ad7f01ae52ea5b7634"
+          },
+          {
+            "path": "final_reserve/reserve_v1/allograph_ZL_merged_rows.json.gz",
+            "bytes": 27751,
+            "sha256": "cfa12b1d1f56835e646c3522aa4cd836fc81d1330ad65dcc096239a6fd922076"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_IT_EVA.json",
+            "bytes": 1331,
+            "sha256": "8086d7e8f9e5803aa5a21eb423b67b159be480d124f859cce4281da848e3dfbf"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_IT_EVA.npz",
+            "bytes": 21682,
+            "sha256": "82a3838ac32569d8947fd5ad9a8302964f2b22cfa53ec4a0b82a634955df9253"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_IT_EVA_rows.json.gz",
+            "bytes": 22921,
+            "sha256": "db062ead646811ab58eaf5a6770f9e2d4e606235cd05fedba37d832bca8f6c35"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_EVA.json",
+            "bytes": 1346,
+            "sha256": "15eacb8eddb2414d23a72addebcebdfb7a604bee9d1985561ee2245e7357111c"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_EVA.npz",
+            "bytes": 21628,
+            "sha256": "2253af812cec1eaa1c3011274807a116c7f0a1cbb64c5e72a14dd65793fd9c00"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_EVA_rows.json.gz",
+            "bytes": 23007,
+            "sha256": "622791b933f9d731d62b0d803181dfa8c4fbc97c505ee09d63ca7569222cd0af"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_merged.json",
+            "bytes": 1355,
+            "sha256": "ed9f30ef9464c774ec22d800285b54ab2d4788ff831aff34d518cc8311a7bc58"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_merged.npz",
+            "bytes": 21700,
+            "sha256": "a1358de7e6e47e897e435c7212bdcae1fff3a904c3b64f6c94e62288ab36c3c6"
+          },
+          {
+            "path": "final_reserve/reserve_v1/boundary_ZL_merged_rows.json.gz",
+            "bytes": 23041,
+            "sha256": "80fa8c6b9642a94096fe699cd0ee1484ba3ecaeca51988925c8298d66b860519"
+          },
+          {
+            "path": "final_reserve/reserve_v1/complete.json",
+            "bytes": 1265,
+            "sha256": "084b31bd1f43402c2062fc32df07555d19791830a3a046510cf5d8d803bb9eab"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_IT_EVA.json",
+            "bytes": 2713,
+            "sha256": "f47d050a1f35e797a90903d8c13c96be96d03257f9c8fd7417d639ee5cb69f8d"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_IT_EVA.npz",
+            "bytes": 210135,
+            "sha256": "34e2bffaa9b20e6566127eb64bf1f7f42acfd79d2173f0eff817b23ede3e7142"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_IT_EVA_rows.json.gz",
+            "bytes": 173109,
+            "sha256": "a0d7112278d0f6fed56b37407e4767110a855d311bff43c0e3c62e38a0f505a6"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_EVA.json",
+            "bytes": 2729,
+            "sha256": "bd0f9d1b7e4766faf2820699e887b321506b183e2d3ae7a5044755e62d08e644"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_EVA.npz",
+            "bytes": 208422,
+            "sha256": "b85afad67540417b42fbf17659b96678511560cd22905e0db66e7e760296d6e6"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_EVA_rows.json.gz",
+            "bytes": 170674,
+            "sha256": "359dd6f7256072ca35478cdad0af27e6db58ad4c0946d4ab6cad4a497a057fd0"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_merged.json",
+            "bytes": 2736,
+            "sha256": "fb3c573f014f6fd2089f14ac0d6fa13db07f2590d549c1c1d32c5bda05c54a63"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_merged.npz",
+            "bytes": 209954,
+            "sha256": "78586662b972e194e8c308d7338a757a543ee8680cded8bf52e35391e4dc5203"
+          },
+          {
+            "path": "final_reserve/reserve_v1/copy_ZL_merged_rows.json.gz",
+            "bytes": 168499,
+            "sha256": "88b2a77050675d9513afc41374cdc4e27b5b873133699d8abb8e0455c52e3807"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_IT_EVA.json",
+            "bytes": 1118,
+            "sha256": "170f8fcdbd0a2ae53db04c42060f28c989df089fb91cb3f279147cdcc00c7cfe"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_IT_EVA.npz",
+            "bytes": 3866,
+            "sha256": "57545e40904a90bd561163748acb1d0cbe0f733ab200df0c736fc2452847b2bf"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_IT_EVA_rows.json.gz",
+            "bytes": 1055,
+            "sha256": "d84c992270f1501364851c40d6b55210f5bb0aff89e78d9093883e5bab906465"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_EVA.json",
+            "bytes": 1117,
+            "sha256": "a86eaf28a791eba67843ce39f62554f9d8fa15f060a6bcd27deab6a53b55333c"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_EVA.npz",
+            "bytes": 3887,
+            "sha256": "02c93362993b50ee2ee2bfa5e0be1af14fb94086254f0eef3297bb9ba1b700af"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_EVA_rows.json.gz",
+            "bytes": 1074,
+            "sha256": "454e53a20e85b999c9fe4fd66a0bcbfbeaceea74dd88af9f75469167b133b4db"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_merged.json",
+            "bytes": 1126,
+            "sha256": "f9c0c6a5e103f48b403b0928cfab4748c44537e5fde7c5b099fbc62a9a748318"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_merged.npz",
+            "bytes": 3890,
+            "sha256": "1d21be35fa03e7678b86151cec6fd41677ea11bc0c7a420b6c8b22ac2232d286"
+          },
+          {
+            "path": "final_reserve/reserve_v1/paragraph_ZL_merged_rows.json.gz",
+            "bytes": 1066,
+            "sha256": "8b153c0799144164ac1f29ee8c1fb9192658848ed660690b377df7051bed0662"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/IT_EVA_coarse.npz",
+            "bytes": 27645,
+            "sha256": "b172c5ba8f15ff817d12573b55120d5c16ab4153509f164f3a7cf124503ae4ad"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/IT_EVA_exact.npz",
+            "bytes": 29049,
+            "sha256": "ba5b38db82cc824e3448d8820d9e4490592c30a3cf87c29aefaf5f25efd9f4cb"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/ZL_EVA_coarse.npz",
+            "bytes": 27653,
+            "sha256": "72e7f21510f14efe793698e747afea2cb3f3e519e398c32e38da133a73b16834"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/ZL_EVA_exact.npz",
+            "bytes": 28638,
+            "sha256": "5f20e8ff6f347c5f8ec357d499dbe9eff5c2218a2d44788cb31575a17f2ca9ed"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/ZL_merged_coarse.npz",
+            "bytes": 27709,
+            "sha256": "e883a59a32c02e97b6695cd776df3fd2475223afc27f9f544d4f82d94503f02b"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position/nulls/ZL_merged_exact.npz",
+            "bytes": 28554,
+            "sha256": "6a09193de867b1084a1009ea7d5f88c89b1e9fb25f0c8052d7a0a9d3c08441e6"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position_IT_EVA.json",
+            "bytes": 2794,
+            "sha256": "30c671b30ac06b53344d869eb89b9325e2d7e0f7b3a4f416f7bc75c0cc23fadd"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position_ZL_EVA.json",
+            "bytes": 2790,
+            "sha256": "3e6d46ddd31ad71b7e92d436fbaa218f4b55e321dfb7fa46c60639932c45dd5d"
+          },
+          {
+            "path": "final_reserve/reserve_v1/position_ZL_merged.json",
+            "bytes": 2801,
+            "sha256": "0d1247c54a056495ab18b90d5f03430037a651c41dce91a2796ba705d955c170"
+          },
+          {
+            "path": "metadata_sensitivity/inputs/IT2a-n_train_legacy.json.gz",
+            "bytes": 76186,
+            "sha256": "d8001be26b06c64063e640f3ed7c1241c6f52cf75bd4c6b8cd6bfe6b0d5e211b"
+          },
+          {
+            "path": "metadata_sensitivity/inputs/ZL3b-n_train_legacy.json.gz",
+            "bytes": 76618,
+            "sha256": "139f2ce735689086e4a64f1786271f5f18b3ab288cf7ef84d6abcd994d06cc8c"
+          },
+          {
+            "path": "metadata_sensitivity/replay.py",
+            "bytes": 8681,
+            "sha256": "2f230555da6b0dbcf199842c34a1dd9727cf849485aa5b1e869fdd092d96c094"
+          },
+          {
+            "path": "paragraph_factor/IT_EVA/frozen_config.json",
+            "bytes": 9492,
+            "sha256": "bdf74d139af45df4d9f895e85f7b0ef4564ee8a60e28f729a35f563f3a8e4e95"
+          },
+          {
+            "path": "paragraph_factor/IT_EVA/probability_tables.json.gz",
+            "bytes": 586451,
+            "sha256": "aae345e84082ff9d471fd8d083adb2c96f9b332ddbdcfc6bc81649dd55d319aa"
+          },
+          {
+            "path": "paragraph_factor/ZL_EVA/frozen_config.json",
+            "bytes": 10120,
+            "sha256": "3c967530d66fc14a52c63672600879e11c9c6567b415ef743dd42b7d7987f1d1"
+          },
+          {
+            "path": "paragraph_factor/ZL_EVA/probability_tables.json.gz",
+            "bytes": 920192,
+            "sha256": "1a2bfd91dfa9c2d49d33e80efe12470204451345230a3426e43d9e45bfb3e2ee"
+          },
+          {
+            "path": "paragraph_factor/ZL_merged/frozen_config.json",
+            "bytes": 10191,
+            "sha256": "db93a809244b5119928541fbd097d309013a51dab1623efe067d3d1c8459e65c"
+          },
+          {
+            "path": "paragraph_factor/ZL_merged/probability_tables.json.gz",
+            "bytes": 1361083,
+            "sha256": "b3ebb959ce543a4e0e4bb5261467c9d12b261ad5bd38320b0bd32c351f0c4355"
+          },
+          {
+            "path": "paragraph_factor/replay.py",
+            "bytes": 8715,
+            "sha256": "75ee7f3a371017b2e418e252089796735097f6a6b232d51b9ca823b7c04a67d9"
+          },
+          {
+            "path": "results/boundary_word_confirm_IT_frozen_config.json",
+            "bytes": 4598,
+            "sha256": "cdaee652b2a994c49b77b04d7932fcc7902e8b1af46b55d0522460918073c315"
+          },
+          {
+            "path": "results/boundary_word_confirm_frozen_config.json",
+            "bytes": 5237,
+            "sha256": "3abecbc2c0dfbd8f282d00853a33296fab5587a084cf563d4fd247634eecfe8d"
+          },
+          {
+            "path": "results/boundary_word_confirm_merged_frozen_config.json",
+            "bytes": 5288,
+            "sha256": "bdf8cdcc3ca52914f7d39a6d86054ee9d28b5b3355ec086b33a6355c1b9428fe"
+          }
+        ],
+        "all_input_bytes_unchanged": true,
+        "elapsed_seconds": 34.137625875,
+        "raw_corpus_reopened": false,
+        "new_targets_selected": false,
+        "models_or_parameters_selected": false,
+        "corpus_or_worker_imported": false,
+        "saved_reserve_packet_read": true,
+        "position_null_summation": "math.fsum for all 11994 draws; edit paths independently enumerated",
+        "scope": "Full probability and position replay only; aggregation/bootstrap/Holm checked separately by saved_output_audit.py."
+      }
+    },
+    {
+      "name": "metadata_probability",
+      "command": [
+        "python3",
+        "research/research7h/metadata_sensitivity/replay.py",
+        "--run",
+        "research/research7h/metadata_sensitivity/reserve_v1",
+        "--out",
+        "$AUDIT/metadata_probability.json"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 11.243342792,
+      "log": "metadata_probability.log",
+      "log_sha256": "851b33865644e38ae45a83010aa17abc0fc39520785a5bc0582a4f4ba79782cb",
+      "receipt_path": "metadata_probability.json",
+      "receipt_sha256": "46974caa00cdc81f4c2b43b0dc31368aab74ee254a849830d624d06555754e5b",
+      "receipt": {
+        "completed_utc": "2026-11-17T15:16:37.663904+00:00",
+        "all_passed": true,
+        "findings": [
+          {
+            "name": "ZL_EVA",
+            "family": "copy",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "global": 2.1316282072803006e-14,
+              "edit_HV": 1.4210854715202004e-14,
+              "exact_HV_matched": 1.4210854715202004e-14,
+              "edit_H_matched": 1.4210854715202004e-14,
+              "edit_V_matched": 1.4210854715202004e-14,
+              "exact_H_matched": 1.4210854715202004e-14,
+              "exact_V_matched": 1.4210854715202004e-14,
+              "edit_H_independent": 1.4210854715202004e-14,
+              "exact_HV_independent": 1.4210854715202004e-14
+            },
+            "max_error": 2.1316282072803006e-14
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "allograph",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "FP_quotient": 7.105427357601002e-15,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 7.105427357601002e-15,
+              "FP_complete_global": 7.105427357601002e-15,
+              "KT_quotient": 7.105427357601002e-15,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 7.105427357601002e-15,
+              "KT_complete_global": 7.105427357601002e-15,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 1.4210854715202004e-14,
+              "both_complete_global": 7.105427357601002e-15
+            },
+            "max_error": 1.4210854715202004e-14
+          },
+          {
+            "name": "ZL_EVA",
+            "family": "boundary",
+            "targets": 1448,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            },
+            "max_error": 7.105427357601002e-15
+          },
+          {
+            "name": "ZL_merged",
+            "family": "copy",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "global": 1.4210854715202004e-14,
+              "edit_HV": 1.4210854715202004e-14,
+              "exact_HV_matched": 1.4210854715202004e-14,
+              "edit_H_matched": 1.4210854715202004e-14,
+              "edit_V_matched": 1.4210854715202004e-14,
+              "exact_H_matched": 1.4210854715202004e-14,
+              "exact_V_matched": 1.4210854715202004e-14,
+              "edit_H_independent": 1.4210854715202004e-14,
+              "exact_HV_independent": 1.4210854715202004e-14
+            },
+            "max_error": 1.4210854715202004e-14
+          },
+          {
+            "name": "ZL_merged",
+            "family": "allograph",
+            "targets": 4168,
+            "errors": {
+              "base": 1.4210854715202004e-14,
+              "FP_quotient": 7.105427357601002e-15,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 7.105427357601002e-15,
+              "FP_complete_global": 7.105427357601002e-15,
+              "KT_quotient": 7.105427357601002e-15,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 7.105427357601002e-15,
+              "KT_complete_global": 7.105427357601002e-15,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 7.105427357601002e-15,
+              "both_complete_global": 7.105427357601002e-15
+            },
+            "max_error": 1.4210854715202004e-14
+          },
+          {
+            "name": "ZL_merged",
+            "family": "boundary",
+            "targets": 1448,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            },
+            "max_error": 7.105427357601002e-15
+          },
+          {
+            "name": "IT_EVA",
+            "family": "copy",
+            "targets": 4163,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "global": 7.105427357601002e-15,
+              "edit_HV": 7.105427357601002e-15,
+              "exact_HV_matched": 7.105427357601002e-15,
+              "edit_H_matched": 7.105427357601002e-15,
+              "edit_V_matched": 7.105427357601002e-15,
+              "exact_H_matched": 7.105427357601002e-15,
+              "exact_V_matched": 7.105427357601002e-15,
+              "edit_H_independent": 7.105427357601002e-15,
+              "exact_HV_independent": 7.105427357601002e-15
+            },
+            "max_error": 7.105427357601002e-15
+          },
+          {
+            "name": "IT_EVA",
+            "family": "allograph",
+            "targets": 4163,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "FP_quotient": 7.105427357601002e-15,
+              "FP_restoration": 0.0,
+              "FP_restoration_global": 0.0,
+              "FP_complete": 7.105427357601002e-15,
+              "FP_complete_global": 7.105427357601002e-15,
+              "KT_quotient": 7.105427357601002e-15,
+              "KT_restoration": 0.0,
+              "KT_restoration_global": 0.0,
+              "KT_complete": 7.105427357601002e-15,
+              "KT_complete_global": 7.105427357601002e-15,
+              "both_quotient": 7.105427357601002e-15,
+              "both_restoration": 0.0,
+              "both_restoration_global": 0.0,
+              "both_complete": 7.105427357601002e-15,
+              "both_complete_global": 7.105427357601002e-15
+            },
+            "max_error": 7.105427357601002e-15
+          },
+          {
+            "name": "IT_EVA",
+            "family": "boundary",
+            "targets": 1455,
+            "errors": {
+              "base": 7.105427357601002e-15,
+              "last": 7.105427357601002e-15,
+              "target_escape": 0.0
+            },
+            "max_error": 7.105427357601002e-15
+          }
+        ],
+        "source_replay_sha256": "2f230555da6b0dbcf199842c34a1dd9727cf849485aa5b1e869fdd092d96c094",
+        "scalar_reference_sha256": "72bb97a0a905c86f76c9f32699bfaaade0d5c291078ddb4d1c9a0863b7b27dec",
+        "raw_corpus_loaded": false,
+        "new_target_pages_loaded": false,
+        "reserve_loaded": false,
+        "method": "Independent scalar hierarchical counts, arithmetic mixtures, explicit edit paths, Bernoulli restoration and scalar first-unit contexts. Saved train/target records only."
+      }
+    }
+  ],
+  "all_passed": true,
+  "summary": {
+    "manifests_checked": 8,
+    "primary_contrasts": 30,
+    "global_restore_auxiliary": 9,
+    "position_conditions": 6,
+    "probability_tasks": 12,
+    "probability_arrays": 111,
+    "max_primary_cost_error": 2.842170943040401e-14,
+    "position_permutations": 11994,
+    "max_position_gain_error": 1.222980050563649e-16,
+    "max_position_movement_error": 0.0,
+    "metadata_tasks": 9,
+    "max_metadata_cost_error": 2.1316282072803006e-14
+  },
+  "orchestration_note": "Initial audit-driver syntax failure occurred before export or replay; the initial script and error note are preserved in the temporary directory. A later summary-formatting stdin encoding error also occurred before execution. Only audit/report orchestration was corrected; no archived scientific code changed."
+}

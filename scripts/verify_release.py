@@ -77,7 +77,8 @@ def verify_snapshot():
          dict(container='files')),
     ]
     for name, base in [('reserve_publication_manifest.json', RESEARCH),
-                       ('cipher_controls/voynich_substitution/artifact_manifest.json', RESEARCH/'cipher_controls/voynich_substitution')]:
+                       ('cipher_controls/voynich_substitution/artifact_manifest.json', RESEARCH/'cipher_controls/voynich_substitution'),
+                       ('line_boundary_prediction/results_artifact_manifest.json', RESEARCH/'line_boundary_prediction')]:
         path = RESEARCH/name
         if path.exists():
             definitions.append((path, base, dict(container='files')))

@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-11-17T15:24:33.273539+00:00",
+  "status": "approved_with_optional_clarity_suggestions",
+  "blocking_issues": [],
+  "facts": [
+    {
+      "name": "ZL_EVA",
+      "targets": 647,
+      "pages": 41,
+      "leaves": 17,
+      "mean_leaf": 0.00920383745773409,
+      "pooled": 0.024690388231409174,
+      "loo_range": [
+        -0.0027333365940981867,
+        0.016532059926150047
+      ],
+      "omit_f90": -0.0027333365940981867,
+      "target_unknown_units": 0,
+      "source_unknown_units": 2,
+      "first_target_escape_bits": 0.0,
+      "target_escape_bits": 0.0,
+      "cost_identity": "complete = first_class + mapped_continuation + target_escape = first_actual + mapped_continuation + target_escape - first_target_escape",
+      "selected": [
+        100,
+        100,
+        0.5
+      ],
+      "training_targets": 1548,
+      "final_unseen": {
+        "base": 28,
+        "augmented": 116
+      }
+    },
+    {
+      "name": "ZL_merged",
+      "targets": 647,
+      "pages": 41,
+      "leaves": 17,
+      "mean_leaf": 0.016080142419557186,
+      "pooled": 0.027163395794931704,
+      "loo_range": [
+        -9.389622684630172e-05,
+        0.02268466497012649
+      ],
+      "omit_f90": -9.389622684630172e-05,
+      "target_unknown_units": 0,
+      "source_unknown_units": 2,
+      "first_target_escape_bits": 0.0,
+      "target_escape_bits": 0.0,
+      "cost_identity": "complete = first_class + mapped_continuation + target_escape = first_actual + mapped_continuation + target_escape - first_target_escape",
+      "selected": [
+        100,
+        100,
+        0.5
+      ],
+      "training_targets": 1548,
+      "final_unseen": {
+        "base": 27,
+        "augmented": 117
+      }
+    },
+    {
+      "name": "IT_EVA",
+      "targets": 656,
+      "pages": 41,
+      "leaves": 17,
+      "mean_leaf": 0.016385183736901933,
+      "pooled": 0.032681061629520884,
+      "loo_range": [
+        -0.0064349780338325765,
+        0.02541459384759119
+      ],
+      "omit_f90": -0.0064349780338325765,
+      "target_unknown_units": 0,
+      "source_unknown_units": 0,
+      "first_target_escape_bits": 0.0,
+      "target_escape_bits": 0.0,
+      "cost_identity": "complete = first_class + mapped_continuation + target_escape = first_actual + mapped_continuation + target_escape - first_target_escape",
+      "selected": [
+        100,
+        100,
+        0.5
+      ],
+      "training_targets": 1651,
+      "final_unseen": {
+        "base": 26,
+        "augmented": 111
+      }
+    }
+  ],
+  "render_check": {
+    "render_ok": true,
+    "tables": 6,
+    "focusable_table_regions": 6,
+    "native_details": 3,
+    "undefined_or_nonfinite": false,
+    "small_negative_loo_preserved": true,
+    "gate_hidden_when_unreviewed": true
+  },
+  "scientific_scope": {
+    "previously_used_dev_only": true,
+    "not_independent_confirmation": true,
+    "loo_is_descriptive_not_ci": true,
+    "real_crossline_dependence_not_established": true,
+    "all_90_grid_points_independently_replayed": true,
+    "first_target_identity_cost_not_double_counted": true,
+    "all_current_dev_target_unknown_costs_zero": true
+  },
+  "integration": {
+    "builder_now_present": true,
+    "representations_to_results_mapping_checked": true,
+    "summary_complete_audit_hash_binding_checked": true,
+    "config_hashes_checked": true,
+    "frontend_boolean_gate_not_a_security_boundary": true
+  },
+  "suggestions": [
+    {
+      "severity": "optional_clarity",
+      "location": "完整费用表头",
+      "suggestion": "将基线/条件模型完整成本写为等叶平均完整成本；末列继续明确是全部目标身份费之和，避免平均与总和混读。"
+    },
+    {
+      "severity": "optional_clarity",
+      "location": "筛选计数表的跨 H 列",
+      "suggestion": "注明跨 H 是描述计数，不属于互斥排除原因；当前三表示均为 0，不影响现有分母。"
+    },
+    {
+      "severity": "optional_clarity",
+      "location": "费用说明",
+      "suggestion": "可补充当前三表示目标未知身份费（含首单位）均为 0；非零训练折未知首单位仍按冻结规则付费。首实际成本已含首身份费，若展示拆分不要再重复相加。"
+    }
+  ],
+  "word_index_ui_suggestions": [
+    "精确词形搜索作为默认，明确 ZL/IT 版本与原 EVA 拼写；近形搜索另开开关，不把近形词当作相同词或译词。",
+    "每条命中显示 folio、locus、词槽、正文/标签类型和左右文，默认按手稿顺序；官方原图按需打开，只有已核验坐标才显示近似框。",
+    "两版分栏并列保留分词与不可辨认符差异，不能凭词槽索引强行逐词对齐；没有对应关系时直说未对齐。",
+    "把词次、不同页数、不同叶数分开标明；正文/图像标签可筛选，默认显示当前过滤范围，不给语义或重要性排名。",
+    "提供可复制的查询深链与含版本/来源哈希的结果下载，并显式说明全书索引是资料阅读工具；已公开的页不再冒充未来盲测材料。"
+  ],
+  "limitations": [
+    "静态源码、保存数据与实际 JavaScript 字符串渲染审查；未做浏览器视觉/手机/键盘实测。",
+    "没有重跑模型或新增目标；独立数值核验依据既有 audit_report，本次只复核保存汇总关系与展示契约。"
+  ],
+  "source_inputs": [
+    {
+      "path": "line_boundary_prediction/run_v1/summary.json",
+      "sha256": "439c7d896e119ccdf89a56d89b839c58dc49d880390801a702b1f63b7ae13ac5"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/complete.json",
+      "sha256": "eb8746d51b9809c097e61f0091d4503cf60283ef83b3d9cab79dc171c5a4bd65"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/all_configs_frozen.json",
+      "sha256": "a2d98fbe8e26f9275c5e8d4be89ef4b0423d91e381103027c6cb09acaddc97a9"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/execution_receipt.json",
+      "sha256": "739d9555cd9b49efcfe557b4aa890969a43aa01f49d25282935e315eda369662"
+    },
+    {
+      "path": "line_boundary_prediction/independent_audit/audit_report.json",
+      "sha256": "21c83f0762b1c159bc719ff178f0956c29d97e9ed6d2a5ef187ec74b3a39bc59"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/configs/ZL_EVA.json",
+      "sha256": "41ef74b37d76d33b9f4f6e138aa94ced998e86ae2b2e27422951ad382804341d"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/ZL_EVA_support.json.gz",
+      "sha256": "96abafd258fc0c1edb2354deca87a6b93abdbcf840739ee435d1717386526c97"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/configs/ZL_merged.json",
+      "sha256": "a12ca3f4b4e693336d706d0f7c2794da270b8c25aa60d6fb6be7842499ae3b54"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/ZL_merged_support.json.gz",
+      "sha256": "d6aaa514318acf7af31066153f8a8354f60d366df1e6bfead588427dc05af304"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/configs/IT_EVA.json",
+      "sha256": "756a0a2d9ed8443a89ca95afa3c2b2645480a9844c0ef01eed0b5faae8bde5f7"
+    },
+    {
+      "path": "line_boundary_prediction/run_v1/IT_EVA_support.json.gz",
+      "sha256": "fc0d026511a2829550ae7c2d6b8967f9adc3b2e7274a0cb2bddd6a0947c7e590"
+    }
+  ],
+  "frontend_inputs": [
+    {
+      "path": "site/crossline.js",
+      "sha256": "f5e7997108ac3c6240eb35ca060f27f4fde09fe720bf4b84b6862c1368af1041"
+    },
+    {
+      "path": "site/app.js",
+      "sha256": "91ec46c571b80f7d13ceafa8ca099b4aa07cca3c90be94057b9a5c718e177e26"
+    },
+    {
+      "path": "site/final-reserve.js",
+      "sha256": "aa30894294e8e3da45a16da2f158ee6f55db0bb23e31c68baa02e80deebdc418"
+    },
+    {
+      "path": "site/style.css",
+      "sha256": "1fe4d6d622b3804237590961bfc1db50b3556565a42f502b6460f01ec227766a"
+    },
+    {
+      "path": "scripts/build_site_data.py",
+      "sha256": "327851983b563ce83132f49661fed468340fd20bcdea4c89ae57108cdc2aa5ee"
+    }
+  ],
+  "no_files_modified_except_review_outputs": true
+}

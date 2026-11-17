@@ -33,7 +33,7 @@ python3 research/research7h/final_reserve/report_saved.py --run research/researc
 
 访问范围必须准确：legacy metadata replay 的 reserve_loaded=false 是冻结输出字段，不能解释为“没有接触预留目标”。传入 reserve_v1 时它会读取保存的预留目标，但不重开原始语料加载器；见 final_reserve/replay_scope_note.txt 及综合审核中的 saved_reserve_packet_read=true、raw_corpus_reopened=false。不要修改冻结程序来消除字段歧义。
 
-未来跨行研究与上述完成结果分开：line_boundary_design/ 是只用允许 train+legacy/dev 记录的资格与设计审查；line_boundary_prediction/ 的协议、toy 核验和独立审核准备已冻结，freeze_status.json 当前为 design_frozen_not_executed，尚无真实 dev 评分。未来执行范围仅为 train+legacy 内选参和 dev 描述性评价，不自动获得 confirm/reserve 新评分授权；需先核对当时的状态、执行门槛与剩余时间。合成校准结果不等于真实跨行结果。
+跨行探索与上述预留评估分开：line_boundary_design/ 是只用允许 train+legacy/dev 记录的资格与设计审查；line_boundary_prediction/ 的协议、toy 核验和独立审核准备已冻结，freeze_status.json 是原设计冻结时的历史收据；后续 run_v1/complete.json 与 independent_audit/audit_report.json 已记录全部三表示的真实 dev 评价及 90 个选参点复算。执行范围仅为 train+legacy 内选参和 dev 描述性评价，不自动获得 confirm/reserve 新评分授权；需先核对当时的状态、执行门槛与剩余时间。合成校准结果不等于真实跨行结果。
 
 复现习惯
 先运行 python3 scripts/verify_release.py 核验公开快照。可选 --replay anchor copy allograph metadata --output 仓库外新目录，会调用四个保存证据复算入口；它不重新选参数，也不打开新分区。20页便携图文工作包由 scripts/export_review_bundle.py 生成，原始逐页JSON与JPEG保持字节不变。
@@ -44,7 +44,7 @@ python3 research/research7h/final_reserve/report_saved.py --run research/researc
 书手元数据另有已发现的范围问题：原实验使用页级H，f115r的H=@应结合行内H=2/3覆盖；旧模型把@当作一个类别，不能称它是第六位书手或完整真实书手控制。原冻结分数保留，行内覆盖的修正采用单独敏感性实验；不要静改旧parser后继续引用原哈希。I是插图类别，C才是Currier的手，H是Davis标签；这些分类也不等于已知词义。
 
 结论门槛
-line_boundary_calibration 的已知答案实验专门检查观察器失配：真实依赖不变时，目标符号重编码可使旧模型收益变负；真独立时两个近似预测器也可能有小正差。因此，固定预测器的对数收益不是互信息，也不是意义有无的分类器。--replay synthetic 可复算全部保存合成证据；首seed的9/180次CV网格另有独立审计。真实跨行模型尚在另行准备，不能把合成观察结果当作手稿角色编码的证据。
+line_boundary_calibration 的已知答案实验专门检查观察器失配：真实依赖不变时，目标符号重编码可使旧模型收益变负；真独立时两个近似预测器也可能有小正差。因此，固定预测器的对数收益不是互信息，也不是意义有无的分类器。--replay synthetic 可复算全部保存合成证据；首seed的9/180次CV网格另有独立审计。真实跨行探索见 line_boundary_prediction/研究报告.txt；不能把合成观察结果或其小幅开发集收益当作手稿角色编码的证据。
 词频规律、模型预测收益、词典命中、植物相似、可恢复密钥均不能单独当作译文。语言/意义判断需要固定可执行规则、独立跨页对应、连续语法和能通过的阳性及阴性对照。直接先例须核查原论文；不要把本项目复核称作首次发现。三个转写/单位表示共享材料，不能当作三份独立手稿。
 
 交付一个新实验时至少留下
