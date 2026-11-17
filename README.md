@@ -2,6 +2,8 @@
 
 从原图、公开转写和带对照的实验出发，记录可复核的规律、失败结果与候选假说。**目前没有可靠译文，也没有宣布破译。**
 
+本轮七小时研究窗口已完成（2026-11-17 09:50:25–16:50:25 UTC）。实际结题时间与验收记录见 `research/research7h/session.json` 和 `publication_checks/window_closure.json`。下一轮计划尚未执行。
+
 网站：[HaibinLai.github.io/Voynich-manuscript](https://HaibinLai.github.io/Voynich-manuscript/) · [从这里开始](START_HERE.txt) · [后续研究者说明](RESEARCH_AGENT_GUIDE.txt)
 
 ## 当前内容
