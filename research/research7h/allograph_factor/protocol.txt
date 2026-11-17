@@ -1,0 +1,88 @@
+Reversible FP / KT factor experiment v1 — freeze before model outcomes
+
+Question: can statistical parameter sharing between f/p and/or k/t improve the
+probability assigned to complete original words after paying every restoration
+bit? A result is not evidence of phonetic identity, semantic identity or a
+historical allograph. Motivated by already-explored confirm analyses and the
+prior f57v observation; this is exploratory, not a novel discovery of variants.
+
+Splits: train+legacy fit all counts; dev selects finite hyperparameters. Reserve
+is never returned by corpus.load, fitted, scored or used for positive controls.
+Confirm is already used in earlier project analyses. All dev configurations and
+synthetic checks must be frozen and sent to root before a gated once-only
+confirm pass. All 3 merge conditions × ZL/EVA, ZL/merged, IT/EVA are reported.
+Main representation ZL/EVA, all other representations predetermined sensitivity.
+
+Map: FP maps p→f; KT maps t→k; both does both. Merged representation additionally
+maps cph→cfh (FP) and cth→ckh (KT). Units are explicit parsed units, not rendered
+strokes; other identities remain. Ω consists of a-z, apostrophe, @000;..@999;
+(EVA1027), plus ch/sh/cth/ckh/cph/cfh (merged1033). Exact quotient sizes:
+EVA FP1026/KT1026/both1025; merged FP1031/KT1031/both1029. Canonical identity is
+branch0; the other member of each pair is branch1. Composite pairs get separate
+counts but share model depth/alpha. g is a unitwise, length-preserving map.
+
+Probability: P_X(x|m)=P_Y(g(x)|m) × product over ambiguous positions j of
+R_j(x_j|g(x),m). Each R is normalized over the complete preimage pair; unchanged
+units cost0. P_Y is a normalized complete nonempty word distribution with EOS.
+All original words remain possible. The restoration factors are conditionally
+independent given the entire encoded quotient word plus known metadata. Future
+quotient neighbors are allowed (already encoded); unrecovered original labels
+are never conditioning inputs. Unknown legal original branches remain possible.
+
+Quotient LM and raw baseline: order4, hierarchical count smoothing alpha100,
+identical global/hand/word-position experts and 15 quarter-simplex mixture
+weights. Word position = paragraph_first/line_first/other, using existing parser.
+Each expert uses the same full train alphabet for that representation/map.
+Missing hand/position expert falls back to global. Mixture is of independently
+nonempty-conditioned probabilities. Train-unseen quotient identities each pay
+log2(|Ω_Y minus train alphabet|) through a uniform UNK split; history uses UNK.
+This is normalized but induces a different original-identity prior than raw
+uniform escape; report escape components separately, no retrospective choice of
+weighted escape. Training-outside Ω is an error, not silently omitted.
+
+Restoration: separate counts for canonical pair f/k/cfh/ckh. Depth0 global pair
+counts with symmetric1/2 prior; depth1 key(pair,hand,word-position,unit-role),
+where unit-role=single/first/middle/last; depth2 additionally left/right quotient
+neighbors with BOS/EOS. Every level uses (count + alpha*parent)/(N+alpha).
+Finite grid depths0/1/2 × alpha1/5/20/100. One shared alpha/depth per merge and
+representation, not separately optimized per pair. Dev selects mean complete
+word restoration loss; ties lower depth then smaller alpha. Report best depth0
+as a matched global-restoration sensitivity. LM weights and restoration choices
+minimize additive separate dev losses, so independent choices equal joint grid
+optimum. More parameter/search flexibility than baseline is explicitly admitted.
+No additional pair, context, alpha, order, or representation search permitted.
+
+Synthetic detection checks, before manuscript train/dev outcomes:
+Five fixed seeds2026111741..45; each 8000 original words in 40 artificial pages,
+200/page; train20/dev10/test10. Metadata hand alternates page H0/H1; every tenth
+word is paragraph_first, other positions line_first every fifth, else other.
+Known quotient lexicon fixed from seed,128 words, equal draw, each word has f/k
+alias sites and short random abcd context. iid aliases Bernoulli .5; position
+aliases Bernoulli .85 or .15 by hand/paragraph-first; difficult correlated labels
+repeat the same pair decision at source/target positions separated by two units
+(distance3, visible to raw4gram, invisible to independent quotient restoration).
+Use all3 merges for each known mechanism, EVA only, same fit/dev budget. Exact
+synthetic generation will be implementation-frozen before scoring. Report all
+45 results, including poor/no detection; no threshold tuning. Positive controls
+check reversible valid probability and restoration against known conditional
+entropy; total predictive gain is not guaranteed. Correlated negative checks
+whether lost original-label dependence is charged; not a classifier of meaning.
+
+Mathematical/code checks: finite toy Ω includes unseen and composite alias
+members. Enumerate every preimage of short quotient words; probabilities sum1,
+reconstruction exact. Enumerate original words through length4 plus analytic
+remaining prefix mass to verify complete normalization within1e−10. Nonempty
+normalization, EOS, unknown branch, mixture and backoff checked independently.
+
+Reporting: complete raw baseline bits, quotient bits (including quotient escape),
+restoration bits, original complete bits, raw/quotient escape bits and unknown
+counts. Primary paired contrasts are each merge vs raw baseline with selected
+restoration; global-only sensitivity separately. Average page loss then leaf loss
+then equal leaf mean.1999 leaf bootstrap:95% and conservative98.333% for3merges
+within each representation; not project-wide exploration correction. Fixed seed
+from SHA('allograph-factor-leaf-v1|representation'), same resamples across merges.
+
+Save raw targets/input splits locally + deterministic gzip for publication; score
+arrays/configs/protocol/source hashes. Independent scalar probability replay from
+saved train/test artifacts, not new confirm load. New public reruns write only to
+fresh output directories with fresh receipts; never overwrite frozen confirm.

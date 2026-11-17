@@ -67,6 +67,17 @@ def main():
             for folder,pattern in [('configs','*.json'),('runs','*.json'),('nulls','*.npz'),('inputs','*.json.gz')]:
                 for path in sorted((position/folder).glob(pattern)):copy(path.relative_to(src))
     # Publish metadata and retrieval script, not the 49 MB full-size image bundle.
+    allograph=src/'allograph_factor'
+    if (allograph/'confirm_complete.json').is_file():
+        inventory=json.loads((allograph/'artifact_manifest.json').read_text())
+        for item in inventory['files']:
+            rel=Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            path=allograph/rel
+            assert digest(path)==item['sha256'] and path.stat().st_size==item['bytes']
+            assert path.suffix not in ['.log','.pdf','.pyc']
+            copy(path.relative_to(src))
+        copy(Path('allograph_factor/artifact_manifest.json'))
     for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',
                  'high_resolution_review.json','review_agent.json','review_agent_verification.json','root_review_spotcheck.json',
                  'review_combined.json','review_verification.json','merge_reviews.py','prepare_circular_views.py',

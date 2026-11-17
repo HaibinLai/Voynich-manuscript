@@ -9,6 +9,7 @@ import argparse
 import datetime
 import hashlib
 import json
+import math
 import re
 import shutil
 
@@ -112,7 +113,17 @@ def main():
         "copy_prediction/完整词复制预测.png", "copy_prediction/完整词复制预测.svg",
         "copy_prediction/protocol.txt", "copy_prediction/replay_verification.json",
         "visual_audit/yale_image_receipt.json", "visual_audit/review_combined.json",
-        "visual_audit/review_verification.json"]
+        "visual_audit/review_verification.json", "visual_audit/f57v_repeat_alignment.json",
+        "visual_audit/f57v_repeat_alignment.png", "visual_audit/f57v重复序列说明.txt",
+        "copy_prediction/position_specificity/website_data.json",
+        "copy_prediction/position_specificity/研究报告.txt",
+        "copy_prediction/position_specificity/上一行位置特异性.png",
+        "copy_prediction/position_specificity/上一行位置特异性.svg",
+        "copy_prediction/position_specificity/protocol.txt",
+        "copy_prediction/position_specificity/replay_verification.json",
+        "allograph_factor/website_data.json", "allograph_factor/研究报告.txt",
+        "allograph_factor/可逆字形合并预测.png", "allograph_factor/可逆字形合并预测.svg",
+        "allograph_factor/protocol.txt", "allograph_factor/replay_manuscript.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -137,6 +148,35 @@ def main():
     statistics = read(study / "results/statistics.json")
     yale_receipt = read(research / "visual_audit/yale_image_receipt.json", {})
     yale_images = {item["folio"]: item for item in yale_receipt.get("images", [])}
+    repeat_raw = read(research / "visual_audit/f57v_repeat_alignment.json", {})
+    repeat_alignment = {}
+    if repeat_raw and "f57v" in yale_images:
+        yi = yale_images["f57v"]
+        figure = research / "visual_audit/f57v_repeat_alignment.png"
+        if repeat_raw["source_image_sha256"] != yi["image_sha256"] or hashlib.sha256(figure.read_bytes()).hexdigest() != repeat_raw["figure_sha256"]:
+            raise ValueError("The repeated-sequence figure does not match its source receipt.")
+        repeat_alignment = {**repeat_raw, "focus_cells": []}
+        geometry = repeat_raw["geometry"]
+        cx, cy = geometry["centre_pixels"]
+        for cell in repeat_raw["cells"]:
+            if cell["position"] != 9:
+                continue
+            lo, hi = cell["angle_bounds_degrees"]
+            points = [(cx + r * math.cos(math.radians(lo + (hi-lo)*i/100)),
+                       cy + r * math.sin(math.radians(lo + (hi-lo)*i/100)))
+                      for r in geometry["radius_range_pixels"] for i in range(101)]
+            box = [max(0, min(x for x,y in points)-8)/yi["width"],
+                   max(0, min(y for x,y in points)-8)/yi["height"],
+                   min(yi["width"], max(x for x,y in points)+8)/yi["width"],
+                   min(yi["height"], max(y for x,y in points)+8)/yi["height"]]
+            repeat_alignment["focus_cells"].append({**cell,
+                "approximate_regions_normalized": [[round(v,6) for v in box]],
+                "region_origin": "Display-only bounding rectangle from saved angular/radial reading-aid bounds; not part of the 332-locus inventory."})
+        write(site / "data/f57v-repeat-alignment.json", repeat_raw)
+        repeat_alignment["assets"] = export_assets(research / "visual_audit", site, [
+            ("report", "f57v重复序列说明.txt", "downloads/f57v-repeat-alignment-note.txt"),
+            ("figure_png", "f57v_repeat_alignment.png", "assets/f57v-repeat-alignment.png")])
+        repeat_alignment["assets"]["summary"] = "data/f57v-repeat-alignment.json"
     highres_review = read(research / "visual_audit/review_combined.json", {})
     highres_verification = read(research / "visual_audit/review_verification.json", {})
     highres_by_folio = {}
@@ -195,6 +235,8 @@ def main():
                 "completed_utc": highres_review.get("completed_utc"),
                 "records": highres_by_folio[folio],
                 "additional_visible_text": [r for r in highres_review.get("additional_visible_text_not_in_inventory", []) if r["folio"] == folio]}
+        if folio == "f57v" and repeat_alignment:
+            public_folio["repeat_alignment"] = repeat_alignment
         write(site / f"data/folios/{folio}.json", public_folio)
     write(site / "data/overview.json", {
         "schema_version": 1, "title": "伏尼契手稿研究台",
@@ -288,6 +330,33 @@ def main():
             ("checks", "replay_verification.json", "downloads/copy-prediction-verification.json")])
         copy_prediction["assets"]["summary"] = "data/copy-prediction.json"
         copy_prediction["assets"]["notices"] = "downloads/generator-third-party-notices.txt"
+    position_raw = read(research / "copy_prediction/position_specificity/website_data.json", {})
+    position_specificity = {}
+    if position_raw.get("verification", {}).get("all_passed"):
+        write(site / "data/position-specificity.json", position_raw)
+        position_specificity = {k: v for k,v in position_raw.items() if k not in {"calibration", "generation_audit"}}
+        position_specificity["manuscript"] = [{k:v for k,v in row.items() if k != "null_array"} for row in position_raw["manuscript"]]
+        position_specificity["calibration"] = {k:v for k,v in position_raw.get("calibration", {}).items() if k != "all_runs"}
+        position_specificity["assets"] = export_assets(research / "copy_prediction/position_specificity", site, [
+            ("report", "研究报告.txt", "downloads/position-specificity-report.txt"),
+            ("figure_png", "上一行位置特异性.png", "assets/position-specificity-results.png"),
+            ("figure_svg", "上一行位置特异性.svg", "assets/position-specificity-results.svg"),
+            ("protocol", "protocol.txt", "downloads/position-specificity-protocol.txt"),
+            ("checks", "replay_verification.json", "downloads/position-specificity-verification.json")])
+        position_specificity["assets"]["summary"] = "data/position-specificity.json"
+    allograph_raw = read(research / "allograph_factor/website_data.json", {})
+    allograph_factor = {}
+    if allograph_raw.get("verification", {}).get("all_passed"):
+        write(site / "data/allograph-factor.json", allograph_raw)
+        allograph_factor = {k:v for k,v in allograph_raw.items() if k not in {"manuscript", "synthetic_verification"}}
+        allograph_factor["calibration"] = {k:v for k,v in allograph_raw.get("calibration", {}).items() if k != "all_45_runs"}
+        allograph_factor["assets"] = export_assets(research / "allograph_factor", site, [
+            ("report", "研究报告.txt", "downloads/allograph-factor-report.txt"),
+            ("figure_png", "可逆字形合并预测.png", "assets/allograph-factor-results.png"),
+            ("figure_svg", "可逆字形合并预测.svg", "assets/allograph-factor-results.svg"),
+            ("protocol", "protocol.txt", "downloads/allograph-factor-protocol.txt"),
+            ("checks", "replay_manuscript.json", "downloads/allograph-factor-verification.json")])
+        allograph_factor["assets"]["summary"] = "data/allograph-factor.json"
     write(site / "data/stage2.json", {
         "overall_status": session.get("status", "active"),
         "deadline_utc": session.get("deadline_utc"),
@@ -299,6 +368,8 @@ def main():
         "boundary_diagnostic": boundary, "boundary_fullword": boundary_word,
         "boundary_calibration": boundary_calibration,
         "copy_prediction": copy_prediction,
+        "position_specificity": position_specificity,
+        "allograph_factor": allograph_factor,
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
     literature = read(research / "literature/literature.json", [])
     write(site / "data/literature.json", literature)

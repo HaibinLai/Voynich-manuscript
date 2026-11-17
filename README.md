@@ -15,6 +15,8 @@
 - 有明文的 Naibbe 与无指定明文的 Timm 生成对照：20 个固定种子；另有 181 次跨词预测校准。原作者机制、适配规则和已知局限均保留。
 - 完整词复制模型：80 次原生版面正控、三种手稿表示；随后固定模型检验上一行同位置来源。原先小幅收益在同长度词换位后大多保留，未得到清晰位置特异性证据。
 - 高清定位按需加载对应耶鲁官方图，可查看每处双版字串、未决问题及多框阅读区域。来源清单可重下载，原始转写保持不变。
+- f57v 四段重复序列按 17 列对应展示，保留两版不同的末尾分组及 f/f/p/p 写法。这是 D’Imperio、Stolfi 已有观察的图像复核，不是新发现或已证实的 17 字母表。
+- 可逆字形合并：FP、KT、两者一起共九组完整词比较，另有 45 组合成检验。付清恢复原写法的成本后有小幅预测收益；KT 仅全局恢复时为负，条件恢复后才为正，不能据此认定字形同音或同义。
 
 研究仍在进行。网站显示静态结果快照，更新时刻可见；它不是后台运行监控。
 
@@ -60,6 +62,16 @@ python3 research/research7h/copy_prediction/public_reproduce.py calibrate --seed
 ```
 
 完整说明见 `copy_prediction/PUBLIC_REPRODUCTION.txt`。逐词上下文与位置实验输入使用无损压缩及双重哈希，恢复工具在各包内；不会用压缩替代原始证据。`position_specificity/研究报告.txt` 展示全部六组扰动结果。
+
+可逆字形合并同样提供独立复算与合成重跑入口，输出必须使用新的目录：
+
+```sh
+python3 research/research7h/allograph_factor/public_reproduce.py preflight
+python3 research/research7h/allograph_factor/public_reproduce.py replay --scope manuscript --output /tmp/voynich-allograph-replay-new
+python3 research/research7h/allograph_factor/public_reproduce.py calibrate --seeds 2026111741 --output /tmp/voynich-allograph-calibration-new
+```
+
+这些模型除词形模型外还选择恢复参数，容量和调参预算与基线不同；完整费用不是语义破译的证据。细节和全部负结果在 `allograph_factor/研究报告.txt`。
 
 完整评分脚本为 `boundary.py`、`boundary_word.py` 和 `paragraph_factor/run.py`（依次传入 `prepare`、`evaluate`），协议与逐词结果在同目录。生成对照另需 Java 8 或更高版本；可用 `VOYNICH_JAVA`、`VOYNICH_JAVAC` 指定程序路径：
 

@@ -1,0 +1,50 @@
+Reversible glyph-factor experiment — public reproduction
+
+All nine exploratory manuscript contrasts and all 45 synthetic checks are kept.
+The declared result is limited to statistical parameter sharing. KT global-only
+restoration is negative in all three representations; conditional restoration is
+necessary for its positive gain. This is not a decipherment or allograph proof.
+
+Use Python 3.9+ and NumPy. Matplotlib is needed only for rebuilding the figure.
+Preserve the research7h / sources / study20 layout and the frozen relative paths.
+From this folder:
+
+  python3 public_reproduce.py preflight
+  python3 public_reproduce.py calibrate --seeds 2026111741 --output /tmp/allograph-calibration-new
+  python3 public_reproduce.py replay --scope all --output /tmp/allograph-replay-new
+
+Omitting --seeds reruns all five seeds, each with iid, position-conditioned and
+correlated aliases, all three merges. Every run freshly fits train counts and
+selects only from the frozen development grid. It compares resulting gains with
+the original saved results. No manuscript corpus is loaded by calibration.
+
+Saved-result replay validates gzip/raw hashes, copies train/targets/configs/scores
+to the NEW output directory, then independently reconstructs scalar probabilities
+and binary restoration tables. It does not import the corpus parser, reopen
+confirm or touch reserve. --scope manuscript/synthetic can narrow replay, but all
+results are in the public package. The new output directory must not already
+exist and may not be inside this frozen package. Fresh execution receipt and
+verification reports are written there. Original evidence is never overwritten.
+
+The frozen run.py records the original execution. Its existing confirm marker
+intentionally prevents a second scoring pass. The public wrapper has NO fresh
+manuscript-confirm or reserve mode. To inspect raw saved records locally, run
+restore_data.py; it checks both gzip and original bytes and never overwrites a
+changed original. report.py can render from saved runs alone; rebuilding compressed
+archives after any originals are restored requires all36 saved input/target files.
+
+Validation: all45 synthetic plus all9 manuscript results independently replayed;
+normalization/unknown identity costs and roundtrip toys passed. Public calibration
+reran one seed across all3 mechanisms × all3 merges and reproduced every gain.
+Public saved-data replay reran all54 cases in a new directory. Exact known-pair
+truth in replay_synthetic.json is used for calibration interpretation: the frozen
+run's one-pair truth field is a half-full-word reference, not the exact selected
+pair's realized loss. No predictive score or parameter choice was changed.
+
+Model capacity and tuning budgets differ: both word LMs select15 style mixtures,
+but the quotient factor additionally selects among12 restoration configurations.
+model_complexity.json reports train-only context/count-cell sizes, not effective
+statistical degrees of freedom. Complete costs, recovery bits, escape bits and
+per-leaf uncertainty are retained. The reserve corpus was never returned, fitted
+or scored in this experiment; shared parser hashing/reading is distinct from
+model exposure to a reserved page.
