@@ -1,0 +1,6 @@
+From the research7h directory, with Python and NumPy:
+python final_reserve/new_saved_replay/replay.py --run final_reserve/preflight_v1 --output /path/to/new-preflight-audit
+
+The output directory must not exist. --run explicitly selects an already-saved packet. No corpus loader, worker, model-selection routine or original scorer is imported. A true reserve packet is not selected automatically; it requires the caller to authorize that later run.
+Dependencies are the existing independent replay files, saved train+legacy pages, frozen configs/tables, saved packet rows/NPZ/position nulls. Preserve the repository research directory layout.
+Accepted preflight receipt: preflight_audit_v2/verification.json.

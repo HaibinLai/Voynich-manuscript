@@ -89,7 +89,7 @@ def execution_snapshot(research, session):
     """Read status receipts only, never reserve score arrays or manuscript text."""
     progress = read(research / "cipher_controls/voynich_substitution/progress.json", {})
     cipher_state = progress.get("status", "unknown")
-    if cipher_state in {"fitting", "running", "in_progress"}:
+    if cipher_state in {"fitting", "running", "in_progress", "keys_frozen", "evaluated"}:
         cipher_state = "in_progress"
     elif cipher_state in {"complete", "completed", "done"}:
         cipher_state = "completed"
@@ -137,6 +137,88 @@ def execution_snapshot(research, session):
         "outcome_values_loaded": False}
     return {"cipher_search": cipher, "reserve": reserve, "overall_status": session.get("status", "unknown"),
         "deadline_utc": session.get("deadline_utc"), "static_snapshot": True}
+
+
+def final_reserve_payload(research, site, execution):
+    """Export values only after real execution AND hash-bound independent review.
+
+    There is deliberately no fallback to preflight/confirm values. The caller may
+    exercise this function in a temporary fixture directory before reserve opens.
+    """
+    asset_names = ["final-reserve-summary.json", "final-reserve-metadata-summary.json",
+                   "final-reserve-review.json", "final-reserve-reporting-scope.txt",
+                   "final-reserve-protocol.txt"]
+    empty = {"schema_version": 1, "available": False,
+             "status": execution.get("reserve", {}).get("status", "not_scored")}
+    if empty["status"] != "reviewed":
+        # A rebuilt site must not retain values from a previous, different source.
+        for name in asset_names:
+            (site / "downloads" / name).unlink(missing_ok=True)
+        return empty
+    root = research / "final_reserve"
+    review = read(root / "reserve_v1/independent_review.json", {})
+    summary_file = root / "reserve_v1/summary.json"
+    metadata_file = research / "metadata_sensitivity/reserve_v1/summary.json"
+    for field, path in [("summary_sha256", summary_file),
+                        ("metadata_summary_sha256", metadata_file)]:
+        if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != review.get(field):
+            raise ValueError(f"Final reserve display requires a matching {field}")
+    summary, metadata = read(summary_file), read(metadata_file)
+    if summary.get("mode") != "reserve" or summary.get("split") != "reserve":
+        raise ValueError("Preflight/confirm values cannot be exported as final reserve")
+    if summary.get("primary_representation") != "ZL_EVA" or summary.get("primary_contrasts") != 10 or summary.get("all_combinations") != 30:
+        raise ValueError("Final reserve display requires the frozen primary family")
+    freeze = root / "freeze.json"
+    if not freeze.exists() or summary.get("freeze_sha256") != hashlib.sha256(freeze.read_bytes()).hexdigest():
+        raise ValueError("Final reserve summary does not match its frozen protocol")
+    representations = ["ZL_EVA", "ZL_merged", "IT_EVA"]
+    contrasts = ["style", "boundary_last", "gallows_vs_position", "gallows_vs_any_first",
+                 "copy_total", "copy_edit_vs_exact", "copy_vertical",
+                 "allograph_FP", "allograph_KT", "allograph_both"]
+    rows = summary.get("results", [])
+    expected = {(rep, contrast) for rep in representations for contrast in contrasts}
+    if len(rows) != 30 or {(r.get("representation"), r.get("id")) for r in rows} != expected:
+        raise ValueError("Final reserve display requires all 30 predeclared comparisons")
+    globals_ = summary.get("global_restoration_sensitivity", [])
+    if len(globals_) != 9 or {(r.get("representation"), r.get("id")) for r in globals_} != {(rep, f"allograph_{merge}_global_restore") for rep in representations for merge in ["FP", "KT", "both"]}:
+        raise ValueError("Final reserve display requires nine global-restoration sensitivities")
+    position = summary.get("position_specificity", {})
+    if set(position) != set(representations) or any(set(v.get("conditions", {})) != {"exact", "coarse"} for v in position.values()):
+        raise ValueError("Final reserve display requires all six position controls")
+    for group in position.values():
+        for condition in group["conditions"].values():
+            if "holm_reference_p_family6" not in condition:
+                raise ValueError("Position controls must retain the six-item Holm reference")
+    metadata_contrasts = ["style", "HV_vs_base", "HV_vs_exact", "HV_vs_H", "boundary_last1", "FP", "KT", "both"]
+    comparisons = metadata.get("comparisons", [])
+    if len(comparisons) != 24 or {(r.get("name"), r.get("contrast")) for r in comparisons} != {(rep, c) for rep in representations for c in metadata_contrasts}:
+        raise ValueError("Final reserve display requires all 24 metadata comparisons")
+    if metadata.get("intervals_computed") is not False or metadata.get("p_values_computed") is not False or metadata.get("parameters_reselected") is not False:
+        raise ValueError("Metadata sensitivity must retain fixed-parameter descriptive scope")
+    decompositions = metadata.get("allograph_decompositions", [])
+    if len(decompositions) != 9 or {(r.get("name"), r.get("merge")) for r in decompositions} != {(rep, merge) for rep in representations for merge in ["FP", "KT", "both"]}:
+        raise ValueError("Final reserve display requires nine bound cost decompositions")
+    invariance = metadata.get("paragraph_invariance", [])
+    if len(invariance) != 3 or {r.get("name") for r in invariance} != set(representations):
+        raise ValueError("Paragraph invariance must be reported for all three representations")
+    assets = export_assets(root, site, [
+        ("summary", "reserve_v1/summary.json", "downloads/final-reserve-summary.json"),
+        ("review", "reserve_v1/independent_review.json", "downloads/final-reserve-review.json"),
+        ("reporting_scope", "reporting_scope.txt", "downloads/final-reserve-reporting-scope.txt"),
+        ("protocol", "protocol.txt", "downloads/final-reserve-protocol.txt")])
+    assets.update(export_assets(research / "metadata_sensitivity", site, [
+        ("metadata_summary", "reserve_v1/summary.json", "downloads/final-reserve-metadata-summary.json")]))
+    return {"schema_version": 1, "available": True, "status": "independently_reviewed",
+            "completed_utc": summary.get("completed_utc"),
+            "reviewed_utc": review.get("reviewed_utc", review.get("completed_utc")),
+            "pages": execution["reserve"]["pages"], "leaf_groups": execution["reserve"]["leaf_groups"],
+            "primary_representation": summary.get("primary_representation"),
+            "aggregation": summary.get("aggregation"), "results": rows,
+            "global_restoration_sensitivity": globals_, "position_specificity": position,
+            "metadata": metadata, "caveats": summary.get("caveats", []), "assets": assets,
+            "source_hashes": {k: review[k] for k in ["complete_sha256", "summary_sha256",
+                "metadata_complete_sha256", "metadata_summary_sha256", "metadata_replay_sha256"]},
+            "research_url": "https://github.com/HaibinLai/Voynich-manuscript/tree/main/research/research7h/final_reserve"}
 
 
 def main():
@@ -335,6 +417,8 @@ def main():
     write(site / "data/statistics.json", statistics)
     session = read(research / "session.json", {})
     execution = execution_snapshot(research, session)
+    write(site / "data/final-reserve.json", {"schema_version": 1, "available": False, "status": execution["reserve"]["status"]})
+    write(site / "data/final-reserve.json", final_reserve_payload(research, site, execution))
     public_summary = read(research / "public_summary.json", {})
     stage1_assets = {}
     for source_name, target_name, key in [
@@ -436,10 +520,31 @@ def main():
             ("protocol", "protocol.txt", "downloads/allograph-factor-protocol.txt"),
             ("checks", "replay_manuscript.json", "downloads/allograph-factor-verification.json")])
         allograph_factor["assets"]["summary"] = "data/allograph-factor.json"
+    synthetic_dir = research / "line_boundary_calibration"
+    synthetic_boundary = read(synthetic_dir / "website_data.json", {})
+    if synthetic_boundary:
+        assert synthetic_boundary["scope"] == "synthetic_only"
+        assert synthetic_boundary["status"] == "complete_independent_scalar_replay_passed"
+        assert synthetic_boundary["manuscript_target_scoring"] is False
+        synthetic_complete = read(synthetic_dir / "run_v1/complete.json", {})
+        synthetic_review = read(synthetic_dir / "independent_verification.json", {})
+        assert synthetic_complete.get("all_passed") and synthetic_review.get("passed")
+        assert synthetic_review["source_complete_sha256"] == hashlib.sha256((synthetic_dir / "run_v1/complete.json").read_bytes()).hexdigest()
+        assert synthetic_review["source_summary_sha256"] == hashlib.sha256((synthetic_dir / "run_v1/summary.json").read_bytes()).hexdigest()
+        saved_groups = read(synthetic_dir / "run_v1/summary.json", {})["groups"]
+        assert synthetic_boundary["groups"] == saved_groups and len(saved_groups) == 12
+        synthetic_boundary["assets"] = export_assets(synthetic_dir, site, [
+            ("report", "研究报告.txt", "downloads/synthetic-boundary-report.txt"),
+            ("protocol", "protocol.txt", "downloads/synthetic-boundary-protocol.txt"),
+            ("checks", "independent_verification.json", "downloads/synthetic-boundary-verification.json"),
+            ("figure_png", "synthetic_transfer.png", "assets/synthetic-boundary.png"),
+            ("figure_svg", "synthetic_transfer.svg", "assets/synthetic-boundary.svg"),
+            ("summary", "public_summary.json", "downloads/synthetic-boundary-summary.json")])
     write(site / "data/stage2.json", {
         "overall_status": session.get("status", "active"),
+        "stage_complete": session.get("stage", 2) > 2,
         "deadline_utc": session.get("deadline_utc"),
-        "status_note": ("第二阶段仍在进行；这里展示已完成的子实验，不表示七小时研究已结束。" if session.get("status") == "active"
+        "status_note": ("第二阶段仍在进行；这里展示已完成的子实验，不表示七小时研究已结束。" if session.get("status") == "active" and session.get("stage") == 2
                         else "这里保留各子实验的结果与完成时间；总研究状态以阶段快照为准。"),
         "execution_snapshot": execution,
         "paragraph_factor": factor, "generator_controls": generators,
@@ -448,6 +553,7 @@ def main():
         "copy_prediction": copy_prediction,
         "position_specificity": position_specificity,
         "allograph_factor": allograph_factor,
+        "synthetic_boundary": synthetic_boundary,
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
     # Interpretive audits are separate from frozen predictive experiments. Only
     # named Yale crops are bundled; modern-paper screenshots and full JPEGs are not.

@@ -1,0 +1,10 @@
+合成校准保存证据的可移植复算
+
+python3 public_replay.py --output /tmp/voynich-synthetic-replay-NEW
+
+需要 Python 与 NumPy；绘图另需 Matplotlib。本入口不选参、不生成新样本、不读取任何原始手稿或新 split。
+入口先校验 artifact_manifest 及原 freeze 的全部依赖，在新输出目录构建最小工作布局，再执行原冻结 independent_replay.py。
+reference_dependencies 保存三个外部冻结依赖的原字节，映射回原相对路径；不改 freeze 或假装 SHA 改变。原依赖为 boundary.py、line_boundary_design/population.json、study20/analyze.py。它们只作冻结哈希依据，不调用手稿加载器。
+run_v1 保留 60 case / 240 条件的完整合成数组、配置、分数与汇总；independent_cv_audit 另有首 seed 九次完整 CV 网格复算入口。主 replay 核查全部已选模型；九次 CV 不冒充 180 次 CV 全部独立核算。
+正式 run.py 是带内部方法 gate 的历史执行入口；本公共入口只回放保存证据，输出目录必须全新。
+20 seed 分布不是手稿 CI；图中短横线是中位数。decomposition 从保存的 expected 成本解析拆分 I/KL，未重新评分。

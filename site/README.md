@@ -24,6 +24,7 @@ python3 -m http.server 8000 --directory site
 
 - `data/overview.json`：样本说明、来源、20 页选择信息。
 - `data/homepage.json`：当前证据概览、图文核对范围、执行状态快照与实际复算收据入口。
+- `data/final-reserve.json`：真实保留集执行与复核尚未全部绑定时只有状态、`available:false`，没有预演数值；完成后提供完整固定比较与敏感性。
 - `data/folios/{folio}.json`：两版转写、分歧标志、重点复核与原图校验值。
 - `data/folios/{folio}.json` 的 `high_resolution_review`：该页逐位置观察、原始两版字符串及相对于耶鲁完整 JPEG 的归一化阅读框。
 - `data/high-resolution-review.json` 与 `downloads/high-resolution-verification.json`：20 页 / 332 处的合并高清复核和覆盖核验；构建时校验合并记录哈希，防止核验与数据错配。
@@ -50,6 +51,10 @@ python3 -m http.server 8000 --directory site
 首页的“核验与复算”进入统一说明，可下载四类保存证据实际复算收据。收据绑定当时的数据提交与脚本哈希，不自动认证之后的网页修改。仓库根目录运行 `python scripts/verify_release.py`，仅用标准库检查发布文件；按说明另行运行保存证据复算时，应使用仓库外的新输出目录。`scripts/export_review_bundle.py` 可在本地生成 20 页图像、40 处裁图和 332 处双版记录的便携包，网站只提供入口。
 
 面板深链接使用 `#journal?study=面板ID`。路由会展开目标所在的证据区并将键盘焦点移到目标；原图、文献和复现入口仍直接可达。
+
+保留集展示入口在 `final-reserve.js`，只在完整复核后生成面板。构建器先核验 `reserve_opened.json`、真实 reserve 模式的 `complete.json`、标签修正 `complete.json` 与 `replay_verification.json` 的成功状态；最终 `independent_review.json` 必须绑定 `complete_sha256`、`metadata_complete_sha256`、`metadata_replay_sha256`，还须以 `summary_sha256` 和 `metadata_summary_sha256` 分别绑定两份实际结果摘要，才读取数值。真实摘要必须为 `mode=reserve/split=reserve` 且匹配冻结方案；没有 confirm/preflight 回退路径。未通过门槛时不产生长空面板，不导出结果下载；临时界面 fixture 只能位于研究目录之外。
+
+最终面板固定顺序完整展示主 ZL 十项、两表示二十项敏感性、九项总体比例恢复、六项位置辅助及统一 Holm、全部曝光叶剔除描述与二十四项行内 H 修正。95%、主十项族 99.5%、全三十项族 99.833333…% 区间原样可展开，不按数值排序、不设置新的判定阈值，跨零不标“无效”。主增益采用页内词均→叶内合格页面等均→合格叶等均；成本拆分明确使用所有词合并平均，escape 是已计入的组成项。合格目标数、页、叶分别列出，不能混用不同分母。可滚动表格能获得键盘焦点。
 
 阶段一的 `downloads/stage1-report.txt` 与 `assets/stage1-results.png/.svg` 由构建器明确复制，并在进展页标注 28 页确认集、13 个叶组与 5,025 个词形。这是与旧 20 页研究不同的实验。阶段一完成不会将总研究状态改为完成。
 

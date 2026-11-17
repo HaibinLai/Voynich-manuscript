@@ -73,6 +73,8 @@ def verify_snapshot():
         (RESEARCH/'allograph_factor/artifact_manifest.json', RESEARCH/'allograph_factor',
          dict(container='files')),
         (RESEARCH/'metadata_sensitivity/artifact_manifest.json', RESEARCH/'metadata_sensitivity', {}),
+        (RESEARCH/'line_boundary_calibration/artifact_manifest.json', RESEARCH/'line_boundary_calibration',
+         dict(container='files')),
     ]
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
@@ -95,6 +97,8 @@ def replay_commands(output):
                       'replay', '--scope', 'manuscript', '--output', str(output/'allograph')],
         'metadata': ['research/research7h/metadata_sensitivity/public_replay.py',
                      '--out-dir', str(output/'metadata')],
+        'synthetic': ['research/research7h/line_boundary_calibration/public_replay.py',
+                      '--output', str(output/'synthetic')],
     }
 
 
@@ -104,7 +108,7 @@ def write(path, payload):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata'],
+    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic'],
                         help='Run named independent saved-data replays after integrity checks')
     parser.add_argument('--output', type=Path, help='Required new directory for replay receipts and logs')
     args = parser.parse_args()

@@ -1,0 +1,20 @@
+{
+  "scope": "Publication preparation only; no scientific run or frozen file changed",
+  "attempts": [
+    {
+      "step": "Initial inline manifest-builder invocation",
+      "status": "failed_before_output",
+      "error": "Python reported Non-UTF-8 code in stdin; manifest was not created.",
+      "resolution": "Saved UTF-8 package.py and REPRODUCTION.txt as files, then ran the same publication allowlist operation."
+    },
+    {
+      "step": "First public_replay invocation",
+      "status": "failed_before_workspace_creation",
+      "error": "artifact_manifest.json missing after preceding preparation failure.",
+      "resolution": "Create and verify the manifest, then invoke replay in a fresh output directory."
+    }
+  ],
+  "formal_run_failed": false,
+  "formal_run_rerun": false,
+  "budget_or_parameters_changed": false
+}

@@ -1,0 +1,15 @@
+﻿最终保存包独立概率与位置复算：预演验证
+
+预演结果通过。尚未执行或读取真实 reserve 保存包。
+完整概率覆盖3表示×4家族共12任务，111条正成本数组：copy/global基线与8个复制配置、allograph原词/合并/条件与总体恢复/完整成本/escape、boundary完整词与目标escape、paragraph全部4数组。
+逐目标完整成本最大差异：2.8421709430404007e-14 bits。
+三表示×两分层×1999次，共11994次保存位置置换全部重建。每次用独立枚举的编辑路径概率与math.fsum叶权求和；最大增益差异1.474514954580286e-16 bits，三类移动/来源集合比例差异0。耗时42.04秒。
+
+独立实现的复用与边界
+没有import corpus、corpus.load或worker评分函数。metadata_sensitivity/replay.py的六个纯函数由AST抽取，避开其metadata.py顶层间接corpus导入；旧页H训练副本与冻结allograph训练记录的word/hand/position投影逐项一致。复用allograph_factor/replay.py独立标量层级与恢复器，paragraph_factor/replay.py的instantiate/mix，并保留原独立position replay的显式编辑路径。
+位置适配只改变保存文件入口、unknown字段别名、正cost到logP的负号，以及把所有11994次加权求和均改为math.fsum。完整原始NPZ只读，所有读取输入运行前后哈希一致。具体来源和适配脚本SHA见adapter_provenance.json及verification输入表。
+复制/恢复与边界重新计数仅使用既有训练记录，参数仍固定；段首从冻结概率表重建。仅复算调用者给定的已保存目标，无新分区筛选、无新模型选择。真正reserve包须待root通知再用同一脚本执行。
+汇总、39项聚合、可用性、bootstrap与六项Holm由root另一个saved_output_audit.py负责，本脚本不把这些工作重复声称为已核验。
+
+执行记录
+第一次preflight_audit_v1因报告字典重复targets字段停止，已保留失败收据、已完成子任务及当时脚本。修正只移除段首子报告重复字段；未改评分实现、冻结协议、参数或原数组。preflight_audit_v2完整通过，正式后续调用以当前replay.py及其哈希为准。

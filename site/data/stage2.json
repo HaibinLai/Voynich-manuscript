@@ -1,13 +1,14 @@
 {
   "overall_status": "active",
+  "stage_complete": false,
   "deadline_utc": "2026-11-17T16:50:25Z",
   "status_note": "第二阶段仍在进行；这里展示已完成的子实验，不表示七小时研究已结束。",
   "execution_snapshot": {
     "cipher_search": {
       "status": "in_progress",
-      "completed": 765,
+      "completed": 943,
       "total": 976,
-      "updated_utc": "2026-11-17T13:58:26.297602+00:00"
+      "updated_utc": "2026-11-17T14:36:57.520436+00:00"
     },
     "reserve": {
       "status": "not_scored",
@@ -8929,6 +8930,687 @@
       "protocol": "downloads/allograph-factor-protocol.txt",
       "checks": "downloads/allograph-factor-verification.json",
       "summary": "data/allograph-factor.json"
+    }
+  },
+  "synthetic_boundary": {
+    "created_utc": "2026-11-17T14:29:47.201799+00:00",
+    "title": "合成分布改变：预测收益不等于真实依赖",
+    "status": "complete_independent_scalar_replay_passed",
+    "scope": "synthetic_only",
+    "freeze_sha256": "1e2b5a4e23654ef6eca2503c0fb7d28687509bdca569a724d8d356a27c17a5bc",
+    "cases": 60,
+    "conditions": 240,
+    "seeds": 20,
+    "selected_models": 180,
+    "cpu_seconds": 25.6439,
+    "geometry": {
+      "train_rows": 1548,
+      "train_leaves": 57,
+      "evaluation_rows": 647,
+      "evaluation_leaves": 17
+    },
+    "main_permutation": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "groups": [
+      {
+        "rho": 0.0,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.0,
+        "empirical_gain": {
+          "mean": 0.002935023014515226,
+          "median": 0.003339190118589963,
+          "minimum": -0.008883882380058392,
+          "maximum": 0.013038524152808355,
+          "nonpositive_seeds": 7
+        },
+        "exact_expected_gain": {
+          "mean": 0.004665983872265886,
+          "median": 0.004161090092835431,
+          "minimum": -0.0005801443293467582,
+          "maximum": 0.013261433204672077,
+          "nonpositive_seeds": 1
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.0,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.0,
+        "empirical_gain": {
+          "mean": 0.004541993997146795,
+          "median": 0.004402777165097266,
+          "minimum": -0.0035864042120931435,
+          "maximum": 0.01268408757601615,
+          "nonpositive_seeds": 4
+        },
+        "exact_expected_gain": {
+          "mean": 0.00675598254431385,
+          "median": 0.00692258495664053,
+          "minimum": -6.0722384027910735e-05,
+          "maximum": 0.012211400822072649,
+          "nonpositive_seeds": 1
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.0,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.0,
+        "empirical_gain": {
+          "mean": 0.016384265356586734,
+          "median": 0.03482942184181623,
+          "minimum": -0.1468366816880536,
+          "maximum": 0.1302398142475032,
+          "nonpositive_seeds": 7
+        },
+        "exact_expected_gain": {
+          "mean": 0.015232279053586284,
+          "median": 0.02811962849006699,
+          "minimum": -0.13364631545010439,
+          "maximum": 0.12960403509097332,
+          "nonpositive_seeds": 8
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.0,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.0,
+        "empirical_gain": {
+          "mean": 0.004541993997146795,
+          "median": 0.004402777165097266,
+          "minimum": -0.0035864042120931435,
+          "maximum": 0.01268408757601615,
+          "nonpositive_seeds": 4
+        },
+        "exact_expected_gain": {
+          "mean": 0.00675598254431385,
+          "median": 0.00692258495664053,
+          "minimum": -6.0722384027910735e-05,
+          "maximum": 0.012211400822072649,
+          "nonpositive_seeds": 1
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.15,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.03939199033012224,
+        "empirical_gain": {
+          "mean": 0.032606918876003574,
+          "median": 0.031339894196300955,
+          "minimum": 0.005355056314336161,
+          "maximum": 0.05795946437101359,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.03552857264920737,
+          "median": 0.03508622694685812,
+          "minimum": 0.031112796612617122,
+          "maximum": 0.040420582825567555,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.15,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.03939199033012224,
+        "empirical_gain": {
+          "mean": 0.03581677483959856,
+          "median": 0.03447138568974921,
+          "minimum": 0.004557238634849498,
+          "maximum": 0.06981138198244072,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.03599700652671488,
+          "median": 0.03519032839532875,
+          "minimum": 0.029932638921069493,
+          "maximum": 0.04618870961993328,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.15,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.03939199033012224,
+        "empirical_gain": {
+          "mean": -0.0875622168450428,
+          "median": -0.09249851989276059,
+          "minimum": -0.23815944494200375,
+          "maximum": 0.11204618773035341,
+          "nonpositive_seeds": 18
+        },
+        "exact_expected_gain": {
+          "mean": -0.0953067422623121,
+          "median": -0.10205612844819731,
+          "minimum": -0.21752726765735828,
+          "maximum": 0.11858611588184646,
+          "nonpositive_seeds": 18
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.15,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.03939199033012224,
+        "empirical_gain": {
+          "mean": 0.03581677483959856,
+          "median": 0.03447138568974921,
+          "minimum": 0.004557238634849498,
+          "maximum": 0.06981138198244072,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.03599700652671488,
+          "median": 0.03519032839532875,
+          "minimum": 0.029932638921069493,
+          "maximum": 0.04618870961993328,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.5,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.36869725005506787,
+        "empirical_gain": {
+          "mean": 0.34602288631164,
+          "median": 0.34555741817024793,
+          "minimum": 0.2719998266316473,
+          "maximum": 0.4491042286118441,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.35756081651217897,
+          "median": 0.3580478927595715,
+          "minimum": 0.3505509880575171,
+          "maximum": 0.36682731484279424,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.5,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.36869725005506787,
+        "empirical_gain": {
+          "mean": 0.34751440576430603,
+          "median": 0.33414694583937715,
+          "minimum": 0.2720132751928296,
+          "maximum": 0.45660980414692465,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.35531530675919076,
+          "median": 0.3544923183032324,
+          "minimum": 0.3466241595586419,
+          "maximum": 0.3631742892716561,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.5,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.36869725005506787,
+        "empirical_gain": {
+          "mean": -0.8189407822429884,
+          "median": -0.7977584884443378,
+          "minimum": -1.0699742284283336,
+          "maximum": -0.5845043064171219,
+          "nonpositive_seeds": 20
+        },
+        "exact_expected_gain": {
+          "mean": -0.8213586275966408,
+          "median": -0.8307526157194348,
+          "minimum": -1.0780711166178154,
+          "maximum": -0.6135879579642428,
+          "nonpositive_seeds": 20
+        },
+        "selected_zero_weight_seeds": 0
+      },
+      {
+        "rho": 0.5,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "oracle_mutual_information_bits": 0.36869725005506787,
+        "empirical_gain": {
+          "mean": 0.34751440576430603,
+          "median": 0.33414694583937715,
+          "minimum": 0.2720132751928296,
+          "maximum": 0.45660980414692465,
+          "nonpositive_seeds": 0
+        },
+        "exact_expected_gain": {
+          "mean": 0.35531530675919076,
+          "median": 0.3544923183032324,
+          "minimum": 0.3466241595586419,
+          "maximum": 0.3631742892716561,
+          "nonpositive_seeds": 0
+        },
+        "selected_zero_weight_seeds": 0
+      }
+    ],
+    "decomposition_groups": [
+      {
+        "rho": 0.0,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.016127652012725546,
+          "median": 0.015175528002443484,
+          "minimum": 0.007939272540077313,
+          "maximum": 0.026562359251826928
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.011461668140459657,
+          "median": 0.011508222039895766,
+          "minimum": 0.004781558260007701,
+          "maximum": 0.020475976563540943
+        },
+        "pooled_KL_base": {
+          "mean": 0.01575772592428948,
+          "median": 0.01494208582381995,
+          "minimum": 0.00914488756738363,
+          "maximum": 0.022310553946357503
+        },
+        "pooled_KL_child": {
+          "mean": 0.011262356599571666,
+          "median": 0.011345612293122032,
+          "minimum": 0.0049037373877751644,
+          "maximum": 0.017658034621494068
+        }
+      },
+      {
+        "rho": 0.0,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.017326924535954313,
+          "median": 0.01806651535047732,
+          "minimum": 0.008394285260846512,
+          "maximum": 0.02425557639976872
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.01057094199164046,
+          "median": 0.010055381475140956,
+          "minimum": 0.0057696094189740865,
+          "maximum": 0.022572607869806527
+        },
+        "pooled_KL_base": {
+          "mean": 0.017077132041951916,
+          "median": 0.017365708155950732,
+          "minimum": 0.008758576085892589,
+          "maximum": 0.024592552402992185
+        },
+        "pooled_KL_child": {
+          "mean": 0.010231698076272921,
+          "median": 0.009360312784520985,
+          "minimum": 0.006264434552648135,
+          "maximum": 0.02216910299381425
+        }
+      },
+      {
+        "rho": 0.0,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 1.166204234208309,
+          "median": 1.1950226772588142,
+          "minimum": 0.9631212243662306,
+          "maximum": 1.3387954157107411
+        },
+        "mean_leaf_KL_child": {
+          "mean": 1.1509719551547228,
+          "median": 1.1502450962255257,
+          "minimum": 0.9916463406246545,
+          "maximum": 1.269179658258457
+        },
+        "pooled_KL_base": {
+          "mean": 1.1589757733337371,
+          "median": 1.190418284285191,
+          "minimum": 0.9715957215977924,
+          "maximum": 1.285692753386551
+        },
+        "pooled_KL_child": {
+          "mean": 1.1479555141454072,
+          "median": 1.1566690693767272,
+          "minimum": 1.0031309289243917,
+          "maximum": 1.276093360568097
+        }
+      },
+      {
+        "rho": 0.0,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.017326924535954313,
+          "median": 0.01806651535047732,
+          "minimum": 0.008394285260846512,
+          "maximum": 0.02425557639976872
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.01057094199164046,
+          "median": 0.010055381475140956,
+          "minimum": 0.0057696094189740865,
+          "maximum": 0.022572607869806527
+        },
+        "pooled_KL_base": {
+          "mean": 0.017077132041951916,
+          "median": 0.017365708155950732,
+          "minimum": 0.008758576085892589,
+          "maximum": 0.024592552402992185
+        },
+        "pooled_KL_child": {
+          "mean": 0.010231698076272921,
+          "median": 0.009360312784520985,
+          "minimum": 0.006264434552648135,
+          "maximum": 0.02216910299381425
+        }
+      },
+      {
+        "rho": 0.15,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.016022488700719595,
+          "median": 0.015066676585814731,
+          "minimum": 0.010412502791074862,
+          "maximum": 0.025571192876817417
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.01988590638163453,
+          "median": 0.02013981658560804,
+          "minimum": 0.012986828408866335,
+          "maximum": 0.02491448219261705
+        },
+        "pooled_KL_base": {
+          "mean": 0.01638834990945156,
+          "median": 0.01591491174235038,
+          "minimum": 0.011444658693103404,
+          "maximum": 0.02501954574831
+        },
+        "pooled_KL_child": {
+          "mean": 0.019790189079958543,
+          "median": 0.020215825130968645,
+          "minimum": 0.013469911255633349,
+          "maximum": 0.025025129459678164
+        }
+      },
+      {
+        "rho": 0.15,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.01613149400593681,
+          "median": 0.015910488361772224,
+          "minimum": 0.008989448807062983,
+          "maximum": 0.024751173243582336
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.019526477809344224,
+          "median": 0.017984346176912025,
+          "minimum": 0.009000564497723795,
+          "maximum": 0.028071594311151582
+        },
+        "pooled_KL_base": {
+          "mean": 0.016065477489620485,
+          "median": 0.015632798723659524,
+          "minimum": 0.009486868005849969,
+          "maximum": 0.022627448574207065
+        },
+        "pooled_KL_child": {
+          "mean": 0.01891687129538101,
+          "median": 0.018322809321520084,
+          "minimum": 0.010076237833755997,
+          "maximum": 0.02926916310674743
+        }
+      },
+      {
+        "rho": 0.15,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 1.1847159833690637,
+          "median": 1.1987431994226545,
+          "minimum": 0.9711147859309532,
+          "maximum": 1.3136465656587055
+        },
+        "mean_leaf_KL_child": {
+          "mean": 1.3194147159614982,
+          "median": 1.3330638011140248,
+          "minimum": 1.106464107933385,
+          "maximum": 1.456824762174709
+        },
+        "pooled_KL_base": {
+          "mean": 1.175430638643231,
+          "median": 1.1998746412260615,
+          "minimum": 0.9744522030891294,
+          "maximum": 1.286100894215092
+        },
+        "pooled_KL_child": {
+          "mean": 1.316099144623785,
+          "median": 1.3487042505136804,
+          "minimum": 1.1151569540061341,
+          "maximum": 1.4446282974694336
+        }
+      },
+      {
+        "rho": 0.15,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.01613149400593681,
+          "median": 0.015910488361772224,
+          "minimum": 0.008989448807062983,
+          "maximum": 0.024751173243582336
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.019526477809344224,
+          "median": 0.017984346176912025,
+          "minimum": 0.009000564497723795,
+          "maximum": 0.028071594311151582
+        },
+        "pooled_KL_base": {
+          "mean": 0.016065477489620485,
+          "median": 0.015632798723659524,
+          "minimum": 0.009486868005849969,
+          "maximum": 0.022627448574207065
+        },
+        "pooled_KL_child": {
+          "mean": 0.01891687129538101,
+          "median": 0.018322809321520084,
+          "minimum": 0.010076237833755997,
+          "maximum": 0.02926916310674743
+        }
+      },
+      {
+        "rho": 0.5,
+        "shift": "identity",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.014635089552648195,
+          "median": 0.014955342084499779,
+          "minimum": 0.007343034524927683,
+          "maximum": 0.02067656558246256
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.02577152309553704,
+          "median": 0.025310551111814794,
+          "minimum": 0.017522656703095274,
+          "maximum": 0.03794242703859241
+        },
+        "pooled_KL_base": {
+          "mean": 0.016199270517897213,
+          "median": 0.015962917191853387,
+          "minimum": 0.007101409423025062,
+          "maximum": 0.022914408989206603
+        },
+        "pooled_KL_child": {
+          "mean": 0.026006337600111097,
+          "median": 0.025544080721506712,
+          "minimum": 0.017177799796038062,
+          "maximum": 0.03891692844979411
+        }
+      },
+      {
+        "rho": 0.5,
+        "shift": "identity",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.015309506898616987,
+          "median": 0.014635475932642361,
+          "minimum": 0.011119621512397426,
+          "maximum": 0.023950488587037633
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.02869145019449406,
+          "median": 0.028531601345939905,
+          "minimum": 0.020760503046185708,
+          "maximum": 0.03752705359282893
+        },
+        "pooled_KL_base": {
+          "mean": 0.015238493836656052,
+          "median": 0.014480166945896045,
+          "minimum": 0.011634257548159388,
+          "maximum": 0.02165333747419984
+        },
+        "pooled_KL_child": {
+          "mean": 0.028100784016068102,
+          "median": 0.027553633403145095,
+          "minimum": 0.021730829337535784,
+          "maximum": 0.033625203516362
+        }
+      },
+      {
+        "rho": 0.5,
+        "shift": "shift",
+        "mode": "source_transport",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 1.1748807452419316,
+          "median": 1.18038308707628,
+          "minimum": 1.0180839021127621,
+          "maximum": 1.3893337645490913
+        },
+        "mean_leaf_KL_child": {
+          "mean": 2.36493662289364,
+          "median": 2.372094855562395,
+          "minimum": 2.114334041471873,
+          "maximum": 2.5104331400105804
+        },
+        "pooled_KL_base": {
+          "mean": 1.166972407523771,
+          "median": 1.1684309799750328,
+          "minimum": 1.0240824351302598,
+          "maximum": 1.3872748471856013
+        },
+        "pooled_KL_child": {
+          "mean": 2.3529595950202626,
+          "median": 2.370724576159426,
+          "minimum": 2.150273863579243,
+          "maximum": 2.4946215448660336
+        }
+      },
+      {
+        "rho": 0.5,
+        "shift": "shift",
+        "mode": "target_refit",
+        "seeds": 20,
+        "mean_leaf_KL_base": {
+          "mean": 0.015309506898616987,
+          "median": 0.014635475932642361,
+          "minimum": 0.011119621512397426,
+          "maximum": 0.023950488587037633
+        },
+        "mean_leaf_KL_child": {
+          "mean": 0.02869145019449406,
+          "median": 0.028531601345939905,
+          "minimum": 0.020760503046185708,
+          "maximum": 0.03752705359282893
+        },
+        "pooled_KL_base": {
+          "mean": 0.015238493836656052,
+          "median": 0.014480166945896045,
+          "minimum": 0.011634257548159388,
+          "maximum": 0.02165333747419984
+        },
+        "pooled_KL_child": {
+          "mean": 0.028100784016068102,
+          "median": 0.027553633403145095,
+          "minimum": 0.021730829337535784,
+          "maximum": 0.033625203516362
+        }
+      }
+    ],
+    "independent_max_error": 8.881784197001252e-16,
+    "decomposition_identity_max_error": 8.604228440844963e-16,
+    "limitations": [
+      "仅四个合成符号，固定目标双射；真实依赖不变，但边际与条件对应均改变。不是自然语言或实际字母表的检测保证。",
+      "只借用无字形的ZL长度/元数据/缺失/页面骨架，没有新手稿目标评分；不比较真实行内与跨行效应。",
+      "A与B训练样本独立；目标训练和评价的identity/shift配对重编码使重拟合等变，这是实现合同，不是两次独立恢复证据。",
+      "主数值为精确期望的页均后叶均增益；有限评价样本的经验增益和pooled值均另列。20种子不是手稿置信区间。",
+      "rho0正增益来自Q0和最终Q1近似误差差；无预先定义统计分类阈值，不能简称假阳性或把gain当MI。",
+      "所有条件、负/零结果及零权重数均报告；不能据此认定手稿使用角色重编码或某种语言。"
+    ],
+    "independent_cv_status": "First-seed 9/180 searches independently recalculated; all 45 baseline/225 mixture grid values pass, 9 selections identical.",
+    "independent_cv": {
+      "searches": 9,
+      "all_searches": 180,
+      "base_grid_points": 45,
+      "mixture_grid_points": 225,
+      "maximum_grid_error": 4.440892098500626e-16,
+      "exact_selection_matches": 9
+    },
+    "manuscript_target_scoring": false,
+    "reserve_loaded": false,
+    "assets": {
+      "report": "downloads/synthetic-boundary-report.txt",
+      "protocol": "downloads/synthetic-boundary-protocol.txt",
+      "checks": "downloads/synthetic-boundary-verification.json",
+      "figure_png": "assets/synthetic-boundary.png",
+      "figure_svg": "assets/synthetic-boundary.svg",
+      "summary": "downloads/synthetic-boundary-summary.json"
     }
   },
   "boundary_prior_art": {

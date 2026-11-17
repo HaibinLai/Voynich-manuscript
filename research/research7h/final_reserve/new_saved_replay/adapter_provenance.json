@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-11-17T14:35:36.652411+00:00",
+  "adaptation_only": true,
+  "frozen_sources_edited": false,
+  "replay_script_sha256": "6b9c379b370da206d2711db7a656ea0bd260270aee33a17693e51e698ad8a414",
+  "position_adapter_sha256": "4ff4ac3f337750a9dea3bf2b4f6476f75773702e6a2548a06bca25887dce902d",
+  "independent_sources": [
+    {
+      "path": "metadata_sensitivity/replay.py",
+      "sha256": "2f230555da6b0dbcf199842c34a1dd9727cf849485aa5b1e869fdd092d96c094"
+    },
+    {
+      "path": "allograph_factor/replay.py",
+      "sha256": "72bb97a0a905c86f76c9f32699bfaaade0d5c291078ddb4d1c9a0863b7b27dec"
+    },
+    {
+      "path": "paragraph_factor/replay.py",
+      "sha256": "75ee7f3a371017b2e418e252089796735097f6a6b232d51b9ca823b7c04a67d9"
+    },
+    {
+      "path": "copy_prediction/position_specificity/replay.py",
+      "sha256": "1d2cfbaec2da321bb3781279f3193dccc2f01dee6c71ad630219f2ece4b84680"
+    }
+  ],
+  "metadata_adapter": "AST extracts word/train_rows/compare/copy_replay/allograph_replay/boundary_replay only. Avoids metadata.py import and therefore avoids its corpus import. A readonly JSON loader and independent scalar model are supplied.",
+  "training_adapter": "Clone saved train+legacy pages, set each effective_hands slot to original page H, then assert word/hand/position projection equals saved frozen allograph train records.",
+  "score_adapter": "Expose original positive-cost arrays under inline__ aliases to the independent metadata helper. No original arrays overwritten.",
+  "position_changes": [
+    "Read caller supplied packet rows/scores and position conditions",
+    "Alias unknown to unknown_units",
+    "Convert positive base/H costs to log probabilities with explicit minus signs",
+    "Read saved null arrays under packet position/",
+    "Use math.fsum for every permutation rather than only first twenty"
+  ],
+  "paragraph_changes": "Instantiate saved probability tables with independent replay, reconstruct selected prefix posteriors from saved training counts and all four selected costs on saved paragraph targets. No confirm-specific reader invoked.",
+  "first_attempt": {
+    "directory": "preflight_audit_v1",
+    "status": "incomplete",
+    "reason": "Duplicate targets keyword while assembling paragraph report, after probability calculation. No statistical mismatch.",
+    "old_script_sha256": "e7665fb83266962c59c4325fc8ad14c287cd3398efc29e2c33373af6e995695e",
+    "preserved": true
+  },
+  "accepted_preflight": "preflight_audit_v2"
+}
