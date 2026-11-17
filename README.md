@@ -156,6 +156,8 @@ python3 research/research7h/version_differences/independent_audit.py --bundle /t
 
 PDF 阅读版可用 `requirements-report.txt` 中的 ReportLab 依赖重排：`python3 scripts/build_report_pdf.py --source research --output /tmp/voynich-report-new.pdf`。可通过 `--font` 指定本机合法中文 TrueType 字体；字体和生成时间可能改变 PDF 字节与分页，需重新检查版面。仓库已提供逐页核查过的 PDF。
 
+直接下载的 20 页 TXT 另加 UTF-8 BOM，便于浏览器正确显示中文；ZIP 内保持原始无 BOM 字节，正文相同。核对两者时只应排除这项已声明的三字节包装差异。
+
 原图抽取脚本需研究者自己的 PDF 及本地页码清单；本仓库不分发整本现代影印出版物，也不包含私人文件路径。
 
 ## 证据边界

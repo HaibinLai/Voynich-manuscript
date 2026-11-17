@@ -22,6 +22,10 @@ python3 -m http.server 8000 --directory site
 
 ## 数据接口
 
+- `data/concordance.json`：完整ZL/IT阅读索引，进入词形索引视图时才加载。词次、行位、槽位与物理行并非同一分母；原始raw及未决记号保留。
+- `report.html`：综合报告与后续计划阅读页；由 `scripts/build_report_page.py --source research` 单独生成，再运行网站数据构建器更新校验清单。
+- `downloads/version-differences-*`：已经揭晓的全书双版分歧描述清单和完整CSV，不是错误率或新盲测。
+- `downloads/research-report.pdf` 与 `study20-review.zip`：已核查的阅读交付文件；PDF可按独立脚本重排，ZIP可按 `scripts/export_review_bundle.py` 在新路径生成。
 - `data/overview.json`：样本说明、来源、20 页选择信息。
 - `data/homepage.json`：当前证据概览、图文核对范围、执行状态快照与实际复算收据入口。
 - `data/final-reserve.json`：真实保留集执行与复核尚未全部绑定时只有状态、`available:false`，没有预演数值；完成后提供完整固定比较与敏感性。
@@ -78,7 +82,7 @@ python3 -m http.server 8000 --directory site
 
 f57v 的折叠对照图按 ZL 组成四行 17 列，保留 IT 末尾 `r | n` 两项；不宣称 17 字母表。D’Imperio（1978，印刷页 25）和 Stolfi Notes 034 是已有先例。四个第 9 格按钮从保存的角度/半径范围推导显示用矩形，在同一耶鲁原图上定位 f / f / p / p；构建器检查原图与对照图哈希。这些矩形不增加 332 处记录计数，也不认证字形身份。仅增加阅读辅助裁图，整套高清 JPEG 仍不打包。
 
-构建器的快照时间取源材料的最新修改时间，不使用构建时钟；源材料不变时，连续运行产生逐字节一致的公开文件和校验清单。
+构建器优先使用已记录的 session.updated_utc 作为快照时间，避免新 Git 副本的文件修改时间改变显示。缺少会话记录的早期输入才退回源文件修改时间；不使用构建时钟。公开快照已在 Python 3.9 和 3.13 的新副本中逐文件重建核验。
 
 主线新结果可写入本地 `research7h/public_summary.json` 后重新构建：
 
