@@ -14,6 +14,27 @@ EVA字母是字形代号，不是已知音值；空格片段不保证是真实�
 
 train+legacy拟合，dev选参数，confirm是本项目多次探索后的已见集合。reserve仅指该实验未拟合/评分，不指公开手稿从未被阅读。曝光史见 reserve_exposure_log.txt。不要自行读取预留页结果后选择规则；应先冻结明确方案、输入、预算和报告范围。公开转写文件的下载/哈希/解析遍历，与把预留记录返回给模型是不同访问层次，报告必须诚实区分。
 
+已完成的最终预留评估（stage3）
+final_reserve/reserve_v1 已完成 22 页、11 叶的预定评估与独立复算；以下路径均相对 research/research7h/。它已不再是可供后续新假设使用的未见测试集。原 28 页 confirm 结果及密码替换搜索是另一实验，不与这里的分母或区间混用。
+- final_reserve/report_v1/：完整中文报告、主 ZL 十项图、三表示三十项图、tables.json；manifest.json 绑定实际 summary、综合审核及六个报告输出。
+- reserve_publication_manifest.json：125 个公开文件的字节与 SHA 清单；python3 scripts/verify_release.py 会同时检查此清单。清单之间有重叠，不能累加为独立文件数。
+- final_reserve/reserve_v1/independent_review.json：综合审核门槛，绑定主完成记录、主/修正摘要、概率复算、汇总核验及 metadata 复算的哈希；不要用 preflight 完成记录替代。
+- final_reserve/reserve_v1/independent_aggregate_audit.json：39 项主/辅助汇总、目标资格、来源坐标、保存 bootstrap 与六项位置尾概率/Holm 的核验。
+- final_reserve/reserve_v1/independent_probability_replay/verification.json：12 个任务、111 个概率成本数组和全部 11,994 次位置置换的独立标量复算；同目录 position_*.json 给出三表示细项。
+- metadata_sensitivity/reserve_v1/replay_verification.json 与 independent_aggregate_review.json/.txt：行内 H 修正的独立概率和 24 项汇总审核。旧分数保留，修正敏感性另列；等叶平均变化不是逐词影响上限。
+
+最终预留包的安全复算命令（从仓库根运行；需要 NumPy，报告另需 Matplotlib 与中文字体；所有输出位置须尚不存在）：
+python3 research/research7h/final_reserve/saved_output_audit.py --run research/research7h/final_reserve/reserve_v1 --mode reserve --output ../reserve-aggregate-check.json
+python3 research/research7h/final_reserve/new_saved_replay/replay.py --run research/research7h/final_reserve/reserve_v1 --output ../reserve-probability-position-check
+python3 research/research7h/metadata_sensitivity/replay.py --run research/research7h/metadata_sensitivity/reserve_v1 --out ../reserve-metadata-check.json
+python3 research/research7h/final_reserve/report_saved.py --run research/research7h/final_reserve/reserve_v1 --output ../reserve-report-rebuilt
+
+这些命令只复算保存包，不重新选参数或选择新目标。metadata 的 reserve_aggregate_review.py 无命令行输出参数，固定写入已存在的审核位置并拒绝覆盖；阅读其已保存收据即可，不直接在发布快照原地重跑。统一 --replay metadata 指向早先的公开确认集入口，不能代替上述最终预留 metadata 命令。
+
+访问范围必须准确：legacy metadata replay 的 reserve_loaded=false 是冻结输出字段，不能解释为“没有接触预留目标”。传入 reserve_v1 时它会读取保存的预留目标，但不重开原始语料加载器；见 final_reserve/replay_scope_note.txt 及综合审核中的 saved_reserve_packet_read=true、raw_corpus_reopened=false。不要修改冻结程序来消除字段歧义。
+
+未来跨行研究与上述完成结果分开：line_boundary_design/ 是只用允许 train+legacy/dev 记录的资格与设计审查；line_boundary_prediction/ 的协议、toy 核验和独立审核准备已冻结，freeze_status.json 当前为 design_frozen_not_executed，尚无真实 dev 评分。未来执行范围仅为 train+legacy 内选参和 dev 描述性评价，不自动获得 confirm/reserve 新评分授权；需先核对当时的状态、执行门槛与剩余时间。合成校准结果不等于真实跨行结果。
+
 复现习惯
 先运行 python3 scripts/verify_release.py 核验公开快照。可选 --replay anchor copy allograph metadata --output 仓库外新目录，会调用四个保存证据复算入口；它不重新选参数，也不打开新分区。20页便携图文工作包由 scripts/export_review_bundle.py 生成，原始逐页JSON与JPEG保持字节不变。
 优先使用各目录 public_reproduce / replay 入口，将新结果写入不存在的新目录。不要覆盖原协议、选参、随机数组、错误诊断或已完成分数。发现错误应保留旧记录、新增带时间和哈希的说明，再做明确版本的修复。错误修复与因为结果不理想而换模型不同。

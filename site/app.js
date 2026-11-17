@@ -371,6 +371,7 @@ function stage2Panel() {
   ${allographFactorPanel(s.allograph_factor)}
   ${boundaryCalibrationPanel(s.boundary_calibration)}
   ${syntheticBoundaryPanel(s.synthetic_boundary)}
+  ${cipherSearchPanel(s.cipher_search)}
   </div><p class="small-text muted">已完成子实验与仍在计算的任务分开标记。压缩、低熵或字典命中均不自动构成破译；所有当前结果仍以规范化转写及限定模型为对象。</p></section>`;
 }
 

@@ -98,6 +98,13 @@ def execution_snapshot(research, session):
     else:
         cipher_state = "failed"
     cipher = {"status": cipher_state, **{k: progress[k] for k in ["completed", "total", "updated_utc"] if k in progress}}
+    cipher_done = read(research / "cipher_controls/voynich_substitution/completion_verification.json", {})
+    cipher_public = read(research / "cipher_controls/voynich_substitution/website_data.json", {})
+    if (cipher_public.get("status") == "completed" and cipher_done.get("all_frozen_key_files_unchanged") is True
+            and cipher_done.get("implementation_hashes_unchanged") is True
+            and cipher_done.get("all_training_inputs_reconstructed") == 976
+            and len(cipher_done.get("confirm_score_arithmetic_replay", [])) == 8):
+        cipher.update(status="completed", completed=976, total=976)
     split = read(research / "split_manifest.json", [])
     reserved = [r for r in split if r.get("split") == "reserve"]
     root = research / "final_reserve"
@@ -147,7 +154,9 @@ def final_reserve_payload(research, site, execution):
     """
     asset_names = ["final-reserve-summary.json", "final-reserve-metadata-summary.json",
                    "final-reserve-review.json", "final-reserve-reporting-scope.txt",
-                   "final-reserve-protocol.txt"]
+                   "final-reserve-protocol.txt", "final-reserve-report.txt",
+                   "final-reserve-report-manifest.json", "final-reserve-main.png",
+                   "final-reserve-all30.png"]
     empty = {"schema_version": 1, "available": False,
              "status": execution.get("reserve", {}).get("status", "not_scored")}
     if empty["status"] != "reviewed":
@@ -201,7 +210,18 @@ def final_reserve_payload(research, site, execution):
     invariance = metadata.get("paragraph_invariance", [])
     if len(invariance) != 3 or {r.get("name") for r in invariance} != set(representations):
         raise ValueError("Paragraph invariance must be reported for all three representations")
+    report_manifest = read(root / "report_v1/manifest.json", {})
+    if report_manifest.get("review_sha256") != hashlib.sha256((root / "reserve_v1/independent_review.json").read_bytes()).hexdigest():
+        raise ValueError("Final report must bind the same independently reviewed packet")
+    for item in report_manifest.get("outputs", []):
+        path = root / "report_v1" / item["path"]
+        if hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+            raise ValueError("Final report output hash mismatch")
     assets = export_assets(root, site, [
+        ("report", "report_v1/最终预留研究报告.txt", "downloads/final-reserve-report.txt"),
+        ("report_manifest", "report_v1/manifest.json", "downloads/final-reserve-report-manifest.json"),
+        ("main_figure", "report_v1/主表示十项.png", "downloads/final-reserve-main.png"),
+        ("all30_figure", "report_v1/三表示三十项.png", "downloads/final-reserve-all30.png"),
         ("summary", "reserve_v1/summary.json", "downloads/final-reserve-summary.json"),
         ("review", "reserve_v1/independent_review.json", "downloads/final-reserve-review.json"),
         ("reporting_scope", "reporting_scope.txt", "downloads/final-reserve-reporting-scope.txt"),
@@ -540,6 +560,27 @@ def main():
             ("figure_png", "synthetic_transfer.png", "assets/synthetic-boundary.png"),
             ("figure_svg", "synthetic_transfer.svg", "assets/synthetic-boundary.svg"),
             ("summary", "public_summary.json", "downloads/synthetic-boundary-summary.json")])
+    cipher_dir = research / "cipher_controls/voynich_substitution"
+    cipher_search = read(cipher_dir / "website_data.json", {})
+    if cipher_search.get("status") == "completed":
+        cipher_evaluation = read(cipher_dir / "evaluation.json", {})
+        assert cipher_search["not_a_translation"] is True and cipher_evaluation["reserve_scored"] is False
+        assert len(cipher_search["results"]) == len(cipher_evaluation["results"]) == 8
+        for row in cipher_search["results"]:
+            original = next(r for r in cipher_evaluation["results"] if all(r[k] == row[k] for k in ("representation", "language", "mode")))
+            assert row["observed"] == original["observed"] and row["effect"] == original["effect"]
+            row["null_page_mean_lexicon_hit"] = sum(r["page_mean_lexicon_hit"] for r in original["nulls"])/len(original["nulls"])
+        cipher_search["assets"] = export_assets(cipher_dir, site, [
+            ("report", "研究报告.txt", "downloads/cipher-search-report.txt"),
+            ("figure_png", "固定替换检验.png", "assets/cipher-search.png"),
+            ("figure_svg", "固定替换检验.svg", "assets/cipher-search.svg"),
+            ("protocol", "protocol.txt", "downloads/cipher-search-protocol.txt"),
+            ("checks", "completion_verification.json", "downloads/cipher-search-verification.json"),
+            ("reproduction", "复现说明.txt", "downloads/cipher-search-reproduction.txt")])
+        cipher_search["assets"]["summary"] = "data/cipher-search.json"
+        write(site / "data/cipher-search.json", cipher_search)
+    else:
+        cipher_search = {}
     write(site / "data/stage2.json", {
         "overall_status": session.get("status", "active"),
         "stage_complete": session.get("stage", 2) > 2,
@@ -554,6 +595,7 @@ def main():
         "position_specificity": position_specificity,
         "allograph_factor": allograph_factor,
         "synthetic_boundary": synthetic_boundary,
+        "cipher_search": cipher_search,
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
     # Interpretive audits are separate from frozen predictive experiments. Only
     # named Yale crops are bundled; modern-paper screenshots and full JPEGs are not.

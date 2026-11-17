@@ -1,0 +1,27 @@
+固定替换检验：离线复现
+
+当前实验的 experiment.py 保留2026-11-17研究窗口的16:40 UTC硬截止保护，以遵守本轮7小时授权。
+其他日期需要完整复现时使用 reproduce_offline.py。它调用同一冻结的准备、null、搜索和评分函数，只替换无实时截止的调度循环；不改变样本、模型、随机种子、预算或评分。
+
+依赖：Python 3.9+、numpy、matplotlib、C++17编译器；推荐保留研究目录布局。
+参考模型先由上一级 cipher_controls/benchmark.py prepare 生成；该步骤需要 research/study20/controls 下的英文/拉丁原始语料，校验值见上一级 manifest_preparation.json。
+
+在本目录执行：
+  python3 reproduce_offline.py full
+
+分阶段：
+  python3 reproduce_offline.py compile
+  python3 reproduce_offline.py prepare
+  python3 reproduce_offline.py calibrate
+  python3 reproduce_offline.py fit
+  python3 reproduce_offline.py evaluate
+  python3 verify_null.py
+  python3 verify_completion.py
+  python3 candidate_examples.py
+  python3 make_report.py
+
+已有 keys/*.json 会复用，已有完整 evaluation.json 不会自动改写。
+如果需要全新运行，请先把 keys/、evaluation*.json、keys_frozen.json、progress.json及运行收据移到独立备份目录，保留源代码、方案、参考数据；不要混用不同实现生成的key。
+离线运行会保留自己的 driver 哈希和编译器版本。固定种子的逐位一致性仅在原运行平台核验；跨编译器/标准库/平台的精确一致性尚未承诺。
+
+所有score仍然只是词形相容性。词袋模式没有恢复词内次序，整词重排对两个评分都不变。

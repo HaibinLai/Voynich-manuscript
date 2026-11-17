@@ -107,6 +107,10 @@ for name in NAMES:
   for k in ('base','last'):near(np.max(abs(barr[k]-cost+old[k])),0)
  for cid,fam,a,b in CONTRASTS+[(f'allograph_{m}_global_restore','allograph','base',m+'_complete_global') for m in ('FP','KT','both')]:
   rr,aa=data[fam];gain=aa[a]-aa[b];pp,ll=aggregate(rr,gain);leaves=sorted(ll);values=np.asarray([ll[l] for l in leaves]);obj=next(x for x in rows_summary if x['representation']==name and x['id']==cid)
+  assert (obj['words'],obj['eligible_pages'],obj['eligible_leaves'])==(len(rr),len(pp),len(ll))
+  assert obj['population']=={'copy':'all_words','allograph':'all_words','boundary':'nonoverlapping_interior_pairs','paragraph':'paragraph_first_words'}[fam]
+  assert (obj['model_before'],obj['model_after'],obj['family'])==(a,b,fam)
+  near(obj['pooled_before_bits'],math.fsum(float(v) for v in aa[a])/len(rr));near(obj['pooled_after_bits'],math.fsum(float(v) for v in aa[b])/len(rr))
   assert set(obj['per_page_gain'])==set(pp) and set(obj['per_leaf_gain'])==set(ll)
   for k,v in pp.items():near(v,obj['per_page_gain'][k])
   for k,v in ll.items():near(v,obj['per_leaf_gain'][k])

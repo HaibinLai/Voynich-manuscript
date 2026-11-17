@@ -1,0 +1,137 @@
+{
+  "prepared_utc": "2026-11-17T14:42:53.556967+00:00",
+  "status": "draft_implementation_only",
+  "real_train_or_dev_loaded_in_preparation": false,
+  "real_parameter_search": false,
+  "real_dev_score": false,
+  "confirm_or_reserve_loaded": false,
+  "freeze_created": false,
+  "execution_gate_created": false,
+  "future_execution_scope": "After completed stage3 and a separately recorded next-stage internal gate; no user authorization gap implied.",
+  "toy_verification": {
+    "passed": true,
+    "completed_utc": "2026-11-17T14:42:53.484198+00:00",
+    "finite_original_universe_mass_plus_tail": 1.000000000000002,
+    "max_direct_probability_error": 7.105427357601002e-15,
+    "target_only_escape_examples": [
+      {
+        "source": [
+          "b"
+        ],
+        "target": [
+          "a"
+        ],
+        "escape_bits": 0.0
+      },
+      {
+        "source": [
+          "a"
+        ],
+        "target": [
+          "b"
+        ],
+        "escape_bits": 1.0
+      },
+      {
+        "source": [
+          "a"
+        ],
+        "target": [
+          "a",
+          "b"
+        ],
+        "escape_bits": 1.0
+      },
+      {
+        "source": [
+          "c"
+        ],
+        "target": [
+          "b",
+          "c"
+        ],
+        "escape_bits": 2.0
+      }
+    ],
+    "eligibility_and_cross_hand_example_passed": true,
+    "training_only_fold_alphabet_toy_passed": true,
+    "toy_CV_rows": 6,
+    "toy_CV_folds": [
+      {
+        "fold": 0,
+        "fit_rows": 4,
+        "held_rows": 2,
+        "fit_leaves": [
+          "toy0",
+          "toy1",
+          "toy3",
+          "toy5"
+        ],
+        "held_leaves": [
+          "toy2",
+          "toy4"
+        ],
+        "alphabet": [
+          "a",
+          "b",
+          "d",
+          "f"
+        ],
+        "held_first_unknown": 2
+      },
+      {
+        "fold": 1,
+        "fit_rows": 4,
+        "held_rows": 2,
+        "fit_leaves": [
+          "toy1",
+          "toy2",
+          "toy4",
+          "toy5"
+        ],
+        "held_leaves": [
+          "toy0",
+          "toy3"
+        ],
+        "alphabet": [
+          "b",
+          "c",
+          "e",
+          "f"
+        ],
+        "held_first_unknown": 2
+      },
+      {
+        "fold": 2,
+        "fit_rows": 4,
+        "held_rows": 2,
+        "fit_leaves": [
+          "toy0",
+          "toy2",
+          "toy3",
+          "toy4"
+        ],
+        "held_leaves": [
+          "toy1",
+          "toy5"
+        ],
+        "alphabet": [
+          "a",
+          "c",
+          "d",
+          "e"
+        ],
+        "held_first_unknown": 2
+      }
+    ],
+    "real_train_or_dev_loaded": false,
+    "real_parameter_search": false,
+    "real_dev_scoring": false,
+    "code_sha256": "02be858193488b07ba32ee60f0369ac79d329693582249842815deda7de6cbe5"
+  },
+  "open_review_points": [
+    "Review normalization and target-only identity escape against final adapter semantics.",
+    "Review three-fold leaf assignment and fitting-fold-only alphabet handling.",
+    "No complete independent CV or real-result replay has yet been executed; future scoring requires its own audit."
+  ]
+}

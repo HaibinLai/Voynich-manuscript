@@ -1,0 +1,14 @@
+保存结果复算的访问范围说明（保留集开封前记录）
+
+metadata_sensitivity/replay.py 是已冻结的旧确认集复算程序。其输出固定包含
+raw_corpus_loaded=false、new_target_pages_loaded=false、reserve_loaded=false。
+第三个字段的名称过宽：程序没有调用原始语料的 reserve 分区加载器，但会读取调用者
+明确传入的保存目标记录。如果传入 metadata_sensitivity/reserve_v1，它确实读取了
+已评分的保留页目标，不能引用该 false 宣称从未接触保留集。
+
+保留原冻结代码与输出，不静默改字段或重新冻结。最终主审查收据将明确记录
+saved_reserve_packet_read=true、raw_corpus_reopened=false、new_target_selection=false，
+并绑定这份说明和实际复算收据的哈希。独立主评分复算 new_saved_replay 已使用
+saved_reserve_packet_read 区分这两个访问层次。
+
+本说明只纠正报告字段的解释，不改变模型、目标、评分、参数选择或研究结果。

@@ -93,10 +93,11 @@ def main():
     # The design audit's explicit training input is already public transcription
     # data. Export this fixed input without exposing any in-progress cipher score.
     path=src/'cipher_controls/voynich_substitution/data/train_eva.json'
-    if (src/'section_hand_audit/support.json').exists() and path.exists():copy(path.relative_to(src))
+    cipher_manifest=src/'cipher_controls/voynich_substitution/artifact_manifest.json'
+    if not cipher_manifest.exists() and (src/'section_hand_audit/support.json').exists() and path.exists():copy(path.relative_to(src))
     # Progress is a timestamped count only, never an in-progress score/key.
     path=src/'cipher_controls/voynich_substitution/progress.json'
-    if path.exists():
+    if path.exists() and not cipher_manifest.exists():
         progress=json.loads(path.read_text())
         assert set(progress)<=set(['status','completed','total','updated_utc','elapsed_this_invocation_seconds'])
         copy(path.relative_to(src))
@@ -121,7 +122,8 @@ def main():
             copy(path.relative_to(src))
         copy(Path('metadata_sensitivity/artifact_manifest.json'))
     for folder in ['synthesis_audit','label_body_design','line_boundary_design','line_boundary_calibration',
-                   'final_reserve/new_saved_replay']:
+                   'final_reserve/new_saved_replay','cipher_controls/voynich_substitution',
+                   'line_boundary_prediction','line_boundary_prediction/independent_audit']:
         parent=src/folder;manifest=parent/'artifact_manifest.json'
         if not manifest.exists():continue
         inventory=json.loads(manifest.read_text())
@@ -135,8 +137,18 @@ def main():
             assert path.suffix not in ['.log','.pdf','.pyc']
             copy(path.relative_to(src))
         copy(manifest.relative_to(src))
+    reserve_manifest=src/'reserve_publication_manifest.json'
+    if reserve_manifest.exists():
+        for item in json.loads(reserve_manifest.read_text())['files']:
+            rel=Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            path=src/rel
+            assert digest(path)==item['sha256'] and path.stat().st_size==item['bytes']
+            assert path.suffix not in ['.log','.pdf','.pyc']
+            copy(rel)
+        copy(Path('reserve_publication_manifest.json'))
     for path in sorted((src/'publication_checks').glob('*')):
-        if path.is_file() and path.suffix in ['.json','.txt']:copy(path.relative_to(src))
+        if path.is_file() and path.suffix in ['.json','.txt','.py']:copy(path.relative_to(src))
     for name in ['site_status.json','homepage_curated.json']:
         if (src/name).is_file():copy(Path(name))
     for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',
@@ -153,7 +165,7 @@ def main():
             if re.search(r"/Users/[^/'\"\s]",path.read_text()):
                 raise ValueError('Unexpected personal path in '+e['path'])
     result=dict(exported_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        purpose='Reviewable second-stage snapshot. Completed analyses and 20-page visual review are distinct from the ongoing cipher search.',
+        purpose='Reviewable research snapshot: completed component studies, final reserved-page packet, and separately labeled exploratory designs.',
         files=entries,
         note='Source artifact manifests describe the original local run. This publication manifest records the exact exported bytes and any path-only transformation.')
     (dest/'stage2_publication_manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')

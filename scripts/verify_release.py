@@ -76,6 +76,11 @@ def verify_snapshot():
         (RESEARCH/'line_boundary_calibration/artifact_manifest.json', RESEARCH/'line_boundary_calibration',
          dict(container='files')),
     ]
+    for name, base in [('reserve_publication_manifest.json', RESEARCH),
+                       ('cipher_controls/voynich_substitution/artifact_manifest.json', RESEARCH/'cipher_controls/voynich_substitution')]:
+        path = RESEARCH/name
+        if path.exists():
+            definitions.append((path, base, dict(container='files')))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),

@@ -1,0 +1,27 @@
+{
+  "review_recorded_utc": "2026-11-17T14:48:26.438108+00:00",
+  "reviewer": "root",
+  "scope": "design_freeze_only_no_real_scoring",
+  "approved": true,
+  "reviewed_source_sha256": {
+    "protocol.txt": "cdb85f2b8b58468d169c1ecffe60a31b77b589ca5110da0ce18c08d9e26bcaf9",
+    "data.py": "de8b811a1b1c155af7d18b3becf09a423c243aca9997e5f73bb0d9c385794afb",
+    "models.py": "7012f91b5d5397e00e15dfef5b18eeddc314cd929e448afc9798a63dae477100",
+    "run.py": "099d0523ce8075b732d5166fb2f92a4c29b43a9593da0c97c1e35741783b587e",
+    "freeze.py": "43d98d9d9eab912edb2de8c4e4b27036edc4bef568fdbb01a1f4caa0e03ac4be"
+  },
+  "approved_amendments": [
+    "Add original 2026-11-17 16:50:25 UTC deadline checks and fixed 1200 CPU-second budget; preserve incomplete on limit.",
+    "Separate mapped first-class costs, first target identity escape and actual first-unit costs; full target escape charged once.",
+    "Assert complete train/dev leaf-set disjointness; no dev alphabet augmentation.",
+    "Rerun toy-only contracts, include this review receipt, freeze design without any execution gate."
+  ],
+  "deferred_execution": "Only after final stage3 completion and an explicit next-stage root gate bound to the design freeze.",
+  "real_train_or_dev_scoring_authorized_now": false,
+  "user_authorization_gap_implied": false,
+  "limitations": [
+    "Existing real dev is already explored in other models.",
+    "No full actual-alphabet detection-power guarantee follows from the four-symbol synthetic calibration.",
+    "Real-data selection and scoring have not been run; future independent score/CV audit remains required."
+  ]
+}

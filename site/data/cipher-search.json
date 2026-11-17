@@ -1,0 +1,610 @@
+{
+  "title": "固定字母替换的保留页检验",
+  "status": "completed",
+  "not_a_translation": true,
+  "reserve_scored": false,
+  "main_metric": "页面等权的每编码单位词形log评分；词形相容性，不使用词序或语义。",
+  "method": "train+legacy固定键，dev诊断；976次拟合全部冻结后一次confirm。",
+  "results": [
+    {
+      "representation": "eva",
+      "language": "english",
+      "mode": "ordered",
+      "primary": true,
+      "observed": -4.205832526534481,
+      "null_mean": -4.536829022617797,
+      "effect": 0.3309964960833165,
+      "null_95_reference": [
+        -4.694380556018129,
+        -4.407337210187067
+      ],
+      "p_value": 0.005,
+      "replicates": 199,
+      "holm_p": 0.02,
+      "page_mean_lexicon_hit": 0.04819588910316678,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.048682106899939036
+    },
+    {
+      "representation": "eva",
+      "language": "english",
+      "mode": "bag",
+      "primary": true,
+      "observed": -2.599098458843101,
+      "null_mean": -2.7728535102820797,
+      "effect": 0.17375505143897874,
+      "null_95_reference": [
+        -2.8016573646189675,
+        -2.746779589966934
+      ],
+      "p_value": 0.005,
+      "replicates": 199,
+      "holm_p": 0.02,
+      "page_mean_lexicon_hit": 0.148233329507594,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.12075251691650851
+    },
+    {
+      "representation": "eva",
+      "language": "latin",
+      "mode": "ordered",
+      "primary": true,
+      "observed": -3.968456435963294,
+      "null_mean": -4.503967428346254,
+      "effect": 0.5355109923829597,
+      "null_95_reference": [
+        -4.615144552334737,
+        -4.396087139682646
+      ],
+      "p_value": 0.005,
+      "replicates": 199,
+      "holm_p": 0.02,
+      "page_mean_lexicon_hit": 0.03534172328668216,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.05409285079269848
+    },
+    {
+      "representation": "eva",
+      "language": "latin",
+      "mode": "bag",
+      "primary": true,
+      "observed": -2.537238750941708,
+      "null_mean": -2.608027270636442,
+      "effect": 0.07078851969473421,
+      "null_95_reference": [
+        -2.6875516734284046,
+        -2.5810642486738775
+      ],
+      "p_value": 0.005,
+      "replicates": 199,
+      "holm_p": 0.02,
+      "page_mean_lexicon_hit": 0.14140158326805097,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.10571363513499603
+    },
+    {
+      "representation": "merged",
+      "language": "english",
+      "mode": "ordered",
+      "primary": false,
+      "observed": -4.277744759144403,
+      "null_mean": -4.604933798173032,
+      "effect": 0.32718903902862895,
+      "null_95_reference": [
+        -4.713976093990589,
+        -4.526236725117996
+      ],
+      "p_value": 0.025,
+      "replicates": 39,
+      "page_mean_lexicon_hit": 0.0712944616446188,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.089396236925524
+    },
+    {
+      "representation": "merged",
+      "language": "english",
+      "mode": "bag",
+      "primary": false,
+      "observed": -2.8390492602518242,
+      "null_mean": -3.05246421608068,
+      "effect": 0.21341495582885583,
+      "null_95_reference": [
+        -3.13802287269452,
+        -2.9977605290861473
+      ],
+      "p_value": 0.025,
+      "replicates": 39,
+      "page_mean_lexicon_hit": 0.18937301718268088,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.15444547853460028
+    },
+    {
+      "representation": "merged",
+      "language": "latin",
+      "mode": "ordered",
+      "primary": false,
+      "observed": -3.946360067546021,
+      "null_mean": -4.501123804476295,
+      "effect": 0.554763736930274,
+      "null_95_reference": [
+        -4.556512793580379,
+        -4.424709927352487
+      ],
+      "p_value": 0.025,
+      "replicates": 39,
+      "page_mean_lexicon_hit": 0.10646380488636191,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.08519136235087098
+    },
+    {
+      "representation": "merged",
+      "language": "latin",
+      "mode": "bag",
+      "primary": false,
+      "observed": -2.8560556668694796,
+      "null_mean": -3.0121403883781546,
+      "effect": 0.15608472150867492,
+      "null_95_reference": [
+        -3.0601597314847124,
+        -2.9842051940848147
+      ],
+      "p_value": 0.025,
+      "replicates": 39,
+      "page_mean_lexicon_hit": 0.1466234563537066,
+      "confirm_pages": 28,
+      "null_page_mean_lexicon_hit": 0.1198870485591323
+    }
+  ],
+  "stability": [
+    {
+      "representation": "eva",
+      "language": "english",
+      "mode": "ordered",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.1442735665418284
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.23284801985269843
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.10842715175247875
+        }
+      ],
+      "three_keys": [
+        "ixolewkrgbmsdhafcntpujqvyz",
+        "ikosrvgulxanmyehbdcfwzqptj",
+        "ikrtswyenxpmfgabcdluhqjvoz"
+      ]
+    },
+    {
+      "representation": "eva",
+      "language": "english",
+      "mode": "bag",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.7234851503181668
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.7208214281648776
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.9007137409359455
+        }
+      ],
+      "three_keys": [
+        "abistuknlzrhwfegcmpdjxqyov",
+        "augstfknlzrhwcebpmodjxqyiv",
+        "augstpknljrhwfebdmocvqzyix"
+      ]
+    },
+    {
+      "representation": "eva",
+      "language": "latin",
+      "mode": "ordered",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.41706603526585995
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.4170205015538379
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.999954466287978
+        }
+      ],
+      "three_keys": [
+        "equtigvlrwcsxdanhmpbykjfoz",
+        "uqenibxrlwcsdoagfmpvykjhtz",
+        "uqenibxrljcsdoagfmpvykzhtw"
+      ]
+    },
+    {
+      "representation": "eva",
+      "language": "latin",
+      "mode": "bag",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.8084055232392683
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.8084055232392683
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 1.0
+        }
+      ],
+      "three_keys": [
+        "ixnarfholjmsbgevudpczqkytw",
+        "iqnarfxtlymsbgevudpckjwhoz",
+        "iqnarfxtlymsbgevudpckjwhoz"
+      ]
+    },
+    {
+      "representation": "merged",
+      "language": "english",
+      "mode": "ordered",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.7605156904834918
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.7605156904834918
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 1.0
+        }
+      ],
+      "three_keys": [
+        "izjhuvgrekxolmtfyawcdnbpqs",
+        "izjruvhtekxolmnfyagcdwbpqs",
+        "izjruvhtekxolmnfyagcdwbpqs"
+      ]
+    },
+    {
+      "representation": "merged",
+      "language": "english",
+      "mode": "bag",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.2735357252376572
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.31449964223653276
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.08315445159971378
+        }
+      ],
+      "three_keys": [
+        "nxzsybhtlujvicrkgepdowfmqa",
+        "izxrukgtsvjylnhbaefcdwpmqo",
+        "nzxhbvytefjpidakgsulomwcqr"
+      ]
+    },
+    {
+      "representation": "merged",
+      "language": "latin",
+      "mode": "ordered",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.5088546458141674
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.7024174588572013
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.5442732290708372
+        }
+      ],
+      "three_keys": [
+        "ukzenhbtrqjylcsxoavpmdfgwi",
+        "ukjrvfhniqzyltsxoabpmcdgwe",
+        "uqjigkhtrxzylcsboanfmdpvwe"
+      ]
+    },
+    {
+      "representation": "merged",
+      "language": "latin",
+      "mode": "bag",
+      "pairwise": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "weighted_agreement": 0.999067259531841
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "weighted_agreement": 0.6219462332617807
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "weighted_agreement": 0.6228789737299397
+        }
+      ],
+      "three_keys": [
+        "owzmfxhtrvykuanbqigcsdplje",
+        "ozwmfxhtrvykuanbqigcsdplje",
+        "ozwafqxtrgkysmnhuibdlvpcje"
+      ]
+    }
+  ],
+  "coverage": {
+    "eva": {
+      "dev": {
+        "all_slots": 7003,
+        "source_known_tokens": 6886,
+        "source_known_units": 34527,
+        "retained_tokens": 6857,
+        "retained_units": 34352,
+        "inventory_excluded_tokens": 29,
+        "inventory_excluded_units": 175,
+        "source_missing_slots": 117
+      },
+      "confirm": {
+        "all_slots": 5106,
+        "source_known_tokens": 5025,
+        "source_known_units": 25196,
+        "retained_tokens": 5005,
+        "retained_units": 25070,
+        "source_missing_slots": 81,
+        "inventory_excluded_tokens": 20,
+        "inventory_excluded_units": 126
+      }
+    },
+    "merged": {
+      "dev": {
+        "all_slots": 7003,
+        "source_known_tokens": 6886,
+        "source_known_units": 31253,
+        "retained_tokens": 6851,
+        "retained_units": 31065,
+        "inventory_excluded_tokens": 35,
+        "inventory_excluded_units": 188,
+        "source_missing_slots": 117
+      },
+      "confirm": {
+        "all_slots": 5106,
+        "source_known_tokens": 5025,
+        "source_known_units": 22378,
+        "retained_tokens": 4999,
+        "retained_units": 22240,
+        "source_missing_slots": 81,
+        "inventory_excluded_tokens": 26,
+        "inventory_excluded_units": 138
+      }
+    }
+  },
+  "scope_notes": [
+    "两个参考模型来自英文和拉丁各一本书，不能识别或排除其他语言，也不覆盖完整希伯来重排与后处理假说。",
+    "词形库命中不是语法正确率；bag模式只代表字母袋匹配。",
+    "优于块null只表明其保留的结构还不足；不是破译证据。",
+    "不同seed的一致率是稳定性，不是未知真值准确率。"
+  ],
+  "files": {
+    "report": "研究报告.txt",
+    "figure": "固定替换检验.png",
+    "evaluation": "evaluation.json",
+    "protocol": "protocol.txt",
+    "invariance_note": "可辨识性说明.txt",
+    "reproduction": "复现说明.txt",
+    "examples": "模型输出示例_不是译文.txt",
+    "examples_json": "candidate_examples.json",
+    "verification": "completion_verification.json"
+  },
+  "related_work": [
+    {
+      "authors": [
+        "Liudmila Rozanova",
+        "Alexander Temerev"
+      ],
+      "year": 2026,
+      "version_date": "2026-08-17",
+      "title_short": "What the Units of Voynichese Are Not",
+      "url": "https://arxiv.org/html/2608.17096v1",
+      "code_url": "https://github.com/lrozanova/voynich-units",
+      "sections": [
+        "2.8",
+        "3.7",
+        "3.9",
+        "A.5"
+      ],
+      "status": "arXiv v1 cited; full code not replicated by this branch",
+      "identified_after_protocol_freeze": true,
+      "logged_utc": "2026-11-17T11:45:09.048951+00:00",
+      "relevance": "Direct precedent for calibrated attack differentials; failure on known meaningful Naibbe ciphertext limits negative inference.",
+      "our_distinction": "Fixed EVA/merged injection to Latin letters, within-token 4-gram, page/length/line-role aligned block permutations with equal-budget refits.",
+      "changes_to_frozen_method": false
+    },
+    {
+      "authors": [
+        "Xin Zhang",
+        "Victor S. Sheng"
+      ],
+      "year": 2026,
+      "version_date": "2026-11-04",
+      "title_short": "Calibrated Tests on the Voynich Manuscript",
+      "url": "https://arxiv.org/html/2610.34499v2",
+      "sections": [
+        "4",
+        "6",
+        "Limitations",
+        "Implementation"
+      ],
+      "status": "arXiv v2 read; full experiments not independently replicated by this branch; paper states code will accompany publication",
+      "identified_after_protocol_freeze": true,
+      "logged_utc": "2026-11-17T13:24:12.662300+00:00",
+      "relevance": "Direct precedent for equal-budget mechanism comparisons and known-answer calibration of letter, word-code and nomenclator solvers.",
+      "our_distinction": "Only English/Latin references, fixed injection, within-word ordered/bag spelling models, and refitted page/length/line-role block nulls. Not equivalent to wider language/noise/code-family tests.",
+      "external_exposure": "Read published full-manuscript aggregate descriptions after method freeze; local reserve pages not used by this branch.",
+      "changes_to_frozen_method": false
+    }
+  ],
+  "findings": [
+    "4项EVA主模型均在28个confirm页优于同预算块null，单项p=0.005，Holm p=0.020。",
+    "这表明块null未保留全部可跨页重现的词形结构；不等于识别语言或获得译文。",
+    "EVA ordered的训练词形命中仅英语4.82%、拉丁3.53%，均未超过各自null均值；映射稳定性也有限。"
+  ],
+  "score_unit": "nats per coded unit, page-equal mean",
+  "scale_calibration": [
+    {
+      "language": "english",
+      "mode": "ordered",
+      "tokens": 17648,
+      "known_key_character_accuracy": 1.0
+    },
+    {
+      "language": "english",
+      "mode": "bag",
+      "tokens": 17648,
+      "known_key_character_accuracy": 1.0
+    },
+    {
+      "language": "latin",
+      "mode": "ordered",
+      "tokens": 17648,
+      "known_key_character_accuracy": 1.0
+    },
+    {
+      "language": "latin",
+      "mode": "bag",
+      "tokens": 17648,
+      "known_key_character_accuracy": 1.0
+    }
+  ],
+  "null_change_stats": {
+    "eva": {
+      "changed_token_fraction_range": [
+        0.8835164835164835,
+        0.8981018981018981
+      ],
+      "changed_unit_fraction_range": [
+        0.6363382528919027,
+        0.6553250897487036
+      ],
+      "singleton_token_fraction": 0.043356643356643354,
+      "single_block_token_fraction": 0.09430569430569431
+    },
+    "merged": {
+      "changed_token_fraction_range": [
+        0.8845769153830766,
+        0.9019803960792159
+      ],
+      "changed_unit_fraction_range": [
+        0.6331384892086331,
+        0.6511241007194245
+      ],
+      "singleton_token_fraction": 0.03760752150430086,
+      "single_block_token_fraction": 0.11402280456091218
+    }
+  },
+  "prior_known_answer_calibration": {
+    "wrong_english_model_on_latin_key_accuracy_range": [
+      0.9642857142857143,
+      1.0
+    ],
+    "note": "Key recovery by a language model is not itself language identification; proper language-score comparisons were not shown to fail.",
+    "source": "../results.json"
+  },
+  "assets": {
+    "report": "downloads/cipher-search-report.txt",
+    "figure_png": "assets/cipher-search.png",
+    "figure_svg": "assets/cipher-search.svg",
+    "protocol": "downloads/cipher-search-protocol.txt",
+    "checks": "downloads/cipher-search-verification.json",
+    "reproduction": "downloads/cipher-search-reproduction.txt",
+    "summary": "data/cipher-search.json"
+  }
+}
