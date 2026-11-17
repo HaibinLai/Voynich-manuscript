@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="伏尼契手稿研究总报告与尚未执行的下一轮计划；保留来源、方法范围和不确定性。">
+  <meta name="report-source-sha256" content="740980a615d876a407f7dfa2dd7f50e1270d61c52fb6e622c5bfc7c87a4e42c8">
+  <meta name="plan-source-sha256" content="f2ef12699a6b44751a1ac0b788b33635d7fe4f7f5aaf7655b0db4987091675e3">
+  <title>伏尼契手稿：七小时研究计划综合报告 · 研究记录</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+<a class="skip-link" href="#report">跳到报告正文</a>
+<header class="report-header">
+  <a class="brand" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契研究记录<small>VOYNICH · RESEARCH NOTEBOOK</small></span></a>
+  <div class="header-actions"><a href="downloads/research-report.txt" download>下载原文 TXT</a><button type="button" onclick="window.print()">打印 / 存为 PDF</button></div>
+</header>
+<div class="reading-layout">
+  <aside class="contents" aria-label="报告目录">
+    <p class="eyebrow">阅读目录</p>
+    <nav aria-label="本页小节"><ol><li><a href="#report-1">材料与图文核查</a></li><li><a href="#report-2">从结构规律到机制检验</a></li><li><a href="#report-3">既有研究需要怎样纠正</a></li><li><a href="#report-4">复核范围与下一轮问题</a></li></ol><a class="toc-plan" href="#next-plan">下一轮计划 · 尚未执行</a><ol class="plan-toc"><li><a href="#next-plan-1">一、结构规律能否摆脱转写与段界标注的依赖？</a></li><li><a href="#next-plan-2">二、f/p与k/t收益是否超过一般参数共享？</a></li><li><a href="#next-plan-3">三、候选解码器能否作出跨页而非逐词迁就的预测？</a></li></ol><a class="toc-plan" href="#materials">图表与资料入口</a><a class="toc-plan" href="#sources">文本来源</a></nav>
+  </aside>
+  <main id="main">
+    <div class="report-kicker"><span class="eyebrow">研究报告 / 可打印阅读版</span><p class="source-time">原定研究截止：2026-11-17 16:50:25 UTC · 此时间来自报告，不代表实际完成时间。</p></div>
+    <section id="report" class="document" aria-labelledby="report-title">
+<h1 id="report-title">伏尼契手稿：七小时研究计划综合报告</h1>
+<p class="document-lead">截至编写时，本项目没有得到可靠破译，没有确定手稿语言，也没有能够负责任地译成中文的连续句子。已经取得的成果是可追溯的图文资料、保留疑难记号的全文转写索引，以及经过对照和独立复算的结构研究。它们让若干假说变得可以检查，也显示了仅凭植物相似、低熵或“像某种语言”的片段为何不足以下结论。</p>
+<h2 id="report-1">材料与图文核查</h2>
+<p>用户提供的PDF共294页。第1–81页是现代介绍、信件图片、研究文章等；第82–294页包含213张手稿及装帧照片，其中204张匹配正文转写分区，9张是封面、衬页或装帧。294不能当作中世纪手稿的页数。原文字层主要提供标签和图像编号，没有可直接提取的完整伏尼契正文。因此，正文整理采用已公开的Zandbergen–Landini（ZL3b）与Takahashi相关IT2a学术转写，并明确保留出处；EVA是字形编码，不是本次独立OCR、发音或译文。现代附文OCR仅作本地参考，不作为已破译内容。</p>
+<p>选定20页已完成332个行位或标签位置的双版对应与高清阅读区记录。其中134处规范化字形和分隔一致，64处仅分词或间距标记不同，134处有字形或注记差异；这是版本差异分类，不是错误率。另抽查32处重要位置，修订11个阅读框，未据猜测词义改字。最初40个重点裁图也保留。全部20张耶鲁官方图像已有来源和哈希；矩形仅是近似阅读区域，圆周展开图只辅助阅读。这不等于332处逐字终审、独立盲转写或专家认证。</p>
+<p>原图主来源：<a href="https://collections.library.yale.edu/manifests/2002046" rel="noopener noreferrer">https://collections.library.yale.edu/manifests/2002046</a> 。下文文件路径均相对本包research7h/；图文记录见visual_audit/高清复核报告.txt、review_combined.json与review_verification.json。</p>
+<h2 id="report-2">从结构规律到机制检验</h2>
+<p>第一阶段将小样本观察扩展为分组研究。最初20页中，可用于线性正文统计的主样本为17页、188行、1648个保留词形；扩展研究的确认集为28个转写分区、13个叶组。段首高杆字形的格式信号保持，但普通非段首行首的富集较弱、对版本敏感。相邻近形词的优势，在固定行首尾并进一步保留词长的对照中减弱。新旧检验的样本和保留条件不同，不能将早期阳性直接解释为即时复制，也不能由后续区间或检验跨零推出没有局部相关。段落标签还可能参考高杆字形，尚不是完全独立的版面真值。见阶段一研究报告.txt。</p>
+<p>第二阶段把“统计上像什么”改为可计完整代价的预测比较，并加入已知答案对照。Naibbe编码有已知拉丁明文，Timm复制变异生成器不编码输入明文；二者都能产生受约束的词形和较低词内条件熵，但没有一个在本轮同时重现所有指标。每条件20个种子共用底本或起始片段，不是20份独立语义样本。严格Naibbe往返实验另排除歧义编码，不能把适配版的唯一可逆结果归给原算法。原机制来源为<a href="https://doi.org/10.1080/01611194.2025.2566408" rel="noopener noreferrer">https://doi.org/10.1080/01611194.2025.2566408</a> 和<a href="https://doi.org/10.1080/01611194.2019.1596999" rel="noopener noreferrer">https://doi.org/10.1080/01611194.2019.1596999</a>；本地完整限制见generator_controls/研究报告.txt。</p>
+<p>固定替换分支完成976次等预算训练拟合，再评价28个confirm分区。四项EVA主配置优于预定块置换对照，Holm校正参考p均为0.020；但英文、拉丁ordered模型的页均训练词形库命中仅4.82%和3.53%，均低于各自对照均值，若干映射也不稳定。这里的词库只是有限训练文本的表面片段，不是完整字典。两种模型都优于同类对照，说明该对照未保留全部词形结构，不表示两种语言都被识别。本分支只有English/Latin、固定单射及词内ordered/bag评分，没有测试完整希伯来语流水线。全部配置与示例见cipher_controls/voynich_substitution/研究报告.txt；示例明确不是译文。</p>
+<p>第三阶段将既定模型统一用于最终22个分区、11个叶组，完整报告十项比较乘三种表示、九项总体恢复辅助、六项位置条件及24项行内书手标签敏感性。主ZL分母分别是4168个完整词形、1448个行内不重叠目标词对、99个段首词；IT对应4163、1455、101。它们不能混用，更不能称为十份独立语言证据。</p>
+<p>较强的结果是：前词末单位在指定条件模型中帮助预测后词完整词形。ZL/EVA、ZL/merged、IT/EVA等叶组平均分别节省0.13903、0.12042、0.11471 bits/目标，三者预定全30项族区间均为正。已知书手和位置条件还带来约0.43–0.44 bits/词的收益。不过，这些条件没有支付传输费用，书手标签与章节混杂，不能解释为作者身份的因果效应。预测成本差也不是互信息值、语法正确率或自然语言证明。</p>
+<p>字形合并实验支付了恢复原字形、词尾、非空及适用未知身份费用。f/p及联合合并有小收益，但不能证明同音或历史异体字，模型容量与总选参预算也不相等。主ZL的k/t平均收益0.02794 bits/词：主十项99.5%区间约为[0.00236,0.05521]，全三十项99.8333%区间约为[−0.00040,0.05835]，必须同时报告，不能挑较有利的范围。只按总体比例恢复k/t时，三表示平均均为负，说明条件恢复不能省略。</p>
+<p>较弱的结果同样保留。复制总增量、单编辑相对精确复制、上一行来源增量的预定保守区间跨零；这不足以确认或排除历史复制。六项位置参考p经Holm校正约0.063–0.073，操作只扰动上一来源行的词身份，保持横向通道与目标固定，不能称真实文本整体随机化或机制为真的概率。段首付费因子相对位置模型平均负且区间宽，强格式也不等于可以免费剥离“装饰”。显式行内书手修正的24项均无平均增益符号翻转，最大等叶组变化0.000684557 bits/目标，但逐目标最大变化为1.086245；前者绝不是逐词上界。</p>
+<p>以上结果见final_reserve/reserve_v1/summary.json及metadata_sensitivity/reserve_v1/summary.json。区间来自11个重采样叶组的近似模型，叶组间仍可能相关；99,999次重采样不增加观测样本。跨零不是等效或效应消失，一项区间为正而另一项跨零也不能直接证明两者不同。</p>
+<p>第四阶段单独训练跨行角色模型，在已用于其他研究的dev中一次评价全部三表示。41个转写分区归入17叶组，f85/f86按预定规则合为一组；目标数647、647、656。平均收益仅0.00920、0.01608、0.01639 bits/目标，所有预定留一叶组范围均跨零。该范围不是置信区间，也没有检验行内与跨行的效果差。全部17组保留，不能因某组影响均值而事后删掉。前置四符号合成校准还显示：真实关联不变的目标重编码可能使旧观察器失去收益，真实独立时预测近似误差差也能带来正收益。因此，预测器表现不能直接充当语义检测器。见line_boundary_prediction/研究报告.txt与line_boundary_calibration/研究报告.txt。</p>
+<p>第五阶段完成全文双版阅读索引：ZL5385条、IT5215条，共10,600条带版本记录；76,945个槽中有75,886条完整规范片段进入精确索引。不同定位键5386个，其中5214个两版共有。槽位、备选、缺字与不确定边界保留，两个版本不强行逐词配对。227个转写分区中177个有确切清单页图链接，50个仅给馆藏入口。这里的“词次”是编码片段次数，不是已理解的语言单词；display经过ASCII小写和标记处理，raw保留原转写体。资料、双版TXT及独立重建审计见concordance/out_v1/与concordance/资料说明.txt。</p>
+<h2 id="report-3">既有研究需要怎样纠正</h2>
+<p>Bax2014原文提出十个候选词，涉及十四个符号或符号组合，不是完整、确定的十七字母解码表。本项目固定其部分规则后检查覆盖，约27.8%–29.9%的指定保留正文词能够走完整张表；这不是翻译准确率，低覆盖也不能单独否定局部音值。原文：<a href="https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf" rel="noopener noreferrer">https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf</a> 。规则与分母见literature/candidate_claims.json、anchor_audit/coverage_review.txt。</p>
+<p>Hauer/Kondrak原论文发表于2016年；2018年大学新闻的“超过80%”指输出词在希伯来语词典中，不是语法正确率，本项目没有复现其精确分子与分母。论文承认首句不连贯，之后修改拼写并使用机器翻译，不能当作原稿的可信译句。原论文：<a href="https://aclanthology.org/Q16-1006/" rel="noopener noreferrer">https://aclanthology.org/Q16-1006/</a>；大学来源：<a href="https://www.ualberta.ca/en/research/our-research/news/using-ai-to-uncover-the-mystery-of-an-ancient-manuscript.html" rel="noopener noreferrer">https://www.ualberta.ca/en/research/our-research/news/using-ai-to-uncover-the-mystery-of-an-ancient-manuscript.html</a> 。同样，Tucker/Talbert的37/303是植物图像候选认定，不是37个译出的植物名，不足以确认纳瓦特语。23项来源及其验证程度见literature/literature.json；边界、段首和生成器研究已有直接先例，本项目不宣称首创这些现象。</p>
+<h2 id="report-4">复核范围与下一轮问题</h2>
+<p>保存结果的独立检查覆盖111个成本向量、11,994次位置置换、规定汇总与重采样结果；跨行全部1950目标和90个CV汇总点也通过复算。合成校准则是全部保存分数复核，另对首个种子的9/180次选参作独立完整网格核验，不能扩大为180次都独立重选。数值复算、图文核查、网页纯函数和实际浏览器检查是不同证据，不以一个“全部验证”混称。</p>
+<p>确认集已多轮探索，最终保留集也已揭晓并供审计，全文索引随后读取了公开原文。早期文献锚词与外部全书先验另有暴露记录；今后不能把现有confirm/reserve重新称作未知盲测。跨行方案冻结在主reserve开跑之后、摘要之前，设计者当时未读其数值，亦不能写成开跑前冻结。</p>
+<p>未来优先回答三个可证伪问题，以下均尚未执行。第一，由未见候选读法的标注者独立标行界、段界和疑难字，再冻结裁决；若规律只依赖特定转写或高杆辅助段界，其解释就受限。第二，以等容量、等总预算和完整恢复费用比较f/p、k/t与替代参数共享；若普通共享也能获得相同收益，就不支持专属字形关系。第三，要求语言候选先交完整、固定解码器，并预先指定未用于建立规则的跨页名称和连续句法预测；若必须逐词补音、改字或换语言，则拒绝该版规则。未知语义仍须专家独立审核，不能以图像相似代替金标准。</p>
+<p>代码与网站归入<a href="https://github.com/HaibinLai/Voynich-manuscript" rel="noopener noreferrer">https://github.com/HaibinLai/Voynich-manuscript</a> 。本轮原定截止为2026-11-17 16:50:25 UTC；本报告不提前宣称已跑满七小时。最终发布版本、实际结束时间和网页验收范围，以session／会话交付记录及对应发布收据为准。</p>
+</section>
+    <div class="document-divider" aria-hidden="true"></div>
+    <section id="next-plan" class="document" aria-labelledby="next-plan-title">
+<h2 id="next-plan-title">下一轮可证伪研究计划（尚未执行）</h2>
+<p class="document-lead">现有confirm、reserve及全文转写均已揭晓，没有新的盲集。以下只规定未来工作，不把旧材料重新包装成独立确认；若无法取得新证据，手稿结果只能标作探索性复核。</p>
+<h3 id="next-plan-1">一、结构规律能否摆脱转写与段界标注的依赖？</h3>
+<p>问题：跨词边界、段首及上一行关系是否只在某种读字或版面裁决下出现？</p>
+<p>固定输入和比较：以现有20页耶鲁原图、332个位置及来源哈希为基础，事先按直行、环形、标签和疑难等级列出抽样清单，并纳入普通位置作对照。两名标注者分别记录字形、空格、行界、段界和不确定性，不看模型得分、旧转写或植物候选；记录其既有接触。先冻结裁决与缺失处理，再用原参数比较旧转写、两份独立标注及裁决版的同目标完整词成本，不能按收益挑读法。</p>
+<p>需新收集的证据：独立标注、分歧记录、第三人裁决及真实图像坐标。上一行邻近关系使用可核实的二维位置，不再把词槽序号当像素坐标。</p>
+<p>失败判据：若预定方向仅在旧版或特定裁决下存在，而独立标注不能保留，则结构解释受限；定位不清的目标按预定规则记缺失，不补字救结果。新标注是新测量，不等于原图从未见过。</p>
+<h3 id="next-plan-2">二、f/p与k/t收益是否超过一般参数共享？</h3>
+<p>问题：优势来自特定字形关系，还是较强正则化与额外选参？</p>
+<p>固定输入和比较：冻结FP、KT、both，与仅按训练频数和位置分布预选的替代共享配对；全部报告。共享基准特征及正则化族，固定同一原单位宇宙、完整非空词支持、EOS和未知身份编码。合并模型须支付恢复每处原字形的费用，不能靠缩小编码支持省成本。每个模型使用相同候选数、训练预算和训练内部叶组划分。</p>
+<p>容量要求：预定有效自由度目标，用训练集Fisher/惩罚矩阵迹等可计算定义及容差匹配；不能以参数表项数冒充有效自由度。匹配失败须报告，不能声称等容量。正则化匹配流程及其成本也纳入共同预算，禁止用评价结果调整。</p>
+<p>需新收集的证据：多篇独立明文构成的合成真值库，含真正别名、普通参数共享、相关别名难例及无输入明文生成器；由独立协作者封存测试部分。手稿已有结果只作开发背景。</p>
+<p>失败判据：若替代共享同样好，或在已知无别名真值中同样获得优势，则当前收益不支持专属字形类别；若有效自由度无法匹配，先停留在描述比较。即使预测胜出，也不单独证明同音。</p>
+<h3 id="next-plan-3">三、候选解码器能否作出跨页而非逐词迁就的预测？</h3>
+<p>问题：固定规则是否具有可检验的语义约束？</p>
+<p>固定输入和比较：候选者先提交完整映射、分词、缩写、允许变体、歧义输出和失败处理；禁止逐词加音、改字、临时换语言。Bax式植物锚点只能用于设计，不能用同一标签验证自己。预先列出未用于建规则的跨页重复串、名称在标签与正文中的对应、词形变化及其上下文预测，同时列出会与候选冲突的读法。</p>
+<p>需新收集的证据：历史语言专家独立判断固定输出的语法、词义与时代相容性；植物专家在不见译词时比较候选和替代物种。另用已知答案文本校准同预算假读法与错误语言，检查方法是否有辨别力。没有确定金标的目标保留“未核实”。</p>
+<p>失败判据：跨页同串无法按同规则复现、预定句法预测失败，或需目标专属补丁，均拒绝该版规则；不能只留下成功词。现有手稿目标已见过，须披露设计接触范围，不称新盲测。</p>
+<p>这是下一轮路线图，不自动延长本轮七小时；本轮原截止仍为2026-11-17 16:50:25 UTC。</p>
+</section>
+    <section id="materials" class="materials" aria-labelledby="materials-title">
+      <h2 id="materials-title">图表与资料入口</h2>
+      <p>以下入口对应报告所述资料；不同实验的样本与目标范围分别说明，图表不能合并作同一检验比较。</p>
+      <ul class="material-links">
+        <li><a href="downloads/research-report.pdf" download>综合交付阅读版 PDF（8 页）</a><span>含综合报告、双版差异图与下一轮计划；逐页排版已核对。</span></li>
+        <li><a href="downloads/version-differences-report.txt">全书双版差异清单</a><span><a href="assets/version-differences.png">分歧图</a> · <a href="downloads/version-differences-rows.csv">全部定位 CSV</a> · <a href="downloads/version-differences-folios.csv">全部分区 CSV</a></span></li>
+        <li><a href="index.html#journal?study=final-reserve">最终 22 页结果与完整证据</a><span><a href="downloads/final-reserve-main.png">主表示十项图</a> · <a href="downloads/final-reserve-all30.png">三表示三十项图</a> · <a href="downloads/final-reserve-report.txt">详细报告</a></span></li>
+        <li><a href="index.html#journal?study=cipher-search">固定替换检验</a><span><a href="assets/cipher-search.svg">结果图</a> · <a href="downloads/cipher-search-report.txt">详细报告</a></span></li>
+        <li><a href="index.html#journal?study=crossline">跨行探索及其限制</a><span><a href="assets/crossline-results.svg">结果图</a> · <a href="downloads/crossline-report.txt">详细报告</a></span></li>
+        <li><a href="index.html#manuscript">20 页图文与高清位置复核</a><span><a href="downloads/study20-review.zip">下载 20 页便携阅读包 ZIP</a></span></li>
+        <li><a href="index.html#concordance">全文双版词形索引</a><span><a href="downloads/concordance-guide.txt">资料说明</a> · <a href="downloads/concordance-ZL.txt">ZL 全文</a> · <a href="downloads/concordance-IT.txt">IT 全文</a></span></li>
+        <li><a href="index.html#literature">文献及候选解读核查</a><span><a href="https://collections.library.yale.edu/manifests/2002046" rel="noopener noreferrer">耶鲁官方图像清单</a> · <a href="index.html#journal?study=release-verification">复现与发布核验</a></span></li>
+      </ul>
+    </section>
+    <section id="sources" class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">文本来源</h2>
+      <p>正文按来源中的标题、段落和小节排版，保留原义；本页未新增统计结果。原文中的时间与状态属于该报告的记录。源文件哈希用于核对具体版本，不使用网页构建时钟替换报告时间。</p>
+      <div class="source-record"><h3><a href="https://github.com/HaibinLai/Voynich-manuscript/blob/main/research/research7h/synthesis_final/%E4%B8%83%E5%B0%8F%E6%97%B6%E7%A0%94%E7%A9%B6%E6%80%BB%E6%8A%A5%E5%91%8A.txt" rel="noopener noreferrer">总报告来源 TXT</a></h3><p class="source-path">research7h/synthesis_final/七小时研究总报告.txt</p><p class="source-hash">SHA-256 <code>740980a615d876a407f7dfa2dd7f50e1270d61c52fb6e622c5bfc7c87a4e42c8</code></p></div><div class="source-record"><h3><a href="https://github.com/HaibinLai/Voynich-manuscript/blob/main/research/research7h/synthesis_final/%E4%B8%8B%E4%B8%80%E8%BD%AE%E5%8F%AF%E8%AF%81%E4%BC%AA%E7%A0%94%E7%A9%B6%E8%AE%A1%E5%88%92.txt" rel="noopener noreferrer">下一轮计划来源 TXT</a></h3><p class="source-path">research7h/synthesis_final/下一轮可证伪研究计划.txt</p><p class="source-hash">SHA-256 <code>f2ef12699a6b44751a1ac0b788b33635d7fe4f7f5aaf7655b0db4987091675e3</code></p></div>
+    </section>
+    <footer class="report-footer"><a href="index.html#overview">返回研究首页</a><a href="https://github.com/HaibinLai/Voynich-manuscript" rel="noopener noreferrer">公开代码与研究资料</a><a href="#report">回到正文</a></footer>
+  </main>
+</div>
+</body>
+</html>

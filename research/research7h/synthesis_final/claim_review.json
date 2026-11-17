@@ -1,0 +1,1265 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-11-17T15:57:48.277155+00:00",
+  "status": "evidence_review_not_project_completion",
+  "outline_sha256": "cd38b1e9eb6b4bf5f5d67b8c857e80170d285a5fdeb42a1ab53d5fa054e8b361",
+  "evidence_path_base": "output/voynich",
+  "claims": [
+    {
+      "id": "F01",
+      "title": "总论",
+      "status": "supported_with_scope",
+      "recommended_wording": "已完成可追溯的转写整理、图文对应、限定模型比较与独立核验；当前没有可靠译文或语言鉴定。",
+      "denominator": "本项目保存的全部实验和候选审查；不是对所有可能密码的穷尽证明。",
+      "cannot_support": [
+        "不能把数值审核通过改称破译成功；也不能把有限搜索失败改称不存在语言。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/independent_review.json",
+          "sha256": "668e6f3a42911e57c4433c3d437b4c720282cc8a1dff51a71445374446cf3af1"
+        },
+        {
+          "path": "research7h/cipher_controls/voynich_substitution/研究报告.txt",
+          "sha256": "8ba76ff19a6175679a916574d51366be85316dcada309b237327a4becc774f5b"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "F02",
+      "title": "PDF页数和材料",
+      "status": "wording_correction_required",
+      "recommended_wording": "原PDF共294页；1–81页为现代附文等，82–294页是213张手稿及装帧照片，其中204张匹配正文转写分区、9张为封面/衬页/装帧。",
+      "denominator": "294为资料合集的物理PDF页，不是中世纪手稿的页数；213是照片数。",
+      "cannot_support": [
+        "提纲“正文图页82–294”应改；公开EVA转写并非本次独立OCR、读音或译文。",
+        "本审查没有重新扫描Git确认现代附文全未入库；该发布排除项须依当前发布清单复核。"
+      ],
+      "evidence": [
+        {
+          "path": "pdf_inventory.json",
+          "sha256": "187797397d4e44096824f81f7124383f314657baf9276ba53f962d7a9fd77c29"
+        },
+        {
+          "path": "提取说明与联合研究计划.txt",
+          "sha256": "1d4782d82a8e43f8fcb4a95885fd17cebea41d226f28b16890fbd687fa3f77d6"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "pdf_pages": 294,
+        "frontmatter_pages": 81,
+        "manuscript_and_binding_images": 213,
+        "matched_text_images": 204,
+        "binding_images": 9
+      }
+    },
+    {
+      "id": "F03",
+      "title": "20页高清对应",
+      "status": "supported_with_scope",
+      "recommended_wording": "20页332处逐位置对应已记录：134规范化一致、64仅间距/分词不同、134字形或注记不同；另抽查32处并修订11个阅读框。",
+      "denominator": "332为行位/标签位置，不是332个字或全部逐字认证；32处抽查与332处同源。",
+      "cannot_support": [
+        "差异分类不是错误率；阅读框近似而非逐字包围框；不是独立盲转写或专家认证。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/visual_audit/高清复核报告.txt",
+          "sha256": "409985dc4e09445ed441e859f65f83377f6c9a92b6412b81e0e2e41482687c1f"
+        },
+        {
+          "path": "research7h/visual_audit/review_verification.json",
+          "sha256": "b4c35b17545216b6bed5e8aebeee93cec034c76a57d1e32e6b783df0e4eedbfa"
+        },
+        {
+          "path": "research7h/visual_audit/root_review_spotcheck.json",
+          "sha256": "9e2b2be827b62d7c89cf2f3b6e7846184e83ddd8865824de3ea2b8274d8d5259"
+        }
+      ],
+      "primary_urls": [
+        "https://collections.library.yale.edu/manifests/2002046"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F04",
+      "title": "新增全书索引",
+      "status": "verified_data_audit_frontend_separate",
+      "recommended_wording": "双版共10,600条带版本的行位记录、76,945槽、75,886条完整规范词形索引；未决槽保留，未产生译文。",
+      "denominator": "ZL5385/IT5215条；有效槽38127/37759；5386个不同定位键，5214个两版共有；227个转写分区，177确切页图链接、50仅馆藏。",
+      "cannot_support": [
+        "词次只指本索引规范片段，不是已证实的语言单词；同一位置两版不是两份独立文本。",
+        "display有ASCII小写和标记处理，raw才保留原转写体；没有新逐行图框。",
+        "已存数据独立审计通过不替代仍单独记录的网页查询/浏览器验收。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/concordance/out_v1/summary.json",
+          "sha256": "b87b00a1ad019aa9ec24858f9ed5ada58ae7ca73602a6b1785edadc9bf9b4251"
+        },
+        {
+          "path": "research7h/concordance/out_v1/source_hashes.json",
+          "sha256": "f4784d0fdb88d66e17e9157e9e81bb5383af1428290d9c90ed3b4c2c3640c4f3"
+        },
+        {
+          "path": "research7h/concordance/independent_audit/audit_v1/audit_report.json",
+          "sha256": "1b546af2344721c7c4ed594c87ba67432bb9b6ed35c29ae6b556c3575168db31"
+        }
+      ],
+      "primary_urls": [
+        "https://voynich.nu/data/ZL3b-n.txt",
+        "https://voynich.nu/data/IT2a-n.txt"
+      ],
+      "numbers": {
+        "schema_version": 1,
+        "metadata": {
+          "built_utc": "2026-11-17T15:42:59.229291+00:00",
+          "normalization_version": "concordance-v1-ascii-balanced-slots-20261117",
+          "counts": {
+            "ZL": {
+              "records": 5385,
+              "folios": 227,
+              "leaf_groups": 101,
+              "slots": 39026,
+              "valid_slots": 38127,
+              "uncertain_boundary_slots": 5197,
+              "valid_uncertain_boundary_slots": 5107,
+              "empty_display_slots": 0,
+              "distinct_normalized_tokens": 7886
+            },
+            "IT": {
+              "records": 5215,
+              "folios": 225,
+              "leaf_groups": 101,
+              "slots": 37919,
+              "valid_slots": 37759,
+              "uncertain_boundary_slots": 0,
+              "valid_uncertain_boundary_slots": 0,
+              "empty_display_slots": 0,
+              "distinct_normalized_tokens": 8026
+            }
+          },
+          "duplicate_locators": {},
+          "mapping_inputs": {
+            "sources_provenance": {
+              "source_file": "sources/provenance.json",
+              "sha256": "9c81689bf734b652d4184f8372d652331dc16b904686effc00cede1f24d4d05f"
+            },
+            "yale_manifest": {
+              "source_file": "research7h/visual_audit/yale_manifest.json",
+              "sha256": "317d58fd9ea90392a83d9858a91eada3d0b41416a3c835857dc0154bd123a309"
+            },
+            "study20_image_receipt": {
+              "source_file": "research7h/visual_audit/yale_image_receipt.json",
+              "sha256": "3f19d9ee87d9330089b6cff191047d0ef8126048446dca5e9f27654f3b2afb68"
+            },
+            "study20_selection": {
+              "source_file": "study20/selection.json",
+              "sha256": "838a473fbf92027df4c1ca9d7a7a88d68be20809bfd0af54422453857031c921"
+            }
+          },
+          "source_hashes": {
+            "ZL": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+            "IT": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+          },
+          "image_mapping_counts": {
+            "exact_manifest_label": 177,
+            "collection_only": 50
+          },
+          "design_sha256": "15d42d95ea918d482152749311b6a9406251e7f44d2927d85c14414fb88779e5",
+          "builder_sha256": "eea2bc694d60277b199d8779e4d48b1ba1e9c3fd395bf326d9746516b72ee199",
+          "scope": "Descriptive full published transcription index, including previously revealed reserve. No new scores, hypothesis tests, translation or independent OCR.",
+          "ordinary_angle_tags_removed_may_join_sides": true,
+          "illustration_display": "one ASCII space per <-> or <~>",
+          "offsets": "half-open Unicode codepoint offsets in ASCII-lowercase display",
+          "slots_are_index_specific": true,
+          "no_word_slot_alignment_across_versions": true,
+          "image_links_are_page_level_only": true,
+          "leaf_group_note": "f85, f86 and fRos share f85_86; groups are not independent manuscripts."
+        },
+        "total_records": 10600,
+        "shared_locators": 5214,
+        "locator_count": 5386,
+        "folio_count": 227
+      }
+    },
+    {
+      "id": "F05",
+      "title": "早期样本与阶段一",
+      "status": "supported_with_scope",
+      "recommended_wording": "旧20页中可用于线性正文统计的主样本为17页、188物理行、1648保留词形。扩展至确认集后，段首格式突出，普通行首及近形相邻效应对表示/对照敏感。",
+      "denominator": "旧主样本8+9页、832+816词形、95+93行；阶段一确认28分区/13叶组、主ZL5025词。",
+      "cannot_support": [
+        "不同阶段样本与统计量不同，不能当同一量重复实验或把显著性改变当效应差异检验。",
+        "段落边界可能参考高杆字形，强段首模式不证明高杆仅为装饰。"
+      ],
+      "evidence": [
+        {
+          "path": "study20/results/statistics.json",
+          "sha256": "6d1d188d8f37f704c7e9af5ba1c338fbf6aa0095947f51e79019f0cd4a98704f"
+        },
+        {
+          "path": "research7h/阶段一研究报告.txt",
+          "sha256": "e8890e2f145284594886f01e2c01b52d612db8880ff3b25e4a06160b90261f08"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "F06",
+      "title": "已见数据与冻结时序",
+      "status": "wording_correction_required",
+      "recommended_wording": "确认集多次用于探索；最终reserve已揭晓并供保存结果审计，随后全书索引也读了原文。以后不能将这些材料再称为全新盲测。",
+      "denominator": "旧confirm28分区/13叶组；最终reserve22分区/11叶组。此前f15v锚词、f103v默认种子和外部全书先验已有接触记录。",
+      "cannot_support": [
+        "旧reserve_loaded:false仅限定该replay未调用原始reserve加载器，不表示未看保存目标。",
+        "跨行方案freeze发生在主reserve开跑之后、摘要之前，设计者当时未读其数值；不得说reserve开跑前冻结。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/reserve_exposure_log.txt",
+          "sha256": "c6c3c244d95b800d368fdaaa75954dffb246c463e57dcd995998acf4b3d6b0a1"
+        },
+        {
+          "path": "research7h/final_reserve/reserve_v1/independent_review.json",
+          "sha256": "668e6f3a42911e57c4433c3d437b4c720282cc8a1dff51a71445374446cf3af1"
+        },
+        {
+          "path": "research7h/line_boundary_prediction/website_data.json",
+          "sha256": "854d2b982d1c74e41af6a713bb5617930c214c52ae7320046c77b9aa81a13063"
+        },
+        {
+          "path": "research7h/concordance/out_v1/summary.json",
+          "sha256": "b87b00a1ad019aa9ec24858f9ed5ada58ae7ca73602a6b1785edadc9bf9b4251"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "F07",
+      "title": "最终预定包与审计数量",
+      "status": "supported_with_scope",
+      "recommended_wording": "最终包报告全部10比较×3表示、9个总体恢复辅助、6个位置条件以及24项元数据敏感性；12家族/表示任务的111个成本向量和11,994次位置置换已独立复算。",
+      "denominator": "22分区/11叶组；ZL全词4168、内部不重叠词对1448、段首99；IT分别4163/1455/101。99999次叶组重采样不是99999个独立样本。",
+      "cannot_support": [
+        "“11独立叶组”应改为11个重采样叶组；叶组间依赖仍可能存在。",
+        "主ZL十项99.5%与全三十项99.8333%是预定近似bootstrap区间；不能择优选族、把跨零当等效、或从一正一不显著推出差异。",
+        "标量概率复算与汇总/bootstrap审核是不同检查；二者均不验证语义或精确区间覆盖率。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/independent_review.json",
+          "sha256": "668e6f3a42911e57c4433c3d437b4c720282cc8a1dff51a71445374446cf3af1"
+        },
+        {
+          "path": "research7h/final_reserve/reserve_v1/independent_probability_replay/verification.json",
+          "sha256": "42b6aeb0c4c559475108edb18f28c539760427072fcef0054318c65522968fc9"
+        },
+        {
+          "path": "research7h/final_reserve/reserve_v1/independent_aggregate_audit.json",
+          "sha256": "b4e77130545978ae13a18b3d464ddf197e9d1f9d4659cd51f6dedae2ba8cace0"
+        },
+        {
+          "path": "research7h/final_reserve/reporting_scope.txt",
+          "sha256": "24128519d10e2837998586c958c931bfa4f90bae5239e70b2ff3d31acf3816de"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "probability_tasks": 12,
+        "cost_vectors": 111,
+        "position_permutations": 11994
+      }
+    },
+    {
+      "id": "F08",
+      "title": "边界与条件风格收益",
+      "status": "supported_with_scope",
+      "recommended_wording": "前词末单位在限定模型中改善后词完整词预测，三表示全30族区间均正；页H/位置条件的增益约0.43–0.44 bits/词。",
+      "denominator": "边界1448/1448/1455个目标；风格4168/4168/4163；均22分区/11叶组。边界等叶收益0.1390255/0.1204221/0.1147127 bits/目标。",
+      "cannot_support": [
+        "这是同目标完整词成本差，不能称互信息值、语法识别或自然语言证明。",
+        "H/位置由外部给定，未编码其传输费用；标签与章节混杂，不是作者身份因果试验。",
+        "三表示来自同一手稿，且编码单位不同，不能按裸bits挑“更真实”语言表示。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/summary.json",
+          "sha256": "d794aee0993a511100e26af74149c73e8983a42560f51be584cb27c9f2e7b904"
+        },
+        {
+          "path": "research7h/final_reserve/metadata_scope_addendum.txt",
+          "sha256": "9749e1a570391cd4d727cb7e5f8aa775f2c5c8c76dc867a07d397c5310d88ca5"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "id": "style",
+          "representation": "ZL_EVA",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.44255365403560626,
+          "bootstrap99_5_primary10": [
+            0.26177433051823784,
+            0.6075369366239853
+          ],
+          "bootstrap99_833_all30": [
+            0.24090131655827585,
+            0.6233468663957565
+          ]
+        },
+        {
+          "id": "boundary_last",
+          "representation": "ZL_EVA",
+          "words": 1448,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.1390255183093687,
+          "bootstrap99_5_primary10": [
+            0.07195792084102613,
+            0.2140522071964347
+          ],
+          "bootstrap99_833_all30": [
+            0.06506815960420989,
+            0.22277936654123115
+          ]
+        },
+        {
+          "id": "style",
+          "representation": "ZL_merged",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.4371643846759712,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            0.23871572086129092,
+            0.6189154159584336
+          ]
+        },
+        {
+          "id": "boundary_last",
+          "representation": "ZL_merged",
+          "words": 1448,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.12042211281850043,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            0.029713777933953585,
+            0.21988794358184724
+          ]
+        },
+        {
+          "id": "style",
+          "representation": "IT_EVA",
+          "words": 4163,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.4320541028458511,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            0.2406425729314597,
+            0.6062310165007069
+          ]
+        },
+        {
+          "id": "boundary_last",
+          "representation": "IT_EVA",
+          "words": 1455,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.11471265609764457,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            0.05036703640162188,
+            0.18548819635620434
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F09",
+      "title": "可逆字形合并与KT区间",
+      "status": "supported_with_scope",
+      "recommended_wording": "FP与联合合并付清恢复费后有小收益；主ZL的KT99.5%区间为正，但全30族99.8333%区间略跨零，两者必须并列。",
+      "denominator": "三合并×三表示，4168/4168/4163完整词；KT主ZL均值0.0279437169，99.5%=[0.0023635281,0.0552135593]，全30=[−0.0003986740,0.0583496226]。",
+      "cannot_support": [
+        "仅总体比例恢复KT三表示均值均负；条件恢复的正收益最多支持限定参数共享，不证明同音、同值或历史异体字。",
+        "合并后概率、恢复原字形费用、EOS/非空/适用escape须计完整；模型容量与选参预算不等。",
+        "不得据ZL跨零而merged/IT不跨零直接宣布表示间效果不同。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/summary.json",
+          "sha256": "d794aee0993a511100e26af74149c73e8983a42560f51be584cb27c9f2e7b904"
+        },
+        {
+          "path": "research7h/allograph_factor/model_complexity.json",
+          "sha256": "5461f16206d99b7d73af67a32392d0b967c8e144fb783e71254d928475d637d2"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "primary": [
+          {
+            "id": "allograph_FP",
+            "representation": "ZL_EVA",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.009208741743418987,
+            "bootstrap99_5_primary10": [
+              0.003189355741735986,
+              0.01579840026581827
+            ],
+            "bootstrap99_833_all30": [
+              0.0025341052471675425,
+              0.016590858316660774
+            ]
+          },
+          {
+            "id": "allograph_KT",
+            "representation": "ZL_EVA",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.02794371689446741,
+            "bootstrap99_5_primary10": [
+              0.002363528063434258,
+              0.05521355934637785
+            ],
+            "bootstrap99_833_all30": [
+              -0.00039867401448200377,
+              0.058349622621714205
+            ]
+          },
+          {
+            "id": "allograph_both",
+            "representation": "ZL_EVA",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.03779911300923256,
+            "bootstrap99_5_primary10": [
+              0.011913094873458737,
+              0.06847180682141707
+            ],
+            "bootstrap99_833_all30": [
+              0.009225289180937011,
+              0.07224449372025217
+            ]
+          },
+          {
+            "id": "allograph_FP",
+            "representation": "ZL_merged",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.010856634661445179,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.0030319903143238565,
+              0.019282318225472782
+            ]
+          },
+          {
+            "id": "allograph_KT",
+            "representation": "ZL_merged",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.03193297857952822,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.0048239814170668764,
+              0.06477575909651706
+            ]
+          },
+          {
+            "id": "allograph_both",
+            "representation": "ZL_merged",
+            "words": 4168,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.04273928504010097,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.013851288268220645,
+              0.07729968413348598
+            ]
+          },
+          {
+            "id": "allograph_FP",
+            "representation": "IT_EVA",
+            "words": 4163,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.010299964296763471,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.0029061410596228432,
+              0.017726637067754226
+            ]
+          },
+          {
+            "id": "allograph_KT",
+            "representation": "IT_EVA",
+            "words": 4163,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.024864633629070917,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.00046674421955061836,
+              0.05870996244083924
+            ]
+          },
+          {
+            "id": "allograph_both",
+            "representation": "IT_EVA",
+            "words": 4163,
+            "eligible_pages": 22,
+            "eligible_leaves": 11,
+            "mean_leaf_bits_saved": 0.034410959433627576,
+            "bootstrap99_5_primary10": null,
+            "bootstrap99_833_all30": [
+              0.009599520955725716,
+              0.07215940037342193
+            ]
+          }
+        ],
+        "global_KT": [
+          {
+            "representation": "ZL_EVA",
+            "mean": -0.007163138928474122
+          },
+          {
+            "representation": "ZL_merged",
+            "mean": -0.0009141790465461308
+          },
+          {
+            "representation": "IT_EVA",
+            "mean": -0.013850365993935444
+          }
+        ]
+      }
+    },
+    {
+      "id": "F10",
+      "title": "复制与位置干预",
+      "status": "supported_with_scope",
+      "recommended_wording": "复制总增量、编辑对精确复制、上一行增量的预定保守区间跨零；六项V来源置换Holm参考p约0.063–0.073。",
+      "denominator": "3个比较×3表示；6位置条件各1999次，共11994次。H通道和目标固定，仅上一来源行词身份按长度层置换。",
+      "cannot_support": [
+        "跨零不证明复制不存在或等效；已知强复制正控响应不保证所有历史机制可检出。",
+        "这是V-only条件干预，不能称整份真实文本随机化；p依赖条件交换性，不是机制为真的概率。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/summary.json",
+          "sha256": "d794aee0993a511100e26af74149c73e8983a42560f51be584cb27c9f2e7b904"
+        },
+        {
+          "path": "research7h/copy_prediction/position_specificity/protocol.txt",
+          "sha256": "27a9b2a5ce951cabebae9d420007bed6d16b5c221c6f6b6160814673973b6411"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "id": "copy_total",
+          "representation": "ZL_EVA",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.0208715108921432,
+          "bootstrap99_5_primary10": [
+            -0.005783096529839172,
+            0.05610728725238113
+          ],
+          "bootstrap99_833_all30": [
+            -0.008089238756511161,
+            0.06006536088390512
+          ]
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "ZL_EVA",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.017062383995816933,
+          "bootstrap99_5_primary10": [
+            -0.0022336155587002176,
+            0.04427699593208614
+          ],
+          "bootstrap99_833_all30": [
+            -0.003325087585056548,
+            0.04754694347409249
+          ]
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "ZL_EVA",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.015093048460350846,
+          "bootstrap99_5_primary10": [
+            -0.002853415976235829,
+            0.04193430301271061
+          ],
+          "bootstrap99_833_all30": [
+            -0.004503498344564444,
+            0.04603400452970922
+          ]
+        },
+        {
+          "id": "copy_total",
+          "representation": "ZL_merged",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.017667875901891623,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.008811840329726931,
+            0.05582768350045522
+          ]
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "ZL_merged",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.014321731161506757,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.0032187951204749065,
+            0.04339394776192511
+          ]
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "ZL_merged",
+          "words": 4168,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.012663790976408913,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.005350465569768862,
+            0.04209169433960074
+          ]
+        },
+        {
+          "id": "copy_total",
+          "representation": "IT_EVA",
+          "words": 4163,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.007481057210758423,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.007195184116310868,
+            0.019992239146418535
+          ]
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "IT_EVA",
+          "words": 4163,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.0011690098549796421,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.0018526859754777706,
+            0.006012222484971647
+          ]
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "IT_EVA",
+          "words": 4163,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.007504961548013051,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.004227287345378924,
+            0.02368551626631187
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "title": "段首可逆因子",
+      "status": "supported_with_scope",
+      "recommended_wording": "付费剥离段首高杆的模型相对位置模型平均负、区间宽；相对任意首单位的平均小改善也不足以识别词根。",
+      "denominator": "ZL/merged各99个段首词，IT101；同目标完整成本包括剥离/恢复选择。",
+      "cannot_support": [
+        "强格式模式与可免费忽略字形是不同命题；三个表示及两个比较不是独立语义证据。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/final_reserve/reserve_v1/summary.json",
+          "sha256": "d794aee0993a511100e26af74149c73e8983a42560f51be584cb27c9f2e7b904"
+        },
+        {
+          "path": "research7h/paragraph_factor/研究报告.txt",
+          "sha256": "d42338d39dc412ee0ceb0c150374828291fa487018324d98890a1d59a0e96cb7"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "id": "gallows_vs_position",
+          "representation": "ZL_EVA",
+          "words": 99,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": -0.7989935012043798,
+          "bootstrap99_5_primary10": [
+            -2.904709341410682,
+            0.9968392102434611
+          ],
+          "bootstrap99_833_all30": [
+            -3.1766185728966283,
+            1.1764951800516938
+          ]
+        },
+        {
+          "id": "gallows_vs_any_first",
+          "representation": "ZL_EVA",
+          "words": 99,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.16669346640882532,
+          "bootstrap99_5_primary10": [
+            -0.12866218791598358,
+            0.3673005976344808
+          ],
+          "bootstrap99_833_all30": [
+            -0.1669670252840495,
+            0.3842848341467374
+          ]
+        },
+        {
+          "id": "gallows_vs_position",
+          "representation": "ZL_merged",
+          "words": 99,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": -1.0699121727422616,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -3.194226105480061,
+            0.6918455158378062
+          ]
+        },
+        {
+          "id": "gallows_vs_any_first",
+          "representation": "ZL_merged",
+          "words": 99,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.16592929785224458,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.16388212334577798,
+            0.378764186655561
+          ]
+        },
+        {
+          "id": "gallows_vs_position",
+          "representation": "IT_EVA",
+          "words": 101,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": -0.1652190770201423,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -1.4799510199211363,
+            1.3172001857781002
+          ]
+        },
+        {
+          "id": "gallows_vs_any_first",
+          "representation": "IT_EVA",
+          "words": 101,
+          "eligible_pages": 22,
+          "eligible_leaves": 11,
+          "mean_leaf_bits_saved": 0.1865198056556183,
+          "bootstrap99_5_primary10": null,
+          "bootstrap99_833_all30": [
+            -0.1087298822978261,
+            0.3797488161794724
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "title": "明确行内H修正",
+      "status": "supported_with_scope",
+      "recommended_wording": "24项固定旧参数敏感性没有平均增益符号翻转；最大等叶组平均变化0.0006845571 bits/目标，逐目标最大变化1.086245456。",
+      "denominator": "8比较×3表示；仅恢复显式行内H，训练f115r原@类别改为已标明H2/H3。",
+      "cannot_support": [
+        "平均变化不是逐词上界；没有重新调参、没有新增p或CI，也不证明页级标签都是真实书手金标。",
+        "段首4成本数组×3表示共12个数组不变；这项有限修正不能解决书手与主题混杂。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/metadata_sensitivity/reserve_v1/summary.json",
+          "sha256": "83901c27f23afd71c4c9980052b20053953562a76af5d38042c9566be0f32132"
+        },
+        {
+          "path": "research7h/metadata_sensitivity/reserve_v1/independent_aggregate_review.json",
+          "sha256": "7c51fb416702b8bb168f008724087fc72f4ed082f1ce84fa8d9d476c1e41427d"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "max_absolute_mean_leaf_gain_change": 0.0006845570647297388,
+        "max_absolute_per_target_gain_change": 1.0862454557893955,
+        "mean_sign_changes_after_metadata": [],
+        "paragraph_arrays_unchanged": [
+          {
+            "name": "ZL_EVA",
+            "array": "body_full",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_EVA",
+            "array": "position_full",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_EVA",
+            "array": "gallows_selected",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_EVA",
+            "array": "any_first_selected",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_merged",
+            "array": "body_full",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_merged",
+            "array": "position_full",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_merged",
+            "array": "gallows_selected",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "ZL_merged",
+            "array": "any_first_selected",
+            "targets": 99,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "IT_EVA",
+            "array": "body_full",
+            "targets": 101,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "IT_EVA",
+            "array": "position_full",
+            "targets": 101,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "IT_EVA",
+            "array": "gallows_selected",
+            "targets": 101,
+            "exactly_unchanged": true
+          },
+          {
+            "name": "IT_EVA",
+            "array": "any_first_selected",
+            "targets": 101,
+            "exactly_unchanged": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "F13",
+      "title": "跨行探索",
+      "status": "supported_with_scope",
+      "recommended_wording": "在已用dev的41个转写分区、17叶组上，三表示均值小幅为正，但所有预定留一叶组范围均跨零；17叶组含f85/f86合并组。",
+      "denominator": "647/647/656目标，共1950；全部90个CV汇总网格点及全部目标已独立复核。",
+      "cannot_support": [
+        "留一叶组范围是描述性范围而非CI，不能证明依赖消失。",
+        "没有检验行内/跨行差值；全17组必须保留，f90留一后负值不能用来判坏数据或事后删组。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/line_boundary_prediction/run_v1/summary.json",
+          "sha256": "439c7d896e119ccdf89a56d89b839c58dc49d880390801a702b1f63b7ae13ac5"
+        },
+        {
+          "path": "research7h/line_boundary_prediction/independent_audit/audit_report.json",
+          "sha256": "21c83f0762b1c159bc719ff178f0956c29d97e9ed6d2a5ef187ec74b3a39bc59"
+        },
+        {
+          "path": "research7h/line_boundary_prediction/研究报告.txt",
+          "sha256": "c67783562171a2d01417eda3464022a1890c8c56f0ac25ca5c817b06cabb165b"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "name": "ZL_EVA",
+          "targets": 647,
+          "mean_leaf_group_gain": 0.00920383745773409,
+          "loo_range": [
+            -0.0027333365940981867,
+            0.016532059926150047
+          ]
+        },
+        {
+          "name": "ZL_merged",
+          "targets": 647,
+          "mean_leaf_group_gain": 0.016080142419557186,
+          "loo_range": [
+            -9.389622684630172e-05,
+            0.02268466497012649
+          ]
+        },
+        {
+          "name": "IT_EVA",
+          "targets": 656,
+          "mean_leaf_group_gain": 0.016385183736901933,
+          "loo_range": [
+            -0.0064349780338325765,
+            0.02541459384759119
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F14",
+      "title": "固定替换搜索",
+      "status": "supported_with_scope",
+      "recommended_wording": "976次等预算训练拟合后，4项EVA主配置在28个confirm分区上优于块null（Holm0.020），但英文/拉丁ordered训练词形库命中仍低且低于各自null均值。",
+      "denominator": "EVA保留5005词形，merged4999；ordered页均命中4.82%/3.53%，null均值4.87%/5.41%；参考仅Alice/Caesar各30000归一化字母。",
+      "cannot_support": [
+        "命中库是训练表面词形片段集合，不是完整字典、语法或译文；末尾可能有一截断词。",
+        "主配置199次null、辅助39次，p仅针对固定条件随机化与预算；多seed不稳定不能挑一个读法。",
+        "仅English/Latin、固定单射与ordered/bag词内评分，不是完整Hauer希伯来语+重排+后处理流水线，未测试希伯来语。",
+        "逐token确认分数全复核、一个预定训练拟合实际重跑，不是976次搜索全部独立重跑。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/cipher_controls/voynich_substitution/研究报告.txt",
+          "sha256": "8ba76ff19a6175679a916574d51366be85316dcada309b237327a4becc774f5b"
+        },
+        {
+          "path": "research7h/cipher_controls/voynich_substitution/completion_verification.json",
+          "sha256": "a70966d77a0701e9a40775dba568b2f42d5ccd1f9d753ae7759da4adc12ba1ba"
+        }
+      ],
+      "primary_urls": [
+        "https://aclanthology.org/Q16-1006/"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F15",
+      "title": "生成器的解释范围",
+      "status": "supported_with_scope",
+      "recommended_wording": "Naibbe已知明文密码和不编码输入明文的Timm生成器都能产生若干相似低阶词形统计；没有一个在本轮同时解释全部量。",
+      "denominator": "每条件20种子；同一Latin底本、同一Timm f1r/A起始分支。严格Naibbe适配每seed24000归一化字母往返。",
+      "cannot_support": [
+        "原Naibbe允许语境消歧；严格唯一适配排除99类歧义密文，不能把100%往返归给原版。",
+        "20种子不是20个独立语义样本，12词人工重排行不是原生布局，作者全书设计先验不是独立留出成功。",
+        "共享低熵不证明原稿有义、无义或两机制等价。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/generator_controls/研究报告.txt",
+          "sha256": "db6efb631cc317e796fc271441966f30c5509aa15d81d254c31c07f0fffd0fca"
+        },
+        {
+          "path": "research7h/generator_controls/generation_checks.json",
+          "sha256": "0427b9205355a8063a49fd2d97b6fe0c6277e89d51484c8de75bd725c3cd865b"
+        }
+      ],
+      "primary_urls": [
+        "https://doi.org/10.1080/01611194.2025.2566408",
+        "https://github.com/greshko/naibbe-cipher",
+        "https://doi.org/10.1080/01611194.2019.1596999",
+        "https://github.com/TorstenTimm/SelfCitationTextgenerator"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F16",
+      "title": "合成校准与独立CV范围",
+      "status": "supported_with_scope",
+      "recommended_wording": "封闭四符号例子中，目标双射重编码保持真实互信息，但可能使旧观察器失去收益；真独立时近似误差差也能给正收益。",
+      "denominator": "60个seed×rho案例、240条件、20固定seed；全部保存分数独立标量复核，选定首seed的9/180次CV搜索另有独立完整网格复核。",
+      "cannot_support": [
+        "不是180次CV全都独立重选，不能把9/180写成180/180。",
+        "没有预定统计分类阈值，不能将rho0正gain直接叫统计假阳性；gain=I+KL_base−KL_child。",
+        "四符号能力例子不能保证真实字母表检测力，也不说明手稿采用重编码机制。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/line_boundary_calibration/website_data.json",
+          "sha256": "0495679d7da63bd94457232d949822e3184dbc7f0e1009ee84c98f088afc40bf"
+        },
+        {
+          "path": "research7h/line_boundary_calibration/decomposition.json",
+          "sha256": "988cc21b707ef65e98801076132b71d512909a45689d2f81730d6076789f6e4f"
+        },
+        {
+          "path": "research7h/line_boundary_calibration/independent_cv_audit/run_v1/verification.json",
+          "sha256": "bc9563fb30d64f3e0097e705f739df2217ae5384f7fb587e425a4fc9e9026124"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "F17",
+      "title": "Bax十四个符号或组合",
+      "status": "supported_with_scope",
+      "recommended_wording": "Bax2014原文结论提出十个候选词，涉及十四个符号或符号组合；不是完整、确定的十七字母解码表。",
+      "denominator": "原文PDF第54页结论，附录56–57页；本项目十四条表覆盖为2转写×2数据组×m两界，共8组。",
+      "cannot_support": [
+        "Bax只是提出部分读法，不能写已证实十个词。覆盖约27.8%–29.9%只指指定保留正文词可走完规则，不是译对比例。",
+        "路径计数是符号映射路径，不保证不同发音；m两界不是总体假说置信界；标签锚点未纳入这些正文分母。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/literature/sources/bax2014.txt",
+          "sha256": "b55b88c6040798f64d6ae49bb2af183f2721299819a7a7b25c5499797fd377be"
+        },
+        {
+          "path": "research7h/literature/candidate_claims.json",
+          "sha256": "640a24d20eeaee6c8be3c9e9f10a20fe5cd48dabe83bb78f24e76692e9a3da98"
+        },
+        {
+          "path": "research7h/anchor_audit/coverage_results.json",
+          "sha256": "54916cdcfee49d1d04a28ce040d9ef1207ce0e5bde5d9e03f1277045b90ade3d"
+        },
+        {
+          "path": "research7h/anchor_audit/coverage_review.txt",
+          "sha256": "8962c725319fe03cd8d055f40053ae04d61610456302883a8ad4c18b05ac4486"
+        }
+      ],
+      "primary_urls": [
+        "https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F18",
+      "title": "Hauer的80%及第一句",
+      "status": "supported_category_not_reproduced_rate",
+      "recommended_wording": "大学新闻报道的是超过80%的输出词在希伯来语词典中，不是80%文法正确；2016原论文未提供可靠连续译文。",
+      "denominator": "新闻未在本项目重现精确命中数/总数；原论文TACL4:75–86，§5.4印刷84–85页。",
+      "cannot_support": [
+        "首句原输出不连贯，之后改拼写并用机器翻译，不能当未知原稿的金标准译文。",
+        "2018为新闻年份，不应替代2016论文年份；研究者名Greg是Grzegorz的简写。",
+        "原science新闻URL本次遭机器人验证；同大学Research+Innovation正文搜索返回可直接核对“over80%...dictionary”口径，未据此伪造新的精确分母。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/literature/sources/hauer_kondrak2016.txt",
+          "sha256": "089400e2083fcd775c2da565f4b1acb705cd02bc39c906a7f9648aed3cd140ba"
+        },
+        {
+          "path": "research7h/literature/literature.json",
+          "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+        }
+      ],
+      "primary_urls": [
+        "https://aclanthology.org/Q16-1006/",
+        "https://www.ualberta.ca/en/research/our-research/news/using-ai-to-uncover-the-mystery-of-an-ancient-manuscript.html"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F19",
+      "title": "植物认定与年代",
+      "status": "supported_author_claim_not_identification",
+      "recommended_wording": "37/303是Tucker/Talbert的植物图像候选认定，不是37个已解读名称；四个羊皮纸样品合并定年1404–1438年（95.4%）。",
+      "denominator": "303为该作者图像口径，37为其对应候选；材料报告4样品、合并校准区间。",
+      "cannot_support": [
+        "候选图像认定不能确认纳瓦特语/中美洲来源；拼合植物与同形物种未排除。",
+        "材料日期不直接等于墨水或写作日期，也不是每张样品都独立得到同一区间。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/literature/literature.json",
+          "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+        },
+        {
+          "path": "research7h/literature/sources/tucker_talbert2013_issue100.txt",
+          "sha256": "25b15f937ea8f157043bae68862195baee97bcf7415d1445948fe92be9bf2ec3"
+        },
+        {
+          "path": "research7h/literature/sources/hodgins2009.txt",
+          "sha256": "8138d8ad1110f10e3203499a7965ca413793a5a4211a3e73968831249c8e0cf8"
+        }
+      ],
+      "primary_urls": [
+        "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+        "https://www.voynich.nu/papers/Carbon_GH_2009.pdf"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F20",
+      "title": "直接先例",
+      "status": "supported_with_scope",
+      "recommended_wording": "23项来源分别记录作者主张、方法与局限；边界、段首、主题/书手和生成器校准已有直接先例，本项目不声称首次发现。",
+      "denominator": "registry当前23项来源，不等于23篇独立支持本项目结论的论文。Zhang/Sheng在最初条目中已收录，13:23是后来深入阅读。",
+      "cannot_support": [
+        "不得把后读的全书聚合结果当本项目无先验的新发现；不借用其他论文更强排除结论。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/literature/literature.json",
+          "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+        },
+        {
+          "path": "research7h/literature/boundary_prior_art.json",
+          "sha256": "307b80440d89d301af7aa6db5f570b8b0d44daaa896e16470c3c1e100a151d61"
+        },
+        {
+          "path": "research7h/synthesis_audit/zhang_sheng_prior_art.json",
+          "sha256": "cde61a5b739e7078d06f4312a53b655a7657759b0e611b62ba4a75ccffebeb76"
+        },
+        {
+          "path": "research7h/literature/rozanova_temerev_2026_audit.json",
+          "sha256": "dac374c5e0a20e2b0322d6428d04a3b48a9001602281b3cab6e06e81857c6711"
+        }
+      ],
+      "primary_urls": [
+        "https://arxiv.org/html/2608.17096v1",
+        "https://arxiv.org/html/2610.34499v2",
+        "https://arxiv.org/html/2107.02858v1"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "F21",
+      "title": "发布与UI验收",
+      "status": "version_specific_latest_ui_not_verified_here",
+      "recommended_wording": "阶段四commit c5b25ef已保存Actions成功、4个线上文件hash一致、9份完整性清单通过的收据；索引后的最新发布与浏览器验收须另引新收据。",
+      "denominator": "stage4_live_verification时间15:37:37.461970 UTC；不是本次审稿时重新联网拉取全部最新网站的检查。",
+      "cannot_support": [
+        "“当前九清单”不能写成包括待发布索引的最终计数；版本要绑定commit。",
+        "桌面AX、纯函数、数据核验与手机视觉截图是不同范围，不得互相代称。",
+        "本审稿未重新开浏览器，最新索引UI状态标未核实；不宣称7小时已结束。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/publication_checks/stage4_live_verification.json",
+          "sha256": "e2ba245f694e77a807faf7ec6200f929e031c75f33118e8a7c5ced4fedf89167"
+        },
+        {
+          "path": "research7h/publication_checks/stage4_export_correction.json",
+          "sha256": "7a30d3857464377f607cf64ca3edd898a1aa6c8eb0e29a12707c4618954a6640"
+        },
+        {
+          "path": "research7h/publication_checks/crossline_root_review.json",
+          "sha256": "d4452e9b10678a14e60d63aac1341ddd01d3c06501ac40d9aa30678167639cd5"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "F22",
+      "title": "破译验收条件",
+      "status": "wording_correction_required",
+      "recommended_wording": "建议把固定可执行规则、未用于建规则材料的预测、连续可审查读法和独立原图/语言审核，列为本项目下一轮最低验收要求。",
+      "denominator": "这是未来研究建议，不是新增已完成实验或普适唯一哲学定义。",
+      "cannot_support": [
+        "提纲“唯一可信的破译门槛”过强；应改“本项目建议的最低验收条件”。",
+        "所有现有confirm/reserve已揭晓，不能重新命名成未知测试；另封存新标注/挑战或明确已见材料的前瞻预测范围。"
+      ],
+      "evidence": [
+        {
+          "path": "research7h/synthesis_final/提纲.txt",
+          "sha256": "cd38b1e9eb6b4bf5f5d67b8c857e80170d285a5fdeb42a1ab53d5fa054e8b361"
+        },
+        {
+          "path": "research7h/final_reserve/reporting_scope.txt",
+          "sha256": "24128519d10e2837998586c958c931bfa4f90bae5239e70b2ff3d31acf3816de"
+        }
+      ],
+      "primary_urls": [],
+      "numbers": null
+    }
+  ],
+  "future_falsifiable_questions": [
+    {
+      "id": "N1",
+      "status": "future_proposal_not_run",
+      "question": "边界和段首结构在独立原图标注下还能保留多少？",
+      "design": "由未见候选读法的标注者独立标行界、段界、缺字与争议单位；先冻结裁决/缺失规则，再并列原转写和新标注的同目标完整词比较。原图坐标可检验上一行相近位置是否真实存在。",
+      "falsifier": "若收益只在依赖首高杆建立的段界或特定转写裁决下出现，而独立几何/字形标注不保留，则该结构解释受限。",
+      "scope": "现有原稿全已见过，新的是独立标注任务；不能称未见原图盲测。预先封存审核标签，不能按收益挑裁决。"
+    },
+    {
+      "id": "N2",
+      "status": "future_proposal_not_run",
+      "question": "f/p和k/t的收益是否特有，还是一般参数共享就能得到？",
+      "design": "冻结等容量、等总选参预算和完整恢复费用的对照；把预定FP/KT/both与仅按训练频数/位置规则选出的替代共享配对并列，先在多种已知明文与无明文机制上校准，再评独立封存的新目标。",
+      "falsifier": "若无特殊字形关系的匹配共享也获得相同或更好收益，则现有FP/KT优势不足以支持专属字形类别假说。",
+      "scope": "不以已揭晓confirm/reserve继续选择最有利配对；更强预测收益仍不能单独证明同音。"
+    },
+    {
+      "id": "N3",
+      "status": "future_proposal_not_run",
+      "question": "一个锁定的候选解码器能否预测建规则时未使用的重复名称和连续句法？",
+      "design": "要求提交完整字形规则、空格/缩写/替换许可、冲突处理和唯一输出；事先指定跨页同词与标签/正文预测，并同预算比较替代植物名、语言或无语义假读法，语义判断由历史语言与手稿专家独立审阅。",
+      "falsifier": "若必须逐词加音、改字或换语言才能匹配，或同一固定读法不能跨页复现，则拒绝该版本规则；不能事后保留成功词丢掉失败词。",
+      "scope": "所有现有资料可作开发，另记录真正未用于提出规则的预测对象；无确定语义金标处明确未核实，不把图像相似当正确翻译。"
+    }
+  ],
+  "no_new_experiments": true,
+  "no_frozen_results_modified": true,
+  "no_new_intervals_or_pvalues": true,
+  "saved_reserve_evidence_read": true,
+  "raw_reserve_rescored": false,
+  "official_news_recheck": {
+    "original_science_url": "blocked_by_javascript_robot_challenge",
+    "alternative_primary_university_url": "https://www.ualberta.ca/en/research/our-research/news/using-ai-to-uncover-the-mystery-of-an-ancient-manuscript.html",
+    "result": "University search-returned content directly says over 80 percent dictionary membership; original experiment rate not reproduced."
+  },
+  "completion_time_not_claimed": true
+}

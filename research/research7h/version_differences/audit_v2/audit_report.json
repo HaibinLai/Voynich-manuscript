@@ -1,0 +1,111 @@
+{
+  "started_utc": "2026-11-17T16:18:27.638392+00:00",
+  "passed": true,
+  "input_path": "[research7h package]/concordance/out_v1/data.json",
+  "bundle_path": "[research7h package]/version_differences/out_v2",
+  "python_version": "3.9.6 (default, Apr 17 2026, 18:15:52) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "auditor_sha256": "4d2cc5e55bae4a3cb23f001462fe7499e016c09f02d57cda007ea4ad2608932a",
+  "input_sha256": "c45c83feff0f051c0e499e0e77ef830af83c9daac11135c5967d321d4624af8c",
+  "design_sha256": "bd6be5db90cab8075dd4c45b92c7c9c06540131f6887d8f0f07fddc43b7575ae",
+  "author_builder_sha256": "fa4d94490821a3ee0c5faa4d924397ef7b6ff608bf67a87999e2086b14b5c248",
+  "commands": [
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "output/voynich/research7h/version_differences/audit_v2/author_fixture_snapshot/build.py",
+        "--input",
+        "output/voynich/research7h/version_differences/audit_v2/manual_input.json",
+        "--output",
+        "output/voynich/research7h/version_differences/audit_v2/author_manual_output"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"input_sha256\": \"505740f812dc0415fcac06ca1d56d03e9ccb6020d86225e2cf7f122d1927c7cc\",\n  \"builder_sha256\": \"fa4d94490821a3ee0c5faa4d924397ef7b6ff608bf67a87999e2086b14b5c248\",\n  \"design_sha256\": \"bd6be5db90cab8075dd4c45b92c7c9c06540131f6887d8f0f07fddc43b7575ae\",\n  \"locator_count\": 12,\n  \"versioned_record_count\": 21,\n  \"shared_locators\": 9,\n  \"counts\": {\n    \"display_equal\": 2,\n    \"boundary_only\": 4,\n    \"glyph_or_annotation\": 3,\n    \"ZL_only\": 2,\n    \"IT_only\": 1\n  },\n  \"folio_count\": 1,\n  \"flags_by_category\": {\n    \"display_equal\": {\n      \"ZL_records\": 2,\n      \"ZL_unresolved_nonempty\": 0,\n      \"ZL_empty_slot\": 0,\n      \"ZL_uncertain_boundary\": 0,\n      \"IT_records\": 2,\n      \"IT_unresolved_nonempty\": 0,\n      \"IT_empty_slot\": 0,\n      \"IT_uncertain_boundary\": 0\n    },\n    \"boundary_only\": {\n      \"ZL_records\": 4,\n      \"ZL_unresolved_nonempty\": 1,\n      \"ZL_empty_slot\": 1,\n      \"ZL_uncertain_boundary\": 0,\n      \"IT_records\": 4,\n      \"IT_unresolved_nonempty\": 1,\n      \"IT_empty_slot\": 0,\n      \"IT_uncertain_boundary\": 1\n    },\n    \"glyph_or_annotation\": {\n      \"ZL_records\": 3,\n      \"ZL_unresolved_nonempty\": 2,\n      \"ZL_empty_slot\": 0,\n      \"ZL_uncertain_boundary\": 0,\n      \"IT_records\": 3,\n      \"IT_unresolved_nonempty\": 2,\n      \"IT_empty_slot\": 0,\n      \"IT_uncertain_boundary\": 0\n    },\n    \"ZL_only\": {\n      \"ZL_records\": 2,\n      \"ZL_unresolved_nonempty\": 0,\n      \"ZL_empty_slot\": 1,\n      \"ZL_uncertain_boundary\": 0\n    },\n    \"IT_only\": {\n      \"IT_records\": 1,\n      \"IT_unresolved_nonempty\": 0,\n      \"IT_empty_slot\": 0,\n      \"IT_uncertain_boundary\": 0\n    }\n  },\n  \"priority_folio_count\": 0,\n  \"denominator_note\": \"Categories partition complete locators, not physical lines or independent observations. Flags have version-specific record denominators.\",\n  \"source_records_modified\": false,\n  \"new_hypothesis_test\": false,\n  \"scope\": \"Descriptive comparison of already public transcriptions. Differences are not errors or semantic discoveries.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "output/voynich/research7h/version_differences/audit_v2/author_fixture_snapshot/build.py",
+        "--input",
+        "output/voynich/research7h/version_differences/audit_v2/duplicate_input.json",
+        "--output",
+        "output/voynich/research7h/version_differences/audit_v2/author_duplicate_output"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"[research7h package]/version_differences/audit_v2/author_fixture_snapshot/build.py\", line 122, in <module>\n    main()\n  File \"[research7h package]/version_differences/audit_v2/author_fixture_snapshot/build.py\", line 55, in main\n    raise ValueError('Duplicate version and locator: ' + record['locator'])\nValueError: Duplicate version and locator: fixture.00.equal\n"
+    }
+  ],
+  "exceptions": [],
+  "full_data_summary": {
+    "locator_count": 5386,
+    "versioned_record_count": 10600,
+    "shared_locators": 5214,
+    "counts": {
+      "display_equal": 1812,
+      "boundary_only": 1078,
+      "glyph_or_annotation": 2324,
+      "ZL_only": 171,
+      "IT_only": 1
+    },
+    "folio_count": 227,
+    "flags_by_category": {
+      "display_equal": {
+        "ZL_records": 1812,
+        "ZL_unresolved_nonempty": 0,
+        "ZL_empty_slot": 0,
+        "ZL_uncertain_boundary": 0,
+        "IT_records": 1812,
+        "IT_unresolved_nonempty": 0,
+        "IT_empty_slot": 0,
+        "IT_uncertain_boundary": 0
+      },
+      "boundary_only": {
+        "ZL_records": 1078,
+        "ZL_unresolved_nonempty": 2,
+        "ZL_empty_slot": 0,
+        "ZL_uncertain_boundary": 904,
+        "IT_records": 1078,
+        "IT_unresolved_nonempty": 2,
+        "IT_empty_slot": 0,
+        "IT_uncertain_boundary": 0
+      },
+      "glyph_or_annotation": {
+        "ZL_records": 2324,
+        "ZL_unresolved_nonempty": 753,
+        "ZL_empty_slot": 0,
+        "ZL_uncertain_boundary": 907,
+        "IT_records": 2324,
+        "IT_unresolved_nonempty": 112,
+        "IT_empty_slot": 0,
+        "IT_uncertain_boundary": 0
+      },
+      "ZL_only": {
+        "ZL_records": 171,
+        "ZL_unresolved_nonempty": 37,
+        "ZL_empty_slot": 0,
+        "ZL_uncertain_boundary": 22
+      },
+      "IT_only": {
+        "IT_records": 1,
+        "IT_unresolved_nonempty": 1,
+        "IT_empty_slot": 0,
+        "IT_uncertain_boundary": 0
+      }
+    },
+    "priority_folio_count": 192
+  },
+  "full_data_field_differences": 0,
+  "synthetic_cases": 12,
+  "duplicate_rejection_verified": true,
+  "boundary_comparison": "Concatenates only source-index Unicode display slices. No global dot/comma/space stripping; bracket punctuation and all content inside slices survive.",
+  "flags_definition": "unresolved_nonempty: normalized=null and nonempty display slice; empty_slot: empty display slice; uncertain_boundary: any uncertain slot boundary. Category/version record counts are each flag denominator.",
+  "source_inputs_unchanged": true,
+  "no_author_classification_function_imports": true,
+  "independent_method_note": "Algorithm was derived from the design before inspecting author CLI/schema. Author CLI and adjacent implementation text were inspected for fixture invocation; this is a separate implementation and black-box check, not a blinded code review.",
+  "full_sorted_priority_list_verified": true,
+  "all_227_page_mappings_checked": true,
+  "scope": "Descriptive comparison only. Differences are not error rates, translations, independent manuscripts, physical missing lines or new hypothesis scores. No browser or image proofreading.",
+  "completed_utc": "2026-11-17T16:18:27.971838+00:00",
+  "error_count": 0
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-17T16:12:20.410837+00:00",
+  "source_commit": "2bae816e6d7b7a49bd5857869551f61fbd62a103",
+  "archive_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/archive",
+  "temporary_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "[repository checkout]",
+      "returncode": 0,
+      "elapsed_seconds": 0.008725,
+      "stdout": "2bae816e6d7b7a49bd5857869551f61fbd62a103\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "-s",
+        "--format=%H%n%aI%n%s",
+        "2bae816e6d7b7a49bd5857869551f61fbd62a103"
+      ],
+      "cwd": "[repository checkout]",
+      "returncode": 0,
+      "elapsed_seconds": 0.014059,
+      "stdout": "2bae816e6d7b7a49bd5857869551f61fbd62a103\n2026-11-17T10:06:46-06:00\nPublish audited full-book ZL and IT concordance\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "archive",
+        "--format=tar",
+        "2bae816e6d7b7a49bd5857869551f61fbd62a103"
+      ],
+      "cwd": "[repository checkout]",
+      "returncode": 0,
+      "elapsed_seconds": 1.439917,
+      "stdout": "<binary stdout saved to /var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/public-repository.tar>",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "research/research7h/concordance/build.py",
+        "--output",
+        "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/rebuilt"
+      ],
+      "cwd": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/archive",
+      "returncode": 0,
+      "elapsed_seconds": 0.402004,
+      "stdout": "{\"output\": \"rebuilt\", \"counts\": {\"ZL\": {\"records\": 5385, \"folios\": 227, \"leaf_groups\": 101, \"slots\": 39026, \"valid_slots\": 38127, \"uncertain_boundary_slots\": 5197, \"valid_uncertain_boundary_slots\": 5107, \"empty_display_slots\": 0, \"distinct_normalized_tokens\": 7886}, \"IT\": {\"records\": 5215, \"folios\": 225, \"leaf_groups\": 101, \"slots\": 37919, \"valid_slots\": 37759, \"uncertain_boundary_slots\": 0, \"valid_uncertain_boundary_slots\": 0, \"empty_display_slots\": 0, \"distinct_normalized_tokens\": 8026}}, \"image_mapping_counts\": {\"exact_manifest_label\": 177, \"collection_only\": 50}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "research/research7h/concordance/independent_audit/replay.py",
+        "--data",
+        "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/rebuilt/data.json",
+        "--output",
+        "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/independent-audit"
+      ],
+      "cwd": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/archive",
+      "returncode": 0,
+      "elapsed_seconds": 0.896747,
+      "stdout": "{\"completed_utc\": \"2026-11-17T16:12:24.255877+00:00\", \"all_data_checks_passed\": true, \"data_sha256\": \"75e09600d13f3b2c4e4a8e1b7f116bb453b350fe0efd6f8d75f1637795f831fb\", \"auditor_sha256\": \"f2fb7f3bb2648e01cdd13183208225ca356152d170b62870dfd9cd1f5be62237\", \"source_sha256\": {\"ZL\": \"bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc\", \"IT\": \"7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5\"}, \"counts\": {\"ZL\": {\"records\": 5385, \"folios\": 227, \"leaf_groups\": 101, \"slots\": 39026, \"valid_slots\": 38127, \"uncertain_boundary_slots\": 5197, \"valid_uncertain_boundary_slots\": 5107, \"empty_display_slots\": 0, \"distinct_normalized_tokens\": 7886}, \"IT\": {\"records\": 5215, \"folios\": 225, \"leaf_groups\": 101, \"slots\": 37919, \"valid_slots\": 37759, \"uncertain_boundary_slots\": 0, \"valid_uncertain_boundary_slots\": 0, \"empty_display_slots\": 0, \"distinct_normalized_tokens\": 8026}}, \"records\": 10600, \"exact_posting_entries\": 75886, \"duplicate_locators\": {}, \"mapping_counts\": {\"exact_manifest_label\": 177, \"collection_only\": 50}, \"manual_examples\": 26, \"query_fixture_cases\": 46, \"all_records_slots_offsets_postings_and_locators_equal\": true, \"source_bytes_unchanged\": true, \"no_author_builder_or_normalizer_imports\": true, \"browser_test_performed\": false, \"frontend_query_comparison\": \"pending separate Node comparison\", \"scope\": \"Descriptive full public transcription audit, including already revealed reserve; no new scientific hypotheses, model scores, translation or image proofreading.\"}\n",
+      "stderr": ""
+    }
+  ],
+  "exceptions": [],
+  "passed": true,
+  "python": {
+    "command": "python3",
+    "resolved_executable": "/usr/bin/python3",
+    "sys_executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "version": "3.9.6 (default, Apr 17 2026, 18:15:52) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+    "version_info": [
+      3,
+      9,
+      6,
+      "final",
+      0
+    ],
+    "environment_overrides": {
+      "PYTHONNOUSERSITE": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "removed"
+    },
+    "notes": "Default python3 is Python 3.9.6. No virtualenv, pip install, third-party package or dependency download was used. README imposes no separate Python version for this standard-library index."
+  },
+  "head_at_start": "2bae816e6d7b7a49bd5857869551f61fbd62a103",
+  "commit_description": "2bae816e6d7b7a49bd5857869551f61fbd62a103\n2026-11-17T10:06:46-06:00\nPublish audited full-book ZL and IT concordance",
+  "archive_sha256": "2974de756ad5a122dded327bc62a40129ff28311571f80d4f4f0a8d2a0f1245e",
+  "archive_file_count": 4566,
+  "archive_method": "git archive of the pinned commit; extraction by Python standard-library tarfile. No untracked files, worktree changes or external caches were copied.",
+  "readme_sha256": "abe8e6062279fdc7fa66d395f24eeb787f08db163492a95ded423a8fc7367bb4",
+  "readme_commands": [
+    "python3 research/research7h/concordance/build.py --output /tmp/voynich-concordance-new",
+    "python3 research/research7h/concordance/independent_audit/replay.py --data /tmp/voynich-concordance-new/data.json --output /tmp/voynich-concordance-audit-new"
+  ],
+  "readme_command_adaptations": "Only the two unused /tmp output paths were replaced by unique names under temporary_directory; interpreter and script arguments follow README.",
+  "input_sha256": {
+    "sources/ZL3b-n.txt": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+    "sources/IT2a-n.txt": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+    "sources/provenance.json": "9c81689bf734b652d4184f8372d652331dc16b904686effc00cede1f24d4d05f",
+    "research7h/visual_audit/yale_manifest.json": "317d58fd9ea90392a83d9858a91eada3d0b41416a3c835857dc0154bd123a309",
+    "research7h/visual_audit/yale_image_receipt.json": "3f19d9ee87d9330089b6cff191047d0ef8126048446dca5e9f27654f3b2afb68",
+    "study20/selection.json": "838a473fbf92027df4c1ca9d7a7a88d68be20809bfd0af54422453857031c921",
+    "research7h/concordance/build.py": "eea2bc694d60277b199d8779e4d48b1ba1e9c3fd395bf326d9746516b72ee199",
+    "research7h/concordance/design.txt": "15d42d95ea918d482152749311b6a9406251e7f44d2927d85c14414fb88779e5",
+    "research7h/concordance/independent_audit/replay.py": "f2fb7f3bb2648e01cdd13183208225ca356152d170b62870dfd9cd1f5be62237"
+  },
+  "script_imports": {
+    "build.py": [
+      "argparse",
+      "collections",
+      "datetime",
+      "hashlib",
+      "json",
+      "pathlib",
+      "re"
+    ],
+    "independent_audit/replay.py": [
+      "argparse",
+      "collections",
+      "datetime",
+      "hashlib",
+      "json",
+      "pathlib",
+      "re",
+      "traceback"
+    ]
+  },
+  "import_scope": "Both exported scripts import only Python standard-library modules. The independent auditor does not import the builder or its normalization functions.",
+  "semantic_comparisons": {
+    "schema_version": {
+      "equal": true,
+      "committed_semantic_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "rebuilt_semantic_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    "sources": {
+      "equal": true,
+      "committed_semantic_sha256": "9725eac88352002303b95b7a93d80cbcb1af4253b65e384ba262e73afb117c8d",
+      "rebuilt_semantic_sha256": "9725eac88352002303b95b7a93d80cbcb1af4253b65e384ba262e73afb117c8d"
+    },
+    "records": {
+      "equal": true,
+      "committed_semantic_sha256": "185bd019f37de62a26456d17b502861dddc6701c7fc7753a5849512732db910a",
+      "rebuilt_semantic_sha256": "185bd019f37de62a26456d17b502861dddc6701c7fc7753a5849512732db910a"
+    },
+    "postings": {
+      "equal": true,
+      "committed_semantic_sha256": "469d4a22b8c1f14a958447ef975b65e8516ef2197287e2d072013855189cc338",
+      "rebuilt_semantic_sha256": "469d4a22b8c1f14a958447ef975b65e8516ef2197287e2d072013855189cc338"
+    },
+    "by_locator": {
+      "equal": true,
+      "committed_semantic_sha256": "2c7c0ba499e78fe4a991d14fad5e3f6dbca3fe0843711348546d69227b7d427a",
+      "rebuilt_semantic_sha256": "2c7c0ba499e78fe4a991d14fad5e3f6dbca3fe0843711348546d69227b7d427a"
+    },
+    "folios": {
+      "equal": true,
+      "committed_semantic_sha256": "0a508bdfeebf39e6863eb1074653c0000e59fbaf44cb43da2a0307107503fe86",
+      "rebuilt_semantic_sha256": "0a508bdfeebf39e6863eb1074653c0000e59fbaf44cb43da2a0307107503fe86"
+    },
+    "metadata_excluding_built_utc": {
+      "equal": true,
+      "committed_semantic_sha256": "33b19d9d81beec06173fd203c40d31708f034320dae2b00420ecf99b64e415d5",
+      "rebuilt_semantic_sha256": "33b19d9d81beec06173fd203c40d31708f034320dae2b00420ecf99b64e415d5"
+    }
+  },
+  "only_allowed_volatile_field": "data.metadata.built_utc and summary.metadata.built_utc; no other field excluded",
+  "build_timestamps": {
+    "committed_built_utc": "2026-11-17T15:42:59.229291+00:00",
+    "rebuilt_built_utc": "2026-11-17T16:12:23.265652+00:00"
+  },
+  "other_output_comparisons": {
+    "ZL_lines.txt": {
+      "byte_identical": true,
+      "committed_sha256": "15878e1959bb8b219725c36028570b4abca1aba7a32531d1fe179c6f5d1f39f8",
+      "rebuilt_sha256": "15878e1959bb8b219725c36028570b4abca1aba7a32531d1fe179c6f5d1f39f8"
+    },
+    "IT_lines.txt": {
+      "byte_identical": true,
+      "committed_sha256": "92c0c2c1e7f223c146bdadf009112f095710ff0a04c459035b303395fbb6e043",
+      "rebuilt_sha256": "92c0c2c1e7f223c146bdadf009112f095710ff0a04c459035b303395fbb6e043"
+    },
+    "manual_examples.json": {
+      "byte_identical": true,
+      "committed_sha256": "45f186c42a0f3ce2a0a790cbb553022b43edef56a8fe09710f48f23dd4f88ef8",
+      "rebuilt_sha256": "45f186c42a0f3ce2a0a790cbb553022b43edef56a8fe09710f48f23dd4f88ef8"
+    },
+    "source_hashes.json": {
+      "byte_identical": true,
+      "committed_sha256": "f4784d0fdb88d66e17e9157e9e81bb5383af1428290d9c90ed3b4c2c3640c4f3",
+      "rebuilt_sha256": "f4784d0fdb88d66e17e9157e9e81bb5383af1428290d9c90ed3b4c2c3640c4f3"
+    },
+    "summary.json": {
+      "equal_excluding_built_utc": true
+    }
+  },
+  "committed_site_data": {
+    "path": "site/data/concordance.json",
+    "sha256": "c45c83feff0f051c0e499e0e77ef830af83c9daac11135c5967d321d4624af8c",
+    "matches_out_v1_bytes": true
+  },
+  "inputs_unchanged_after_rebuild_and_audit": true,
+  "independent_audit": {
+    "completed_utc": "2026-11-17T16:12:24.255877+00:00",
+    "all_data_checks_passed": true,
+    "data_sha256": "75e09600d13f3b2c4e4a8e1b7f116bb453b350fe0efd6f8d75f1637795f831fb",
+    "auditor_sha256": "f2fb7f3bb2648e01cdd13183208225ca356152d170b62870dfd9cd1f5be62237",
+    "source_sha256": {
+      "ZL": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "IT": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+    },
+    "counts": {
+      "ZL": {
+        "records": 5385,
+        "folios": 227,
+        "leaf_groups": 101,
+        "slots": 39026,
+        "valid_slots": 38127,
+        "uncertain_boundary_slots": 5197,
+        "valid_uncertain_boundary_slots": 5107,
+        "empty_display_slots": 0,
+        "distinct_normalized_tokens": 7886
+      },
+      "IT": {
+        "records": 5215,
+        "folios": 225,
+        "leaf_groups": 101,
+        "slots": 37919,
+        "valid_slots": 37759,
+        "uncertain_boundary_slots": 0,
+        "valid_uncertain_boundary_slots": 0,
+        "empty_display_slots": 0,
+        "distinct_normalized_tokens": 8026
+      }
+    },
+    "records": 10600,
+    "exact_posting_entries": 75886,
+    "duplicate_locators": {},
+    "mapping_counts": {
+      "exact_manifest_label": 177,
+      "collection_only": 50
+    },
+    "manual_examples": 26,
+    "query_fixture_cases": 46,
+    "all_records_slots_offsets_postings_and_locators_equal": true,
+    "source_bytes_unchanged": true,
+    "no_author_builder_or_normalizer_imports": true,
+    "browser_test_performed": false,
+    "frontend_query_comparison": "pending separate Node comparison",
+    "scope": "Descriptive full public transcription audit, including already revealed reserve; no new scientific hypotheses, model scores, translation or image proofreading."
+  },
+  "artifact_sha256": {
+    "rebuilt/IT_lines.txt": "92c0c2c1e7f223c146bdadf009112f095710ff0a04c459035b303395fbb6e043",
+    "rebuilt/ZL_lines.txt": "15878e1959bb8b219725c36028570b4abca1aba7a32531d1fe179c6f5d1f39f8",
+    "rebuilt/data.json": "75e09600d13f3b2c4e4a8e1b7f116bb453b350fe0efd6f8d75f1637795f831fb",
+    "rebuilt/manual_examples.json": "45f186c42a0f3ce2a0a790cbb553022b43edef56a8fe09710f48f23dd4f88ef8",
+    "rebuilt/source_hashes.json": "f4784d0fdb88d66e17e9157e9e81bb5383af1428290d9c90ed3b4c2c3640c4f3",
+    "rebuilt/summary.json": "0244fb0dc24367417c62013b4b950576cb3f818c5c297183c0e3aa603468afe9",
+    "independent-audit/audit_report.json": "f3153a2a3e0bfd3efdf08474283c849084a7f7569f8612a229f93b362aa05e90",
+    "independent-audit/errors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "independent-audit/manual_examples.json": "2e733d78347cce99b02c9f66062293903f404a0c7cf28ad993034890ac6a022f",
+    "independent-audit/query_fixtures.json": "ce6108727bdd2ac4e2b012c681a858b6e3ebcb8a0fbe5d52ed29c8f6ff6e4b5c"
+  },
+  "scope_constraints": [
+    "Descriptive full-book public concordance rebuild only.",
+    "No reserve or confirm scientific scoring, no fitted-model rerun, no new hypothesis test or translation.",
+    "Original public sources were read only inside the clean git archive; original worktree inputs and frozen materials were not modified.",
+    "No network request, API, package installation, source PDF, hidden cache, or external corpus used.",
+    "Independent replay verifies all records, raw/display strings, slots, Unicode offsets, postings, locator maps, source hashes and saved Yale image mapping.",
+    "This clean check does not perform browser, DOM, image pixel or handwriting/OCR verification.",
+    "Site comparison concerns the committed website payload; this audit does not assert a new remote deployment."
+  ],
+  "completed_utc": "2026-11-17T16:12:24.656802+00:00"
+}

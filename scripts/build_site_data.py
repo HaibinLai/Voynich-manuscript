@@ -360,8 +360,8 @@ def main():
                           "line_boundary_prediction/website_data.json",
                           "concordance/out_v1/summary.json",
                           "concordance/independent_audit/audit_report.json"]
-    # Use the source snapshot time, not build wall time: unchanged inputs produce
-    # byte-identical public data and manifests on repeated builds.
+    # Prefer the recorded session update so a fresh Git checkout (with different
+    # file mtimes) reproduces the same public snapshot labels.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
         "results/statistics.json", "results/verification.json", "研究报告.txt",
         "protocol_v1.txt", "20页校对记录.txt"]]
@@ -375,8 +375,10 @@ def main():
     input_paths += [research/name for name in stage2_input_names]
     curation_path = Path(__file__).resolve().parents[1] / "site/content/overview-curation.json"
     input_paths.append(curation_path)
-    snapshot_time = datetime.datetime.fromtimestamp(
-        max(p.stat().st_mtime for p in input_paths if p.exists()), datetime.timezone.utc).isoformat()
+    snapshot_time = read(research / "session.json", {}).get("updated_utc")
+    if snapshot_time is None:
+        snapshot_time = datetime.datetime.fromtimestamp(
+            max(p.stat().st_mtime for p in input_paths if p.exists()), datetime.timezone.utc).isoformat()
     for name in ["data/folios", "assets/images", "assets/crops", "downloads"]:
         (site / name).mkdir(parents=True, exist_ok=True)
     selection = read(study / "selection.json")
@@ -803,9 +805,31 @@ def main():
         "literature": "See literature.json for original publication links and reviewed evidence.",
         "hash_verification_scope": "Source hashes match published mirror receipts; not a fresh byte comparison with the upstream server."})
     export_concordance(research, site)
+    differences = research / "version_differences"
+    difference_audit = read(differences / "audit_v2/audit_report.json", {})
+    if difference_audit.get("passed"):
+        assert difference_audit["author_builder_sha256"] == hashlib.sha256((differences / "build.py").read_bytes()).hexdigest()
+        assert difference_audit["input_sha256"] == hashlib.sha256((research / "concordance/out_v1/data.json").read_bytes()).hexdigest()
+        assert difference_audit["full_data_summary"]["counts"] == read(differences / "out_v2/summary.json")["counts"]
+        export_assets(differences, site, [
+            ("report", "研究报告.txt", "downloads/version-differences-report.txt"),
+            ("rows", "out_v2/rows.csv", "downloads/version-differences-rows.csv"),
+            ("folios", "out_v2/folios.csv", "downloads/version-differences-folios.csv"),
+            ("priority", "out_v2/priority_folios.json", "downloads/version-differences-priority.json"),
+            ("summary", "out_v2/summary.json", "downloads/version-differences-summary.json"),
+            ("figure", "version-differences.png", "assets/version-differences.png"),
+            ("checks", "audit_v2/audit_report.json", "downloads/version-differences-audit.json")])
+    synthesis = research / "synthesis_final"
+    synthesis_review = read(synthesis / "root_review.json", {})
+    if synthesis_review.get("passed"):
+        assert synthesis_review["report_sha256"] == hashlib.sha256((synthesis / "七小时研究总报告.txt").read_bytes()).hexdigest()
+        assert synthesis_review["next_plan_sha256"] == hashlib.sha256((synthesis / "下一轮可证伪研究计划.txt").read_bytes()).hexdigest()
+        export_assets(synthesis, site, [
+            ("report", "七小时研究总报告.txt", "downloads/research-report.txt"),
+            ("next_plan", "下一轮可证伪研究计划.txt", "downloads/next-research-plan.txt")])
     manifest = []
     for path in sorted(site.rglob("*")):
-        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js"} and path.name != "manifest.json":
+        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js", ".zip", ".csv", ".pdf"} and path.name != "manifest.json":
             manifest.append({"path": str(path.relative_to(site)), "bytes": path.stat().st_size,
                              "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     write(site / "data/manifest.json", {"files": manifest})

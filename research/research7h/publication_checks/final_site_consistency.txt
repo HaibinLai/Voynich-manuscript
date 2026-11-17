@@ -1,0 +1,38 @@
+网站最终一致性只读审查
+检查时间：2026-11-17T16:13:42.095364+00:00
+对应提交：2bae816e6d7b7a49bd5857869551f61fbd62a103
+
+本轮没有编辑网站/研究结果，没有操控浏览器，也没有重新请求外站。
+静态收集257处站内引用、204个不同目标，未发现缺失文件或无法对应的路由/锚点。219个外部URL未做在线可用性验证；动态生成链接并非全部可由该静态扫描证明。
+
+建议按时态处理：
+- research/research7h/session.json:56 [update_current]
+  Mutable next_stage_preparation still says crossline no execution yet, although stage 4 run and independent audit are complete.
+  Update this mutable preparation summary; retain frozen design receipts with their original timestamps.
+- research/research7h/session.json:62 [after_final_release_verified]
+  remaining_plan and stage5_running_components describe the index as still being built. Index delivery and UI/data checks now exist.
+  After actual stage 5 publication verification, mark this stage complete and describe final synthesis as current; mark the overall session complete only at actual completion.
+- site/app.js:291 [update_current]
+  正在核查的两项说法 suggests the delivered candidate/source review is still running.
+  Use 本轮重点核查的两项说法; do not imply that the linguistic hypotheses themselves have been settled.
+- site/app.js:375 [update_current]
+  已完成子实验与仍在计算的任务分开标记 implies a remaining stage 2 computation.
+  Use 以下保留各子实验的完成记录, followed by the existing scientific limitation.
+- site/app.js:388 [before_marking_session_complete]
+  The label for session.status=complete is 本阶段已完成 although this field represents the overall research session.
+  Use 本轮研究已完成; preserve active while final delivery is still running.
+- README.md:30 [after_actual_completion]
+  研究仍在进行 is currently true, but must be dated or updated when the whole session completes.
+  After completion, state actual completion time and that the site is a static result snapshot, not a live monitor.
+- site/README.md:65 [clarify_history]
+  The historical position-specificity section mentions 保留集未评分 without explicit temporal scope.
+  Clarify 该探索当时未使用保留集；后续固定22页结果另列. Do not rewrite the frozen earlier report.
+- site/app.js:383 [clarify_history]
+  Stage 1 scope text says the overall research is continuing, as of its original timestamp.
+  Retain the dated frozen scope; label it as 当时快照 so it is not mistaken for current session status.
+
+可以保留：真实22页结果与976次密码状态、当前五张证据卡、书手标签范围、跨行历史冻结收据、早期未开封和手机检查受限的历史记录。索引的390px/1280px截图已有真实检查，不应再笼统称所有移动端未检查；也不能由此扩大为所有网站页面均移动端验收。实际浏览器下载文件内容仍未捕获验证；纯函数全量导出另有独立核验。
+
+RESEARCH_AGENT_GUIDE目前没有发现把已完成reserve/crossline说成未执行的当前叙述；legacy reserve_loaded=false的说明正确。章节预测模型尚未执行的描述应保留。
+
+最终总报告TXT和20页ZIP入口需等文件实际生成后再接入。该审查不是整体七小时完成声明。

@@ -131,7 +131,7 @@ def main():
     for folder in ['synthesis_audit','label_body_design','line_boundary_design','line_boundary_calibration',
                    'final_reserve/new_saved_replay','cipher_controls/voynich_substitution',
                    'line_boundary_prediction','line_boundary_prediction/independent_audit',
-                   'concordance','concordance/independent_audit']:
+                   'concordance','concordance/independent_audit','synthesis_final']:
         parent=src/folder;manifest=parent/'artifact_manifest.json'
         if not manifest.exists():continue
         inventory=json.loads(manifest.read_text())
@@ -166,8 +166,40 @@ def main():
             assert path.suffix not in ['.log','.pdf','.pyc']
             copy(path.relative_to(src))
         copy(crossline_manifest.relative_to(src))
+    # This package has a separately verified path-only publication projection.
+    # Its own manifest preserves every original and public file hash.
+    projected = src/'version_differences_public'
+    if (projected/'artifact_manifest.json').exists():
+        inventory = json.loads((projected/'artifact_manifest.json').read_text())
+        names = []
+        for item in inventory['files']:
+            rel = Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            original = projected/rel
+            assert digest(original) == item['sha256'] and original.stat().st_size == item['bytes']
+            names.append(rel)
+        for name in names + [Path('artifact_manifest.json')]:
+            original = projected/name
+            rel = Path('version_differences')/name
+            target = dest/rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(original, target)
+            entries.append(dict(path=str(rel), source_sha256=digest(original), public_sha256=digest(target),
+                                transformation=None))
     for path in sorted((src/'publication_checks').glob('*')):
-        if path.is_file() and path.suffix in ['.json','.txt','.py']:copy(path.relative_to(src))
+        if not path.is_file() or path.suffix not in ['.json','.txt','.py']:
+            continue
+        content = path.read_text()
+        portable = content.replace(str(repo), '[repository checkout]').replace(str(source), '[local research source]')
+        if portable == content:
+            copy(path.relative_to(src))
+        else:
+            rel = path.relative_to(src)
+            target = dest/rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(portable)
+            entries.append(dict(path=str(rel), source_sha256=digest(path), public_sha256=digest(target),
+                                transformation='Known local repository/source prefixes replaced by portable labels; original receipt retained locally.'))
     for name in ['site_status.json','homepage_curated.json']:
         if (src/name).is_file():copy(Path(name))
     for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',

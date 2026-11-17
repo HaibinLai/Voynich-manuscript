@@ -39,6 +39,10 @@ python3 research/research7h/final_reserve/report_saved.py --run research/researc
 concordance/ 按原ZL/IT两版记录建立阅读索引，data.json含10600条带版本行位；它不是10600条独立物理书写行，也不是全书OCR认证。未决括号/缺字保留、空槽不压缩、逗号两侧标不确定；另一版按完整locator并列，不按槽强配。精确模式按词次，literal模式按行位，先过滤后分页，下载全量。原始raw与小写/去普通标记的display不同，普通尖括号删除可能连接两侧；插图中断显示为空格。新索引槽号不等其他实验槽号。
 图链只来自确切保存清单或原20页receipt，50分区仍仅馆藏入口；无新逐行框。数据审计、网页纯查询与实际浏览器检查各有不同范围，不互相替代。公开全文已访问，不再声称未来候选是在未见reserve上设计。再生成/审计命令见README，输出用新路径；不要覆盖原数据与失败记录。
 
+全书转写差异与综合交付
+version_differences/只在完整locator配对，全部5386定位分为五类；5214共享定位中的1812/1078/2324是显示一致、顶层分隔差异、字形或注释差异，不是错误率。按显示槽切片保留括号内符号，不可全局删句点；独立12人工例发现并修正空显示辅助标记，v1失败完整保留。最终out_v2与audit_v2为当前版本。公开审计副本仅移除已知本机路径，公开manifest同时绑定source_sha256与公开sha256，不把该投影称作新实验。
+synthesis_final/保存五阶段综合报告、原始来源核查与下一轮可证伪计划；下一轮尚未执行，已有confirm/reserve不再是未知盲集。site/report.html、8页PDF和20页ZIP是阅读交付；PDF版面检查、网页实际操作、数值复算与文件哈希是不同验证。
+
 复现习惯
 先运行 python3 scripts/verify_release.py 核验公开快照。可选 --replay anchor copy allograph metadata --output 仓库外新目录，会调用四个保存证据复算入口；它不重新选参数，也不打开新分区。20页便携图文工作包由 scripts/export_review_bundle.py 生成，原始逐页JSON与JPEG保持字节不变。
 优先使用各目录 public_reproduce / replay 入口，将新结果写入不存在的新目录。不要覆盖原协议、选参、随机数组、错误诊断或已完成分数。发现错误应保留旧记录、新增带时间和哈希的说明，再做明确版本的修复。错误修复与因为结果不理想而换模型不同。

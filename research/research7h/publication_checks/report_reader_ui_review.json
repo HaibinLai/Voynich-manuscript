@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-17T16:20:21.782593+00:00",
+  "status": "reading_layout_checked_print_preview_unverified",
+  "scope": "Static renderer checks and actual Chrome CUA on localhost. No new scientific computation, report rewriting, or publication.",
+  "build_command": "python3 scripts/build_report_page.py --source research",
+  "files": {
+    "scripts/build_report_page.py": "e9a379c26755f87488b40cbfa9b31232b826da8adea865d358fe3d5699c69a8c",
+    "site/report.css": "e83d3a36f47fb978e612d0536327f0a17e83225258469cd9065db6369f61e9fb",
+    "site/report.html": "ea4b39a4ad530c5d1becb140d524be06c959b16e51af0e7a2d6dddae7cd6a764",
+    "research/research7h/synthesis_final/七小时研究总报告.txt": "740980a615d876a407f7dfa2dd7f50e1270d61c52fb6e622c5bfc7c87a4e42c8",
+    "research/research7h/synthesis_final/下一轮可证伪研究计划.txt": "f2ef12699a6b44751a1ac0b788b33635d7fe4f7f5aaf7655b0db4987091675e3"
+  },
+  "static_checks": {
+    "text_of_both_documents_preserved_ignoring_layout_whitespace": true,
+    "html_escaping": true,
+    "identical_inputs_identical_output": true,
+    "no_wall_clock_build_timestamp": true,
+    "missing_required_source_rejected": true,
+    "all_local_href_targets_exist": true,
+    "print_css": "A4 margins; navigation/header hidden; heading/paragraph break controls; next-plan starts on new page"
+  },
+  "browser_checks": {
+    "desktop": {
+      "viewport": [
+        1280,
+        900
+      ],
+      "document_width": 1280,
+      "main_width": 780,
+      "screenshot": "report_desktop1280.jpg",
+      "visual": "Readable paper/green layout, no horizontal overflow or visible overlap."
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "document_width": 390,
+      "main_width": 350,
+      "overflow_element_count": 0,
+      "screenshot": "report_mobile390.jpg",
+      "visual": "Navigation wraps; title, paragraphs and controls stay in viewport."
+    },
+    "keyboard": "Tab focused skip-to-report link, Return navigated to #report; settled report top 28.24px.",
+    "plan_anchor": "Direct #next-plan navigation settled to top 28.02px; displayed explicit 尚未执行 and unchanged source content. Initial click changed hash but immediate smooth-scroll measurement was not treated as settled.",
+    "plan_screenshot": "report_next_plan1280.jpg",
+    "print": "Click reached the print button, but a CDP dispatch timeout occurred and no system print preview was observable. Escape sent; ordinary report navigation was restored. No printed PDF or page-break visual verification is claimed.",
+    "viewport_override_reset": true
+  },
+  "limitations": [
+    "External URLs were linked, not revalidated online.",
+    "Actual download contents were not retested through browser.",
+    "Print CSS reviewed statically; browser/system print-preview outcome unverified.",
+    "Report title and deadline are source-derived; deadline is not an actual completion timestamp."
+  ],
+  "screenshot_sha256": {
+    "report_desktop1280.jpg": "86d2e51572dff67d50df3c136295345c7309f6e96938b26cf45f919d53182018",
+    "report_mobile390.jpg": "86e82285061b864dcad6270fd7c9dfc617c9137648b50bfb436db9466497a77e",
+    "report_next_plan1280.jpg": "2484b11cb965c8126983fe05e191574485c841fe45781be08eef6442bb61bd9c"
+  }
+}

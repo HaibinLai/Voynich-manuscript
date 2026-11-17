@@ -1,0 +1,37 @@
+第五阶段：公开仓库干净导出复现检查
+
+结果：通过。
+来源提交：2bae816e6d7b7a49bd5857869551f61fbd62a103
+临时目录：/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y
+解释器：3.9.6 (default, Apr 17 2026, 18:15:52)  [Clang 21.0.0 (clang-2100.1.1.101)]
+
+从固定提交 git archive 导出全新目录，仅按 README 两条命令重建索引并独立核验。未安装依赖；两脚本只导入标准库。
+
+命令：['git', 'rev-parse', 'HEAD']
+工作目录：[repository checkout]
+实际返回码：0
+
+命令：['git', 'show', '-s', '--format=%H%n%aI%n%s', '2bae816e6d7b7a49bd5857869551f61fbd62a103']
+工作目录：[repository checkout]
+实际返回码：0
+
+命令：['git', 'archive', '--format=tar', '2bae816e6d7b7a49bd5857869551f61fbd62a103']
+工作目录：[repository checkout]
+实际返回码：0
+
+命令：['python3', 'research/research7h/concordance/build.py', '--output', '/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/rebuilt']
+工作目录：/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/archive
+实际返回码：0
+
+命令：['python3', 'research/research7h/concordance/independent_audit/replay.py', '--data', '/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/rebuilt/data.json', '--output', '/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/independent-audit']
+工作目录：/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/voynich-concordance-clean-c0tov51y/archive
+实际返回码：0
+
+全部 10,600 行位、76,945 槽及 75,886 词次索引经独立解析一致；26 个人工例、46 个查询预期均成功生成。
+与提交版逐字段比较 records、postings、by_locator、sources、folios 及元数据一致；唯一允许变化的是 built_utc。
+两版 TXT、人工例与 source_hashes.json 字节一致；summary 仅构建时间不同。
+提交中的 site/data/concordance.json 与 out_v1/data.json 字节一致。
+公开输入、构建器、协议和独立审计脚本的 SHA-256 在执行前后不变。
+未运行任何确认集或预留集科学评分；不涉及新假设、翻译、浏览器或字形校对。
+
+完整输入及产物哈希、导入清单、执行记录与限制见同名 JSON。

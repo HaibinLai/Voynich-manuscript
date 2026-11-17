@@ -39,8 +39,8 @@ function renderOverview() {
       <div class="status-line"><span class="status-dot" aria-hidden="true"></span>当前证据：${esc(h.decipherment_status||data.overview.decipherment_status)}</div>
       <h1 id="overview-heading">从一页手稿，<br>走向<em>可检验的解释。</em></h1>
       <p class="hero-intro">原图与转写让问题可追溯，对照实验让解释逐步收窄。目前较清楚的是书写结构，语言与词义仍未识别。</p>
-      <div class="hero-actions"><a class="button" href="#manuscript">打开原图对照 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#overview?study=current-evidence">阅读当前证据</a></div>
-      <div class="hero-secondary-links"><a href="#literature">文献与候选解读 →</a><a href="#journal?study=release-verification">核验与复算 →</a></div>
+      <div class="hero-actions"><a class="button" href="#manuscript">打开原图对照 <span aria-hidden="true">↗</span></a><a class="button secondary" href="report.html">阅读综合报告</a></div>
+      <div class="hero-secondary-links"><a href="#concordance">全书双版词形索引 →</a><a href="#literature">文献与候选解读 →</a><a href="#journal?study=release-verification">核验与复算 →</a></div>
     </div>
     <div class="hero-image"><img src="assets/images/f2v.jpg" alt="伏尼契手稿 f2v：植物图与未知文字" fetchpriority="high"><span class="image-label">FOLIO 2v · 草药图</span></div>
   </div>

@@ -2,9 +2,14 @@
 
 从原图、公开转写和带对照的实验出发，记录可复核的规律、失败结果与候选假说。**目前没有可靠译文，也没有宣布破译。**
 
-网站：[HaibinLai.github.io/Voynich-manuscript](https://HaibinLai.github.io/Voynich-manuscript/)
+网站：[HaibinLai.github.io/Voynich-manuscript](https://HaibinLai.github.io/Voynich-manuscript/) · [从这里开始](START_HERE.txt) · [后续研究者说明](RESEARCH_AGENT_GUIDE.txt)
 
 ## 当前内容
+
+- [综合报告与下一轮计划](https://haibinlai.github.io/Voynich-manuscript/report.html)：可打印阅读页，明确区分结果、解释限制与未来工作；另有[8 页 PDF 阅读版](https://haibinlai.github.io/Voynich-manuscript/downloads/research-report.pdf)。
+- [20 页离线复核包（21.7 MB）](https://haibinlai.github.io/Voynich-manuscript/downloads/study20-review.zip)：原图、40 处裁图、332 个位置的双版转写和未决观察；[直接读 TXT](https://haibinlai.github.io/Voynich-manuscript/downloads/study20-transcriptions.txt)。
+
+- [全书双版差异清单](https://haibinlai.github.io/Voynich-manuscript/downloads/version-differences-report.txt)：5,214 个共享定位，1,812 处显示一致、1,078 处仅分隔不同、2,324 处字形或注记不同；这是测量分歧，不是错误率。
 
 - [全书词形索引](https://haibinlai.github.io/Voynich-manuscript/#concordance)：ZL 5,385 条、IT 5,215 条公开转写行位，可查精确词形或字面文字、切换版本、追溯原串并下载全部匹配。保留缺字、备选与不确定边界；全书可检索不等于全书已独立校对。
 
@@ -126,6 +131,7 @@ python3 research/research7h/generator_controls/boundary_calibration/calibrate.py
 重建网站数据与本地预览：
 
 ```sh
+python3 scripts/build_report_page.py --source research
 python3 scripts/build_site_data.py --source research
 python3 -m http.server 8000 --directory site
 ```
@@ -140,6 +146,15 @@ python3 research/research7h/concordance/independent_audit/replay.py --data /tmp/
 ```
 
 构建时间字段会变化；原始来源、全部行位和索引内容按固定规则复核。这个索引包括已揭晓的预留资料，不形成新的未见测试集。网页纯函数与浏览器操作检查另有记录。
+
+全书双版分歧清单也只需标准库；分类按显示槽偏移保留括号内符号，分歧不等于错误：
+
+```sh
+python3 research/research7h/version_differences/build.py --output /tmp/voynich-differences-new
+python3 research/research7h/version_differences/independent_audit.py --bundle /tmp/voynich-differences-new --output /tmp/voynich-differences-audit-new
+```
+
+PDF 阅读版可用 `requirements-report.txt` 中的 ReportLab 依赖重排：`python3 scripts/build_report_pdf.py --source research --output /tmp/voynich-report-new.pdf`。可通过 `--font` 指定本机合法中文 TrueType 字体；字体和生成时间可能改变 PDF 字节与分页，需重新检查版面。仓库已提供逐页核查过的 PDF。
 
 原图抽取脚本需研究者自己的 PDF 及本地页码清单；本仓库不分发整本现代影印出版物，也不包含私人文件路径。
 

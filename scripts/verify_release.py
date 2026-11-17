@@ -80,7 +80,9 @@ def verify_snapshot():
                        ('cipher_controls/voynich_substitution/artifact_manifest.json', RESEARCH/'cipher_controls/voynich_substitution'),
                        ('line_boundary_prediction/results_artifact_manifest.json', RESEARCH/'line_boundary_prediction'),
                        ('concordance/artifact_manifest.json', RESEARCH/'concordance'),
-                       ('concordance/independent_audit/artifact_manifest.json', RESEARCH/'concordance/independent_audit')]:
+                       ('concordance/independent_audit/artifact_manifest.json', RESEARCH/'concordance/independent_audit'),
+                       ('synthesis_final/artifact_manifest.json', RESEARCH/'synthesis_final'),
+                       ('version_differences/artifact_manifest.json', RESEARCH/'version_differences')]:
         path = RESEARCH/name
         if path.exists():
             definitions.append((path, base, dict(container='files')))

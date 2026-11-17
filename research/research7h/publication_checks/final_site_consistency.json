@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-17T16:13:42.095364+00:00",
+  "commit": "2bae816e6d7b7a49bd5857869551f61fbd62a103",
+  "scope": "Read-only static consistency and local target review. No browser operation, remote URL health check, fresh scientific computation, or code edit.",
+  "findings": [
+    {
+      "id": "session-crossline-status",
+      "priority": "update_current",
+      "file": "research/research7h/session.json",
+      "line": 56,
+      "finding": "Mutable next_stage_preparation still says crossline no execution yet, although stage 4 run and independent audit are complete.",
+      "suggestion": "Update this mutable preparation summary; retain frozen design receipts with their original timestamps."
+    },
+    {
+      "id": "session-stage5",
+      "priority": "after_final_release_verified",
+      "file": "research/research7h/session.json",
+      "line": 62,
+      "finding": "remaining_plan and stage5_running_components describe the index as still being built. Index delivery and UI/data checks now exist.",
+      "suggestion": "After actual stage 5 publication verification, mark this stage complete and describe final synthesis as current; mark the overall session complete only at actual completion."
+    },
+    {
+      "id": "literature-present-progress",
+      "priority": "update_current",
+      "file": "site/app.js",
+      "line": 291,
+      "finding": "正在核查的两项说法 suggests the delivered candidate/source review is still running.",
+      "suggestion": "Use 本轮重点核查的两项说法; do not imply that the linguistic hypotheses themselves have been settled."
+    },
+    {
+      "id": "stage2-present-progress",
+      "priority": "update_current",
+      "file": "site/app.js",
+      "line": 375,
+      "finding": "已完成子实验与仍在计算的任务分开标记 implies a remaining stage 2 computation.",
+      "suggestion": "Use 以下保留各子实验的完成记录, followed by the existing scientific limitation."
+    },
+    {
+      "id": "overall-complete-label",
+      "priority": "before_marking_session_complete",
+      "file": "site/app.js",
+      "line": 388,
+      "finding": "The label for session.status=complete is 本阶段已完成 although this field represents the overall research session.",
+      "suggestion": "Use 本轮研究已完成; preserve active while final delivery is still running."
+    },
+    {
+      "id": "readme-active",
+      "priority": "after_actual_completion",
+      "file": "README.md",
+      "line": 30,
+      "finding": "研究仍在进行 is currently true, but must be dated or updated when the whole session completes.",
+      "suggestion": "After completion, state actual completion time and that the site is a static result snapshot, not a live monitor."
+    },
+    {
+      "id": "historical-position-limit",
+      "priority": "clarify_history",
+      "file": "site/README.md",
+      "line": 65,
+      "finding": "The historical position-specificity section mentions 保留集未评分 without explicit temporal scope.",
+      "suggestion": "Clarify 该探索当时未使用保留集；后续固定22页结果另列. Do not rewrite the frozen earlier report."
+    },
+    {
+      "id": "stage1-historical-scope",
+      "priority": "clarify_history",
+      "file": "site/app.js",
+      "line": 383,
+      "finding": "Stage 1 scope text says the overall research is continuing, as of its original timestamp.",
+      "suggestion": "Retain the dated frozen scope; label it as 当时快照 so it is not mistaken for current session status."
+    }
+  ],
+  "retain_as_history": [
+    "Earlier no-reserve/no-mobile receipts are dated historical evidence, not current status. Do not erase them.",
+    "The four-replay receipt is explicitly bound to its old commit and timestamp; keep that scope.",
+    "Not-scored and in-progress strings in inactive status branches are legitimate future-state handling.",
+    "The agent guide correctly distinguishes completed reserve and crossline results, and explains legacy reserve_loaded=false ambiguity.",
+    "The section/hand prediction model remains unexecuted; keep that limitation."
+  ],
+  "current_checks": {
+    "homepage_reserve": "reviewed, 22 pages / 11 leaf groups",
+    "homepage_cipher": "completed, 976 / 976 fits",
+    "current_evidence_cards": "five cards refer to final reserve and fixed-substitution limits",
+    "mobile_scope": "concordance 390px screenshot and DOM width check exist; older unsupported mobile claims remain historical",
+    "actual_browser_download_file_capture": "not verified; deterministic full export objects independently checked"
+  },
+  "local_links": {
+    "local_references": 257,
+    "unique_local_references": 204,
+    "remote_unique": 219,
+    "missing": [],
+    "unresolved_anchors": []
+  },
+  "link_scope": "257 extracted local references / 204 distinct; all resolved to local files or recognized routes/anchors. This static extraction is not a proof of every dynamically constructed link or remote availability. 219 distinct remote URLs were collected, not requested.",
+  "planned_outputs": {
+    "downloads/research-report.txt": {
+      "exists_at_review": false,
+      "note": "Only add current download entry after actual file exists; absence is not a broken link if not yet linked."
+    },
+    "downloads/study20-review.zip": {
+      "exists_at_review": false,
+      "note": "Only add current download entry after actual file exists; absence is not a broken link if not yet linked."
+    }
+  },
+  "audited_file_sha256": {
+    "README.md": "abe8e6062279fdc7fa66d395f24eeb787f08db163492a95ded423a8fc7367bb4",
+    "RESEARCH_AGENT_GUIDE.txt": "095f5585f34efbb5b711d7489c11128569628c6fddf5ce0c0ae9f373463ce64f",
+    "site/README.md": "9b6b9297be835526a07ad826f10cc11023fe3bdacf77ede91e0fb878002b6016",
+    "site/app.js": "3c3ad9bff3277802414e9a834a51dab602e52d032b4d3d798800f932c723a367",
+    "site/homepage.js": "fd3cd76240bdeb48b3379581c7eee03d49357996abcbc634e9e262112d79f4ff",
+    "site/content/overview-curation.json": "e9002be2991f3f314354b28aceff0913d376a5da14148afa77e7e738791484b5",
+    "research/research7h/session.json": "92bd7e9025b6eea1c0b050ea15e399931b8b976a0de1ba5e38eb5ecfda79c8c7",
+    "site/data/homepage.json": "6967dd941fd34417eb2bf7a695e5ef5a2172f8677fd961d35076c7fbdc5204ab",
+    "site/data/research.json": "2471024e56f4e0da9102b31851bfec26e8d68c85f24d1ede2f9ea2c073a0c1e0"
+  }
+}
