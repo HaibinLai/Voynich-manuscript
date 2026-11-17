@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "validate_only": false,
+  "seeds": [
+    2026111700
+  ],
+  "cases": [
+    "true_alias",
+    "non_alias",
+    "position_confound",
+    "frequency_confound",
+    "iid"
+  ],
+  "history_window": 3,
+  "generation_counts": {
+    "train": 30,
+    "dev": 10,
+    "test": 10,
+    "small_train": 10
+  },
+  "scoring": "logp_nats is original full-word natural log probability including EOS. Hard scores are bits for original outputs given collapsed last-three inputs and absolute position.",
+  "stream_derivation": "SHA256(JSON([seed,case,'words',split])) -> integer -> random.Random; parameter stream uses [seed,'parameters']. Case samples are separate streams, background parameters paired by seed.",
+  "python_version": "3.9.6",
+  "no_manuscript_read": true,
+  "no_model_fit": true,
+  "datasets": [
+    {
+      "seed": 2026111700,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 30,
+          "targets_including_eos": 179,
+          "original_symbol_counts": {
+            "a": 17,
+            "b": 10,
+            "c": 16,
+            "d": 10,
+            "e": 25,
+            "f": 20,
+            "g": 28,
+            "h": 23
+          },
+          "small_prefix_words": 10,
+          "small_prefix_original_counts": {
+            "a": 6,
+            "b": 6,
+            "c": 5,
+            "d": 1,
+            "e": 11,
+            "f": 9,
+            "g": 10,
+            "h": 5
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -352.0102888107233,
+            "hard_ab_bits": 507.84349800912236,
+            "hard_cd_bits": 508.7778456748274
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 10,
+          "targets_including_eos": 61,
+          "original_symbol_counts": {
+            "a": 3,
+            "b": 4,
+            "c": 4,
+            "d": 8,
+            "e": 7,
+            "f": 9,
+            "g": 11,
+            "h": 5
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118.65918801383182,
+            "hard_ab_bits": 171.1890221034663,
+            "hard_cd_bits": 171.45404742436904
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10,
+          "targets_including_eos": 67,
+          "original_symbol_counts": {
+            "a": 5,
+            "b": 3,
+            "c": 4,
+            "d": 7,
+            "e": 8,
+            "f": 10,
+            "g": 14,
+            "h": 6
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -130.09729409472834,
+            "hard_ab_bits": 187.69072102353758,
+            "hard_cd_bits": 187.63082671596942
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 30,
+          "targets_including_eos": 182,
+          "original_symbol_counts": {
+            "a": 9,
+            "b": 9,
+            "c": 20,
+            "d": 9,
+            "e": 25,
+            "f": 25,
+            "g": 25,
+            "h": 30
+          },
+          "small_prefix_words": 10,
+          "small_prefix_original_counts": {
+            "a": 4,
+            "b": 4,
+            "c": 11,
+            "d": 2,
+            "e": 14,
+            "f": 8,
+            "g": 2,
+            "h": 12
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -354.0538579974073,
+            "hard_ab_bits": 509.204851507952,
+            "hard_cd_bits": 512.6941641668199
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 10,
+          "targets_including_eos": 63,
+          "original_symbol_counts": {
+            "a": 3,
+            "b": 8,
+            "c": 5,
+            "d": 7,
+            "e": 8,
+            "f": 10,
+            "g": 6,
+            "h": 6
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -127.2276710556562,
+            "hard_ab_bits": 183.23581895259045,
+            "hard_cd_bits": 183.91533842203276
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10,
+          "targets_including_eos": 67,
+          "original_symbol_counts": {
+            "a": 7,
+            "b": 7,
+            "c": 7,
+            "d": 7,
+            "e": 5,
+            "f": 8,
+            "g": 7,
+            "h": 9
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -136.56780042429176,
+            "hard_ab_bits": 196.61974770932312,
+            "hard_cd_bits": 197.06537711495383
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 30,
+          "targets_including_eos": 196,
+          "original_symbol_counts": {
+            "a": 13,
+            "b": 14,
+            "c": 14,
+            "d": 15,
+            "e": 24,
+            "f": 24,
+            "g": 31,
+            "h": 31
+          },
+          "small_prefix_words": 10,
+          "small_prefix_original_counts": {
+            "a": 3,
+            "b": 5,
+            "c": 4,
+            "d": 1,
+            "e": 10,
+            "f": 10,
+            "g": 11,
+            "h": 8
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -386.13346687932676,
+            "hard_ab_bits": 557.6555036945281,
+            "hard_cd_bits": 556.8487601650949
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 10,
+          "targets_including_eos": 55,
+          "original_symbol_counts": {
+            "a": 2,
+            "b": 2,
+            "c": 3,
+            "d": 4,
+            "e": 8,
+            "f": 7,
+            "g": 7,
+            "h": 12
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -105.57294380171592,
+            "hard_ab_bits": 152.07962919069897,
+            "hard_cd_bits": 152.71511849889998
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10,
+          "targets_including_eos": 51,
+          "original_symbol_counts": {
+            "a": 1,
+            "b": 4,
+            "c": 4,
+            "d": 7,
+            "e": 8,
+            "f": 6,
+            "g": 7,
+            "h": 4
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -98.26621218683964,
+            "hard_ab_bits": 141.76817700889617,
+            "hard_cd_bits": 142.03320232979888
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 30,
+          "targets_including_eos": 186,
+          "original_symbol_counts": {
+            "a": 7,
+            "b": 11,
+            "c": 21,
+            "d": 20,
+            "e": 24,
+            "f": 26,
+            "g": 21,
+            "h": 26
+          },
+          "small_prefix_words": 10,
+          "small_prefix_original_counts": {
+            "a": 1,
+            "b": 3,
+            "c": 7,
+            "d": 7,
+            "e": 8,
+            "f": 5,
+            "g": 6,
+            "h": 11
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -359.6237213453716,
+            "hard_ab_bits": 518.8273593710021,
+            "hard_cd_bits": 516.3448804342557
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 10,
+          "targets_including_eos": 63,
+          "original_symbol_counts": {
+            "a": 7,
+            "b": 2,
+            "c": 8,
+            "d": 5,
+            "e": 8,
+            "f": 10,
+            "g": 8,
+            "h": 5
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -121.29943002974574,
+            "hard_ab_bits": 174.998086166572,
+            "hard_cd_bits": 175.1433228723384
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10,
+          "targets_including_eos": 55,
+          "original_symbol_counts": {
+            "a": 5,
+            "b": 4,
+            "c": 4,
+            "d": 5,
+            "e": 6,
+            "f": 7,
+            "g": 3,
+            "h": 11
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -103.96870018318826,
+            "hard_ab_bits": 149.99512816195715,
+            "hard_cd_bits": 150.2002591752917
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 30,
+          "targets_including_eos": 186,
+          "original_symbol_counts": {
+            "a": 5,
+            "b": 13,
+            "c": 19,
+            "d": 17,
+            "e": 31,
+            "f": 21,
+            "g": 23,
+            "h": 27
+          },
+          "small_prefix_words": 10,
+          "small_prefix_original_counts": {
+            "a": 2,
+            "b": 2,
+            "c": 8,
+            "d": 4,
+            "e": 12,
+            "f": 6,
+            "g": 7,
+            "h": 8
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -362.6540378476919,
+            "hard_ab_bits": 523.1991819612236,
+            "hard_cd_bits": 523.1991819612236
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 10,
+          "targets_including_eos": 58,
+          "original_symbol_counts": {
+            "a": 1,
+            "b": 3,
+            "c": 6,
+            "d": 3,
+            "e": 9,
+            "f": 7,
+            "g": 10,
+            "h": 9
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -111.12066011865927,
+            "hard_ab_bits": 160.31322529349774,
+            "hard_cd_bits": 160.31322529349774
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10,
+          "targets_including_eos": 55,
+          "original_symbol_counts": {
+            "a": 2,
+            "b": 5,
+            "c": 3,
+            "d": 10,
+            "e": 10,
+            "f": 6,
+            "g": 6,
+            "h": 3
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": false,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -109.09466855081806,
+            "hard_ab_bits": 157.39033730569037,
+            "hard_cd_bits": 157.39033730569037
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    }
+  ]
+}

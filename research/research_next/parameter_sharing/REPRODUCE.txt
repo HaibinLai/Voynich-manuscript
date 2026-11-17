@@ -1,0 +1,38 @@
+参数共享后续实验：阅读与复算
+
+状态与边界
+本包是已完成七小时研究后的独立探索。原手稿的train/dev/confirm/reserve都曾公开或用于分析；这里没有新的盲测。完整词模型、训练内配对、局部曲率DF匹配只检验预测约束，不产生翻译。protocol.txt为实际冻结规则；design_review.txt是建议与独立审查，若口径不同，以冻结protocol为准。主描述按完整词等权；按页/叶等权属于附带敏感性。
+
+先阅读
+protocol.txt：数据、概率费用、两种DF、有限λ搜索和全部条件。
+literature_review.txt/.json：FP局部观察与KT区别、参数共享和容量概念的边界。
+summary_v2/summary.txt 与 summary.json：所有模型、失败、两版及合成校准。
+inputs/*_controls.json：训练配对距离和全部候选，不能称随机null。
+independent_gpu_v1/audit_report.json：只用人工词的概率、导数、DF和有限搜索核对。
+synthetic_data_audit/：生成器作者的第二计算路径，不能冒称独立作者复算。
+independent_synthetic_replay/ 与 independent_manuscript_replay/：另外一位agent实现的原词得分复算，未调用生产model.py。
+runtime_amendment.txt：一张卡的运行时错误及原配置重算；runtime_attempt1保留原尝试，算法不改。
+
+环境与数值
+实际计算采用Python 3.12、PyTorch 2.14.1+cu126、NumPy 2.5.4、Tesla V100 32GB、float64。各job保存确切版本。首次8卡，遇到错误的设备排除后使用7卡。公开文件不含连接凭据或服务器地址。一个成功job的数学结果不依赖设备编号；不同兼容库/设备可能有浮点末位差别，不能保证参数字节相同。
+
+核验入口
+先运行 python verify.py：只核对最终manifest，不重新评分。
+独立逐词复算只需NumPy（见 independent_score_replay.py --help）；输出必须是新目录，不能覆盖原收据。
+  python independent_score_replay.py --output /tmp/voynich-parameter-score-replay-new
+在仓库根目录也可：python3 scripts/verify_release.py --replay parameter --output /tmp/voynich-parameter-release-new
+人工概率/导数检查需要PyTorch：
+  python independent_model_check.py --device cpu --output /tmp/voynich-parameter-sharing-toy-new
+选择支持float64的GPU可改为 --device cuda:0。
+
+完整重训
+重训不是核对哈希的必要步骤。必须在新的复制目录中工作，保留原已发布目录不动。复制本包后移走复制品中的results与logs；不要删改发布原件。jobs.json固定146个配置，每个最多34次凸拟合，合成240、真实52个DF目标解。任何新失败均保留，不自行放宽规则。
+  CUDA_VISIBLE_DEVICES=0 python run_job.py 0
+索引0..25是26个真实模型配置，26..145是120个合成模型配置；每job同时求DF50、150。先做合成，再评价真实。可自行把互不重叠的索引分配至可用GPU，一张卡一次一个job；每job内部两CPU线程。run_jobs.py是原始8卡调度记录；runtime_recovery.py是本次硬件故障处置记录，不要求别的机器也排除同编号卡。
+freeze.json固定算法、协议、输入和任务表。任何复现修改必须写明，不覆盖原freeze。程序从完整原词计算OTHER身份费及EOS；不以商字母表短串费用冒充原词概率。
+
+随机性与归一
+凸拟合没有随机初始化选择；合成生成种子及概率表固定。synthetic.py用不同SHA派生流生成train/dev/test，全词独立抽样、重复字符串保留。完整原单位宇宙固定；COMMON从各自训练频数决定。EOS参考类、全系数ridge和有限位置桶均是实际模型选择。
+
+文件与权利
+本包仅复制已有公开研究转写及自行生成合成数据；来源路径和SHA在input_provenance.json。没有用户PDF的现代前言、附录或私人内容。文献只保存引文位置、来源链接和简要评议。

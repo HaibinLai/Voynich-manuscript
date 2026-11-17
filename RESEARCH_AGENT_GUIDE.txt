@@ -2,6 +2,9 @@
 
 先确认正在读的是哪个实验，而不是把整个仓库当作一个“已破译结果”。网站是静态证据快照，不是后台运行监视器。七小时窗口及阶段状态见 research/research7h/session.json；过期的窗口不是继续无限运行的授权。
 
+后续参数共享实验（2026-11-17）
+research/research_next/parameter_sharing/ 为独立新轮，不修改首轮窗口。先读研究报告.txt、protocol.txt、freeze.json与summary_v2/。146任务、292目标解和全部928分数数组已核验；合成校准说明正收益不能识别别名。KT仅在当前模型及三个训练近邻中占优，FP未超过其控制均值；不能据此认定音义。旧50页全部已曝光。统一 --replay parameter 可在新目录复算保存概率；它不是重训。原异常设备的9失败/1中止/5未开始及一次原配置重算保留，连接信息不公开。图像字形、转写单位、局部DF和语义是不同层次。新网站入口为site/parameter-sharing.html。
+
 快速入口
 1. README.md：范围、来源许可、复现命令及尚未证明的内容。
 2. research/sources/provenance.json：原转写版本与哈希。
@@ -41,7 +44,7 @@ concordance/ 按原ZL/IT两版记录建立阅读索引，data.json含10600条带
 
 全书转写差异与综合交付
 version_differences/只在完整locator配对，全部5386定位分为五类；5214共享定位中的1812/1078/2324是显示一致、顶层分隔差异、字形或注释差异，不是错误率。按显示槽切片保留括号内符号，不可全局删句点；独立12人工例发现并修正空显示辅助标记，v1失败完整保留。最终out_v2与audit_v2为当前版本。公开审计副本仅移除已知本机路径，公开manifest同时绑定source_sha256与公开sha256，不把该投影称作新实验。
-synthesis_final/保存五阶段综合报告、原始来源核查与下一轮可证伪计划；下一轮尚未执行，已有confirm/reserve不再是未知盲集。site/report.html、8页PDF和20页ZIP是阅读交付；PDF版面检查、网页实际操作、数值复算与文件哈希是不同验证。
+synthesis_final/保存首轮五阶段综合报告、原始来源核查与当时的下一轮可证伪计划；该历史报告不回写后续进度。已执行的独立参数共享后续见本文顶部，已有confirm/reserve不再是未知盲集。site/report.html、8页PDF和20页ZIP是阅读交付；PDF版面检查、网页实际操作、数值复算与文件哈希是不同验证。
 
 复现习惯
 先运行 python3 scripts/verify_release.py 核验公开快照。可选 --replay anchor copy allograph metadata --output 仓库外新目录，会调用四个保存证据复算入口；它不重新选参数，也不打开新分区。20页便携图文工作包由 scripts/export_review_bundle.py 生成，原始逐页JSON与JPEG保持字节不变。

@@ -2,11 +2,13 @@
 
 从原图、公开转写和带对照的实验出发，记录可复核的规律、失败结果与候选假说。**目前没有可靠译文，也没有宣布破译。**
 
-本轮七小时研究窗口已完成（2026-11-17 09:50:25–16:50:25 UTC）。实际结题时间与验收记录见 `research/research7h/session.json` 和 `publication_checks/window_closure.json`。下一轮计划尚未执行。
+首轮七小时研究窗口已完成（2026-11-17 09:50:25–16:50:25 UTC）。实际结题时间与验收记录见 `research/research7h/session.json` 和 `publication_checks/window_closure.json`。此后另开[参数共享对照](https://haibinlai.github.io/Voynich-manuscript/parameter-sharing.html)，保留首轮记录；新轮不把已使用的分区重新称为盲测。
 
 网站：[HaibinLai.github.io/Voynich-manuscript](https://HaibinLai.github.io/Voynich-manuscript/) · [从这里开始](START_HERE.txt) · [后续研究者说明](RESEARCH_AGENT_GUIDE.txt)
 
 ## 当前内容
+
+- [后续参数共享对照](https://haibinlai.github.io/Voynich-manuscript/parameter-sharing.html)：146 个配置、292 个预定目标解；KT 在当前模型及三个训练近邻中占优，FP 未超过其控制均值。合成反例表明，正收益和相对排名均不能直接鉴定字形等值。完整概率独立复算覆盖 928 个数组；[研究包与复算说明](research/research_next/parameter_sharing/REPRODUCE.txt)。
 
 - [综合报告与下一轮计划](https://haibinlai.github.io/Voynich-manuscript/report.html)：可打印阅读页，明确区分结果、解释限制与未来工作；另有[8 页 PDF 阅读版](https://haibinlai.github.io/Voynich-manuscript/downloads/research-report.pdf)。
 - [20 页离线复核包（21.7 MB）](https://haibinlai.github.io/Voynich-manuscript/downloads/study20-review.zip)：原图、40 处裁图、332 个位置的双版转写和未决观察；[直接读 TXT](https://haibinlai.github.io/Voynich-manuscript/downloads/study20-transcriptions.txt)。
@@ -49,6 +51,8 @@ python3 scripts/verify_release.py
 ```sh
 python3 scripts/verify_release.py --replay anchor copy allograph metadata --output /tmp/voynich-replay-new
 ```
+
+后续参数共享包可用 `--replay parameter --output /tmp/voynich-parameter-replay-new` 复算保存的完整词费用；这是独立 NumPy 评分，不重新训练模型或选参。
 
 新的合成观察器校准可用 `--replay synthetic` 单独复算；该入口只读取保存的合成样本，不评分新的手稿目标。
 

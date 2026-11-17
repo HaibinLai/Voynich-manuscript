@@ -1,0 +1,933 @@
+{
+  "started_utc": "2026-11-17T20:41:23.446665+00:00",
+  "passed": true,
+  "checker_sha256": "cd9c02ac74b684dff1183459450c644b1b7d3b391ee62871f7ab0a97770007d0",
+  "model_sha256": "57a2e1be95f8cc04e9db3d1350c74556dc95085f242f255583c055c092451c68",
+  "scalar_only": false,
+  "scope": "Only fixed artificial words over a,b,r,s. No manuscript train/dev/evaluation data loaded. Full mode imports production code solely as the black-box subject of independent formula checks.",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "exceptions": [],
+  "scalar_checks": {
+    "normalization": {
+      "complete_through_length": 0.6734214472105379,
+      "remaining_longer_mass": 0.3265785527894611,
+      "total": 0.9999999999999989
+    },
+    "gradient_central_difference_max_abs": 1.1514733611051042e-10,
+    "hessian_from_gradient_central_difference_max_abs": 5.4626136947177883e-11,
+    "first_eos_masked": true,
+    "rare_identity_fee_bits_per_occurrence": 1,
+    "rare_alias_costs_equal": true,
+    "long_word_exercises_position_16plus": true
+  },
+  "full_model_checks": {
+    "device": "cuda:0",
+    "torch_version": "2.14.1+cu126",
+    "numpy_version": "2.5.4",
+    "formula_max_absolute_differences": {
+      "penalty": 8.881784197001252e-16,
+      "objective": 0.0,
+      "gradient": 4.440892098500626e-16,
+      "unpenalized_nll": 0.0,
+      "hessian": 2.220446049250313e-16,
+      "word_costs_bits": 1.7763568394002505e-15,
+      "autograd_gradient": 8.881784197001252e-16,
+      "autograd_hessian_penalized": 2.220446049250313e-16
+    },
+    "df_solve": 36.58544753440458,
+    "df_whitened_eigen_sum": 36.585447534404594,
+    "df_formula_difference": 1.4210854715202004e-14,
+    "fit": {
+      "lambda": 0.03,
+      "status": "converged",
+      "iterations": 6,
+      "objective": 3.8682673712874864,
+      "gradient_inf": 1.201289068220035e-12,
+      "objective_gap_upper_bound": 1.2638075145115859e-22,
+      "trace": [
+        {
+          "iteration": 0,
+          "objective": 8.30734296649154,
+          "gradient_inf": 2.3666666666666667,
+          "objective_gap_upper_bound": 430.1666666666667
+        },
+        {
+          "iteration": 1,
+          "objective": 4.031448138082349,
+          "gradient_inf": 0.1295609170400167,
+          "objective_gap_upper_bound": 1.309513245570207
+        },
+        {
+          "iteration": 2,
+          "objective": 3.8806573058021536,
+          "gradient_inf": 0.05382452760626712,
+          "objective_gap_upper_bound": 0.22312980701172855
+        },
+        {
+          "iteration": 3,
+          "objective": 3.8686508765973104,
+          "gradient_inf": 0.005918897992489444,
+          "objective_gap_upper_bound": 0.0034223674705333796
+        },
+        {
+          "iteration": 4,
+          "objective": 3.868268008310214,
+          "gradient_inf": 0.00023304700456615313,
+          "objective_gap_upper_bound": 4.897526011141073e-06
+        },
+        {
+          "iteration": 5,
+          "objective": 3.8682673712894027,
+          "gradient_inf": 3.999497074011482e-07,
+          "objective_gap_upper_bound": 1.4099500167751314e-11
+        },
+        {
+          "iteration": 6,
+          "objective": 3.8682673712874864,
+          "gradient_inf": 1.201289068220035e-12,
+          "objective_gap_upper_bound": 1.2638075145115859e-22
+        }
+      ],
+      "df": 19.113638982117227,
+      "train_nll_bits_per_word_excluding_identity": 4.759676822874112
+    },
+    "selected_fit_independent_df": 19.11363898211721,
+    "zero_iteration_failure_preserved": true,
+    "match_df_path": {
+      "pairs": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "r": 10.0,
+      "grid": [
+        {
+          "lambda": 10.0,
+          "status": "converged",
+          "iterations": 3,
+          "objective": 7.6125814969807175,
+          "gradient_inf": 2.6560975641132245e-12,
+          "objective_gap_upper_bound": 1.0449682371288101e-24,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 8.30734296649154,
+              "gradient_inf": 2.3666666666666667,
+              "objective_gap_upper_bound": 1.2905
+            },
+            {
+              "iteration": 1,
+              "objective": 7.612911651923329,
+              "gradient_inf": 0.06055811265664346,
+              "objective_gap_upper_bound": 0.0005839337084730787
+            },
+            {
+              "iteration": 2,
+              "objective": 7.61258149702051,
+              "gradient_inf": 2.1115612670374873e-05,
+              "objective_gap_upper_bound": 6.807897823767004e-11
+            },
+            {
+              "iteration": 3,
+              "objective": 7.6125814969807175,
+              "gradient_inf": 2.6560975641132245e-12,
+              "objective_gap_upper_bound": 1.0449682371288101e-24
+            }
+          ],
+          "df": 1.2423281128074075,
+          "train_nll_bits_per_word_excluding_identity": 10.22283959144258
+        },
+        {
+          "lambda": 1.0,
+          "status": "converged",
+          "iterations": 4,
+          "objective": 6.031674809518514,
+          "gradient_inf": 2.7755575615628914e-15,
+          "objective_gap_upper_bound": 2.3933414057544194e-29,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 7.138597345810578,
+              "gradient_inf": 1.57653810656943,
+              "objective_gap_upper_bound": 6.267017159729666
+            },
+            {
+              "iteration": 1,
+              "objective": 6.035987358824673,
+              "gradient_inf": 0.061543071421328366,
+              "objective_gap_upper_bound": 0.009062346517817128
+            },
+            {
+              "iteration": 2,
+              "objective": 6.031675170007383,
+              "gradient_inf": 0.0007994561627889807,
+              "objective_gap_upper_bound": 1.5279678989035e-06
+            },
+            {
+              "iteration": 3,
+              "objective": 6.031674809518521,
+              "gradient_inf": 9.664203770576307e-08,
+              "objective_gap_upper_bound": 3.017983611555349e-14
+            },
+            {
+              "iteration": 4,
+              "objective": 6.031674809518514,
+              "gradient_inf": 2.7755575615628914e-15,
+              "objective_gap_upper_bound": 2.3933414057544194e-29
+            }
+          ],
+          "df": 5.689230185705911,
+          "train_nll_bits_per_word_excluding_identity": 7.721597939810039
+        },
+        {
+          "lambda": 0.1,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 4.590702707517798,
+          "gradient_inf": 7.557843240135753e-14,
+          "objective_gap_upper_bound": 1.6180390004067553e-25,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 5.42015093820898,
+              "gradient_inf": 0.6312475774157408,
+              "objective_gap_upper_bound": 9.31818724759228
+            },
+            {
+              "iteration": 1,
+              "objective": 4.624982864488225,
+              "gradient_inf": 0.15685076111232052,
+              "objective_gap_upper_bound": 0.5669355099620068
+            },
+            {
+              "iteration": 2,
+              "objective": 4.591274472554981,
+              "gradient_inf": 0.013959657668781884,
+              "objective_gap_upper_bound": 0.005925179122570064
+            },
+            {
+              "iteration": 3,
+              "objective": 4.590703029307951,
+              "gradient_inf": 0.0002665397617759302,
+              "objective_gap_upper_bound": 2.5778871481215872e-06
+            },
+            {
+              "iteration": 4,
+              "objective": 4.590702707517931,
+              "gradient_inf": 1.7643534905298353e-07,
+              "objective_gap_upper_bound": 9.366407884492653e-13
+            },
+            {
+              "iteration": 5,
+              "objective": 4.590702707517798,
+              "gradient_inf": 7.557843240135753e-14,
+              "objective_gap_upper_bound": 1.6180390004067553e-25
+            }
+          ],
+          "df": 14.626676466126243,
+          "train_nll_bits_per_word_excluding_identity": 5.730957227024944
+        },
+        {
+          "lambda": 0.01,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 3.288904057110279,
+          "gradient_inf": 6.547517536828473e-10,
+          "objective_gap_upper_bound": 1.0901197603952645e-16,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 4.034227430191564,
+              "gradient_inf": 0.23718506683735555,
+              "objective_gap_upper_bound": 11.694752975149159
+            },
+            {
+              "iteration": 1,
+              "objective": 3.3373328574483403,
+              "gradient_inf": 0.09512957868096772,
+              "objective_gap_upper_bound": 2.2848814019981782
+            },
+            {
+              "iteration": 2,
+              "objective": 3.2913030830942303,
+              "gradient_inf": 0.017949798945747122,
+              "objective_gap_upper_bound": 0.07658305503094116
+            },
+            {
+              "iteration": 3,
+              "objective": 3.2889202817629237,
+              "gradient_inf": 0.0013512473391049601,
+              "objective_gap_upper_bound": 0.000443905563252699
+            },
+            {
+              "iteration": 4,
+              "objective": 3.2889040581485998,
+              "gradient_inf": 1.0269632969929325e-05,
+              "objective_gap_upper_bound": 2.6173551685895126e-08
+            },
+            {
+              "iteration": 5,
+              "objective": 3.288904057110279,
+              "gradient_inf": 6.547517536828473e-10,
+              "objective_gap_upper_bound": 1.0901197603952645e-16
+            }
+          ],
+          "df": 22.07360613513301,
+          "train_nll_bits_per_word_excluding_identity": 4.049365484807344
+        },
+        {
+          "lambda": 0.001,
+          "status": "converged",
+          "iterations": 6,
+          "objective": 2.432538076693056,
+          "gradient_inf": 2.987155878556025e-14,
+          "objective_gap_upper_bound": 2.069586617900299e-24,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 2.855016047676898,
+              "gradient_inf": 0.11010311485020201,
+              "objective_gap_upper_bound": 20.155345087751787
+            },
+            {
+              "iteration": 1,
+              "objective": 2.4776453793128796,
+              "gradient_inf": 0.05339862339042367,
+              "objective_gap_upper_bound": 4.801514210831803
+            },
+            {
+              "iteration": 2,
+              "objective": 2.435115864414051,
+              "gradient_inf": 0.007956895097077775,
+              "objective_gap_upper_bound": 0.15068804816924794
+            },
+            {
+              "iteration": 3,
+              "objective": 2.4325792264802053,
+              "gradient_inf": 0.0009861197385087298,
+              "objective_gap_upper_bound": 0.002192958645759286
+            },
+            {
+              "iteration": 4,
+              "objective": 2.432538110563292,
+              "gradient_inf": 2.4320542901503563e-05,
+              "objective_gap_upper_bound": 1.3276894438243136e-06
+            },
+            {
+              "iteration": 5,
+              "objective": 2.432538076693094,
+              "gradient_inf": 2.4480761380479073e-08,
+              "objective_gap_upper_bound": 1.3805251530730305e-12
+            },
+            {
+              "iteration": 6,
+              "objective": 2.432538076693056,
+              "gradient_inf": 2.987155878556025e-14,
+              "objective_gap_upper_bound": 2.069586617900299e-24
+            }
+          ],
+          "df": 25.384044234528318,
+          "train_nll_bits_per_word_excluding_identity": 3.134576920647646
+        },
+        {
+          "lambda": 0.0001,
+          "status": "converged",
+          "iterations": 6,
+          "objective": 2.0422776826517253,
+          "gradient_inf": 4.127365224766699e-13,
+          "objective_gap_upper_bound": 4.202951594192645e-21,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 2.198704646984978,
+              "gradient_inf": 0.029356843848138914,
+              "objective_gap_upper_bound": 16.396574308327722
+            },
+            {
+              "iteration": 1,
+              "objective": 2.0716931776220515,
+              "gradient_inf": 0.013949288856823613,
+              "objective_gap_upper_bound": 4.196372246013168
+            },
+            {
+              "iteration": 2,
+              "objective": 2.0446941492712596,
+              "gradient_inf": 0.0030263857272880843,
+              "objective_gap_upper_bound": 0.21023680315132087
+            },
+            {
+              "iteration": 3,
+              "objective": 2.0423333426836017,
+              "gradient_inf": 0.00036378596744620316,
+              "objective_gap_upper_bound": 0.0028406265193345417
+            },
+            {
+              "iteration": 4,
+              "objective": 2.0422777703161104,
+              "gradient_inf": 1.3815682997320764e-05,
+              "objective_gap_upper_bound": 4.5931802872906565e-06
+            },
+            {
+              "iteration": 5,
+              "objective": 2.042277682652389,
+              "gradient_inf": 3.4302763502846827e-08,
+              "objective_gap_upper_bound": 2.7786259103739183e-11
+            },
+            {
+              "iteration": 6,
+              "objective": 2.0422776826517253,
+              "gradient_inf": 4.127365224766699e-13,
+              "objective_gap_upper_bound": 4.202951594192645e-21
+            }
+          ],
+          "df": 26.323950981486433,
+          "train_nll_bits_per_word_excluding_identity": 2.808878759452185
+        },
+        {
+          "lambda": 1e-05,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 1.9202289285357241,
+          "gradient_inf": 6.973001670294331e-09,
+          "objective_gap_upper_bound": 1.0716649411376103e-11,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 1.9564975216492715,
+              "gradient_inf": 0.005798850444379388,
+              "objective_gap_upper_bound": 6.890561223553935
+            },
+            {
+              "iteration": 1,
+              "objective": 1.9273587648396435,
+              "gradient_inf": 0.0031011834704414536,
+              "objective_gap_upper_bound": 3.9176168317126487
+            },
+            {
+              "iteration": 2,
+              "objective": 1.9208964099007446,
+              "gradient_inf": 0.0007094531918787174,
+              "objective_gap_upper_bound": 0.21875419314815284
+            },
+            {
+              "iteration": 3,
+              "objective": 1.920240552255748,
+              "gradient_inf": 7.715163856560313e-05,
+              "objective_gap_upper_bound": 0.002643556959733266
+            },
+            {
+              "iteration": 4,
+              "objective": 1.9202289420478795,
+              "gradient_inf": 1.759862364409965e-06,
+              "objective_gap_upper_bound": 7.813751868700113e-07
+            },
+            {
+              "iteration": 5,
+              "objective": 1.9202289285357241,
+              "gradient_inf": 6.973001670294331e-09,
+              "objective_gap_upper_bound": 1.0716649411376103e-11
+            }
+          ],
+          "df": 26.11794046674315,
+          "train_nll_bits_per_word_excluding_identity": 2.735838675671073
+        },
+        {
+          "lambda": 1e-06,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 1.8927155728240157,
+          "gradient_inf": 9.523732071795975e-10,
+          "objective_gap_upper_bound": 1.4984336956152323e-12,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 1.8987278709110054,
+              "gradient_inf": 0.0009364166178529763,
+              "objective_gap_upper_bound": 1.8025394595241837
+            },
+            {
+              "iteration": 1,
+              "objective": 1.8939984753636918,
+              "gradient_inf": 0.000580875458659287,
+              "objective_gap_upper_bound": 1.2535742409431783
+            },
+            {
+              "iteration": 2,
+              "objective": 1.8928566876744313,
+              "gradient_inf": 0.0001480731929132565,
+              "objective_gap_upper_bound": 0.08352997586258566
+            },
+            {
+              "iteration": 3,
+              "objective": 1.8927190518943242,
+              "gradient_inf": 1.9711872401761222e-05,
+              "objective_gap_upper_bound": 0.0015301490437167838
+            },
+            {
+              "iteration": 4,
+              "objective": 1.8927155767690673,
+              "gradient_inf": 4.81534596565326e-07,
+              "objective_gap_upper_bound": 1.036143562054155e-06
+            },
+            {
+              "iteration": 5,
+              "objective": 1.8927155728240157,
+              "gradient_inf": 9.523732071795975e-10,
+              "objective_gap_upper_bound": 1.4984336956152323e-12
+            }
+          ],
+          "df": 25.284458323524902,
+          "train_nll_bits_per_word_excluding_identity": 2.723882886455002
+        },
+        {
+          "lambda": 1e-07,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 1.887657436644149,
+          "gradient_inf": 1.4183534469120298e-10,
+          "objective_gap_upper_bound": 9.034120614538533e-13,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 1.8885181259119947,
+              "gradient_inf": 0.00013222947644808778,
+              "objective_gap_upper_bound": 0.35784581336121446
+            },
+            {
+              "iteration": 1,
+              "objective": 1.887849384523651,
+              "gradient_inf": 8.5191592298043e-05,
+              "objective_gap_upper_bound": 0.2615894020009184
+            },
+            {
+              "iteration": 2,
+              "objective": 1.887680683290882,
+              "gradient_inf": 2.2891213925390482e-05,
+              "objective_gap_upper_bound": 0.01908672010980925
+            },
+            {
+              "iteration": 3,
+              "objective": 1.887658142918508,
+              "gradient_inf": 3.4426033922868446e-06,
+              "objective_gap_upper_bound": 0.00044150151498629673
+            },
+            {
+              "iteration": 4,
+              "objective": 1.887657437683097,
+              "gradient_inf": 1.1579104174451922e-07,
+              "objective_gap_upper_bound": 5.304275403984332e-07
+            },
+            {
+              "iteration": 5,
+              "objective": 1.887657436644149,
+              "gradient_inf": 1.4183534469120298e-10,
+              "objective_gap_upper_bound": 9.034120614538533e-13
+            }
+          ],
+          "df": 24.10209085372719,
+          "train_nll_bits_per_word_excluding_identity": 2.7221825164712903
+        },
+        {
+          "lambda": 1e-08,
+          "status": "converged",
+          "iterations": 5,
+          "objective": 1.8868382650299687,
+          "gradient_inf": 3.552339020463115e-11,
+          "objective_gap_upper_bound": 5.352277187477988e-13,
+          "trace": [
+            {
+              "iteration": 0,
+              "objective": 1.8869515662999015,
+              "gradient_inf": 1.7251307107928367e-05,
+              "objective_gap_upper_bound": 0.060692440671635144
+            },
+            {
+              "iteration": 1,
+              "objective": 1.8868641420060295,
+              "gradient_inf": 1.1343528551701582e-05,
+              "objective_gap_upper_bound": 0.04547475934067289
+            },
+            {
+              "iteration": 2,
+              "objective": 1.8868415835079706,
+              "gradient_inf": 3.1278925194432746e-06,
+              "objective_gap_upper_bound": 0.003477810416314618
+            },
+            {
+              "iteration": 3,
+              "objective": 1.8868383803575834,
+              "gradient_inf": 5.051060467720742e-07,
+              "objective_gap_upper_bound": 9.202078300198706e-05
+            },
+            {
+              "iteration": 4,
+              "objective": 1.8868382652505038,
+              "gradient_inf": 2.033079135976288e-08,
+              "objective_gap_upper_bound": 1.5438637409895407e-07
+            },
+            {
+              "iteration": 5,
+              "objective": 1.8868382650299687,
+              "gradient_inf": 3.552339020463115e-11,
+              "objective_gap_upper_bound": 5.352277187477988e-13
+            }
+          ],
+          "df": 23.01951671544161,
+          "train_nll_bits_per_word_excluding_identity": 2.7219595834653862
+        }
+      ],
+      "targets": [
+        {
+          "target": 2.0,
+          "tolerance": 0.1,
+          "refinements": [
+            {
+              "lambda": 3.1622776601683795,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 6.861621817399717,
+              "gradient_inf": 1.9384494009955233e-12,
+              "objective_gap_upper_bound": 2.540735093969193e-24,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 7.252473494849363,
+                  "gradient_inf": 1.1977699812090545,
+                  "objective_gap_upper_bound": 1.1439282563764865
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.861801614086232,
+                  "gradient_inf": 0.026516935584029566,
+                  "objective_gap_upper_bound": 0.00038688365563951786
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.861621817422875,
+                  "gradient_inf": 7.468024028345344e-06,
+                  "objective_gap_upper_bound": 4.196617742876077e-11
+                },
+                {
+                  "iteration": 3,
+                  "objective": 6.861621817399717,
+                  "gradient_inf": 1.9384494009955233e-12,
+                  "objective_gap_upper_bound": 2.540735093969193e-24
+                }
+              ],
+              "df": 2.9199618331486183,
+              "train_nll_bits_per_word_excluding_identity": 8.840318535478506
+            },
+            {
+              "lambda": 5.623413251903491,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 7.267784819912598,
+              "gradient_inf": 2.9976021664879227e-15,
+              "objective_gap_upper_bound": 3.1035431684668974e-30,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 7.382088968667494,
+                  "gradient_inf": 0.7666506427857849,
+                  "objective_gap_upper_bound": 0.2635402460045031
+                },
+                {
+                  "iteration": 1,
+                  "objective": 7.267793194077061,
+                  "gradient_inf": 0.0076230729777497785,
+                  "objective_gap_upper_bound": 1.638239497487517e-05
+                },
+                {
+                  "iteration": 2,
+                  "objective": 7.267784819912624,
+                  "gradient_inf": 3.1929182520151755e-07,
+                  "objective_gap_upper_bound": 4.994674950410796e-14
+                },
+                {
+                  "iteration": 3,
+                  "objective": 7.267784819912598,
+                  "gradient_inf": 2.9976021664879227e-15,
+                  "objective_gap_upper_bound": 3.1035431684668974e-30
+                }
+              ],
+              "df": 1.9547336344278696,
+              "train_nll_bits_per_word_excluding_identity": 9.527780437991716
+            }
+          ],
+          "matched": true,
+          "selected": {
+            "lambda": 5.623413251903491,
+            "status": "converged",
+            "iterations": 3,
+            "objective": 7.267784819912598,
+            "gradient_inf": 2.9976021664879227e-15,
+            "objective_gap_upper_bound": 3.1035431684668974e-30,
+            "trace": [
+              {
+                "iteration": 0,
+                "objective": 7.382088968667494,
+                "gradient_inf": 0.7666506427857849,
+                "objective_gap_upper_bound": 0.2635402460045031
+              },
+              {
+                "iteration": 1,
+                "objective": 7.267793194077061,
+                "gradient_inf": 0.0076230729777497785,
+                "objective_gap_upper_bound": 1.638239497487517e-05
+              },
+              {
+                "iteration": 2,
+                "objective": 7.267784819912624,
+                "gradient_inf": 3.1929182520151755e-07,
+                "objective_gap_upper_bound": 4.994674950410796e-14
+              },
+              {
+                "iteration": 3,
+                "objective": 7.267784819912598,
+                "gradient_inf": 2.9976021664879227e-15,
+                "objective_gap_upper_bound": 3.1035431684668974e-30
+              }
+            ],
+            "df": 1.9547336344278696,
+            "train_nll_bits_per_word_excluding_identity": 9.527780437991716
+          },
+          "initial_bracket": [
+            10.0,
+            1.0
+          ]
+        },
+        {
+          "target": 5.0,
+          "tolerance": 0.1,
+          "refinements": [
+            {
+              "lambda": 3.1622776601683795,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 6.861621817399717,
+              "gradient_inf": 1.9384494009955233e-12,
+              "objective_gap_upper_bound": 2.540735093969193e-24,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 7.252473494849363,
+                  "gradient_inf": 1.1977699812090545,
+                  "objective_gap_upper_bound": 1.1439282563764865
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.861801614086232,
+                  "gradient_inf": 0.026516935584029566,
+                  "objective_gap_upper_bound": 0.00038688365563951786
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.861621817422875,
+                  "gradient_inf": 7.468024028345344e-06,
+                  "objective_gap_upper_bound": 4.196617742876077e-11
+                },
+                {
+                  "iteration": 3,
+                  "objective": 6.861621817399717,
+                  "gradient_inf": 1.9384494009955233e-12,
+                  "objective_gap_upper_bound": 2.540735093969193e-24
+                }
+              ],
+              "df": 2.9199618331486183,
+              "train_nll_bits_per_word_excluding_identity": 8.840318535478506
+            },
+            {
+              "lambda": 1.7782794100389228,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 6.437711401404499,
+              "gradient_inf": 1.0179801446241754e-11,
+              "objective_gap_upper_bound": 1.3246422009735067e-22,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 6.540389125460555,
+                  "gradient_inf": 0.536222012113038,
+                  "objective_gap_upper_bound": 0.38788011582715454
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.437748225487117,
+                  "gradient_inf": 0.007965662373075888,
+                  "objective_gap_upper_bound": 0.0001075400906336263
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.43771140143797,
+                  "gradient_inf": 8.345820976030094e-06,
+                  "objective_gap_upper_bound": 9.707878701978349e-11
+                },
+                {
+                  "iteration": 3,
+                  "objective": 6.437711401404499,
+                  "gradient_inf": 1.0179801446241754e-11,
+                  "objective_gap_upper_bound": 1.3246422009735067e-22
+                }
+              ],
+              "df": 4.156060648310001,
+              "train_nll_bits_per_word_excluding_identity": 8.23732626898612
+            },
+            {
+              "lambda": 1.333521432163324,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 6.231128509240384,
+              "gradient_inf": 4.4170223034711853e-13,
+              "objective_gap_upper_bound": 3.509556571157709e-25,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 6.255626401745303,
+                  "gradient_inf": 0.23567392381405694,
+                  "objective_gap_upper_bound": 0.09809433065700153
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.231134250378789,
+                  "gradient_inf": 0.002854192469487482,
+                  "objective_gap_upper_bound": 2.1919857957407692e-05
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.231128509241704,
+                  "gradient_inf": 1.4683216019717449e-06,
+                  "objective_gap_upper_bound": 4.3677303894294745e-12
+                },
+                {
+                  "iteration": 3,
+                  "objective": 6.231128509240384,
+                  "gradient_inf": 4.4170223034711853e-13,
+                  "objective_gap_upper_bound": 3.509556571157709e-25
+                }
+              ],
+              "df": 4.883470487604784,
+              "train_nll_bits_per_word_excluding_identity": 7.970850247200287
+            },
+            {
+              "lambda": 1.1547819846894583,
+              "status": "converged",
+              "iterations": 3,
+              "objective": 6.13043745252217,
+              "gradient_inf": 3.941291737419306e-15,
+              "objective_gap_upper_bound": 3.5275571064977494e-29,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 6.136478394042717,
+                  "gradient_inf": 0.10922959868023963,
+                  "objective_gap_upper_bound": 0.02421043099346901
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.1304379342180395,
+                  "gradient_inf": 0.0008460826159032431,
+                  "objective_gap_upper_bound": 2.0132400756721675e-06
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.130437452522183,
+                  "gradient_inf": 1.293042045658055e-07,
+                  "objective_gap_upper_bound": 4.140451218057287e-14
+                },
+                {
+                  "iteration": 3,
+                  "objective": 6.13043745252217,
+                  "gradient_inf": 3.941291737419306e-15,
+                  "objective_gap_upper_bound": 3.5275571064977494e-29
+                }
+              ],
+              "df": 5.2762921798601425,
+              "train_nll_bits_per_word_excluding_identity": 7.844488447602559
+            },
+            {
+              "lambda": 1.2409377607517196,
+              "status": "converged",
+              "iterations": 2,
+              "objective": 6.18054698940166,
+              "gradient_inf": 7.567670490260525e-09,
+              "objective_gap_upper_bound": 1.2921032672134927e-16,
+              "trace": [
+                {
+                  "iteration": 0,
+                  "objective": 6.182101530090677,
+                  "gradient_inf": 0.05657887732999001,
+                  "objective_gap_upper_bound": 0.006044779955942762
+                },
+                {
+                  "iteration": 1,
+                  "objective": 6.1805470185421605,
+                  "gradient_inf": 0.00021134249486676193,
+                  "objective_gap_upper_bound": 1.1796164057691537e-07
+                },
+                {
+                  "iteration": 2,
+                  "objective": 6.18054698940166,
+                  "gradient_inf": 7.567670490260525e-09,
+                  "objective_gap_upper_bound": 1.2921032672134927e-16
+                }
+              ],
+              "df": 5.077398955050758,
+              "train_nll_bits_per_word_excluding_identity": 7.907179918725763
+            }
+          ],
+          "matched": true,
+          "selected": {
+            "lambda": 1.2409377607517196,
+            "status": "converged",
+            "iterations": 2,
+            "objective": 6.18054698940166,
+            "gradient_inf": 7.567670490260525e-09,
+            "objective_gap_upper_bound": 1.2921032672134927e-16,
+            "trace": [
+              {
+                "iteration": 0,
+                "objective": 6.182101530090677,
+                "gradient_inf": 0.05657887732999001,
+                "objective_gap_upper_bound": 0.006044779955942762
+              },
+              {
+                "iteration": 1,
+                "objective": 6.1805470185421605,
+                "gradient_inf": 0.00021134249486676193,
+                "objective_gap_upper_bound": 1.1796164057691537e-07
+              },
+              {
+                "iteration": 2,
+                "objective": 6.18054698940166,
+                "gradient_inf": 7.567670490260525e-09,
+                "objective_gap_upper_bound": 1.2921032672134927e-16
+              }
+            ],
+            "df": 5.077398955050758,
+            "train_nll_bits_per_word_excluding_identity": 7.907179918725763
+          },
+          "initial_bracket": [
+            10.0,
+            1.0
+          ]
+        },
+        {
+          "target": 1000000.0,
+          "tolerance": 2000.0,
+          "refinements": [],
+          "matched": false,
+          "selected": null,
+          "initial_bracket": null
+        }
+      ],
+      "grid_nonmonotone": true
+    },
+    "synthetic_target_solutions": [
+      2.0,
+      5.0
+    ],
+    "impossible_df_target_unmatched": true
+  },
+  "completed_utc": "2026-11-17T20:41:31.762901+00:00"
+}

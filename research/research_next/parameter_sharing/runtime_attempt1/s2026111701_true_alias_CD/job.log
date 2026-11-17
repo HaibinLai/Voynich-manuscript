@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<project>/run_job.py", line 52, in <module>
+    try: print(json.dumps({'id':job['id'],'matched':run(job)}),flush=True)
+                                                    ^^^^^^^^
+  File "<project>/run_job.py", line 29, in run
+    started=time.time();solutions,audit=match_df(train,job['pairs'])
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<project>/model.py", line 107, in match_df
+    lam=10.**power; b,info=fit(corpus,P,lam,previous); fits.append(info)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<project>/model.py", line 77, in fit
+    obj,g,nll,H=corpus.terms(b,P,lam,True); grad=float(g.abs().max())
+                                                 ^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal instruction was encountered
+Search for `cudaErrorIllegalInstruction' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+

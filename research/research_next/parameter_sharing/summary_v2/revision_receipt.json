@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "revised_utc": "2026-11-17T21:00:53.810654+00:00",
+  "reason": "The two saved model-audit sources use passed=true, while the original summarizer read only all_passed. Null was a metadata extraction bug, not a failed audit.",
+  "change": "Use all_passed when present, otherwise fall back to passed.",
+  "science_changed": false,
+  "model_refit": false,
+  "new_probability_scoring": false,
+  "old_outputs_preserved": true,
+  "exact_scientific_structure_equality": true,
+  "whole_json_differences": [
+    {
+      "path": "/created_utc",
+      "before": "2026-11-17T20:51:27.180515+00:00",
+      "after": "2026-11-17T20:59:55.583946+00:00"
+    },
+    {
+      "path": "/sources/2/sha256",
+      "before": "57041e0aa96dc019b08373cea5e36b0f355ec3bf9b6946073cd125c73455bf70",
+      "after": "159ce7f7c07ecf6c19b9209b6fb4c8298b3f86141f056e5a4f7ce954f607787f"
+    },
+    {
+      "path": "/sources/2/bytes",
+      "before": 38775,
+      "after": 38796
+    },
+    {
+      "path": "/model_implementation_checks/0/all_passed",
+      "before": null,
+      "after": true
+    },
+    {
+      "path": "/model_implementation_checks/1/all_passed",
+      "before": null,
+      "after": true
+    }
+  ],
+  "summary_text_byte_identical": true,
+  "old_files_sha256": {
+    "summary_v1/summary.json": "fd959bec2cb6174acd4b828550609539ba19201eac7e1a6e2524bf53a3620ede",
+    "summary_v1/summary.txt": "d718f401f0b4459125f919830280dc3771ac03d0f0f56dfe455bbe46ab91c901",
+    "summary_v1/aggregation_verification.json": "7bc8d5615454d5c72121c51a23b3cfff5dd8d1bbf78d5ac002fa3778acecde2a",
+    "summary_v1/结果解释报告.txt": "b687308a8ae603e1e8cca5b49b1de80c7e754281dc005fc7098fac75f6156fb4",
+    "check_aggregation.py": "f054daf9e713f06b7f770d213d51aa81a4358199e6a0976702669558dc5bf7d2"
+  },
+  "new_files_sha256": {
+    "summarize.py": "159ce7f7c07ecf6c19b9209b6fb4c8298b3f86141f056e5a4f7ce954f607787f",
+    "check_aggregation_v2.py": "34f7ca59b6fa9599c7a06290e7e063877d539dd9f0811817decf4c38cbe49436",
+    "summary_v2/summary.json": "e2472cd0fa1c94399b982dcd049edd20f0809d8c0cfa47bb04973246205b8bb1",
+    "summary_v2/summary.txt": "d718f401f0b4459125f919830280dc3771ac03d0f0f56dfe455bbe46ab91c901",
+    "summary_v2/aggregation_verification.json": "95998742fc213a4401d30b792a5dea6905a1c70215dcb0b719bddbebb3f4f2e2",
+    "summary_v2/结果解释报告.txt": "7ce43d81eb3541a7ab3f2dc59c61af8a20c2ff8ecb4adc59141d565e248c0c0e"
+  },
+  "new_scalar_replay_passed": true,
+  "scalar_checker_change": "Only output directory changed from summary_v1 to summary_v2; original checker preserved.",
+  "report_change": "Prepended version notice; original result narrative and numbers copied unchanged."
+}

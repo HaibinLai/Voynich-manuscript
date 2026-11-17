@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="伏尼契手稿新一轮参数共享研究：保留原字形和完整预测费用，对照普通正则化与训练配对，并用已知答案合成数据校准。">
+  <title>参数共享对照 · 伏尼契手稿研究台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="parameter-sharing.css">
+  <script defer src="parameter-sharing.js"></script>
+</head>
+<body class="sharing-page">
+  <a class="skip-link" href="#sharing-main">跳到新轮研究内容</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契手稿<span class="wordmark-en">VOYNICH RESEARCH NOTEBOOK</span></span></a>
+    <a class="repo-link" href="https://github.com/HaibinLai/Voynich-manuscript" target="_blank" rel="noopener noreferrer">开放代码 ↗</a>
+  </header>
+  <nav class="main-nav" aria-label="研究导航">
+    <a href="index.html#overview">七小时研究</a><a href="index.html#manuscript">原图与转写</a><a href="index.html#concordance">词形索引</a><a href="report.html">综合报告</a><a href="parameter-sharing.html" class="active" aria-current="page">新轮 · 参数共享</a>
+  </nav>
+  <main id="sharing-main" tabindex="-1">
+    <header class="sharing-hero">
+      <div><span class="eyebrow">NEW STUDY / PARAMETER SHARING</span><h1>相似字形，<br>是否值得特别共享？</h1><p class="hero-intro">保留每个原字形，只让部分输入参数更接近。我们比较它是否超过普通正则化和其他训练配对，并用已知答案检查这种方法能分辨什么。</p><p class="small-text">f / p / k / t 是 EVA 转写标签，不是已经认出的拉丁字母读音。</p></div>
+      <aside class="sharing-boundary"><strong>新一轮，独立记录</strong><p>原七小时窗口已经结题。本轮使用的手稿分区都曾被使用或公开，<strong>没有新的盲测集</strong>。预测费用降低不等于识别字母、语言或词义。</p><a href="report.html">回到已结题报告 →</a></aside>
+    </header>
+    <div id="sharing-state" class="note-strip" role="status" aria-live="polite">正在载入已保存的研究快照；不在浏览器里运行实验。</div>
+    <div id="sharing-findings"></div>
+    <nav class="sharing-sections" aria-label="本页小节"><a href="#manuscript-results">手稿对照</a><a href="#synthetic-results">已知答案校准</a><a href="#cost-accounting">完整原词费用</a><a href="#sharing-audit">核验与运行记录</a><a href="#sharing-literature">文献</a></nav>
+    <section id="manuscript-results" class="sharing-section" aria-labelledby="manuscript-results-title">
+      <div class="section-heading"><div><span class="eyebrow">01 / MANUSCRIPT COMPARISONS</span><h2 id="manuscript-results-title">与什么相比，节省了多少？</h2></div><p>主描述是旧 confirm 与 reserve 合并后的逐词平均。切换分区不会改变已冻结的模型。</p></div>
+      <div class="sharing-filters" id="sharing-filters">
+        <div class="field"><label for="sharing-version">转写版本</label><select id="sharing-version"><option value="ZL">ZL / EVA</option><option value="IT">IT / EVA</option></select></div>
+        <div class="field"><label for="sharing-df">训练曲率自由度目标</label><select id="sharing-df"><option value="50">DF 50</option><option value="150">DF 150</option></select></div>
+        <div class="field"><label for="sharing-population">已见评价分区</label><select id="sharing-population"><option value="confirm_reserve">旧 confirm + reserve · 主描述</option><option value="confirm">旧 confirm</option><option value="reserve">旧 reserve</option><option value="dev">旧 dev · 仅诊断</option></select></div>
+        <div class="field"><label for="sharing-view">比较方式</label><select id="sharing-view"><option value="ridge">各条件相对普通 ridge</option><option value="controls">目标相对三个参照配对</option></select></div>
+      </div>
+      <p class="sharing-caveat">DF 是拟合点的局部曲率指标；匹配 DF 不保证模型类或泛化容量相同。FP、KT、联合及九个参照全部报告，失败项不会当作零。</p>
+      <div id="sharing-real-results"><p class="empty-state">等待实际汇总；这里没有预填结果。</p></div>
+    </section>
+    <section id="synthetic-results" class="sharing-section" aria-labelledby="synthetic-title">
+      <div class="section-heading"><div><span class="eyebrow">02 / KNOWN-ANSWER CALIBRATION</span><h2 id="synthetic-title">先看已知答案，能否分清区别</h2></div><p>每个机制保留八个种子。它们是参数化合成任务，不是八种语言；同种子的机制成对，两个 DF 也不是独立重复。</p></div>
+      <div class="sharing-synthetic-tools"><div class="field"><label for="sharing-case">生成机制</label><select id="sharing-case"><option value="all">全部五种机制</option><option value="true_alias">真条件等价</option><option value="non_alias">未来分布不同</option><option value="position_confound">位置混杂</option><option value="frequency_confound">频率与位置难例</option><option value="iid">IID · 没有专属配对</option></select></div><button id="sharing-export" class="button secondary small" type="button" disabled>下载完整汇总 JSON</button></div>
+      <div class="note-strip">合成参考计算的是<strong>硬合并</strong>输入后还剩多少信息；主模型是仍保留区别的<strong>软融合</strong>，两者不能等同。IID 中任意输入都无助于未来，有限样本共享仍可能获益。</div>
+      <div id="sharing-synthetic-results"><p class="empty-state">等待合成模型的实际得分，生成器真值不代替拟合结果。</p></div>
+    </section>
+    <section id="cost-accounting" class="sharing-section" aria-labelledby="cost-title">
+      <span class="eyebrow">03 / COMPLETE ORIGINAL-WORD COST</span><h2 id="cost-title">每个原符号，都要付概率费用</h2>
+      <div class="sharing-cost-flow" aria-label="完整原词费用示意，不是观测结果"><div><span>读入</span><strong>最近三个原单位<br>＋ 当前预测位置</strong><small>不使用最终词长或未来末位</small></div><span class="flow-arrow" aria-hidden="true">→</span><div><span>约束输入参数</span><strong>普通 ridge<br>或指定配对软融合</strong><small>原身份仍然可区分</small></div><span class="flow-arrow" aria-hidden="true">→</span><div><span>预测并计费</span><strong>全部原输出身份<br>＋ 词尾 EOS</strong><small>稀有输出另付身份费用</small></div></div>
+      <p class="sharing-cost-formula">完整词费用 = 各原单位的 −log₂ 概率 + 词尾费用 + 适用的 OTHER 身份费</p>
+      <details class="study-details"><summary>查看模型与计费范围</summary><p>首步屏蔽 EOS，不再重复扣除非空归一费；其余步骤仍预测 EOS。手稿原单位宇宙共 1,027 种，训练出现至少 20 次的单位属于 COMMON，其余由 OTHER 概率和均匀身份费用共同编码。历史中的 OTHER 不重复收费。合成宇宙只有 a–h，不附加手稿稀有编码。</p><p>三历史槽位和绝对预测位置均为加性 one-hot。软融合把指定历史参数的差方向惩罚加强，仍保留同样的原参数维数和原输出空间。这次没有借删除符号、免费恢复或缩小输出字母表节省成本。</p><p>匹配使用训练 Hessian 的局部 DF，dev 不用于选择 DF。这是固定模型下的完整词预测评分，未计模型参数传输成本，因此不声称完整档案压缩率或互信息；当前位置由已生成前缀确定，不提供最终词长。</p></details>
+    </section>
+    <section id="sharing-audit" class="sharing-section" aria-labelledby="audit-title"><span class="eyebrow">04 / AUDIT & RUNTIME HISTORY</span><h2 id="audit-title">失败、修订和核验一并保留</h2><div id="sharing-audit-content"><p>核验入口随真实研究快照加载。</p></div></section>
+    <section id="sharing-literature" class="sharing-section" aria-labelledby="sharing-literature-title"><span class="eyebrow">05 / PRIMARY SOURCES</span><h2 id="sharing-literature-title">已有观察，与本轮问题的距离</h2><p>局部字形相关、跨层权重绑定、有效参数数和历史字母同一性是不同命题。文献提供假说与方法边界，不自动给出手稿真值。</p><div id="sharing-literature-content"></div></section>
+    <noscript><p class="note-strip">交互对照需要 JavaScript；<a href="https://github.com/HaibinLai/Voynich-manuscript/tree/main/research/research_next/parameter_sharing">可在公开研究包阅读保存的方案与结果</a>。</p></noscript>
+  </main>
+  <footer class="site-footer"><span>原字形保留 · 完整费用 · 明确的失败与不确定性</span><span id="sharing-snapshot-date">静态研究快照</span></footer>
+</body>
+</html>

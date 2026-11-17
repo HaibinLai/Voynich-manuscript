@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "status": "literature_only_no_manuscript_scoring",
+  "reviewed_utc": "2026-11-17T20:36:23.997Z",
+  "scope": {
+    "primary_sources_only": true,
+    "old_frozen_files_modified": false,
+    "manuscript_results_computed": false,
+    "full_papers_copied_to_output": false,
+    "new_blind_manuscript_set": false
+  },
+  "existing_project_sources": [
+    {
+      "path_relative_to_research7h": "literature/literature.json",
+      "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+    },
+    {
+      "path_relative_to_research7h": "visual_audit/f57v重复序列说明.txt",
+      "sha256": "05356f5cd504abf3e025109ef1ab4ff7319eb908653d3fb16483dc549dd45895"
+    },
+    {
+      "path_relative_to_research7h": "literature/sources/dimperio_f57_discussion.png",
+      "sha256": "9e87e1a2df9c6089f148bfe51b9acd537ea235e9e93b8141ed9428aefb22fb2a"
+    },
+    {
+      "path_relative_to_research7h": "allograph_factor/protocol.txt",
+      "sha256": "ffc7fc9175003f82034ec902c587ee939ce5f2b1836710f708cc81d4fd926640"
+    },
+    {
+      "path_relative_to_research7h": "synthesis_final/下一轮可证伪研究计划.txt",
+      "sha256": "f2ef12699a6b44751a1ac0b788b33635d7fe4f7f5aaf7655b0db4987091675e3"
+    }
+  ],
+  "sources": [
+    {
+      "id": "dimperio1978",
+      "title": "The Voynich Manuscript: An Elegant Enigma",
+      "authors": [
+        "Mary E. D’Imperio"
+      ],
+      "year": 1978,
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D-PURL-gpo58694/pdf/GOVPUB-D-PURL-gpo58694.pdf",
+      "status": "primary_author_analysis_in_government_monograph",
+      "locations": [
+        "印刷第24–25页，§4.1末段及图24；本次重新目视第25页"
+      ],
+      "claim": "f57v第九位单环/双环高杆的对应支持功能相关假说；同段也指出形态清晰分离、很少过渡形，作为反向证据。",
+      "limitations": [
+        "四种高杆的形态家族关系不等于任意两种同值；没有给出全书音值或可执行译码。"
+      ],
+      "source_sha256": "e357921308c1ba43e327378a47bec389f755f843b3ad26ec11bb48cc3d6e066a",
+      "access": "官方网页工具因文件过大未取回；重新核对已保存官方PDF的第25页图像。"
+    },
+    {
+      "id": "stolfi_note034",
+      "title": "Note 034: The key-like sequences collected",
+      "authors": [
+        "Jorge Stolfi"
+      ],
+      "year": null,
+      "url": "https://www.ic.unicamp.br/~stolfi/EXPORT/voynich/00-06-07-word-grammar/Notes/034/Note-034.html",
+      "status": "primary_author_web_note_not_peer_reviewed",
+      "locations": [
+        "INTRODUCTION",
+        "PAGE f57v，四行序列后As Dennis Mardle observed段"
+      ],
+      "claim": "第九位f/f/p/p的对应观察归于Dennis Mardle；同段明确说k与t各自持续占据固定位置，支持二者有区别。",
+      "limitations": [
+        "确切发布日期未核实；URL含00-06-07不作为精确发表日。",
+        "局部相关不是音值；key-like不是密码功能的证明。"
+      ],
+      "short_quote": "the consistent occurrence of <k> and <t> in their respective places argues for them being distinct",
+      "source_sha256": "b6146c6e79bace3d04cb492b2b3ce43905e94b2e5a6b3a669a4f5302e4361720",
+      "access": "本次直接读作者原网页Latin-1；/en页面抽取会丢失尖括号字母。"
+    },
+    {
+      "id": "press_wolf2017",
+      "title": "Using the Output Embedding to Improve Language Models",
+      "authors": [
+        "Ofir Press",
+        "Lior Wolf"
+      ],
+      "year": 2017,
+      "url": "https://aclanthology.org/E17-2025/",
+      "pdf_url": "https://aclanthology.org/E17-2025.pdf",
+      "status": "peer_reviewed_primary_paper",
+      "locations": [
+        "印刷157页§1，U=V定义",
+        "印刷158–159页§3 Weight Tying",
+        "§4实验"
+      ],
+      "claim": "将同一词表的输入与输出矩阵绑定，研究梯度更新及语言模型困惑度；这是跨层共享。",
+      "limitations": [
+        "不是把不同符号的行合并。",
+        "文中word2vec与NNLM反应不同；不能视为任意网络必优定理。"
+      ],
+      "source_sha256": "b645b69cf2adba038397e3c9cd72a754158a70164b4475c048eff6717ba0d44c"
+    },
+    {
+      "id": "inan2017",
+      "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling",
+      "authors": [
+        "Hakan Inan",
+        "Khashayar Khosravi",
+        "Richard Socher"
+      ],
+      "year": 2017,
+      "url": "https://arxiv.org/abs/1611.01462v3",
+      "status": "ICLR_2017_primary_author_manuscript_v3",
+      "locations": [
+        "第3–4页§4，式4.1–4.5",
+        "§3增广损失；§6实验"
+      ],
+      "claim": "特定增广损失分析给出输入嵌入与输出分类矩阵的子空间关系，并研究直接共享。",
+      "limitations": [
+        "推导含相同嵌入/状态维数、零输出偏置、仅增广损失、零训练损失、高温极限、满秩等条件。",
+        "不证明普通交叉熵GRU或跨字形绑定必优。"
+      ],
+      "source_sha256": "7b87b808fccc6b6175764a5dd2e18aab540e08d03cff837b7cfbfa53310414ce"
+    },
+    {
+      "id": "moody1991",
+      "title": "The Effective Number of Parameters: An Analysis of Generalization and Regularization in Nonlinear Learning Systems",
+      "authors": [
+        "John E. Moody"
+      ],
+      "year": 1992,
+      "conference_year": 1991,
+      "url": "https://proceedings.neurips.cc/paper/1991/hash/d64a340bcb633f536d56e51874281454-Abstract.html",
+      "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/1991/file/d64a340bcb633f536d56e51874281454-Paper.pdf",
+      "status": "primary_NIPS4_proceedings_paper",
+      "locations": [
+        "印刷847页摘要",
+        "848–849页§2",
+        "851–853页§4–6，式14–17"
+      ],
+      "claim": "有效参数数与广义影响矩阵的迹联系；取决于偏差、非线性及正则化，通常不同于裸参数数。",
+      "limitations": [
+        "论文风险近似有回归、噪声与局部展开条件。",
+        "交叉熵GRU的经验Fisher迹不能直接冒称此定理给出的精确有效自由度。"
+      ],
+      "source_sha256": "5fc532b14f46588e1a1260b9b5a1ec9693ed9e9de823be80b15fb16d0e7b4729"
+    },
+    {
+      "id": "neyshabur2015",
+      "title": "Norm-Based Capacity Control in Neural Networks",
+      "authors": [
+        "Behnam Neyshabur",
+        "Ryota Tomioka",
+        "Nathan Srebro"
+      ],
+      "year": 2015,
+      "url": "https://proceedings.mlr.press/v40/Neyshabur15.html",
+      "pdf_url": "https://proceedings.mlr.press/v40/Neyshabur15.pdf",
+      "status": "peer_reviewed_COLT_primary_paper",
+      "locations": [
+        "PDF第1–2页§1",
+        "PDF第5页§3.1及Theorem 1",
+        "PDF第6–7页§3.2；论文集1376–1401页"
+      ],
+      "claim": "以样本上的Rademacher复杂度刻画函数类容量，给出受范数、深度、宽度等条件控制的前馈网络界。",
+      "limitations": [
+        "指定前馈/ReLU函数类的定理不能直接称为GRU精确容量界。",
+        "函数类容量与Moody拟合后有效参数数并非同一个量。"
+      ],
+      "source_sha256": "17c73cb580c82369705c76a651d6a1511dee316b92aac4b60f38a5065337837a"
+    },
+    {
+      "id": "cho2014",
+      "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+      "authors": [
+        "Kyunghyun Cho",
+        "Bart van Merriënboer",
+        "Caglar Gulcehre",
+        "Dzmitry Bahdanau",
+        "Fethi Bougares",
+        "Holger Schwenk",
+        "Yoshua Bengio"
+      ],
+      "year": 2014,
+      "url": "https://aclanthology.org/D14-1179/",
+      "pdf_url": "https://aclanthology.org/D14-1179.pdf",
+      "status": "peer_reviewed_EMNLP_primary_paper",
+      "locations": [
+        "印刷1725页§2.1–2.2",
+        "印刷1726页§2.3，式5–8及图2"
+      ],
+      "claim": "提出带重置门与更新门的递归单元及条件序列模型。",
+      "limitations": [
+        "翻译/词语实验不是未破译文字的辨识验证。",
+        "现代库可能采用不同的GRU候选状态/偏置实现；方案须写明实际版本。"
+      ],
+      "source_sha256": "c948d89ccd33da2a48421b45445f1c30f5fe677a829af9e5e1b6f9ff75a14a81"
+    }
+  ],
+  "architecture_distinctions": [
+    {
+      "id": "cross_layer",
+      "constraint": "U=V (or transpose by convention)",
+      "meaning": "同一符号输入输出共享，不合并不同符号。",
+      "evidence": [
+        "press_wolf2017",
+        "inan2017"
+      ]
+    },
+    {
+      "id": "input_alias",
+      "constraint": "E[f]=E[p]",
+      "meaning": "相同既往状态和辅助信息下，读入f或p得到相同GRU状态。没有其他原字形通道时，合并历史对应同一状态；输出标签仍可分开。",
+      "status": "本审查的确定性递归推论，不是论文的Voynich结论。"
+    },
+    {
+      "id": "output_alias",
+      "constraint": "W[f]=W[p], fixed scalar biases",
+      "formula": "P(f|h)/P(p|h)=exp(b_f-b_p); equal biases imply ratio=1.",
+      "meaning": "跨所有h不变的选择比例；另用上下文依赖偏置/恢复器则不是此模型。",
+      "limitation": "历史异体可由书手、位置或邻接条件选择；此强约束失败不排除历史异体。",
+      "status": "本审查softmax直接代数推论。"
+    },
+    {
+      "id": "full_original_word",
+      "formula": "P(w)=product_i P(x_i|x_<i,c) * P(EOS|w,c), with declared nonempty/support normalization.",
+      "meaning": "原符号输出已支付f/p身份成本，不重复加恢复费；商词输出须乘对全部原像归一化的恢复概率。",
+      "checks": [
+        "EOS",
+        "非空条件",
+        "有限字符串总质量及终止",
+        "未知身份支持与成本",
+        "所有组同一原目标词"
+      ]
+    }
+  ],
+  "fairness_review": [
+    "同宽度、同数量及同形状的独立行绑定可匹配候选与替代绑定对照的参数个数；要核对独立参数，不只看注册张量尺寸。",
+    "未绑定模型在函数约束上包含绑定模型，但训练不保证达到全局最优或更佳泛化。",
+    "等参数数不等于等有效容量；闲置参数补数或增宽GRU都不能消除容量混杂。",
+    "同网格、种子、优化预算与停止规则控制选择机会，仍需报告收敛、训练损失及正则化。",
+    "若用tr[F(F+lambda I)^-1]等诊断，须定义Fisher/GGN、数据、阻尼、坐标与估计误差；只能称指定局部谱诊断。",
+    "旧确认/保留及全文已接触；本轮不能重新宣称它们盲。"
+  ],
+  "minimal_recommendation": {
+    "comparison": "固定完整原符号GRU；FP、KT、both分别对照同数量的替代字对共享；未绑定为共同基线。跨层共享若采用各组一致。",
+    "controls": "替代字对及频率/位置匹配规则仅由固定训练部分定义并冻结，全报告。合成真别名、普通共享收益、上下文选择别名三类机制均校准。",
+    "strongest_supported_claim": "指定表示、模型和目标分布下，该共享约束比预定替代共享更有预测价值。",
+    "cannot_support": [
+      "历史同音",
+      "同值",
+      "已确认字形身份",
+      "语言识别",
+      "可靠译文"
+    ],
+    "new_evidence": "独立图像判读、跨书手/跨页固定外推；语义主张另需完整固定解码与专家外部验证。"
+  },
+  "unresolved": [
+    "未穷尽全部Voynich异体字文献；本次优先核查既有项目直接先例。",
+    "MacKay 1992官方记录已查，但官方PDF本次获取失败；未用未核页码公式作为证据。",
+    "现代GRU库尚未确定，本审查不保证某库实现行为。"
+  ]
+}

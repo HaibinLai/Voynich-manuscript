@@ -3,7 +3,9 @@
 Default mode needs only Python's standard library. It hashes bytes without
 parsing manuscript text or opening a new experimental split. Optional replays
 use the package's existing saved-data wrappers and need its Python dependencies.
-Neither mode tunes models, launches a decipherment search, or opens reserve pages.
+Neither mode tunes models or launches a decipherment search. Optional replays
+read saved evaluation packets, including already-exposed reserve records for
+the parameter-sharing package; they do not open a new blind split.
 """
 from pathlib import Path
 import argparse
@@ -86,6 +88,10 @@ def verify_snapshot():
         path = RESEARCH/name
         if path.exists():
             definitions.append((path, base, dict(container='files')))
+    parameter = REPO/'research/research_next/parameter_sharing'
+    if (parameter/'manifest.json').exists():
+        definitions.append((parameter/'manifest.json', parameter, dict(container='files')))
+        definitions.append((parameter/'freeze.json', parameter, dict(container='files')))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -99,6 +105,8 @@ def verify_snapshot():
 
 def replay_commands(output):
     return {
+        'parameter': ['research/research_next/parameter_sharing/independent_score_replay.py',
+                      '--output', str(output/'parameter')],
         'anchor': ['research/research7h/anchor_audit/coverage_public_replay.py',
                    '--out-dir', str(output/'anchor')],
         'copy': ['research/research7h/copy_prediction/public_reproduce.py',
@@ -118,7 +126,7 @@ def write(path, payload):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic'],
+    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter'],
                         help='Run named independent saved-data replays after integrity checks')
     parser.add_argument('--output', type=Path, help='Required new directory for replay receipts and logs')
     args = parser.parse_args()

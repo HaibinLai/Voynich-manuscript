@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "validate_only": true,
+  "seeds": [
+    2026111700,
+    2026111701,
+    2026111702,
+    2026111703,
+    2026111704,
+    2026111705,
+    2026111706,
+    2026111707
+  ],
+  "cases": [
+    "true_alias",
+    "non_alias",
+    "position_confound",
+    "frequency_confound",
+    "iid"
+  ],
+  "history_window": 3,
+  "generation_counts": {
+    "train": 20000,
+    "dev": 4000,
+    "test": 20000,
+    "small_train": 2000
+  },
+  "scoring": "logp_nats is original full-word natural log probability including EOS. Hard scores are bits for original outputs given collapsed last-three inputs and absolute position.",
+  "stream_derivation": "SHA256(JSON([seed,case,'words',split])) -> integer -> random.Random; parameter stream uses [seed,'parameters']. Case samples are separate streams, background parameters paired by seed.",
+  "python_version": "3.9.6",
+  "no_manuscript_read": true,
+  "no_model_fit": true,
+  "datasets": []
+}

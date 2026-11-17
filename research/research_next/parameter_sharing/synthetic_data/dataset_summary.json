@@ -1,0 +1,4235 @@
+{
+  "schema_version": 1,
+  "validate_only": false,
+  "seeds": [
+    2026111700,
+    2026111701,
+    2026111702,
+    2026111703,
+    2026111704,
+    2026111705,
+    2026111706,
+    2026111707
+  ],
+  "cases": [
+    "true_alias",
+    "non_alias",
+    "position_confound",
+    "frequency_confound",
+    "iid"
+  ],
+  "history_window": 3,
+  "generation_counts": {
+    "train": 4000,
+    "dev": 1000,
+    "test": 10000,
+    "small_train": 4000
+  },
+  "scoring": "logp_nats is original full-word natural log probability including EOS. Hard scores are bits for original outputs given collapsed last-three inputs and absolute position.",
+  "stream_derivation": "SHA256(JSON([seed,case,'words',split])) -> integer -> random.Random; parameter stream uses [seed,'parameters']. Case samples are separate streams, background parameters paired by seed.",
+  "python_version": "3.9.6",
+  "no_manuscript_read": true,
+  "no_model_fit": true,
+  "datasets": [
+    {
+      "seed": 2026111700,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24139,
+          "original_symbol_counts": {
+            "a": 1597,
+            "b": 1671,
+            "c": 2187,
+            "d": 2192,
+            "e": 3130,
+            "f": 2917,
+            "g": 3112,
+            "h": 3333
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1597,
+            "b": 1671,
+            "c": 2187,
+            "d": 2192,
+            "e": 3130,
+            "f": 2917,
+            "g": 3112,
+            "h": 3333
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47447.70082118633,
+            "hard_ab_bits": 68452.56267630887,
+            "hard_cd_bits": 68495.14468485203
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6040,
+          "original_symbol_counts": {
+            "a": 422,
+            "b": 377,
+            "c": 557,
+            "d": 554,
+            "e": 811,
+            "f": 715,
+            "g": 834,
+            "h": 770
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11868.11042597015,
+            "hard_ab_bits": 17122.06405626972,
+            "hard_cd_bits": 17134.804125227693
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59950,
+          "original_symbol_counts": {
+            "a": 4033,
+            "b": 4077,
+            "c": 5443,
+            "d": 5248,
+            "e": 7767,
+            "f": 7276,
+            "g": 7903,
+            "h": 8203
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117737.57146669453,
+            "hard_ab_bits": 169859.41048131185,
+            "hard_cd_bits": 169959.50148745527
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24106,
+          "original_symbol_counts": {
+            "a": 1685,
+            "b": 1630,
+            "c": 2251,
+            "d": 2081,
+            "e": 3070,
+            "f": 2920,
+            "g": 3161,
+            "h": 3308
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1685,
+            "b": 1630,
+            "c": 2251,
+            "d": 2081,
+            "e": 3070,
+            "f": 2920,
+            "g": 3161,
+            "h": 3308
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47357.97832489874,
+            "hard_ab_bits": 68343.60400855503,
+            "hard_cd_bits": 68368.58690675283
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5909,
+          "original_symbol_counts": {
+            "a": 439,
+            "b": 398,
+            "c": 538,
+            "d": 535,
+            "e": 781,
+            "f": 697,
+            "g": 728,
+            "h": 793
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11619.741615136698,
+            "hard_ab_bits": 16773.038267910128,
+            "hard_cd_bits": 16771.41785658196
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60162,
+          "original_symbol_counts": {
+            "a": 4112,
+            "b": 4146,
+            "c": 5534,
+            "d": 5365,
+            "e": 7763,
+            "f": 7264,
+            "g": 7938,
+            "h": 8040
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118262.73879464465,
+            "hard_ab_bits": 170722.67313846332,
+            "hard_cd_bits": 170722.4324913483
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23922,
+          "original_symbol_counts": {
+            "a": 1669,
+            "b": 1645,
+            "c": 2139,
+            "d": 2083,
+            "e": 3179,
+            "f": 2834,
+            "g": 3122,
+            "h": 3251
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1669,
+            "b": 1645,
+            "c": 2139,
+            "d": 2083,
+            "e": 3179,
+            "f": 2834,
+            "g": 3122,
+            "h": 3251
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47006.56740268571,
+            "hard_ab_bits": 67832.59314705967,
+            "hard_cd_bits": 67865.09678024113
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6053,
+          "original_symbol_counts": {
+            "a": 379,
+            "b": 416,
+            "c": 577,
+            "d": 543,
+            "e": 841,
+            "f": 732,
+            "g": 758,
+            "h": 807
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11885.90988911557,
+            "hard_ab_bits": 17156.860122776456,
+            "hard_cd_bits": 17163.832844686236
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59928,
+          "original_symbol_counts": {
+            "a": 3928,
+            "b": 3990,
+            "c": 5523,
+            "d": 5465,
+            "e": 7730,
+            "f": 7216,
+            "g": 7826,
+            "h": 8250
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117682.28027422974,
+            "hard_ab_bits": 169804.78036290564,
+            "hard_cd_bits": 169886.6278754065
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23991,
+          "original_symbol_counts": {
+            "a": 1440,
+            "b": 1685,
+            "c": 2163,
+            "d": 2234,
+            "e": 3189,
+            "f": 2921,
+            "g": 3087,
+            "h": 3272
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1440,
+            "b": 1685,
+            "c": 2163,
+            "d": 2234,
+            "e": 3189,
+            "f": 2921,
+            "g": 3087,
+            "h": 3272
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45811.455159117235,
+            "hard_ab_bits": 66091.95917396563,
+            "hard_cd_bits": 66121.52707939685
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6022,
+          "original_symbol_counts": {
+            "a": 383,
+            "b": 433,
+            "c": 562,
+            "d": 514,
+            "e": 798,
+            "f": 730,
+            "g": 813,
+            "h": 789
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11499.40660664084,
+            "hard_ab_bits": 16590.13688456648,
+            "hard_cd_bits": 16595.59661055375
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59924,
+          "original_symbol_counts": {
+            "a": 3593,
+            "b": 4417,
+            "c": 5443,
+            "d": 5569,
+            "e": 7657,
+            "f": 7286,
+            "g": 7827,
+            "h": 8132
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -114395.12196504838,
+            "hard_ab_bits": 165037.27516086266,
+            "hard_cd_bits": 165136.41526231018
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111700,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23971,
+          "original_symbol_counts": {
+            "a": 1594,
+            "b": 1612,
+            "c": 2172,
+            "d": 2125,
+            "e": 3451,
+            "f": 2632,
+            "g": 3082,
+            "h": 3303
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1594,
+            "b": 1612,
+            "c": 2172,
+            "d": 2125,
+            "e": 3451,
+            "f": 2632,
+            "g": 3082,
+            "h": 3303
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47201.92600902864,
+            "hard_ab_bits": 68097.98457363316,
+            "hard_cd_bits": 68097.98457363316
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5964,
+          "original_symbol_counts": {
+            "a": 390,
+            "b": 406,
+            "c": 540,
+            "d": 544,
+            "e": 857,
+            "f": 652,
+            "g": 766,
+            "h": 809
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11747.369292293595,
+            "hard_ab_bits": 16947.871421483254,
+            "hard_cd_bits": 16947.871421483254
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60017,
+          "original_symbol_counts": {
+            "a": 4066,
+            "b": 4079,
+            "c": 5393,
+            "d": 5376,
+            "e": 8441,
+            "f": 6496,
+            "g": 7901,
+            "h": 8265
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118264.12508724595,
+            "hard_ab_bits": 170619.06677844387,
+            "hard_cd_bits": 170619.06677844387
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111701,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23988,
+          "original_symbol_counts": {
+            "a": 1956,
+            "b": 1907,
+            "c": 1841,
+            "d": 1768,
+            "e": 3136,
+            "f": 3215,
+            "g": 3079,
+            "h": 3086
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1956,
+            "b": 1907,
+            "c": 1841,
+            "d": 1768,
+            "e": 3136,
+            "f": 3215,
+            "g": 3079,
+            "h": 3086
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47246.67983883454,
+            "hard_ab_bits": 68162.55070195493,
+            "hard_cd_bits": 68189.42023737954
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6011,
+          "original_symbol_counts": {
+            "a": 489,
+            "b": 472,
+            "c": 469,
+            "d": 461,
+            "e": 773,
+            "f": 801,
+            "g": 756,
+            "h": 790
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11850.777290294414,
+            "hard_ab_bits": 17097.057627387323,
+            "hard_cd_bits": 17103.786307978608
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60195,
+          "original_symbol_counts": {
+            "a": 4674,
+            "b": 4694,
+            "c": 4559,
+            "d": 4550,
+            "e": 7778,
+            "f": 8086,
+            "g": 7678,
+            "h": 8176
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118409.0704908402,
+            "hard_ab_bits": 170828.1787934063,
+            "hard_cd_bits": 170933.93330358225
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111701,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24005,
+          "original_symbol_counts": {
+            "a": 1826,
+            "b": 1810,
+            "c": 1779,
+            "d": 1767,
+            "e": 3146,
+            "f": 3234,
+            "g": 3207,
+            "h": 3236
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1826,
+            "b": 1810,
+            "c": 1779,
+            "d": 1767,
+            "e": 3146,
+            "f": 3234,
+            "g": 3207,
+            "h": 3236
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47091.330095858466,
+            "hard_ab_bits": 67987.13756264065,
+            "hard_cd_bits": 67981.11498301782
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6032,
+          "original_symbol_counts": {
+            "a": 491,
+            "b": 474,
+            "c": 440,
+            "d": 476,
+            "e": 789,
+            "f": 811,
+            "g": 745,
+            "h": 806
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11873.049680153694,
+            "hard_ab_bits": 17140.82392090306,
+            "hard_cd_bits": 17134.729633317384
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59682,
+          "original_symbol_counts": {
+            "a": 4590,
+            "b": 4630,
+            "c": 4485,
+            "d": 4601,
+            "e": 7773,
+            "f": 7907,
+            "g": 7642,
+            "h": 8054
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117338.99042477296,
+            "hard_ab_bits": 169384.16608895894,
+            "hard_cd_bits": 169374.64836359257
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111701,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24034,
+          "original_symbol_counts": {
+            "a": 1822,
+            "b": 1816,
+            "c": 1826,
+            "d": 1831,
+            "e": 3179,
+            "f": 3243,
+            "g": 3055,
+            "h": 3262
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1822,
+            "b": 1816,
+            "c": 1826,
+            "d": 1831,
+            "e": 3179,
+            "f": 3243,
+            "g": 3055,
+            "h": 3262
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47212.24535160948,
+            "hard_ab_bits": 68112.68004086899,
+            "hard_cd_bits": 68161.62703565553
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5976,
+          "original_symbol_counts": {
+            "a": 457,
+            "b": 450,
+            "c": 481,
+            "d": 429,
+            "e": 794,
+            "f": 786,
+            "g": 755,
+            "h": 824
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11721.709463295587,
+            "hard_ab_bits": 16916.64847695575,
+            "hard_cd_bits": 16929.54261220233
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60002,
+          "original_symbol_counts": {
+            "a": 4790,
+            "b": 4673,
+            "c": 4619,
+            "d": 4513,
+            "e": 7641,
+            "f": 8078,
+            "g": 7686,
+            "h": 8002
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118042.64348901504,
+            "hard_ab_bits": 170358.3577667473,
+            "hard_cd_bits": 170413.06554414204
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111701,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24073,
+          "original_symbol_counts": {
+            "a": 1705,
+            "b": 2010,
+            "c": 1795,
+            "d": 1863,
+            "e": 3187,
+            "f": 3198,
+            "g": 3065,
+            "h": 3250
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1705,
+            "b": 2010,
+            "c": 1795,
+            "d": 1863,
+            "e": 3187,
+            "f": 3198,
+            "g": 3065,
+            "h": 3250
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45848.25024970613,
+            "hard_ab_bits": 66145.04326868731,
+            "hard_cd_bits": 66190.4589181836
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5967,
+          "original_symbol_counts": {
+            "a": 437,
+            "b": 491,
+            "c": 423,
+            "d": 444,
+            "e": 741,
+            "f": 839,
+            "g": 761,
+            "h": 831
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11324.08042972899,
+            "hard_ab_bits": 16337.194678597778,
+            "hard_cd_bits": 16343.732488461073
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60096,
+          "original_symbol_counts": {
+            "a": 4256,
+            "b": 5146,
+            "c": 4581,
+            "d": 4655,
+            "e": 7722,
+            "f": 8030,
+            "g": 7769,
+            "h": 7937
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -114377.48198292154,
+            "hard_ab_bits": 165011.82604612768,
+            "hard_cd_bits": 165099.2710269148
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111701,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24003,
+          "original_symbol_counts": {
+            "a": 1917,
+            "b": 1782,
+            "c": 1871,
+            "d": 1798,
+            "e": 3182,
+            "f": 3135,
+            "g": 3002,
+            "h": 3316
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1917,
+            "b": 1782,
+            "c": 1871,
+            "d": 1798,
+            "e": 3182,
+            "f": 3135,
+            "g": 3002,
+            "h": 3316
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47325.179193237185,
+            "hard_ab_bits": 68275.80133126493,
+            "hard_cd_bits": 68275.80133126493
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5971,
+          "original_symbol_counts": {
+            "a": 465,
+            "b": 475,
+            "c": 452,
+            "d": 437,
+            "e": 787,
+            "f": 769,
+            "g": 726,
+            "h": 860
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11764.726229866908,
+            "hard_ab_bits": 16972.912189245337,
+            "hard_cd_bits": 16972.912189245337
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60004,
+          "original_symbol_counts": {
+            "a": 4675,
+            "b": 4599,
+            "c": 4566,
+            "d": 4515,
+            "e": 7994,
+            "f": 7778,
+            "g": 7431,
+            "h": 8446
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118252.19559621521,
+            "hard_ab_bits": 170601.856160891,
+            "hard_cd_bits": 170601.856160891
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111702,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24082,
+          "original_symbol_counts": {
+            "a": 2265,
+            "b": 2139,
+            "c": 1732,
+            "d": 1753,
+            "e": 3106,
+            "f": 2894,
+            "g": 3183,
+            "h": 3010
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2265,
+            "b": 2139,
+            "c": 1732,
+            "d": 1753,
+            "e": 3106,
+            "f": 2894,
+            "g": 3183,
+            "h": 3010
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47433.25665894346,
+            "hard_ab_bits": 68431.72415507096,
+            "hard_cd_bits": 68459.72039973768
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6025,
+          "original_symbol_counts": {
+            "a": 587,
+            "b": 519,
+            "c": 442,
+            "d": 440,
+            "e": 788,
+            "f": 715,
+            "g": 799,
+            "h": 735
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11908.971837982943,
+            "hard_ab_bits": 17181.014612744275,
+            "hard_cd_bits": 17188.24931457199
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59823,
+          "original_symbol_counts": {
+            "a": 5578,
+            "b": 5495,
+            "c": 4265,
+            "d": 4306,
+            "e": 7681,
+            "f": 7251,
+            "g": 7830,
+            "h": 7417
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117934.56664462759,
+            "hard_ab_bits": 170143.61444759418,
+            "hard_cd_bits": 170259.72611279448
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111702,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24111,
+          "original_symbol_counts": {
+            "a": 2215,
+            "b": 2216,
+            "c": 1793,
+            "d": 1810,
+            "e": 3044,
+            "f": 2907,
+            "g": 3100,
+            "h": 3026
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2215,
+            "b": 2216,
+            "c": 1793,
+            "d": 1810,
+            "e": 3044,
+            "f": 2907,
+            "g": 3100,
+            "h": 3026
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47561.13943186323,
+            "hard_ab_bits": 68672.87258141098,
+            "hard_cd_bits": 68652.59150206886
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5987,
+          "original_symbol_counts": {
+            "a": 554,
+            "b": 526,
+            "c": 424,
+            "d": 477,
+            "e": 765,
+            "f": 722,
+            "g": 818,
+            "h": 701
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11801.51058891921,
+            "hard_ab_bits": 17033.935914511083,
+            "hard_cd_bits": 17034.87444785317
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60117,
+          "original_symbol_counts": {
+            "a": 5480,
+            "b": 5477,
+            "c": 4539,
+            "d": 4320,
+            "e": 7856,
+            "f": 7161,
+            "g": 7792,
+            "h": 7492
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118475.32907474948,
+            "hard_ab_bits": 171077.19479379916,
+            "hard_cd_bits": 171015.85729609654
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111702,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23962,
+          "original_symbol_counts": {
+            "a": 2163,
+            "b": 2154,
+            "c": 1722,
+            "d": 1798,
+            "e": 3108,
+            "f": 2838,
+            "g": 3122,
+            "h": 3057
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2163,
+            "b": 2154,
+            "c": 1722,
+            "d": 1798,
+            "e": 3108,
+            "f": 2838,
+            "g": 3122,
+            "h": 3057
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47213.92794553174,
+            "hard_ab_bits": 68147.27520756033,
+            "hard_cd_bits": 68166.04457042716
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5928,
+          "original_symbol_counts": {
+            "a": 535,
+            "b": 548,
+            "c": 414,
+            "d": 431,
+            "e": 775,
+            "f": 723,
+            "g": 767,
+            "h": 735
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11675.573706170842,
+            "hard_ab_bits": 16848.8577373349,
+            "hard_cd_bits": 16853.495089651224
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59914,
+          "original_symbol_counts": {
+            "a": 5399,
+            "b": 5259,
+            "c": 4420,
+            "d": 4368,
+            "e": 7840,
+            "f": 7161,
+            "g": 7872,
+            "h": 7595
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118014.99918996358,
+            "hard_ab_bits": 170322.28383809442,
+            "hard_cd_bits": 170349.09156355885
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111702,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24011,
+          "original_symbol_counts": {
+            "a": 1947,
+            "b": 2352,
+            "c": 1781,
+            "d": 1765,
+            "e": 3094,
+            "f": 2929,
+            "g": 3094,
+            "h": 3049
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1947,
+            "b": 2352,
+            "c": 1781,
+            "d": 1765,
+            "e": 3094,
+            "f": 2929,
+            "g": 3094,
+            "h": 3049
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45559.092361344934,
+            "hard_ab_bits": 65727.87661711429,
+            "hard_cd_bits": 65749.47719613391
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5959,
+          "original_symbol_counts": {
+            "a": 475,
+            "b": 594,
+            "c": 452,
+            "d": 441,
+            "e": 732,
+            "f": 701,
+            "g": 835,
+            "h": 729
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11286.650774036374,
+            "hard_ab_bits": 16283.195099947834,
+            "hard_cd_bits": 16294.946397772723
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60279,
+          "original_symbol_counts": {
+            "a": 4931,
+            "b": 6066,
+            "c": 4467,
+            "d": 4415,
+            "e": 7824,
+            "f": 7031,
+            "g": 7925,
+            "h": 7620
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -114315.89710851765,
+            "hard_ab_bits": 164922.9778532309,
+            "hard_cd_bits": 165043.81292915193
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111702,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24046,
+          "original_symbol_counts": {
+            "a": 2203,
+            "b": 2186,
+            "c": 1794,
+            "d": 1751,
+            "e": 3798,
+            "f": 2565,
+            "g": 3416,
+            "h": 2333
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2203,
+            "b": 2186,
+            "c": 1794,
+            "d": 1751,
+            "e": 3798,
+            "f": 2565,
+            "g": 3416,
+            "h": 2333
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47401.29681357897,
+            "hard_ab_bits": 68385.61584465613,
+            "hard_cd_bits": 68385.61584465613
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6050,
+          "original_symbol_counts": {
+            "a": 546,
+            "b": 542,
+            "c": 409,
+            "d": 430,
+            "e": 1012,
+            "f": 613,
+            "g": 884,
+            "h": 614
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11879.438805301328,
+            "hard_ab_bits": 17138.40745295216,
+            "hard_cd_bits": 17138.40745295216
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59874,
+          "original_symbol_counts": {
+            "a": 5545,
+            "b": 5433,
+            "c": 4370,
+            "d": 4266,
+            "e": 9675,
+            "f": 6264,
+            "g": 8561,
+            "h": 5760
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117836.11017089858,
+            "hard_ab_bits": 170001.5717812017,
+            "hard_cd_bits": 170001.5717812017
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111703,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23942,
+          "original_symbol_counts": {
+            "a": 1679,
+            "b": 1691,
+            "c": 1801,
+            "d": 1721,
+            "e": 2956,
+            "f": 3222,
+            "g": 3626,
+            "h": 3246
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1679,
+            "b": 1691,
+            "c": 1801,
+            "d": 1721,
+            "e": 2956,
+            "f": 3222,
+            "g": 3626,
+            "h": 3246
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46720.60834958309,
+            "hard_ab_bits": 67403.58997325931,
+            "hard_cd_bits": 67444.67946275578
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5940,
+          "original_symbol_counts": {
+            "a": 432,
+            "b": 463,
+            "c": 377,
+            "d": 436,
+            "e": 723,
+            "f": 826,
+            "g": 930,
+            "h": 753
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11596.275906751442,
+            "hard_ab_bits": 16729.88974345048,
+            "hard_cd_bits": 16739.075757928116
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59907,
+          "original_symbol_counts": {
+            "a": 4301,
+            "b": 4266,
+            "c": 4399,
+            "d": 4291,
+            "e": 7302,
+            "f": 8036,
+            "g": 9277,
+            "h": 8035
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116987.2537536079,
+            "hard_ab_bits": 168776.93083754857,
+            "hard_cd_bits": 168856.2645551262
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111703,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23943,
+          "original_symbol_counts": {
+            "a": 1772,
+            "b": 1763,
+            "c": 1769,
+            "d": 1765,
+            "e": 2793,
+            "f": 3239,
+            "g": 3601,
+            "h": 3241
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1772,
+            "b": 1763,
+            "c": 1769,
+            "d": 1765,
+            "e": 2793,
+            "f": 3239,
+            "g": 3601,
+            "h": 3241
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46803.2464456555,
+            "hard_ab_bits": 67561.67667384105,
+            "hard_cd_bits": 67546.99986856019
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6017,
+          "original_symbol_counts": {
+            "a": 413,
+            "b": 423,
+            "c": 429,
+            "d": 428,
+            "e": 772,
+            "f": 803,
+            "g": 900,
+            "h": 849
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11726.908920008102,
+            "hard_ab_bits": 16933.66716182661,
+            "hard_cd_bits": 16920.27073589121
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59902,
+          "original_symbol_counts": {
+            "a": 4231,
+            "b": 4203,
+            "c": 4200,
+            "d": 4439,
+            "e": 7136,
+            "f": 8280,
+            "g": 9228,
+            "h": 8185
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116726.42195202896,
+            "hard_ab_bits": 168472.46053159836,
+            "hard_cd_bits": 168470.55722236968
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111703,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23977,
+          "original_symbol_counts": {
+            "a": 1740,
+            "b": 1753,
+            "c": 1728,
+            "d": 1719,
+            "e": 2858,
+            "f": 3370,
+            "g": 3624,
+            "h": 3185
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1740,
+            "b": 1753,
+            "c": 1728,
+            "d": 1719,
+            "e": 2858,
+            "f": 3370,
+            "g": 3624,
+            "h": 3185
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46851.04313871113,
+            "hard_ab_bits": 67600.25477453932,
+            "hard_cd_bits": 67621.78995072073
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6051,
+          "original_symbol_counts": {
+            "a": 429,
+            "b": 461,
+            "c": 434,
+            "d": 438,
+            "e": 720,
+            "f": 839,
+            "g": 936,
+            "h": 794
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11831.493959014153,
+            "hard_ab_bits": 17069.162560485805,
+            "hard_cd_bits": 17074.746910469214
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60225,
+          "original_symbol_counts": {
+            "a": 4466,
+            "b": 4297,
+            "c": 4202,
+            "d": 4446,
+            "e": 7266,
+            "f": 8196,
+            "g": 9181,
+            "h": 8171
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117585.28443785482,
+            "hard_ab_bits": 169690.77790978158,
+            "hard_cd_bits": 169727.2362572567
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111703,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24075,
+          "original_symbol_counts": {
+            "a": 1531,
+            "b": 1935,
+            "c": 1719,
+            "d": 1729,
+            "e": 2876,
+            "f": 3279,
+            "g": 3830,
+            "h": 3176
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1531,
+            "b": 1935,
+            "c": 1719,
+            "d": 1729,
+            "e": 2876,
+            "f": 3279,
+            "g": 3830,
+            "h": 3176
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45533.79733680134,
+            "hard_ab_bits": 65691.38361064636,
+            "hard_cd_bits": 65724.34433006667
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5959,
+          "original_symbol_counts": {
+            "a": 382,
+            "b": 427,
+            "c": 425,
+            "d": 482,
+            "e": 728,
+            "f": 773,
+            "g": 905,
+            "h": 837
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11311.689015947693,
+            "hard_ab_bits": 16319.317647385888,
+            "hard_cd_bits": 16322.17861270645
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59909,
+          "original_symbol_counts": {
+            "a": 3854,
+            "b": 4742,
+            "c": 4390,
+            "d": 4460,
+            "e": 7177,
+            "f": 8001,
+            "g": 9186,
+            "h": 8099
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -113522.92257365535,
+            "hard_ab_bits": 163778.9574242341,
+            "hard_cd_bits": 163858.83217526166
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111703,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24074,
+          "original_symbol_counts": {
+            "a": 1791,
+            "b": 1672,
+            "c": 1754,
+            "d": 1725,
+            "e": 2711,
+            "f": 3746,
+            "g": 3739,
+            "h": 2936
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1791,
+            "b": 1672,
+            "c": 1754,
+            "d": 1725,
+            "e": 2711,
+            "f": 3746,
+            "g": 3739,
+            "h": 2936
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47076.95348480429,
+            "hard_ab_bits": 67917.6873326877,
+            "hard_cd_bits": 67917.6873326877
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5979,
+          "original_symbol_counts": {
+            "a": 446,
+            "b": 427,
+            "c": 434,
+            "d": 427,
+            "e": 665,
+            "f": 938,
+            "g": 923,
+            "h": 719
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11693.91680099039,
+            "hard_ab_bits": 16870.755777356968,
+            "hard_cd_bits": 16870.755777356968
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60143,
+          "original_symbol_counts": {
+            "a": 4380,
+            "b": 4342,
+            "c": 4500,
+            "d": 4479,
+            "e": 6637,
+            "f": 9301,
+            "g": 9112,
+            "h": 7392
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117852.0306280261,
+            "hard_ab_bits": 170024.54014574733,
+            "hard_cd_bits": 170024.54014574733
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111704,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24000,
+          "original_symbol_counts": {
+            "a": 1733,
+            "b": 1730,
+            "c": 1413,
+            "d": 1359,
+            "e": 3115,
+            "f": 3556,
+            "g": 3558,
+            "h": 3536
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1733,
+            "b": 1730,
+            "c": 1413,
+            "d": 1359,
+            "e": 3115,
+            "f": 3556,
+            "g": 3558,
+            "h": 3536
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46399.865567221685,
+            "hard_ab_bits": 66940.85595174522,
+            "hard_cd_bits": 66964.28853663469
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6029,
+          "original_symbol_counts": {
+            "a": 426,
+            "b": 454,
+            "c": 345,
+            "d": 358,
+            "e": 785,
+            "f": 908,
+            "g": 867,
+            "h": 886
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11650.95264562929,
+            "hard_ab_bits": 16808.77160348152,
+            "hard_cd_bits": 16821.27129425157
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59970,
+          "original_symbol_counts": {
+            "a": 4272,
+            "b": 4384,
+            "c": 3597,
+            "d": 3495,
+            "e": 7964,
+            "f": 8808,
+            "g": 8834,
+            "h": 8616
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116094.4375802926,
+            "hard_ab_bits": 167488.86937188148,
+            "hard_cd_bits": 167551.37426444335
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111704,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23864,
+          "original_symbol_counts": {
+            "a": 1724,
+            "b": 1748,
+            "c": 1424,
+            "d": 1463,
+            "e": 3083,
+            "f": 3426,
+            "g": 3542,
+            "h": 3454
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1724,
+            "b": 1748,
+            "c": 1424,
+            "d": 1463,
+            "e": 3083,
+            "f": 3426,
+            "g": 3542,
+            "h": 3454
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46229.1605166314,
+            "hard_ab_bits": 66722.9656757623,
+            "hard_cd_bits": 66704.76422154118
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6015,
+          "original_symbol_counts": {
+            "a": 428,
+            "b": 393,
+            "c": 345,
+            "d": 331,
+            "e": 820,
+            "f": 874,
+            "g": 920,
+            "h": 904
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11571.930118569773,
+            "hard_ab_bits": 16708.737868570566,
+            "hard_cd_bits": 16703.411563239355
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60017,
+          "original_symbol_counts": {
+            "a": 4331,
+            "b": 4355,
+            "c": 3596,
+            "d": 3592,
+            "e": 7830,
+            "f": 8826,
+            "g": 8640,
+            "h": 8847
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116124.45683902626,
+            "hard_ab_bits": 167624.3462542229,
+            "hard_cd_bits": 167597.14591506636
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111704,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24040,
+          "original_symbol_counts": {
+            "a": 1809,
+            "b": 1728,
+            "c": 1389,
+            "d": 1407,
+            "e": 3205,
+            "f": 3507,
+            "g": 3525,
+            "h": 3470
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1809,
+            "b": 1728,
+            "c": 1389,
+            "d": 1407,
+            "e": 3205,
+            "f": 3507,
+            "g": 3525,
+            "h": 3470
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46514.329228937415,
+            "hard_ab_bits": 67127.85601445893,
+            "hard_cd_bits": 67121.28539268908
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5984,
+          "original_symbol_counts": {
+            "a": 421,
+            "b": 491,
+            "c": 331,
+            "d": 361,
+            "e": 775,
+            "f": 875,
+            "g": 862,
+            "h": 868
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11595.320950274303,
+            "hard_ab_bits": 16732.49998555935,
+            "hard_cd_bits": 16739.142908040754
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60179,
+          "original_symbol_counts": {
+            "a": 4431,
+            "b": 4388,
+            "c": 3553,
+            "d": 3529,
+            "e": 8033,
+            "f": 8808,
+            "g": 8604,
+            "h": 8833
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116492.44347450946,
+            "hard_ab_bits": 168114.72299673918,
+            "hard_cd_bits": 168122.4821127533
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111704,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23857,
+          "original_symbol_counts": {
+            "a": 1503,
+            "b": 1853,
+            "c": 1414,
+            "d": 1439,
+            "e": 3209,
+            "f": 3421,
+            "g": 3477,
+            "h": 3541
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1503,
+            "b": 1853,
+            "c": 1414,
+            "d": 1439,
+            "e": 3209,
+            "f": 3421,
+            "g": 3477,
+            "h": 3541
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -44746.49094106866,
+            "hard_ab_bits": 64555.5405778629,
+            "hard_cd_bits": 64586.89034346256
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5953,
+          "original_symbol_counts": {
+            "a": 385,
+            "b": 477,
+            "c": 383,
+            "d": 355,
+            "e": 779,
+            "f": 894,
+            "g": 810,
+            "h": 870
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11166.121832540757,
+            "hard_ab_bits": 16109.30859376854,
+            "hard_cd_bits": 16112.824942048526
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59956,
+          "original_symbol_counts": {
+            "a": 3934,
+            "b": 4733,
+            "c": 3594,
+            "d": 3453,
+            "e": 7952,
+            "f": 8625,
+            "g": 8864,
+            "h": 8801
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -112382.22702261343,
+            "hard_ab_bits": 162133.28160958044,
+            "hard_cd_bits": 162205.34494955093
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111704,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23855,
+          "original_symbol_counts": {
+            "a": 1670,
+            "b": 1666,
+            "c": 1385,
+            "d": 1456,
+            "e": 2480,
+            "f": 4646,
+            "g": 3110,
+            "h": 3442
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1670,
+            "b": 1666,
+            "c": 1385,
+            "d": 1456,
+            "e": 2480,
+            "f": 4646,
+            "g": 3110,
+            "h": 3442
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45900.706279825485,
+            "hard_ab_bits": 66220.72132320519,
+            "hard_cd_bits": 66220.72132320519
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5980,
+          "original_symbol_counts": {
+            "a": 443,
+            "b": 445,
+            "c": 339,
+            "d": 378,
+            "e": 549,
+            "f": 1148,
+            "g": 813,
+            "h": 865
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11531.233165996528,
+            "hard_ab_bits": 16636.052903917494,
+            "hard_cd_bits": 16636.052903917494
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59842,
+          "original_symbol_counts": {
+            "a": 4268,
+            "b": 4264,
+            "c": 3528,
+            "d": 3658,
+            "e": 6319,
+            "f": 11503,
+            "g": 7779,
+            "h": 8523
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -115386.70440368139,
+            "hard_ab_bits": 166467.8262277107,
+            "hard_cd_bits": 166467.8262277107
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111705,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23988,
+          "original_symbol_counts": {
+            "a": 1786,
+            "b": 1781,
+            "c": 2009,
+            "d": 2047,
+            "e": 3231,
+            "f": 2941,
+            "g": 3326,
+            "h": 2867
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1786,
+            "b": 1781,
+            "c": 2009,
+            "d": 2047,
+            "e": 3231,
+            "f": 2941,
+            "g": 3326,
+            "h": 2867
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47254.67571851655,
+            "hard_ab_bits": 68174.08631792005,
+            "hard_cd_bits": 68208.12494442951
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5984,
+          "original_symbol_counts": {
+            "a": 440,
+            "b": 449,
+            "c": 489,
+            "d": 498,
+            "e": 811,
+            "f": 709,
+            "g": 894,
+            "h": 694
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11772.439103049861,
+            "hard_ab_bits": 16984.039513137355,
+            "hard_cd_bits": 16986.016664442435
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59991,
+          "original_symbol_counts": {
+            "a": 4613,
+            "b": 4370,
+            "c": 4910,
+            "d": 4880,
+            "e": 7938,
+            "f": 7286,
+            "g": 8590,
+            "h": 7404
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118105.34677684128,
+            "hard_ab_bits": 170389.99809742178,
+            "hard_cd_bits": 170459.27913994074
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111705,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23895,
+          "original_symbol_counts": {
+            "a": 1740,
+            "b": 1826,
+            "c": 1941,
+            "d": 2008,
+            "e": 3130,
+            "f": 2943,
+            "g": 3360,
+            "h": 2947
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1740,
+            "b": 1826,
+            "c": 1941,
+            "d": 2008,
+            "e": 3130,
+            "f": 2943,
+            "g": 3360,
+            "h": 2947
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47052.50832299579,
+            "hard_ab_bits": 67901.11225027373,
+            "hard_cd_bits": 67903.28362545324
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5973,
+          "original_symbol_counts": {
+            "a": 452,
+            "b": 447,
+            "c": 473,
+            "d": 478,
+            "e": 793,
+            "f": 747,
+            "g": 843,
+            "h": 740
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11758.418916417084,
+            "hard_ab_bits": 16968.05202311985,
+            "hard_cd_bits": 16970.337605717494
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60101,
+          "original_symbol_counts": {
+            "a": 4458,
+            "b": 4630,
+            "c": 4868,
+            "d": 5026,
+            "e": 7960,
+            "f": 7323,
+            "g": 8526,
+            "h": 7310
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118315.98786293101,
+            "hard_ab_bits": 170834.43308013288,
+            "hard_cd_bits": 170780.43155592144
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111705,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23926,
+          "original_symbol_counts": {
+            "a": 1769,
+            "b": 1906,
+            "c": 1985,
+            "d": 1916,
+            "e": 3169,
+            "f": 2908,
+            "g": 3276,
+            "h": 2997
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1769,
+            "b": 1906,
+            "c": 1985,
+            "d": 1916,
+            "e": 3169,
+            "f": 2908,
+            "g": 3276,
+            "h": 2997
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47147.21155008573,
+            "hard_ab_bits": 68034.52059861687,
+            "hard_cd_bits": 68048.31641269453
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6080,
+          "original_symbol_counts": {
+            "a": 439,
+            "b": 456,
+            "c": 492,
+            "d": 520,
+            "e": 835,
+            "f": 750,
+            "g": 874,
+            "h": 714
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11962.185626357686,
+            "hard_ab_bits": 17260.0809964036,
+            "hard_cd_bits": 17269.930260191417
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59930,
+          "original_symbol_counts": {
+            "a": 4469,
+            "b": 4537,
+            "c": 4926,
+            "d": 4803,
+            "e": 7928,
+            "f": 7289,
+            "g": 8535,
+            "h": 7443
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -117973.80462737351,
+            "hard_ab_bits": 170239.1337071078,
+            "hard_cd_bits": 170280.6844418028
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111705,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23982,
+          "original_symbol_counts": {
+            "a": 1642,
+            "b": 1991,
+            "c": 1908,
+            "d": 1965,
+            "e": 3294,
+            "f": 2867,
+            "g": 3345,
+            "h": 2970
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1642,
+            "b": 1991,
+            "c": 1908,
+            "d": 1965,
+            "e": 3294,
+            "f": 2867,
+            "g": 3345,
+            "h": 2970
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45658.781356607295,
+            "hard_ab_bits": 65871.69743621064,
+            "hard_cd_bits": 65905.390443968
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5978,
+          "original_symbol_counts": {
+            "a": 429,
+            "b": 470,
+            "c": 467,
+            "d": 529,
+            "e": 775,
+            "f": 702,
+            "g": 901,
+            "h": 705
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11420.268131685616,
+            "hard_ab_bits": 16475.964199205086,
+            "hard_cd_bits": 16485.483773515323
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59858,
+          "original_symbol_counts": {
+            "a": 4099,
+            "b": 4974,
+            "c": 4829,
+            "d": 4821,
+            "e": 7956,
+            "f": 7227,
+            "g": 8644,
+            "h": 7308
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -113965.49682515408,
+            "hard_ab_bits": 164417.45710209632,
+            "hard_cd_bits": 164479.84711976463
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111705,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24079,
+          "original_symbol_counts": {
+            "a": 1785,
+            "b": 1805,
+            "c": 2011,
+            "d": 2052,
+            "e": 3066,
+            "f": 3106,
+            "g": 3138,
+            "h": 3116
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1785,
+            "b": 1805,
+            "c": 2011,
+            "d": 2052,
+            "e": 3066,
+            "f": 3106,
+            "g": 3138,
+            "h": 3116
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47605.48874657187,
+            "hard_ab_bits": 68680.20253377494,
+            "hard_cd_bits": 68680.20253377494
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6047,
+          "original_symbol_counts": {
+            "a": 427,
+            "b": 516,
+            "c": 501,
+            "d": 494,
+            "e": 722,
+            "f": 758,
+            "g": 805,
+            "h": 824
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11965.658458709335,
+            "hard_ab_bits": 17262.79611935106,
+            "hard_cd_bits": 17262.79611935106
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60237,
+          "original_symbol_counts": {
+            "a": 4522,
+            "b": 4601,
+            "c": 5012,
+            "d": 4771,
+            "e": 7937,
+            "f": 7588,
+            "g": 7896,
+            "h": 7910
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118995.05675612416,
+            "hard_ab_bits": 171673.57827236195,
+            "hard_cd_bits": 171673.57827236195
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111706,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23979,
+          "original_symbol_counts": {
+            "a": 2139,
+            "b": 2121,
+            "c": 1898,
+            "d": 1885,
+            "e": 3180,
+            "f": 2788,
+            "g": 3090,
+            "h": 2878
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2139,
+            "b": 2121,
+            "c": 1898,
+            "d": 1885,
+            "e": 3180,
+            "f": 2788,
+            "g": 3090,
+            "h": 2878
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47437.24225982565,
+            "hard_ab_bits": 68437.47416169856,
+            "hard_cd_bits": 68473.25510906575
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5994,
+          "original_symbol_counts": {
+            "a": 526,
+            "b": 529,
+            "c": 506,
+            "d": 419,
+            "e": 803,
+            "f": 733,
+            "g": 747,
+            "h": 731
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11840.386139290933,
+            "hard_ab_bits": 17082.06636536546,
+            "hard_cd_bits": 17089.834503588823
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60219,
+          "original_symbol_counts": {
+            "a": 5218,
+            "b": 5262,
+            "c": 4793,
+            "d": 4785,
+            "e": 7927,
+            "f": 7109,
+            "g": 7722,
+            "h": 7403
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -119138.94669311201,
+            "hard_ab_bits": 171881.16757088664,
+            "hard_cd_bits": 171950.0900210112
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111706,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24011,
+          "original_symbol_counts": {
+            "a": 2126,
+            "b": 2098,
+            "c": 1850,
+            "d": 1839,
+            "e": 3118,
+            "f": 2875,
+            "g": 3158,
+            "h": 2947
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2126,
+            "b": 2098,
+            "c": 1850,
+            "d": 1839,
+            "e": 3118,
+            "f": 2875,
+            "g": 3158,
+            "h": 2947
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47415.01352376765,
+            "hard_ab_bits": 68445.63042916397,
+            "hard_cd_bits": 68428.59405794737
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6067,
+          "original_symbol_counts": {
+            "a": 548,
+            "b": 577,
+            "c": 494,
+            "d": 511,
+            "e": 754,
+            "f": 740,
+            "g": 739,
+            "h": 704
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -12025.79713310584,
+            "hard_ab_bits": 17368.299890370963,
+            "hard_cd_bits": 17366.517829977638
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60001,
+          "original_symbol_counts": {
+            "a": 5348,
+            "b": 5333,
+            "c": 4773,
+            "d": 4581,
+            "e": 7722,
+            "f": 7018,
+            "g": 7859,
+            "h": 7367
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118595.88204033699,
+            "hard_ab_bits": 171201.65239486378,
+            "hard_cd_bits": 171195.21228934685
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111706,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23857,
+          "original_symbol_counts": {
+            "a": 2071,
+            "b": 2125,
+            "c": 1849,
+            "d": 1888,
+            "e": 3214,
+            "f": 2753,
+            "g": 3106,
+            "h": 2851
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2071,
+            "b": 2125,
+            "c": 1849,
+            "d": 1888,
+            "e": 3214,
+            "f": 2753,
+            "g": 3106,
+            "h": 2851
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47103.60813165294,
+            "hard_ab_bits": 67988.32039845157,
+            "hard_cd_bits": 67998.10442196115
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6031,
+          "original_symbol_counts": {
+            "a": 587,
+            "b": 547,
+            "c": 452,
+            "d": 483,
+            "e": 815,
+            "f": 692,
+            "g": 758,
+            "h": 697
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11959.849722374047,
+            "hard_ab_bits": 17260.70521602479,
+            "hard_cd_bits": 17254.146756889837
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59982,
+          "original_symbol_counts": {
+            "a": 5280,
+            "b": 5346,
+            "c": 4723,
+            "d": 4706,
+            "e": 7896,
+            "f": 7025,
+            "g": 7661,
+            "h": 7345
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -118590.88641621654,
+            "hard_ab_bits": 171155.68334217186,
+            "hard_cd_bits": 171163.86790366552
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111706,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24031,
+          "original_symbol_counts": {
+            "a": 1889,
+            "b": 2377,
+            "c": 1833,
+            "d": 1951,
+            "e": 3175,
+            "f": 2866,
+            "g": 3092,
+            "h": 2848
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1889,
+            "b": 2377,
+            "c": 1833,
+            "d": 1951,
+            "e": 3175,
+            "f": 2866,
+            "g": 3092,
+            "h": 2848
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -45738.327756973784,
+            "hard_ab_bits": 65986.45863353985,
+            "hard_cd_bits": 66015.80133521033
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6019,
+          "original_symbol_counts": {
+            "a": 473,
+            "b": 619,
+            "c": 468,
+            "d": 486,
+            "e": 774,
+            "f": 719,
+            "g": 747,
+            "h": 733
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11473.237450613688,
+            "hard_ab_bits": 16552.382772941924,
+            "hard_cd_bits": 16562.580318908
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60048,
+          "original_symbol_counts": {
+            "a": 4710,
+            "b": 5793,
+            "c": 4663,
+            "d": 4756,
+            "e": 8013,
+            "f": 7009,
+            "g": 7735,
+            "h": 7369
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -114371.84777015867,
+            "hard_ab_bits": 165003.69759531456,
+            "hard_cd_bits": 165093.00619077086
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111706,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24163,
+          "original_symbol_counts": {
+            "a": 2156,
+            "b": 2172,
+            "c": 1872,
+            "d": 1847,
+            "e": 2571,
+            "f": 2804,
+            "g": 3442,
+            "h": 3299
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 2156,
+            "b": 2172,
+            "c": 1872,
+            "d": 1847,
+            "e": 2571,
+            "f": 2804,
+            "g": 3442,
+            "h": 3299
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -47847.97296218928,
+            "hard_ab_bits": 69030.03330913959,
+            "hard_cd_bits": 69030.03330913959
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6029,
+          "original_symbol_counts": {
+            "a": 555,
+            "b": 521,
+            "c": 458,
+            "d": 471,
+            "e": 651,
+            "f": 717,
+            "g": 850,
+            "h": 806
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11941.977398658652,
+            "hard_ab_bits": 17228.6315714529,
+            "hard_cd_bits": 17228.6315714529
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60186,
+          "original_symbol_counts": {
+            "a": 5307,
+            "b": 5298,
+            "c": 4756,
+            "d": 4704,
+            "e": 6569,
+            "f": 7059,
+            "g": 8586,
+            "h": 7907
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -119248.03938142513,
+            "hard_ab_bits": 172038.5550513125,
+            "hard_cd_bits": 172038.5550513125
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111707,
+      "case": "true_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24182,
+          "original_symbol_counts": {
+            "a": 1488,
+            "b": 1439,
+            "c": 1680,
+            "d": 1703,
+            "e": 3491,
+            "f": 3401,
+            "g": 3548,
+            "h": 3432
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1488,
+            "b": 1439,
+            "c": 1680,
+            "d": 1703,
+            "e": 3491,
+            "f": 3401,
+            "g": 3548,
+            "h": 3432
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46768.52655653994,
+            "hard_ab_bits": 67472.72133280386,
+            "hard_cd_bits": 67505.84155823481
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 6002,
+          "original_symbol_counts": {
+            "a": 350,
+            "b": 378,
+            "c": 446,
+            "d": 429,
+            "e": 875,
+            "f": 803,
+            "g": 874,
+            "h": 847
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11636.963338769261,
+            "hard_ab_bits": 16788.58929984905,
+            "hard_cd_bits": 16796.261378144598
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60220,
+          "original_symbol_counts": {
+            "a": 3722,
+            "b": 3686,
+            "c": 4277,
+            "d": 4267,
+            "e": 8743,
+            "f": 8277,
+            "g": 8739,
+            "h": 8509
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116661.2348017398,
+            "hard_ab_bits": 168306.5849124535,
+            "hard_cd_bits": 168371.00380329412
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111707,
+      "case": "non_alias",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23864,
+          "original_symbol_counts": {
+            "a": 1371,
+            "b": 1443,
+            "c": 1670,
+            "d": 1707,
+            "e": 3519,
+            "f": 3301,
+            "g": 3446,
+            "h": 3407
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1371,
+            "b": 1443,
+            "c": 1670,
+            "d": 1707,
+            "e": 3519,
+            "f": 3301,
+            "g": 3446,
+            "h": 3407
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46083.36983608571,
+            "hard_ab_bits": 66512.45427876152,
+            "hard_cd_bits": 66512.91108558275
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5977,
+          "original_symbol_counts": {
+            "a": 355,
+            "b": 383,
+            "c": 406,
+            "d": 439,
+            "e": 886,
+            "f": 837,
+            "g": 843,
+            "h": 828
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11586.85734129364,
+            "hard_ab_bits": 16721.274744312443,
+            "hard_cd_bits": 16720.636560758125
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60014,
+          "original_symbol_counts": {
+            "a": 3588,
+            "b": 3563,
+            "c": 4261,
+            "d": 4300,
+            "e": 8836,
+            "f": 8305,
+            "g": 8614,
+            "h": 8547
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -116063.07675733899,
+            "hard_ab_bits": 167530.59539277968,
+            "hard_cd_bits": 167536.07174243618
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111707,
+      "case": "position_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24017,
+          "original_symbol_counts": {
+            "a": 1516,
+            "b": 1419,
+            "c": 1729,
+            "d": 1674,
+            "e": 3444,
+            "f": 3411,
+            "g": 3414,
+            "h": 3410
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1516,
+            "b": 1419,
+            "c": 1729,
+            "d": 1674,
+            "e": 3444,
+            "f": 3411,
+            "g": 3414,
+            "h": 3410
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46473.458532537246,
+            "hard_ab_bits": 67065.34721533179,
+            "hard_cd_bits": 67078.16094908208
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5940,
+          "original_symbol_counts": {
+            "a": 360,
+            "b": 354,
+            "c": 424,
+            "d": 421,
+            "e": 857,
+            "f": 831,
+            "g": 847,
+            "h": 846
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11510.562397606536,
+            "hard_ab_bits": 16608.461586108137,
+            "hard_cd_bits": 16610.279968094124
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59850,
+          "original_symbol_counts": {
+            "a": 3650,
+            "b": 3533,
+            "c": 4112,
+            "d": 4239,
+            "e": 8747,
+            "f": 8442,
+            "g": 8526,
+            "h": 8601
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -115651.46778159006,
+            "hard_ab_bits": 166873.68136549747,
+            "hard_cd_bits": 166928.27270684176
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111707,
+      "case": "frequency_confound",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 23885,
+          "original_symbol_counts": {
+            "a": 1308,
+            "b": 1526,
+            "c": 1630,
+            "d": 1698,
+            "e": 3580,
+            "f": 3260,
+            "g": 3445,
+            "h": 3438
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1308,
+            "b": 1526,
+            "c": 1630,
+            "d": 1698,
+            "e": 3580,
+            "f": 3260,
+            "g": 3445,
+            "h": 3438
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -44975.40756012341,
+            "hard_ab_bits": 64885.79744895002,
+            "hard_cd_bits": 64904.90433669294
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5968,
+          "original_symbol_counts": {
+            "a": 341,
+            "b": 384,
+            "c": 419,
+            "d": 431,
+            "e": 856,
+            "f": 811,
+            "g": 858,
+            "h": 868
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11270.983457639944,
+            "hard_ab_bits": 16260.591940278697,
+            "hard_cd_bits": 16262.350748290022
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 59752,
+          "original_symbol_counts": {
+            "a": 3327,
+            "b": 3948,
+            "c": 4309,
+            "d": 4164,
+            "e": 8761,
+            "f": 8261,
+            "g": 8582,
+            "h": 8400
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -112638.53982765599,
+            "hard_ab_bits": 162503.06282233447,
+            "hard_cd_bits": 162570.44054759116
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    },
+    {
+      "seed": 2026111707,
+      "case": "iid",
+      "splits": {
+        "train": {
+          "words": 4000,
+          "targets_including_eos": 24090,
+          "original_symbol_counts": {
+            "a": 1465,
+            "b": 1442,
+            "c": 1695,
+            "d": 1770,
+            "e": 4517,
+            "f": 3477,
+            "g": 2968,
+            "h": 2756
+          },
+          "small_prefix_words": 4000,
+          "small_prefix_original_counts": {
+            "a": 1465,
+            "b": 1442,
+            "c": 1695,
+            "d": 1770,
+            "e": 4517,
+            "f": 3477,
+            "g": 2968,
+            "h": 2756
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": true,
+          "sample_oracle_totals": {
+            "logp_nats": -46555.08306927441,
+            "hard_ab_bits": 67164.78747221582,
+            "hard_cd_bits": 67164.78747221582
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "dev": {
+          "words": 1000,
+          "targets_including_eos": 5996,
+          "original_symbol_counts": {
+            "a": 355,
+            "b": 364,
+            "c": 441,
+            "d": 420,
+            "e": 1089,
+            "f": 898,
+            "g": 717,
+            "h": 712
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -11593.755487898348,
+            "hard_ab_bits": 16726.253547670167,
+            "hard_cd_bits": 16726.253547670167
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        },
+        "test": {
+          "words": 10000,
+          "targets_including_eos": 60005,
+          "original_symbol_counts": {
+            "a": 3589,
+            "b": 3624,
+            "c": 4201,
+            "d": 4258,
+            "e": 11310,
+            "f": 8594,
+            "g": 7479,
+            "h": 6950
+          },
+          "small_prefix_words": 0,
+          "small_prefix_original_counts": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0,
+            "f": 0,
+            "g": 0,
+            "h": 0
+          },
+          "all_symbols_count_at_least_20": true,
+          "small_prefix_all_symbols_count_at_least_20": false,
+          "sample_oracle_totals": {
+            "logp_nats": -115826.39441488017,
+            "hard_ab_bits": 167102.16482639796,
+            "hard_cd_bits": 167102.16482639796
+          },
+          "scope": "Realized synthetic samples, not fitted-model scores; repeats are retained."
+        }
+      }
+    }
+  ]
+}

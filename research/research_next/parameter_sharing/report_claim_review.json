@@ -1,0 +1,226 @@
+{
+  "reviewed_utc": "2026-11-17T20:58:11.128499+00:00",
+  "report_sha256": "b3c638e19c886a9ef1c1a86415ffdff7b3a126cc98ae386dad32bedb2eb748e9",
+  "summary_sha256": "fd959bec2cb6174acd4b828550609539ba19201eac7e1a6e2524bf53a3620ede",
+  "independent_interpretation_sha256": "3a0089f148d978dfc208547c526622b3b7fbdaad87c40bfb0f251f7b0b5e8191",
+  "numerical_claims_passed": true,
+  "new_fit_or_score_run": false,
+  "primary_weighting": "word mean",
+  "main_cells": [
+    {
+      "version": "ZL",
+      "df": 50,
+      "condition": "FP",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.00987541206678066,
+      "loo_range": [
+        0.009703225416847948,
+        0.00994515410936474
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "ZL",
+      "df": 150,
+      "condition": "FP",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.023205904586162587,
+      "loo_range": [
+        0.0228861074372555,
+        0.02337362738218175
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "ZL",
+      "df": 50,
+      "condition": "KT",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.0658474697684529,
+      "loo_range": [
+        0.06463922777730514,
+        0.066147233613518
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "ZL",
+      "df": 150,
+      "condition": "KT",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.17323807638234182,
+      "loo_range": [
+        0.17063778686585312,
+        0.17438046440648186
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "ZL",
+      "df": 50,
+      "condition": "both",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.08653444998218694,
+      "loo_range": [
+        0.08514824750085026,
+        0.08695933488730359
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "ZL",
+      "df": 150,
+      "condition": "both",
+      "words": 9193,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.19625359161428832,
+      "loo_range": [
+        0.1936841330642351,
+        0.19720107138090145
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 50,
+      "condition": "FP",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.00975266831610328,
+      "loo_range": [
+        0.009590009122633013,
+        0.00981432437912044
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 150,
+      "condition": "FP",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.023144858329930598,
+      "loo_range": [
+        0.022811718963061972,
+        0.02329336139888863
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 50,
+      "condition": "KT",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.0652211078896919,
+      "loo_range": [
+        0.06412121886396913,
+        0.06551635523263627
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 150,
+      "condition": "KT",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.17306950085034858,
+      "loo_range": [
+        0.17064733571552088,
+        0.17408534780583337
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 50,
+      "condition": "both",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.0856659598658758,
+      "loo_range": [
+        0.08443845006908224,
+        0.08606467819804206
+      ],
+      "loo_all_positive": true
+    },
+    {
+      "version": "IT",
+      "df": 150,
+      "condition": "both",
+      "words": 9210,
+      "pages": 50,
+      "leaf_groups": 24,
+      "gain": 0.19601198396007147,
+      "loo_range": [
+        0.19368326798067498,
+        0.19685776782699865
+      ],
+      "loo_all_positive": true
+    }
+  ],
+  "max_main_difference_vs_replay": 5.35682609381638e-15,
+  "max_control_difference_vs_replay": 7.271960811294775e-15,
+  "max_loo_difference_from_saved_leaf_sums": 2.7755575615628914e-17,
+  "findings": [
+    {
+      "line": 13,
+      "priority": "clarify",
+      "issue": "bits/word alone does not specify the averaging weights.",
+      "replacement": "下表按旧confirm+reserve全部词次等权，给出相对普通ridge的平均改善；单位bits/完整原词，正值表示更好。"
+    },
+    {
+      "line": 26,
+      "priority": "clarify",
+      "issue": "Deletion is of evaluation leaf groups with the fixed fitted model, not retrained leave-one-leaf-out cross-validation.",
+      "replacement": "固定模型不重训，依次从评价集合删除一个完整叶组，对剩余词次重算平均；两版×两个DF×三种目标配对的12项比较相对普通ridge仍全部为正。"
+    },
+    {
+      "line": 60,
+      "priority": "clarify",
+      "issue": "Complete marginal controls is stronger than any finite specified matching scheme.",
+      "replacement": "加入f/p/k/t全部六种单对比较、预先列明的频数和位置等边际参照，报告残余不匹配，并保留全部条件与已知答案校准。"
+    },
+    {
+      "line": 52,
+      "priority": "clarify",
+      "issue": "The checks are not a formal all-input proof of code correctness.",
+      "replacement": "这些数值核验支持受检概率与数值实现符合给定定义，不能替代语义证据，也不证明实验具有普遍机制识别力。"
+    },
+    {
+      "line": 8,
+      "priority": "precision",
+      "issue": "All original spellings can be confused with all IVTFF annotations or unparsed uncertain text.",
+      "replacement": "比较按完整原词计费，包含EOS和固定原单位宇宙内的稀有身份；不等于覆盖全部未决IVTFF写法。"
+    },
+    {
+      "line": 60,
+      "priority": "precision",
+      "issue": "Image adjudication alone cannot establish sound values or meaning.",
+      "replacement": "独立图像判读可约束字形和书手分型；音值或词义还需独立语文、历史或可验证解读证据。"
+    }
+  ],
+  "scope_limitations": [
+    "No new scoring or fit. Saved summary and independent replay aggregation compared.",
+    "External historical citations at lines56-58 were not independently reopened in this review.",
+    "Hardware incident narrative was not independently investigated here."
+  ],
+  "additional_schema_note": "summary_v1.model_implementation_checks records all_passed=null for both scalar/GPU receipts, whose actual key is passed=true. This is a display/schema mapping issue, not a numerical-result contradiction; preserve/revise summary provenance if corrected."
+}
