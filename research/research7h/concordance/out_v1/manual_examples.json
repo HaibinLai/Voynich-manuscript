@@ -1,0 +1,656 @@
+{
+  "all_passed": true,
+  "examples": [
+    {
+      "raw": "a,,b",
+      "display": "a,,b",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "uncertain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "",
+          "normalized": null,
+          "left_boundary": "uncertain",
+          "right_boundary": "uncertain",
+          "display_start": 2,
+          "display_end": 2
+        },
+        {
+          "raw": "b",
+          "normalized": "b",
+          "left_boundary": "uncertain",
+          "right_boundary": "end",
+          "display_start": 3,
+          "display_end": 4
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "b"
+      ]
+    },
+    {
+      "raw": ".a.",
+      "display": ".a.",
+      "slots": [
+        {
+          "raw": "",
+          "normalized": null,
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 0
+        },
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 1,
+          "display_end": 2
+        },
+        {
+          "raw": "",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 3,
+          "display_end": 3
+        }
+      ],
+      "expected_normalized": [
+        null,
+        "a",
+        null
+      ]
+    },
+    {
+      "raw": "a.[b.c].d",
+      "display": "a.[b.c].d",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "[b.c]",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 7
+        },
+        {
+          "raw": "d",
+          "normalized": "d",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 8,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "d"
+      ]
+    },
+    {
+      "raw": "a.[b,c].d",
+      "display": "a.[b,c].d",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "[b,c]",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 7
+        },
+        {
+          "raw": "d",
+          "normalized": "d",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 8,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "d"
+      ]
+    },
+    {
+      "raw": "a.***.b",
+      "display": "a.***.b",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "***",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 5
+        },
+        {
+          "raw": "b",
+          "normalized": "b",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 6,
+          "display_end": 7
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "b"
+      ]
+    },
+    {
+      "raw": "qo[k:t]dy",
+      "display": "qo[k:t]dy",
+      "slots": [
+        {
+          "raw": "qo[k:t]dy",
+          "normalized": null,
+          "left_boundary": "start",
+          "right_boundary": "end",
+          "display_start": 0,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        null
+      ]
+    },
+    {
+      "raw": "q@003;k.q@03;k",
+      "display": "q@003;k.q@03;k",
+      "slots": [
+        {
+          "raw": "q@003;k",
+          "normalized": "q@003;k",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 7
+        },
+        {
+          "raw": "q@03;k",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 8,
+          "display_end": 14
+        }
+      ],
+      "expected_normalized": [
+        "q@003;k",
+        null
+      ]
+    },
+    {
+      "raw": "c'y.c’y",
+      "display": "c'y.c’y",
+      "slots": [
+        {
+          "raw": "c'y",
+          "normalized": "c'y",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 3
+        },
+        {
+          "raw": "c’y",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 4,
+          "display_end": 7
+        }
+      ],
+      "expected_normalized": [
+        "c'y",
+        null
+      ]
+    },
+    {
+      "raw": "{qok}.qo{k}dy.{{q}}",
+      "display": "{qok}.qo{k}dy.{{q}}",
+      "slots": [
+        {
+          "raw": "{qok}",
+          "normalized": "qok",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 5
+        },
+        {
+          "raw": "qo{k}dy",
+          "normalized": "qokdy",
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 6,
+          "display_end": 13
+        },
+        {
+          "raw": "{{q}}",
+          "normalized": "q",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 14,
+          "display_end": 19
+        }
+      ],
+      "expected_normalized": [
+        "qok",
+        "qokdy",
+        "q"
+      ]
+    },
+    {
+      "raw": "a.{b.c",
+      "display": "a.{b.c",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "{b.c",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 2,
+          "display_end": 6
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null
+      ]
+    },
+    {
+      "raw": "a.b}.c",
+      "display": "a.b}.c",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "b}",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 4
+        },
+        {
+          "raw": "c",
+          "normalized": "c",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 5,
+          "display_end": 6
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "c"
+      ]
+    },
+    {
+      "raw": "a.[b,c.d",
+      "display": "a.[b,c.d",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "[b,c.d",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 2,
+          "display_end": 8
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null
+      ]
+    },
+    {
+      "raw": "a.{b,c}.d",
+      "display": "a.{b,c}.d",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "{b,c}",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 7
+        },
+        {
+          "raw": "d",
+          "normalized": "d",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 8,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null,
+        "d"
+      ]
+    },
+    {
+      "raw": "qo<->k.qo<~>k",
+      "display": "qo k.qo k",
+      "slots": [
+        {
+          "raw": "qo",
+          "normalized": "qo",
+          "left_boundary": "start",
+          "right_boundary": "illustration",
+          "display_start": 0,
+          "display_end": 2
+        },
+        {
+          "raw": "k",
+          "normalized": "k",
+          "left_boundary": "illustration",
+          "right_boundary": "certain",
+          "display_start": 3,
+          "display_end": 4
+        },
+        {
+          "raw": "qo",
+          "normalized": "qo",
+          "left_boundary": "certain",
+          "right_boundary": "illustration",
+          "display_start": 5,
+          "display_end": 7
+        },
+        {
+          "raw": "k",
+          "normalized": "k",
+          "left_boundary": "illustration",
+          "right_boundary": "end",
+          "display_start": 8,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        "qo",
+        "k",
+        "qo",
+        "k"
+      ]
+    },
+    {
+      "raw": "qo<!note>k",
+      "display": "qok",
+      "slots": [
+        {
+          "raw": "qo<!note>k",
+          "normalized": "qok",
+          "left_boundary": "start",
+          "right_boundary": "end",
+          "display_start": 0,
+          "display_end": 3
+        }
+      ],
+      "expected_normalized": [
+        "qok"
+      ]
+    },
+    {
+      "raw": "<%>a<$>",
+      "display": "a",
+      "slots": [
+        {
+          "raw": "<%>a<$>",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "end",
+          "display_start": 0,
+          "display_end": 1
+        }
+      ],
+      "expected_normalized": [
+        "a"
+      ]
+    },
+    {
+      "raw": "a,a.b.[a:b].a",
+      "display": "a,a.b.[a:b].a",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "uncertain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "uncertain",
+          "right_boundary": "certain",
+          "display_start": 2,
+          "display_end": 3
+        },
+        {
+          "raw": "b",
+          "normalized": "b",
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 4,
+          "display_end": 5
+        },
+        {
+          "raw": "[a:b]",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "certain",
+          "display_start": 6,
+          "display_end": 11
+        },
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 12,
+          "display_end": 13
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        "a",
+        "b",
+        null,
+        "a"
+      ]
+    },
+    {
+      "raw": "aaa",
+      "display": "aaa",
+      "slots": [
+        {
+          "raw": "aaa",
+          "normalized": "aaa",
+          "left_boundary": "start",
+          "right_boundary": "end",
+          "display_start": 0,
+          "display_end": 3
+        }
+      ],
+      "expected_normalized": [
+        "aaa"
+      ]
+    },
+    {
+      "raw": "😀.A",
+      "display": "😀.a",
+      "slots": [
+        {
+          "raw": "😀",
+          "normalized": null,
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "A",
+          "normalized": "a",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 2,
+          "display_end": 3
+        }
+      ],
+      "expected_normalized": [
+        null,
+        "a"
+      ]
+    },
+    {
+      "raw": "a.[{b]}.c",
+      "display": "a.[{b]}.c",
+      "slots": [
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 1
+        },
+        {
+          "raw": "[{b]}.c",
+          "normalized": null,
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 2,
+          "display_end": 9
+        }
+      ],
+      "expected_normalized": [
+        "a",
+        null
+      ]
+    },
+    {
+      "raw": "",
+      "display": "",
+      "slots": [
+        {
+          "raw": "",
+          "normalized": null,
+          "left_boundary": "start",
+          "right_boundary": "end",
+          "display_start": 0,
+          "display_end": 0
+        }
+      ],
+      "expected_normalized": [
+        null
+      ]
+    },
+    {
+      "raw": "<script>alert(1)</script>.a",
+      "display": "alert(1).a",
+      "slots": [
+        {
+          "raw": "<script>alert(1)</script>",
+          "normalized": null,
+          "left_boundary": "start",
+          "right_boundary": "certain",
+          "display_start": 0,
+          "display_end": 8
+        },
+        {
+          "raw": "a",
+          "normalized": "a",
+          "left_boundary": "certain",
+          "right_boundary": "end",
+          "display_start": 9,
+          "display_end": 10
+        }
+      ],
+      "expected_normalized": [
+        null,
+        "a"
+      ]
+    }
+  ],
+  "query_checks": {
+    "exact_a_in_example": 3,
+    "exact_a_excluding_uncertain": 1,
+    "literal_aa_in_aaa_locus_count": 1,
+    "empty_query_count": 0
+  },
+  "note": "Raw strings are data. Rendering and download escaping are separately tested in the website."
+}

@@ -1,0 +1,30 @@
+全书双版词形索引：独立验证复现
+
+本目录不导入作者 build.py 或规范化函数。replay.py 从公开转写另写词法扫描器，先验证人工例，再逐值重建全部记录、槽、边界、展示码点偏移、postings、locator列表和元数据计数；图片链接直接核对保存的Yale清单及20页receipt。
+
+目录布局保持 research/{sources,study20,research7h/concordance}。Python需标准库；前端纯函数检查使用Node。不要覆盖已有输出：为每次运行指定新的输出目录。
+
+1. 人工例与数据层核验（在本目录）：
+   python3 replay.py
+   python3 replay.py --data ../out_v1/data.json --output /绝对路径/新数据审计目录
+
+2. 作者已保存人工例与双版完整TXT另作核验：
+   python3 verify_saved_outputs.py --bundle ../out_v1 --output /绝对路径/新附加审计目录
+
+3. 前端查询/导出/URL纯函数核验：
+   node verify_frontend.js ../out_v1/data.json /绝对路径/仓库/site/concordance.js /绝对路径/新数据审计目录/query_fixtures.json /绝对路径/新前端审计目录
+
+前端核验仅读取原JS并在Node VM调用公开纯函数，不创建DOM、不访问网络，也不点击下载或复制按钮。实际浏览器验证需另记，不能用此结果替代。
+
+零命中分页约定
+原audit_v1/query_fixtures.json用至少1页的约定；前端实际为ceil(命中行位/50)，零命中时page_count=0、当前page保留1哨兵。原设计未规定这一表示差别。
+node_v1、node_v2均保留19个原始fixture差异及zero_result_page_convention.json。verify_frontend.js显式采用零结果0页的显示约定后比较其他全部字段；没有改旧fixture或replay.py，词次/行位/槽/过滤结果无差异。
+node_v2额外加入异常重复locator对照、重叠字面查询、Unicode与多槽同记录测试；node_v1的脚本快照保留在该目录。
+
+失败与修正记录
+audit_failures保留新增人工前端数据例时的一次审计脚本语法错误及修正说明；错误发生在执行前，未运行或修改作者数据/前端。修正后node_v2通过。此记录不是作者索引失败。
+
+范围
+这是公开转写的描述索引核验，包含已经揭晓的reserve资料；不产生新科学评分、假设检验、词义或译文，也不是独立OCR/逐字图像认证。归一化保留歧义，不代表原手稿读法已确定。
+
+最新前端绑定：node_v3 对新增出处下载链接后的JS重新完成同一组纯函数检查，SHA=52da9754c79643dd9f59bd551baf813ee3faca0b1f3faaf5863f8fa519598f6b。旧node_v1/v2记录保留。

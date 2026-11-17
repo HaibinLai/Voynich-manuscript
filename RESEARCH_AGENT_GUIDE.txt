@@ -35,6 +35,10 @@ python3 research/research7h/final_reserve/report_saved.py --run research/researc
 
 跨行探索与上述预留评估分开：line_boundary_design/ 是只用允许 train+legacy/dev 记录的资格与设计审查；line_boundary_prediction/ 的协议、toy 核验和独立审核准备已冻结，freeze_status.json 是原设计冻结时的历史收据；后续 run_v1/complete.json 与 independent_audit/audit_report.json 已记录全部三表示的真实 dev 评价及 90 个选参点复算。执行范围仅为 train+legacy 内选参和 dev 描述性评价，不自动获得 confirm/reserve 新评分授权；需先核对当时的状态、执行门槛与剩余时间。合成校准结果不等于真实跨行结果。
 
+全书资料索引
+concordance/ 按原ZL/IT两版记录建立阅读索引，data.json含10600条带版本行位；它不是10600条独立物理书写行，也不是全书OCR认证。未决括号/缺字保留、空槽不压缩、逗号两侧标不确定；另一版按完整locator并列，不按槽强配。精确模式按词次，literal模式按行位，先过滤后分页，下载全量。原始raw与小写/去普通标记的display不同，普通尖括号删除可能连接两侧；插图中断显示为空格。新索引槽号不等其他实验槽号。
+图链只来自确切保存清单或原20页receipt，50分区仍仅馆藏入口；无新逐行框。数据审计、网页纯查询与实际浏览器检查各有不同范围，不互相替代。公开全文已访问，不再声称未来候选是在未见reserve上设计。再生成/审计命令见README，输出用新路径；不要覆盖原数据与失败记录。
+
 复现习惯
 先运行 python3 scripts/verify_release.py 核验公开快照。可选 --replay anchor copy allograph metadata --output 仓库外新目录，会调用四个保存证据复算入口；它不重新选参数，也不打开新分区。20页便携图文工作包由 scripts/export_review_bundle.py 生成，原始逐页JSON与JPEG保持字节不变。
 优先使用各目录 public_reproduce / replay 入口，将新结果写入不存在的新目录。不要覆盖原协议、选参、随机数组、错误诊断或已完成分数。发现错误应保留旧记录、新增带时间和哈希的说明，再做明确版本的修复。错误修复与因为结果不理想而换模型不同。

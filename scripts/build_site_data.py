@@ -275,6 +275,25 @@ def crossline_payload(research, site):
                 summary_sha256=digest, audit_sha256=hashlib.sha256((root/"independent_audit/audit_report.json").read_bytes()).hexdigest())
 
 
+def export_concordance(research, site):
+    root = research / "concordance"
+    audit = read(root / "independent_audit/audit_report.json", {})
+    data_path = root / "out_v1/data.json"
+    if not audit.get("all_passed") or not data_path.exists():
+        return
+    digest = hashlib.sha256(data_path.read_bytes()).hexdigest()
+    assert audit["data_sha256"] == digest and audit["source_bytes_unchanged"] is True
+    assert audit["frontend_sha256"] == hashlib.sha256((site / "concordance.js").read_bytes()).hexdigest()
+    assets = export_assets(root, site, [
+        ("data", "out_v1/data.json", "data/concordance.json"),
+        ("summary", "out_v1/summary.json", "downloads/concordance-summary.json"),
+        ("zl_text", "out_v1/ZL_lines.txt", "downloads/concordance-ZL.txt"),
+        ("it_text", "out_v1/IT_lines.txt", "downloads/concordance-IT.txt"),
+        ("guide", "资料说明.txt", "downloads/concordance-guide.txt"),
+        ("audit", "independent_audit/audit_report.json", "downloads/concordance-audit.json")])
+    assert hashlib.sha256((site / assets["data"]).read_bytes()).hexdigest() == digest
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True,
@@ -338,7 +357,9 @@ def main():
         "publication_checks/unified_saved_replay_20261117.json", "synthesis_audit/claims_checklist.json"]
     stage2_input_names += ["line_boundary_prediction/run_v1/complete.json",
                           "line_boundary_prediction/independent_audit/audit_report.json",
-                          "line_boundary_prediction/website_data.json"]
+                          "line_boundary_prediction/website_data.json",
+                          "concordance/out_v1/summary.json",
+                          "concordance/independent_audit/audit_report.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -606,7 +627,9 @@ def main():
         for row in cipher_search["results"]:
             original = next(r for r in cipher_evaluation["results"] if all(r[k] == row[k] for k in ("representation", "language", "mode")))
             assert row["observed"] == original["observed"] and row["effect"] == original["effect"]
-            row["null_page_mean_lexicon_hit"] = sum(r["page_mean_lexicon_hit"] for r in original["nulls"])/len(original["nulls"])
+            # Explicit accurate summation avoids Python-version-dependent
+            # rounding in this display-only average of saved null results.
+            row["null_page_mean_lexicon_hit"] = math.fsum(r["page_mean_lexicon_hit"] for r in original["nulls"])/len(original["nulls"])
         cipher_search["assets"] = export_assets(cipher_dir, site, [
             ("report", "研究报告.txt", "downloads/cipher-search-report.txt"),
             ("figure_png", "固定替换检验.png", "assets/cipher-search.png"),
@@ -779,6 +802,7 @@ def main():
         "research_results": "Original analyses and reports produced in this repository; observational structure is not decipherment.",
         "literature": "See literature.json for original publication links and reviewed evidence.",
         "hash_verification_scope": "Source hashes match published mirror receipts; not a fresh byte comparison with the upstream server."})
+    export_concordance(research, site)
     manifest = []
     for path in sorted(site.rglob("*")):
         if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js"} and path.name != "manifest.json":

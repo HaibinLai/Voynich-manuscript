@@ -1,0 +1,597 @@
+[
+  {
+    "raw": "a.b",
+    "expected_display": "a.b",
+    "expected_normalized": [
+      "a",
+      "b"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "b",
+        "normalized": "b",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 2,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "a,b",
+    "expected_display": "a,b",
+    "expected_normalized": [
+      "a",
+      "b"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "uncertain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "b",
+        "normalized": "b",
+        "left_boundary": "uncertain",
+        "right_boundary": "end",
+        "display_start": 2,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "a,,b",
+    "expected_display": "a,,b",
+    "expected_normalized": [
+      "a",
+      null,
+      "b"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "uncertain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "",
+        "normalized": null,
+        "left_boundary": "uncertain",
+        "right_boundary": "uncertain",
+        "display_start": 2,
+        "display_end": 2
+      },
+      {
+        "raw": "b",
+        "normalized": "b",
+        "left_boundary": "uncertain",
+        "right_boundary": "end",
+        "display_start": 3,
+        "display_end": 4
+      }
+    ]
+  },
+  {
+    "raw": ".a.",
+    "expected_display": ".a.",
+    "expected_normalized": [
+      null,
+      "a",
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 0
+      },
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "certain",
+        "right_boundary": "certain",
+        "display_start": 1,
+        "display_end": 2
+      },
+      {
+        "raw": "",
+        "normalized": null,
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 3,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "a.[b.c].d",
+    "expected_display": "a.[b.c].d",
+    "expected_normalized": [
+      "a",
+      null,
+      "d"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "[b.c]",
+        "normalized": null,
+        "left_boundary": "certain",
+        "right_boundary": "certain",
+        "display_start": 2,
+        "display_end": 7
+      },
+      {
+        "raw": "d",
+        "normalized": "d",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 8,
+        "display_end": 9
+      }
+    ]
+  },
+  {
+    "raw": "a.[b,c].d",
+    "expected_display": "a.[b,c].d",
+    "expected_normalized": [
+      "a",
+      null,
+      "d"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "[b,c]",
+        "normalized": null,
+        "left_boundary": "certain",
+        "right_boundary": "certain",
+        "display_start": 2,
+        "display_end": 7
+      },
+      {
+        "raw": "d",
+        "normalized": "d",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 8,
+        "display_end": 9
+      }
+    ]
+  },
+  {
+    "raw": "a.***.b",
+    "expected_display": "a.***.b",
+    "expected_normalized": [
+      "a",
+      null,
+      "b"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "***",
+        "normalized": null,
+        "left_boundary": "certain",
+        "right_boundary": "certain",
+        "display_start": 2,
+        "display_end": 5
+      },
+      {
+        "raw": "b",
+        "normalized": "b",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 6,
+        "display_end": 7
+      }
+    ]
+  },
+  {
+    "raw": "qo[k:t]dy",
+    "expected_display": "qo[k:t]dy",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qo[k:t]dy",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 9
+      }
+    ]
+  },
+  {
+    "raw": "q@003;k",
+    "expected_display": "q@003;k",
+    "expected_normalized": [
+      "q@003;k"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "q@003;k",
+        "normalized": "q@003;k",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 7
+      }
+    ]
+  },
+  {
+    "raw": "q@03;k",
+    "expected_display": "q@03;k",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "q@03;k",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 6
+      }
+    ]
+  },
+  {
+    "raw": "q@1000;k",
+    "expected_display": "q@1000;k",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "q@1000;k",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 8
+      }
+    ]
+  },
+  {
+    "raw": "q'o",
+    "expected_display": "q'o",
+    "expected_normalized": [
+      "q'o"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "q'o",
+        "normalized": "q'o",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "q’o",
+    "expected_display": "q’o",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "q’o",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "{qok}",
+    "expected_display": "{qok}",
+    "expected_normalized": [
+      "qok"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "{qok}",
+        "normalized": "qok",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 5
+      }
+    ]
+  },
+  {
+    "raw": "qo{k}dy",
+    "expected_display": "qo{k}dy",
+    "expected_normalized": [
+      "qokdy"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qo{k}dy",
+        "normalized": "qokdy",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 7
+      }
+    ]
+  },
+  {
+    "raw": "{q{o}k}",
+    "expected_display": "{q{o}k}",
+    "expected_normalized": [
+      "qok"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "{q{o}k}",
+        "normalized": "qok",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 7
+      }
+    ]
+  },
+  {
+    "raw": "{a.b}",
+    "expected_display": "{a.b}",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "{a.b}",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 5
+      }
+    ]
+  },
+  {
+    "raw": "{qok.a",
+    "expected_display": "{qok.a",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "{qok.a",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 6
+      }
+    ]
+  },
+  {
+    "raw": "qok}.a",
+    "expected_display": "qok}.a",
+    "expected_normalized": [
+      null,
+      "a"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qok}",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 4
+      },
+      {
+        "raw": "a",
+        "normalized": "a",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 5,
+        "display_end": 6
+      }
+    ]
+  },
+  {
+    "raw": "[a}.b",
+    "expected_display": "[a}.b",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "[a}.b",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 5
+      }
+    ]
+  },
+  {
+    "raw": "qo<->k",
+    "expected_display": "qo k",
+    "expected_normalized": [
+      "qo",
+      "k"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qo",
+        "normalized": "qo",
+        "left_boundary": "start",
+        "right_boundary": "illustration",
+        "display_start": 0,
+        "display_end": 2
+      },
+      {
+        "raw": "k",
+        "normalized": "k",
+        "left_boundary": "illustration",
+        "right_boundary": "end",
+        "display_start": 3,
+        "display_end": 4
+      }
+    ]
+  },
+  {
+    "raw": "qo<~>k",
+    "expected_display": "qo k",
+    "expected_normalized": [
+      "qo",
+      "k"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qo",
+        "normalized": "qo",
+        "left_boundary": "start",
+        "right_boundary": "illustration",
+        "display_start": 0,
+        "display_end": 2
+      },
+      {
+        "raw": "k",
+        "normalized": "k",
+        "left_boundary": "illustration",
+        "right_boundary": "end",
+        "display_start": 3,
+        "display_end": 4
+      }
+    ]
+  },
+  {
+    "raw": "{a<->b}",
+    "expected_display": "{a b}",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "{a<->b}",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 5
+      }
+    ]
+  },
+  {
+    "raw": "qo<note>k",
+    "expected_display": "qok",
+    "expected_normalized": [
+      "qok"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "qo<note>k",
+        "normalized": "qok",
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 3
+      }
+    ]
+  },
+  {
+    "raw": "A.😀b.C",
+    "expected_display": "a.😀b.c",
+    "expected_normalized": [
+      "a",
+      null,
+      "c"
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "A",
+        "normalized": "a",
+        "left_boundary": "start",
+        "right_boundary": "certain",
+        "display_start": 0,
+        "display_end": 1
+      },
+      {
+        "raw": "😀b",
+        "normalized": null,
+        "left_boundary": "certain",
+        "right_boundary": "certain",
+        "display_start": 2,
+        "display_end": 4
+      },
+      {
+        "raw": "C",
+        "normalized": "c",
+        "left_boundary": "certain",
+        "right_boundary": "end",
+        "display_start": 5,
+        "display_end": 6
+      }
+    ]
+  },
+  {
+    "raw": "<script>alert(1)</script>",
+    "expected_display": "alert(1)",
+    "expected_normalized": [
+      null
+    ],
+    "reconstructed_slots": [
+      {
+        "raw": "<script>alert(1)</script>",
+        "normalized": null,
+        "left_boundary": "start",
+        "right_boundary": "end",
+        "display_start": 0,
+        "display_end": 8
+      }
+    ]
+  }
+]

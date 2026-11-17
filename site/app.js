@@ -397,17 +397,19 @@ function renderJournal() {
 
 function route() {
   if(!data)return;
-  const [routeName,query='']=(location.hash.slice(1)||'overview').split('?');
-  const view=['overview','manuscript','experiments','literature','journal'].includes(routeName)?routeName:'overview';
+  const hash=location.hash.slice(1)||'overview',separator=hash.indexOf('?');
+  const routeName=separator<0?hash:hash.slice(0,separator),query=separator<0?'':hash.slice(separator+1);
+  const view=['overview','manuscript','concordance','experiments','literature','journal'].includes(routeName)?routeName:'overview';
   const params=new URLSearchParams(query),folio=params.get('folio');
   if(folio&&data.overview.folios.some(p=>p.folio===folio)){state.folio=folio;state.group='all';state.split='all';}
   $$('.view').forEach(v=>{v.hidden=v.id!==view});
   $$('[data-route]').forEach(a=>{a.classList.toggle('active',a.dataset.route===view);if(a.dataset.route===view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   if(view==='manuscript')renderManuscript();
+  if(view==='concordance')renderConcordance(params);
   if(view==='experiments')renderExperiments();
   if(view==='literature')renderLiterature();
   if(view==='journal')renderJournal();
-  document.title=({overview:'研究概览',manuscript:'原图与转写',experiments:'结构实验',literature:'文献地图',journal:'进展与复现'}[view])+' · 伏尼契手稿研究台';
+  document.title=({overview:'研究概览',manuscript:'原图与转写',concordance:'词形索引',experiments:'结构实验',literature:'文献地图',journal:'进展与复现'}[view])+' · 伏尼契手稿研究台';
   const targetId=params.get('study'),target=targetId?document.getElementById(targetId):null;
   if(target&&document.getElementById(view).contains(target)) {
     for(let node=target;node&&node.id!==view;node=node.parentElement)if(node.tagName==='DETAILS')node.open=true;

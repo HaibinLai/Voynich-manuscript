@@ -130,7 +130,8 @@ def main():
         copy(Path('metadata_sensitivity/artifact_manifest.json'))
     for folder in ['synthesis_audit','label_body_design','line_boundary_design','line_boundary_calibration',
                    'final_reserve/new_saved_replay','cipher_controls/voynich_substitution',
-                   'line_boundary_prediction','line_boundary_prediction/independent_audit']:
+                   'line_boundary_prediction','line_boundary_prediction/independent_audit',
+                   'concordance','concordance/independent_audit']:
         parent=src/folder;manifest=parent/'artifact_manifest.json'
         if not manifest.exists():continue
         inventory=json.loads(manifest.read_text())

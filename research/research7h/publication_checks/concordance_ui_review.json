@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-17T15:58:40.351391+00:00",
+  "status": "implemented_and_reviewed_with_download_capture_limit",
+  "frontend_files": {
+    "site/concordance.js": "52da9754c79643dd9f59bd551baf813ee3faca0b1f3faaf5863f8fa519598f6b",
+    "site/concordance.css": "e01d937a0fcfc09556dd470938eb6dfbfc44392f7f95ff1f64e958655d81c4ff"
+  },
+  "data_sha256": "c45c83feff0f051c0e499e0e77ef830af83c9daac11135c5967d321d4624af8c",
+  "independent_query_export_audit": {
+    "path": "concordance/independent_audit/node_v3/audit_report.json",
+    "sha256": "706840be66202e94e7049b7638e4e8e8ebd45135e294fcf063a2d206582e1c56",
+    "all_passed": true,
+    "exhaustive_exact_queries": 31824,
+    "fixture_cases": 46,
+    "additional_literal_queries": 20,
+    "all_filtered_exports_checked": true
+  },
+  "browser": {
+    "surface": "Chrome extension through CUA",
+    "url": "http://localhost:8765/#concordance",
+    "observed_checks": [
+      "默认 exact / ZL / 空查询，不自动执行示例",
+      "点击填入示例后仅输入框变化；Enter提交成功",
+      "ZL daiin：847词次、735行位、206转写分区、101叶组；首屏50卡",
+      "排除不确定边界后783词次、687行位、205分区、101叶组",
+      "第2页仍50卡且总数不变；浏览器后退恢复第1页与边界过滤",
+      "切IT版本后显示该版数据；literal ? 为115行位、59分区、40叶组",
+      "literal不显示词次，禁用不确定边界筛选",
+      "零结果显示0行位与说明，仍允许导出零匹配JSON",
+      "复制按钮实际显示查询链接已复制；未取得剪贴板内容回读",
+      "点击下载实际显示全部687行/783词与735行/847词的反馈",
+      "键盘Tab从查询框进入提交按钮",
+      "两个viewport均未出现页面横向溢出"
+    ],
+    "viewports": [
+      {
+        "width": 390,
+        "height": 844,
+        "document_scroll_width": 390,
+        "content_width": 350
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "document_scroll_width": 1280
+      }
+    ],
+    "viewport_reset": true,
+    "completion_summary_sent": true,
+    "download_button_clicked": true,
+    "download_event_path_received": false,
+    "downloaded_file_content_inspected": false,
+    "clipboard_content_roundtrip_verified": false
+  },
+  "screenshots": [
+    {
+      "path": "publication_checks/concordance_mobile390.jpg",
+      "sha256": "4432ef4cad66e64f6470d9bdd7f38a3977ea291f99fc79c16caa43baff10c6d4",
+      "bytes": 35412
+    },
+    {
+      "path": "publication_checks/concordance_desktop1280.jpg",
+      "sha256": "6b2370e6be38dd2f514c1bb1beb888deb2b26dae889e25a684bf83ef4306db2d",
+      "bytes": 65484
+    }
+  ],
+  "limitations": [
+    "默认viewport最初宽度为0导致截图失败；设置请求的390和1280尺寸后截图与DOM宽度检查成功，结束已reset。",
+    "浏览器download事件两次超时且未返回文件路径；未将界面导出反馈当作实际落盘文件已验证。完整导出对象另由独立Node审核逐项验证。",
+    "没有新统计检验、语言模型评分、原图坐标生成或转写修改。"
+  ]
+}

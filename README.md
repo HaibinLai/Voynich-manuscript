@@ -6,6 +6,8 @@
 
 ## 当前内容
 
+- [全书词形索引](https://haibinlai.github.io/Voynich-manuscript/#concordance)：ZL 5,385 条、IT 5,215 条公开转写行位，可查精确词形或字面文字、切换版本、追溯原串并下载全部匹配。保留缺字、备选与不确定边界；全书可检索不等于全书已独立校对。
+
 - 20 页原图与 ZL / IT 转写对照，332 个位置的高清阅读记录和近似定位框；保留最初 40 处重点裁图。这是视觉对应复核，不是独立盲转写或逐字认证。
 - 第一轮 17 页线性正文的四项结构实验，含原始随机对照数组与版本敏感性。
 - 扩展阶段一：按整叶划分数据，28 页 / 13 叶组 / 5,025 词形的确认集；22 页的后续固定检验现已完成。段首格式信号保持，相邻相似在更强对照下减弱。
@@ -129,6 +131,15 @@ python3 -m http.server 8000 --directory site
 ```
 
 打开 `http://localhost:8000/`。网站不依赖外部脚本、统计追踪或第三方字体。
+
+全书索引可只用标准库重新生成与独立核验。输入来自仓库公开转写和已保存图像清单，输出必须是新目录：
+
+```sh
+python3 research/research7h/concordance/build.py --output /tmp/voynich-concordance-new
+python3 research/research7h/concordance/independent_audit/replay.py --data /tmp/voynich-concordance-new/data.json --output /tmp/voynich-concordance-audit-new
+```
+
+构建时间字段会变化；原始来源、全部行位和索引内容按固定规则复核。这个索引包括已揭晓的预留资料，不形成新的未见测试集。网页纯函数与浏览器操作检查另有记录。
 
 原图抽取脚本需研究者自己的 PDF 及本地页码清单；本仓库不分发整本现代影印出版物，也不包含私人文件路径。
 
