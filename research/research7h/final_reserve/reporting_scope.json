@@ -1,0 +1,202 @@
+{
+  "created_utc": "2026-11-17T13:55:42.600154+00:00",
+  "status": "pre_opening_interpretation_addendum_no_new_thresholds",
+  "pre_opening_check": {
+    "marker": "final_reserve/reserve_opened.json",
+    "present_before_writing": false,
+    "checked_utc": "2026-11-17T13:55:42.600154+00:00",
+    "meaning": "No recorded reserve opening under the frozen runner at this check; does not imply the public manuscript or aggregate prior art was never seen."
+  },
+  "authority": "Existing final_reserve/protocol.txt and metadata_scope_addendum.txt control the experiment. This document only constrains reporting; it changes no frozen protocol, code, input, model, contrast, cutoff or number.",
+  "representations": {
+    "primary": "ZL_EVA",
+    "fixed_sensitivities": [
+      "ZL_merged",
+      "IT_EVA"
+    ],
+    "main_combinations": 30,
+    "independence": "Three encodings/transcriptions share one manuscript and historical transcription dependencies; ten contrasts also share data, baselines and model components. They are not ten independent language tests."
+  },
+  "contrasts": [
+    {
+      "id": "style",
+      "direction": "global→style mixture",
+      "population": "all_words",
+      "can_support": "固定页级 H、位置与全局混合在同目标上改善条件词形预测。",
+      "cannot_support": "不证明手数、真实作者身份、语言/章节因果；原 H 口径并非完整逐行书手控制。"
+    },
+    {
+      "id": "boundary_last",
+      "direction": "boundary base→previous last",
+      "population": "nonoverlapping_interior_pairs",
+      "can_support": "前词末单位对固定非重叠内部目标的额外预测价值。",
+      "cannot_support": "不是语法、互信息值、词义或跨行结论；共享续写相消不免除完整成本。"
+    },
+    {
+      "id": "gallows_vs_position",
+      "direction": "position_full→paid gallows",
+      "population": "paragraph_first_words",
+      "can_support": "付清前缀成本后的段首因子优于原冻结位置混合。",
+      "cannot_support": "不证明高杆字形语义/因果；段首标签可能受醒目首字形影响。"
+    },
+    {
+      "id": "gallows_vs_any_first",
+      "direction": "any-first→paid gallows",
+      "population": "paragraph_first_words",
+      "can_support": "已付费的特定高杆因子相对已选任意首单位因子的预测比较。",
+      "cannot_support": "不证明历史高杆机制；不是把高杆单独加入同容量模型的无条件因果效应。"
+    },
+    {
+      "id": "copy_total",
+      "direction": "style→edit HV",
+      "population": "all_words",
+      "can_support": "固定合法过去上下文的单编辑复制混合对预测有帮助。",
+      "cannot_support": "不是历史复制算法真实似然，更不能确定作者抄写机制或排除语言。"
+    },
+    {
+      "id": "copy_edit_vs_exact",
+      "direction": "matched exact HV→edit HV",
+      "population": "all_words",
+      "can_support": "相同源窗口下编辑模型与精确复制模型的条件预测比较。",
+      "cannot_support": "不能解释为纯编辑路径单因素因果效应；模型保留各自既定混合/参数。"
+    },
+    {
+      "id": "copy_vertical",
+      "direction": "matched edit H→edit HV",
+      "population": "all_words",
+      "can_support": "同源窗口约定下两种已选 H/HV 观察器的预测差。",
+      "cannot_support": "H/HV 的 rho/权重各自 dev 选择；不是严格仅开关 V 的单参数消融，也不证实上一行像素位置复制。"
+    },
+    {
+      "id": "allograph_FP",
+      "direction": "raw→FP quotient + restore",
+      "population": "all_words",
+      "can_support": "付清可逆恢复费用后的参数共享方案有无预测收益。",
+      "cannot_support": "不证明 f/p 同音、同值、历史异体或语义；恢复模型增加容量/选择预算。"
+    },
+    {
+      "id": "allograph_KT",
+      "direction": "raw→KT quotient + restore",
+      "population": "all_words",
+      "can_support": "付清可逆恢复费用后的参数共享方案有无预测收益。",
+      "cannot_support": "不证明 k/t 同音、同值、历史异体或语义；须保留全局恢复敏感性。"
+    },
+    {
+      "id": "allograph_both",
+      "direction": "raw→FP+KT quotient + restore",
+      "population": "all_words",
+      "can_support": "两个预定合并同时应用并支付原字形恢复的预测成本比较。",
+      "cannot_support": "不证明两字对成立，也不能把合并流较低熵单独写成优势。"
+    }
+  ],
+  "score_scope": {
+    "orientation": "Positive = before-model cost minus after-model cost; negative favors before model on these targets.",
+    "unit": "bits per retained original normalized complete nonempty word",
+    "comparability": "Pair every comparison on identical target coordinates and word identities within its representation. All-word, interior-pair and paragraph-first populations must never be ranked by their absolute losses. Different representations need not have identical words or units.",
+    "costs": "Include EOS, nonempty normalization where appropriate, finite-universe target identity escape, and allograph restoration exactly once under the frozen implementation. Metadata/layout is supplied and its transmission cost is excluded.",
+    "components": "For allograph show quotient/restoration/escape/complete costs, all nine global-only restoration sensitivities, and raw baseline; quotient-only entropy is not a valid win.",
+    "capacity": "Candidate models may have different capacities and tuning budgets. In particular raw and quotient-plus-restoration models are not capacity matched. Held-out score improvement does not identify phonetics, semantics or historical generation."
+  },
+  "aggregation": {
+    "main": "mean paired word gain within eligible page, then equal eligible-page mean within leaf, then equal eligible-leaf mean",
+    "required": [
+      "eligible words/pages/leaves",
+      "excluded or missing slots and structurally ineligible populations",
+      "pooled loss and gain",
+      "each page/leaf value",
+      "leave-one-leaf-out range when eligible leaves >=2"
+    ],
+    "eligible_leaf_edge_cases": {
+      "zero": "No estimate.",
+      "one": "Mean only; no confidence interval or leave-one-leaf-out range."
+    }
+  },
+  "uncertainty": {
+    "ordinary_coverage": 0.95,
+    "primary_ZL_family10_coverage": 0.995,
+    "all30_coverage": 0.9983333333333333,
+    "primary_tail_quantiles": [
+      0.0025,
+      0.9975
+    ],
+    "all30_tail_quantiles": [
+      0.0008333333333333334,
+      0.9991666666666666
+    ],
+    "bootstrap_draws": 99999,
+    "method": "Frozen whole-leaf percentile bootstrap, linear quantiles, same indices for matching representation/eligible-leaf sets.",
+    "interpretation": "Nominal family tail allocation, not guaranteed exact simultaneous coverage. At most 11 leaves with possible within-book dependence; 99,999 draws do not create independent leaves. Report all intervals as generated, including wide or cross-zero intervals.",
+    "prohibitions": [
+      "No interval crossing zero may be called equivalence, disappearance or no effect.",
+      "A positive/significant contrast and a second non-significant contrast do not demonstrate a difference between them.",
+      "No selective easier interval or preferred representation for a cross-representation claim.",
+      "Bootstrap tail fractions are not null-hypothesis p-values or probabilities that a hypothesis is true.",
+      "No new threshold or rule that crossing a boundary establishes language, allography or historical copying."
+    ]
+  },
+  "position_auxiliary": {
+    "conditions": 6,
+    "draws_per_condition": 1999,
+    "family_adjustment": "Holm over all six reference tail areas",
+    "intervention": "Permute eligible word identities within each past source line and its exact-length or coarse-length stratum; one shared permutation per source line. Keep targets, horizontal channel, slots and missing values fixed.",
+    "report": [
+      "original V gain",
+      "null mean",
+      "difference",
+      "raw reference Monte Carlo tail area",
+      "Holm reference p across six",
+      "actual identity movement and changed-source-set rates"
+    ],
+    "interpretation": "V-only conditional channel intervention; exchangeability assumption is limited to that scheme. It is not a coherent random permutation of actual text or proof/disproof of historical copying. Do not merge its tail areas with bootstrap intervals."
+  },
+  "exposure_sensitivity": {
+    "omit_together": [
+      "f15",
+      "f103"
+    ],
+    "primary_keeps_all_22_pages": true,
+    "report_all_contrasts": true,
+    "scope": "Descriptive fixed omission only, with per-leaf means; no replacement primary outcome, new selection or second attempt at a positive test. Prior anchors, default seeds and full-book aggregates mean not wholly blind."
+  },
+  "metadata_sensitivity": {
+    "mandatory_combinations": 24,
+    "contrasts": [
+      "style",
+      "copy_total",
+      "copy_edit_vs_exact",
+      "copy_vertical",
+      "boundary_last",
+      "allograph_FP",
+      "allograph_KT",
+      "allograph_both"
+    ],
+    "representations": [
+      "ZL_EVA",
+      "ZL_merged",
+      "IT_EVA"
+    ],
+    "regardless_of_primary_sign": true,
+    "same_saved_pages_and_fixed_parameters": true,
+    "report": [
+      "original page-H and explicit inline-H costs/gains",
+      "all per-word/page/leaf old-new differences",
+      "paragraph arrays unchanged check",
+      "any incomplete job"
+    ],
+    "no_new_pvalues_or_intervals": true,
+    "mean_delta_not_token_bound": true,
+    "scope": "Additive descriptive robustness. Does not replace primary results or retroactively reinterpret @ as a real additional scribe."
+  },
+  "completion_language": "Incomplete work remains incomplete; publish negative, missing and sensitivity outcomes. Numerical reproduction confirms the specified calculations, not the manuscript language or a decipherment.",
+  "reference_sha256": {
+    "final_reserve/protocol.txt": "bf9b3bd28451a099a2c2e4759f6870646ceb5ef4d1f9860e451fd881d7baee8b",
+    "final_reserve/freeze.json": "b3995e3e230957319b4dca04518b81e58dbca1ac8d4ab35b141498dda23d9a55",
+    "final_reserve/summarize.py": "1d4922e3590fec9684be5ad509820a6f4bde62a4700bbe00ef13394712223038",
+    "final_reserve/metadata_scope_addendum.txt": "9749e1a570391cd4d727cb7e5f8aa775f2c5c8c76dc867a07d397c5310d88ca5",
+    "metadata_sensitivity/protocol.txt": "018743a04e2328f7f7c33f6600dd09c4be5f9b5285812c74a5d3772fc5973ada",
+    "metadata_sensitivity/freeze.json": "9048c4b49a58758fe5be9348401b633607d3e49382c6cd8af8f840aa014597aa"
+  },
+  "reserve_data_accessed": false,
+  "existing_score_results_evaluated": false,
+  "new_computations": "None; file existence checks and hashes of method documents/code only."
+}

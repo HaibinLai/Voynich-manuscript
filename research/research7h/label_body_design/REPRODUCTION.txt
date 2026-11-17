@@ -1,0 +1,27 @@
+This package contains support counts, not label/body word-match results.
+
+Read 设计审查.txt first. No model or semantic result is claimed.
+
+To restore the three deterministic gzip archives:
+  python3 restore_inventories.py
+
+In the project research tree (sources/ and study20/ are two levels above here):
+  python3 inventory.py
+  python3 design_summary.py
+  python3 verify.py
+
+inventory.py reads split_manifest first and streams only explicitly allowed
+train/legacy/dev folio payloads through normalization. The complete source file
+is traversed and hashed; disallowed-page word payload is not parsed or returned.
+Output records contain unit lengths and missing-slot status, not word strings.
+No routine computes exact/near label/body lexical hits.
+
+design_summary.py can also be run from the restored length-only inventories;
+it does not need manuscript transcription text. verify.py independently checks
+allowed locus lengths/missingness, conditional donor metadata and existing
+frozen body denominators. Its toy strings are synthetic, not manuscript quotes.
+
+These are design-support counts. Locus-to-drawing object correspondence has not
+been independently established. Do not interpret candidate counts as independent
+sample size or the strength of a semantic association. No new images or reserve
+outcomes were examined. No website or final_reserve files were modified.

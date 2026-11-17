@@ -1,0 +1,77 @@
+对外结论审稿清单（12项；本快照没有新的保留页评分）
+
+共同要求：凡报增益，附目标总体、单位及页/叶权重；凡报比例，说明分子分母；凡讲候选词义，保留作者提案身份。
+
+C01 转写与原图核对
+可表述：已建立公开转写与原图的可追溯对照；尚无可靠译文。
+分母：20个选定页面、332个转写位置的高清定位；40个重点字形/空格案例。20页初始正文统计仅17页、188物理行、1648保留词、37缺失槽，不能与全书实验分母混用。
+不能推成：不能称332处均逐字认证、独立盲转写或成功OCR全部手稿。
+证据：site/data/overview.json；research/research7h/anchor_audit/visual_review.json
+
+C02 Bax的十四条部分规则
+可表述：已核查原文总结为10个词、14个符号/组合；不是确定破解17个字母。
+分母：十四条字面表；正文覆盖按两版×train+legacy/dev分别计保留非空词。ZL为17754/6886词，IT为17781/6905词；标签、备选/不清整词不计。
+不能推成：不是约30%译对；m禁用/全允许仅包络该条条件，非置信区间；低覆盖不单独证伪局部音值。
+证据：research/research7h/literature/candidate_claims.json；research/research7h/anchor_audit/coverage_results.json
+
+C03 所谓80%希伯来语
+可表述：Alberta报道的80%指词典命中，不是80%文法正确；论文没有可靠连续译文。
+分母：比例对象是报道所说算法输出的词，不是句子或语法规则。本审查没有从原始运行取得可复算的命中数N及总数，故保留“报道的80%”，不伪造精确分母或称本项目复现该比例。
+不能推成：不能据词典命中识别手稿语言；经拼写修正再机器翻译的首句不是金标准。
+证据：research/research7h/literature/literature.json；research/research7h/literature/candidate_claims.json
+
+C04 植物与材料年代
+可表述：37/303是作者植物图像候选认定；四个羊皮纸样品合并校准年代为1404–1438年。
+分母：植物比例按Tucker/Talbert的303幅植物口径、其中37个候选对应；年代为4个材料样品的合并95.4%区间。
+不能推成：不是37个已解读植物名，不足以确认纳瓦特语；材料定年不是每张均独立落在该区间，也不直接等于墨水或写作日期。
+证据：research/research7h/literature/literature.json；research/research7h/literature/candidate_claims.json
+
+C05 低熵不唯一确定机制
+可表述：已知拉丁明文密码与不编码输入明文的复制生成器都能呈现低词内条件熵。
+分母：每生成条件20个固定种子；主要结构比较每份前8000词；同一拉丁底本不等于20个独立语义样本。比值为词内H(后一单位|前一单位)/H(后一单位)。严格Naibbe每seed验证24000个归一化拉丁字母往返。
+不能推成：不是两机制等价、历史机制已确认或有义/无义已证实；12词重排不是原生布局；作者全书先验不属于本项目独立留出证据。
+证据：research/research7h/generator_controls/website_data.json；research/research7h/generator_controls/generation_checks.json
+
+C06 跨词边界预测
+可表述：在固定条件模型中，前词末单位帮助预测后词完整词形；这是结构证据。
+分母：确认集非重叠行内词对，去掉行末目标及缺失对；ZL/merged各1783目标，IT1805；28页、13叶，先页均再叶均；完整词含尾标记和未知身份费。
+不能推成：不是互信息数值、全词语义准确率或某语言证据；确认集已多轮探索，三个表示非独立手稿。
+证据：research/research7h/final_reserve/preflight_v1/summary.json；research/research7h/boundary_word_protocol.txt
+
+C07 复制预测的有限收益
+可表述：归一化复制/单编辑近似在ZL带来较小收益，转写敏感性仍存在。
+分母：ZL/EVA与merged各5025保留词，IT5047；28页、13叶等权。3主差是HV对基线、对matched exact、对matched H；不同模型保留各自旧dev权重。
+不能推成：不能把原Timm检测正控等于手稿机制证明；IT总增益95%区间跨0，IT编辑对精确复制均值仍负；每表示3差保守区间不控制历次探索。
+证据：research/research7h/copy_prediction/website_data.json；research/research7h/copy_prediction/replay_verification.json
+
+C08 上一行位置特异性
+可表述：六组已见确认集探索对照没有给出清晰的上一行词身份位置特异性。
+分母：3表示×精确长度/粗桶；各1999次仅V来源身份置换，H与目标固定。同一来源行一次置换供所有目标共用。完整目标总体仍为5025/5047词；ZL可用V为4067、IT4055。
+不能推成：不是整份真实文本随机化，也不是不存在任何竖向复制；配置0并非关闭同位置分支；参考p不能充当机制分类器。
+证据：research/research7h/copy_prediction/position_specificity/website_data.json；research/research7h/copy_prediction/position_specificity/replay_verification.json
+
+C09 可逆字形因子的解释
+可表述：付清原字形恢复费后，FP、KT、both在限定模型中有小幅完整词预测收益。
+分母：3合并×3表示=9组；5025/5047完整词、28页13叶。每组成本为合并词概率+逐处恢复费+适用escape，含EOS/非空。校准为5seed×3机制×3合并=45。
+不能推成：不能证明同音、同值、历史异体字或语义；合并侧额外恢复模型/12项选择，容量和调参预算不相等；只报低合并熵会漏费。
+证据：research/research7h/allograph_factor/website_data.json；research/research7h/allograph_factor/model_complexity.json
+
+C10 行内H修正的稳健性
+可表述：固定旧参数展开显式行内H后，24项平均增益最大变化0.00057636 bits/目标，均值符号未翻转。
+分母：训练f115r：ZL456=128(H2)+328(H3)，IT444=120+324；24项为8比较×3表示，边界用1783/1805目标，其余5025/5047词。最大值取24个等叶平均增益差的绝对值。
+不能推成：不是每词/每页影响上限，不是重新调参后的最优结果，也不修复未知真实书手金标；没有新p值或区间。
+证据：research/research7h/metadata_sensitivity/website_data.json；research/research7h/metadata_sensitivity/confirm_v1/summary.json
+
+C11 先例与创新范围
+可表述：边界、段首、主题/书手结构及生成器校准已有直接先例，本项目不宣称首次发现这些现象。
+分母：这是逐来源方法对照，没有统计分母；初22条registry已含Zhang/Sheng，新增Rozanova后共23条。原作者代码入口与相关数据仓库分开记录。
+不能推成：不能把已知规律或读到外部全书汇总后的检验宣传为独立发现；不借外部论文的排除结论为本项目语言识别背书。
+证据：research/research7h/literature/boundary_prior_art.json；research/research7h/literature/literature.json
+
+C12 验证范围与当前状态
+可表述：目前成果是规则与结构的可复核研究，不是已识别语言或译文。
+分母：预定reserve为22转写分区/11叶；本审查不读取或评分。已见confirm为28分区/13叶；bootstrap次数不等于独立样本数。
+不能推成：f15v公开Bax锚词、f103v原生成器种子及外部全书先验已暴露，不能称完全从未见过；同确认集后续检查不是新盲测。未成功的有限求解器不证明没有语言。
+证据：research/research7h/reserve_exposure_log.txt；research/research7h/split_manifest.json
+
+网站措辞审查：当前本地公开镜像未发现把平均Δ当作逐词/逐页上限。app.js 的敏感性面板明确区分，README也使用“等叶平均增益”。Bax、80%、植物和无可靠译文的提示均保留。此次为静态源文件/数据审查，不声称重新做了线上浏览器验收。

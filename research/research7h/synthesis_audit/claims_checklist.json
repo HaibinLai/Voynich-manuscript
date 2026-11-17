@@ -1,0 +1,570 @@
+{
+  "created_utc": "2026-11-17T13:28:00.684755+00:00",
+  "status": "review_checklist_not_new_experiment",
+  "claims": [
+    {
+      "id": "C01",
+      "title": "转写与原图核对",
+      "allowed_public_claim": "已建立公开转写与原图的可追溯对照；尚无可靠译文。",
+      "denominator": "20个选定页面、332个转写位置的高清定位；40个重点字形/空格案例。20页初始正文统计仅17页、188物理行、1648保留词、37缺失槽，不能与全书实验分母混用。",
+      "supports": "图文定位、版本差异和局部审看已记录。",
+      "cannot_support": "不能称332处均逐字认证、独立盲转写或成功OCR全部手稿。",
+      "evidence_files": [
+        "site/data/overview.json",
+        "research/research7h/anchor_audit/visual_review.json"
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "pages": 20,
+        "loci": 332,
+        "completed_utc": "2026-11-17T11:46:10.096189+00:00",
+        "categories": {
+          "spacing_only": 64,
+          "normalized_agreement": 134,
+          "glyph_or_annotation_difference": 134
+        },
+        "scope": "20 页耶鲁高清图的 332 个转写位置对应核对；不是独立盲转写、逐字认证或译文。",
+        "regions": "阅读框相对于未经裁切的耶鲁官方 JPEG；是粗略阅读区，可含邻近笔画。"
+      }
+    },
+    {
+      "id": "C02",
+      "title": "Bax的十四条部分规则",
+      "allowed_public_claim": "已核查原文总结为10个词、14个符号/组合；不是确定破解17个字母。",
+      "denominator": "十四条字面表；正文覆盖按两版×train+legacy/dev分别计保留非空词。ZL为17754/6886词，IT为17781/6905词；标签、备选/不清整词不计。",
+      "supports": "固定表的可执行覆盖率约27.8%–29.9%，多值和未定义项可审计。",
+      "cannot_support": "不是约30%译对；m禁用/全允许仅包络该条条件，非置信区间；低覆盖不单独证伪局部音值。",
+      "evidence_files": [
+        "research/research7h/literature/candidate_claims.json",
+        "research/research7h/anchor_audit/coverage_results.json",
+        "research/research7h/anchor_audit/coverage_review.txt"
+      ],
+      "primary_urls": [
+        "https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf"
+      ],
+      "numbers": [
+        {
+          "representation": "ZL_EVA",
+          "split_group": "train_legacy",
+          "pages": 113,
+          "tokens": 17754,
+          "types": 4470,
+          "units": 88441,
+          "bounds": {
+            "conservative_m_excluded": {
+              "full_coverable_tokens": 5119,
+              "full_coverable_fraction": 0.28832939055987383,
+              "single_symbolic_path_tokens": 616,
+              "single_symbolic_path_fraction": 0.03469640644361834,
+              "multiple_symbolic_path_tokens": 4503,
+              "full_coverable_types": 658,
+              "min_unexplained_units": 25886,
+              "min_unexplained_unit_fraction": 0.2926923033434719
+            },
+            "optimistic_m_allowed": {
+              "full_coverable_tokens": 5313,
+              "full_coverable_fraction": 0.2992565055762082,
+              "single_symbolic_path_tokens": 640,
+              "single_symbolic_path_fraction": 0.036048214486876194,
+              "multiple_symbolic_path_tokens": 4673,
+              "full_coverable_types": 715,
+              "min_unexplained_units": 25411,
+              "min_unexplained_unit_fraction": 0.2873214911636006
+            }
+          }
+        },
+        {
+          "representation": "ZL_EVA",
+          "split_group": "dev",
+          "pages": 41,
+          "tokens": 6886,
+          "types": 2178,
+          "units": 34527,
+          "bounds": {
+            "conservative_m_excluded": {
+              "full_coverable_tokens": 1958,
+              "full_coverable_fraction": 0.28434504792332266,
+              "single_symbolic_path_tokens": 225,
+              "single_symbolic_path_fraction": 0.032674992738890504,
+              "multiple_symbolic_path_tokens": 1733,
+              "full_coverable_types": 365,
+              "min_unexplained_units": 9394,
+              "min_unexplained_unit_fraction": 0.2720769253048339
+            },
+            "optimistic_m_allowed": {
+              "full_coverable_tokens": 2032,
+              "full_coverable_fraction": 0.2950914899796689,
+              "single_symbolic_path_tokens": 231,
+              "single_symbolic_path_fraction": 0.03354632587859425,
+              "multiple_symbolic_path_tokens": 1801,
+              "full_coverable_types": 400,
+              "min_unexplained_units": 9226,
+              "min_unexplained_unit_fraction": 0.2672111680713644
+            }
+          }
+        },
+        {
+          "representation": "IT_EVA",
+          "split_group": "train_legacy",
+          "pages": 113,
+          "tokens": 17781,
+          "types": 4646,
+          "units": 90101,
+          "bounds": {
+            "conservative_m_excluded": {
+              "full_coverable_tokens": 4945,
+              "full_coverable_fraction": 0.278105843315899,
+              "single_symbolic_path_tokens": 444,
+              "single_symbolic_path_fraction": 0.02497047410156909,
+              "multiple_symbolic_path_tokens": 4501,
+              "full_coverable_types": 716,
+              "min_unexplained_units": 26305,
+              "min_unexplained_unit_fraction": 0.2919501448374602
+            },
+            "optimistic_m_allowed": {
+              "full_coverable_tokens": 5158,
+              "full_coverable_fraction": 0.29008492210786796,
+              "single_symbolic_path_tokens": 473,
+              "single_symbolic_path_fraction": 0.02660142849108599,
+              "multiple_symbolic_path_tokens": 4685,
+              "full_coverable_types": 776,
+              "min_unexplained_units": 25779,
+              "min_unexplained_unit_fraction": 0.2861122518063063
+            }
+          }
+        },
+        {
+          "representation": "IT_EVA",
+          "split_group": "dev",
+          "pages": 41,
+          "tokens": 6905,
+          "types": 2188,
+          "units": 35069,
+          "bounds": {
+            "conservative_m_excluded": {
+              "full_coverable_tokens": 1922,
+              "full_coverable_fraction": 0.2783490224475018,
+              "single_symbolic_path_tokens": 148,
+              "single_symbolic_path_fraction": 0.021433743664011587,
+              "multiple_symbolic_path_tokens": 1774,
+              "full_coverable_types": 386,
+              "min_unexplained_units": 9471,
+              "min_unexplained_unit_fraction": 0.2700675810544926
+            },
+            "optimistic_m_allowed": {
+              "full_coverable_tokens": 2006,
+              "full_coverable_fraction": 0.29051412020275164,
+              "single_symbolic_path_tokens": 155,
+              "single_symbolic_path_fraction": 0.022447501810282405,
+              "multiple_symbolic_path_tokens": 1851,
+              "full_coverable_types": 425,
+              "min_unexplained_units": 9283,
+              "min_unexplained_unit_fraction": 0.26470672103567255
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "所谓80%希伯来语",
+      "allowed_public_claim": "Alberta报道的80%指词典命中，不是80%文法正确；论文没有可靠连续译文。",
+      "denominator": "比例对象是报道所说算法输出的词，不是句子或语法规则。本审查没有从原始运行取得可复算的命中数N及总数，故保留“报道的80%”，不伪造精确分母或称本项目复现该比例。",
+      "supports": "原文§5.4/印刷84–85页说明读法不连贯；新闻数字可纠正类别。",
+      "cannot_support": "不能据词典命中识别手稿语言；经拼写修正再机器翻译的首句不是金标准。",
+      "evidence_files": [
+        "research/research7h/literature/literature.json",
+        "research/research7h/literature/candidate_claims.json"
+      ],
+      "primary_urls": [
+        "https://aclanthology.org/Q16-1006/",
+        "https://www.ualberta.ca/en/science/news/2018/january/ai-used-to-decipher-ancient-manuscript.html"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "C04",
+      "title": "植物与材料年代",
+      "allowed_public_claim": "37/303是作者植物图像候选认定；四个羊皮纸样品合并校准年代为1404–1438年。",
+      "denominator": "植物比例按Tucker/Talbert的303幅植物口径、其中37个候选对应；年代为4个材料样品的合并95.4%区间。",
+      "supports": "提出待盲评的图像/地域假说，并约束材料年代。",
+      "cannot_support": "不是37个已解读植物名，不足以确认纳瓦特语；材料定年不是每张均独立落在该区间，也不直接等于墨水或写作日期。",
+      "evidence_files": [
+        "research/research7h/literature/literature.json",
+        "research/research7h/literature/candidate_claims.json"
+      ],
+      "primary_urls": [
+        "https://umb.herbalgram.org/media/3jojkmox/issue100.pdf",
+        "https://www.voynich.nu/papers/Carbon_GH_2009.pdf"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "C05",
+      "title": "低熵不唯一确定机制",
+      "allowed_public_claim": "已知拉丁明文密码与不编码输入明文的复制生成器都能呈现低词内条件熵。",
+      "denominator": "每生成条件20个固定种子；主要结构比较每份前8000词；同一拉丁底本不等于20个独立语义样本。比值为词内H(后一单位|前一单位)/H(后一单位)。严格Naibbe每seed验证24000个归一化拉丁字母往返。",
+      "supports": "单个低阶统计不足以区分这两类已测机制。",
+      "cannot_support": "不是两机制等价、历史机制已确认或有义/无义已证实；12词重排不是原生布局；作者全书先验不属于本项目独立留出证据。",
+      "evidence_files": [
+        "research/research7h/generator_controls/website_data.json",
+        "research/research7h/generator_controls/generation_checks.json"
+      ],
+      "primary_urls": [
+        "https://github.com/greshko/naibbe-cipher",
+        "https://github.com/TorstenTimm/SelfCitationTextgenerator"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "C06",
+      "title": "跨词边界预测",
+      "allowed_public_claim": "在固定条件模型中，前词末单位帮助预测后词完整词形；这是结构证据。",
+      "denominator": "确认集非重叠行内词对，去掉行末目标及缺失对；ZL/merged各1783目标，IT1805；28页、13叶，先页均再叶均；完整词含尾标记和未知身份费。",
+      "supports": "旧页级H模型叶均改善分别约0.08788、0.08736、0.06639 bits/目标。",
+      "cannot_support": "不是互信息数值、全词语义准确率或某语言证据；确认集已多轮探索，三个表示非独立手稿。",
+      "evidence_files": [
+        "research/research7h/final_reserve/preflight_v1/summary.json",
+        "research/research7h/boundary_word_protocol.txt"
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "id": "boundary_last",
+          "representation": "ZL_EVA",
+          "words": 1783,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.08788233165262824,
+          "pooled_bits_saved": 0.1579724311786255
+        },
+        {
+          "id": "boundary_last",
+          "representation": "ZL_merged",
+          "words": 1783,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.08735568188072046,
+          "pooled_bits_saved": 0.1657058762405225
+        },
+        {
+          "id": "boundary_last",
+          "representation": "IT_EVA",
+          "words": 1805,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.0663871901523353,
+          "pooled_bits_saved": 0.1515221163393554
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "title": "复制预测的有限收益",
+      "allowed_public_claim": "归一化复制/单编辑近似在ZL带来较小收益，转写敏感性仍存在。",
+      "denominator": "ZL/EVA与merged各5025保留词，IT5047；28页、13叶等权。3主差是HV对基线、对matched exact、对matched H；不同模型保留各自旧dev权重。",
+      "supports": "完整概率/编辑路径/escape可独立复算；ZL总增益约0.02577 bits/词，IT约0.01197。",
+      "cannot_support": "不能把原Timm检测正控等于手稿机制证明；IT总增益95%区间跨0，IT编辑对精确复制均值仍负；每表示3差保守区间不控制历次探索。",
+      "evidence_files": [
+        "research/research7h/copy_prediction/website_data.json",
+        "research/research7h/copy_prediction/replay_verification.json"
+      ],
+      "primary_urls": [],
+      "numbers": [
+        {
+          "id": "copy_total",
+          "representation": "ZL_EVA",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.025770561999014546,
+          "pooled_bits_saved": 0.019173025711599893
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "ZL_EVA",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.009627503778370477,
+          "pooled_bits_saved": 0.0015298875293284994
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "ZL_EVA",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.009246181267992232,
+          "pooled_bits_saved": 0.009401811777348315
+        },
+        {
+          "id": "copy_total",
+          "representation": "ZL_merged",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.031239722499836326,
+          "pooled_bits_saved": 0.021326982568530203
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "ZL_merged",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.015187183664215686,
+          "pooled_bits_saved": 0.003739328183381608
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "ZL_merged",
+          "words": 5025,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.011514727844037733,
+          "pooled_bits_saved": 0.01062307209347183
+        },
+        {
+          "id": "copy_total",
+          "representation": "IT_EVA",
+          "words": 5047,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.011965144328844221,
+          "pooled_bits_saved": 0.01411047913631683
+        },
+        {
+          "id": "copy_edit_vs_exact",
+          "representation": "IT_EVA",
+          "words": 5047,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": -0.0014508841633271304,
+          "pooled_bits_saved": 0.0005941339449662746
+        },
+        {
+          "id": "copy_vertical",
+          "representation": "IT_EVA",
+          "words": 5047,
+          "eligible_pages": 28,
+          "eligible_leaves": 13,
+          "mean_leaf_bits_saved": 0.006209741227379521,
+          "pooled_bits_saved": 0.005952674751196966
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "title": "上一行位置特异性",
+      "allowed_public_claim": "六组已见确认集探索对照没有给出清晰的上一行词身份位置特异性。",
+      "denominator": "3表示×精确长度/粗桶；各1999次仅V来源身份置换，H与目标固定。同一来源行一次置换供所有目标共用。完整目标总体仍为5025/5047词；ZL可用V为4067、IT4055。",
+      "supports": "该观察器能响应强Timm位置干预；手稿小V收益在同长来源词换位后大多保留。",
+      "cannot_support": "不是整份真实文本随机化，也不是不存在任何竖向复制；配置0并非关闭同位置分支；参考p不能充当机制分类器。",
+      "evidence_files": [
+        "research/research7h/copy_prediction/position_specificity/website_data.json",
+        "research/research7h/copy_prediction/position_specificity/replay_verification.json"
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "C09",
+      "title": "可逆字形因子的解释",
+      "allowed_public_claim": "付清原字形恢复费后，FP、KT、both在限定模型中有小幅完整词预测收益。",
+      "denominator": "3合并×3表示=9组；5025/5047完整词、28页13叶。每组成本为合并词概率+逐处恢复费+适用escape，含EOS/非空。校准为5seed×3机制×3合并=45。",
+      "supports": "当前参数共享及条件恢复具有预测作用；KT总体比例恢复在三表示均负，条件恢复才为正。",
+      "cannot_support": "不能证明同音、同值、历史异体字或语义；合并侧额外恢复模型/12项选择，容量和调参预算不相等；只报低合并熵会漏费。",
+      "evidence_files": [
+        "research/research7h/allograph_factor/website_data.json",
+        "research/research7h/allograph_factor/model_complexity.json",
+        "research/research7h/allograph_factor/replay_manuscript.json"
+      ],
+      "primary_urls": [],
+      "numbers": null
+    },
+    {
+      "id": "C10",
+      "title": "行内H修正的稳健性",
+      "allowed_public_claim": "固定旧参数展开显式行内H后，24项平均增益最大变化0.00057636 bits/目标，均值符号未翻转。",
+      "denominator": "训练f115r：ZL456=128(H2)+328(H3)，IT444=120+324；24项为8比较×3表示，边界用1783/1805目标，其余5025/5047词。最大值取24个等叶平均增益差的绝对值。",
+      "supports": "确认页无覆盖，影响来自训练归类；段首4数组×3表示逐值不变。实际公开镜像72文件、49依赖及9家族标量replay通过。",
+      "cannot_support": "不是每词/每页影响上限，不是重新调参后的最优结果，也不修复未知真实书手金标；没有新p值或区间。",
+      "evidence_files": [
+        "research/research7h/metadata_sensitivity/website_data.json",
+        "research/research7h/metadata_sensitivity/confirm_v1/summary.json",
+        "research/research7h/synthesis_audit/public_mirror_verification.json"
+      ],
+      "primary_urls": [],
+      "numbers": {
+        "maximum_abs_equal_leaf_gain_change": 0.000576359630422029,
+        "sign_changes": 0
+      }
+    },
+    {
+      "id": "C11",
+      "title": "先例与创新范围",
+      "allowed_public_claim": "边界、段首、主题/书手结构及生成器校准已有直接先例，本项目不宣称首次发现这些现象。",
+      "denominator": "这是逐来源方法对照，没有统计分母；初22条registry已含Zhang/Sheng，新增Rozanova后共23条。原作者代码入口与相关数据仓库分开记录。",
+      "supports": "可把本项目定位为可追溯转写对照、限定预测比较和复现审计。",
+      "cannot_support": "不能把已知规律或读到外部全书汇总后的检验宣传为独立发现；不借外部论文的排除结论为本项目语言识别背书。",
+      "evidence_files": [
+        "research/research7h/literature/boundary_prior_art.json",
+        "research/research7h/literature/literature.json",
+        "research/research7h/literature/topic_modeling_reference_correction.json"
+      ],
+      "primary_urls": [
+        "https://www.voynich.nu/extra/img/curr_main.pdf",
+        "https://arxiv.org/html/2107.02858v1",
+        "https://arxiv.org/html/2608.17096v1",
+        "https://arxiv.org/html/2610.34499v2"
+      ],
+      "numbers": null
+    },
+    {
+      "id": "C12",
+      "title": "验证范围与当前状态",
+      "allowed_public_claim": "目前成果是规则与结构的可复核研究，不是已识别语言或译文。",
+      "denominator": "预定reserve为22转写分区/11叶；本审查不读取或评分。已见confirm为28分区/13叶；bootstrap次数不等于独立样本数。",
+      "supports": "冻结输入/参数和独立复算支持数值可追溯；可分别报告已知答案控制和真实未知文本结果。",
+      "cannot_support": "f15v公开Bax锚词、f103v原生成器种子及外部全书先验已暴露，不能称完全从未见过；同确认集后续检查不是新盲测。未成功的有限求解器不证明没有语言。",
+      "evidence_files": [
+        "research/research7h/reserve_exposure_log.txt",
+        "research/research7h/split_manifest.json",
+        "research/research7h/final_reserve/preflight_review.txt"
+      ],
+      "primary_urls": [],
+      "numbers": null
+    }
+  ],
+  "evidence_snapshot": [
+    {
+      "path": "research/research7h/allograph_factor/model_complexity.json",
+      "exists": true,
+      "sha256": "5461f16206d99b7d73af67a32392d0b967c8e144fb783e71254d928475d637d2"
+    },
+    {
+      "path": "research/research7h/allograph_factor/replay_manuscript.json",
+      "exists": true,
+      "sha256": "31c58cf894effd4404eec8abe9c35e76e575789043f09e19cccf2e3515379e38"
+    },
+    {
+      "path": "research/research7h/allograph_factor/website_data.json",
+      "exists": true,
+      "sha256": "c087a432a04204fd71198303cbbdea0f94ecc6c173ac2f7b38fd6a98e19509e8"
+    },
+    {
+      "path": "research/research7h/anchor_audit/coverage_results.json",
+      "exists": true,
+      "sha256": "54916cdcfee49d1d04a28ce040d9ef1207ce0e5bde5d9e03f1277045b90ade3d"
+    },
+    {
+      "path": "research/research7h/anchor_audit/coverage_review.txt",
+      "exists": true,
+      "sha256": "8962c725319fe03cd8d055f40053ae04d61610456302883a8ad4c18b05ac4486"
+    },
+    {
+      "path": "research/research7h/anchor_audit/visual_review.json",
+      "exists": true,
+      "sha256": "293669267b21762c519d2abd6a1ee0f2d29c555856bb9bbad56d2a21e3936605"
+    },
+    {
+      "path": "research/research7h/boundary_word_protocol.txt",
+      "exists": true,
+      "sha256": "4d085eb21e2b009edc17800867a0c5de0f3775e5cd61c752e2147083c0fafe0e"
+    },
+    {
+      "path": "research/research7h/copy_prediction/position_specificity/replay_verification.json",
+      "exists": true,
+      "sha256": "8f599c43a6ce3973c8ec184b2d027f939fd5667b4b38b4db696fb37854aafafd"
+    },
+    {
+      "path": "research/research7h/copy_prediction/position_specificity/website_data.json",
+      "exists": true,
+      "sha256": "1d082325646476ae7353105fb4299483a22d501cf880ba16485483fe2a401651"
+    },
+    {
+      "path": "research/research7h/copy_prediction/replay_verification.json",
+      "exists": true,
+      "sha256": "3dbc3a4d3f5f306d0d7f5d46046dd3151be14826158fb71457617d579dac8029"
+    },
+    {
+      "path": "research/research7h/copy_prediction/website_data.json",
+      "exists": true,
+      "sha256": "f519b62415560f43ed4222bdff1d0f449915324f33e38156861f59acd75364e0"
+    },
+    {
+      "path": "research/research7h/final_reserve/preflight_review.txt",
+      "exists": true,
+      "sha256": "786b0966df15a8f272f6c6f2bee2e45bd83458f814c5229667ec8cedfc4edfd9"
+    },
+    {
+      "path": "research/research7h/final_reserve/preflight_v1/summary.json",
+      "exists": true,
+      "sha256": "58c75a361c94a3036add51c00c20b3ec4a2735c3927a037e5572580ce44208c8"
+    },
+    {
+      "path": "research/research7h/generator_controls/generation_checks.json",
+      "exists": true,
+      "sha256": "0427b9205355a8063a49fd2d97b6fe0c6277e89d51484c8de75bd725c3cd865b"
+    },
+    {
+      "path": "research/research7h/generator_controls/website_data.json",
+      "exists": true,
+      "sha256": "155784dacde516710161e96126bd7bc5ca93e1a3c5e91926188f046ffc8ba053"
+    },
+    {
+      "path": "research/research7h/literature/boundary_prior_art.json",
+      "exists": true,
+      "sha256": "307b80440d89d301af7aa6db5f570b8b0d44daaa896e16470c3c1e100a151d61"
+    },
+    {
+      "path": "research/research7h/literature/candidate_claims.json",
+      "exists": true,
+      "sha256": "640a24d20eeaee6c8be3c9e9f10a20fe5cd48dabe83bb78f24e76692e9a3da98"
+    },
+    {
+      "path": "research/research7h/literature/literature.json",
+      "exists": true,
+      "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+    },
+    {
+      "path": "research/research7h/literature/topic_modeling_reference_correction.json",
+      "exists": true,
+      "sha256": "1c1420fb77340153c27d01bfd267f266fed37bc03845f1b0fbb81a13b8015512"
+    },
+    {
+      "path": "research/research7h/metadata_sensitivity/confirm_v1/summary.json",
+      "exists": true,
+      "sha256": "1ba19b77a75c8393487038da0cc07d7f4c2e75bac7c0da15a49e647c7d61ebe1"
+    },
+    {
+      "path": "research/research7h/metadata_sensitivity/website_data.json",
+      "exists": true,
+      "sha256": "cb876432d2451b5b7f43f7f1b661637cfed6e9410f1d8db68a1dda704904c4b9"
+    },
+    {
+      "path": "research/research7h/reserve_exposure_log.txt",
+      "exists": true,
+      "sha256": "c6c3c244d95b800d368fdaaa75954dffb246c463e57dcd995998acf4b3d6b0a1"
+    },
+    {
+      "path": "research/research7h/split_manifest.json",
+      "exists": true,
+      "sha256": "b8773a853896e08a03eea857668ee08825076babf1b93b7939461f70023db2c0"
+    },
+    {
+      "path": "research/research7h/synthesis_audit/public_mirror_verification.json",
+      "exists": true,
+      "sha256": "531c75b5a45b3740ba6ac88e567cee9fd86771719369753f96bd17ce355cade7"
+    },
+    {
+      "path": "site/data/overview.json",
+      "exists": true,
+      "sha256": "a9fd0a91bc1aaca553b98c115cc392706700748c4f0afe66863a0783fa59a2a5"
+    }
+  ],
+  "site_or_frozen_model_modified": false,
+  "reserve_read_or_scored": false,
+  "scope_note": "All numerical claims refer to saved exploratory confirm results or specified train/dev controls. This checklist must be versioned when a later root-owned final reserve result exists."
+}

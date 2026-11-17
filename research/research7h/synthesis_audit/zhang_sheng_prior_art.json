@@ -1,0 +1,133 @@
+{
+  "reviewed_utc": "2026-11-17T13:30:13.494946+00:00",
+  "record_id": "zhang_sheng_2026",
+  "title": "Can Statistics Tell Whether an Undeciphered Text Is Language? Calibrated Tests on the Voynich Manuscript",
+  "version": "arXiv:2610.34499v2, 2026-11-04",
+  "primary_url": "https://arxiv.org/html/2610.34499v2",
+  "doi": "10.48550/arXiv.2610.34499",
+  "status": "deeper_primary_methods_review_not_numerical_reproduction",
+  "publication_action": "Additive audit only; existing literature registry/site/frozen experiments were not changed. Do not add a duplicate record.",
+  "paper_facts": [
+    {
+      "id": "F1",
+      "section": "3",
+      "text": "ZL3b: 37,554 tokens; IT2a: 36,736. Running, circular and radial text are included; six EVA groups are merged."
+    },
+    {
+      "id": "F2",
+      "section": "4.1",
+      "text": "Shared word shapes use a trigram trained on full ZL word types; generated layouts follow ZL."
+    },
+    {
+      "id": "F3",
+      "section": "4.2",
+      "text": "Each search uses 4,000 simulations, repeated twice: 22 fitted and 15 held-out statistics, with 100 predictive texts. These are held-out statistics, not held-out manuscript leaves."
+    },
+    {
+      "id": "F4",
+      "section": "4.1",
+      "text": "Copy-T ports Timm rules, adding W-generated words and ZL-derived glyph-pair acceptance; Cipher-N uses Naibbe tables."
+    },
+    {
+      "id": "F5",
+      "section": "4.5",
+      "text": "Boundary analysis measures glyph mutual information with position permutations and line-break checks."
+    },
+    {
+      "id": "F6",
+      "section": "5.1",
+      "text": "Word-pair replication uses 300 frequent types, page shuffles, alternating ten-page blocks, near-copy exclusions and residual Spearman correlation."
+    },
+    {
+      "id": "F7",
+      "section": "7, Labels",
+      "text": "Labels: 1,159 words, own-page versus randomized-page occurrence, Copy-H calibration, and 22 plant pairs."
+    },
+    {
+      "id": "F8",
+      "section": "Implementation; Limitations",
+      "text": "Python/NumPy code is promised with publication. Bigram solvers, manuscript-derived tables, limited nomenclator settings and an after-the-fact combined rule restrict interpretation."
+    }
+  ],
+  "estimand_comparisons": [
+    {
+      "topic": "统计留出与样本留出",
+      "paper_facts": [
+        "F2",
+        "F3"
+      ],
+      "our_estimand": "本项目按叶冻结 train+legacy/dev/confirm/reserve；主要报告完整概率差。当前确认集已见且多轮探索。",
+      "interpretation": "两类留出回答不同问题。不能把文中统计留出写成本项目独立保留页验证，也不能据相同搜索次数断言两机制有相同先验或容量。"
+    },
+    {
+      "topic": "边界",
+      "paper_facts": [
+        "F5"
+      ],
+      "our_estimand": "先验固定的完整词条件预测：前词末单位→后词首单位，支付词尾、非空和未知身份费；比较非重叠内部目标，按叶均。",
+      "interpretation": "我们的bits节省不是插件互信息；数据筛选、条件、训练/目标总体不同，数值不可直接相减或判复现成功。边界现象已有先例。"
+    },
+    {
+      "topic": "生成器",
+      "paper_facts": [
+        "F4"
+      ],
+      "our_estimand": "本项目实际执行作者Java Timm（预先改为f1r种子）与作者Naibbe实现，并另列严格唯一解适配；主生成对照未用confirm调参。",
+      "interpretation": "这里的固定机制对照不是那套拟合器的实现复现。只有拿到确切代码/决策规则与配置，才可能比较可执行等价性。"
+    },
+    {
+      "topic": "局部复制",
+      "paper_facts": [
+        "F2",
+        "F4"
+      ],
+      "our_estimand": "可归一化的一编辑预测核，合法过去源窗口、相对词槽竖向代理；它是观察器，不是历史作者真实似然。",
+      "interpretation": "有限观察器的负结果不能排除全部复制过程，正增益也不能确定历史机制。"
+    },
+    {
+      "topic": "词对和标签",
+      "paper_facts": [
+        "F6",
+        "F7"
+      ],
+      "our_estimand": "本轮完整词预测没有执行同页标签命中或跨区词对复现的独立验证；标签设计线仍在准备协议。",
+      "interpretation": "新标签/正文任务应注明直接先例并独立固定分母、完整词匹配、错页条件与正控，不能把作者全书结果当作我们的新增验证。"
+    },
+    {
+      "topic": "求解失败与语言",
+      "paper_facts": [
+        "F8"
+      ],
+      "our_estimand": "本项目固定替换分支仅在声明的候选语言、解码模型和预算中校准；截至本附录不引入外部论文排除结论。",
+      "interpretation": "任何排除只在正控确有识别能力的模型范围成立；未排除或控制失败不等于识别到某语言。"
+    }
+  ],
+  "code_scope": "Implementation section is the basis for code-release wording; no claim that a global search proved all code unavailable. No linked author implementation was executed in this review.",
+  "evidence_limits": [
+    "原始预印本的结果是作者报告，本审查没有运行作者全书实验。",
+    "没有下载新的逐保留页数据或在保留页拟合/评分。",
+    "全书聚合、图表及作者形成的先验已经接触，不能称对整个手稿完全盲。",
+    "现有模型、假设、预定比较与窗口截止不因阅读该文改变。"
+  ],
+  "exposure_provenance": {
+    "existing_registry_entry": "literature/literature.json#zhang_sheng_2026",
+    "initial_registry_count": 22,
+    "current_registry_count": 23,
+    "git_commit": "3ffd30ff21b7701e51eda137a00586bd2f36aa34",
+    "git_commit_utc": "2026-11-17T10:21:48+00:00",
+    "git_path": "research/research7h/literature/literature.json",
+    "verified_commit_entry_reviewed": "primary_html_methods_and_limitations",
+    "interpretation": "Commit establishes the entry existed by that time, not the exact first reading time.",
+    "exact_first_reading_time": null,
+    "root_label_line_deeper_reading_reported_utc": "2026-11-17T13:23:00+00:00",
+    "root_label_line_time_source": "root message; later deeper reading, not first project exposure",
+    "current_registry_sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+  },
+  "our_evidence_files": [
+    "boundary_word_protocol.txt",
+    "copy_prediction/protocol.txt",
+    "generator_controls/protocol.txt",
+    "metadata_sensitivity/protocol.txt",
+    "literature/boundary_prior_art.json"
+  ]
+}

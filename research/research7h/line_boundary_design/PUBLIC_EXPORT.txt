@@ -1,0 +1,12 @@
+跨行设计审查公开白名单（设计与计数；没有新概率评分）
+population.json
+audit_population.py
+population_independent_verification.json
+design_review.json
+设计审查.txt
+PUBLIC_EXPORT.txt
+artifact_manifest.json
+
+依赖：../metadata_sensitivity/inputs 下 ZL3b-n/IT2a-n 的 train_legacy/dev 四个 gz。沿用其已公开输入，不另复制。
+复算：python3 audit_population.py --out-dir /tmp/voynich-line-population-audit-NEW
+排除优先级为首个失败原因，文件行号连续不是物理邻接金标准。未修改原 population、最终保留页协议或模型。

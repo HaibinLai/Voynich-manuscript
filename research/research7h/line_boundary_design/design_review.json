@@ -1,0 +1,257 @@
+{
+  "created_utc": "2026-11-17T13:43:51.933058+00:00",
+  "status": "design_review_only_no_probability_scores",
+  "recommendation": "Do not interpret a transported interior-pair model losing gain at line starts as disappearance of cross-line dependence. A same-population refit plus calibrated detection is necessary before such a claim.",
+  "scope": {
+    "allowed_data": "Exactly the four saved train+legacy/dev gz files identified in population.json. Existing method source/protocols and saved prior-art review only.",
+    "new_confirm_loaded": false,
+    "reserve_loaded": false,
+    "raw_transcription_loaded": false,
+    "probability_scoring_performed": false,
+    "final_protocol_or_models_changed": false
+  },
+  "population_audit": {
+    "all_counts_match": true,
+    "exclusion_priority": [
+      "unknown_paragraph",
+      "paragraph_or_block_boundary",
+      "aligned_to_excluded_locus",
+      "missing_endpoint"
+    ],
+    "mutually_exclusive_first_failed_reason": true,
+    "overlapping_exclusion_note": "First failing condition, mutually exclusive; one IT dev pair satisfies both unknown and paragraph/block exclusion.",
+    "rows": [
+      {
+        "source": "ZL3b-n",
+        "split": "train_legacy",
+        "pages": 113,
+        "counts": {
+          "candidate_adjacent_parsed_rows": 1970,
+          "eligible_same_paragraph_cross_row": 1548,
+          "paragraph_or_block_boundary": 255,
+          "missing_endpoint": 125,
+          "aligned_to_excluded_locus": 42
+        },
+        "eligible_pages": 112,
+        "eligible_leaves": 57,
+        "strict_source_line_adjacent": 1532,
+        "by_effective_H": {
+          "1": 533,
+          "2": 499,
+          "5": 64,
+          "3": 422,
+          "4": 30
+        },
+        "by_illustration": {
+          "T": 63,
+          "H": 637,
+          "S": 396,
+          "A": 11,
+          "C": 19,
+          "B": 342,
+          "P": 80
+        }
+      },
+      {
+        "source": "ZL3b-n",
+        "split": "dev",
+        "pages": 41,
+        "counts": {
+          "candidate_adjacent_parsed_rows": 777,
+          "eligible_same_paragraph_cross_row": 647,
+          "paragraph_or_block_boundary": 95,
+          "missing_endpoint": 35
+        },
+        "eligible_pages": 41,
+        "eligible_leaves": 17,
+        "strict_source_line_adjacent": 631,
+        "by_effective_H": {
+          "1": 220,
+          "2": 259,
+          "4": 4,
+          "3": 164
+        },
+        "by_illustration": {
+          "H": 209,
+          "A": 4,
+          "B": 134,
+          "T": 100,
+          "C": 9,
+          "P": 44,
+          "S": 147
+        }
+      },
+      {
+        "source": "IT2a-n",
+        "split": "train_legacy",
+        "pages": 113,
+        "counts": {
+          "candidate_adjacent_parsed_rows": 1969,
+          "eligible_same_paragraph_cross_row": 1651,
+          "paragraph_or_block_boundary": 270,
+          "missing_endpoint": 8,
+          "aligned_to_excluded_locus": 40
+        },
+        "eligible_pages": 112,
+        "eligible_leaves": 57,
+        "strict_source_line_adjacent": 1651,
+        "by_effective_H": {
+          "1": 566,
+          "2": 526,
+          "5": 77,
+          "3": 452,
+          "4": 30
+        },
+        "by_illustration": {
+          "T": 67,
+          "H": 689,
+          "S": 425,
+          "A": 11,
+          "C": 19,
+          "B": 355,
+          "P": 85
+        }
+      },
+      {
+        "source": "IT2a-n",
+        "split": "dev",
+        "pages": 41,
+        "counts": {
+          "candidate_adjacent_parsed_rows": 777,
+          "eligible_same_paragraph_cross_row": 656,
+          "paragraph_or_block_boundary": 108,
+          "unknown_paragraph": 11,
+          "missing_endpoint": 2
+        },
+        "eligible_pages": 41,
+        "eligible_leaves": 17,
+        "strict_source_line_adjacent": 651,
+        "by_effective_H": {
+          "1": 232,
+          "2": 256,
+          "4": 5,
+          "3": 163
+        },
+        "by_illustration": {
+          "H": 221,
+          "A": 5,
+          "B": 130,
+          "T": 99,
+          "C": 8,
+          "P": 46,
+          "S": 147
+        }
+      }
+    ],
+    "physical_adjacency_limit": "Main population is adjacent parser physical rows within known paragraph/block, not individually image-certified reading adjacency.",
+    "source_file_adjacency_limit": "max(previous.source_lines)+1 == min(current.source_lines) only means consecutive original file line numbers. Comments or blanks can falsely exclude visually adjacent rows. It is not a physical-layout gold standard."
+  },
+  "estimand": {
+    "variables": "Y=first unit of current word; X=last unit of previous word; C=known metadata and role conditions, no target length.",
+    "transport_gain": "Delta_transport = E_cross[log2(Q1_frozen(Y|C,X)/Q0_frozen(Y|C))].",
+    "interpretation": "Relative log score of two frozen predictors on the same cross-line targets. With identical continuation/EOS/target-identity costs, complete-word gain equals first-unit gain.",
+    "identity": "Delta_transport = I_cross(X;Y|C) + E_C KL(P_cross(Y|C)||Q0) - E_CX KL(P_cross(Y|C,X)||Q1).",
+    "identity_conditions": "All distributions use the same normalized outcome space and positive support; expectations are under the chosen cross-line population/weights. Q1 denotes the final fixed mixture, not its uncombined child.",
+    "cannot_infer": [
+      "Zero/negative transfer gain does not show independence.",
+      "Positive transfer gain need not establish a conditional-dependence magnitude: it can improve baseline marginal calibration.",
+      "A different population loss cannot be directly compared as if it were a paired gain.",
+      "Complete-word log-score gain is not plug-in mutual information or evidence of grammar/translation."
+    ]
+  },
+  "distribution_shifts": [
+    {
+      "id": "D1",
+      "issue": "Source/target roles",
+      "detail": "Existing records() trains source slots 1,3,... and target slots 2,4,..., both excluding true line endpoints. Proposed sources are line-final and targets line-first."
+    },
+    {
+      "id": "D2",
+      "issue": "No trained line-first condition",
+      "detail": "position_bin=0 groups interior early positions; it is not line_first. paragraph_line labels the whole first paragraph row. Eligible same-paragraph cross-line targets necessarily have paragraph_start=false."
+    },
+    {
+      "id": "D3",
+      "issue": "Marginals and support",
+      "detail": "Line roles can change first/last units, lengths, unknown rates, context counts, and backoff behavior. Sparse exact H/I/length cells can erase gain even under real dependence. Inspect support without treating it as an outcome test."
+    },
+    {
+      "id": "D4",
+      "issue": "Selection and clustering",
+      "detail": "The missing/paragraph-known/excluded-locus filters change population composition. Dev has 647 ZL / 656 IT targets but only 41 pages / 17 leaves; H4 has 4 / 5 targets and H5 is absent. ZL and IT are not independent manuscripts."
+    },
+    {
+      "id": "D5",
+      "issue": "Metadata definition",
+      "detail": "Original frozen Q uses page H; inline-H sensitivity is a separately frozen model. Pure transport must preserve the exact chosen metadata scope, or label the changed observer. Source/target hand transitions must be explicitly represented or reported."
+    },
+    {
+      "id": "D6",
+      "issue": "Layout proxy",
+      "detail": "Parser adjacency and source-file adjacency are distinct; neither has pairwise image certification here. No assumption that physical line order necessarily certifies historical reading order."
+    }
+  ],
+  "minimal_proposed_experiments": [
+    {
+      "id": "E1",
+      "priority": "optional diagnostic",
+      "name": "Frozen predictor transport on same cross-line targets",
+      "question": "Does the already fixed interior observer improve relative prediction when transported to the eligible cross-line population?",
+      "fitting": "None. Use the frozen Q0/Q1, alphabet mapping, target-only escape and continuation. Keep original page-H definition, or separately label a wholly specified inline-H observer.",
+      "evaluation": "If later authorized, use only current saved dev population, all prespecified representations; show paired gains, both absolute losses, fallback/support counts and role marginals. Do not compare unpaired absolute losses between within-line and cross-line populations.",
+      "claim_limit": "Transfer only; a negative result is not evidence that dependence disappears. This optional stage is unnecessary if it cannot inform the next design."
+    },
+    {
+      "id": "E2",
+      "priority": "necessary before an absence claim",
+      "name": "Detection and role-shift calibration",
+      "question": "Can the planned estimator distinguish equal within/cross dependence from independence at the observed sample sizes and sparse contexts?",
+      "design": "Generate controlled dependent and independent pairs, with a separately specified line-role marginal shift and fixed cluster/missing masks. Include an equal-dependence-across-regimes case and a weaker predeclared effect; a severe shift should not be mistaken for absence. Select synthetic effect sizes without inspecting manuscript gains.",
+      "budget": "Same model architecture, fit sizes, smoothing/weight grid and selection procedure as E3, repeated fixed seeds; no tuning to make the manuscript look like controls.",
+      "claim_limit": "Known-positive synthetic channels establish only scoped detection. Latin prose is an ecological comparison, not a guaranteed positive control. If positive controls fail, retain negative manuscript outcomes as inconclusive."
+    },
+    {
+      "id": "E3",
+      "priority": "minimal fair substantive check if calibration succeeds",
+      "name": "Fit baseline and endpoint feature on the same target regime",
+      "question": "Does a source endpoint improve new-target prediction after learning line-first marginals from the same cross-line training population?",
+      "training": "Train+legacy eligible cross-line records only for cross models. Fit Q0 and Q1 on exactly the same target records and known conditions, without target length. A within-line comparison needs its own same-regime Q0/Q1 and identical search budget, not merely transport of an interior model.",
+      "selection": "Reuse alpha [1,5,20,100,500], mixture [0,.25,.5,.75,1], last-unit feature only. Select using predeclared whole-leaf inner folds within train+legacy, then evaluate saved dev once descriptively. If dev is used instead for tuning, it cannot also be called independent test. Any direct transport uses old frozen parameters and is separate.",
+      "normalization": "Same complete nonempty word factorization, EOS and finite-unit target-only escape as the existing complete-word model. Shared continuation cancels in gains but all costs remain reported.",
+      "fairness": "Both candidate and baseline see the same role metadata and target population. Alternative has added feature capacity; equal search budget does not equal equal capacity. Report common support and, if planned in advance, matched-size within-line subsampling; do not choose a favorable matching after scores.",
+      "reporting": "Prespecify ZL EVA, ZL merged and IT EVA with all outcomes; page then leaf means and descriptive uncertainty. This design specifies no new confirm/reserve scoring use; any later execution needs a separately explicit frozen scheme and does not change the already frozen final-reserve package. Within-versus-cross difference must be estimated directly with cluster-aware uncertainty, not by comparing two significance labels.",
+      "claim_limit": "At most scoped out-of-sample predictability. A disappearance/equivalence claim needs a predeclared practically meaningful tolerance and demonstrated sensitivity at that tolerance; an interval containing zero is insufficient."
+    }
+  ],
+  "prior_art": {
+    "primary_url": "https://arxiv.org/html/2610.34499v2",
+    "section": "4.5",
+    "existing_review": "synthesis_audit/zhang_sheng_prior_art.json#F5",
+    "relation": "The paper uses boundary mutual information, position permutations and line-break checks. Our fixed predictive gain has a different estimand. This proposed work is a predictive follow-up, not an exact numerical replication or a new discovery of boundary phenomena.",
+    "exact_reproduction_requirements": "Before claiming replication, fix the paper version, unit grouping, pair selection, missing/line-break handling, null exchangeability and statistic. Keep that descriptive statistic separate from the new predictive endpoint; a retained-subset result is not a full-book replication."
+  },
+  "stopping_advice": "No new experiment is needed merely to fill the remaining time. Current evidence supports completing the design record and preserving the final reserve protocol unchanged.",
+  "reproduction": {
+    "entry": "python3 audit_population.py --out-dir /tmp/voynich-line-population-audit-NEW",
+    "outputs": [
+      "population_independent_verification.json"
+    ],
+    "refuses_overwrite": true,
+    "no_probability_models_imported": true
+  },
+  "evidence_hashes": {
+    "line_boundary_design/population.json": "6d0f4cb09328ce0a39a9b27431e88c65bfdbcb8fdd31bcfb9f57bc3ec91497f8",
+    "line_boundary_design/audit_population.py": "d5fae45bf47110eae0c5c528aae4277920944ae2dbdb4e14783a03301164aee4",
+    "line_boundary_design/population_independent_verification.json": "c8c5af1ce79dcacdfc3a6edcbc8eab86f54b00973e9f35410fa3ba97cc9c6554",
+    "boundary.py": "943061e362704c6cd7b8034063b98bc852ea84324fd49764518e9f9209021cc9",
+    "boundary_word.py": "7caa598cae68eae0abaf87c3921b1f9409b6f79ece173a15602bbe41bc8b2ddb",
+    "boundary_protocol.txt": "73d89fa5ef5f467a16df6fafd9a7c8bcd742d05c3ec98db24effffa611f1f990",
+    "boundary_word_protocol.txt": "4d085eb21e2b009edc17800867a0c5de0f3775e5cd61c752e2147083c0fafe0e",
+    "synthesis_audit/zhang_sheng_prior_art.json": "cde61a5b739e7078d06f4312a53b655a7657759b0e611b62ba4a75ccffebeb76"
+  },
+  "wording_amendment": {
+    "utc": "2026-11-17T13:52:09.005791+00:00",
+    "reason": "Clarify scientific design scope rather than imply missing user authorization.",
+    "numerical_results_code_population_unchanged": true
+  }
+}

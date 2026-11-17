@@ -85,6 +85,60 @@ def compact_boundary(value):
     return result
 
 
+def execution_snapshot(research, session):
+    """Read status receipts only, never reserve score arrays or manuscript text."""
+    progress = read(research / "cipher_controls/voynich_substitution/progress.json", {})
+    cipher_state = progress.get("status", "unknown")
+    if cipher_state in {"fitting", "running", "in_progress"}:
+        cipher_state = "in_progress"
+    elif cipher_state in {"complete", "completed", "done"}:
+        cipher_state = "completed"
+    elif cipher_state not in {"failed", "error"}:
+        cipher_state = "unknown"
+    else:
+        cipher_state = "failed"
+    cipher = {"status": cipher_state, **{k: progress[k] for k in ["completed", "total", "updated_utc"] if k in progress}}
+    split = read(research / "split_manifest.json", [])
+    reserved = [r for r in split if r.get("split") == "reserve"]
+    root = research / "final_reserve"
+    opened = read(root / "reserve_opened.json", {})
+    main_file = root / "reserve_v1/complete.json"
+    main = read(main_file, {})
+    metadata_file = research / "metadata_sensitivity/reserve_v1/complete.json"
+    metadata = read(metadata_file, {})
+    metadata_replay_file = research / "metadata_sensitivity/reserve_v1/replay_verification.json"
+    metadata_replay = read(metadata_replay_file, {})
+    review = read(root / "reserve_v1/independent_review.json", {})
+    state = "not_scored"
+    if (root / "reserve_opened.json").exists():
+        state = "opened_processing"
+        if main.get("mode") == "reserve" and main.get("all_passed") is True:
+            state = "main_scored_metadata_pending"
+            if metadata.get("all_passed") is True:
+                state = "scored_awaiting_review"
+                # The final review must bind the main completion and corrected
+                # metadata completion. It cannot be replaced by a preflight review.
+                if (review.get("all_passed") is True
+                        and review.get("complete_sha256") == hashlib.sha256(main_file.read_bytes()).hexdigest()
+                        and review.get("metadata_complete_sha256") == hashlib.sha256(metadata_file.read_bytes()).hexdigest()
+                        and metadata_replay.get("all_passed") is True
+                        and review.get("metadata_replay_sha256") == hashlib.sha256(metadata_replay_file.read_bytes()).hexdigest()):
+                    state = "reviewed"
+        elif main.get("all_passed") is False:
+            state = "failed"
+        if metadata.get("all_passed") is False:
+            state = "failed"
+    reserve = {"status": state, "pages": len(reserved), "leaf_groups": len({r["leaf"] for r in reserved}),
+        "protocol_url": "https://github.com/HaibinLai/Voynich-manuscript/tree/main/research/research7h/final_reserve",
+        "opened_utc": opened.get("opened_utc"), "main_completed_utc": main.get("completed_utc"),
+        "metadata_completed_utc": metadata.get("completed_utc"),
+        "reviewed_utc": review.get("reviewed_utc", review.get("completed_utc")),
+        "preflight_passed": read(root / "preflight_independent_audit.json", {}).get("passed") is True,
+        "outcome_values_loaded": False}
+    return {"cipher_search": cipher, "reserve": reserve, "overall_status": session.get("status", "unknown"),
+        "deadline_utc": session.get("deadline_utc"), "static_snapshot": True}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True,
@@ -141,6 +195,11 @@ def main():
         "final_reserve/freeze.json", "final_reserve/preflight_independent_audit.json",
         "final_reserve/preflight_reference_audit.json", "final_reserve/preflight_review_receipt.json",
         "literature/topic_modeling_reference_correction.json"]
+    stage2_input_names += ["cipher_controls/voynich_substitution/progress.json", "split_manifest.json",
+        "final_reserve/reserve_opened.json", "final_reserve/reserve_v1/complete.json",
+        "final_reserve/reserve_v1/independent_review.json", "metadata_sensitivity/reserve_v1/complete.json",
+        "metadata_sensitivity/reserve_v1/replay_verification.json",
+        "publication_checks/unified_saved_replay_20261117.json", "synthesis_audit/claims_checklist.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -154,6 +213,8 @@ def main():
         "cipher_controls/protocol.txt", "cipher_controls/verification.json",
         "阶段一研究报告.txt", "阶段一结果.png", "阶段一结果.svg"]]
     input_paths += [research/name for name in stage2_input_names]
+    curation_path = Path(__file__).resolve().parents[1] / "site/content/overview-curation.json"
+    input_paths.append(curation_path)
     snapshot_time = datetime.datetime.fromtimestamp(
         max(p.stat().st_mtime for p in input_paths if p.exists()), datetime.timezone.utc).isoformat()
     for name in ["data/folios", "assets/images", "assets/crops", "downloads"]:
@@ -273,6 +334,7 @@ def main():
         "source_note": "页面默认展示研究用 PDF 中的手稿扫描，另提供耶鲁官方高清原图链接；不含现代序言与学术附文。ZL3b / IT2a 转写沿用已发表版本，发布许可为 CC0；不是独立 OCR 或翻译。图像使用条件以耶鲁馆藏页为准，转写 CC0 不扩展到图像或 EVA 字体。"})
     write(site / "data/statistics.json", statistics)
     session = read(research / "session.json", {})
+    execution = execution_snapshot(research, session)
     public_summary = read(research / "public_summary.json", {})
     stage1_assets = {}
     for source_name, target_name, key in [
@@ -377,10 +439,9 @@ def main():
     write(site / "data/stage2.json", {
         "overall_status": session.get("status", "active"),
         "deadline_utc": session.get("deadline_utc"),
-        "status_note": "第二阶段仍在进行；这里展示已完成的子实验，不表示七小时研究已结束。",
-        "ongoing_work": {"title": "固定预算密码搜索", "planned_searches": 976,
-            "status": "in_progress_at_snapshot", "estimated_completion_utc": "2026-11-17T15:00:00Z",
-            "note": "完成时间是估计，不是承诺或实时状态；后续以发布记录为准。"},
+        "status_note": ("第二阶段仍在进行；这里展示已完成的子实验，不表示七小时研究已结束。" if session.get("status") == "active"
+                        else "这里保留各子实验的结果与完成时间；总研究状态以阶段快照为准。"),
+        "execution_snapshot": execution,
         "paragraph_factor": factor, "generator_controls": generators,
         "boundary_diagnostic": boundary, "boundary_fullword": boundary_word,
         "boundary_calibration": boundary_calibration,
@@ -477,13 +538,30 @@ def main():
         freeze_hash = hashlib.sha256((reserve_dir / "freeze.json").read_bytes()).hexdigest()
         if freeze_hash != preflight.get("freeze_sha256") or freeze_hash != preflight_review.get("freeze_sha256"):
             raise ValueError("Reserve preflight does not match the frozen protocol receipt")
-        reserve_status = {"status": "frozen_preflight_passed_not_opened_at_snapshot",
+        reserve_status = {"status": "frozen_preflight_passed",
             "frozen_utc": freeze["frozen_utc"], "reviewed_utc": preflight_review["reviewed_utc"],
-            "freeze_sha256": freeze_hash, "snapshot_only": True, "outcomes_published": False}
+            "freeze_sha256": freeze_hash, "snapshot_only": True, "outcomes_published": False,
+            "scope": "Historical preflight receipt only; current execution status is in homepage.execution.reserve."}
     write(site / "data/interpretation-audit.json", {"anchor": anchor_audit, "section_hand": support,
         "metadata_scope": {"assets": metadata_assets, "sensitivity_status": metadata_sensitivity.get("status", "independent_recalculation_in_progress")},
         "metadata_sensitivity": metadata_sensitivity,
         "reserve_preflight": reserve_status})
+    replay_receipt = read(research / "publication_checks/unified_saved_replay_20261117.json", {})
+    replay_assets = export_assets(research / "publication_checks", site, [
+        ("receipt", "unified_saved_replay_20261117.json", "downloads/unified-saved-replay.json")])
+    curation = read(curation_path, {})
+    write(site / "data/homepage.json", {**curation, "built_from_snapshot_utc": snapshot_time,
+        "decipherment_status": "尚无可靠译文", "image_review": highres_summary,
+        "execution": execution, "claims_checklist_source": "synthesis_audit/claims_checklist.json",
+        "verification": {"passed": replay_receipt.get("passed") is True,
+            "completed_utc": replay_receipt.get("completed_utc"),
+            "public_data_commit": replay_receipt.get("public_data_commit"),
+            "saved_replays": [{k:r[k] for k in ["name", "passed", "completed_utc"] if k in r}
+                for r in replay_receipt.get("saved_replays", {}).get("runs", [])],
+            "assets": replay_assets,
+            "driver_url": "https://github.com/HaibinLai/Voynich-manuscript/blob/main/scripts/verify_release.py",
+            "bundle_export_url": "https://github.com/HaibinLai/Voynich-manuscript/blob/main/scripts/export_review_bundle.py",
+            "repository_url": "https://github.com/HaibinLai/Voynich-manuscript"}})
     literature = read(research / "literature/literature.json", [])
     write(site / "data/literature.json", literature)
     write(site / "data/candidate_claims.json", read(research / "literature/candidate_claims.json", []))
@@ -517,7 +595,7 @@ def main():
         "hash_verification_scope": "Source hashes match published mirror receipts; not a fresh byte comparison with the upstream server."})
     manifest = []
     for path in sorted(site.rglob("*")):
-        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg"} and path.name != "manifest.json":
+        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js"} and path.name != "manifest.json":
             manifest.append({"path": str(path.relative_to(site)), "bytes": path.stat().st_size,
                              "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     write(site / "data/manifest.json", {"files": manifest})

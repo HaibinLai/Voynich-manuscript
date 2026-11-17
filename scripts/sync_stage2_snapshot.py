@@ -1,6 +1,6 @@
 """Publish an explicit research allowlist; never copy modern paper PDFs or local inventory."""
 from pathlib import Path
-import argparse,datetime,hashlib,json,os,shutil
+import argparse,datetime,hashlib,json,os,re,shutil
 
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -94,6 +94,12 @@ def main():
     # data. Export this fixed input without exposing any in-progress cipher score.
     path=src/'cipher_controls/voynich_substitution/data/train_eva.json'
     if (src/'section_hand_audit/support.json').exists() and path.exists():copy(path.relative_to(src))
+    # Progress is a timestamped count only, never an in-progress score/key.
+    path=src/'cipher_controls/voynich_substitution/progress.json'
+    if path.exists():
+        progress=json.loads(path.read_text())
+        assert set(progress)<=set(['status','completed','total','updated_utc','elapsed_this_invocation_seconds'])
+        copy(path.relative_to(src))
     final=src/'final_reserve'
     if (final/'preflight_v1/complete.json').exists():
         for path in sorted(final.iterdir()):
@@ -114,6 +120,24 @@ def main():
             assert path.suffix not in ['.log','.pdf','.pyc']
             copy(path.relative_to(src))
         copy(Path('metadata_sensitivity/artifact_manifest.json'))
+    for folder in ['synthesis_audit','label_body_design','line_boundary_design']:
+        parent=src/folder;manifest=parent/'artifact_manifest.json'
+        if not manifest.exists():continue
+        inventory=json.loads(manifest.read_text())
+        if isinstance(inventory,dict):inventory=inventory['files']
+        for item in inventory:
+            if item.get('publish') is False:continue
+            rel=Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            path=parent/rel
+            assert digest(path)==item['sha256'] and path.stat().st_size==item['bytes']
+            assert path.suffix not in ['.log','.pdf','.pyc']
+            copy(path.relative_to(src))
+        copy(manifest.relative_to(src))
+    for path in sorted((src/'publication_checks').glob('*')):
+        if path.is_file() and path.suffix in ['.json','.txt']:copy(path.relative_to(src))
+    for name in ['site_status.json','homepage_curated.json']:
+        if (src/name).is_file():copy(Path(name))
     for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',
                  'high_resolution_review.json','review_agent.json','review_agent_verification.json','root_review_spotcheck.json',
                  'review_combined.json','review_verification.json','merge_reviews.py','prepare_circular_views.py',
@@ -123,7 +147,10 @@ def main():
     for e in entries:
         path=dest/e['path']
         if path.suffix in ['.txt','.json','.py','.md','.csv','.xml','.html']:
-            if '/Users/' in path.read_text():raise ValueError('Unexpected personal path in '+e['path'])
+            # A bare '/Users/' literal is also used by audit code to reject
+            # private paths; reject an actual following account component.
+            if re.search(r"/Users/[^/'\"\s]",path.read_text()):
+                raise ValueError('Unexpected personal path in '+e['path'])
     result=dict(exported_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
         purpose='Reviewable second-stage snapshot. Completed analyses and 20-page visual review are distinct from the ongoing cipher search.',
         files=entries,

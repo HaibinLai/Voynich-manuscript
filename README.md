@@ -25,6 +25,18 @@
 
 ## 阅读与复现
 
+统一核验入口默认只检查公开清单的文件哈希，不需要安装第三方库，也不重新评分：
+
+```sh
+python3 scripts/verify_release.py
+```
+
+安装下列依赖后，也可一次复算四组保存证据。输出目录必须是仓库外的新目录；日志和每组记录分别保留：
+
+```sh
+python3 scripts/verify_release.py --replay anchor copy allograph metadata --output /tmp/voynich-replay-new
+```
+
 结果和解释在 `research/study20/研究报告.txt`、`research/research7h/阶段一研究报告.txt`，文献在 `research/research7h/literature/`。
 
 安装 Python 依赖后，可直接复现统计与预测，不需要原始 PDF：
@@ -45,6 +57,14 @@ python3 research/research7h/make_stage1_report.py
 python3 research/study20/analyze.py
 python3 research/study20/robustness.py
 ```
+
+另可导出仅含 20 页页面图、40 处重点裁图、332 处双版转写及观察记录的便携工作包。仅使用现有公开资产，保留原始字节；高清原图按来源链接访问：
+
+```sh
+python3 scripts/export_review_bundle.py --output /tmp/voynich-review20-new.zip
+```
+
+包内有可直接阅读的中文对照文本、逐位置 JSON 和校验清单。它不是译文或新的字形裁决，也不包含整本现代影印出版物。
 
 密码校准需要 C++17 编译器；具体命令见 `research/research7h/cipher_controls/研究报告.txt` 与 `benchmark.py`。模型和编译产物可重建。
 
