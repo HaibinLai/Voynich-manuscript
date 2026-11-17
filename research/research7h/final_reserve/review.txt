@@ -1,0 +1,79 @@
+Independent implementation review — literature agent
+2026-11-17 UTC; read-only source review and static AST parsing only.
+
+Decision: ready to freeze the reviewed source and run the already-seen-confirm
+preflight plus deterministic toys. This decision does NOT authorize reserve
+loading or scoring. A separate internal gate must follow successful preflight
+and a review of its complete outputs. No reserve records or reserve-specific
+statistics were read or calculated by this reviewer.
+
+Reviewed files: protocol.txt, worker.py, score.py, summarize.py,
+verify_adapter.py. Exact hashes are recorded in review_receipt.json before
+freeze. After freeze, this review and existing receipts must remain unchanged;
+subsequent runtime/preflight review belongs in a new preflight_review.txt.
+
+Probability and model selection
+- All four model families run in separate subprocesses; actual implementation
+  source paths/hashes are asserted, resolving the same-name module-cache risk.
+- Copy uses historical train-only counts, dev choices and legal past H/V sources.
+  Preflight compares original word coordinates, every H/V source word/coordinate,
+  unknown counts and all saved per-word probabilities. Position perturbation
+  changes V identities only; its seed-specific arrays are compared with history.
+- Allograph verifies shared train input hashes across all three merge configs,
+  reconstructs the fixed quotient/restoration choices, and charges complete word,
+  original identity escape and every restoration branch. Roundtrip is checked.
+  Global-only restoration remains an explicit sensitivity, not a new choice.
+- Paragraph validates the original probability-table checksum and uses the
+  historical selected body/position, gallows and any-first mixtures. It matches
+  paragraph-first coordinates/words and historical per-word costs. Only the
+  declared page-then-leaf aggregation changes.
+- Boundary charges unknown identity bits from the original target tuple only.
+  The legacy context-plus-target unknown counter is not used for this charge.
+  Q(first) already normalizes a nonempty start; no second nonempty division is
+  added. Suffix+EOS and fixed conditional distributions remain unchanged.
+- verify_adapter.py checks four context/target unknown placements, explicit
+  original-alphabet expansion, analytic remaining-prefix mass and the zero-escape
+  helper case. This verifies the adapter factorization, rather than constituting
+  another independent implementation of the underlying historical CharLM.
+
+Earlier requested corrections rechecked
+P1: The reserve gate now binds a successful preflight-mode receipt to the same
+freeze hash. The normal parent workflow creates all twelve predetermined workers
+and writes completion only after successful aggregation. Preflight review must
+still verify twelve unique successful family/representation completions.
+P2: summarize rejects an existing summary or either bootstrap NPZ at entry,
+before modifying them; a repeated invocation cannot overwrite arrays then fail.
+P3: It validates worker row/score SHA values, target counts, score lengths and
+finiteness before aggregation. Thus the current page_leaf zip caller has checked
+matching lengths; malformed saved arrays cannot silently truncate this workflow.
+P4: Summary carries mode/split/freeze/execution-receipt hashes; input page hashes
+and split labels are checked, distinguishing confirm preview from reserve.
+P5: Protocol now explicitly says this adapter has no automatic resume. Failure
+preserves all partial artifacts and leaves an incomplete packet. Any later
+missing-output continuation requires a separately audited dated amendment.
+
+Other provenance corrections
+Historical confirm arrays, target records and position-null arrays are included
+in the dependency freeze. Worker metadata reports parsed-prose slots, missing
+slots, retained known slots, scored targets and excluded known slots, with the
+upstream non-prose scope explicit. Paragraph payload hashes and allograph train
+hashes are checked. Copy unknown metadata is named for targets. The execution
+receipt correctly describes train inputs/configs as frozen before target loading;
+actual counts are deterministically rebuilt inside workers, without tuning.
+
+Inference boundaries
+Ten fixed contrasts and all three representations remain predeclared. At most
+11 reserved leaf groups, not 99,999 draws, determine independent-sample limits.
+Percentile/Bonferroni intervals are approximate under the leaf-sampling model.
+Paragraph labels may reflect first glyphs. Copy H/HV match source windows but can
+have different frozen dev parameters. Holm-adjusted V-channel tail areas retain
+the conditional-exchangeability limitation and are not coherent whole-text
+randomization tests. Allograph gains mean statistical parameter sharing, not
+phonetic/historical identity. Previously exposed leaves are described honestly;
+their omission is supplementary and does not restore project-wide blinding.
+
+Next actions allowed by this review
+Freeze these bytes, execute only the old-confirm preflight and deterministic
+toys, then inspect full coordinate/probability comparisons and aggregation.
+Do not load reserve until a separate explicit internal gate after that review.
+No remaining source-level blocker was identified for this limited preflight.

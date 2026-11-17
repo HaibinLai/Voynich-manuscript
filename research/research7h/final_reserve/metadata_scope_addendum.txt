@@ -1,0 +1,38 @@
+Page-level H scope clarification, appended before opening reserve
+2026-11-17. Original protocol, freeze, models and preflight remain unchanged.
+
+The operational hand condition in the frozen primary packet is the IVTFF PAGE
+header H value. The parser used by all original experiments does not propagate
+inline <@H=...> overrides. An audit of allowed train+legacy/dev metadata found
+one affected training page, f115r: page H=@, source loci1-12 H2, loci13-45 H3.
+The old models treat @ as a separate observed category, not as an identified
+sixth scribe. Therefore the primary packet tests prediction conditional on those
+frozen page-level labels; it is not a complete adjustment for real per-line
+Davis hand attribution. This qualification applies to previous descriptions of
+known hand or hand-controlled prediction.
+
+There are456 retained ZL words on f115r (128/328 by explicit H2/H3 labels) and444
+IT words (120/324). These counts are affected training populations, not a bound
+on how much any score may change. Global and position data are unchanged. The
+paragraph-prefix family does not consume H; the other families may be affected.
+Prior independent score replays continue to verify the original implementation.
+
+A separate metadata_sensitivity packet is being frozen before reserve opening.
+It changes only explicitly recoverable H assignments, keeps every old dev
+parameter/mixture choice, and recomputes train+legacy counts. It will report all
+eight affected contrasts in three representations (24) with old/new per-word,
+page and leaf values, plus unchanged paragraph checks. It is descriptive
+robustness, with no additional search, p-values or confidence-family claims.
+It does not replace the primary ten-contrast packet or rewrite its outputs.
+
+After both packets pass their recorded preflight/confirm review, root will bind
+this addendum and the sensitivity freeze in the reserve execution gate. The
+sensitivity must run on the same saved reserve pages regardless of whether the
+primary result is positive or negative; it is not optional reporting chosen
+after inspecting scores. Any inability to execute it is reported as incomplete.
+The old page-H and corrected inline-H results must both remain available.
+
+No reserve scoring has occurred at the time of this addition. The source-format
+and propagation audit is in section_hand_audit/metadata_scope_audit.txt and its
+machine-readable companion. This note changes interpretation scope, not any
+numeric result, input hash, predeclared target or model parameter.

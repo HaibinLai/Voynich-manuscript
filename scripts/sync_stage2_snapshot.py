@@ -48,7 +48,8 @@ def main():
     entries.append(dict(path='generator_controls/protocol_receipt.json',source_sha256=digest(receipt_source),public_sha256=digest(target),transformation='absolute source paths -> package-relative; source hash recorded'))
     for name in ['literature.json','rights_notes.json','boundary_prior_art.json','边界先例附录.txt',
                  'stolfi_candidate_audit.json','Stolfi候选可执行性审查.txt','PUBLIC_EXPORT.txt',
-                 '新先例与代码口径附录.txt','rozanova_temerev_2026_audit.json']:
+                 '新先例与代码口径附录.txt','rozanova_temerev_2026_audit.json',
+                 'topic_modeling_reference_correction.json']:
         if (src/'literature'/name).is_file():copy(Path('literature')/name)
     # The copy-model package retains frozen code and compressed, hash-checked
     # context archives. Never export the 420 MB uncompressed duplicate targets.
@@ -78,6 +79,41 @@ def main():
             assert path.suffix not in ['.log','.pdf','.pyc']
             copy(path.relative_to(src))
         copy(Path('allograph_factor/artifact_manifest.json'))
+    # Design/source audits and three Yale-only anchor crops. Full-size originals
+    # and private modern-paper figures deliberately stay outside this allowlist.
+    for folder in ['section_hand_audit','anchor_audit']:
+        parent=src/folder
+        if parent.exists():
+            for path in sorted(parent.iterdir()):
+                if path.is_file() and (path.suffix in ['.py','.txt','.json','.csv'] or path.name.endswith('.json.gz')):
+                    copy(path.relative_to(src))
+    for name in ['f68r_cluster.png','f29v_first_words.png','f41v_label.png']:
+        path=src/'anchor_audit/images'/name
+        if path.exists():copy(path.relative_to(src))
+    # The design audit's explicit training input is already public transcription
+    # data. Export this fixed input without exposing any in-progress cipher score.
+    path=src/'cipher_controls/voynich_substitution/data/train_eva.json'
+    if (src/'section_hand_audit/support.json').exists() and path.exists():copy(path.relative_to(src))
+    final=src/'final_reserve'
+    if (final/'preflight_v1/complete.json').exists():
+        for path in sorted(final.iterdir()):
+            if path.is_file() and path.suffix in ['.py','.txt','.json']:
+                copy(path.relative_to(src))
+        for path in sorted((final/'preflight_v1').rglob('*')):
+            if path.is_file() and path.suffix in ['.json','.gz','.npz']:
+                copy(path.relative_to(src))
+    metadata=src/'metadata_sensitivity'
+    if (metadata/'confirm_v1/complete.json').exists():
+        inventory=json.loads((metadata/'artifact_manifest.json').read_text())
+        for item in inventory:
+            if not item['publish']:continue
+            rel=Path(item['path'])
+            assert not rel.is_absolute() and '..' not in rel.parts
+            path=metadata/rel
+            assert digest(path)==item['sha256'] and path.stat().st_size==item['bytes']
+            assert path.suffix not in ['.log','.pdf','.pyc']
+            copy(path.relative_to(src))
+        copy(Path('metadata_sensitivity/artifact_manifest.json'))
     for name in ['download_yale.py','prepare_audit.py','yale_manifest.json','yale_image_receipt.json','inventory_summary.json','locus_inventory.json',
                  'high_resolution_review.json','review_agent.json','review_agent_verification.json','root_review_spotcheck.json',
                  'review_combined.json','review_verification.json','merge_reviews.py','prepare_circular_views.py',

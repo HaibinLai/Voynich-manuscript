@@ -1,0 +1,18 @@
+Coverage scope clarification, after original aggregation and before publication.
+No original rule, input, denominator or outcome is changed by this note.
+
+The fixed corpus.load call returns prose-locus pages only. Its default tokenizer
+marks an entire unreadable or alternative-reading token as None. coverage.py
+counts only the remaining nonempty explicit-unit words. The reported token/type
+fractions therefore refer to retained prose words in train+legacy and dev, not
+every handwritten mark, label, circular text, ambiguous token or all manuscript
+pages. The three targeted image anchors are a separate visual audit; labels are
+not silently added to the numerical coverage denominator. A filtered unknown
+word is different from an explicit known EVA unit that Bax's partial table does
+not cover: the latter remains in the denominator and is charged as unexplained.
+
+The m-excluded / m-allowed pair brackets only the treatment of that conditional
+table entry within the literal inventory. It is not a confidence interval or a
+general bound on every possible future extension of Bax's hypothesis. The input
+corpus and proposal are both public, and the visual checks were informed by prior
+transcriptions; this is not a blind trial or a percentage of text deciphered.

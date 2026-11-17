@@ -1,0 +1,27 @@
+公开覆盖计数复算
+
+在本目录或任意目录执行（把脚本路径换成实际位置）：
+python3 coverage_public_replay.py --out-dir /tmp/bax-coverage-new-run
+
+输出目录必须尚不存在；已有目录会拒绝运行，不覆盖旧结论。可使用 --input-dir
+指定含 coverage_words.json.gz、coverage_results.json 的目录，--registry 指定
+candidate_claims.json；默认 registry 位于相邻 literature 目录。
+
+只需 Python 标准库。脚本独立使用前向路径累加复算两界，逐词校验完整分段路径、
+符号候选路径及最少未解释单位，再独立聚合四组分母和比例。它不导入原 coverage.py
+或 corpus.py，不打开原始转写，不读取或评分新的 confirm/reserve 页。
+
+新目录保存 execution_receipt.json 与 verification.json，记录输入及复算脚本 SHA。
+输入文件在运行前后再次校验不变。原冻结 receipt、代码和结果均保留；这只是保存
+词表之后的计数复现，不重做从原始转写提取词表的步骤。
+
+公开最小文件：
+coverage_public_replay.py
+coverage_words.json.gz
+coverage_results.json
+相邻 literature/candidate_claims.json
+建议同时附 coverage_protocol.txt、coverage_receipt.json、coverage_review.txt、
+coverage_independent_review.json、coverage_public_replay_verification.json 和 scope_addendum.txt。
+
+解释限制：分母是被保留的正文词，未确定整词和独立标签不在其内。路径不是不同
+发音，覆盖率不是翻译准确率，m 两界只处理固定表中这一条位置条件的缺失。

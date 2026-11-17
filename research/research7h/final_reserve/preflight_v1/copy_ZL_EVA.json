@@ -1,0 +1,121 @@
+{
+  "family": "copy",
+  "name": "ZL_EVA",
+  "targets": 5025,
+  "rows_path": "copy_ZL_EVA_rows.json.gz",
+  "scores_path": "copy_ZL_EVA.npz",
+  "rows_sha256": "15f0d477c7cb2942ef57294c5c296c1d4300cf67ba8dc081591c0b89dc272b55",
+  "scores_sha256": "3f8be4c1fe1ec9a287885a51993b479be3f978e82092f62bf46b9f8ac53e1956",
+  "completed_utc": "2026-11-17T12:35:32.993378+00:00",
+  "preflight_errors": {
+    "base": 0.0,
+    "edit_HV": 0.0,
+    "exact_HV_matched": 0.0,
+    "edit_H_matched": 0.0,
+    "edit_V_matched": 0.0,
+    "exact_H_matched": 0.0,
+    "exact_V_matched": 0.0,
+    "edit_H_independent": 0.0,
+    "exact_HV_independent": 0.0
+  },
+  "target_unknown_units": 7,
+  "target_escape_bits": 69.30606765586523,
+  "baseline_weights": [
+    0.0,
+    0.5,
+    0.5
+  ],
+  "selected": {
+    "edit_HV": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.886924823162941,
+      "kernel": "edit"
+    },
+    "exact_HV_matched": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.885648459335258,
+      "kernel": "exact"
+    },
+    "edit_H_matched": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.891059316522286,
+      "kernel": "edit"
+    },
+    "edit_V_matched": {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.905043975639021,
+      "kernel": "edit"
+    },
+    "exact_H_matched": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.890934488049979,
+      "kernel": "exact"
+    },
+    "exact_V_matched": {
+      "family": "V",
+      "k": 0,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.903533884168805,
+      "kernel": "exact"
+    },
+    "edit_H_independent": {
+      "family": "H",
+      "k": 8,
+      "r": 0,
+      "rho": 0.75,
+      "weight": 0.025,
+      "dev_bits": 10.891059316522286,
+      "kernel": "edit"
+    },
+    "exact_HV_independent": {
+      "family": "HV",
+      "k": 8,
+      "r": 3,
+      "rho": 1,
+      "weight": 0.025,
+      "dev_bits": 10.885648459335258,
+      "kernel": "exact"
+    }
+  },
+  "model_origins": [
+    {
+      "path": "research7h/copy_prediction/copy_models.py",
+      "sha256": "5c17fd32450cd17b86fb81b2f80ba0c2c63d91506f13642f3352f92f29e6e528"
+    },
+    {
+      "path": "research7h/copy_prediction/reference_models.py",
+      "sha256": "8eb431724ab62a7e9f14a405f86cfdd77229b91d6c049df774f04b09e40ab815"
+    }
+  ],
+  "eligibility": {
+    "scope": "Within parsed prose loci; non-prose labels/circles are excluded upstream by the fixed parser.",
+    "parsed_prose_slots": 5106,
+    "missing_or_ambiguous_slots": 81,
+    "retained_known_slots": 5025,
+    "scored_target_slots": 5025,
+    "known_slots_excluded_by_population_rule": 0,
+    "unknown_identity_units_are_encoded_not_omitted": true
+  }
+}

@@ -1,0 +1,158 @@
+Final reserved-page replication protocol v1
+Prepared 2026-11-17, before any reserved-page model scoring.
+
+Purpose and scope
+Re-evaluate the following fixed predictive explanations on the project's 22-page,
+11-leaf reserve partition. This is a replication of selected exploratory results,
+not a decipherment attempt with a known semantic answer. No model is selected,
+refitted, calibrated or revised using reserve outcomes. Counts remain fitted to
+train+legacy only; all hyperparameters are the already frozen dev choices. Dev
+and confirm are not added to training. This deliberately includes previously
+negative contrasts, and all three predeclared transcription/unit representations.
+The separate fixed-substitution experiment retains its own confirm protocol and
+does not use reserve in this final predictive packet.
+
+Exposure and independence
+The reserve partition is b8773a853896e08a03eea857668ee08825076babf1b93b7939461f70023db2c0
+(SHA-256 of split_manifest.json). Its raw public files were downloaded previously,
+and the shared parser traverses all source records before filtering returned pages.
+Metadata and layout were used to make the original leaf split. Bax's f15v anchor,
+Timm's default f103v seed, and published full-book aggregate studies were seen.
+See reserve_exposure_log.txt; never describe the project as wholly blind.
+No reserved-page per-word model score or reserve-specific statistic has yet been
+computed. All 22 pages remain primary; do not discard exposed or inconvenient
+pages. A fixed auxiliary summary omits leaves f15 and f103 together, reports all
+contrasts, and is labelled an exposure sensitivity, not a replacement primary test.
+
+Representations and parsing
+ZL_EVA is primary; ZL_merged and IT_EVA are fixed sensitivities. Use unchanged
+corpus.py, build_corpus.py and study20/analyze.py, with uncertain commas split,
+alternative/unreadable words excluded as missing slots, and existing paragraph /
+physical-line joins. Labels and circles are not silently treated as prose.
+All retained target slots and all skipped/missing slots are counted. Exact source,
+parser, model, configuration and probability-table hashes are locked in freeze.json.
+No manual correction is applied after viewing reserve outcomes. A discovered bug
+requires a dated amendment, preservation of the original results, and explicit
+rerun labelling; failure to support a hypothesis is not a reason to amend.
+
+Ten fixed contrasts (positive = the second model saves bits)
+1. Global complete-word LM -> fixed hand/position/global style mixture.
+2. Boundary base -> previous-word-last-unit boundary model on the same fixed
+   nonoverlapping interior pair rule (target slots 2,4,... excluding final slot).
+   Both use the same word continuation model; target length is never an input.
+3. Paragraph-first position model -> paid gallows-prefix factor mixture.
+4. Paragraph-first any-first-unit factor mixture -> paid gallows-prefix mixture.
+5. Style baseline -> single-edit horizontal+vertical copy mixture.
+6. Context-matched exact-copy HV mixture -> single-edit HV mixture.
+7. Context-matched horizontal single-edit mixture -> single-edit HV mixture.
+   The source window is matched; H and HV retain independently selected dev rho
+   and mixture weights. This is not necessarily a one-parameter V ablation.
+8. Raw style baseline -> FP reversible quotient + paid restoration.
+9. Raw style baseline -> KT reversible quotient + paid restoration.
+10. Raw style baseline -> FP+KT reversible quotient + paid restoration.
+
+Configuration sources
+1,5,6,7: copy_prediction/configs/{ZL_EVA,ZL_merged,IT_EVA}.json.
+2: results/boundary_word_confirm{,_merged,_IT}_frozen_config.json; retain both
+   conditional and continuation distributions exactly. The earlier experiment
+   collapsed unseen identities to UNK. Here all unseen target units additionally
+   pay log2(|Omega minus training alphabet|), using the finite original universe
+   already fixed by paragraph_factor. This common additive escape restores a
+   complete distribution over explicit original units and leaves the contrast
+   unchanged. Charge target unseen units only, not preceding context units.
+   The first-unit Q distribution already guarantees a nonempty word; do not add
+   a second nonempty normalization or charge the first unseen unit twice.
+3,4: paragraph_factor/{representation}/frozen_config.json and the associated
+   probability_tables.json.gz; selected mixtures, not the best confirm variant.
+   position_full is the original selected body/position mixture, not a new pure
+   position expert. Align costs by folio/line/slot before comparing old arrays.
+8,9,10: allograph_factor/configs/{representation}_{FP,KT,both}.json and its
+   saved train records. Include separate quotient, restoration, escape and full
+   costs. Full nonempty words, EOS and original identities are always charged.
+   The factors already include escape/restoration; never add these costs twice.
+Global-only restoration for each merge is a mandatory descriptive sensitivity.
+No new grid, alphabet, pair, restoration depth or smoothing parameter is allowed.
+
+Meaning of the score
+These are conditional complete-word prediction costs, in bits per retained
+original normalized word. They condition on known transcription layout and hand;
+the cost of conveying that metadata is not included. Copy sources must be earlier
+in reading order under the already fixed rule; no future word content is allowed.
+Missing/unknown slots retain prior reset and eligibility rules. Unknown words are
+not dropped merely because they are poorly predicted. A conditional compression
+gain is neither plaintext, a word meaning, proof of a language, nor an end-to-end
+archive compressor. Different task populations (all words / interior pairs /
+paragraph-first words) are never ranked by raw bits against each other.
+The allograph models have additional restoration parameters and search choices;
+their predictive gain does not establish phonetic or historical identity.
+Paragraph-start annotations may themselves partly reflect conspicuous first
+glyphs; the layout gain must not be interpreted as an independent causal effect.
+
+Aggregation and uncertainty, frozen before reserve outcomes
+Within each eligible page take the mean paired word loss; within each leaf take
+the equal mean of its eligible pages; then weight eligible leaves equally.
+Report pooled word means and every page/leaf value separately. A page/leaf with
+no eligible targets is absent for that contrast, with its absence reported, not
+assigned zero. This unified page-then-leaf convention differs from the earlier
+paragraph-factor report's pooled-within-leaf convention; retain both historical
+results and clearly name the final convention.
+Use 99,999 whole-leaf bootstrap draws with a deterministic seed from
+SHA256('final-reserve-bootstrap-v1|representation|sorted eligible leaf names').
+The leaf names are comma-joined; use the first eight digest bytes interpreted
+little-endian, NumPy default_rng, integer draws, and quantile method='linear'.
+Contrasts with the same representation and eligible leaves share draw indices.
+Report ordinary 95% intervals and 99.5% intervals for the ten primary ZL/EVA
+contrasts (Bonferroni tail levels for a nominal 5% family budget). Also report
+99.833333% intervals across all 30 representation/contrast combinations, so a
+cross-representation statement cannot silently select an easier interval.
+These are approximate percentile cluster-bootstrap intervals with at most eleven
+leaf groups and possible within-book dependence, not exact simultaneous coverage
+or an estimated probability of a hypothesis. No bootstrap tail fraction is called
+a null-hypothesis p-value. Report leave-one-leaf-out ranges to expose dominance.
+With zero eligible leaves report no estimate; with one eligible leaf report its
+mean without a confidence interval or leave-one-leaf-out range. The 99,999 draws
+do not increase the number of independent manuscript leaves.
+The exposure sensitivity uses the same fixed models and all contrasts, with
+descriptive per-leaf means only; no second opportunity to claim a positive test.
+
+Position-specificity auxiliary check
+Reuse the existing frozen copy and perturbation implementation, without retuning:
+within each previous source line, permute eligible word identities while keeping
+slots, missing values, horizontal channel and target text fixed. Main strata use
+exact unit length, auxiliary strata the original length bins 1-3/4-6/7-9/10+.
+Each source line receives one shared permutation per replicate, even if reused by
+many targets. Run 1,999 draws per representation/stratum with frozen hash-derived
+seeds. Save all null gains, actual identity movement and changed-source-set rates.
+Seed key is 'final-reserve-position-v1|representation_name|exact_or_coarse', first
+eight SHA256 digest bytes little-endian, NumPy default_rng. Quantiles use linear
+interpolation. Existing confirm seeds are used only by the adapter preflight.
+Report original vertical gain, null mean, their difference and reference Monte
+Carlo tail area. Apply Holm to all six reference tail areas as one auxiliary
+family. The interpretation requires conditional exchangeability and is a V-channel
+intervention, not a coherent whole-text shuffle or proof/disproof of historical
+copying. Do not fold these tail areas into bootstrap intervals.
+
+Execution gate and reproducibility
+1. Freeze this text and an allowlist of all code/configuration/model inputs.
+2. Run the new final scoring adapter only on already-seen confirm records and
+   compare every saved per-word cost with historical arrays. Boundary may differ
+   only by the explicit common target escape term; paragraph aggregation may
+   differ only by the stated convention. Independently inspect normalization,
+   allograph restoration, and past-only copy source checks already archived.
+3. A second agent reviews the protocol/adapter while reserve remains unopened.
+4. Write one explicit internal gate receipt after preflight passes. In the final
+   stage, write reserve_opened.json before returning any reserve records to model
+   code. Model configurations and training inputs must be frozen first; workers
+   deterministically reconstruct counts from those fixed training inputs without
+   tuning. Each model family runs in its own Python process, avoiding collisions
+   between identically named models.py/reference_models.py modules. Execute the whole
+   predeclared packet once. This version deliberately has no automatic resume
+   entry point. If interrupted or failed, preserve every partial output and mark
+   the packet incomplete. A later strictly missing-output continuation requires
+   a dated implementation amendment bound to the same immutable inputs; never
+   overwrite or hide partial results, change seeds, or silently rerun scores.
+5. Independently replay scores/aggregation from saved records without re-reading
+   or retuning on reserve. Save original arrays, hashes and deterministic gzip
+   of contexts. Publish positives, negatives, missing eligibility and limitations.
+6. The original research window still ends 2026-11-17 16:50:25 UTC. Incomplete work
+   is labelled incomplete; no smaller post-result experiment is substituted.

@@ -1,0 +1,82 @@
+{
+  "scope": "Metadata tags only in train+legacy/dev allowed folios; no word extraction for dev, no confirm/reserve tags or text retained",
+  "sources": {
+    "ZL3b-n.txt": {
+      "allowed_header_count": 154,
+      "allowed_locus_count": 3541,
+      "page_header_at_folios": [
+        "f115r"
+      ],
+      "override_events": [
+        {
+          "source": "ZL3b-n.txt",
+          "folio": "f115r",
+          "split": "train",
+          "locator": "f115r.1",
+          "locus_type": "@P0",
+          "source_line": 8277,
+          "previous_hand": "@",
+          "new_hand": "2",
+          "at_text_start": true,
+          "page_header_hand": "@"
+        },
+        {
+          "source": "ZL3b-n.txt",
+          "folio": "f115r",
+          "split": "train",
+          "locator": "f115r.13",
+          "locus_type": "+P0",
+          "source_line": 8297,
+          "previous_hand": "2",
+          "new_hand": "3",
+          "at_text_start": true,
+          "page_header_hand": "@"
+        }
+      ],
+      "mid_text_events": [],
+      "possible_prose_continuation_hand_conflicts": []
+    },
+    "IT2a-n.txt": {
+      "allowed_header_count": 154,
+      "allowed_locus_count": 3534,
+      "page_header_at_folios": [
+        "f115r"
+      ],
+      "override_events": [
+        {
+          "source": "IT2a-n.txt",
+          "folio": "f115r",
+          "split": "train",
+          "locator": "f115r.1",
+          "locus_type": "@P0",
+          "source_line": 5303,
+          "previous_hand": "@",
+          "new_hand": "2",
+          "at_text_start": true,
+          "page_header_hand": "@"
+        },
+        {
+          "source": "IT2a-n.txt",
+          "folio": "f115r",
+          "split": "train",
+          "locator": "f115r.13",
+          "locus_type": "+P0",
+          "source_line": 5315,
+          "previous_hand": "2",
+          "new_hand": "3",
+          "at_text_start": true,
+          "page_header_hand": "@"
+        }
+      ],
+      "mid_text_events": [],
+      "possible_prose_continuation_hand_conflicts": []
+    }
+  },
+  "known_mapping": {
+    "f115r.1-f115r.12": "2",
+    "f115r.13-f115r.45": "3"
+  },
+  "physical_mapping": "For f115r each locus maps 1:1 to saved physical line; zero-based lines 0..11=>2 and 12..44=>3",
+  "handling_if_future_conflict": "Fail closed on tag after text or hand-changing physical continuation; do not silently assign a single majority/last hand to mixed-word lines.",
+  "reserve_opened": false
+}

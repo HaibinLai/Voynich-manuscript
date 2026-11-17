@@ -123,7 +123,24 @@ def main():
         "copy_prediction/position_specificity/replay_verification.json",
         "allograph_factor/website_data.json", "allograph_factor/研究报告.txt",
         "allograph_factor/可逆字形合并预测.png", "allograph_factor/可逆字形合并预测.svg",
-        "allograph_factor/protocol.txt", "allograph_factor/replay_manuscript.json"]
+        "allograph_factor/protocol.txt", "allograph_factor/replay_manuscript.json",
+        "anchor_audit/coverage_results.json", "anchor_audit/coverage_population_audit.json",
+        "anchor_audit/coverage_independent_review.json", "anchor_audit/coverage_public_replay_verification.json",
+        "anchor_audit/研究说明.txt", "anchor_audit/scope_addendum.txt", "anchor_audit/coverage_protocol.txt",
+        "anchor_audit/visual_review.json", "anchor_audit/visual_review_agent.json",
+        "anchor_audit/visual_status_clarification.json",
+        "anchor_audit/images/f68r_cluster.png", "anchor_audit/images/f29v_first_words.png",
+        "anchor_audit/images/f41v_label.png",
+        "section_hand_audit/support.json", "section_hand_audit/研究方案.txt",
+        "section_hand_audit/metadata_scope_audit.json", "section_hand_audit/metadata_scope_audit.txt",
+        "metadata_sensitivity/website_data.json", "metadata_sensitivity/replay_verification.json",
+        "metadata_sensitivity/aggregation_verification.json", "metadata_sensitivity/public_replay_verification.json",
+        "metadata_sensitivity/artifact_manifest.json", "metadata_sensitivity/研究报告.txt",
+        "metadata_sensitivity/metadata_gain_changes.png", "metadata_sensitivity/metadata_gain_changes.svg",
+        "metadata_sensitivity/protocol.txt",
+        "final_reserve/freeze.json", "final_reserve/preflight_independent_audit.json",
+        "final_reserve/preflight_reference_audit.json", "final_reserve/preflight_review_receipt.json",
+        "literature/topic_modeling_reference_correction.json"]
     # Use the source snapshot time, not build wall time: unchanged inputs produce
     # byte-identical public data and manifests on repeated builds.
     input_paths = [study / name for name in ["selection.json", "audit_records.json",
@@ -371,6 +388,102 @@ def main():
         "position_specificity": position_specificity,
         "allograph_factor": allograph_factor,
         "boundary_prior_art": {"items": boundary_prior_art, "assets": prior_assets}})
+    # Interpretive audits are separate from frozen predictive experiments. Only
+    # named Yale crops are bundled; modern-paper screenshots and full JPEGs are not.
+    anchor = research / "anchor_audit"
+    coverage = read(anchor / "coverage_results.json", {})
+    coverage_review = read(anchor / "coverage_independent_review.json", {})
+    coverage_replay = read(anchor / "coverage_public_replay_verification.json", {})
+    population = read(anchor / "coverage_population_audit.json", {})
+    anchor_audit = {}
+    if coverage and all(v.get("passed") for v in [coverage_review, coverage_replay, population]):
+        for name in ["coverage_results.json", "coverage_words.json.gz"]:
+            expected = coverage_review.get("source_sha256", {}).get(name)
+            if expected and hashlib.sha256((anchor/name).read_bytes()).hexdigest() != expected:
+                raise ValueError(f"Bax coverage input changed after verification: {name}")
+        visual = read(anchor / "visual_review.json", {})
+        records = []
+        allowed_crops = {"images/f68r_cluster.png", "images/f29v_first_words.png", "images/f41v_label.png"}
+        for record in visual.get("records", []):
+            crop = record["crop"]
+            if crop not in allowed_crops:
+                raise ValueError("Unexpected image in anchor-audit publication list")
+            original = anchor/crop
+            if hashlib.sha256(original.read_bytes()).hexdigest() != record["crop_sha256"]:
+                raise ValueError(f"Anchor crop changed: {crop}")
+            target = "assets/anchors/" + Path(crop).name
+            (site/target).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(original, site/target)
+            records.append({**record, "crop": target})
+        anchor_audit = {"coverage": coverage, "population": population, "visual_records": records,
+            "verification": {"independent": coverage_review, "public_replay": coverage_replay},
+            "scope": "Retained prose words only; symbolic coverage is not translation accuracy; three image anchors are a separate non-blind visual audit."}
+        anchor_audit["assets"] = export_assets(anchor, site, [
+            ("report", "研究说明.txt", "downloads/anchor-audit-report.txt"),
+            ("protocol", "coverage_protocol.txt", "downloads/anchor-coverage-protocol.txt"),
+            ("scope", "scope_addendum.txt", "downloads/anchor-coverage-scope.txt"),
+            ("checks", "coverage_independent_review.json", "downloads/anchor-coverage-verification.json"),
+            ("replay", "coverage_public_replay_verification.json", "downloads/anchor-coverage-public-replay.json"),
+            ("population", "coverage_population_audit.json", "downloads/anchor-coverage-population.json"),
+            ("visual", "visual_review.json", "downloads/anchor-visual-review.json"),
+            ("visual_second", "visual_review_agent.json", "downloads/anchor-visual-second-review.json"),
+            ("clarification", "visual_status_clarification.json", "downloads/anchor-visual-status-clarification.json")])
+        write(site / "data/anchor-audit.json", anchor_audit)
+        anchor_audit["assets"]["summary"] = "data/anchor-audit.json"
+    support_raw = read(research / "section_hand_audit/support.json", {})
+    support = {}
+    if support_raw:
+        support = {k: support_raw[k] for k in ["scope", "data_policy", "split_counts", "labels", "graph"]}
+        support["comparisons"] = [{**{k:v for k,v in row.items() if k not in {"fit", "dev"}},
+            **{split: [{k:r[k] for k in ["pages", "leaves"]} for r in row[split]] for split in ["fit", "dev"]}}
+            for row in support_raw["comparisons"]]
+        support["assets"] = export_assets(research / "section_hand_audit", site, [
+            ("report", "研究方案.txt", "downloads/section-hand-design.txt"),
+            ("summary", "support.json", "downloads/section-hand-support.json")])
+    metadata_assets = export_assets(research / "section_hand_audit", site, [
+        ("report", "metadata_scope_audit.txt", "downloads/metadata-scope-audit.txt"),
+        ("summary", "metadata_scope_audit.json", "downloads/metadata-scope-audit.json")])
+    metadata_dir = research / "metadata_sensitivity"
+    metadata_raw = read(metadata_dir / "website_data.json", {})
+    metadata_replay = read(metadata_dir / "replay_verification.json", {})
+    metadata_aggregation = read(metadata_dir / "aggregation_verification.json", {})
+    metadata_manifest = read(metadata_dir / "artifact_manifest.json", [])
+    metadata_sensitivity = {}
+    if metadata_raw.get("status") == "independently_verified_exploratory" and metadata_replay.get("all_passed") and metadata_aggregation.get("passed"):
+        published_hashes = {r["path"]: r["sha256"] for r in metadata_manifest if r.get("publish")}
+        metadata_names = ["website_data.json", "研究报告.txt", "metadata_gain_changes.png", "metadata_gain_changes.svg",
+            "protocol.txt", "replay_verification.json", "aggregation_verification.json", "public_replay_verification.json"]
+        for name in metadata_names:
+            if hashlib.sha256((metadata_dir/name).read_bytes()).hexdigest() != published_hashes.get(name):
+                raise ValueError(f"Metadata sensitivity output differs from its publication manifest: {name}")
+        write(site / "data/metadata-sensitivity.json", metadata_raw)
+        metadata_sensitivity = {**metadata_raw, "verified_utc": metadata_replay.get("completed_utc")}
+        metadata_sensitivity["assets"] = export_assets(metadata_dir, site, [
+            ("report", "研究报告.txt", "downloads/metadata-sensitivity-report.txt"),
+            ("figure_png", "metadata_gain_changes.png", "assets/metadata-sensitivity-results.png"),
+            ("figure_svg", "metadata_gain_changes.svg", "assets/metadata-sensitivity-results.svg"),
+            ("protocol", "protocol.txt", "downloads/metadata-sensitivity-protocol.txt"),
+            ("checks", "replay_verification.json", "downloads/metadata-sensitivity-verification.json"),
+            ("aggregation", "aggregation_verification.json", "downloads/metadata-sensitivity-aggregation.json"),
+            ("public_replay", "public_replay_verification.json", "downloads/metadata-sensitivity-public-replay.json")])
+        metadata_sensitivity["assets"]["summary"] = "data/metadata-sensitivity.json"
+    reserve_dir = research / "final_reserve"
+    freeze = read(reserve_dir / "freeze.json", {})
+    preflight = read(reserve_dir / "preflight_independent_audit.json", {})
+    reference_audit = read(reserve_dir / "preflight_reference_audit.json", {})
+    preflight_review = read(reserve_dir / "preflight_review_receipt.json", {})
+    reserve_status = {}
+    if freeze and preflight.get("passed") and reference_audit.get("passed"):
+        freeze_hash = hashlib.sha256((reserve_dir / "freeze.json").read_bytes()).hexdigest()
+        if freeze_hash != preflight.get("freeze_sha256") or freeze_hash != preflight_review.get("freeze_sha256"):
+            raise ValueError("Reserve preflight does not match the frozen protocol receipt")
+        reserve_status = {"status": "frozen_preflight_passed_not_opened_at_snapshot",
+            "frozen_utc": freeze["frozen_utc"], "reviewed_utc": preflight_review["reviewed_utc"],
+            "freeze_sha256": freeze_hash, "snapshot_only": True, "outcomes_published": False}
+    write(site / "data/interpretation-audit.json", {"anchor": anchor_audit, "section_hand": support,
+        "metadata_scope": {"assets": metadata_assets, "sensitivity_status": metadata_sensitivity.get("status", "independent_recalculation_in_progress")},
+        "metadata_sensitivity": metadata_sensitivity,
+        "reserve_preflight": reserve_status})
     literature = read(research / "literature/literature.json", [])
     write(site / "data/literature.json", literature)
     write(site / "data/candidate_claims.json", read(research / "literature/candidate_claims.json", []))

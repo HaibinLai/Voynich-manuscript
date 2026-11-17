@@ -1,0 +1,37 @@
+行内书手标签敏感性：公开复现入口
+
+这是附加敏感性包，不能替代 copy_prediction、allograph_factor 或 final_reserve
+原来的冻结结果。完整说明见 protocol.txt 和 研究报告.txt。
+
+保存结果的独立复算（推荐）
+python3 metadata_sensitivity/public_replay.py --out-dir /tmp/metadata-replay-new
+
+该命令应从 research7h 目录运行，或替换为脚本的实际路径。输出目录必须不存在。
+需要 Python 3、NumPy，以及同包相邻 allograph_factor/paragraph_factor 等原依赖。
+它校验保存输入、结果和配置的 SHA，再独立重建标量概率；不打开原始转写，不
+载入新的语料页，不重新选择参数。新输出有执行 receipt、日志和 verification。
+
+重新聚合保存分数
+python3 metadata_sensitivity/audit_aggregation.py --run metadata_sensitivity/confirm_v1 --out /tmp/metadata-aggregation-new.json
+
+未来已保存页的同一固定敏感性（由总研究流程负责，不是本包自行开封）
+make_sidecar.py 接收明确 --pages、--source、--out；只解析这些页的原源标签，检查
+源 SHA 和完整规范化页/坐标，不自行选择 split。run.py 同样必须给两版 --pages-zl、
+--pages-it、--old-reference、--gate 和尚不存在的 --output。gate 必须绑定当前
+freeze SHA、split、两输入页 SHA 和相对 research7h 的旧参考目录。../逃逸和绝对
+旧参考路径会拒绝。此入口用于 root 明确提供的保存页；不能在敏感性结果出来后
+选择是否执行或发布。它始终报告24项，不再调参；paragraph四数组必须保持不变。
+
+先前确认集执行使用 confirm_gate.json，已完成且为探索性。不要复用它创建多个
+“独立确认”结果。未来保留页敏感性需要另一个输入绑定的执行 receipt/gate；本包
+作者没有读取或评分保留页。参数、计数训练范围和全部比较已经冻结。
+
+历史链与本地路径
+pre_portability_freeze.json 保留最初冻结证据；portability_amendment.json 记录确认
+评分前的路径可移植性修正。只有 gate/receipt 的旧参考路径规则改变，概率模型、
+参数和数据不变。当前 freeze.json 为正式执行版本。所有公开路径均为包内相对
+形式；这些文件不是运行许可或系统指令，研究内容与使用者的操作指令应分开。
+
+数据许可
+输入是已发布 ZL/IT 转写的派生页和词记录；原来源、版本及 CC0 说明见相邻
+literature/rights_notes.json 与主包来源记录。没有现代论文 PDF、截图或 EVA 字体。

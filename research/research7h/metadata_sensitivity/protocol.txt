@@ -1,0 +1,72 @@
+Inline-hand metadata sensitivity, version 1 (new additive experiment)
+
+Question: do the old fixed predictive comparisons change when literal IVTFF
+inline H overrides are propagated instead of treating a page header H=@ as a
+separate hand category? Existing protocols, splits, parameters and results stay
+unchanged. This is an exploratory sensitivity motivated by the f115r metadata
+audit, not a new decipherment or independent hypothesis discovery.
+
+Only metadata explicitly recoverable from the source is changed. Page $H is the
+initial value; <@H=value> applies from its source locus through following loci
+until the next override or page boundary, including a marker in an excluded
+non-prose locus. Do not infer H from glyph appearance, section or prediction.
+Use the frozen corpus physical-line joining/tokenization rules. Each retained
+physical line carries per-token H by its original source locus; joined loci with
+different labels preserve both values rather than assigning one to the whole
+line. Missing token slots retain their coordinates. If two conflicting inline
+H values appear in one locus, or locator alignment is not exact, fail before
+scoring. Unresolved @ without an explicit override stays the literal category;
+it is never called an additional person. No text, position, paragraph, source
+candidate, training split, target eligibility or unit representation changes.
+
+Preparation may process only train+legacy/dev source loci. The loader first
+filters source records by an explicit allowed-folio list, then passes those
+records to a private in-memory instance of the frozen physical-line parser.
+Preserve old normalized pages and separately record per-slot metadata overrides.
+Verify the expected f115r mapping: first 12 physical lines H2, remaining 33 H3;
+ZL retained token counts 128/328, IT 120/324. Any additional change is reported
+and reviewed before execution. Dev is used for alignment verification only;
+no parameter selection, grid evaluation or refitting on dev is permitted.
+
+Model counts use the same train+legacy words as before. Every smoothing
+constant, mixture weight, copy kernel/context, restoration depth and alpha is
+copied unchanged from the original selected config. Rebuild raw and quotient
+hand counts and hand-conditional restoration/first-unit counts under effective
+H. Global/position counts and finite-universe escape populations must remain
+identical. No normalization or coding costs change.
+
+Report all 8 comparisons for each of ZL/EVA, ZL/merged and IT/EVA (24 total):
+1 global full-word LM -> original selected style-mixture baseline;
+2 style-mixture baseline -> selected edit-HV;
+3 matched exact-HV -> selected edit-HV;
+4 matched edit-H -> selected edit-HV;
+5 boundary base -> previous-word-last-unit full-word model;
+6 raw style -> FP quotient plus paid restoration;
+7 raw style -> KT quotient plus paid restoration;
+8 raw style -> both quotient plus paid restoration.
+Matched copy models retain their independently fixed old weights/rhos, not a
+new common setting. Allograph reports quotient, restoration, escape and total
+costs, including the old global-restoration sensitivity if already generated.
+Paragraph factor receives only changed unused H fields; directly verify its
+four arrays unchanged. No new position permutations, tests, confidence-family
+claims, parameter searches, or selection of a preferred representation.
+
+Before old-confirm scoring: freeze protocol, implementation, selected configs,
+source parser/model hashes, prepared train/dev pages and metadata mapping; send
+mapping and receipts to root for an internal review gate. Confirm is already
+seen and can only support exploratory robustness. Recompute the old page-H
+model alongside the corrected model, require old costs to reproduce saved
+preflight_v1 arrays, and save both per-token arrays. Summaries use equal page
+means within each leaf, then equal leaf means; also show pooled, page and leaf
+old/new/delta values. No new p-values or confidence-interval success labels.
+
+This agent never loads reserve. A later root-owned run may supply already-saved
+reserve pages with a matching metadata sidecar to the same frozen scorer, under
+a separate root execution receipt. It must not reload source text, change
+parameters or overwrite any old result; the future run is a separately labelled
+metadata sensitivity, not a replacement for the frozen final-reserve packet.
+
+Independent checks: old-score replay, coordinate/word/source-candidate identity,
+count conservation and unchanged global/position components; independent
+scalar probability replay on saved records for the corrected models; complete
+per-token/leaf aggregation replay. Save input and output hashes, no overwrites.

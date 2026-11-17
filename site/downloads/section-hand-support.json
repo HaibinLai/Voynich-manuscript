@@ -1,0 +1,1471 @@
+{
+  "scope": "Design support audit, no predictive outcome or semantic test executed",
+  "metadata_source": "split_manifest.json",
+  "metadata_source_sha256": "b8773a853896e08a03eea857668ee08825076babf1b93b7939461f70023db2c0",
+  "training_source": "cipher_controls/voynich_substitution/data/train_eva.json",
+  "training_source_sha256": "4254c8466b31848a0f331be36f860ba232ea27b7d8ec544fc1a6741cd585cb59",
+  "data_policy": {
+    "scope": "audit_support.py execution; preparatory source lookup caveat is recorded in the report",
+    "metadata_splits_used": [
+      "dev",
+      "legacy",
+      "train"
+    ],
+    "word_splits_used": [
+      "legacy",
+      "train"
+    ],
+    "development_words_read": false,
+    "confirm_outcomes_read": false,
+    "reserve_text_or_outcomes_read": false,
+    "model_fitted": false,
+    "existing_reserve_protocol_changed": false
+  },
+  "split_counts": {
+    "dev": {
+      "pages": 41,
+      "leaves": 17
+    },
+    "legacy": {
+      "pages": 38,
+      "leaves": 20
+    },
+    "train": {
+      "pages": 75,
+      "leaves": 37
+    }
+  },
+  "training_tokens": 17648,
+  "training_types": 4368,
+  "labels": {
+    "A": "天文（不含黄道）",
+    "B": "浴疗/生物图",
+    "C": "宇宙图",
+    "H": "草药图",
+    "P": "医药图",
+    "S": "边栏星标",
+    "T": "无插图文本",
+    "Z": "黄道图"
+  },
+  "cells": [
+    {
+      "hand": "1",
+      "illustration": "H",
+      "label": "草药图",
+      "fit": {
+        "pages": 47,
+        "leaves": 24,
+        "folios": [
+          "f1v",
+          "f2r",
+          "f2v",
+          "f3r",
+          "f3v",
+          "f5r",
+          "f5v",
+          "f7r",
+          "f7v",
+          "f9r",
+          "f9v",
+          "f10r",
+          "f10v",
+          "f11r",
+          "f11v",
+          "f17r",
+          "f17v",
+          "f21r",
+          "f21v",
+          "f22r",
+          "f22v",
+          "f23r",
+          "f23v",
+          "f24r",
+          "f24v",
+          "f25r",
+          "f25v",
+          "f29r",
+          "f29v",
+          "f30r",
+          "f30v",
+          "f32r",
+          "f32v",
+          "f38r",
+          "f38v",
+          "f42r",
+          "f42v",
+          "f45r",
+          "f45v",
+          "f47r",
+          "f47v",
+          "f49r",
+          "f49v",
+          "f52r",
+          "f52v",
+          "f93r",
+          "f93v"
+        ],
+        "leaf_ids": [
+          "f1",
+          "f10",
+          "f11",
+          "f17",
+          "f2",
+          "f21",
+          "f22",
+          "f23",
+          "f24",
+          "f25",
+          "f29",
+          "f3",
+          "f30",
+          "f32",
+          "f38",
+          "f42",
+          "f45",
+          "f47",
+          "f49",
+          "f5",
+          "f52",
+          "f7",
+          "f9",
+          "f93"
+        ],
+        "quires": {
+          "A": 9,
+          "B": 6,
+          "C": 10,
+          "D": 8,
+          "E": 2,
+          "F": 6,
+          "G": 4,
+          "Q": 2
+        },
+        "currier": {
+          "A": 47
+        },
+        "training_tokens": 3893,
+        "training_types": 1402
+      },
+      "dev": {
+        "pages": 18,
+        "leaves": 8,
+        "folios": [
+          "f4r",
+          "f4v",
+          "f13r",
+          "f13v",
+          "f19r",
+          "f19v",
+          "f27r",
+          "f27v",
+          "f37r",
+          "f37v",
+          "f53r",
+          "f53v",
+          "f56r",
+          "f56v",
+          "f90r1",
+          "f90r2",
+          "f90v2",
+          "f90v1"
+        ],
+        "leaf_ids": [
+          "f13",
+          "f19",
+          "f27",
+          "f37",
+          "f4",
+          "f53",
+          "f56",
+          "f90"
+        ],
+        "quires": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2,
+          "G": 4,
+          "O": 4
+        },
+        "currier": {
+          "A": 18
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "1",
+      "illustration": "P",
+      "label": "医药图",
+      "fit": {
+        "pages": 8,
+        "leaves": 4,
+        "folios": [
+          "f88r",
+          "f88v",
+          "f99r",
+          "f99v",
+          "f100r",
+          "f100v",
+          "f101r",
+          "f101v"
+        ],
+        "leaf_ids": [
+          "f100",
+          "f101",
+          "f88",
+          "f99"
+        ],
+        "quires": {
+          "O": 2,
+          "S": 6
+        },
+        "currier": {
+          "A": 8
+        },
+        "training_tokens": 1127,
+        "training_types": 538
+      },
+      "dev": {
+        "pages": 4,
+        "leaves": 1,
+        "folios": [
+          "f102r1",
+          "f102r2",
+          "f102v2",
+          "f102v1"
+        ],
+        "leaf_ids": [
+          "f102"
+        ],
+        "quires": {
+          "S": 4
+        },
+        "currier": {
+          "A": 4
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "1",
+      "illustration": "T",
+      "label": "无插图文本",
+      "fit": {
+        "pages": 1,
+        "leaves": 1,
+        "folios": [
+          "f1r"
+        ],
+        "leaf_ids": [
+          "f1"
+        ],
+        "quires": {
+          "A": 1
+        },
+        "currier": {
+          "A": 1
+        },
+        "training_tokens": 203,
+        "training_types": 155
+      },
+      "dev": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      }
+    },
+    {
+      "hand": "2",
+      "illustration": "B",
+      "label": "浴疗/生物图",
+      "fit": {
+        "pages": 11,
+        "leaves": 6,
+        "folios": [
+          "f76v",
+          "f77r",
+          "f77v",
+          "f78r",
+          "f78v",
+          "f79r",
+          "f79v",
+          "f81r",
+          "f81v",
+          "f82r",
+          "f82v"
+        ],
+        "leaf_ids": [
+          "f76",
+          "f77",
+          "f78",
+          "f79",
+          "f81",
+          "f82"
+        ],
+        "quires": {
+          "M": 11
+        },
+        "currier": {
+          "B": 11
+        },
+        "training_tokens": 3354,
+        "training_types": 919
+      },
+      "dev": {
+        "pages": 4,
+        "leaves": 2,
+        "folios": [
+          "f75r",
+          "f75v",
+          "f83r",
+          "f83v"
+        ],
+        "leaf_ids": [
+          "f75",
+          "f83"
+        ],
+        "quires": {
+          "M": 4
+        },
+        "currier": {
+          "B": 4
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "2",
+      "illustration": "C",
+      "label": "宇宙图",
+      "fit": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      },
+      "dev": {
+        "pages": 2,
+        "leaves": 1,
+        "folios": [
+          "f86v4",
+          "f86v3"
+        ],
+        "leaf_ids": [
+          "f85_86"
+        ],
+        "quires": {
+          "N": 2
+        },
+        "currier": {
+          "B": 2
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "2",
+      "illustration": "H",
+      "label": "草药图",
+      "fit": {
+        "pages": 14,
+        "leaves": 7,
+        "folios": [
+          "f26r",
+          "f26v",
+          "f31r",
+          "f31v",
+          "f33r",
+          "f33v",
+          "f34r",
+          "f34v",
+          "f43r",
+          "f43v",
+          "f46r",
+          "f46v",
+          "f55r",
+          "f55v"
+        ],
+        "leaf_ids": [
+          "f26",
+          "f31",
+          "f33",
+          "f34",
+          "f43",
+          "f46",
+          "f55"
+        ],
+        "quires": {
+          "D": 4,
+          "E": 4,
+          "F": 4,
+          "G": 2
+        },
+        "currier": {
+          "B": 14
+        },
+        "training_tokens": 1590,
+        "training_types": 707
+      },
+      "dev": {
+        "pages": 2,
+        "leaves": 1,
+        "folios": [
+          "f50r",
+          "f50v"
+        ],
+        "leaf_ids": [
+          "f50"
+        ],
+        "quires": {
+          "G": 2
+        },
+        "currier": {
+          "B": 2
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "2",
+      "illustration": "T",
+      "label": "无插图文本",
+      "fit": {
+        "pages": 1,
+        "leaves": 1,
+        "folios": [
+          "f76r"
+        ],
+        "leaf_ids": [
+          "f76"
+        ],
+        "quires": {
+          "M": 1
+        },
+        "currier": {
+          "B": 1
+        },
+        "training_tokens": 549,
+        "training_types": 251
+      },
+      "dev": {
+        "pages": 3,
+        "leaves": 1,
+        "folios": [
+          "f85r1",
+          "f86v6",
+          "f86v5"
+        ],
+        "leaf_ids": [
+          "f85_86"
+        ],
+        "quires": {
+          "N": 3
+        },
+        "currier": {
+          "B": 3
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "3",
+      "illustration": "H",
+      "label": "草药图",
+      "fit": {
+        "pages": 5,
+        "leaves": 2,
+        "folios": [
+          "f65v",
+          "f95r1",
+          "f95r2",
+          "f95v2",
+          "f95v1"
+        ],
+        "leaf_ids": [
+          "f65",
+          "f95"
+        ],
+        "quires": {
+          "H": 1,
+          "Q": 4
+        },
+        "currier": {
+          "?": 1,
+          "B": 4
+        },
+        "training_tokens": 395,
+        "training_types": 263
+      },
+      "dev": {
+        "pages": 2,
+        "leaves": 1,
+        "folios": [
+          "f94r",
+          "f94v"
+        ],
+        "leaf_ids": [
+          "f94"
+        ],
+        "quires": {
+          "Q": 2
+        },
+        "currier": {
+          "B": 2
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "3",
+      "illustration": "S",
+      "label": "边栏星标",
+      "fit": {
+        "pages": 12,
+        "leaves": 7,
+        "folios": [
+          "f58r",
+          "f58v",
+          "f104r",
+          "f104v",
+          "f105r",
+          "f105v",
+          "f112r",
+          "f112v",
+          "f114r",
+          "f114v",
+          "f115v",
+          "f116r"
+        ],
+        "leaf_ids": [
+          "f104",
+          "f105",
+          "f112",
+          "f114",
+          "f115",
+          "f116",
+          "f58"
+        ],
+        "quires": {
+          "H": 2,
+          "T": 10
+        },
+        "currier": {
+          "A": 2,
+          "B": 10
+        },
+        "training_tokens": 4960,
+        "training_types": 1878
+      },
+      "dev": {
+        "pages": 4,
+        "leaves": 2,
+        "folios": [
+          "f107r",
+          "f107v",
+          "f108r",
+          "f108v"
+        ],
+        "leaf_ids": [
+          "f107",
+          "f108"
+        ],
+        "quires": {
+          "T": 4
+        },
+        "currier": {
+          "B": 4
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "4",
+      "illustration": "A",
+      "label": "天文（不含黄道）",
+      "fit": {
+        "pages": 3,
+        "leaves": 1,
+        "folios": [
+          "f68r1",
+          "f68r2",
+          "f68v2"
+        ],
+        "leaf_ids": [
+          "f68"
+        ],
+        "quires": {
+          "I": 3
+        },
+        "currier": {
+          "?": 3
+        },
+        "training_tokens": 108,
+        "training_types": 102
+      },
+      "dev": {
+        "pages": 2,
+        "leaves": 1,
+        "folios": [
+          "f67r1",
+          "f67r2"
+        ],
+        "leaf_ids": [
+          "f67"
+        ],
+        "quires": {
+          "I": 2
+        },
+        "currier": {
+          "?": 2
+        },
+        "training_tokens": null,
+        "training_types": null
+      }
+    },
+    {
+      "hand": "4",
+      "illustration": "C",
+      "label": "宇宙图",
+      "fit": {
+        "pages": 3,
+        "leaves": 3,
+        "folios": [
+          "f68v3",
+          "f69r",
+          "f70r2"
+        ],
+        "leaf_ids": [
+          "f68",
+          "f69",
+          "f70"
+        ],
+        "quires": {
+          "I": 1,
+          "J": 2
+        },
+        "currier": {
+          "?": 3
+        },
+        "training_tokens": 178,
+        "training_types": 128
+      },
+      "dev": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      }
+    },
+    {
+      "hand": "5",
+      "illustration": "H",
+      "label": "草药图",
+      "fit": {
+        "pages": 6,
+        "leaves": 4,
+        "folios": [
+          "f41r",
+          "f41v",
+          "f48r",
+          "f48v",
+          "f57r",
+          "f66v"
+        ],
+        "leaf_ids": [
+          "f41",
+          "f48",
+          "f57",
+          "f66"
+        ],
+        "quires": {
+          "F": 4,
+          "H": 2
+        },
+        "currier": {
+          "B": 6
+        },
+        "training_tokens": 549,
+        "training_types": 368
+      },
+      "dev": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      }
+    },
+    {
+      "hand": "5",
+      "illustration": "T",
+      "label": "无插图文本",
+      "fit": {
+        "pages": 1,
+        "leaves": 1,
+        "folios": [
+          "f66r"
+        ],
+        "leaf_ids": [
+          "f66"
+        ],
+        "quires": {
+          "H": 1
+        },
+        "currier": {
+          "B": 1
+        },
+        "training_tokens": 288,
+        "training_types": 214
+      },
+      "dev": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      }
+    },
+    {
+      "hand": "@",
+      "illustration": "S",
+      "label": "边栏星标",
+      "fit": {
+        "pages": 1,
+        "leaves": 1,
+        "folios": [
+          "f115r"
+        ],
+        "leaf_ids": [
+          "f115"
+        ],
+        "quires": {
+          "T": 1
+        },
+        "currier": {
+          "B": 1
+        },
+        "training_tokens": 454,
+        "training_types": 306
+      },
+      "dev": {
+        "pages": 0,
+        "leaves": 0,
+        "folios": [],
+        "leaf_ids": [],
+        "quires": {},
+        "currier": {},
+        "training_tokens": 0,
+        "training_types": 0
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "hand": "1",
+      "illustrations": [
+        "H",
+        "P"
+      ],
+      "fit": [
+        {
+          "pages": 47,
+          "leaves": 24,
+          "folios": [
+            "f1v",
+            "f2r",
+            "f2v",
+            "f3r",
+            "f3v",
+            "f5r",
+            "f5v",
+            "f7r",
+            "f7v",
+            "f9r",
+            "f9v",
+            "f10r",
+            "f10v",
+            "f11r",
+            "f11v",
+            "f17r",
+            "f17v",
+            "f21r",
+            "f21v",
+            "f22r",
+            "f22v",
+            "f23r",
+            "f23v",
+            "f24r",
+            "f24v",
+            "f25r",
+            "f25v",
+            "f29r",
+            "f29v",
+            "f30r",
+            "f30v",
+            "f32r",
+            "f32v",
+            "f38r",
+            "f38v",
+            "f42r",
+            "f42v",
+            "f45r",
+            "f45v",
+            "f47r",
+            "f47v",
+            "f49r",
+            "f49v",
+            "f52r",
+            "f52v",
+            "f93r",
+            "f93v"
+          ],
+          "leaf_ids": [
+            "f1",
+            "f10",
+            "f11",
+            "f17",
+            "f2",
+            "f21",
+            "f22",
+            "f23",
+            "f24",
+            "f25",
+            "f29",
+            "f3",
+            "f30",
+            "f32",
+            "f38",
+            "f42",
+            "f45",
+            "f47",
+            "f49",
+            "f5",
+            "f52",
+            "f7",
+            "f9",
+            "f93"
+          ],
+          "quires": {
+            "A": 9,
+            "B": 6,
+            "C": 10,
+            "D": 8,
+            "E": 2,
+            "F": 6,
+            "G": 4,
+            "Q": 2
+          },
+          "currier": {
+            "A": 47
+          },
+          "training_tokens": 3893,
+          "training_types": 1402
+        },
+        {
+          "pages": 8,
+          "leaves": 4,
+          "folios": [
+            "f88r",
+            "f88v",
+            "f99r",
+            "f99v",
+            "f100r",
+            "f100v",
+            "f101r",
+            "f101v"
+          ],
+          "leaf_ids": [
+            "f100",
+            "f101",
+            "f88",
+            "f99"
+          ],
+          "quires": {
+            "O": 2,
+            "S": 6
+          },
+          "currier": {
+            "A": 8
+          },
+          "training_tokens": 1127,
+          "training_types": 538
+        }
+      ],
+      "dev": [
+        {
+          "pages": 18,
+          "leaves": 8,
+          "folios": [
+            "f4r",
+            "f4v",
+            "f13r",
+            "f13v",
+            "f19r",
+            "f19v",
+            "f27r",
+            "f27v",
+            "f37r",
+            "f37v",
+            "f53r",
+            "f53v",
+            "f56r",
+            "f56v",
+            "f90r1",
+            "f90r2",
+            "f90v2",
+            "f90v1"
+          ],
+          "leaf_ids": [
+            "f13",
+            "f19",
+            "f27",
+            "f37",
+            "f4",
+            "f53",
+            "f56",
+            "f90"
+          ],
+          "quires": {
+            "A": 2,
+            "B": 2,
+            "C": 2,
+            "D": 2,
+            "E": 2,
+            "G": 4,
+            "O": 4
+          },
+          "currier": {
+            "A": 18
+          },
+          "training_tokens": null,
+          "training_types": null
+        },
+        {
+          "pages": 4,
+          "leaves": 1,
+          "folios": [
+            "f102r1",
+            "f102r2",
+            "f102v2",
+            "f102v1"
+          ],
+          "leaf_ids": [
+            "f102"
+          ],
+          "quires": {
+            "S": 4
+          },
+          "currier": {
+            "A": 4
+          },
+          "training_tokens": null,
+          "training_types": null
+        }
+      ],
+      "common_fit_quires": [],
+      "common_dev_quires": [],
+      "common_quires_in_both_splits": [],
+      "fit_shared_leaf_ids": [],
+      "development_label_assignments_hand_only": 9,
+      "smallest_possible_exact_one_sided_dev_p_if_exchangeable": 0.1111111111111111
+    },
+    {
+      "hand": "2",
+      "illustrations": [
+        "H",
+        "B"
+      ],
+      "fit": [
+        {
+          "pages": 14,
+          "leaves": 7,
+          "folios": [
+            "f26r",
+            "f26v",
+            "f31r",
+            "f31v",
+            "f33r",
+            "f33v",
+            "f34r",
+            "f34v",
+            "f43r",
+            "f43v",
+            "f46r",
+            "f46v",
+            "f55r",
+            "f55v"
+          ],
+          "leaf_ids": [
+            "f26",
+            "f31",
+            "f33",
+            "f34",
+            "f43",
+            "f46",
+            "f55"
+          ],
+          "quires": {
+            "D": 4,
+            "E": 4,
+            "F": 4,
+            "G": 2
+          },
+          "currier": {
+            "B": 14
+          },
+          "training_tokens": 1590,
+          "training_types": 707
+        },
+        {
+          "pages": 11,
+          "leaves": 6,
+          "folios": [
+            "f76v",
+            "f77r",
+            "f77v",
+            "f78r",
+            "f78v",
+            "f79r",
+            "f79v",
+            "f81r",
+            "f81v",
+            "f82r",
+            "f82v"
+          ],
+          "leaf_ids": [
+            "f76",
+            "f77",
+            "f78",
+            "f79",
+            "f81",
+            "f82"
+          ],
+          "quires": {
+            "M": 11
+          },
+          "currier": {
+            "B": 11
+          },
+          "training_tokens": 3354,
+          "training_types": 919
+        }
+      ],
+      "dev": [
+        {
+          "pages": 2,
+          "leaves": 1,
+          "folios": [
+            "f50r",
+            "f50v"
+          ],
+          "leaf_ids": [
+            "f50"
+          ],
+          "quires": {
+            "G": 2
+          },
+          "currier": {
+            "B": 2
+          },
+          "training_tokens": null,
+          "training_types": null
+        },
+        {
+          "pages": 4,
+          "leaves": 2,
+          "folios": [
+            "f75r",
+            "f75v",
+            "f83r",
+            "f83v"
+          ],
+          "leaf_ids": [
+            "f75",
+            "f83"
+          ],
+          "quires": {
+            "M": 4
+          },
+          "currier": {
+            "B": 4
+          },
+          "training_tokens": null,
+          "training_types": null
+        }
+      ],
+      "common_fit_quires": [],
+      "common_dev_quires": [],
+      "common_quires_in_both_splits": [],
+      "fit_shared_leaf_ids": [],
+      "development_label_assignments_hand_only": 3,
+      "smallest_possible_exact_one_sided_dev_p_if_exchangeable": 0.3333333333333333
+    },
+    {
+      "hand": "3",
+      "illustrations": [
+        "H",
+        "S"
+      ],
+      "fit": [
+        {
+          "pages": 5,
+          "leaves": 2,
+          "folios": [
+            "f65v",
+            "f95r1",
+            "f95r2",
+            "f95v2",
+            "f95v1"
+          ],
+          "leaf_ids": [
+            "f65",
+            "f95"
+          ],
+          "quires": {
+            "H": 1,
+            "Q": 4
+          },
+          "currier": {
+            "?": 1,
+            "B": 4
+          },
+          "training_tokens": 395,
+          "training_types": 263
+        },
+        {
+          "pages": 12,
+          "leaves": 7,
+          "folios": [
+            "f58r",
+            "f58v",
+            "f104r",
+            "f104v",
+            "f105r",
+            "f105v",
+            "f112r",
+            "f112v",
+            "f114r",
+            "f114v",
+            "f115v",
+            "f116r"
+          ],
+          "leaf_ids": [
+            "f104",
+            "f105",
+            "f112",
+            "f114",
+            "f115",
+            "f116",
+            "f58"
+          ],
+          "quires": {
+            "H": 2,
+            "T": 10
+          },
+          "currier": {
+            "A": 2,
+            "B": 10
+          },
+          "training_tokens": 4960,
+          "training_types": 1878
+        }
+      ],
+      "dev": [
+        {
+          "pages": 2,
+          "leaves": 1,
+          "folios": [
+            "f94r",
+            "f94v"
+          ],
+          "leaf_ids": [
+            "f94"
+          ],
+          "quires": {
+            "Q": 2
+          },
+          "currier": {
+            "B": 2
+          },
+          "training_tokens": null,
+          "training_types": null
+        },
+        {
+          "pages": 4,
+          "leaves": 2,
+          "folios": [
+            "f107r",
+            "f107v",
+            "f108r",
+            "f108v"
+          ],
+          "leaf_ids": [
+            "f107",
+            "f108"
+          ],
+          "quires": {
+            "T": 4
+          },
+          "currier": {
+            "B": 4
+          },
+          "training_tokens": null,
+          "training_types": null
+        }
+      ],
+      "common_fit_quires": [
+        "H"
+      ],
+      "common_dev_quires": [],
+      "common_quires_in_both_splits": [],
+      "fit_shared_leaf_ids": [],
+      "development_label_assignments_hand_only": 3,
+      "smallest_possible_exact_one_sided_dev_p_if_exchangeable": 0.3333333333333333
+    },
+    {
+      "hand": "4",
+      "illustrations": [
+        "A",
+        "C"
+      ],
+      "fit": [
+        {
+          "pages": 3,
+          "leaves": 1,
+          "folios": [
+            "f68r1",
+            "f68r2",
+            "f68v2"
+          ],
+          "leaf_ids": [
+            "f68"
+          ],
+          "quires": {
+            "I": 3
+          },
+          "currier": {
+            "?": 3
+          },
+          "training_tokens": 108,
+          "training_types": 102
+        },
+        {
+          "pages": 3,
+          "leaves": 3,
+          "folios": [
+            "f68v3",
+            "f69r",
+            "f70r2"
+          ],
+          "leaf_ids": [
+            "f68",
+            "f69",
+            "f70"
+          ],
+          "quires": {
+            "I": 1,
+            "J": 2
+          },
+          "currier": {
+            "?": 3
+          },
+          "training_tokens": 178,
+          "training_types": 128
+        }
+      ],
+      "dev": [
+        {
+          "pages": 2,
+          "leaves": 1,
+          "folios": [
+            "f67r1",
+            "f67r2"
+          ],
+          "leaf_ids": [
+            "f67"
+          ],
+          "quires": {
+            "I": 2
+          },
+          "currier": {
+            "?": 2
+          },
+          "training_tokens": null,
+          "training_types": null
+        },
+        {
+          "pages": 0,
+          "leaves": 0,
+          "folios": [],
+          "leaf_ids": [],
+          "quires": {},
+          "currier": {},
+          "training_tokens": 0,
+          "training_types": 0
+        }
+      ],
+      "common_fit_quires": [
+        "I"
+      ],
+      "common_dev_quires": [],
+      "common_quires_in_both_splits": [],
+      "fit_shared_leaf_ids": [
+        "f68"
+      ],
+      "development_label_assignments_hand_only": null,
+      "smallest_possible_exact_one_sided_dev_p_if_exchangeable": null
+    }
+  ],
+  "graph": {
+    "fit": {
+      "known_hand_pages": 112,
+      "components": [
+        [
+          "H=1",
+          "H=2",
+          "H=3",
+          "H=5",
+          "I=B",
+          "I=H",
+          "I=P",
+          "I=S",
+          "I=T"
+        ],
+        [
+          "H=4",
+          "I=A",
+          "I=C"
+        ]
+      ],
+      "indicator_columns": 12,
+      "indicator_rank": 10,
+      "crossed_2_by_2_excluding_text_only": []
+    },
+    "dev": {
+      "known_hand_pages": 41,
+      "components": [
+        [
+          "H=1",
+          "H=2",
+          "H=3",
+          "I=B",
+          "I=C",
+          "I=H",
+          "I=P",
+          "I=S",
+          "I=T"
+        ],
+        [
+          "H=4",
+          "I=A"
+        ]
+      ],
+      "indicator_columns": 11,
+      "indicator_rank": 9,
+      "crossed_2_by_2_excluding_text_only": []
+    },
+    "allowed_metadata": {
+      "known_hand_pages": 153,
+      "components": [
+        [
+          "H=1",
+          "H=2",
+          "H=3",
+          "H=4",
+          "H=5",
+          "I=A",
+          "I=B",
+          "I=C",
+          "I=H",
+          "I=P",
+          "I=S",
+          "I=T"
+        ]
+      ],
+      "indicator_columns": 12,
+      "indicator_rank": 11,
+      "crossed_2_by_2_excluding_text_only": []
+    }
+  },
+  "unsupported_dev_hand_illustration_cells": [
+    {
+      "folio": "f86v4",
+      "leaf": "f85_86",
+      "split": "dev",
+      "metadata": {
+        "Q": "N",
+        "P": "N",
+        "F": "z",
+        "B": "1",
+        "I": "C",
+        "L": "B",
+        "H": "2",
+        "C": "3"
+      }
+    },
+    {
+      "folio": "f86v3",
+      "leaf": "f85_86",
+      "split": "dev",
+      "metadata": {
+        "Q": "N",
+        "P": "Q",
+        "F": "z",
+        "B": "1",
+        "I": "C",
+        "L": "B",
+        "H": "2",
+        "C": "3"
+      }
+    }
+  ],
+  "non_fixed_hand_pages": [
+    {
+      "folio": "f115r",
+      "leaf": "f115",
+      "split": "train",
+      "metadata": {
+        "Q": "T",
+        "P": "U",
+        "F": "y",
+        "B": "2",
+        "I": "S",
+        "L": "B",
+        "H": "@"
+      }
+    }
+  ],
+  "illustrations_absent_from_allowed_prose_metadata": [
+    "Z"
+  ],
+  "count_note": "Counts are retained prose pages/panels; several panels can share one physical leaf. Cell leaf counts are not globally additive. @ means text-level override, not a sixth hand."
+}

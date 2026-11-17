@@ -1,0 +1,48 @@
+﻿Bax partial-table coverage audit, v1
+
+This is an executability audit of the fourteen entries already recorded from
+Bax (2014), pp.56-57, not a test of translation accuracy or a completed decoder.
+The two non-reserve anchor images f29v and f68r3 were visually inspected before
+this protocol. Their original/current transcription differences were also known
+from the literature review. Do not call this visual audit blind or preregistered.
+This file and the coverage implementation are hashed before aggregate coverage
+is computed. No phonetic value, plant identity, spelling or rule is optimized.
+
+Input: unchanged literature/candidate_claims.json, its fourteen literal EVA
+patterns and symbolic phonetic alternatives. Use the existing atomic EVA parser,
+including @nnn; as one explicit unit. Do not switch to a segmentation selected
+for word matches. Since the paper does not specify a complete segmentation
+algorithm, enumerate every path through the listed patterns (e.g. e+e and ee).
+These are mapping paths, not a count of distinct pronunciations; an unspecified
+V remains unspecified. Never replace V by a vowel chosen to match a name.
+
+The m rule is conditioned on a sense-final/isolated interpretation that cannot be
+determined from the unknown language. Report two bounds: conservative excludes
+the m entry everywhere; optimistic allows it everywhere. Neither supplies the
+missing historical condition. All other entries are used as the literal table
+lists them, with no omitted q/p/t/ch/l and no deletion of initial gallows.
+
+For each word, dynamic programming computes (1) whether at least one full path
+exists; (2) the number of table-segmentation paths; (3) the number of symbolic
+mapping paths after branching over the stated candidate values; and (4) the
+minimum number of original EVA units left unexplained, allowing a one-unit
+unknown fallback of cost1. Unknown units remain explicit. Zero unexplained
+units means only that the table can assign symbols, not that the result is
+correct, meaningful, grammatical or in any identified language.
+
+Apply only to train+legacy and dev, reported separately, for ZL/EVA and IT/EVA.
+Confirm and reserve pages are not returned to this audit. The known f15v anchor
+is explicitly skipped in any example calculation. This new diagnostic is not
+added to the already-frozen final reserve ten-comparison packet.
+
+Report token and type denominators, full-coverable fraction, single-symbolic-path
+fraction, multiple-path fraction and remaining-unit fraction. All optimistic and
+conservative results are shown. No p-value or translation-success percentage.
+Keep unresolved cases, source differences and source-image provenance. Modern
+paper page images remain private; public crops, if any, come directly from Yale
+with exact original image hashes and pixel coordinates.
+
+Implementation checks: compare dynamic programming with independent exhaustive
+path enumeration on short words and all explicitly listed table overlaps;
+ensure unknown symbols are never dropped, extend paths through the entire word,
+and verify m conservative/optimistic ordering. Freeze before corpus statistics.
