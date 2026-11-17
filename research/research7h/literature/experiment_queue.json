@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "status": "proposed_not_run",
+  "reserve_policy": "沿用主研究已冻结的分区；不读取reserve22的文本或评价指标来选规则。",
+  "experiments": [
+    {
+      "id": "anchor_audit",
+      "priority": 1,
+      "input": "candidate_claims.json及公开锚点原图",
+      "preregister": [
+        "逐例记录作者字形、现代转写和图像判读，互不覆盖",
+        "未知符号保持未知，多值映射保持多值"
+      ],
+      "outputs": [
+        "anchor_audit.json",
+        "仍缺失的规则列表"
+      ],
+      "failure_rule": "映射未完整或字形有分歧时，不计算翻译成功率。",
+      "reserve_needed": false
+    },
+    {
+      "id": "boundary_control",
+      "priority": 2,
+      "input": "冻结训练/开发分区中的行与词边界、书手/主题元数据",
+      "preregister": [
+        "比较同行相邻词尾→词首、跨行相邻、页内置换、位置匹配置换",
+        "先固定字素定义与不确定空格处理",
+        "按书手、章节、行长、段首分层，整页bootstrap"
+      ],
+      "outputs": [
+        "effect_estimates.json",
+        "permutation_null.json",
+        "representation_sensitivity.json"
+      ],
+      "failure_rule": "开发后新增模型必须标记探索；转写间不稳或层内消失时不称普遍规律。",
+      "reserve_needed": false
+    },
+    {
+      "id": "calibrated_solver",
+      "priority": 3,
+      "input": "许可明确的已知历史文本、固定密码族、匹配长度的无意义生成器",
+      "preregister": [
+        "阳性样本保留密钥和明文",
+        "同预算调参与重启",
+        "阴性样本隐藏来源",
+        "精确字符/词复原率与假阳性分别汇报"
+      ],
+      "outputs": [
+        "control_recovery.json",
+        "null_false_positives.json",
+        "seeds_and_parameters.json"
+      ],
+      "failure_rule": "求解器不能恢复同类阳性控制时，对手稿的失败只能未决。",
+      "reserve_needed": false
+    },
+    {
+      "id": "model_comparison",
+      "priority": 4,
+      "input": "经校验的复制变异、Naibbe和Markov实现；冻结训练/开发分区",
+      "preregister": [
+        "相同文本长度和布局",
+        "相同搜索预算",
+        "分开拟合指标与事前选定检验指标",
+        "报告联合偏差与失败指标而非只选最优匹配"
+      ],
+      "outputs": [
+        "model_comparison.json",
+        "predictive_checks.json"
+      ],
+      "failure_rule": "所有模型都有系统失配时结论为现有机制不充分，不能挑近者称历史事实。",
+      "reserve_needed": false
+    }
+  ]
+}

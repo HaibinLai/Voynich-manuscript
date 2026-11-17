@@ -1,0 +1,122 @@
+from pathlib import Path
+import hashlib, json, sys, datetime
+import fitz
+from PIL import Image, ImageDraw
+
+ROOT = Path(__file__).resolve().parent
+BASE = ROOT.parent
+sys.path.insert(0,str(BASE))
+from build_corpus import parse
+
+# Purposeful calibration sample fixed before any numerical outcome.
+SELECTION = [
+ ('f2v','herbal','discovery'),('f5r','herbal','validation'),
+ ('f7v','herbal','discovery'),('f11r','herbal','validation'),
+ ('f25r','herbal','discovery'),('f38r','herbal','validation'),
+ ('f26r','herbal','discovery'),('f31v','herbal','validation'),
+ ('f33r','herbal','discovery'),('f55v','herbal','validation'),
+ ('f41v','herbal','discovery'),('f48r','herbal','validation'),
+ ('f57v','cosmological','discovery'),('f69r','cosmological','validation'),
+ ('f71r','zodiac','discovery'),('f73v','zodiac','validation'),
+ ('f88r','pharmaceutical','discovery'),('f100r','pharmaceutical','validation'),
+ ('f78v','bathing','discovery'),('f81v','bathing','validation'),
+]
+
+PROTOCOL = '''伏尼契手稿 20 页校对与结构分析：事前方案 v1
+日期：2026-11-17；固定随机种子 20261117。
+此方案在运行统计结果前写入；属于本次工作记录，不是第三方预注册。
+
+选页：目的性校准样本，非随机抽取，不据此估计整部手稿错误率。
+12 植物、2 宇宙、2 黄道、2 药材、2 沐浴；各类别均按整页分 discovery/validation。
+同一叶的正反面不跨组；不把标签与段落混合计算正文效应。
+20 页均核查版面、文字分区与转写的对应；对字形/空格差异留图复核。
+每页的逐字审查覆盖范围必须如实记录。单个 AI 审查不是两位专家的独立金标准。
+
+主分析仅用 P 类（线性段落）位置；Pt 等同一物理行的条目按定位符重接，
+图中断 <-> / <~> 必须保留分词边界。标签与环形文字仅作分层描述。
+主版本 ZL3b，IT2a 做版本敏感性；RF 不计为独立证据。
+主预处理：不确定空格拆开；有 [a:b] / ? 的 token 排除且保留原位置，不能让两侧词假相邻。
+连写括号拆去外壳；扩展 @ddd; 作为一个单位，不能把数字当正文。
+敏感性：不确定空格合并；备选读法取第一项但仍排除 ?；IT 同位置对照。
+字符统计报告 EVA 字母单位与合并 ch/sh/cth/ckh/cph/cfh 的两种单位。
+合并方案是编码敏感性检查，不声称识别了真实语言字符。
+EVA 长度称“编码长度”，不能当作已知字母数或音节数。
+
+预先确定四项结构检验（方向仅供检验，不能事后只保留阳性项）：
+H1：词内相邻编码单位受约束。统计 H(next|current)/H(next)。
+    对照为每个 token 内打乱单位，精确保留 token 长度和各 token 单位频数。
+H2：相邻 token 更易重复或仅相差一次单位编辑。
+    对照为页内 token 随机重排，保持每条物理行的槽位、缺失槽位及词频。
+    补充对照为行内重排，保留每行词袋，检验页内话题/行内重复的影响。
+H3：行首词以 gallows（EVA k/t/p/f）开头的比例高于其他词。
+    对照为同一物理行内 token 重排，保持词袋。
+    同时分段首与非段首，避免把段首装饰误称为普遍行首效应。
+H4：行末 token 编码长度较其他 token 短。
+    对照为同一物理行内 token 重排；按页计算效应，再在页间取均值。
+    同时分段末与非段末，检验段末短行是否解释效应。
+
+每个 discovery / validation 组独立计算；不会用 discovery 调参后测试 validation。
+每个主检验 1999 次置换；双侧 Monte Carlo p=(1+更极端次数)/(B+1)。
+以置换分布中位数为双侧中心，明确这是条件于这些页的随机化检验。
+validation 的四项主检验用 Holm 校正；全部方向和负结果报告。
+主要量为效应值与置换参考区间；不会把 token 当独立样本生成虚假的窄置信区间。
+所有随机对照、配置、脚本和原始逐页值保存；不宣称语料全新或规律新颖。
+
+外部对照：英文 Alice、拉丁文 Caesar（保留来源/校验值），选连续片段，
+按相同页数、行槽位及 token 总数重新排版；这是人工排版，不能比较原文物理行习惯。
+同样比较“原文—其自身打乱”的效应，不能只比较跨语言的裸熵值。
+另做逐 token 长度匹配的分桶抽样，明确会破坏自然语序，仅用于词形层对照。
+加一个不承诺任何历史机制的复制改写伪文本生成器，长度/字符表只取训练组，
+固定规则运行，用于展示相似统计可以有多个解释，不以其拟合好坏判定手稿无意义。
+一一字母替换对照应保留长度、重复和熵；用于检查分析是否偷用字母名称。
+
+研究结论限于文字组织：不能据熵低、词形相似或版面效应判定语言/密码/伪造。
+如无可复现的固定跨页读法，不输出所谓中文译文。
+'''
+
+def main():
+    ROOT.mkdir(exist_ok=True)
+    (ROOT/'images').mkdir(exist_ok=True)
+    (ROOT/'page_text').mkdir(exist_ok=True)
+    (ROOT/'protocol_v1.txt').write_text(PROTOCOL)
+    protocol_hash = hashlib.sha256(PROTOCOL.encode()).hexdigest()
+    records, pages = parse('ZL3b-n.txt')
+    it,_ = parse('IT2a-n.txt'); itmap = {x['locator']:x for x in it}
+    mapping=json.loads((BASE/'pdf_folio_mapping.json').read_text())
+    lookup={x['candidate_folios'][0]:x for x in mapping if x['mapping_status']=='label_match_not_glyph_verified'}
+    source=json.loads((BASE/'pdf_inventory.json').read_text())['source_path']
+    manifest=[]
+    with fitz.open(source) as doc:
+        for folio,group,split in SELECTION:
+            m=lookup[folio]; rr=[r for r in records if r['folio']==folio]
+            p=doc[m['pdf_page']-1]
+            # Native resolution image from the PDF; preserve image pixels.
+            imgs=p.get_images(full=True); main=max(imgs,key=lambda x:x[2]*x[3])
+            embedded=doc.extract_image(main[0])
+            assert embedded['ext']=='jpeg'
+            (ROOT/'images'/f'{folio}.jpg').write_bytes(embedded['image'])
+            item=dict(folio=folio,pdf_page=m['pdf_page'],image_id=m['image_id'],
+                      illustration_group=group,split=split,attributes=pages[folio],
+                      loci=len(rr),paragraph_loci=sum(r['locus_type'][1]=='P' for r in rr),
+                      image_width=embedded['width'],image_height=embedded['height'])
+            manifest.append(item)
+            lines=[json.dumps(item,ensure_ascii=False),'']
+            for r in rr:
+                other=itmap.get(r['locator'])
+                lines.append(f"{r['locator']} [{r['locus_type']}]\nZL: {r['text_ivtff']}\nIT: {other['text_ivtff'] if other else '[missing]'}\n")
+            (ROOT/'page_text'/f'{folio}.txt').write_text('\n'.join(lines))
+    (ROOT/'selection.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+    receipt=dict(protocol_sha256=protocol_hash,selection_sha256=hashlib.sha256((ROOT/'selection.json').read_bytes()).hexdigest(),
+                 created_utc=datetime.datetime.utcnow().isoformat()+'Z',statistics_not_yet_run=True)
+    (ROOT/'protocol_receipt.json').write_text(json.dumps(receipt,indent=2))
+    for batch in range(4):
+        sheet=Image.new('RGB',(1800,1180),'#e9e5de');d=ImageDraw.Draw(sheet)
+        for j,item in enumerate(manifest[batch*5:batch*5+5]):
+            im=Image.open(ROOT/'images'/f"{item['folio']}.jpg").convert('RGB');im.thumbnail((345,1100))
+            x=j*360;d.text((x+8,8),f"{item['folio']} PDF{item['pdf_page']} {item['split']}",fill='black')
+            sheet.paste(im,(x+8,40))
+        sheet.save(ROOT/f'overview_{batch+1}.jpg')
+    print(json.dumps(manifest,ensure_ascii=False,indent=2))
+    print('Protocol SHA256',protocol_hash)
+
+if __name__=='__main__':main()

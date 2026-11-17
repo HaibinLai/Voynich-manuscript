@@ -1,0 +1,59 @@
+伏尼契手稿研究综述与实验建议
+核查日期：2026-11-17。范围：用户提出的解读线索及直接相关的结构、生成模型与古文字学研究。
+
+当前结论
+本轮没有得到可验证的译文。文献中“像语言”“可用生成器模仿”“在词典找到词”和“破解”是不同层次的结论。研究应先测方法能否找回已知答案、是否会对无意义文本产生同样漂亮的解释，再讨论手稿中的具体词义。
+此处是有针对性的原始来源核查，不是穷尽所有论文的系统综述。机器可读清单literature.json有22项，逐项标记了阅读深度；只看过摘要或作者书目的条目没有写成全文复核。
+
+首先修正三条重要线索
+1. Hauer与Kondrak的论文发表于2016年，2018年是大学新闻传播。新闻所说“80%”是输出词的词典命中率，不是80%文法吻合。论文自身并未得到语法和语义一致的解读。那句英文涉及先修改拼写，再使用机器翻译；它不能作为我们的训练标签。
+原文：Decoding Anagrammed Texts Written in an Unknown Language and Script，PDF第10–11页（印刷第84–85页），https://aclanthology.org/Q16-1006/
+大学新闻：https://www.ualberta.ca/en/science/news/2018/january/ai-used-to-decipher-ancient-manuscript.html
+
+2. Bax的2014年版本是暂定部分解读，文末总结10个词及14个符号/符号组，不是一套完整的17字母确定密码。附录存在多值音值与未说明规则，常见符号也未覆盖。candidate_claims.json保存14个候选映射及11个锚点/变体记录，并区分作者图表与当前转写。最应优先核对的是Taurus例词末字、Nigella例词中的元音形、以及芫荽例词未解的末字。不能为了命中名称而删除未知字形、逐词更换音值，或自动消除转写分歧。
+原文：A proposed partial decoding of the Voynich script，Version 1, January 2014，附录第56–57页。https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf
+
+3. Tucker与Talbert的37/303是植物图像的候选认定，不是37个已破译名称。其美洲植物和纳瓦特语来源推断仍需要独立图像鉴别、固定映射和连续语法支持。Hodgins的四张羊皮纸样品合并定年为1404–1438年（95.4%）；这限制历史解释，但测的是材料，不直接给出落笔日期。
+植物论文：HerbalGram 100（2013年11月–2014年1月），第70–85页，https://umb.herbalgram.org/media/3jojkmox/issue100.pdf
+实验室报告：2009-02-17，图7，https://www.voynich.nu/papers/Carbon_GH_2009.pdf
+
+哪些规律值得接着测
+词频曲线和低阶信息熵很容易被不同机制共同生成。Rugg的格栅提案、Timm与Schinner的复制变异模型以及Gaskell与Bowern的人造无意义文本，都提示阴性控制不能只用彻底随机打乱的文字。另一方面，Bowern与Gaskell的文本变换研究和Greshko的可逆Naibbe密码说明“长得奇怪”也不足以排除有意义来源。最有价值的是用同样预算拟合不同机制，然后检查它们没有被允许调参的统计量。
+相关原文/作者实现：
+https://doi.org/10.1080/0161-110491892755
+https://github.com/TorstenTimm/SelfCitationTextgenerator
+https://ceur-ws.org/Vol-3313/paper4.pdf
+https://ceur-ws.org/Vol-3313/paper6.pdf
+https://github.com/greshko/naibbe-cipher
+
+篇章结构应当保留。Montemurro与Zanette的跨尺度关键词分析，以及Sterneck、Polish与Bowern的主题模型，说明按段、页和主题观察比只数单字更有信息。但是同一书手、同一纸帖和同类插图常同时出现：聚类并不自动等于语义。Davis的五书手判断可作为分层信息，却不是AI自动识别结果，也不是无误的标签。Feaster与Stafford的行位和段落研究提醒我们，行首、段首和行内位置本身就改变字形分布。
+https://doi.org/10.1371/journal.pone.0066344
+https://arxiv.org/abs/2107.02858
+https://ceur-ws.org/Vol-3313/keynote2.pdf
+https://ceur-ws.org/Vol-3313/paper12.pdf
+https://ceur-ws.org/Vol-3313/paper13.pdf
+
+2026年的新文献不能忽略，也不能直接当定论。Zhang与Sheng的11月4日预印本把等预算比较、留出统计和已知答案控制结合起来；其代码尚声明待正式发表再开放，本轮没有独立复现。作者也明确所有测试模型尚未同时解释全部指标，部分控制解不开就只能判未决。因此适合借鉴实验设计，不适合把限定模型下的否定结果宣传为“无意义已证实”。Layfield与Davis的2026年装订论文正文被网站验证阻挡，本轮仅列为待核实线索，不据媒体报道改动冻结页序。
+https://arxiv.org/abs/2610.34499v2
+https://journals.openedition.org/digitalmedievalist/2331
+
+本轮推荐的实验次序（是计划，不声称已经运行）
+A. 已公开锚点字形与规则审计：逐项记录原图字形、ZL/IT、作者给出的字形和候选音值。对无法唯一复原的项停止语义评分，输出缺失规则，而非补齐后“复现”。此步骤不接触保留22页。
+B. 已知答案阳性控制与无意义阴性控制：同长度、同分词和同布局条件下，比较简单替换、词内重排、可逆Naibbe、局部复制与Markov生成；检验求解成功率及假阳性。成功找回已知密文是解释真实阴性结果的前提。
+C. 位置与边界：在已冻结开发分区内，测词尾到下词首的关联，比较同行相邻、跨行相邻、页内打乱和位置匹配。控制行长、段首、书手与章节，并用页为单位估计不确定性。它能区分书写布局效应与超出布局的关联，但仍不能直接产生音值。
+D. 结构模型比较：只在训练分区选参数；预先选定尚未用于拟合的联合指标。训练样本上的漂亮拟合与新页预测分开报告。新读到文献后才添加的指标一律标记探索性，原22页保留集不用于调参。
+E. 真正的名称试验：只有固定映射、候选语言、字形划分和植物盲评标准齐备后，才预注册新的标签预测；报告所有失败，不只挑命中词。
+
+供下一位agent使用
+literature.json：逐项文献、主张、证据范围、局限与复现建议。
+candidate_claims.json：候选映射与锚点。executable_complete=false是实质信息，禁止自动补全后称原论文算法。
+rights_notes.json：转写发布方声明CC0；EVA字体为另一授权；现代论文全文与截图仅作本地阅读副本。
+sources/provenance.json：本地阅读文件来源和校验值。不要上传sources整目录。
+
+证据等级约定
+primary/full：阅读原始全文或相关完整段落；不意味着作者结论已验证。
+abstract_only：仅核查原摘要；不描述未读的方法细节。
+author_repository：核对作者代码/数据入口；未经执行仍不能称复现。
+bibliographic_lead：只确认题录，等待原文。
+
+公开网站应把“观察到的结构”“候选解释”“已知答案控制表现”“未知文本的译文”分开显示。当前只有前三者适合累积证据，第四者尚无可靠结果。

@@ -1,0 +1,23 @@
+已知答案密码校准：复现入口
+
+目录布局保持 research/study20 与 research/research7h/cipher_controls 为兄弟研究目录。
+需要 Python 3.9+、numpy、matplotlib、C++17 编译器。数据解析沿用 study20/analyze.py 的 plain_words。
+英文/拉丁原文应位于 research/study20/controls，文件与校验值见 manifest_preparation.json。
+models/*.bin 和本机编译产物 solver 可重新生成，不需要提交到版本控制。
+
+从当前目录运行：
+  clang++ -O3 -std=c++17 solver.cpp -o solver
+  python3 benchmark.py prepare
+  python3 benchmark.py dev --restarts 8 --steps 20000
+  python3 benchmark.py test --restarts 8 --steps 20000
+  python3 supplement.py
+  python3 summarize.py
+
+search_budget.json 是正式测试前冻结的配置，复现时保留。
+已有 runs/*.json 会复用；要全新复算请先把 runs 目录移到另一个位置作为备份，再运行。
+不要把程序标准输出重定向到本研究目录中，会让运行清单在文件尚未写完时计算校验值。
+只用于打印日志的文件无需发布。若新增文件，最后更新 run_manifest.json 的文件校验列表。
+
+结果范围：两个公版原文样本、六个不重叠测试窗口；同书训练与测试。未识别伏尼契手稿语言、没有译文。
+72次正式搜索是6个窗口在不同处理和模型下的重复比较，不能称为72个独立语料样本。
+词袋模式对词内重排的24个等价读数不是额外独立搜索。

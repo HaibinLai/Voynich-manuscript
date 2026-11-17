@@ -1,0 +1,61 @@
+{
+  "session": {
+    "start_utc": "2026-11-17T09:50:25Z",
+    "deadline_utc": "2026-11-17T16:50:25Z",
+    "duration_hours": 7,
+    "status": "active",
+    "stage": 2,
+    "stages": [
+      {
+        "stage": 1,
+        "status": "complete",
+        "completed_utc": "2026-11-17T10:16:27.475462+00:00",
+        "report": "阶段一研究报告.txt",
+        "evidence": "28页确认、完整随机数组复现、冻结预测配置及敏感性检查"
+      }
+    ]
+  },
+  "summary": {
+    "title": "扩展研究：段首格式与词形预测",
+    "status": "active",
+    "updated_at": "2026-11-17T10:14:25.241108+00:00",
+    "stage_status": "stage1_complete",
+    "findings": [
+      {
+        "title": "段首格式跨新页保持",
+        "summary": "28页确认集段首首词高字形比例较同一行其余词形高83.70个百分点。",
+        "evidence": "ZL主检验Holm p=0.002；IT版方向保持。",
+        "limitation": "段落边界继承转写标记；不说明字形仅有装饰作用。"
+      },
+      {
+        "title": "相邻相似信号在更强对照下减弱",
+        "summary": "固定行首尾后，不同但一编辑相似率4.16%，行内对照3.60%；未通过主检验。",
+        "evidence": "Holm p=0.204；再保留长度，辅助p=0.317。",
+        "limitation": "与旧20页实验的样本/统计量不同；不证明完全不存在局部依赖。"
+      },
+      {
+        "title": "位置与书手帮助预测",
+        "summary": "四元模型11.519 bits/词形；加入位置11.341，加入书手11.265。",
+        "evidence": "训练/开发按整叶隔离；同一28页确认集、同一目标评分。",
+        "limitation": "使用已知版面/书手信息，存在章节混杂；预测压缩不是语义解读。"
+      },
+      {
+        "title": "简单复制记忆未改善确认集",
+        "summary": "词频模型11.623 bits/词形，加入开发集选出的最近8词记忆后11.626。",
+        "evidence": "IT与合并编码版本方向保持；逐叶差值区间包含零。",
+        "limitation": "只检验精确重复的窄模型，不排除改写或更复杂机制。"
+      }
+    ],
+    "scope": "总研究仍在原定7小时窗口中继续；本页为已完成阶段一的静态快照。",
+    "confirmation_pages": 28,
+    "confirmation_leaf_groups": 13,
+    "confirmation_tokens": 5025,
+    "reserved_pages": 22
+  },
+  "stage1_assets": {
+    "report": "downloads/stage1-report.txt",
+    "figure_png": "assets/stage1-results.png",
+    "figure_svg": "assets/stage1-results.svg"
+  },
+  "snapshot_note": "静态研究快照。页面不会自动获知后台任务状态；以更新记录和已发布结果为准。"
+}
