@@ -201,7 +201,9 @@
 
   async function init() {
     try {
-      const response = await fetch('data/semantic7h.json');
+      const snapshotVersion = document.querySelector('meta[name="semantic7h-snapshot"]')?.content;
+      const snapshotUrl = 'data/semantic7h.json' + (snapshotVersion ? `?v=${encodeURIComponent(snapshotVersion)}` : '');
+      const response = await fetch(snapshotUrl, {cache: 'no-store'});
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       if (data.schema_version !== 1) throw new Error('Unsupported snapshot');

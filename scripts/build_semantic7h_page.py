@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 import hashlib
 import gzip
 import json
+import re
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT/'research/research_next/semantic7h_20261118'
@@ -438,4 +439,17 @@ payload = {
 text = json.dumps(payload,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
 assert '/Users/' not in text
 (SITE/'data/semantic7h.json').write_text(text)
+html_path = SITE/'semantic7h.html'
+html = html_path.read_text()
+snapshot_digest = hashlib.sha256(text.encode()).hexdigest()[:16]
+meta = f'<meta name="semantic7h-snapshot" content="{snapshot_digest}">'
+if 'name="semantic7h-snapshot"' in html:
+    html = re.sub(r'<meta name="semantic7h-snapshot"[^>]*>', meta, html)
+else:
+    html = html.replace('</head>', f'  {meta}\n</head>')
+for asset in ('semantic7h.js', 'semantic7h.css'):
+    asset_digest = hashlib.sha256((SITE/asset).read_bytes()).hexdigest()[:16]
+    html = re.sub(r'(["\'])' + re.escape(asset) + r'(?:\?[^"\']*)?(["\'])',
+                  lambda match: match.group(1) + asset + '?v=' + asset_digest + match.group(2), html)
+html_path.write_text(html)
 print('site/data/semantic7h.json:',len(text.encode()),'bytes; snapshot',payload['snapshot_utc'])
