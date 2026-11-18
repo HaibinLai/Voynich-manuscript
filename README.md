@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+- [书手、插图类别和段首分层](https://haibinlai.github.io/Voynich-manuscript/gallows-strata.html)：统一比较六对在 l_a、c_h 里的偏向，逐删词型与词框，附六组同页原图及出处。
+
 - [六对高杆字形的左右文对照](https://haibinlai.github.io/Voynich-manuscript/gallows-pairs.html)：可浏览完全相同的词框、只差一位的近邻、同叶同词位的局部偏向，并追溯例词与页图。
 
 - [高杆字形六配对与位置分析](https://haibinlai.github.io/Voynich-manuscript/gallows-context.html)：在相同的转写和数据上分解 k/t 的预测变化，提供固定 λ、匹配 DF、逐事件与页面/叶组结果。复算数据和脚本见 [复现说明](research/research_next/gallows_context/REPRODUCE.txt)。
@@ -144,6 +146,7 @@ python3 research/research7h/generator_controls/boundary_calibration/calibrate.py
 python3 scripts/build_report_page.py --source research
 python3 scripts/build_gallows_context_site.py
 python3 scripts/build_gallows_pairs_site.py
+python3 scripts/build_gallows_strata_site.py
 python3 scripts/build_site_data.py --source research
 python3 -m http.server 8000 --directory site
 ```

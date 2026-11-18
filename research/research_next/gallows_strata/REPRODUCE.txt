@@ -1,0 +1,13 @@
+依赖 Python 和 NumPy（原语料加载器导入 NumPy）。以下在仓库根目录运行。
+python3 research/research_next/gallows_strata/prepare.py --output /tmp/gallows-strata-labels.gz
+python3 research/research_next/gallows_strata/select_images.py /tmp/gallows-strata-labels.gz /tmp/gallows-strata-pictures.json
+python3 research/research_next/gallows_strata/analyze_strata.py research/research_next/gallows_strata/saved/labels.json.gz /tmp/gallows-strata-run
+python3 research/research_next/gallows_strata/audit.py --run /tmp/gallows-strata-run --labels /tmp/gallows-strata-labels.gz --output /tmp/gallows-strata-audit
+
+saved/labels.json.gz 是本次冻结的原始压缩存档。重新生成时若gzip字节随版本变化，应先逐记录核对，复算固定结果仍可使用存档。
+
+主结果完成后，追加的完整框去除：
+python3 research/research_next/gallows_strata/family_sensitivity.py /tmp/gallows-strata-labels.gz /tmp/gallows-strata-run/results.json /tmp/gallows-strata-run/family_sensitivity.json
+python3 research/research_next/gallows_strata/check_family.py /tmp/gallows-strata-labels.gz /tmp/gallows-strata-run/family_sensitivity.json /tmp/gallows-strata-run/family_check.json
+
+图像选择与纸面读图分开。浏览 visual_check.txt/json 用官方 IIIF 照片的同页定位。网站保留经核验的小裁片及对应署名与来源。旧版转写、既有研究结果全部沿用仓库固定文件。

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="把高杆字形的局部词形偏向拆到书手、插图类别和段首位置，查看支持量、重新匹配的参照以及同页原图。">
+  <title>词形分层与原图 · 伏尼契手稿研究台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallows-strata.css">
+  <script defer src="gallows-strata.js"></script>
+</head>
+<body class="gs-page">
+  <a class="skip-link" href="#gs-main">跳到分层与原图</a>
+  <header class="site-header"><a class="wordmark" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契手稿<span class="wordmark-en">VOYNICH RESEARCH NOTEBOOK</span></span></a><a class="repo-link" href="https://github.com/HaibinLai/Voynich-manuscript" target="_blank" rel="noopener noreferrer">开放代码 ↗</a></header>
+  <nav class="main-nav" aria-label="研究导航"><a href="index.html#overview">研究首页</a><a href="gallows-pairs.html">高杆词形对照</a><a href="gallows-strata.html" class="active" aria-current="page">词形分层与原图</a><a href="gallows-context.html">高杆语境</a><a href="index.html#concordance">全书词形索引</a></nav>
+  <main id="gs-main" tabindex="-1">
+    <header class="gs-hero"><div><span class="eyebrow">FOLLOW-UP / STRATA & ORIGINAL IMAGES</span><h1>偏向出现在哪里？<br>分开比较，再看原图。</h1><p class="hero-intro">把两种即时邻域拆到不同书手、插图类别与段首位置。保留每层可用的参照和缺乏支持的情况，并查看同页的真实词形。</p><p class="small-text">f、p、k、t 是 EVA 转写标签；比例差不是读音、词义或语法的鉴定。</p></div><aside class="gs-boundary"><strong>先分清两种问题</strong><p>“原有偏向分布在哪些层”与“只在同一层内重新匹配，偏向还剩多少”采用不同参照。支持量变化时，两者不能直接相减来解释成书手或章节的作用。</p><a href="#gs-gallery">先看同页原图 ↓</a></aside></header>
+    <div class="note-strip" id="gs-state" role="status" aria-live="polite">正在读取已保存的分层结果与图片记录；没有预填数值。</div>
+    <div id="gs-findings"></div>
+    <div class="gs-filters" aria-label="分层筛选"><div class="field"><label for="gs-version">转写版本</label><select id="gs-version" disabled><option value="ZL">ZL / EVA</option><option value="IT">IT / EVA</option></select></div><div class="field"><label for="gs-pair">字形配对</label><select id="gs-pair" disabled><option value="f/k">f / k</option><option value="f/p">f / p</option><option value="f/t">f / t</option><option value="k/p">k / p</option><option value="k/t" selected>k / t</option><option value="p/t">p / t</option></select></div><div class="field"><label for="gs-case">即时邻域</label><select id="gs-case" disabled><option value="l_a">l _ a · 长 4，第 2 位</option><option value="c_h">c _ h · 长 5，第 2 位</option></select></div><div class="field"><label for="gs-axis">拆分方式</label><select id="gs-axis" disabled><option value="hand">书手标签</option><option value="section">插图类别</option><option value="role">段首与行内位置</option><option value="hand_section">书手 × 插图类别</option></select></div></div>
+    <p id="gs-selection" class="gs-muted" role="status" aria-live="polite">选择应用于分层表；同页图廊按配对展示，不把图片选例当作整个分层的样本。</p>
+    <nav class="gs-jump" aria-label="本页小节"><a href="#gs-gallery">同页原图</a><a href="#gs-original">原参照分解</a><a href="#gs-rematched">层内重新匹配</a><a href="#gs-robustness">词型与叶组</a><a href="#gs-evidence">范围与复核</a></nav>
+
+    <section class="gs-section" id="gs-gallery" aria-labelledby="gs-gallery-title"><div class="section-heading"><div><span class="eyebrow">01 / LOOK AT THE MANUSCRIPT</span><h2 id="gs-gallery-title">同一页上的真实写法</h2></div><p>保留对应转写、页位和图像评审状态。图片用于阅读，不把近似框当成精确字形边界。</p></div><div id="gs-gallery-content" class="gs-gallery"><div class="gs-empty">图片记录尚未接入。只展示来源明确的保存图片，不用示意图替代原手稿。</div></div><p class="gs-muted">图像来源：Beinecke MS 408 / Yale University Library。小裁片使用已核对的官方图像相同字节，点击可放大；另保留官方 IIIF 裁区和整页链接。图廊是阅读选例，不是随机样本。</p></section>
+
+    <section class="gs-section" id="gs-original" aria-labelledby="gs-original-title"><span class="eyebrow">02 / DECOMPOSE THE ORIGINAL REFERENCE</span><h2 id="gs-original-title">原参照下，哪些层贡献了偏向？</h2><p class="gs-intro">保留原分析的参照，再按保存的元数据分组。这里先描述原有记录的分布，不能据此认定某一类书手或插图造成了偏向。残差总量沿用保存结果，不把各层的比例差直接相加。</p><div id="gs-original-content"><div class="gs-empty">等待保存的分解表；数量为零和未获支持将分开显示。</div></div></section>
+
+    <section class="gs-section" id="gs-rematched" aria-labelledby="gs-rematched-title"><span class="eyebrow">03 / REMATCH WITHIN EACH STRATUM</span><h2 id="gs-rematched-title">只在同一层里重新找参照</h2><p class="gs-intro">更细的匹配会减少可比材料。每层同时报告全部记录、可比记录与叶组支持。保留同一批记录上的原参照，才能区分样本缩减与参照改变；缺少参照不会当作“差值为零”。</p><div id="gs-rematched-content"><div class="gs-empty">等待层内匹配结果和对应分母。</div></div></section>
+
+    <section class="gs-section" id="gs-robustness" aria-labelledby="gs-robustness-title"><span class="eyebrow">04 / WORD TYPES & LEAF GROUPS</span><h2 id="gs-robustness-title">是否由少数词型或重复记录支撑？</h2><div class="gs-method-grid"><article><h3>逐一删去词型</h3><p>查看每个保存词型被移除后的变化。删减范围反映已见材料的敏感性，不是置信区间，也不是重新获得的盲测。</p></article><article><h3>每叶去重</h3><p>让同一叶中的重复词型不再按全部词次累计。它改变计数口径；原词次、去重记录和叶组数分别报告。</p></article></div><div id="gs-robustness-content"><div class="gs-empty">等待逐词型删减与每叶去重结果。</div></div></section>
+
+    <section class="gs-section" id="gs-evidence" aria-labelledby="gs-evidence-title"><span class="eyebrow">05 / SCOPE & SAVED EVIDENCE</span><h2 id="gs-evidence-title">分层更细，解释仍有边界</h2><div class="gs-method-grid"><article><h3>类别不等于独立原因</h3><p>书手、插图章节和版面可能相互重合。同一页或同一叶的多条记录也不能当作独立样本。段首位置沿用显式标注；“未标为段首行”不保证该行确实不是段首。</p></article><article><h3>局部邻域不是完整词框</h3><p>l _ a 与 c _ h 只固定紧邻的左右单位，同时固定长度和位置。其余位置仍可变化；完整左右文的比较请回看<a href="gallows-pairs.html">词形对照页</a>。</p></article></div><div id="gs-evidence-content"></div></section>
+    <noscript><div class="note-strip">交互分层需要 JavaScript。可直接查看<a href="data/gallows-strata.json">保存数据</a>；没有接入的数据不会显示为示例结果。</div></noscript>
+  </main><footer class="site-footer"><span>分母与支持同时报告 · 原图与转写并列 · 不作词义鉴定</span><span id="gs-snapshot">等待保存快照</span></footer>
+</body>
+</html>

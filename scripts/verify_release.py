@@ -98,6 +98,9 @@ def verify_snapshot():
     pair_study = REPO/'research/research_next/gallows_pairs'
     if (pair_study/'manifest.json').exists():
         definitions.append((pair_study/'manifest.json', pair_study, dict(container='files')))
+    strata = REPO/'research/research_next/gallows_strata'
+    if (strata/'manifest.json').exists():
+        definitions.append((strata/'manifest.json', strata, dict(container='files')))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
