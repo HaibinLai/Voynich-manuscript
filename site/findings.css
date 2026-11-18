@@ -1,0 +1,141 @@
+.research-brief {
+  max-width: 1160px;
+  padding-top: clamp(36px, 6vw, 86px);
+  padding-bottom: 64px;
+}
+
+.brief-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .94fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 70px);
+  margin-bottom: clamp(44px, 7vw, 90px);
+}
+
+.brief-date {
+  color: var(--green);
+  font-size: 13px;
+  letter-spacing: .06em;
+  margin-bottom: 16px;
+}
+
+.brief-lead h1 {
+  margin: 0 0 20px;
+  color: #1b362e;
+  font-size: clamp(34px, 5vw, 62px);
+  letter-spacing: .02em;
+}
+
+.brief-intro {
+  max-width: 47ch;
+  font-size: clamp(16px, 1.55vw, 19px);
+  line-height: 1.9;
+}
+
+.brief-plate {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(12px, 2vw, 22px);
+  border: 1px solid #cbd0c1;
+  background: var(--white);
+}
+
+.brief-image-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.brief-image-pair a {
+  min-width: 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brief-image-pair img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 25 / 17;
+  object-fit: contain;
+  background: #e0d0ae;
+}
+
+.brief-image-pair span {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 2px;
+  text-align: center;
+  font-size: 21px;
+}
+
+.brief-image-pair strong {
+  color: var(--green);
+  background: var(--pale);
+  padding: 0 .1em;
+}
+
+.brief-plate figcaption {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.research-brief section h2 {
+  font-size: clamp(25px, 3.2vw, 38px);
+  margin-bottom: 20px;
+}
+
+.brief-evidence-row {
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(130px, .28fr) minmax(0, 1fr);
+  gap: clamp(14px, 4vw, 48px);
+  padding: clamp(20px, 3vw, 34px) 0;
+}
+
+.brief-number strong {
+  display: block;
+  font: clamp(32px, 4vw, 50px)/1.12 Georgia, serif;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+
+.brief-number span {
+  display: block;
+  max-width: 24ch;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.brief-evidence-row h3 {
+  font-size: clamp(17px, 1.9vw, 22px);
+  margin-bottom: 8px;
+}
+
+.brief-evidence-row p, .brief-boundary p {
+  max-width: 66ch;
+  margin-bottom: 12px;
+}
+
+.brief-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 13px;
+}
+
+.brief-boundary {
+  margin-top: 28px;
+  padding: clamp(20px, 3.8vw, 42px);
+  background: var(--pale);
+  border-left: 3px solid var(--green);
+}
+
+@media (max-width: 760px) {
+  .brief-hero { grid-template-columns: 1fr; }
+  .brief-evidence-row { grid-template-columns: 1fr; }
+  .brief-number span { max-width: none; }
+}

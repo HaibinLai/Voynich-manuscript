@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+- [我们找到了哪些规律？](https://haibinlai.github.io/Voynich-manuscript/findings.html) 一页阅读版，汇总原图词例、六对字形对照和证据边界。
+
 - [书手、插图类别和段首分层](https://haibinlai.github.io/Voynich-manuscript/gallows-strata.html)：统一比较六对在 l_a、c_h 里的偏向，逐删词型与词框，附六组同页原图及出处。
 
 - [六对高杆字形的左右文对照](https://haibinlai.github.io/Voynich-manuscript/gallows-pairs.html)：可浏览完全相同的词框、只差一位的近邻、同叶同词位的局部偏向，并追溯例词与页图。
