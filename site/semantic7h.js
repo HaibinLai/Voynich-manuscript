@@ -2,7 +2,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const states = {active:'窗口进行中',running:'进行中',planned:'计划',awaiting_review:'待复核',partial:'部分记录已保存',complete:'已完成',completed:'已完成',blocked:'待解决条件',paused:'已暂停'};
+  const states = {usageLimited:'用量受限 · 窗口未完成',active:'窗口进行中',running:'进行中',planned:'计划',awaiting_review:'待复核',partial:'部分记录已保存',complete:'已完成',completed:'已完成',blocked:'待解决条件',paused:'已暂停'};
   const badge = state => `<span class="s7-badge" data-state="${esc(state)}">${esc(states[state] || state)}</span>`;
   const utc = value => {
     const d = new Date(value);

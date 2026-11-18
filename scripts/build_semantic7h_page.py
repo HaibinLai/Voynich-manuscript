@@ -63,6 +63,7 @@ stage_titles = {
     4:'独立复核、发布与窗口结题',
 }
 modules = {
+    'space_bridge':{'title':'两词拼接','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'choice_controls':{
         'title':'三候选几何对照：原假说是否更可比？',
         'status':'awaiting_review','summary':'评分与编号映射须通过复核后展示。',

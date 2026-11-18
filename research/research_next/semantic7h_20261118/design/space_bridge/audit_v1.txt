@@ -1,0 +1,25 @@
+space_bridge 独立数值审核 v1：PASS
+2026-11-18；未导入或阅读主 scorer/support 实现；独立核心在读取主结果前冻结并完成重建。旧研究结果与英文动机已知，不称盲审。
+
+全部4条件×4机制、11固定查询完成核验。3,278,237项标量/结构核对，0差异；15,088页×模型块，86,670机会位置（包含不同查询/条件的重复），18命中位置记录；14,305输入行记录、120,530词位和8,069 tag 坐标。这些是核对工作量，不是独立样本数。
+已核：所有目标/对照页机会及命中原位、exact与join分母、每页binary/rate/union/gain、所有NA原因、donor页→物理叶均值、4来源叶固定权重、target叶等权、逐候选/来源贡献、#110完整排除、各summary副本以及freeze/complete全部哈希。分数用精确有理数，冗余浮点投影绝对容差1e-12。
+
+结果
+所有11目标在四条件、四机制下均无命中。主机制adjacent_forward对目标和donor都没有新增命中，source加权coverage_gain差均为0。合并exact后的主差值保留原基线：
+ZL strict_space：-1/368；ZL packet_tokens：-1/276；IT strict_space和packet_tokens：各-5/1104。
+仅ZL packet_tokens的逆序控制新增一条donor命中：#133查询opchor，在f21r.1原slot[0,1]为[pchor,o]，倒词序得opchor；原行uncertain_space=true。它不是目标命中，亦不是正向桥梁成功；该条件逆序coverage_gain差为-1/1104。其余join控制无新增。
+
+条件率完整支持候选数（exact/正向相邻/逆序相邻/gap2）
+ZL strict_space：8/7/7/7；ZL packet_tokens：8/10/10/10；IT两条件均9/10/10/10。
+主binary及gain始终保留11候选。无机会时binary0与rateNA已分开，不用条件率支持过滤制造较好结果。IT两边界条件输入相同，不算独立复现。
+
+过程与限制
+初始23项结构toy和7,991 loci原slot重建记录继续保留；另有4项数值toy。两次比较器字段映射失败保存于audit_comparison_attempt_01/02.json和对应比较脚本，修正仅为condition后缀、excluded数组层级、graphic_tag/uncertain_comma名称。冻结独立数值核心和重建结果没有修改。主运行失败记录为空。
+本轮exact的join_occurrence_present按定义为0；独立通用exact additional_occurrence冗余字段是exact指示量，比较器没有把它冒充join。
+保守屏障只覆盖转写已编码标记；未重新审核原图中的漏标断裂。原转写提取仍作为输入，H仍是有来源的操作分组，图像配对非语义金标准。本实验是已曝光后登记的有限探索，零命中约束本规则，不能据此排除所有跨空格、屈折、缩略或词义关系。英文校准不在本审核范围。
+
+主要文件
+audit_numeric.py / audit_numeric_freeze_v1.json：独立评分核心及前置冻结。
+audit_rebuilt_v1.json.gz：全部独立机会/命中/权重。
+audit_compare.py / audit_v1.json：完整比较器和机器可读收据。
+audit_structure_core_frozen_v1.py / audit_structure_reconstruction_v1.json：早期结构核验原记录。

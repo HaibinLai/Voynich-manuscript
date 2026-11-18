@@ -16,6 +16,15 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('design/space_bridge/protocol_v1.txt','space-protocol.txt'),
+    ('design/space_bridge/report_v1.txt','space-report.txt'),
+    ('design/space_bridge/publication_projection_v1.json','space-results.json'),
+    ('design/space_bridge/audit_v1.json','space-audit.json'),
+    ('design/space_bridge/audit_v1.txt','space-audit.txt'),
+    ('design/space_bridge/audit_release_receipt_v1.json','space-audit-receipt.json'),
+    ('design/space_bridge/support_consistency_v1.json','space-support-consistency.json'),
+    ('design/space_bridge/public_findings_manifest_v1.json','space-findings-manifest.json'),
+
     ('visual/choice_controls/protocol_v1.txt','choice-protocol.txt'),
     ('visual/choice_controls/result_v1.json','choice-results.json'),
     ('visual/choice_controls/report_v1.txt','choice-report.txt'),
@@ -228,6 +237,17 @@ assert choice_result['all_twelve_retained'] and not choice_result['old_lexical_r
 assert len(choice_result['questions'])==12
 for name,expected in choice_result['hashes'].items():
     assert sha(CHOICE/name)==expected,name
+
+SPACE=SOURCE/'design/space_bridge'
+space_manifest=json.loads((SPACE/'public_findings_manifest_v1.json').read_text())
+for name,expected in space_manifest['files'].items():
+    assert sha(SPACE/name)==expected,name
+space_audit=json.loads((SPACE/'audit_v1.json').read_text())
+assert space_audit['status']=='PASS' and space_audit['differences']==[]
+space_projection=json.loads((SPACE/'publication_projection_v1.json').read_text())
+assert space_projection['independent_audit']['receipt_sha256']==sha(SPACE/'audit_v1.json')
+assert len(space_projection['models_table'])==16
+assert all(row['target_hits']==0 for row in space_projection['models_table'])
 
 staged=[]
 for source_name, destination in FILES:

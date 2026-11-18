@@ -1,0 +1,29 @@
+两词空格桥梁：最终 protocol v1
+2026-11-18，root已批准proposal_v1及保守共同bench支持。定稿时真实query尚未评分；已见旧完整词、短边界结果及英文Asarabacca空格例，明确事后探索。英文校准由独立任务处理，本协议不执行英文。
+
+固定样本与条件
+相同11完整单词标签，#110两个位置三词整组排除；不改字、不删对象、不挑别名。ZL/IT×strict_space/packet_tokens共4条件，均page-HI。strict沿原uncertain_space整行排除；packet允许逗号不确定词界。IT无此标记，两条件输入相同，不当独立复现。
+同target H/I donor页，排除整个source leaf和target leaf；donor先页均值再物理叶均值。主总体各source leaf内候选等权再4来源叶等权：f89一项1/4，f99三项各1/12，f100三项各1/12，f102四项各1/16。全部11始终保留；复用目标f96v不当独立对象。另列target leaf等权与全部候选/来源贡献。
+
+屏障与可比输入
+采用support.py已审核recover：raw恢复旧规范化流和token跨度，逐slot值/None必须完全复现保存packet。所有<…>标签保留屏障坐标：图形<->/<~>仍产生旧词界，其他注释/段落/身份tag只保留零宽屏障，不新造词。若复现不符，该locus四机制都不使用并记录；不重断词救命中。
+tag落在旧token内部则该token不可比，四机制共同排除；词末/下词起点tag仍阻止跨窗口。Unknown/备选None保留原slot，不压缩。只同一locus原连续slot；两外端之间包括中间词有任何tag都禁跨。只能保证不跨raw已编码屏障，不能排除原图或转写漏标。
+输入盘点：ZL3996、IT3995 loci，全部逐slot复现，失败0；两版内部tag不可比词均0。因此本轮exact实际未因这项屏障规则改变单词输入，但仍称“本轮共同可比输入基线”。
+
+四种固定机制
+exact：完整可比单词等于完整query。
+adjacent_forward：原slot i,i+1按正序拼接恰等于完整query。
+adjacent_reverse：同一个物理相邻窗口按i+1,i拼接，字母顺序不倒。
+gap2_forward：原slot i,i+2正序拼接，i+1也须完整可比且没有屏障；只忽略中间完整词，不跳未知/缺字/图形。
+EVA单位@ddd;或小写字母/撇号；扩展码原子不能拆。query中的cth/ckh/cfh/cph内部禁止接缝。为共同比较，两个所选词的长度对应的正/反两种query接缝都须合法；相邻正反N必须一致，gap2用同一保守两长度规则。仅query #116含bench，禁止接缝7、8；不按正文结果改变。
+无三词、字符改动、删词头尾、内部编辑、六对或Davis。四机制分别报告，不选赢家，不把三种join组成总union。每个原窗口最多计一次，重复位置正常分别计。
+
+机会与端点
+exact N为同query单位长度的可比单词数；join N为总长度相同且slot/屏障/接缝机制均有效的窗口数，gap2中间词长度不加入总长。N0时binary0、rateNA；全11不删。匹配m、binary、m/N及所有窗口/命中位置都保存。
+主关注adjacent_forward的新增页面覆盖：gain=I(exact OR adjacent_forward)-I(exact)。每target和每donor页都同样算，再按固定页→叶→source权重作目标－对照差。额外列join_occurrence_present=I(有join)，它在已有exact的页也能为1，不能混同gain。
+reverse和gap2各自的exact∪该机制union/gain为并列描述性诊断，不跨机制汇总。exact的union等于自己、gain0。union没有m/N条件率，不能混加单词与窗口分母。
+四机制各自条件率次端点：N>0页内m/N，donor叶内只平均有机会页，再有机会叶等权；target N>=1且至少2donor叶有机会才给条件差，其他NA和原因明列。主binary和gain仍保留11固定权重。
+
+冻结与输出
+先保存源码、support parser、protocol、toy和原输入/support/原图像完成审核哈希，再root授权执行run_v1。15分钟内报告进展，完整positions/N/NA/贡献和各自union不删减。保留所有失败，新目录重试；真实首结果后不改规则。此前已知结果不能冒充本轮确认。
+toy核原None不压缩、同locus、所有tag/词末/内部屏障、段落、@原子、querybench共同支持、正反相同N、gap2中间未知、总长度、union和gain差别、页叶固定权重。独立agent复核全部四条件×四机制，不把实现一致当语义认证。不给显著性或破解声明。
