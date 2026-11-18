@@ -45,6 +45,8 @@ support = read('design/leaf_controls/support_v1.json', {})
 cross_visual = read('visual/crossplant/crossplant_visual_review_v1.json', {})
 cross_receipt = read('visual/crossplant/verification_receipt.json', {})
 publication = read('publication.json', {})
+choice_result = read('visual/choice_controls/result_v1.json', {})
+choice_audit = read('visual/choice_controls/audit_v1.json', {})
 boundary_projection = read('design/boundary_bridge/publication_projection_v1.json', {})
 boundary_audit = read('design/boundary_bridge/audit_v1.json', {})
 boundary_visual = read('visual/boundary_hits/review.json', {})
@@ -61,6 +63,11 @@ stage_titles = {
     4:'独立复核、发布与窗口结题',
 }
 modules = {
+    'choice_controls':{
+        'title':'三候选几何对照：原假说是否更可比？',
+        'status':'awaiting_review','summary':'评分与编号映射须通过复核后展示。',
+        'details':[],'metrics':[],'links':[],
+    },
     'images': {
         'title':'十二个位置：文字属于哪个对象？',
         'status':'partial',
@@ -295,6 +302,24 @@ if boundary_projection:
         assert len(crops)==12
         boundary['visual']={'overall_zh':boundary_visual['overall_zh'],'items':boundary_visual['items'],'crops':crops}
         boundary['visual_review_status']='Four word locations and two target lines localized; a/o glyph and y/ol boundary remain ambiguous. Outcome-guided, not blinded; no transcription changes.'
+choice={}
+if choice_result:
+    assert choice_audit['pass_all'] and choice_audit['check_count']==425
+    assert all(row['passed'] for row in choice_audit['checks'])
+    assert hashlib.sha256((SOURCE/'visual/choice_controls/result_v1.json').read_bytes()).hexdigest()==choice_audit['audited_file_sha256']['result_v1.json']
+    assert len(choice_result['questions'])==12
+    for row in choice_result['questions']:
+        for picture in [row['source']]+row['candidates']:
+            assert picture['crop_url'].startswith('https://collections.library.yale.edu/iiif/2/')
+            assert picture['url'].startswith('https://collections.library.yale.edu/iiif/2/')
+            x,y,w,h=picture['box'];width,height=picture['size']
+            assert 0<=x<x+w<=width and 0<=y<y+h<=height
+            assert int(picture['crop_url'].split('/')[-3].rstrip(','))<=w
+        for candidate in row['candidates']:
+            assert candidate['observation']['score'] in [0,1,2,3,None]
+    choice={'questions':choice_result['questions'],'counts':choice_audit['counts'],'scope':choice_result['scope'],
+            'review_frozen_utc':choice_result['review_frozen_utc'],'unblinded_utc':choice_result['unblinded_utc'],
+            'audit_scope':choice_audit['scope'],'audit_checks':choice_audit['check_count']}
 payload = {
     'schema_version':1,
     'snapshot_utc':snapshot.isoformat(),
@@ -311,6 +336,7 @@ payload = {
     'sources':seen,
     'gallery':gallery,
     'boundary':boundary,
+    'choice':choice,
     'gallery_scope':'Two separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered batch: 12 pairs, 11 scored; order batch: 12 unscored pairs. Only the selected pair images load (two normally, three for two unresolved target objects). Author overview images are not published.',
     'scope':'Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim.',
 }

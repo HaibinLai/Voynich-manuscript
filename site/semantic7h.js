@@ -117,6 +117,36 @@
     if(location.hash==='#s7-gallery') $('s7-gallery').scrollIntoView();
   }
 
+  function setupChoice(record) {
+    if(!record?.questions?.length)return;
+    $('s7-choice').hidden=false;
+    const outcome={unique_highest:'唯一最高',tied_highest:'并列最高',below_other:'低于其他候选',not_comparable:'NA'};
+    $('s7-choice-table').innerHTML=simpleTable(['题目／来源片段','A：页号／分数','B：页号／分数','C：页号／分数','文献目标','相对位置'],record.questions.map(q=>`<tr><th scope="row">${esc(q.question_id)} / #${q.fragment_id}</th>${q.candidates.map(c=>`<td>${esc(c.folio)} / ${c.observation.score==null?'NA':c.observation.score}${c.prior_hypothesis?'（文献）':''}</td>`).join('')}<td>${esc(q.prior_hypothesis_code)}</td><td>${esc(outcome[q.comparison_status]||q.comparison_status)}</td></tr>`));
+    $('s7-choice-question').innerHTML=record.questions.map(q=>`<option value="${esc(q.question_id)}">${esc(q.question_id)} · #${q.fragment_id} · ${esc(outcome[q.comparison_status])}</option>`).join('');
+    $('s7-choice-question').disabled=false;
+    $('s7-choice-question').value=record.questions[0].question_id;
+    let generation=0;
+    const render=()=>{
+      const current=++generation;
+      if(!$('s7-choice-open').open){$('s7-choice-images').innerHTML='';$('s7-choice-state').textContent='';return;}
+      const q=record.questions.find(q=>q.question_id===$('s7-choice-question').value)||record.questions[0];
+      const images=[{...q.source,code:'source'},...q.candidates];
+      $('s7-choice-state').textContent=`${q.question_id}：正在加载当前四张官方裁区。`;
+      $('s7-choice-images').innerHTML=images.map(c=>{
+        const source=c.code==='source',o=c.observation;
+        const native=c.crop_url.replace(/\/\d+,\/0\/default.jpg$/,'/full/0/default.jpg');
+        return `<article><h3>${source?'来源 #'+q.fragment_id:c.code+' · '+(c.prior_hypothesis?'文献目标':'固定对照')}</h3><p class="s7-muted">${esc(c.folio)}${source?'':` · ${o.score==null?'NA':o.score+' / 3 分'}`}</p><a class="s7-choice-image-frame" href="${esc(native)}"><img id="s7-choice-image-${esc(c.code)}" src="${esc(c.crop_url)}" alt="${source?'来源片段 #'+q.fragment_id:'候选 '+c.code+'，'+c.folio}，耶鲁官方近似对象裁区" decoding="async"></a><div class="s7-links"><a href="${esc(c.url)}">完整原图</a><a href="${esc(native)}">原尺寸裁区</a></div>${source?`<p>${esc(q.source_observation)}</p><ul>${q.uncertainties.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<h4>相似处</h4><ul>${o.similarities.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>差异</h4><ul>${o.differences.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>评分理由</h4><p>${esc(o.reason)}</p>`}</article>`;
+      }).join('');
+      const imageStates=new Map();
+      const settled=()=>{if(current!==generation)return;const loaded=[...imageStates.values()].filter(v=>v==='loaded').length,failed=[...imageStates.values()].filter(v=>v==='failed').length;$('s7-choice-state').textContent=`${q.question_id}：`+(failed?'裁区尚未全部载入，可打开完整原图。':loaded===4?'四张官方裁区已载入。评分是可比程度，不是同种概率。':`已加载 ${loaded} / 4 张裁区。`);};
+      for(const c of images){const img=$('s7-choice-image-'+c.code);img.addEventListener('load',()=>{imageStates.set(c.code,'loaded');settled();},{once:true});img.addEventListener('error',()=>{imageStates.set(c.code,'failed');settled();},{once:true});if(img.complete)imageStates.set(c.code,img.naturalWidth>0?'loaded':'failed');}
+      settled();
+    };
+    $('s7-choice-question').addEventListener('change',render);
+    $('s7-choice-open').addEventListener('toggle',render);
+    if(location.hash==='#s7-choice')$('s7-choice').scrollIntoView();
+  }
+
   function moduleMarkup(key, module) {
     let body = `<article class="s7-module" id="s7-${esc(key)}"><div class="s7-module-head"><h3>${esc(module.title)}</h3>${badge(module.status)}</div><p class="s7-module-summary">${esc(module.summary)}</p>`;
     if (module.metrics?.length) body += `<div class="s7-module-metrics">${module.metrics.map(r=>`<div class="s7-module-metric"><strong>${esc(r.value)}</strong><span>${esc(r.label)}</span></div>`).join('')}</div>`;
@@ -147,6 +177,7 @@
       $('s7-download-list').innerHTML = data.downloads.length ? links(data.downloads) : '<span class="s7-muted">下载文件尚在整理，可先查看下方研究目录。</span>';
       setupGallery(data.gallery);
       setupBoundary(data.boundary);
+      setupChoice(data.choice);
       $('s7-load-state').textContent = '已载入保存记录。未审核的实验结果不会在此快照中预填。';
     } catch (error) {
       $('s7-load-state').textContent = '快照未能加载。请查看本页底部的研究目录；页面不会推测任务状态或填入示例结果。';

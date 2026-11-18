@@ -16,6 +16,19 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('visual/choice_controls/protocol_v1.txt','choice-protocol.txt'),
+    ('visual/choice_controls/result_v1.json','choice-results.json'),
+    ('visual/choice_controls/report_v1.txt','choice-report.txt'),
+    ('visual/choice_controls/audit_v1.json','choice-audit.json'),
+    ('visual/choice_controls/audit_v1.txt','choice-audit.txt'),
+    ('visual/choice_controls/anonymous_review_v1.json','choice-anonymous-review.json'),
+    ('visual/choice_controls/anonymous_review_v1.txt','choice-anonymous-review.txt'),
+    ('visual/choice_controls/anonymous_receipt_v1.json','choice-anonymous-receipt.json'),
+    ('visual/choice_controls/anonymous_image_hashes.json','choice-image-hashes.json'),
+    ('visual/choice_controls/anonymous_questions.json','choice-anonymous-questions.json'),
+    ('visual/choice_controls/freeze_v1.json','choice-freeze.json'),
+    ('visual/choice_controls/selection_v1.json','choice-selection.json'),
+    ('visual/choice_controls/acquisition_v1.json','choice-acquisition.json'),
     ('object_registry_v1.json','object-registry.json'),
     ('object_registry_v1.txt','object-registry.txt'),
     ('visual/unresolved_sources/review.json','remaining-source-review.json'),
@@ -204,6 +217,18 @@ for name,expected in registry['inputs'].items():
     assert sha(SOURCE/name)==expected,name
 assert registry['counts']['relationships']==35 and registry['counts']['main_scored_relationships']==11
 
+CHOICE=SOURCE/'visual/choice_controls'
+choice_audit=json.loads((CHOICE/'audit_v1.json').read_text())
+assert choice_audit['pass_all'] and choice_audit['check_count']==425
+assert all(row['passed'] for row in choice_audit['checks'])
+for name,expected in choice_audit['audited_file_sha256'].items():
+    assert sha(CHOICE/name)==expected,name
+choice_result=json.loads((CHOICE/'result_v1.json').read_text())
+assert choice_result['all_twelve_retained'] and not choice_result['old_lexical_results_changed']
+assert len(choice_result['questions'])==12
+for name,expected in choice_result['hashes'].items():
+    assert sha(CHOICE/name)==expected,name
+
 staged=[]
 for source_name, destination in FILES:
     path=SOURCE/source_name
@@ -225,6 +250,7 @@ manifest={'created_utc':datetime.now(timezone.utc).isoformat(),
           'crossplant_audit_sha256':sha(CROSS/'audit_v1.json'),
           'crossplant_projection_sha256':sha(CROSS/'publication_projection.json'),
           'known_herbal_audit_sha256':sha(HERBAL/'audit_v1.json'),
-          'boundary_audit_sha256':sha(BOUNDARY/'audit_v1.json')}
+          'boundary_audit_sha256':sha(BOUNDARY/'audit_v1.json'),
+          'choice_audit_sha256':sha(CHOICE/'audit_v1.json')}
 (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({'files':len(receipt),'bytes':sum(x['bytes'] for x in receipt),'audit':'PASS'},ensure_ascii=False))
