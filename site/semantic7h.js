@@ -78,6 +78,13 @@
       if(row.attachment_status==='ambiguous')meta+='<p class="s7-gallery-warning">#31 来源标签附着仍有歧义；可定位图形不等于已确定文字属于它。</p>';
       if(row.notes?.length)meta+=`<p class="s7-muted">${row.notes.map(esc).join(' ')}</p>`;
     }
+    if(row.batch==='remaining'){
+      meta+='<p class="s7-gallery-warning">剩余图像关系批次：11 对均未执行正文词形匹配；包含 10 个来源对象，#150 对应两个不同目标。图像比较不改变旧标签资格或 11 条主查询。</p>';
+      if(row.label_scope_zh)meta+=`<p class="s7-gallery-warning">${esc(row.label_scope_zh)}</p>`;
+      if(!row.target_unique)meta+='<p class="s7-gallery-warning">目标页有两个植物状图形，下面同时保留两者；没有确定来源片段对应哪一个。</p>';
+      if(row.notes?.length)meta+=`<p class="s7-muted">${row.notes.map(esc).join(' ')}</p>`;
+      if(row.source_context_links?.length)meta+=`<div class="s7-links">${links(row.source_context_links)}</div>`;
+    }
     if(row.exact_check)meta+=`<div class="s7-exact-check"><strong>完整词主检查 · exact / strict_space / page_HI</strong><p>${Object.entries(row.exact_check).map(([v,r])=>`${v}：同长度机会 N=${r.opportunities}，命中 m=${r.matches}，条件率 ${r.opportunities?r.matches+'/'+r.opportunities:'NA（零机会）'}`).join('；')}</p><p class="s7-muted">N 是该页通过筛选的同长度词位数，不是独立实验次数；这里没有使用另行研究的短边界规则，也不等于对象名称已被确定。</p></div>`;
     $('s7-gallery-meta').innerHTML=meta;
     const pictures=[{a:row.source,side:'source'},...(row.target_regions||[row.target]).map((a,i)=>({a,side:'target'+i}))];
@@ -85,7 +92,7 @@
     $('s7-gallery-state').textContent=`本批第 ${index+1} / ${rows.length} 对：正在加载当前 ${pictures.length} 张官方裁区。`;
     $('s7-gallery-images').innerHTML=pictures.map(({a,side})=>{
       const source=side==='source';
-      return `<figure><a class="s7-image-frame" href="${esc(a.native_crop_url)}" aria-label="打开${source?'来源片段':'目标图像'}的官方原尺寸裁区"><img id="s7-image-${side}" src="${esc(a.crop_url)}" alt="${source?'来源片段 #'+row.fragment_id+'，'+row.source_folio:'文献指定目标 '+row.target_folio}：耶鲁原图的近似对象阅读裁区" decoding="async"></a><figcaption><strong>${source?'来源片段 #'+row.fragment_id+' · '+esc(row.source_folio):'文献目标 · '+esc(row.target_folio)}</strong>${a.description?`<p>${esc(a.description)}</p>`:''}<p>馆藏画布标题：${esc(a.manifest_label)}</p>${source?`<p>${row.candidate_locators.length?'候选标签位置：'+row.candidate_locators.map(esc).join('、'):'次序定位候选；正文匹配未运行'}</p>`:''}<div class="s7-links"><a href="${esc(a.source_url)}">查看完整原图</a><a href="${esc(a.native_crop_url)}">原尺寸裁区</a></div></figcaption></figure>`;
+      return `<figure><a class="s7-image-frame" href="${esc(a.native_crop_url)}" aria-label="打开${source?'来源片段':'目标图像'}的官方原尺寸裁区"><img id="s7-image-${side}" src="${esc(a.crop_url)}" alt="${source?'来源片段 #'+row.fragment_id+'，'+row.source_folio:'文献指定目标 '+row.target_folio}：耶鲁原图的近似对象阅读裁区" decoding="async"></a><figcaption><strong>${source?'来源片段 #'+row.fragment_id+' · '+esc(row.source_folio):'文献目标 · '+esc(row.target_folio)}</strong>${a.description?`<p>${esc(a.description)}</p>`:''}<p>馆藏画布标题：${esc(a.manifest_label)}</p>${source?`<p>${row.candidate_locators.length?'候选标签位置：'+row.candidate_locators.map(esc).join('、'):(row.source_caption_zh || '次序定位候选；正文匹配未运行')}</p>`:''}<div class="s7-links"><a href="${esc(a.source_url)}">查看完整原图</a><a href="${esc(a.native_crop_url)}">原尺寸裁区</a></div></figcaption></figure>`;
     }).join('');
     $('s7-gallery-notes').innerHTML=`<article><h3>观察到的相似处</h3><p>${esc(row.similarity_zh)}</p></article><article><h3>差异与缺失的信息</h3><p>${esc(row.difference_zh)}</p></article><details class="s7-image-original"><summary>查看冻结记录中的原始描述</summary><p>相似处</p><ul>${row.original_similarities.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>差异与缺失</p><ul>${row.original_differences.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>`;
     const imageStates=new Map();
@@ -104,6 +111,11 @@
     gallery=rows || [];
     if(!gallery.length)return;
     $('s7-gallery').hidden=false;
+    const batches=[...new Set(gallery.map(r=>r.batch))];
+    const batchNames={numbered:'来源编号支持',order:'次序定位候选',remaining:'剩余图像关系'};
+    $('s7-batch').innerHTML=batches.map(batch=>`<option value="${esc(batch)}">${esc(batchNames[batch]||batch)} · ${gallery.filter(r=>r.batch===batch).length}对 / ${batch==='numbered'?'11条已评分':'均未评分'}</option>`).join('');
+    $('s7-gallery-link').textContent=`查看${gallery.length}组原图`;
+    $('s7-gallery-count').textContent=`04 / ${batches.length} BATCHES / ${gallery.length} IMAGE PAIRS`;
     const requested=new URL(location.href).searchParams.get('pair');
     $('s7-batch').value=gallery.find(r=>r.pair_id===requested)?.batch || 'numbered';
     $('s7-batch').disabled=false;
@@ -169,7 +181,9 @@
       $('s7-snapshot-time').textContent = `快照生成于 ${utc(data.snapshot_utc)}`;
       const hours = Math.floor(data.snapshot_elapsed_seconds / 3600);
       const minutes = Math.floor(data.snapshot_elapsed_seconds % 3600 / 60);
-      $('s7-elapsed').textContent = `该快照距登记开始约 ${hours} 小时 ${minutes} 分钟；不是完成比例。`;
+      $('s7-elapsed').textContent = `该快照距登记开始约 ${hours} 小时 ${minutes} 分钟；不是连续计算时长或完成比例。`;
+      $('s7-continuity').textContent = data.continuity_note_zh || '';
+      $('s7-continuity').hidden = !data.continuity_note_zh;
       $('s7-stage-list').innerHTML = data.stages.map(s=>`<li><span class="s7-stage-number">${s.stage}</span><h3>${esc(s.title)}</h3>${badge(s.status)}</li>`).join('');
       $('s7-findings').innerHTML = data.findings.map(x=>`<p class="s7-finding">${esc(x)}</p>`).join('');
       $('s7-modules').innerHTML = Object.entries(data.modules).map(([key,value])=>moduleMarkup(key,value)).join('');
@@ -178,6 +192,7 @@
       setupGallery(data.gallery);
       setupBoundary(data.boundary);
       setupChoice(data.choice);
+      if(location.hash.startsWith('#s7-')) document.getElementById(location.hash.slice(1))?.scrollIntoView();
       $('s7-load-state').textContent = '已载入保存记录。未审核的实验结果不会在此快照中预填。';
     } catch (error) {
       $('s7-load-state').textContent = '快照未能加载。请查看本页底部的研究目录；页面不会推测任务状态或填入示例结果。';

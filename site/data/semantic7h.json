@@ -1,16 +1,29 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T14:16:25.420842+00:00",
-  "snapshot_elapsed_seconds": 18612,
+  "snapshot_utc": "2026-11-18T15:06:59.564070+00:00",
+  "snapshot_elapsed_seconds": 21646,
   "window": {
     "start_utc": "2026-11-18T09:06:13Z",
     "deadline_utc": "2026-11-18T16:06:13Z",
     "duration_hours": 7,
     "local_timezone": "America/Chicago",
     "local_window": "2026-11-18 03:06:13 to 10:06:13 CST",
-    "status": "usageLimited",
+    "status": "active",
     "stage": 3
   },
+  "window_history": [
+    {
+      "observed_utc": "2026-11-18T14:11:23.362103+00:00",
+      "status": "usageLimited",
+      "evidence": "Saved session_usage_limit_checkpoint.json records goal tool status and agent usage-limit error. This is an observation time, not a measured exact stop time."
+    },
+    {
+      "observed_utc": "2026-11-18T14:43:54Z",
+      "status": "active",
+      "evidence": "User reactivated goal; root clock/get_goal confirmed active at this time. Original deadline retained."
+    }
+  ],
+  "continuity_note_zh": "系统用量限制导致研究中断，14:43 UTC 用户恢复目标；原截止时间仍为 16:06:13 UTC。窗口经过时间不是连续计算时长，之前的中断和发布记录保留。",
   "stages": [
     {
       "stage": 1,
@@ -25,15 +38,243 @@
     {
       "stage": 3,
       "title": "跨页对象约束与候选读法",
-      "status": "partial"
+      "status": "running"
     },
     {
       "stage": 4,
       "title": "独立复核、发布与窗口结题",
-      "status": "partial"
+      "status": "running"
     }
   ],
   "modules": {
+    "herbal_context": {
+      "title": "五个英文命中：看语境，不能只看是否同节",
+      "status": "complete",
+      "details": [
+        "全部五个命中在结果后逐项解释，不挑例、不移除、不改变m/N、权重或主结果。短引文均在固定版本XML中验证出现；公开原文是1652年公版文本、TCP XML为CC0。",
+        "这是单一观察者对已知英文的语境解释，不是独立历史植物学标注，也不把两类巧合换算成检测器准确率。"
+      ],
+      "links": [
+        {
+          "label": "五例语境及解释范围",
+          "href": "downloads/semantic7h/herbal-space-context.txt"
+        },
+        {
+          "label": "引文与文件校验",
+          "href": "downloads/semantic7h/herbal-space-context-receipt.json"
+        },
+        {
+          "label": "固定版本TCP原始XML",
+          "href": "https://github.com/textcreationpartnership/A35365/blob/2b09f3e54d85c5faf0738f823648edf6f070cef8/A35365.xml"
+        }
+      ],
+      "metrics": [],
+      "summary": "字面命中、自身条目命中和语境中的名称指称是三个不同问题。相邻拼接既能恢复名称，也能合并无关词边界；他节出现也可能是真正的名称引用。伏尼契仍缺可检验这种差别的独立读法，不能拿字串命中直接当破译。",
+      "table": {
+        "headers": [
+          "查询／拼接",
+          "正文位置",
+          "固定原文短句",
+          "语境解释"
+        ],
+        "rows": [
+          [
+            "asarabacca / a + sarabacca",
+            "12 · ♂ Asarabacca.",
+            "A Sarabacca hath many Heads",
+            "正文开头把名称分成 A 与 Sarabacca；拼接恢复与本节标题一致的字串。这是实验前已知的例子，不是新发现。"
+          ],
+          [
+            "horstail / hors + tail",
+            "135 · Horstail.",
+            "each part resembling a Hors Tail (from whence it was so called)",
+            "这里说各部分像马尾，并解释名称由来。它与名称有语义联系，但这一处直接指的是比喻中的马尾，不能仅凭拼接称为植物名称的再次出现。"
+          ],
+          [
+            "liquoris / liquor + is",
+            "215 · Roses.",
+            "in some convenient Liquor is",
+            "Liquor 是液体一词，is 是后面的系动词。合并成 liquoris 与查询字串相等，并不表示此处提到了该植物。"
+          ],
+          [
+            "nightshade / night + shade",
+            "60 · ♀ Winter Cherries.",
+            "somwhat like Night shade but larger",
+            "另一植物条目以 Night shade 作叶片形态比较。此处可以在语境中理解为名称指称；出现在别的条目并不自动是假阳性。"
+          ],
+          [
+            "orpine / or + pine",
+            "129 · Henbane.",
+            "or Pine Kernels",
+            "or 是连接词，Pine 修饰 Kernels。拼成 orpine 只产生字面相等，并非此处在说查询植物。"
+          ]
+        ]
+      }
+    },
+    "herbal_space": {
+      "title": "英文校准：拆词可恢复名称，也会拼出巧合",
+      "status": "complete",
+      "details": [
+        "固定1652年英文草药书：282节、119个单词标题、1317段。每个标题对其余281节均等比较；正文分节不是独立试验，英文比例不能套给伏尼契。",
+        "O→B：保守解析排除476词槽、涉及182节；3832个矩阵格只有机会数N变化，匹配数m和二元覆盖不变。不能把输入删减藏在拼接收益中，也不能认为解析规则永远无影响。",
+        "B→B∪A：自身新增1/119；其他正文新增2/33439；净增279/33439，约0.834355个百分点。反序和隔词没有新增覆盖，所有规则保留。",
+        "全部五个相邻正序匹配保留，下方逐项展示语境：a + sarabacca 是已知名称分写；hors + tail 是名称由来的马尾比喻；night + shade 是另一条目中的名称比较；liquor + is、or + pine 是普通词边界碰撞。他节出现并不自动是假阳性。",
+        "只有纯空白缝才允许拼接；不跨标点、XML屏障或段落，不跳过未知词。N=0时条件率为NA，主二元仍为0。union的机会是带机制标记的并集，不能当自然词频。",
+        "此校准在 Asarabacca 已曝光之后设计；独立复算验证实现和全部位置，不是独立新例、盲审或语义认证。旧报告末尾“待审核”保留为历史记录，后附审核收据给出当前状态。",
+        "完整公开复现包已在仅含56份运行负载的干净目录实跑：全部268,464个矩阵格、7,201,776项检查，零差异。公开路径投影另列原件与公开副本哈希，保留原收据承诺；结果后五例语境解释不属于独立数值审核。"
+      ],
+      "links": [
+        {
+          "label": "校准完整报告",
+          "href": "downloads/semantic7h/herbal-space-report.txt"
+        },
+        {
+          "label": "所有机制汇总",
+          "href": "downloads/semantic7h/herbal-space-summary.json"
+        },
+        {
+          "label": "全部五个拼接位置与上下文",
+          "href": "downloads/semantic7h/herbal-space-adjacent-matches.json"
+        },
+        {
+          "label": "独立审核范围",
+          "href": "downloads/semantic7h/herbal-space-audit.txt"
+        },
+        {
+          "label": "完整公开复现步骤",
+          "href": "downloads/semantic7h/herbal-space-reproduce-public.txt"
+        },
+        {
+          "label": "干净目录完整复算",
+          "href": "downloads/semantic7h/herbal-space-replay-validation.json"
+        },
+        {
+          "label": "原件与公开副本双哈希",
+          "href": "downloads/semantic7h/herbal-space-public-projection.json"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "102 → 102 → 103",
+          "label": "119标题的自身覆盖，三阶段分开"
+        },
+        {
+          "value": "476 / 182",
+          "label": "排除词槽 / 涉及正文分节"
+        },
+        {
+          "value": "7,201,801",
+          "label": "独立检查（零差异）"
+        }
+      ],
+      "summary": "102 → 102 → 103：旧完整词、保守共同输入、加入相邻正序拼接。新增自身覆盖只有事先已知的 Asarabacca；完整矩阵独立复算通过。",
+      "table": {
+        "headers": [
+          "机制",
+          "自身命中",
+          "其他正文命中格",
+          "自身减他节（百分点）",
+          "自身N=0"
+        ],
+        "rows": [
+          [
+            "旧完整词基线 O",
+            "102/119",
+            "209/33439",
+            "85.089267",
+            "0"
+          ],
+          [
+            "共同输入完整词 B",
+            "102/119",
+            "209/33439",
+            "85.089267",
+            "0"
+          ],
+          [
+            "相邻正序 A",
+            "2/119",
+            "3/33439",
+            "1.671701",
+            "1"
+          ],
+          [
+            "相邻反序 R",
+            "0/119",
+            "0/33439",
+            "0.000000",
+            "1"
+          ],
+          [
+            "隔一词正序 G",
+            "0/119",
+            "0/33439",
+            "0.000000",
+            "1"
+          ],
+          [
+            "B ∪ A",
+            "103/119",
+            "211/33439",
+            "85.923622",
+            "0"
+          ],
+          [
+            "B ∪ R",
+            "102/119",
+            "209/33439",
+            "85.089267",
+            "0"
+          ],
+          [
+            "B ∪ G",
+            "102/119",
+            "209/33439",
+            "85.089267",
+            "0"
+          ]
+        ]
+      }
+    },
+    "remaining_targets": {
+      "title": "剩余11关系：补齐35条图像假说的观察",
+      "status": "complete",
+      "details": [
+        "实际查看11张目标概览、10张来源裁图及2张补充上下文。11张目标原尺寸文件下载并校验哈希，不声称逐像素检查过全部原尺寸图。",
+        "9条关系仍无可独立归属短标签；#188只有新增空间候选且双版读法不同；#40的sodar仍在#40/#41之间，未决定附着。没有回填旧资格或11条主查询。",
+        "#40目标页的两株同时保留；#150的两个文献目标分别记录，但来源只有一个。#205/#206原框含截断或邻物，补充上下文链接和差异记录一并保留。",
+        "文件哈希与坐标核验通过，不是第二位观察者的独立图像复审。所有来源文献等级保持不变。"
+      ],
+      "links": [
+        {
+          "label": "11关系完整观察",
+          "href": "downloads/semantic7h/remaining-target-review.txt"
+        },
+        {
+          "label": "坐标、相似与差异",
+          "href": "downloads/semantic7h/remaining-target-review.json"
+        },
+        {
+          "label": "完整性核验及范围",
+          "href": "downloads/semantic7h/remaining-target-verification.json"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "11 / 10",
+          "label": "关系 / 来源对象"
+        },
+        {
+          "value": "6 / 5",
+          "label": "局部可比 / 有限或含混"
+        },
+        {
+          "value": "0",
+          "label": "新增正文评分与语义金标"
+        }
+      ],
+      "summary": "11条关系、10个来源对象全部保留；6对可作局部形态比较，5对有限或含混。只是几何记录，不是植物学身份认证。"
+    },
     "space_bridge": {
       "title": "最新：正文分词能否解释标签缺失？",
       "status": "complete",
@@ -42,7 +283,7 @@
         "完整词、相邻正序、相邻反序、隔一词拼接分别评分。不得跨原转写标记的图形或段落屏障，不跳过缺字，不改字，也不选结果最好的规则。",
         "唯一拼接命中来自非目标页 f21r.1：pchor / o 反序才得到 opchor，且只在保留不确定空格的 ZL 条件出现；它不是新植物对应。",
         "表中新增覆盖差＝目标新增页面覆盖减对照新增页面覆盖，单位百分点。正向新增覆盖在两边均为零。没有合法长度窗口时条件率为 NA，不能解释成文字无意义；完整机会数与 NA 原因见下载。",
-        "公开报告、全部汇总与审核收据；完整计算包仍在本地保存，此发布子集不声称能独立重跑全部计算。"
+        "完整公开复现包已准备并在仅含显式文件清单的干净目录验证：重新构建全部15,088页模型块与86,670机会，零差异。安全入口拒绝覆盖旧输出；历史协议、结果和已发布8文件均未改动。"
       ],
       "links": [
         {
@@ -56,6 +297,18 @@
         {
           "label": "独立审核",
           "href": "downloads/semantic7h/space-audit.txt"
+        },
+        {
+          "label": "完整公开复现步骤",
+          "href": "downloads/semantic7h/space-reproduce-public.txt"
+        },
+        {
+          "label": "干净目录复算记录",
+          "href": "downloads/semantic7h/space-replay-validation.json"
+        },
+        {
+          "label": "仅路径元数据的公开投影",
+          "href": "downloads/semantic7h/space-path-projection.json"
         }
       ],
       "metrics": [
@@ -675,12 +928,12 @@
     }
   },
   "findings": [
-    "目前没有可靠译文或已确认词义。七小时窗口在完成前遇到系统用量限制；本页保存已审核结果，不代表运行已恢复或七小时目标已完成。",
+    "目前没有可靠译文或已确认词义。研究曾因系统用量限制中断，用户于 14:43 UTC 恢复目标；保持原定截止时间，不将窗口经过时间称为连续计算时长，也不把恢复视为完成。",
     "最新：固定两词拼接实验已独立复核。4 个条件下，11 个指定目标在正向相邻、反序相邻、隔一词拼接中均无命中；正向相邻拼接的新增覆盖为零。只约束这些有限规则，不说明手稿没有意义。",
     "新增三候选几何对照：12 题中，10 个文献目标唯一最高，2 个并列最高。它们只是相对于每题两个固定随机对照更可比，不是植物身份准确率；对照未匹配形态难度，单一 AI 观察也不提供超出随机的显著性结论。",
     "固定短边界探索已经独立复算：每版 36 条统一规则，ZL 无目标命中，IT 两条不同规则各命中一个候选；没有一条规则同时覆盖两项。两版四折来源叶留出的平均增益均为零，不能将两个单例拼成统一读法。",
     "四词、两条目标行的原图定位清楚，但 f44r 的 a/o 字形与 f13v 的 y/ol 词界仍有歧义。原图细查没有改动转写；这是由结果引导的单一 AI 观察，不是盲转写。",
-    "图廊现分两批保留 24 对：原来源编号批次 12 对（11 条已评分），另 12 对次序候选只有图像观察、未评分。后批 4 对可局部比较、8 对有限或含混；#26 和 #52 各保留两个未决目标，#31 标签附着仍不明。",
+    "全部35条历史关系已有图像对应观察，分12＋12＋11三批保留；新增11关系涉及10个来源对象，其中6对可局部比较、5对有限或含混。#40保留两目标，#150保留两个文献目标而不算两个来源对象；未增加正文评分或语义金标。",
     "跨页图像假说的词形桥梁未建立：8 条件、10 个固定规则下，11 条指定目标查询全部未命中。独立重建已通过；这 11 条只来自 4 个来源叶、10 个独特目标页，不能当 880 次独立证据。",
     "12 对图像全部保留：6 对有局部形态可比处，6 对有限或含混；#110 多词组没有被拆词加入主检验。图廊显示相似与差异，不认证植物身份。已知英文草药书校准能检出强关系，但不能把其命中率套到伏尼契。",
     "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
@@ -688,7 +941,7 @@
     "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
     "原始资格表的 35 条植物图配对全部已有来源观察：原12条来源编号、12条次序候选保持分组；剩余11关系补查得到9条无可独立归属标签、1条新空间候选（#188）、1条归属未决（#40）。新候选未评分，也没有回填旧主集。",
     "书手 H 沿用既有分类作为操作性分组，并非已独立认证的历史身份。新增文献核查区分了同页字形变体与多书手判断，保留 Davis 2020 原文未能直接读取的范围限制。",
-    "待审核：英文两词拼接校准尚未完成独立审核，暂不发布其新数值。已知 Asarabacca 拆词例只能用于校准测量方法，不能迁移成手稿的成功概率。剩余 11 组目标图像对照尚未完成。"
+    "英文两词校准已独立复算：自身覆盖102→102→103，新增的是已曝光的 Asarabacca。五个命中的语境并不相同：night + shade 在另一条目也是真名称引用；liquor + is 和 or + pine 则是普通词边界巧合。自身／他节位置不能代替语义判断。"
   ],
   "plan": "第二个七小时窗口：从标签关联走向固定读法\n2026-11-18 09:06:13–16:06:13 UTC；芝加哥03:06:13–10:06:13 CST。\n\n本轮目标\n把上一轮小幅同页词形关联变成有可追溯图像对象关系、有反例、有固定变换的可检验研究。尽量提出可复查的语义约束；不承诺七小时内能破译。旧全书转写、候选及统计全部已经接触，不重新称盲集。主研究的各阶段具体协议先冻结再计算；主阶段结束则继续下一个阶段，总窗口不自动延长。\n\n阶段1：原图对象与证据设计\n按上轮既定队列，审查前6个双版命中与前6个双版未命中的完整标签位置。保存整页来源、官方图像哈希、标签近似框、可能关联的对象、歧义、正文对应位置。队列依既有结果选出，不是确认样本。视觉评审区分文本引导定位和不看转写/得分的几何描述，AI多次评审不是多位领域专家。核对历史跨页植物对应和变长缩略的一手来源，标明作者假说与本轮观察。\n\n阶段2：保留真实语料结构的对照\n上轮均匀人造词只检查程序，不能充当手稿零假设。设计按物理叶分块、同书手/插图类别、保持词长机会的重新配对或精确枚举。先界定可交换性和共同支持，再决定能否给尾部概率；若支持不足，只报告描述差和敏感性。所有六对高杆变换使用同样预算。对有直接文献支持的变长缩略另立协议，绝不见词补字。\n\n阶段3：跨页对象约束\n只有可靠对象/标签关系才能参与读法验证。先保存图像对应及不同对象对照，再测试完整词、有限变换能否区分它们。根据对象材料决定小范围检验，不用相同数据一边选植物、一边验证名称。若无法可靠识别对象，明确停留在测量与书写机制层面，转做能消除当前假说的对照。不得制造读音、语种或金标。\n\n阶段4：完整复核与发布\n另一计算实现核对完整分母、对照、概率或枚举结果，保存失败与局限；报告经受和未经受的检验。阶段结果在审计后发布现有GitHub Pages，网站说明只是记录的快照。截止前收束正在进行的计算，保留未完成事项；达到七小时终点再结题本窗口。接近截止时不启动无法验收的长任务。\n\n结论门槛\n字形匹配 → 可靠对象关系 → 不依目标词临时变化的映射 → 跨页预测 → 连续语法和历史语言核验。前一层成立不意味着后一层已成立。跨页重复、局部复制和同主题词频都须作为替代解释。\n\n计算资源\n用户已授权必要时SSH计算节点和8卡V100。优先在本地完成图像与计数工作；只在已固定问题、校准和预算需要时使用大算力。按有意义的阶段进展更新，不用空等待填满窗口。\n",
   "downloads": [
@@ -721,12 +974,12 @@
       "href": "downloads/semantic7h/support.json"
     },
     {
-      "label": "35条对象关系证据索引",
-      "href": "downloads/semantic7h/object-registry.txt"
+      "label": "35条对象关系完整索引 v2",
+      "href": "downloads/semantic7h/object-registry-v2.txt"
     },
     {
-      "label": "对象、标签、已执行检验的完整对照",
-      "href": "downloads/semantic7h/object-registry.json"
+      "label": "35条图像观察与原11查询对照 v2",
+      "href": "downloads/semantic7h/object-registry-v2.json"
     },
     {
       "label": "剩余来源资格原图核对",
@@ -791,12 +1044,16 @@
     {
       "label": "公开导出校验清单",
       "href": "downloads/semantic7h/manifest.json"
+    },
+    {
+      "label": "历史对象索引 v1（保持不变）",
+      "href": "downloads/semantic7h/object-registry.json"
     }
   ],
   "sources": [
     {
       "path": "session.json",
-      "sha256": "ed02dd7f72e92383b297d224514b8d35cdacef9d6183f2a9d65351a95fb424a9"
+      "sha256": "eace1e83012695efe5e2ee1be5128c4f6aeb6793dd61b10d7c3d98965fb2be56"
     },
     {
       "path": "plan.txt",
@@ -828,7 +1085,7 @@
     },
     {
       "path": "publication.json",
-      "sha256": "3f11a170830e8c68c228330b03b349f359c2dba4556d7929df15ea50cb440ba9"
+      "sha256": "1732a2538bb31bcb57ead276dd612ccfa79a3a8edf0d4ab74528b15ea43ad339"
     },
     {
       "path": "visual/choice_controls/result_v1.json",
@@ -863,6 +1120,14 @@
       "sha256": "fc9d61975d2d409155b16d2f662c9683e3d4aa2c9a63d9e79dfc89c4f932291f"
     },
     {
+      "path": "visual/remaining_targets/review_v1.json",
+      "sha256": "8b906d73c7f450bf98d3113f431c1cccbd8a4f2f0db60ce2c0bcf0f6d25a2431"
+    },
+    {
+      "path": "visual/remaining_targets/verification_receipt_v1.json",
+      "sha256": "a2f79efbc263e935e8b3392010b8544fe270ea3b9af828ec4d1908682920b411"
+    },
+    {
       "path": "design/crossplant/run_v2/complete.json",
       "sha256": "2206185f8d8c13566b7ee5d3181d8fb42abacc81e67b3b779c62882b278a75d7"
     },
@@ -877,6 +1142,10 @@
     {
       "path": "design/crossplant/run_v2/IT__strict_space__page_HI.json.gz",
       "sha256": "610ef0f983e260c8446dbf80306fa8ef714b881400ce6cf7ca863d5a0fd02981"
+    },
+    {
+      "path": "visual/remaining_targets/additional_context_acquisition_v1.json",
+      "sha256": "91958c5bb114a134cbad57d25dd5f695627460a8af9664ce786658378e828539"
     },
     {
       "path": "visual/boundary_hits/crop_receipt_v1.json",
@@ -2693,6 +2962,894 @@
           "description": "本页主要连续植物状图形"
         }
       ]
+    },
+    {
+      "pair_id": "f89r2_40__f87v",
+      "fragment_id": 40,
+      "source_folio": "f89r2",
+      "target_folio": "f87v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "U",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "来源扇状绿叶与黄褐分叉根，和目标两株相互交错的粗根只有宽泛形态相似。",
+      "difference_zh": "目标左株是较圆长叶和单个浅色花形，右株有深裂叶及多个顶端花形；来源的窄叶扇无法唯一对应其中一株。根部互相缠绕，不能因目标页号已知而选定一个对象。",
+      "original_similarities": [
+        "来源扇状绿叶与黄褐分叉根，和目标两株相互交错的粗根只有宽泛形态相似。"
+      ],
+      "original_differences": [
+        "目标左株是较圆长叶和单个浅色花形，右株有深裂叶及多个顶端花形；来源的窄叶扇无法唯一对应其中一株。根部互相缠绕，不能因目标页号已知而选定一个对象。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "unresolved",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": false,
+      "notes": [
+        "候选 sodar 在 #40/#41 之间，唯一附着未决；未评分。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "候选 sodar 在 #40/#41 之间，唯一附着未决；未评分。",
+      "source_caption_zh": "候选 sodar 在 #40/#41 之间，唯一附着未决；未评分。",
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "88v and 89r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          5560,
+          1920,
+          430,
+          610
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/5560,1920,430,610/430,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/5560,1920,430,610/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1043429",
+        "manifest_label": "87v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1043429/full/full/0/default.jpg",
+        "full_image_sha256": "3bac9e01c7bd848fa947b4877d1166f8e9f38822c7bd209e9574a88f6cb181c0",
+        "object_region_xywh": [
+          521,
+          405,
+          2228,
+          3182
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1043429/521,405,2228,3182/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1043429/521,405,2228,3182/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1043429",
+          "manifest_label": "87v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1043429/full/full/0/default.jpg",
+          "full_image_sha256": "3bac9e01c7bd848fa947b4877d1166f8e9f38822c7bd209e9574a88f6cb181c0",
+          "object_region_xywh": [
+            535,
+            1186,
+            1215,
+            2387
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1043429/535,1186,1215,2387/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1043429/535,1186,1215,2387/full/0/default.jpg",
+          "description": "左侧植株及根部；根区与右株相交"
+        },
+        {
+          "oid": "1043429",
+          "manifest_label": "87v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1043429/full/full/0/default.jpg",
+          "full_image_sha256": "3bac9e01c7bd848fa947b4877d1166f8e9f38822c7bd209e9574a88f6cb181c0",
+          "object_region_xywh": [
+            1128,
+            405,
+            1606,
+            3153
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1043429/1128,405,1606,3153/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1043429/1128,405,1606,3153/full/0/default.jpg",
+          "description": "右侧植株及根部；未决定哪株对应来源"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f101r_150__f30v",
+      "fragment_id": 150,
+      "source_folio": "f101r",
+      "target_folio": "f30v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两图都能看到叶缘锯齿和横向伸展的褐色根部。",
+      "difference_zh": "来源窄叶呈扇状集中；目标宽尖叶分列茎的不同高度，上方还有许多小椭圆端部。来源短横根和目标长横根的结节、分支比例不同。",
+      "original_similarities": [
+        "两图都能看到叶缘锯齿和横向伸展的褐色根部。"
+      ],
+      "original_differences": [
+        "来源窄叶呈扇状集中；目标宽尖叶分列茎的不同高度，上方还有许多小椭圆端部。来源短横根和目标长横根的结节、分支比例不同。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          3180,
+          1000,
+          650,
+          750
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3180,1000,650,750/650,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3180,1000,650,750/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006133",
+        "manifest_label": "30v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006133/full/full/0/default.jpg",
+        "full_image_sha256": "d6eed32377c25b7c13b88e83cb6981a9d16b5dcbe3c433b7611c4e0105cb0035",
+        "object_region_xywh": [
+          769,
+          598,
+          1966,
+          3105
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006133/769,598,1966,3105/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006133/769,598,1966,3105/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006133",
+          "manifest_label": "30v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006133/full/full/0/default.jpg",
+          "full_image_sha256": "d6eed32377c25b7c13b88e83cb6981a9d16b5dcbe3c433b7611c4e0105cb0035",
+          "object_region_xywh": [
+            769,
+            598,
+            1966,
+            3105
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006133/769,598,1966,3105/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006133/769,598,1966,3105/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f101r_150__f55v",
+      "fragment_id": 150,
+      "source_folio": "f101r",
+      "target_folio": "f55v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "来源叶簇与目标大叶冠都有向上尖齿的轮廓，根部都有侧向延伸。",
+      "difference_zh": "来源是分开的细窄未着色叶，目标是大片绿色叶形与粗红色中央茎。目标上方细小端部和底部密集须状笔画在来源未见对应。两条文献关系共用同一个来源#150，不能当两份独立证据。",
+      "original_similarities": [
+        "来源叶簇与目标大叶冠都有向上尖齿的轮廓，根部都有侧向延伸。"
+      ],
+      "original_differences": [
+        "来源是分开的细窄未着色叶，目标是大片绿色叶形与粗红色中央茎。目标上方细小端部和底部密集须状笔画在来源未见对应。两条文献关系共用同一个来源#150，不能当两份独立证据。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          3180,
+          1000,
+          650,
+          750
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3180,1000,650,750/650,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3180,1000,650,750/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006183",
+        "manifest_label": "55v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006183/full/full/0/default.jpg",
+        "full_image_sha256": "0e9b1dac025cad189bc7258f41fb8cafc6fcff70f9c4e5bb4f85c9bb79ad5a80",
+        "object_region_xywh": [
+          536,
+          60,
+          2115,
+          3634
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006183/536,60,2115,3634/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006183/536,60,2115,3634/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006183",
+          "manifest_label": "55v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006183/full/full/0/default.jpg",
+          "full_image_sha256": "0e9b1dac025cad189bc7258f41fb8cafc6fcff70f9c4e5bb4f85c9bb79ad5a80",
+          "object_region_xywh": [
+            536,
+            60,
+            2115,
+            3634
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006183/536,60,2115,3634/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006183/536,60,2115,3634/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f101r_155__f49r",
+      "fragment_id": 155,
+      "source_folio": "f101r",
+      "target_folio": "f49r",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "来源绿色圆团状叶冠与目标的大块圆边叶片在外轮廓上可作有限比较。",
+      "difference_zh": "来源几乎只有一大片横向叶冠、细长直茎和少量下端笔画；目标有分开的多块叶片、反复弯曲的枝与多处红蓝端部、粗大环状根。补看来源上下文后，仍没有足够对应部件。",
+      "original_similarities": [
+        "来源绿色圆团状叶冠与目标的大块圆边叶片在外轮廓上可作有限比较。"
+      ],
+      "original_differences": [
+        "来源几乎只有一大片横向叶冠、细长直茎和少量下端笔画；目标有分开的多块叶片、反复弯曲的枝与多处红蓝端部、粗大环状根。补看来源上下文后，仍没有足够对应部件。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          3310,
+          2730,
+          500,
+          820
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3310,2730,500,820/500,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/3310,2730,500,820/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006170",
+        "manifest_label": "49r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006170/full/full/0/default.jpg",
+        "full_image_sha256": "c125a5ffc5121e31e07dbaebd4515d6375e2f71feff312690dc943e62e0d8d56",
+        "object_region_xywh": [
+          369,
+          426,
+          2270,
+          3263
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006170/369,426,2270,3263/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006170/369,426,2270,3263/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006170",
+          "manifest_label": "49r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006170/full/full/0/default.jpg",
+          "full_image_sha256": "c125a5ffc5121e31e07dbaebd4515d6375e2f71feff312690dc943e62e0d8d56",
+          "object_region_xywh": [
+            369,
+            426,
+            2270,
+            3263
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006170/369,426,2270,3263/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006170/369,426,2270,3263/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": [
+        {
+          "label": "补充来源上下文（保留邻物，不作新对象归属）",
+          "href": "https://collections.library.yale.edu/iiif/2/1006249/3180,2580,800,1150/800,/0/default.jpg"
+        }
+      ]
+    },
+    {
+      "pair_id": "f101r_168__f4v",
+      "fragment_id": 168,
+      "source_folio": "f101r",
+      "target_folio": "f4v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两者都有直立或斜立分枝与绿色叶状部分。",
+      "difference_zh": "来源叶片较长宽、成簇分列；目标叶片多为小钩状，另有星状绿色端部和大蓝色花形。目标串珠状膨大根与来源短根不同；来源折线磨损也限制观察。",
+      "original_similarities": [
+        "两者都有直立或斜立分枝与绿色叶状部分。"
+      ],
+      "original_differences": [
+        "来源叶片较长宽、成簇分列；目标叶片多为小钩状，另有星状绿色端部和大蓝色花形。目标串珠状膨大根与来源短根不同；来源折线磨损也限制观察。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          5030,
+          2560,
+          570,
+          950
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/5030,2560,570,950/570,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/5030,2560,570,950/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006083",
+        "manifest_label": "4v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006083/full/full/0/default.jpg",
+        "full_image_sha256": "afec0f17556cb8cec1f1bc529ba4b572fc32363702091bacda4c7c1e0ebf37bc",
+        "object_region_xywh": [
+          1093,
+          125,
+          1522,
+          3557
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006083/1093,125,1522,3557/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006083/1093,125,1522,3557/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006083",
+          "manifest_label": "4v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006083/full/full/0/default.jpg",
+          "full_image_sha256": "afec0f17556cb8cec1f1bc529ba4b572fc32363702091bacda4c7c1e0ebf37bc",
+          "object_region_xywh": [
+            1093,
+            125,
+            1522,
+            3557
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006083/1093,125,1522,3557/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006083/1093,125,1522,3557/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f101v_188__f37r",
+      "fragment_id": 188,
+      "source_folio": "f101v",
+      "target_folio": "f37r",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两图都在中央细茎两侧反复画下垂尖叶，若干叶片上缘有内卷的钩状弯曲。",
+      "difference_zh": "目标有明显的上端成簇小圆花形和较长的成束基部线条，来源没有同样完整的上端部分；根部的数量和弯曲程度不同。只能比较叶片组织与轮廓。",
+      "original_similarities": [
+        "两图都在中央细茎两侧反复画下垂尖叶，若干叶片上缘有内卷的钩状弯曲。"
+      ],
+      "original_differences": [
+        "目标有明显的上端成簇小圆花形和较长的成束基部线条，来源没有同样完整的上端部分；根部的数量和弯曲程度不同。只能比较叶片组织与轮廓。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "clear_short_label_visible",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "新空间候选 #188：f101v.7 的两版读法不同；未评分、未加入旧主集。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "新空间候选 #188：f101v.7 的两版读法不同；未评分、未加入旧主集。",
+      "source_caption_zh": "新空间候选 #188：f101v.7 的两版读法不同；未评分、未加入旧主集。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          950,
+          240,
+          590,
+          910
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/950,240,590,910/590,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/950,240,590,910/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006146",
+        "manifest_label": "37r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006146/full/full/0/default.jpg",
+        "full_image_sha256": "4daf7373cfed96fcd9e3d6cb6a9a50cf413e27cc93cf507fee17bee93d8f6d28",
+        "object_region_xywh": [
+          1019,
+          628,
+          1215,
+          3044
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006146/1019,628,1215,3044/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006146/1019,628,1215,3044/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006146",
+          "manifest_label": "37r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006146/full/full/0/default.jpg",
+          "full_image_sha256": "4daf7373cfed96fcd9e3d6cb6a9a50cf413e27cc93cf507fee17bee93d8f6d28",
+          "object_region_xywh": [
+            1019,
+            628,
+            1215,
+            3044
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006146/1019,628,1215,3044/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006146/1019,628,1215,3044/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f102r1_203__f37v",
+      "fragment_id": 203,
+      "source_folio": "f102r1",
+      "target_folio": "f37v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两图都画圆边叶片、弯曲叶柄、茎根交界的点状圈边，以及向下伸出多条长尖分支的膨大根部。目标下部两片圆叶尤可与来源比较。",
+      "difference_zh": "目标上方还有多层细长弯叶和三个蓝色端部，来源只保留低处叶片与根部。两图根的色彩、分叉数量和比例不同，不能据这些相似处认证同种植物。",
+      "original_similarities": [
+        "两图都画圆边叶片、弯曲叶柄、茎根交界的点状圈边，以及向下伸出多条长尖分支的膨大根部。目标下部两片圆叶尤可与来源比较。"
+      ],
+      "original_differences": [
+        "目标上方还有多层细长弯叶和三个蓝色端部，来源只保留低处叶片与根部。两图根的色彩、分叉数量和比例不同，不能据这些相似处认证同种植物。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          2930,
+          2260,
+          1200,
+          1300
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/2930,2260,1200,1300/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/2930,2260,1200,1300/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006147",
+        "manifest_label": "37v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006147/full/full/0/default.jpg",
+        "full_image_sha256": "56d2086b7ce7a126a494d472276b0f5fe025775604a9afd55e5bd8e2ef6f8649",
+        "object_region_xywh": [
+          1254,
+          187,
+          1455,
+          3458
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006147/1254,187,1455,3458/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006147/1254,187,1455,3458/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006147",
+          "manifest_label": "37v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006147/full/full/0/default.jpg",
+          "full_image_sha256": "56d2086b7ce7a126a494d472276b0f5fe025775604a9afd55e5bd8e2ef6f8649",
+          "object_region_xywh": [
+            1254,
+            187,
+            1455,
+            3458
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006147/1254,187,1455,3458/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006147/1254,187,1455,3458/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f102r1_204__f1v",
+      "fragment_id": 204,
+      "source_folio": "f102r1",
+      "target_folio": "f1v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两图有分枝上带基部缺口的宽尖叶，底部均画成横向隆起、内部有重复短线的宽大结构。",
+      "difference_zh": "来源叶片少，部分更横展；目标叶片数量、着色和排列不同，并有顶端花形。来源底部带外缘尖刺而目标以内部短曲线为主，轮廓亦不一致。",
+      "original_similarities": [
+        "两图有分枝上带基部缺口的宽尖叶，底部均画成横向隆起、内部有重复短线的宽大结构。"
+      ],
+      "original_differences": [
+        "来源叶片少，部分更横展；目标叶片数量、着色和排列不同，并有顶端花形。来源底部带外缘尖刺而目标以内部短曲线为主，轮廓亦不一致。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          3890,
+          2160,
+          1180,
+          1130
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/3890,2160,1180,1130/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/3890,2160,1180,1130/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006077",
+        "manifest_label": "1v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006077/full/full/0/default.jpg",
+        "full_image_sha256": "43065eacad8a743816eb2b7d9acd8cf882a9bb498f1cea84602d12fede99f77d",
+        "object_region_xywh": [
+          463,
+          407,
+          2201,
+          3211
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006077/463,407,2201,3211/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006077/463,407,2201,3211/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006077",
+          "manifest_label": "1v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006077/full/full/0/default.jpg",
+          "full_image_sha256": "43065eacad8a743816eb2b7d9acd8cf882a9bb498f1cea84602d12fede99f77d",
+          "object_region_xywh": [
+            463,
+            407,
+            2201,
+            3211
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006077/463,407,2201,3211/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006077/463,407,2201,3211/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
+    },
+    {
+      "pair_id": "f102r2_205__f47v",
+      "fragment_id": 205,
+      "source_folio": "f102r2",
+      "target_folio": "f47v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两图根部都有近水平的上缘及短尖突，从粗基部向两侧和下方伸出多条长而尖的分叉；来源旁的大绿叶可与目标宽大叶片作局部比较。",
+      "difference_zh": "来源对象靠近画布上沿，叶和茎的信息不完整，原小框又截去部分上缘，已另看上下文。目标有多层叶与三个蓝色花形，来源不能逐项对应；不能因根相似补画缺失部分。",
+      "original_similarities": [
+        "两图根部都有近水平的上缘及短尖突，从粗基部向两侧和下方伸出多条长而尖的分叉；来源旁的大绿叶可与目标宽大叶片作局部比较。"
+      ],
+      "original_differences": [
+        "来源对象靠近画布上沿，叶和茎的信息不完整，原小框又截去部分上缘，已另看上下文。目标有多层叶与三个蓝色花形，来源不能逐项对应；不能因根相似补画缺失部分。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          5530,
+          320,
+          1410,
+          650
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/5530,320,1410,650/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/5530,320,1410,650/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006167",
+        "manifest_label": "47v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006167/full/full/0/default.jpg",
+        "full_image_sha256": "bcdae68e9bf1f172ad100b598b3189a2eff85cb7b67a151f7bb4a44f1f56f94e",
+        "object_region_xywh": [
+          601,
+          191,
+          2258,
+          3474
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006167/601,191,2258,3474/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006167/601,191,2258,3474/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006167",
+          "manifest_label": "47v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006167/full/full/0/default.jpg",
+          "full_image_sha256": "bcdae68e9bf1f172ad100b598b3189a2eff85cb7b67a151f7bb4a44f1f56f94e",
+          "object_region_xywh": [
+            601,
+            191,
+            2258,
+            3474
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006167/601,191,2258,3474/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006167/601,191,2258,3474/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": [
+        {
+          "label": "补充来源上下文（保留邻物，不作新对象归属）",
+          "href": "https://collections.library.yale.edu/iiif/2/1006251/5300,0,2850,1500/1425,/0/default.jpg"
+        }
+      ]
+    },
+    {
+      "pair_id": "f102r2_206__f32v",
+      "fragment_id": 206,
+      "source_folio": "f102r2",
+      "target_folio": "f32v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "蓝色张开的端部、绿色星状部分，以及一侧褐色、另一侧有分段笔画的弯曲长根，在两图中都有可比形状。",
+      "difference_zh": "来源枝叶数量少且与邻物重叠，长根近水平延伸；目标为直立长茎、多个星状部分和三个花形，根主要向下后转横。额外上下文用于区分邻物，不能将原框内所有笔画都归给#206。",
+      "original_similarities": [
+        "蓝色张开的端部、绿色星状部分，以及一侧褐色、另一侧有分段笔画的弯曲长根，在两图中都有可比形状。"
+      ],
+      "original_differences": [
+        "来源枝叶数量少且与邻物重叠，长根近水平延伸；目标为直立长茎、多个星状部分和三个花形，根主要向下后转横。额外上下文用于区分邻物，不能将原框内所有笔画都归给#206。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          6700,
+          320,
+          1430,
+          1600
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6700,320,1430,1600/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6700,320,1430,1600/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006137",
+        "manifest_label": "32v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006137/full/full/0/default.jpg",
+        "full_image_sha256": "e664856322574dcfb8bcf225a9d880ce28ab6d65bf6236e47624ae05c7d3764b",
+        "object_region_xywh": [
+          641,
+          157,
+          2037,
+          3519
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006137/641,157,2037,3519/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006137/641,157,2037,3519/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006137",
+          "manifest_label": "32v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006137/full/full/0/default.jpg",
+          "full_image_sha256": "e664856322574dcfb8bcf225a9d880ce28ab6d65bf6236e47624ae05c7d3764b",
+          "object_region_xywh": [
+            641,
+            157,
+            2037,
+            3519
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006137/641,157,2037,3519/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006137/641,157,2037,3519/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": [
+        {
+          "label": "补充来源上下文（保留邻物，不作新对象归属）",
+          "href": "https://collections.library.yale.edu/iiif/2/1006251/5300,0,2850,1500/1425,/0/default.jpg"
+        }
+      ]
+    },
+    {
+      "pair_id": "f102r2_209__f53r",
+      "fragment_id": 209,
+      "source_folio": "f102r2",
+      "target_folio": "f53r",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "remaining",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "来源狭长绿叶边缘有密集尖齿，与目标狭长叶状部分的刺状边缘有具体局部相似。",
+      "difference_zh": "来源只有少量弯茎和小三向根块；目标有许多大型花形、多种叶轮廓和复杂环状根。目标全株并未由这片刺缘叶的相似而得到确认。",
+      "original_similarities": [
+        "来源狭长绿叶边缘有密集尖齿，与目标狭长叶状部分的刺状边缘有具体局部相似。"
+      ],
+      "original_differences": [
+        "来源只有少量弯茎和小三向根块；目标有许多大型花形、多种叶轮廓和复杂环状根。目标全株并未由这片刺缘叶的相似而得到确认。"
+      ],
+      "lexical_scope": "remaining_candidate_not_scored",
+      "attachment_status": "no_independently_attributable_label",
+      "comparison_scope": "One AI observer, exposed to earlier project evidence; descriptive geometry only, not a blind botanical review.",
+      "target_unique": true,
+      "notes": [
+        "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+        "来源文献等级未改。形态可比不等于同一对象或植物名称。"
+      ],
+      "canvas_note": null,
+      "label_scope_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source_caption_zh": "未见可独立归属此对象的短标签；未评分，不借用容器字或连续正文。",
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          6515,
+          1315,
+          510,
+          335
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6515,1315,510,335/510,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6515,1315,510,335/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006178",
+        "manifest_label": "53r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006178/full/full/0/default.jpg",
+        "full_image_sha256": "a415de024d9cf57a8a607c764d9a8d038803dcaabda8a77f7325645fa0c73f89",
+        "object_region_xywh": [
+          573,
+          98,
+          1829,
+          3603
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006178/573,98,1829,3603/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006178/573,98,1829,3603/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006178",
+          "manifest_label": "53r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006178/full/full/0/default.jpg",
+          "full_image_sha256": "a415de024d9cf57a8a607c764d9a8d038803dcaabda8a77f7325645fa0c73f89",
+          "object_region_xywh": [
+            573,
+            98,
+            1829,
+            3603
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006178/573,98,1829,3603/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006178/573,98,1829,3603/full/0/default.jpg",
+          "description": "全株近似阅读区域；不是像素分割或物种确认"
+        }
+      ],
+      "source_context_links": []
     }
   ],
   "boundary": {
@@ -8077,6 +9234,6 @@
     "audit_scope": "Independent bookkeeping and RNG/join/hash reimplementation. No image re-rating, no plant identity evaluation, no p value.",
     "audit_checks": 425
   },
-  "gallery_scope": "Two separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered batch: 12 pairs, 11 scored; order batch: 12 unscored pairs. Only the selected pair images load (two normally, three for two unresolved target objects). Author overview images are not published.",
+  "gallery_scope": "Three separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered:12 pairs/11 scored; order:12 unscored; remaining:11 unscored relationships/10 source objects. Only selected pair images load, two normally and three for unresolved two-target pages. No botanical gold or author overview images.",
   "scope": "Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim."
 }

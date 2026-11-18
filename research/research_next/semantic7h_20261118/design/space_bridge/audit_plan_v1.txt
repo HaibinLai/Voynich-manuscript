@@ -1,0 +1,19 @@
+space_bridge 独立审查计划 v1（真实评分尚未授权）
+2026-11-18；AI辅助实现/逻辑审查，不称盲审。
+
+只读保存input结构与既有提取逻辑；不读主space_bridge scorer，不执行任何11查询对正文的匹配。目前未冻结最终实验协议，以下是建议及审核项目，不擅自替代主协议。
+
+输入已确认
+saved_v1/input.json.gz保留每正文locus的raw、tokens（含None）、source_line、locator、kind、type、uncertain_space。原提取将<->/<~>化为普通分隔且删除其余<…>，tokens单独不足以证明连续。raw仍保留屏障，可以重建并逐slot核对。ZL有逗号及图形/缺口等注释；IT无uncertain_space不意味着转写具有视觉真值。
+
+必须解决
+1. <->/<~>及段落边界均不可跨；<!gap>/<!tear>/<!through plant>/<!gap and vertical jump>/next line intrudes等注释须明确屏障策略。保守阻断所有内部注释也可，但要冻结，不按查询命中选择。
+2. 原slot不压缩。None和备选/未识别词不能删除后拉近两词；gap2的中间slot也必须完整，且两边均无屏障。同一locus还可能被图形打断，因此仅同locus不够。
+3. raw分割后的非空槽必须逐slot匹配保存packet。若内部注释使token重建不一致，须报失败/排除及原因，禁止补字符。若整locus从四规则共同退出，应说明exact baseline相对旧研究的支持变化。
+4. @ddd;为单一单位。bench不能从内部拆分；join不修改原词字符。是否禁止query的bench跨原词接缝应在协议中操作性定义，并让正向/逆序控制的机会可比。不能只对命中后发现的问题补过滤。
+5. 固定11查询及sameHI/page对照池、source和target整叶排除、原source leaf权重。页0机会binary=0而rate=NA，两者不混；不能以有join支持为由改主样本。
+6. 需同时区分完整词exact、join-only、exact∪join、additional occurrence和binary coverage gain；已有exact页面增加join位置不算新覆盖页。
+7. 逆序相邻窗口保留同一组成词/总长，但自然文字并不顺序交换，不能解释成随机检验p值。gap2位置/机会不同且跳过一个词，仅描述。英文Asarabacca/A Sarabacca为已知外部动机，非独立手稿证据或发音依据。
+
+独立实现预案
+最终协议冻结后，以有限状态扫描raw重建词位与屏障；不调用主scorer或其tokenizer。先合成测试覆盖图形屏障、内部注释、前后缀注释、None、逗号、gap2中间未识别、扩展码和bench接缝。仅结构核对允许对真实input运行；查询匹配等待root明确执行信号。结果完成后独立重建两版×两边界×四规则的全部页面机会、位置、对照叶/源叶权重、coverage增量、NA和hash/freeze/complete；保留失败，不用摘要数字作预期值。原始转写提取不重做；未核图像中未编码的屏障须列局限。

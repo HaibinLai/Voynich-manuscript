@@ -1,0 +1,8 @@
+复现说明
+
+Python 3标准库即可；无Voynich scorer、无旧评分函数导入。support.py是本目录独立事件流解析器，运行时验证其预先冻结哈希；run.py仅导入support。
+固定XML放在公开包design/known_herbal/A35365.xml（历史入口不作为公开复现入口，请用包根replay_public.py）；需具备旧known_herbal/run_v1/sections.json.gz及rows.json.gz作119标题身份/旧exact计数对照。路径与哈希均见freeze。
+初始结构支持：python3 support.py，只算结构长度机会和23人工toy，不做真实标题匹配。该脚本拒绝覆盖support_v1.json。
+主实验：python3 run.py。现存run_v1时主动拒绝覆盖。要独立复现，应在保留原目录的复制件或新工作目录中运行，使run_v1事先不存在，不删除或覆盖原冻结结果。
+报告：python3 make_report.py，仅读取已冻结run_v1输出，重新生成派生报告/完整例表/schema说明。
+独立审计建议：另行从XML重建屏障/槽和窗口；先检查119身份、1317段、476排除词与182节；再复核四机制全部119×282格的m/N/NA与位置、三个union、281对照等权及O→B→UA三段。不要仅重算聚合数或复用此run.py的索引函数。

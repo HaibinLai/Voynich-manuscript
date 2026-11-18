@@ -16,6 +16,44 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('design/space_bridge_herbal/public_replay/README.txt','herbal-space-reproduce-public.txt'),
+    ('design/space_bridge_herbal/public_replay/clean_validation_receipt.json','herbal-space-replay-validation.json'),
+    ('design/space_bridge_herbal/public_replay/public_projection_receipt.json','herbal-space-public-projection.json'),
+    ('design/space_bridge_herbal/public_replay/public_payload_manifest.json','herbal-space-public-manifest.json'),
+    ('design/space_bridge_herbal/public_package_receipt.json','herbal-space-public-package.json'),
+
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/context_review_v1.json','herbal-space-context.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/context_review_v1.txt','herbal-space-context.txt'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/context_review_receipt_v1.json','herbal-space-context-receipt.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/report.txt','herbal-space-report.txt'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/run_v1/summary.json','herbal-space-summary.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/all_adjacent_matches.json','herbal-space-adjacent-matches.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/audit_v1.json','herbal-space-audit.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/audit_v1.txt','herbal-space-audit.txt'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/audit_release_receipt_v1.json','herbal-space-audit-receipt.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/report_receipt.json','herbal-space-report-receipt.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/run_v1/complete.json','herbal-space-complete.json'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/protocol_v1.txt','herbal-space-protocol.txt'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/approval_v1.txt','herbal-space-approval.txt'),
+    ('design/space_bridge_herbal/public_replay/design/space_bridge_herbal/SCHEMA.txt','herbal-space-schema.txt'),
+    ('design/space_bridge/REPRODUCE_PUBLIC.txt','space-reproduce-public.txt'),
+    ('design/space_bridge/public_repro/replay_validation_v1.json','space-replay-validation.json'),
+    ('design/space_bridge/public_repro/path_projection_v1.json','space-path-projection.json'),
+    ('design/space_bridge/public_repro/allowlist_v1.json','space-public-allowlist.json'),
+    ('design/space_bridge/public_repro/release_manifest_v1.json','space-public-release.json'),
+
+    ('object_registry_v2.json','object-registry-v2.json'),
+    ('object_registry_v2.txt','object-registry-v2.txt'),
+    ('visual/remaining_targets/protocol_v1.txt','remaining-target-protocol.txt'),
+    ('visual/remaining_targets/queue_v1.json','remaining-target-queue.json'),
+    ('visual/remaining_targets/freeze_v1.json','remaining-target-freeze.json'),
+    ('visual/remaining_targets/acquisition_v1.json','remaining-target-acquisition.json'),
+    ('visual/remaining_targets/additional_context_acquisition_v1.json','remaining-target-contexts.json'),
+    ('visual/remaining_targets/build_review.py','remaining-target-build-review.py'),
+    ('visual/remaining_targets/review_v1.json','remaining-target-review.json'),
+    ('visual/remaining_targets/review_v1.txt','remaining-target-review.txt'),
+    ('visual/remaining_targets/verification_receipt_v1.json','remaining-target-verification.json'),
+
     ('design/space_bridge/protocol_v1.txt','space-protocol.txt'),
     ('design/space_bridge/report_v1.txt','space-report.txt'),
     ('design/space_bridge/publication_projection_v1.json','space-results.json'),
@@ -225,6 +263,11 @@ registry=json.loads((SOURCE/'object_registry_v1.json').read_text())
 for name,expected in registry['inputs'].items():
     assert sha(SOURCE/name)==expected,name
 assert registry['counts']['relationships']==35 and registry['counts']['main_scored_relationships']==11
+registry2=json.loads((SOURCE/'object_registry_v2.json').read_text())
+for name,expected in registry2['inputs'].items():
+    assert sha(SOURCE/name)==expected,name
+assert registry2['counts']['relationships']==35 and registry2['counts']['target_pair_geometry_relationships']==35
+assert registry2['counts']['main_scored_relationships']==11 and registry2['counts']['semantic_gold_relationships']==0
 
 CHOICE=SOURCE/'visual/choice_controls'
 choice_audit=json.loads((CHOICE/'audit_v1.json').read_text())
@@ -248,6 +291,79 @@ space_projection=json.loads((SPACE/'publication_projection_v1.json').read_text()
 assert space_projection['independent_audit']['receipt_sha256']==sha(SPACE/'audit_v1.json')
 assert len(space_projection['models_table'])==16
 assert all(row['target_hits']==0 for row in space_projection['models_table'])
+
+REMAINING=SOURCE/'visual/remaining_targets'
+remaining_receipt=json.loads((REMAINING/'verification_receipt_v1.json').read_text())
+assert remaining_receipt['status']=='PASS_GEOMETRY_RECORD_INTEGRITY'
+assert remaining_receipt['pair_count']==11 and remaining_receipt['source_object_count']==10
+assert remaining_receipt['old_inputs_unchanged'] and not remaining_receipt['new_lexical_scoring']
+for name,expected in remaining_receipt['files'].items():
+    assert sha(REMAINING/name)==expected,name
+remaining_review=json.loads((REMAINING/'review_v1.json').read_text())
+assert remaining_review['summary']['all_retained'] and remaining_review['summary']['semantic_gold']==0
+assert len(remaining_review['actual_viewed_files'])==23
+
+HERBAL_PUBLIC=SOURCE/'design/space_bridge_herbal/public_replay'
+HERBAL_SPACE=HERBAL_PUBLIC/'design/space_bridge_herbal'
+herbal_payload=json.loads((HERBAL_PUBLIC/'public_payload_manifest.json').read_text())
+assert not herbal_payload['path_scan']['violations']
+for name,expected in herbal_payload['files'].items():
+    assert sha(HERBAL_PUBLIC/name)==expected,name
+herbal_projection=json.loads((HERBAL_PUBLIC/'public_projection_receipt.json').read_text())
+herbal_projected={row['public_path']:row for row in herbal_projection['files']}
+for name,row in herbal_projected.items():
+    assert sha(HERBAL_PUBLIC/name)==row['public_sha256'],name
+def herbal_archived_hash(name,expected):
+    """Historical receipts bind archived bytes; public bytes may be path projections."""
+    public_name='design/space_bridge_herbal/'+name
+    row=herbal_projected[public_name]
+    assert row['archived_sha256']==expected,name
+    assert sha(HERBAL_PUBLIC/public_name)==row['public_sha256'],name
+herbal_package=json.loads((SOURCE/'design/space_bridge_herbal/public_package_receipt.json').read_text())
+assert herbal_package['status']=='READY_PUBLIC_REPLAY_PASS'
+assert sha(HERBAL_PUBLIC/'public_payload_manifest.json')==herbal_package['payload_manifest_sha256']
+assert sha(HERBAL_PUBLIC/'public_projection_receipt.json')==herbal_package['projection_receipt_sha256']
+assert sha(HERBAL_PUBLIC/'clean_validation_receipt.json')==herbal_package['clean_validation_receipt_sha256']
+herbal_clean=json.loads((HERBAL_PUBLIC/'clean_validation_receipt.json').read_text())
+assert herbal_clean['status']=='PASS_CLEAN_ALLOWLIST_ONLY_PUBLIC_REPLAY'
+assert herbal_clean['verification']['difference_count']==0 and not herbal_clean['verification']['context_interpretation_audited']
+herbal_space_audit=json.loads((HERBAL_SPACE/'audit_v1.json').read_text())
+herbal_space_release=json.loads((HERBAL_SPACE/'audit_release_receipt_v1.json').read_text())
+assert herbal_space_audit['status']=='PASS' and not herbal_space_audit['differences']
+for name,expected in herbal_space_release['files'].items():
+    herbal_archived_hash(name,expected)
+assert sha(HERBAL_SPACE/'audit_v1.json')==herbal_space_release['files']['audit_v1.json']
+assert sha(HERBAL_SPACE/'audit_v1.txt')==herbal_space_release['files']['audit_v1.txt']
+assert sha(HERBAL_SPACE/'run_v1/complete.json')==herbal_space_audit['primary_complete_sha256']==herbal_space_release['main_complete_sha256']
+herbal_space_complete=json.loads((HERBAL_SPACE/'run_v1/complete.json').read_text())
+for name,expected in herbal_space_complete['files'].items():
+    herbal_archived_hash('run_v1/'+name,expected)
+assert sha(HERBAL_SPACE/'run_v1/summary.json')==herbal_space_complete['files']['summary.json']
+herbal_space_report=json.loads((HERBAL_SPACE/'report_receipt.json').read_text())
+for name,expected in herbal_space_report['files'].items():
+    herbal_archived_hash(name,expected)
+for name in ['report.txt','all_adjacent_matches.json','protocol_v1.txt','approval_v1.txt','SCHEMA.txt']:
+    assert sha(HERBAL_SPACE/name)==herbal_space_report['files'][name],name
+herbal_space_summary=json.loads((HERBAL_SPACE/'run_v1/summary.json').read_text())
+for model,row in herbal_space_summary['aggregates'].items():
+    audited=herbal_space_audit['aggregates'][model]
+    assert row['own_hits']==audited['own_hits'] and row['own_N0']==audited['own_N0']
+    assert row['delta']['num']==audited['delta']['numerator'] and row['delta']['den']==audited['delta']['denominator']
+space_public_release=json.loads((SPACE/'public_repro/release_manifest_v1.json').read_text())
+for row in space_public_release['files']:
+    assert sha(ROOT/row['path'])==row['sha256'],row['path']
+space_replay=json.loads((SPACE/'public_repro/replay_validation_v1.json').read_text())
+assert space_replay['status']=='PASS'
+assert space_replay['allowlist_only_clean_export']['difference_count']==0
+assert space_replay['fresh_sparse_git_clone_with_exact_candidate_public_overlay']['difference_count']==0
+
+herbal_context=json.loads((HERBAL_SPACE/'context_review_v1.json').read_text())
+herbal_context_receipt=json.loads((HERBAL_SPACE/'context_review_receipt_v1.json').read_text())
+assert herbal_context_receipt['all_five_literal_passages_found_in_pinned_xml'] and not herbal_context_receipt['scores_modified']
+for name,expected in herbal_context_receipt['files'].items():
+    assert sha(HERBAL_SPACE/name)==expected,name
+assert len(herbal_context['rows'])==5 and herbal_context['matches_sha256']==sha(HERBAL_SPACE/'all_adjacent_matches.json')
+assert herbal_context['source_gzip_sha256']==sha(SOURCE/'design/known_herbal/A35365.xml.gz')
 
 staged=[]
 for source_name, destination in FILES:

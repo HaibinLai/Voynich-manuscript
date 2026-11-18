@@ -53,6 +53,8 @@ boundary_visual = read('visual/boundary_hits/review.json', {})
 boundary_visual_receipt = read('visual/boundary_hits/receipt.json', {})
 order_visual = read('visual/order_targets/review_v1.json', {})
 order_receipt = read('visual/order_targets/verification_receipt_v1.json', {})
+remaining_visual = read('visual/remaining_targets/review_v1.json', {})
+remaining_receipt = read('visual/remaining_targets/verification_receipt_v1.json', {})
 snapshot = datetime.now(timezone.utc)
 start = datetime.fromisoformat(session['start_utc'].replace('Z','+00:00'))
 elapsed = max(0, int((snapshot-start).total_seconds()))
@@ -63,6 +65,9 @@ stage_titles = {
     4:'独立复核、发布与窗口结题',
 }
 modules = {
+    'herbal_context':{'title':'英文命中语境','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'herbal_space':{'title':'英文两词校准','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'remaining_targets':{'title':'剩余图像关系','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'space_bridge':{'title':'两词拼接','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'choice_controls':{
         'title':'三候选几何对照：原假说是否更可比？',
@@ -261,6 +266,33 @@ if order_visual:
         item['target_regions']=[image_region(row['target'],r['bbox_xywh'],description=r['description']) for r in row['target']['visible_object_regions']]
         gallery.append(item)
 
+if remaining_visual:
+    remaining_root=SOURCE/'visual/remaining_targets'
+    assert remaining_receipt['status']=='PASS_GEOMETRY_RECORD_INTEGRITY'
+    assert remaining_receipt['pair_count']==11 and remaining_receipt['source_object_count']==10
+    assert remaining_receipt['target_object_regions']==12
+    assert hashlib.sha256((remaining_root/'review_v1.json').read_bytes()).hexdigest()==remaining_receipt['files']['review_v1.json']
+    assert remaining_visual['summary']['new_lexical_scoring']==0 and remaining_visual['summary']['semantic_gold']==0
+    contexts=read('visual/remaining_targets/additional_context_acquisition_v1.json')
+    for row in sorted(remaining_visual['records'],key=lambda r:(r['fragment_id'],r['pair_id'])):
+        item={k:row[k] for k in ['pair_id','fragment_id','source_folio','target_folio','comparison_decision']}
+        item.update(batch='remaining',candidate_locators=[],prior_grade=row['prior_hypothesis']['source_grade'],
+                    prior_source=row['prior_hypothesis']['source_url'],
+                    similarity_zh=' '.join(row['visible_similarities']),difference_zh=' '.join(row['visible_differences_and_missing_parts']),
+                    original_similarities=row['visible_similarities'],original_differences=row['visible_differences_and_missing_parts'],
+                    lexical_scope='remaining_candidate_not_scored',attachment_status=row['source']['attachment_status_inherited'],
+                    comparison_scope=row['comparison_scope'],target_unique=row['target_correspondence_unique'],
+                    notes=row['notes'],canvas_note=None,label_scope_zh=row['label_scope_zh'],source_caption_zh=row['label_scope_zh'])
+        item['source']=image_region(row['source'],row['source']['object_reading_bbox_xywh'],True)
+        item['target']=image_region(row['target'],row['target']['object_reading_bbox_xywh'])
+        item['target_regions']=[image_region(row['target'],r['bbox_xywh'],description=r['description']) for r in row['target']['visible_object_regions']]
+        item['source_context_links']=[]
+        for c in contexts['files']:
+            if (row['fragment_id']==155 and '155' in c['file']) or (row['fragment_id'] in [205,206] and '205_206' in c['file']):
+                assert c['url'].startswith('https://collections.library.yale.edu/iiif/2/')
+                item['source_context_links'].append({'label':'补充来源上下文（保留邻物，不作新对象归属）','href':c['url']})
+        gallery.append(item)
+
 boundary={}
 if boundary_projection:
     assert boundary_audit['status']=='PASS' and boundary_audit['failure_count']==0
@@ -326,6 +358,8 @@ payload = {
     'snapshot_utc':snapshot.isoformat(),
     'snapshot_elapsed_seconds':elapsed,
     'window':{k:session[k] for k in ['start_utc','deadline_utc','duration_hours','local_timezone','local_window','status','stage']},
+    'window_history':session.get('status_history',[]),
+    'continuity_note_zh':session.get('continuity_note_zh',''),
     'stages':[{'stage':s['stage'],'title':stage_titles.get(s['stage'],s['title']),'status':s['status']} for s in session['stages']],
     'modules':modules,
     'findings':publication.get('findings',[
@@ -338,7 +372,7 @@ payload = {
     'gallery':gallery,
     'boundary':boundary,
     'choice':choice,
-    'gallery_scope':'Two separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered batch: 12 pairs, 11 scored; order batch: 12 unscored pairs. Only the selected pair images load (two normally, three for two unresolved target objects). Author overview images are not published.',
+    'gallery_scope':'Three separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered:12 pairs/11 scored; order:12 unscored; remaining:11 unscored relationships/10 source objects. Only selected pair images load, two normally and three for unresolved two-target pages. No botanical gold or author overview images.',
     'scope':'Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim.',
 }
 text = json.dumps(payload,ensure_ascii=False,indent=2,allow_nan=False)+'\n'

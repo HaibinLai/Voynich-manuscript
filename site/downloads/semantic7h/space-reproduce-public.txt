@@ -1,0 +1,54 @@
+Space-bridge public numerical replay v1
+
+Requirements: Python 3.9 or newer, standard library only. No network, GPU,
+credentials, absolute workstation paths, or unpublished metadata are needed.
+From a clean checkout containing the explicit public allowlist, run:
+
+python3 research/research_next/semantic7h_20261118/design/space_bridge/replay_public.py --output ../space-bridge-replay-new
+
+Choose a NEW output directory OUTSIDE the checkout. Existing directories are
+refused. The entry point verifies all allowlisted hashes and historical input,
+result, and image-review metadata hashes before reconstructing the experiment.
+It imports the frozen independent parser, numerical core, and schema adapter;
+it does not import the primary scorer. It compares the fresh reconstruction
+with the archived independent reconstruction and every primary opportunity,
+hit, position, denominator, rate, NA, contribution, union, inventory, and summary.
+The output contains reconstructed.json.gz, summary_16.json, and
+replay_receipt.json. PASS requires zero differences. Output gzip bytes can
+differ from the historical gzip serialization; numerical content is compared.
+
+The canonical public package inventory is public_repro/allowlist_v1.json.
+That manifest excludes itself to avoid circular hashing. Subsequent validation
+and delivery receipts are separately listed in the public release manifest.
+Only listed files are proposed for release. Do not recursively add this folder:
+audit_numeric_freeze_v1.json contains local absolute path keys and remains an
+unchanged private provenance record. The public counterpart is the distinct
+public_repro/audit_numeric_freeze.public.json, which changes only five path
+keys to repository-relative paths. public_repro/path_projection_v1.json records
+both hashes and the exact transformation. No numerical output or frozen source
+was changed to make the projection.
+
+Use replay_public.py for reproduction. Historical audit.py, audit_numeric.py,
+audit_compare.py, and make_report.py retain their original behavior and may
+write historical paths or expect private freeze metadata; do not invoke their
+command-line entry points in an archival checkout. They are retained as source
+provenance, not as the safe public interface. The original primary scorer and
+tests are included for inspection. The eight previously published report,
+audit, and projection files are byte-locked by
+public_repro/published_eight_lock_v1.json.
+
+Scope: this is replay of an already exposed, exploratory fixed experiment,
+not new blind confirmation. It retains all 11 single-label cases and the
+excluded three-word #110 group receipt. ZL/IT and strict_space/packet_tokens
+are all reported. Exact, adjacent-forward, adjacent-reverse, and gap-two
+forward rules and their separate exact unions remain distinct. Unknown slots,
+recorded tags, within-locus continuity, atomic characters, and common bench
+seams follow protocol_v1.txt. Encoded barriers cannot guarantee that every
+interruption visible in the manuscript was transcribed. Image-review metadata
+are checked, not independently re-annotated; historical plant relationships
+are conditional hypotheses, not an expert object-identity gold standard.
+
+The replay does not modify or reinterpret the findings: no target joined-word
+hit, and no target adjacent-forward union gain, occurred in the fixed cases.
+This excludes a narrow proposed spelling mechanism for these queries; it is
+not a translation or a general rejection of meaningful manuscript language.

@@ -1,0 +1,17 @@
+独立审核安全复现（Python 3标准库）
+在本目录运行，所有主run_v1文件保持原样。
+
+仅合成toy，不读取真实匹配数据：
+python3 audit_core.py
+
+独立从固定XML重算到新的目录：
+python3 audit_core.py --output audit_run_recheck_01
+输出必须在本目录且名为audit_run_*；任何已有目录都会拒绝，不覆盖、不删除。
+固定输入使用相邻known_herbal/A35365.xml.gz和known_herbal/run_v1/sections.json.gz；运行会核XML原字节SHA256。此入口无需下载网络或主scorer。
+
+复查保存的独立audit_run_v2与主run_v1：
+python3 audit_compare.py --output audit_recheck_01.json
+输出必须是本目录新audit_*.json；已有文件拒绝覆盖。此命令以已冻结audit_run_v2作为独立结果，重新从XML检查事件路径并作全部投影/比较。若要改为新重算目录，复制比较器为新文件并明确更新OWN路径；原审核代码和收据不改。
+
+审计失败均留failure.json；成功完成文件列所有输出哈希。audit_core_attempt_01.py与audit_run_v1是首个输入schema断言失败的历史记录，不作为通过结果。比较器首次±60/±55上下文裁区差异亦保存，数值核心未据主结果调整。
+只需公开audit_v1.txt/json、审计代码及必要收据；不要把本英文率解释成伏尼契语义概率。

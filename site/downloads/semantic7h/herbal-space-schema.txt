@@ -1,0 +1,10 @@
+文件与索引说明
+
+run_v1/identity.json：119项标题ID、原标题、规范化标题。section/title ID一基；p、slot、old_word_index、window_index均零基；字符区间[start,end)以规范化流为单位。
+packet.json.gz：282项section。paragraphs中stream是带U+FDD0硬屏障的规范化流；events逐XML文本/屏障/去除EOL控制保存节点路径、原文、属性及规范化区间。slots包含word/barrier/opaque；comparable由冻结parser判定。windows的B/A/R/G分别保存实际slots、拼接endpoints、结果长度与区间，不依标题筛选。A与R机会完全一样、端点顺序不同。
+matrix.json.gz：119行。每行matrix含282项section，各含O/B/A/R/G/UA/UR/UG。每格m、N、rate、binary、positions；rate用{num,den,value}精确分数，N=0为null。新机制位置带p/window_index/slots/endpoints/区间；O带old_word_index及对应真实槽。union位置保留原机制标签，N和m是带标签窗口数的和。每行own是自身同一格，all_other_281是其他281节binary均值及自身减均值。
+O=旧known_herbal exact；B=新保守共同输入exact；A=相邻正序；R=同窗口反序；G=连续三可比槽只拼首尾；UA/UR/UG分别B并上A/R/G。任何N=0格仍参与二元对照。
+input_changes.json.gz：476逐词排除记录、原上下文、两侧屏障/opaque原因、全282节旧新词数；原因可重叠。原始ASCII run序列逐p与旧输入完全相同，新旧差异只来自comparable排除。
+transitions.json.gz：O_to_B、B_to_UA/UR/UG；全119标题自身、他节和净增量；全部m或N改变格。不能把m_or_N_changed_cell_count当二元覆盖变化格。
+summary.json：全八列聚合、三段差异与已曝光病例；没有p值。all_adjacent_matches.json是完整5项正序命中的可读派生表，不是独立材料。
+complete.json：运行全部文件SHA256；freeze.json先冻结源码和输入，再执行真实匹配。report/SCHEMA/REPRODUCE只是派生说明，不回写run_v1。

@@ -125,6 +125,21 @@ def verify_snapshot():
         if (boundary/'delivery_manifest_v1.json').exists():
             definitions.append((boundary/'delivery_manifest_v1.json', boundary,
                                 dict(container='files', mapping=True)))
+        space = current_research/'design/space_bridge/public_repro'
+        if (space/'release_manifest_v1.json').exists():
+            definitions.append((space/'release_manifest_v1.json', REPO,
+                                dict(container='files')))
+        herbal_space = current_research/'design/space_bridge_herbal/public_replay'
+        if (herbal_space/'public_payload_manifest.json').exists():
+            definitions.append((herbal_space/'public_payload_manifest.json', herbal_space,
+                                dict(container='files', mapping=True)))
+        remaining = current_research/'visual/remaining_targets'
+        if (remaining/'verification_receipt_v1.json').exists():
+            definitions.append((remaining/'verification_receipt_v1.json', remaining,
+                                dict(container='files', mapping=True)))
+        if (current_research/'object_registry_v2.json').exists():
+            definitions.append((current_research/'object_registry_v2.json', current_research,
+                                dict(container='inputs', mapping=True)))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     current_session = json.loads((current_research/'session.json').read_text()) if (current_research/'session.json').exists() else None
@@ -159,6 +174,10 @@ def replay_commands(output):
                       '--output', str(output/'crossplant')],
         'boundary': ['research/research_next/semantic7h_20261118/design/boundary_bridge/replay_public.py',
                      '--output', str(output/'boundary')],
+        'space': ['research/research_next/semantic7h_20261118/design/space_bridge/replay_public.py',
+                  '--output', str(output/'space')],
+        'herbal-space': ['research/research_next/semantic7h_20261118/design/space_bridge_herbal/public_replay/replay_public.py',
+                         '--output', str(output/'herbal-space')],
     }
 
 
@@ -168,7 +187,7 @@ def write(path, payload):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter', 'crossplant', 'boundary'],
+    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter', 'crossplant', 'boundary', 'space', 'herbal-space'],
                         help='Run named independent saved-data replays after integrity checks')
     parser.add_argument('--output', type=Path, help='Required new directory for replay receipts and logs')
     args = parser.parse_args()
