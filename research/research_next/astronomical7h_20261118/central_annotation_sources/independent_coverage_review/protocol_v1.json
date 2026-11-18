@@ -1,0 +1,36 @@
+{
+  "schema": "independent_central_coverage_protocol_v1",
+  "frozen_before_viewing_utc": "2026-11-18T19:50:07.585467+00:00",
+  "observer": "circle_spatial_observer",
+  "exposure": "Same AI and prior image-side observer; sources/possible ordinary-letter month annotations already exposed. Independent operation with root crosswalk conclusions withheld, not blind and not expert certification.",
+  "forbidden_inputs": [
+    "root crosswalk_* results/reports",
+    "new web page",
+    "other new coverage judgments"
+  ],
+  "views": "For all 13 fixed slots actually display original native crop and 60px expansion; display one scene per panel formed by bounding union of registered central graphics and central slots, then 60px expansion. No resizing, enhancement, OCR or invented strokes. No new crop boxes replace seed.",
+  "coverage_definition": {
+    "yes": "Frozen rectangle contains all visible strokes of the locally separable short writing run, even if characters are unidentified. A complete date/name is not implied.",
+    "no": "Visible continuation of that same run crosses original rectangle; record direction and ink evidence.",
+    "uncertain": "Run extent or boundary cannot be distinguished from drawing, damage, adjacent run, or faint ink. Do not force completeness from external candidate spelling."
+  },
+  "type_labels": [
+    "ordinary_alphabet_like",
+    "voynich_like",
+    "undetermined"
+  ],
+  "type_limit": "Morphographic appearance only; not authenticated script, language, word, reading, date, author or chronology. Different categories can occupy separate fixed slots in one panel; record mixture inside rectangle separately from scene coexistence.",
+  "per_slot_fields": [
+    "region_uid",
+    "original_box_xyxy",
+    "coverage_yes_no_uncertain",
+    "clipped_stroke_directions",
+    "stroke_evidence",
+    "visible_type",
+    "mixed_text_types_in_original",
+    "graphics_or_adjacent_writing_intrusion",
+    "view_ids",
+    "uncertainties"
+  ],
+  "completion_rule": "Retain all 13, freeze whole report before transmitting observations. Generated files are not viewed until tools.view_image actually shows them."
+}
