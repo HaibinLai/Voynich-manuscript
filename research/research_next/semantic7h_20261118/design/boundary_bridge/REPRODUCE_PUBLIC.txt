@@ -1,0 +1,12 @@
+固定边界实验：安全复算入口
+
+在仓库根目录执行；只需 Python 标准库：
+python3 research/research_next/semantic7h_20261118/design/boundary_bridge/replay_public.py --output ../boundary-replay-new
+
+输出目录必须不存在。包装器读取原始冻结输入，调用独立审核实现，重建两版全部36规则、完整正文机会与位置、四折全部训练规则及测试端点；将新审核写入指定目录，不覆盖原冻结包或原审核。
+不要直接运行 audit.py 的历史入口：它用于首次形成审核，会覆盖 audit_v1.json/txt 和 audit_rebuilt_v1.json.gz。
+
+主计算程序为 run.py；运行方式见其 --help，使用新的输出目录。再次运行同一数据不产生新证据或新盲测。
+protocol_v1.txt 定义唯一正式规则；proposal_v1.txt、support_v1.json 是此前讨论与支持盘点，不得把早期设想当成实际运行。
+
+审计成功只确认保存的输入、规则、权重、NA及计数可独立重建，不验证转写字读、植物同一性、词义或统计可交换性。两版文本是同一手稿的测量敏感性，不是两份独立历史证据。

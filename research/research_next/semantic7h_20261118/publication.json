@@ -1,20 +1,81 @@
 {
   "findings": [
+    "固定短边界探索已经独立复算：每版 36 条统一规则，ZL 无目标命中，IT 两条不同规则各命中一个候选；没有一条规则同时覆盖两项。两版四折来源叶留出的平均增益均为零，不能将两个单例拼成统一读法。",
+    "四词、两条目标行的原图定位清楚，但 f44r 的 a/o 字形与 f13v 的 y/ol 词界仍有歧义。原图细查没有改动转写；这是由结果引导的单一 AI 观察，不是盲转写。",
+    "图廊现分两批保留 24 对：原来源编号批次 12 对（11 条已评分），另 12 对次序候选只有图像观察、未评分。后批 4 对可局部比较、8 对有限或含混；#26 和 #52 各保留两个未决目标，#31 标签附着仍不明。",
     "跨页图像假说的词形桥梁未建立：8 条件、10 个固定规则下，11 条指定目标查询全部未命中。独立重建已通过；这 11 条只来自 4 个来源叶、10 个独特目标页，不能当 880 次独立证据。",
     "12 对图像全部保留：6 对有局部形态可比处，6 对有限或含混；#110 多词组没有被拆词加入主检验。图廊显示相似与差异，不认证植物身份。已知英文草药书校准能检出强关系，但不能把其命中率套到伏尼契。",
     "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
     "k/t 放宽后，原配对和重新配对都更容易命中；扣除排列平均新增量后只余约 0.054–0.060 个百分点。这个结果约束了简单同形锚点解释，不证明手稿无意义。",
     "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
-    "外部文献 35 条植物图配对已逐条盘点标签支持：12 条有来源编号、12 条仅次序候选、9 条没有对应植物标签、2 条未知。来源编号仍不等于本轮原图认证。"
+    "原始资格表的 35 条植物图配对全部已有来源观察：原12条来源编号、12条次序候选保持分组；剩余11关系补查得到9条无可独立归属标签、1条新空间候选（#188）、1条归属未决（#40）。新候选未评分，也没有回填旧主集。",
+    "书手 H 沿用既有分类作为操作性分组，并非已独立认证的历史身份。新增文献核查区分了同页字形变体与多书手判断，保留 Davis 2020 原文未能直接读取的范围限制。"
   ],
   "modules": {
+    "boundary_bridge": {
+      "status": "complete",
+      "title": "固定短边界：两个单例未形成统一读法",
+      "summary": "72 行结果及 8 折规则选择通过独立复算。IT 仅有两个不同规则下的单例，ZL 全零；两版来源叶留出平均增益均为零。原图定位未消除版本与纳入规则差异。",
+      "metrics": [
+        {
+          "value": "36 × 2",
+          "label": "统一规则 × 转写版本"
+        },
+        {
+          "value": "0 / 2",
+          "label": "ZL / IT 有命中的规则数"
+        },
+        {
+          "value": "0 / 0",
+          "label": "两版平均留出增益（百分点）"
+        }
+      ],
+      "details": [
+        "完整词形零命中之后才启动本轮，属于已见材料后的探索。每条规则固定地用于全部标签和正文，保留至少四单位且不截断受保护的组合字形。不能按词临时选择不同规则。",
+        "IT #95 为 otoldy → otol，对应正文 otol；#133 为 opchor → chor，对应正文 kchor → chor。没有同一条规则覆盖两项，图像也没有认证它们是词干或名称。",
+        "来源叶留出只有四折，训练排除留出目标关联，测试使用原池。平均增益为零不代表每折都零，也不是新材料上的盲确认。",
+        "标签失效时主二值按协议置零并保留权重；有效标签没有同长度正文机会时，条件率是 NA。两者都不能自动解释为语言缺席。",
+        "原图细查定位了四词和两条目标行；a/o 与 y/ol 两处争议仍保留，没有修改主实验转写。已知截取能匹配不构成词缀、词根或语义证据。"
+      ],
+      "links": [
+        {
+          "label": "完整报告",
+          "href": "downloads/semantic7h/boundary-report.txt"
+        },
+        {
+          "label": "72 行与 8 折记录",
+          "href": "downloads/semantic7h/boundary-results.json"
+        },
+        {
+          "label": "独立审核",
+          "href": "downloads/semantic7h/boundary-audit.txt"
+        },
+        {
+          "label": "复现与保存包范围",
+          "href": "downloads/semantic7h/boundary-reproduce.txt"
+        },
+        {
+          "label": "四词原图细查",
+          "href": "downloads/semantic7h/boundary-image-review.txt"
+        }
+      ]
+    },
     "images": {
       "status": "partial",
       "summary": "十二位置的带转写引导记录已冻结，保留无法可靠定位和指物不清的情况；几何记录与引导记录不是独立双盲复现，也不是十二个名称认证。",
       "metrics": [
-        {"value": "2", "label": "邻接较清楚的候选"},
-        {"value": "5", "label": "可定位，但指物不清"},
-        {"value": "5", "label": "单独行位未可靠定位"}
+        {
+          "value": "2",
+          "label": "邻接较清楚的候选"
+        },
+        {
+          "value": "5",
+          "label": "可定位，但指物不清"
+        },
+        {
+          "value": "5",
+          "label": "单独行位未可靠定位"
+        }
       ],
       "details": [
         "12 个位置来自上一轮既定命中／未命中队列，选择依赖已有结果，不是确认样本。几何记录仅描述文字、图形和邻接；引导记录使用既有转写，不是独立释读。",
@@ -23,21 +84,48 @@
         "近似框是阅读区域，不是逐字分割；f67r2 五个未可靠定位位置不提供看似精确的字框。困难例保留，不从旧统计中删除。"
       ],
       "links": [
-        {"label": "带转写引导的十二位置记录", "href": "downloads/semantic7h/guided-image-review.txt"},
-        {"label": "仅几何观察记录", "href": "downloads/semantic7h/geometry-review.txt"},
-        {"label": "原图审查协议", "href": "downloads/semantic7h/visual-protocol.txt"},
-        {"label": "耶鲁官方原图 · 67r", "href": "https://collections.library.yale.edu/iiif/2/1006194/full/full/0/default.jpg"},
-        {"label": "耶鲁官方原图 · 68r", "href": "https://collections.library.yale.edu/iiif/2/1006196/full/full/0/default.jpg"},
-        {"label": "耶鲁官方原图 · 75v", "href": "https://collections.library.yale.edu/iiif/2/1006209/full/full/0/default.jpg"}
+        {
+          "label": "带转写引导的十二位置记录",
+          "href": "downloads/semantic7h/guided-image-review.txt"
+        },
+        {
+          "label": "仅几何观察记录",
+          "href": "downloads/semantic7h/geometry-review.txt"
+        },
+        {
+          "label": "原图审查协议",
+          "href": "downloads/semantic7h/visual-protocol.txt"
+        },
+        {
+          "label": "耶鲁官方原图 · 67r",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/full/full/0/default.jpg"
+        },
+        {
+          "label": "耶鲁官方原图 · 68r",
+          "href": "https://collections.library.yale.edu/iiif/2/1006196/full/full/0/default.jpg"
+        },
+        {
+          "label": "耶鲁官方原图 · 75v",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/full/full/0/default.jpg"
+        }
       ]
     },
     "literature": {
       "status": "partial",
       "summary": "35 条外部图像配对的标签资格已盘点；其中来源编号支持的 12 对已有几何记录，11 个单词标签进入已复核的跨页检验，未把其余候选悄悄补入。",
       "metrics": [
-        {"value": "35", "label": "保留的来源配对假说"},
-        {"value": "12 / 12", "label": "来源编号支持 / 次序候选"},
-        {"value": "9 / 2", "label": "无对应植物标签 / 归属未知"}
+        {
+          "value": "35",
+          "label": "保留的来源配对假说"
+        },
+        {
+          "value": "12 / 12",
+          "label": "来源编号支持 / 次序候选"
+        },
+        {
+          "value": "9 / 2",
+          "label": "无对应植物标签 / 归属未知"
+        }
       ],
       "details": [
         "12 条有原转写 Petersen 编号注记，12 条从对象与标签次序提出候选；所有候选保留，未依正文命中筛选。",
@@ -45,9 +133,18 @@
         "来源编号支持仍不等于本轮图像确认，更不等于植物学名。最优先候选集中在少数物理叶，泛化材料有限。"
       ],
       "links": [
-        {"label": "35 条配对与出处", "href": "downloads/semantic7h/plant-pairs.json"},
-        {"label": "逐条标签支持", "href": "downloads/semantic7h/label-support.json"},
-        {"label": "资格与排除说明", "href": "downloads/semantic7h/label-support-notes.txt"}
+        {
+          "label": "35 条配对与出处",
+          "href": "downloads/semantic7h/plant-pairs.json"
+        },
+        {
+          "label": "逐条标签支持",
+          "href": "downloads/semantic7h/label-support.json"
+        },
+        {
+          "label": "资格与排除说明",
+          "href": "downloads/semantic7h/label-support-notes.txt"
+        }
       ]
     },
     "crossplant": {
@@ -55,9 +152,18 @@
       "title": "跨页对象假说：固定词形桥梁没有建立",
       "summary": "8 条件、10 个预定模型下，11 条指定目标查询全部为零命中。原样整词、六对裸高杆单次替换、Davis 展开及其两个对照都没有建立这批标签到指定草药正文的完整词形桥梁。",
       "metrics": [
-        {"value": "0 / 11", "label": "每个条件模型的目标查询命中"},
-        {"value": "4 / 10", "label": "来源物理叶 / 独特目标页"},
-        {"value": "8 × 10", "label": "条件与规则，重复检查而非独立样本"}
+        {
+          "value": "0 / 11",
+          "label": "每个条件模型的目标查询命中"
+        },
+        {
+          "value": "4 / 10",
+          "label": "来源物理叶 / 独特目标页"
+        },
+        {
+          "value": "8 × 10",
+          "label": "条件与规则，重复检查而非独立样本"
+        }
       ],
       "details": [
         "12 对来源编号图像全部保留。#110 是两个位置、三个词的完整组，按协议不进入单词标签检验；11 条查询复用了 f96v 目标，不能当 11 个独立对象真值。",
@@ -69,27 +175,112 @@
         "结论只限制当前图像假说和完整词形规则。未找到重复标签，不等于标签无词义、图像假说必错或手稿不是语言。后续如改词干、缩略或复合标签，必须另立外部约束与协议。"
       ],
       "table": {
-        "headers": ["固定规则", "ZL 指定查询命中", "IT 指定查询命中", "条件覆盖"],
+        "headers": [
+          "固定规则",
+          "ZL 指定查询命中",
+          "IT 指定查询命中",
+          "条件覆盖"
+        ],
         "rows": [
-          ["完整词 exact", "0 / 11", "0 / 11", "两种分词 × 两种对照"],
-          ["裸 f/k 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["裸 f/p 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["裸 f/t 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["裸 k/p 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["裸 k/t 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["裸 p/t 单次替换", "0 / 11", "0 / 11", "全部"],
-          ["Davis 固定展开", "0 / 11", "0 / 11", "全部"],
-          ["交换展开对照", "0 / 11", "0 / 11", "全部"],
-          ["等长度假展开对照", "0 / 11", "0 / 11", "全部"]
+          [
+            "完整词 exact",
+            "0 / 11",
+            "0 / 11",
+            "两种分词 × 两种对照"
+          ],
+          [
+            "裸 f/k 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 f/p 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 f/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 k/p 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 k/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 p/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "Davis 固定展开",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "交换展开对照",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "等长度假展开对照",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ]
         ]
       },
       "links": [
-        {"label": "跨页检验完整报告", "href": "downloads/semantic7h/crossplant-report.txt"},
-        {"label": "全部候选与机会／NA", "href": "downloads/semantic7h/crossplant-summary.json"},
-        {"label": "独立审核 PASS", "href": "downloads/semantic7h/crossplant-audit.txt"},
-        {"label": "数值审核 JSON", "href": "downloads/semantic7h/crossplant-audit.json"},
-        {"label": "公开路径投影收据", "href": "downloads/semantic7h/crossplant-publication-projection.json"},
-        {"label": "运行前协议", "href": "downloads/semantic7h/crossplant-protocol.txt"}
+        {
+          "label": "跨页检验完整报告",
+          "href": "downloads/semantic7h/crossplant-report.txt"
+        },
+        {
+          "label": "全部候选与机会／NA",
+          "href": "downloads/semantic7h/crossplant-summary.json"
+        },
+        {
+          "label": "独立审核 PASS",
+          "href": "downloads/semantic7h/crossplant-audit.txt"
+        },
+        {
+          "label": "数值审核 JSON",
+          "href": "downloads/semantic7h/crossplant-audit.json"
+        },
+        {
+          "label": "公开路径投影收据",
+          "href": "downloads/semantic7h/crossplant-publication-projection.json"
+        },
+        {
+          "label": "运行前协议",
+          "href": "downloads/semantic7h/crossplant-protocol.txt"
+        },
+        {
+          "label": "新增12对图像记录（未评分）",
+          "href": "downloads/semantic7h/order-targets-review.txt"
+        },
+        {
+          "label": "新增图像完整性记录",
+          "href": "downloads/semantic7h/order-targets-verification.json"
+        },
+        {
+          "label": "公开路径投影范围",
+          "href": "downloads/semantic7h/order-targets-publication-projection.json"
+        }
       ]
     },
     "abbreviations": {
@@ -101,17 +292,32 @@
         "没有逐词补字或临时展开例外。变换后长度机会与支持集会变化，原形和展开后的条件率不能忽略分母变化直接比较。"
       ],
       "links": [
-        {"label": "作者规则与适用范围", "href": "downloads/semantic7h/davis-scope.txt"},
-        {"label": "三种展开的完整结果", "href": "downloads/semantic7h/crossplant-report.txt"}
+        {
+          "label": "作者规则与适用范围",
+          "href": "downloads/semantic7h/davis-scope.txt"
+        },
+        {
+          "label": "三种展开的完整结果",
+          "href": "downloads/semantic7h/crossplant-report.txt"
+        }
       ]
     },
     "known_herbal": {
       "status": "complete",
       "summary": "在固定 1652 年英文草药书的 TCP 转写中，119 个预定单词标题有 102 个在自身正文中原样出现。该校准说明检测器能识别这里的强关系，不提供伏尼契的期望命中率或语言鉴定。",
       "metrics": [
-        {"value": "119 / 282", "label": "预定单词标题 / 全部植物分节"},
-        {"value": "102", "label": "自身正文中完整词命中"},
-        {"value": "85.7143%", "label": "此固定英文控制的自身命中率"}
+        {
+          "value": "119 / 282",
+          "label": "预定单词标题 / 全部植物分节"
+        },
+        {
+          "value": "102",
+          "label": "自身正文中完整词命中"
+        },
+        {
+          "value": "85.7143%",
+          "label": "此固定英文控制的自身命中率"
+        }
       ],
       "details": [
         "固定同一标题查询其余 281 个植物正文，按标题等权的平均命中率为 0.6250%；独立实现重建全部分节、完整矩阵和对照，审核通过。",
@@ -120,10 +326,22 @@
         "来源是固定版本的 TCP CC0 键入编码文本，未发布其原页图像。"
       ],
       "links": [
-        {"label": "英文控制报告", "href": "downloads/semantic7h/known-herbal-report.txt"},
-        {"label": "完整汇总", "href": "downloads/semantic7h/known-herbal-summary.json"},
-        {"label": "独立审核", "href": "downloads/semantic7h/known-herbal-audit.txt"},
-        {"label": "固定 TCP 来源与授权", "href": "https://github.com/textcreationpartnership/A35365/tree/2b09f3e54d85c5faf0738f823648edf6f070cef8"}
+        {
+          "label": "英文控制报告",
+          "href": "downloads/semantic7h/known-herbal-report.txt"
+        },
+        {
+          "label": "完整汇总",
+          "href": "downloads/semantic7h/known-herbal-summary.json"
+        },
+        {
+          "label": "独立审核",
+          "href": "downloads/semantic7h/known-herbal-audit.txt"
+        },
+        {
+          "label": "固定 TCP 来源与授权",
+          "href": "https://github.com/textcreationpartnership/A35365/tree/2b09f3e54d85c5faf0738f823648edf6f070cef8"
+        }
       ]
     },
     "leaf_controls": {
@@ -131,9 +349,18 @@
       "title": "整叶对照：六个包已计算并通过独立复算",
       "summary": "主比较、同册帖限制、跨版共同长度各做 ZL / IT 两版，共六包；七个总模型、六个增量与同步最大增量完整保留。没有据优胜配对定音。",
       "metrics": [
-        {"value": "13", "label": "每个正式包的可比物理叶"},
-        {"value": "6", "label": "完成并独立复算的结果包"},
-        {"value": "3,628,800", "label": "每版主比较完整分配数"}
+        {
+          "value": "13",
+          "label": "每个正式包的可比物理叶"
+        },
+        {
+          "value": "6",
+          "label": "完成并独立复算的结果包"
+        },
+        {
+          "value": "3,628,800",
+          "label": "每版主比较完整分配数"
+        }
       ],
       "details": [
         "把每片物理叶的标签与正文分别汇成袋；固定组内共同词长，词长等权，再将整叶袋双射重新配对。真实词形、词频和同叶重复被保留。当前只有医药 6 叶与浴疗 7 叶可比，不能推广至全部标签。",
@@ -144,39 +371,161 @@
         "独立实现复算全部六包、分组排列、联合尾数和整数／有理数分母，审核 PASS；它没有重新认证原始转写提取、对象对应、历史含义或可交换性。原报告生成时的“审核进行中”是历史状态，后附独立审核收据为当前记录。"
       ],
       "table": {
-        "headers": ["版本／条件", "标签位置", "exact 差（百分点）", "条件上尾", "k/t 增量差（百分点）", "增量条件上尾"],
+        "headers": [
+          "版本／条件",
+          "标签位置",
+          "exact 差（百分点）",
+          "条件上尾",
+          "k/t 增量差（百分点）",
+          "增量条件上尾"
+        ],
         "rows": [
-          ["ZL / 主比较 HI", "148", "−0.00740", "0.503", "+0.05955", "0.262"],
-          ["ZL / 固定主长度＋册帖", "148", "−0.01663", "0.539", "+0.05199", "0.283"],
-          ["ZL / 跨版共同长度", "148", "−0.00740", "0.503", "+0.05955", "0.262"],
-          ["IT / 主比较 HI", "182", "+0.02097", "0.407", "+0.05364", "0.293"],
-          ["IT / 固定主长度＋册帖", "182", "+0.01518", "0.424", "+0.04393", "0.334"],
-          ["IT / 跨版共同长度", "153", "+0.02475", "0.397", "+0.05745", "0.282"]
+          [
+            "ZL / 主比较 HI",
+            "148",
+            "−0.00740",
+            "0.503",
+            "+0.05955",
+            "0.262"
+          ],
+          [
+            "ZL / 固定主长度＋册帖",
+            "148",
+            "−0.01663",
+            "0.539",
+            "+0.05199",
+            "0.283"
+          ],
+          [
+            "ZL / 跨版共同长度",
+            "148",
+            "−0.00740",
+            "0.503",
+            "+0.05955",
+            "0.262"
+          ],
+          [
+            "IT / 主比较 HI",
+            "182",
+            "+0.02097",
+            "0.407",
+            "+0.05364",
+            "0.293"
+          ],
+          [
+            "IT / 固定主长度＋册帖",
+            "182",
+            "+0.01518",
+            "0.424",
+            "+0.04393",
+            "0.334"
+          ],
+          [
+            "IT / 跨版共同长度",
+            "153",
+            "+0.02475",
+            "0.397",
+            "+0.05745",
+            "0.282"
+          ]
         ]
       },
       "links": [
-        {"label": "六包全部七模型与六配对增量", "href": "downloads/semantic7h/leaf-report.txt"},
-        {"label": "精确分数与尾数 JSON", "href": "downloads/semantic7h/leaf-summary.json"},
-        {"label": "独立审核 PASS 与范围", "href": "downloads/semantic7h/leaf-audit.txt"},
-        {"label": "可交换性诊断", "href": "downloads/semantic7h/leaf-exchangeability.json"},
-        {"label": "复现说明", "href": "downloads/semantic7h/leaf-reproduce.txt"}
+        {
+          "label": "六包全部七模型与六配对增量",
+          "href": "downloads/semantic7h/leaf-report.txt"
+        },
+        {
+          "label": "精确分数与尾数 JSON",
+          "href": "downloads/semantic7h/leaf-summary.json"
+        },
+        {
+          "label": "独立审核 PASS 与范围",
+          "href": "downloads/semantic7h/leaf-audit.txt"
+        },
+        {
+          "label": "可交换性诊断",
+          "href": "downloads/semantic7h/leaf-exchangeability.json"
+        },
+        {
+          "label": "复现说明",
+          "href": "downloads/semantic7h/leaf-reproduce.txt"
+        }
       ]
     }
   },
   "downloads": [
-    {"label": "十二对图像观察与限制", "href": "downloads/semantic7h/crossplant-visual-review.txt"},
-    {"label": "跨页检验完整报告", "href": "downloads/semantic7h/crossplant-report.txt"},
-    {"label": "跨页完整汇总与候选", "href": "downloads/semantic7h/crossplant-summary.json"},
-    {"label": "跨页独立数值审核", "href": "downloads/semantic7h/crossplant-audit.txt"},
-    {"label": "英文草药书控制报告", "href": "downloads/semantic7h/known-herbal-report.txt"},
-    {"label": "英文控制独立审核", "href": "downloads/semantic7h/known-herbal-audit.txt"},
-    {"label": "带转写引导的原图记录", "href": "downloads/semantic7h/guided-image-review.txt"},
-    {"label": "整叶六包完整报告", "href": "downloads/semantic7h/leaf-report.txt"},
-    {"label": "六包汇总 JSON", "href": "downloads/semantic7h/leaf-summary.json"},
-    {"label": "独立数值审核", "href": "downloads/semantic7h/leaf-audit.txt"},
-    {"label": "复现说明", "href": "downloads/semantic7h/leaf-reproduce.txt"},
-    {"label": "外部配对标签资格说明", "href": "downloads/semantic7h/label-support-notes.txt"},
-    {"label": "变长缩略来源与边界", "href": "downloads/semantic7h/davis-scope.txt"},
-    {"label": "公开导出校验清单", "href": "downloads/semantic7h/manifest.json"}
+    {
+      "label": "35条对象关系证据索引",
+      "href": "downloads/semantic7h/object-registry.txt"
+    },
+    {
+      "label": "对象、标签、已执行检验的完整对照",
+      "href": "downloads/semantic7h/object-registry.json"
+    },
+    {
+      "label": "剩余来源资格原图核对",
+      "href": "downloads/semantic7h/remaining-source-review.txt"
+    },
+    {
+      "label": "书手归属文献与解释边界",
+      "href": "downloads/semantic7h/hand-attribution-review.md"
+    },
+    {
+      "label": "十二对图像观察与限制",
+      "href": "downloads/semantic7h/crossplant-visual-review.txt"
+    },
+    {
+      "label": "跨页检验完整报告",
+      "href": "downloads/semantic7h/crossplant-report.txt"
+    },
+    {
+      "label": "跨页完整汇总与候选",
+      "href": "downloads/semantic7h/crossplant-summary.json"
+    },
+    {
+      "label": "跨页独立数值审核",
+      "href": "downloads/semantic7h/crossplant-audit.txt"
+    },
+    {
+      "label": "英文草药书控制报告",
+      "href": "downloads/semantic7h/known-herbal-report.txt"
+    },
+    {
+      "label": "英文控制独立审核",
+      "href": "downloads/semantic7h/known-herbal-audit.txt"
+    },
+    {
+      "label": "带转写引导的原图记录",
+      "href": "downloads/semantic7h/guided-image-review.txt"
+    },
+    {
+      "label": "整叶六包完整报告",
+      "href": "downloads/semantic7h/leaf-report.txt"
+    },
+    {
+      "label": "六包汇总 JSON",
+      "href": "downloads/semantic7h/leaf-summary.json"
+    },
+    {
+      "label": "独立数值审核",
+      "href": "downloads/semantic7h/leaf-audit.txt"
+    },
+    {
+      "label": "复现说明",
+      "href": "downloads/semantic7h/leaf-reproduce.txt"
+    },
+    {
+      "label": "外部配对标签资格说明",
+      "href": "downloads/semantic7h/label-support-notes.txt"
+    },
+    {
+      "label": "变长缩略来源与边界",
+      "href": "downloads/semantic7h/davis-scope.txt"
+    },
+    {
+      "label": "公开导出校验清单",
+      "href": "downloads/semantic7h/manifest.json"
+    }
   ]
 }

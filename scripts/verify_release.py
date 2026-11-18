@@ -37,9 +37,11 @@ def safe_member(base, value):
     return resolved
 
 
-def check_manifest(manifest, base, *, container=None, path_key='path', hash_key='sha256'):
+def check_manifest(manifest, base, *, container=None, path_key='path', hash_key='sha256', mapping=False):
     data = json.loads(manifest.read_text())
     entries = data[container] if container else data
+    if mapping:
+        entries = [{'path': name, 'sha256': value} for name, value in entries.items()]
     checked = 0
     seen = set()
     total_bytes = 0
@@ -107,14 +109,35 @@ def verify_snapshot():
     semantic = REPO/'site/downloads/semantic7h'
     if (semantic/'manifest.json').exists():
         definitions.append((semantic/'manifest.json', semantic, dict(container='files')))
+    current_research = REPO/'research/research_next/semantic7h_20261118'
+    if (current_research/'session.json').exists():
+        leaf = current_research/'design/leaf_controls/run_v2'
+        definitions.append((leaf/'complete.json', leaf, dict(container='files')))
+        herbal = current_research/'design/known_herbal'
+        if (herbal/'manifest.json').exists():
+            definitions.append((herbal/'manifest.json', herbal, dict(container='files')))
+        for name, version in [('crossplant', 'run_v2'), ('boundary_bridge', 'run_v1')]:
+            run = current_research/'design'/name/version
+            if (run/'complete.json').exists():
+                definitions.append((run/'complete.json', run, dict(container='files', mapping=True)))
+                definitions.append((run/'freeze.json', REPO, dict(container='inputs', mapping=True)))
+        boundary = current_research/'design/boundary_bridge'
+        if (boundary/'delivery_manifest_v1.json').exists():
+            definitions.append((boundary/'delivery_manifest_v1.json', boundary,
+                                dict(container='files', mapping=True)))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
+    current_session = json.loads((current_research/'session.json').read_text()) if (current_research/'session.json').exists() else None
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 checks=checks, manifests_overlap=True,
                 limitation='Integrity checks validate recorded bytes, not scientific claims or semantic decipherment. Manifest counts overlap; do not sum them as unique files.',
                 snapshot_stage=session.get('stage'), snapshot_status=session.get('status'),
                 snapshot_updated_utc=session.get('updated_utc'),
                 research_deadline_utc=session.get('deadline_utc'),
+                legacy_snapshot_scope='First seven-hour window; current_window reports the later window separately.',
+                current_window=({k: current_session.get(k) for k in
+                                 ['start_utc', 'deadline_utc', 'status', 'stage', 'updated_utc']}
+                                if current_session else None),
                 raw_text_interpreted=False, new_split_scored=False)
 
 
@@ -132,6 +155,10 @@ def replay_commands(output):
                      '--out-dir', str(output/'metadata')],
         'synthetic': ['research/research7h/line_boundary_calibration/public_replay.py',
                       '--output', str(output/'synthetic')],
+        'crossplant': ['research/research_next/semantic7h_20261118/design/crossplant/replay_public.py',
+                      '--output', str(output/'crossplant')],
+        'boundary': ['research/research_next/semantic7h_20261118/design/boundary_bridge/replay_public.py',
+                     '--output', str(output/'boundary')],
     }
 
 
@@ -141,7 +168,7 @@ def write(path, payload):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter'],
+    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter', 'crossplant', 'boundary'],
                         help='Run named independent saved-data replays after integrity checks')
     parser.add_argument('--output', type=Path, help='Required new directory for replay receipts and logs')
     args = parser.parse_args()

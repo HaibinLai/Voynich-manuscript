@@ -1,0 +1,37 @@
+边界截取两项碰撞：独立原图测量核对
+完成时间：2026-11-18T13:27:47.713086+00:00
+
+结论：4 个词与 2 条目标行定位均清楚，未发现候选位置错配；a/o 字形与 y/ol 词界各保留 ambiguous，未据图改动转写。两项 IT 命中仍受版本/纳入规则影响。未支持其为稳定语义桥，也未因此证明无语义。
+
+知道结果后的单人 AI 图像诊断，属于另行核图，不是独立盲转写。看图前冻结两项队列，全部保留；没有修改主转写、规则、支持或计分。公开裁图是 Yale 官方 IIIF 返回字节，无增强、重绘或笔画补全。
+
+1. f99v_95__f44r
+最上排左端细长红根对象上方偏左的短标签。可见起始环、高杆和后续低矮/带尾笔画；与给定 otoldy 候选相容。这是候选引导定位，不声称完成独立逐字转写。
+上部正文第3行第4个词组，前后留白可见。争议为高杆后的低矮环形字。其小环和短右侧笔势可见，墨迹/连接方式不提供这次复核可据以排除 a 或 o 的唯一判据。同一裁区保留前词结尾和后词 daiin 作为邻近字形背景；不凭使截取相等与否选择读法。
+IT otoldy 删右2后与 otol 相等，但 ZL otal 不等。图像确认位置，未消除版本条件；不能将此命中改写为两版共同或原图已确定的匹配。
+定位：clear；争议字形/词界裁定：ambiguous。
+source_word_crop：assets/f99v_otoldy.jpg
+source_context_crop：assets/f99v_upper.jpg
+target_line_crop：assets/f44r_line3.jpg
+target_word_crop：assets/f44r_otal_otol.jpg
+target_variant_context_crop：assets/f44r_ao_context.jpg
+target_context_crop：assets/f44r_upper_text.jpg
+
+2. f100v_133__f13v
+联合画布左侧 f100v 面，顶排第3个植物状对象根部右侧的短标签，位于成簇绿叶下方。起始环、高杆与后续横连/环形/尾笔可见，与 opchor 候选相容；未独立重定字母。
+下部正文左栏最后一行，kchor 在给定两版按显示分隔的第5槽，实际字群清楚可定位。行首 y 与 ol 之间确有空白，o 与 l 之间距离更小；ol 与后续 chy 的空白稍宽。行首字符形状及倾斜也影响单轴间距，不能用可见白缝直接判为有确定语言意义的词界。
+两版 kchor 本身一致。IT 保留全行，ZL 的 y,ol 不确定边界使冻结 strict_space 规则排除整行，差异来自行资格，而非 ZL 把目标词读成别字。白缝不足以取消逗号标记。命中仍须标签删左2和正文删左1才有 chor 核；不能解释成已知词干。
+定位：clear；争议字形/词界裁定：ambiguous。
+source_word_crop：assets/f100v_opchor.jpg
+source_context_crop：assets/f100v_upper_panel.jpg
+target_line_crop：assets/f13v_line10.jpg
+target_word_crop：assets/f13v_kchor.jpg
+target_gap_crop：assets/f13v_y_ol_gap.jpg
+target_context_crop：assets/f13v_lower_text.jpg
+
+f13v 行首原生裁图粗略目测：y→ol 约20–30 px，o→l 约5–12 px，ol→chy 约25–40 px。这不是分割测量、统计区间或词界判定阈值。
+
+复查与范围
+review.json 存四词/两行原生近似框和候选串；source_receipt.json 存原图URL/哈希/画布信息；crop_receipt_v1/v2.json 存12张官方裁区的URL、坐标、尺寸与SHA-256。freeze.json 保留看图前协议/队列以及主规则/结果哈希。
+f100v 是 7486×3715 联合画布1006249左面，不是右侧f101r。f99v原始注释95b，而任务/对象编号仍记#95，不合并其他标签。
+未发现错定位不等于证明逐字转写无误。可见空白不等于确定的语词边界；截取相等不等于词干、读音、植物名或译文。两条结果引导抽查不能估计整语料转写错误率。

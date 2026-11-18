@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T13:21:32.486388+00:00",
-  "snapshot_elapsed_seconds": 15319,
+  "snapshot_utc": "2026-11-18T13:41:42.366416+00:00",
+  "snapshot_elapsed_seconds": 16529,
   "window": {
     "start_utc": "2026-11-18T09:06:13Z",
     "deadline_utc": "2026-11-18T16:06:13Z",
@@ -304,6 +304,18 @@
         {
           "label": "运行前协议",
           "href": "downloads/semantic7h/crossplant-protocol.txt"
+        },
+        {
+          "label": "新增12对图像记录（未评分）",
+          "href": "downloads/semantic7h/order-targets-review.txt"
+        },
+        {
+          "label": "新增图像完整性记录",
+          "href": "downloads/semantic7h/order-targets-verification.json"
+        },
+        {
+          "label": "公开路径投影范围",
+          "href": "downloads/semantic7h/order-targets-publication-projection.json"
         }
       ],
       "table": {
@@ -419,15 +431,67 @@
           "href": "https://github.com/textcreationpartnership/A35365/tree/2b09f3e54d85c5faf0738f823648edf6f070cef8"
         }
       ]
+    },
+    "boundary_bridge": {
+      "title": "固定短边界：两个单例未形成统一读法",
+      "status": "complete",
+      "summary": "72 行结果及 8 折规则选择通过独立复算。IT 仅有两个不同规则下的单例，ZL 全零；两版来源叶留出平均增益均为零。原图定位未消除版本与纳入规则差异。",
+      "details": [
+        "完整词形零命中之后才启动本轮，属于已见材料后的探索。每条规则固定地用于全部标签和正文，保留至少四单位且不截断受保护的组合字形。不能按词临时选择不同规则。",
+        "IT #95 为 otoldy → otol，对应正文 otol；#133 为 opchor → chor，对应正文 kchor → chor。没有同一条规则覆盖两项，图像也没有认证它们是词干或名称。",
+        "来源叶留出只有四折，训练排除留出目标关联，测试使用原池。平均增益为零不代表每折都零，也不是新材料上的盲确认。",
+        "标签失效时主二值按协议置零并保留权重；有效标签没有同长度正文机会时，条件率是 NA。两者都不能自动解释为语言缺席。",
+        "原图细查定位了四词和两条目标行；a/o 与 y/ol 两处争议仍保留，没有修改主实验转写。已知截取能匹配不构成词缀、词根或语义证据。"
+      ],
+      "metrics": [
+        {
+          "value": "36 × 2",
+          "label": "统一规则 × 转写版本"
+        },
+        {
+          "value": "0 / 2",
+          "label": "ZL / IT 有命中的规则数"
+        },
+        {
+          "value": "0 / 0",
+          "label": "两版平均留出增益（百分点）"
+        }
+      ],
+      "links": [
+        {
+          "label": "完整报告",
+          "href": "downloads/semantic7h/boundary-report.txt"
+        },
+        {
+          "label": "72 行与 8 折记录",
+          "href": "downloads/semantic7h/boundary-results.json"
+        },
+        {
+          "label": "独立审核",
+          "href": "downloads/semantic7h/boundary-audit.txt"
+        },
+        {
+          "label": "复现与保存包范围",
+          "href": "downloads/semantic7h/boundary-reproduce.txt"
+        },
+        {
+          "label": "四词原图细查",
+          "href": "downloads/semantic7h/boundary-image-review.txt"
+        }
+      ]
     }
   },
   "findings": [
+    "固定短边界探索已经独立复算：每版 36 条统一规则，ZL 无目标命中，IT 两条不同规则各命中一个候选；没有一条规则同时覆盖两项。两版四折来源叶留出的平均增益均为零，不能将两个单例拼成统一读法。",
+    "四词、两条目标行的原图定位清楚，但 f44r 的 a/o 字形与 f13v 的 y/ol 词界仍有歧义。原图细查没有改动转写；这是由结果引导的单一 AI 观察，不是盲转写。",
+    "图廊现分两批保留 24 对：原来源编号批次 12 对（11 条已评分），另 12 对次序候选只有图像观察、未评分。后批 4 对可局部比较、8 对有限或含混；#26 和 #52 各保留两个未决目标，#31 标签附着仍不明。",
     "跨页图像假说的词形桥梁未建立：8 条件、10 个固定规则下，11 条指定目标查询全部未命中。独立重建已通过；这 11 条只来自 4 个来源叶、10 个独特目标页，不能当 880 次独立证据。",
     "12 对图像全部保留：6 对有局部形态可比处，6 对有限或含混；#110 多词组没有被拆词加入主检验。图廊显示相似与差异，不认证植物身份。已知英文草药书校准能检出强关系，但不能把其命中率套到伏尼契。",
     "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
     "k/t 放宽后，原配对和重新配对都更容易命中；扣除排列平均新增量后只余约 0.054–0.060 个百分点。这个结果约束了简单同形锚点解释，不证明手稿无意义。",
     "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
-    "外部文献 35 条植物图配对已逐条盘点标签支持：12 条有来源编号、12 条仅次序候选、9 条没有对应植物标签、2 条未知。来源编号仍不等于本轮原图认证。"
+    "原始资格表的 35 条植物图配对全部已有来源观察：原12条来源编号、12条次序候选保持分组；剩余11关系补查得到9条无可独立归属标签、1条新空间候选（#188）、1条归属未决（#40）。新候选未评分，也没有回填旧主集。",
+    "书手 H 沿用既有分类作为操作性分组，并非已独立认证的历史身份。新增文献核查区分了同页字形变体与多书手判断，保留 Davis 2020 原文未能直接读取的范围限制。"
   ],
   "plan": "第二个七小时窗口：从标签关联走向固定读法\n2026-11-18 09:06:13–16:06:13 UTC；芝加哥03:06:13–10:06:13 CST。\n\n本轮目标\n把上一轮小幅同页词形关联变成有可追溯图像对象关系、有反例、有固定变换的可检验研究。尽量提出可复查的语义约束；不承诺七小时内能破译。旧全书转写、候选及统计全部已经接触，不重新称盲集。主研究的各阶段具体协议先冻结再计算；主阶段结束则继续下一个阶段，总窗口不自动延长。\n\n阶段1：原图对象与证据设计\n按上轮既定队列，审查前6个双版命中与前6个双版未命中的完整标签位置。保存整页来源、官方图像哈希、标签近似框、可能关联的对象、歧义、正文对应位置。队列依既有结果选出，不是确认样本。视觉评审区分文本引导定位和不看转写/得分的几何描述，AI多次评审不是多位领域专家。核对历史跨页植物对应和变长缩略的一手来源，标明作者假说与本轮观察。\n\n阶段2：保留真实语料结构的对照\n上轮均匀人造词只检查程序，不能充当手稿零假设。设计按物理叶分块、同书手/插图类别、保持词长机会的重新配对或精确枚举。先界定可交换性和共同支持，再决定能否给尾部概率；若支持不足，只报告描述差和敏感性。所有六对高杆变换使用同样预算。对有直接文献支持的变长缩略另立协议，绝不见词补字。\n\n阶段3：跨页对象约束\n只有可靠对象/标签关系才能参与读法验证。先保存图像对应及不同对象对照，再测试完整词、有限变换能否区分它们。根据对象材料决定小范围检验，不用相同数据一边选植物、一边验证名称。若无法可靠识别对象，明确停留在测量与书写机制层面，转做能消除当前假说的对照。不得制造读音、语种或金标。\n\n阶段4：完整复核与发布\n另一计算实现核对完整分母、对照、概率或枚举结果，保存失败与局限；报告经受和未经受的检验。阶段结果在审计后发布现有GitHub Pages，网站说明只是记录的快照。截止前收束正在进行的计算，保留未完成事项；达到七小时终点再结题本窗口。接近截止时不启动无法验收的长任务。\n\n结论门槛\n字形匹配 → 可靠对象关系 → 不依目标词临时变化的映射 → 跨页预测 → 连续语法和历史语言核验。前一层成立不意味着后一层已成立。跨页重复、局部复制和同主题词频都须作为替代解释。\n\n计算资源\n用户已授权必要时SSH计算节点和8卡V100。优先在本地完成图像与计数工作；只在已固定问题、校准和预算需要时使用大算力。按有意义的阶段进展更新，不用空等待填满窗口。\n",
   "downloads": [
@@ -438,6 +502,10 @@
     {
       "label": "本轮研究计划",
       "href": "downloads/semantic7h/plan.txt"
+    },
+    {
+      "label": "当前阶段解释与下一步门槛",
+      "href": "downloads/semantic7h/stage-assessment.txt"
     },
     {
       "label": "原图几何观察",
@@ -454,6 +522,22 @@
     {
       "label": "共同支持盘点",
       "href": "downloads/semantic7h/support.json"
+    },
+    {
+      "label": "35条对象关系证据索引",
+      "href": "downloads/semantic7h/object-registry.txt"
+    },
+    {
+      "label": "对象、标签、已执行检验的完整对照",
+      "href": "downloads/semantic7h/object-registry.json"
+    },
+    {
+      "label": "剩余来源资格原图核对",
+      "href": "downloads/semantic7h/remaining-source-review.txt"
+    },
+    {
+      "label": "书手归属文献与解释边界",
+      "href": "downloads/semantic7h/hand-attribution-review.md"
     },
     {
       "label": "十二对图像观察与限制",
@@ -515,7 +599,7 @@
   "sources": [
     {
       "path": "session.json",
-      "sha256": "6ad7778b040ec8ab122723f29757ade4e3876d529c2ea3f588f1a536e4220bb6"
+      "sha256": "cf7bdd2e614ae231c1e2a3682bf5675e753c7b592164a6cf819a9d0b61ae8393"
     },
     {
       "path": "plan.txt",
@@ -547,7 +631,55 @@
     },
     {
       "path": "publication.json",
-      "sha256": "1f5e912e5c66808678b9a45b457098aee1a8be39bc73e80848b9faeb6d1bd4f0"
+      "sha256": "bf91ce661727db85254d03eaf995e9920edc35c54782aba66ad1b5865f069db9"
+    },
+    {
+      "path": "design/boundary_bridge/publication_projection_v1.json",
+      "sha256": "4b5c432eeaa7b9a0737af063156047f65c631bd46ce8c009249818b21513762c"
+    },
+    {
+      "path": "design/boundary_bridge/audit_v1.json",
+      "sha256": "68a69d8392e4d28aa0b46fcf9a9f3ee3958f4ae21c017f81c413d0e1e573c4a3"
+    },
+    {
+      "path": "visual/boundary_hits/review.json",
+      "sha256": "7ae5ae546dc81d6fb53acf390973ac7c42c2a977c0324d4c926668059c96986f"
+    },
+    {
+      "path": "visual/boundary_hits/receipt.json",
+      "sha256": "2efbf4d28308cffca6a2fb6d3285bf8cf8616438c175de9416733cc3d5f321f1"
+    },
+    {
+      "path": "visual/order_targets/review_v1.json",
+      "sha256": "105c4d6bdb4c87c2e88337c37e1c29b682ff865e82005ea4147c914a95f5385f"
+    },
+    {
+      "path": "visual/order_targets/verification_receipt_v1.json",
+      "sha256": "fc9d61975d2d409155b16d2f662c9683e3d4aa2c9a63d9e79dfc89c4f932291f"
+    },
+    {
+      "path": "design/crossplant/run_v2/complete.json",
+      "sha256": "2206185f8d8c13566b7ee5d3181d8fb42abacc81e67b3b779c62882b278a75d7"
+    },
+    {
+      "path": "design/crossplant/audit_v1.json",
+      "sha256": "cfb04e60f48fa670192a8b5d2abb4eb46e5ff6b4625ceb1c3ca0bca83ff72d2b"
+    },
+    {
+      "path": "design/crossplant/run_v2/ZL__strict_space__page_HI.json.gz",
+      "sha256": "04faa37578c0d2426e043ecc38bccd3c6160fbf89c7eb184ead97dbdea5cbff2"
+    },
+    {
+      "path": "design/crossplant/run_v2/IT__strict_space__page_HI.json.gz",
+      "sha256": "610ef0f983e260c8446dbf80306fa8ef714b881400ce6cf7ca863d5a0fd02981"
+    },
+    {
+      "path": "visual/boundary_hits/crop_receipt_v1.json",
+      "sha256": "12204172018697007e54977bc25ac62c0f14f1476f3176fc7020778575b04057"
+    },
+    {
+      "path": "visual/boundary_hits/crop_receipt_v2.json",
+      "sha256": "208ea4577de63941e360f3e1d045a3e81e1d3cd3e69aee10b5e674f02024a6e5"
     }
   ],
   "gallery": [
@@ -560,6 +692,7 @@
         "f89v2.28"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "A",
       "prior_source": "https://www.voynich.nu/q15/index.html",
       "similarity_zh": "两边都有末端伸出细指状分叉的绿色圆叶形，并由细茎连到分枝。",
@@ -602,6 +735,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006168/286,762,1620,2454/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006168/286,762,1620,2454/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 15,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        },
+        "IT": {
+          "opportunities": 22,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        }
       }
     },
     {
@@ -613,6 +768,7 @@
         "f99r.20"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "两个向下延伸的根状带交叉成窄环，再分成尖端。",
@@ -654,6 +810,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006174/1205,2552,1228,1158/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006174/1205,2552,1228,1158/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 10,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 4
+        },
+        "IT": {
+          "opportunities": 11,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 4
+        }
       }
     },
     {
@@ -665,6 +843,7 @@
         "f99r.46"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "两边都有基部带凹口的三角叶形、小红色末端簇和粗褐根。",
@@ -707,6 +886,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 5,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 7
+        },
+        "IT": {
+          "opportunities": 6,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 7
+        }
       }
     },
     {
@@ -718,6 +919,7 @@
         "f99v.2"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "红色长主轴两侧长出许多细小钩状或尖状分枝。",
@@ -759,6 +961,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006160/466,1703,1703,1866/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006160/466,1703,1703,1866/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 11,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        },
+        "IT": {
+          "opportunities": 16,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        }
       }
     },
     {
@@ -771,6 +995,7 @@
         "f99v.28"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "两边都有粗横根段、向下弯的尖分枝和向上连接部。",
@@ -824,6 +1049,7 @@
         "f100r.2"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "都有由短柄连接的绿色三角或箭头形叶。",
@@ -865,6 +1091,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 1,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 10
+        },
+        "IT": {
+          "opportunities": 1,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 10
+        }
       }
     },
     {
@@ -876,6 +1124,7 @@
         "f100v.3"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "绿色叶单元呈圆形或月牙形、相互重叠，部分向连接处内卷。",
@@ -917,6 +1166,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006099/1172,562,1383,3093/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006099/1172,562,1383,3093/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 7,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        },
+        "IT": {
+          "opportunities": 9,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 6
+        }
       }
     },
     {
@@ -928,6 +1199,7 @@
         "f100v.6"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "窄长绿色小叶沿数条侧枝重复排列，枝叶喷散形比根部更可比。",
@@ -976,6 +1248,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006236/684,137,1870,3490/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006236/684,137,1870,3490/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 2,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 9
+        },
+        "IT": {
+          "opportunities": 1,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 9
+        }
       }
     },
     {
@@ -987,6 +1281,7 @@
         "f102r2.21"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "A",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "横向褐色长体带重复的上下突起，一端有直立的交织状颈部，下方有长回弯。",
@@ -1028,6 +1323,20 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006109/850,2600,1740,1080/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006109/850,2600,1740,1080/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 0,
+          "matches": 0,
+          "rate": null,
+          "query_length": 8
+        },
+        "IT": {
+          "opportunities": 0,
+          "matches": 0,
+          "rate": null,
+          "query_length": 8
+        }
       }
     },
     {
@@ -1039,6 +1348,7 @@
         "f102r2.22"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "A",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "长横筒带重复圆形／椭圆结节轮廓和向下细枝。",
@@ -1080,6 +1390,20 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006118/350,2890,2090,600/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006118/350,2890,2090,600/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 0,
+          "matches": 0,
+          "rate": null,
+          "query_length": 9
+        },
+        "IT": {
+          "opportunities": 0,
+          "matches": 0,
+          "rate": null,
+          "query_length": 9
+        }
       }
     },
     {
@@ -1091,6 +1415,7 @@
         "f102v2.14"
       ],
       "comparison_decision": "limited_or_ambiguous",
+      "batch": "numbered",
       "prior_grade": "S",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "绿色叶轮廓深凹，中心周围有圆形次级叶瓣。",
@@ -1132,6 +1457,28 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006144/605,698,1722,2956/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006144/605,698,1722,2956/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 8,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 5
+        },
+        "IT": {
+          "opportunities": 13,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 5
+        }
       }
     },
     {
@@ -1143,6 +1490,7 @@
         "f102v1.17"
       ],
       "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "numbered",
       "prior_grade": "A",
       "prior_source": "https://www.voynich.nu/q19/index.html",
       "similarity_zh": "粗黄褐色根颈分出弯根，并有弓形绿色叶和长垂指状／梳状裂片。",
@@ -1185,9 +1533,4876 @@
         ],
         "crop_url": "https://collections.library.yale.edu/iiif/2/1006110/442,618,1943,2870/700,/0/default.jpg",
         "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006110/442,618,1943,2870/full/0/default.jpg"
+      },
+      "exact_check": {
+        "ZL": {
+          "opportunities": 0,
+          "matches": 0,
+          "rate": null,
+          "query_length": 8
+        },
+        "IT": {
+          "opportunities": 2,
+          "matches": 0,
+          "rate": {
+            "num": 0,
+            "den": 1,
+            "value": 0.0
+          },
+          "query_length": 8
+        }
       }
+    },
+    {
+      "pair_id": "f88r_8__f15v",
+      "fragment_id": 8,
+      "source_folio": "f88r",
+      "target_folio": "f15v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "P",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图有实涂绿色的宽叶、伸长或回钩的叶端，以及由一处向下分出的多条根线。",
+      "difference_zh": "来源只有两片不等形叶和明显截面状根冠；目标叶片更多、更大，中央另有长直茎。 目标上端是分叉的弯曲轴及许多浅色小端部，来源没有。 目标根部少数长分枝末端膨大；来源根束较密、互相回绕，连接方式不同。",
+      "original_similarities": [
+        "两图有实涂绿色的宽叶、伸长或回钩的叶端，以及由一处向下分出的多条根线。"
+      ],
+      "original_differences": [
+        "来源只有两片不等形叶和明显截面状根冠；目标叶片更多、更大，中央另有长直茎。",
+        "目标上端是分叉的弯曲轴及许多浅色小端部，来源没有。",
+        "目标根部少数长分枝末端膨大；来源根束较密、互相回绕，连接方式不同。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "只比较宽叶轮廓和根部；小片段没有目标上端。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1037112",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1037112/full/full/0/default.jpg",
+        "full_image_sha256": "a1d21ccad0df430b47f3b3df2829bbefb8c4d1644cb70310e6d1de4b01c20013",
+        "object_region_xywh": [
+          1170,
+          1220,
+          675,
+          590
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1037112/1170,1220,675,590/675,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1037112/1170,1220,675,590/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006103",
+        "manifest_label": "15v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006103/full/full/0/default.jpg",
+        "full_image_sha256": "d224773e2e39ef02719c25560e8072e6407bdea9f8d1bdf8da515adb5c2fc127",
+        "object_region_xywh": [
+          1158,
+          142,
+          1559,
+          3520
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006103/1158,142,1559,3520/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006103/1158,142,1559,3520/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006103",
+          "manifest_label": "15v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006103/full/full/0/default.jpg",
+          "full_image_sha256": "d224773e2e39ef02719c25560e8072e6407bdea9f8d1bdf8da515adb5c2fc127",
+          "object_region_xywh": [
+            1158,
+            142,
+            1559,
+            3520
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006103/1158,142,1559,3520/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006103/1158,142,1559,3520/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f88r_11__f90r2",
+      "fragment_id": 11,
+      "source_folio": "f88r",
+      "target_folio": "f90r2",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图都含近圆形、边缘有小圆裂的绿色叶形。 两图较粗的根状线条都带一系列圆凸节，并有横向延伸。",
+      "difference_zh": "来源只有少数叶，沿四周伸出的短柄附于根冠附近；目标大量叶分布在许多长分枝上。 目标有条带状圆鼓基部、两条长而交叉的细连接及数个膨大部位；来源根直接宽幅分流，缺少此结构。 目标顶端有一串浅色端面状图形；来源没有。",
+      "original_similarities": [
+        "两图都含近圆形、边缘有小圆裂的绿色叶形。",
+        "两图较粗的根状线条都带一系列圆凸节，并有横向延伸。"
+      ],
+      "original_differences": [
+        "来源只有少数叶，沿四周伸出的短柄附于根冠附近；目标大量叶分布在许多长分枝上。",
+        "目标有条带状圆鼓基部、两条长而交叉的细连接及数个膨大部位；来源根直接宽幅分流，缺少此结构。",
+        "目标顶端有一串浅色端面状图形；来源没有。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "比较圆裂叶和结节状根轮廓。",
+      "target_unique": true,
+      "notes": [
+        "工作分面为f90r2；官方画布标题是89v (part) and 90r。并非把另一个标题90r的OID1006236移用于此处。"
+      ],
+      "canvas_note": null,
+      "source": {
+        "oid": "1037112",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1037112/full/full/0/default.jpg",
+        "full_image_sha256": "a1d21ccad0df430b47f3b3df2829bbefb8c4d1644cb70310e6d1de4b01c20013",
+        "object_region_xywh": [
+          1450,
+          2160,
+          1100,
+          1120
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1037112/1450,2160,1100,1120/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1037112/1450,2160,1100,1120/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006235",
+        "manifest_label": "89v (part) and 90r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006235/full/full/0/default.jpg",
+        "full_image_sha256": "6aaa777945f288a8ba206921709292eaaf4ea972f9a0bb59cdf3040aaed3e15a",
+        "object_region_xywh": [
+          5400,
+          170,
+          2250,
+          3420
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006235/5400,170,2250,3420/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006235/5400,170,2250,3420/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006235",
+          "manifest_label": "89v (part) and 90r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006235/full/full/0/default.jpg",
+          "full_image_sha256": "6aaa777945f288a8ba206921709292eaaf4ea972f9a0bb59cdf3040aaed3e15a",
+          "object_region_xywh": [
+            5400,
+            170,
+            2250,
+            3420
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006235/5400,170,2250,3420/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006235/5400,170,2250,3420/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f88v_22__f94v",
+      "fragment_id": 22,
+      "source_folio": "f88v",
+      "target_folio": "f94v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "来源可见狭长尖叶，目标也有大量狭长尖叶。 两图细轴汇至一个基点，再分出长的下行根线。",
+      "difference_zh": "来源只有极少数叶和许多长细根；目标是密集扇形叶丛，四根末端各有很大的色块状膨大。 目标高处有深色圆形终端和浅中心；来源未见该结构。 来源背面透印较强，模糊绿色及红色斑不能自动当作此对象的附属部分。",
+      "original_similarities": [
+        "来源可见狭长尖叶，目标也有大量狭长尖叶。",
+        "两图细轴汇至一个基点，再分出长的下行根线。"
+      ],
+      "original_differences": [
+        "来源只有极少数叶和许多长细根；目标是密集扇形叶丛，四根末端各有很大的色块状膨大。",
+        "目标高处有深色圆形终端和浅中心；来源未见该结构。",
+        "来源背面透印较强，模糊绿色及红色斑不能自动当作此对象的附属部分。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "只比较狭长叶、叶柄汇聚与根线。",
+      "target_unique": true,
+      "notes": [
+        "补看source_22_complete官方裁区；继承源框包含左邻对象，比较只指框内右侧细叶与下伸根束。"
+      ],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          1400,
+          2150,
+          1400,
+          1500
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/1400,2150,1400,1500/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/1400,2150,1400,1500/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006241",
+        "manifest_label": "94v and 95r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006241/full/full/0/default.jpg",
+        "full_image_sha256": "04405b1d121a3c73571bad7f5b887b8cf3776a829ee6482e8a82ca095918071d",
+        "object_region_xywh": [
+          680,
+          520,
+          2200,
+          3050
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006241/680,520,2200,3050/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006241/680,520,2200,3050/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006241",
+          "manifest_label": "94v and 95r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006241/full/full/0/default.jpg",
+          "full_image_sha256": "04405b1d121a3c73571bad7f5b887b8cf3776a829ee6482e8a82ca095918071d",
+          "object_region_xywh": [
+            680,
+            520,
+            2200,
+            3050
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006241/680,520,2200,3050/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006241/680,520,2200,3050/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89r1_25__f57r",
+      "fragment_id": 25,
+      "source_folio": "f89r1",
+      "target_folio": "f57r",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "来源和目标均有从细柄伸出的多裂绿色叶形。 两图根冠周围有细线构成的根簇，并伴较粗的弯曲侧部。",
+      "difference_zh": "目标叶片数量显著更多，裂片较深、沿长主茎多层排列；来源只有很少的叶。 目标蓝色终端、长中央轴及两侧开出的枝部，来源没有完整对应。 来源根下部有较粗钩形涂色；目标更多细根围成下垂簇。",
+      "original_similarities": [
+        "来源和目标均有从细柄伸出的多裂绿色叶形。",
+        "两图根冠周围有细线构成的根簇，并伴较粗的弯曲侧部。"
+      ],
+      "original_differences": [
+        "目标叶片数量显著更多，裂片较深、沿长主茎多层排列；来源只有很少的叶。",
+        "目标蓝色终端、长中央轴及两侧开出的枝部，来源没有完整对应。",
+        "来源根下部有较粗钩形涂色；目标更多细根围成下垂簇。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "比较放射/深裂叶、细分枝及根簇。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          3730,
+          170,
+          500,
+          760
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3730,170,500,760/500,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3730,170,500,760/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006186",
+        "manifest_label": "57r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006186/full/full/0/default.jpg",
+        "full_image_sha256": "473727b2ea1dd000a4a15eaa57302a48c410d4f6e670abdd607cd7c7461ff98c",
+        "object_region_xywh": [
+          282,
+          588,
+          2305,
+          3011
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006186/282,588,2305,3011/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006186/282,588,2305,3011/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006186",
+          "manifest_label": "57r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006186/full/full/0/default.jpg",
+          "full_image_sha256": "473727b2ea1dd000a4a15eaa57302a48c410d4f6e670abdd607cd7c7461ff98c",
+          "object_region_xywh": [
+            282,
+            588,
+            2305,
+            3011
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006186/282,588,2305,3011/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006186/282,588,2305,3011/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89r1_26__f43v",
+      "fragment_id": 26,
+      "source_folio": "f89r1",
+      "target_folio": "f43v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "U",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "左图的粗弯曲根与来源横向回弯的粗根共享弯曲主轴。 右图也有弯卷绿色叶轮廓，但其细根束与来源粗主根关系不同。",
+      "difference_zh": "左图根呈紧凑S形并有短毛线，来源是宽大横向U形/钩形；分枝位置不同。 右图有许多独立细根和卷曲杯状叶及小终端；来源的单条粗根、少量叶与它不等价。 两个目标图形都缺少足够完整的部件对应，不能仅凭更相似的局部决定作者本意。",
+      "original_similarities": [
+        "左图的粗弯曲根与来源横向回弯的粗根共享弯曲主轴。",
+        "右图也有弯卷绿色叶轮廓，但其细根束与来源粗主根关系不同。"
+      ],
+      "original_differences": [
+        "左图根呈紧凑S形并有短毛线，来源是宽大横向U形/钩形；分枝位置不同。",
+        "右图有许多独立细根和卷曲杯状叶及小终端；来源的单条粗根、少量叶与它不等价。",
+        "两个目标图形都缺少足够完整的部件对应，不能仅凭更相似的局部决定作者本意。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "分别比较两目标图形，未选择唯一对应。",
+      "target_unique": false,
+      "notes": [
+        "输入plant_pairs将此目标标为page_plant；官方图显示两个分离图形。此报告新增对象层歧义，不回改原记录。",
+        "Petersen归属通过Zandbergen转述且原记录明确pending check；未查档案原件。"
+      ],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          4080,
+          150,
+          1100,
+          820
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/4080,150,1100,820/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/4080,150,1100,820/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006159",
+        "manifest_label": "43v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006159/full/full/0/default.jpg",
+        "full_image_sha256": "13c816595b0ec2ae3ed702ff1b17fe1b3756faec0dbc51ca95ca04873206c133",
+        "object_region_xywh": [
+          432,
+          1009,
+          2354,
+          2690
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006159/432,1009,2354,2690/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006159/432,1009,2354,2690/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006159",
+          "manifest_label": "43v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006159/full/full/0/default.jpg",
+          "full_image_sha256": "13c816595b0ec2ae3ed702ff1b17fe1b3756faec0dbc51ca95ca04873206c133",
+          "object_region_xywh": [
+            456,
+            1033,
+            865,
+            2450
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006159/456,1033,865,2450/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006159/456,1033,865,2450/full/0/default.jpg",
+          "description": "左侧图形：细长分裂叶与粗S形弯根"
+        },
+        {
+          "oid": "1006159",
+          "manifest_label": "43v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006159/full/full/0/default.jpg",
+          "full_image_sha256": "13c816595b0ec2ae3ed702ff1b17fe1b3756faec0dbc51ca95ca04873206c133",
+          "object_region_xywh": [
+            696,
+            1369,
+            2065,
+            2306
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006159/696,1369,2065,2306/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006159/696,1369,2065,2306/full/0/default.jpg",
+          "description": "右侧图形：卷曲杯状绿叶、分枝小终端和长细根束"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89r1_28__f30r",
+      "fragment_id": 28,
+      "source_folio": "f89r1",
+      "target_folio": "f30r",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图都有细茎接到根冠，根由一处向下/侧方分出。 根的若干末端弯曲、变细。",
+      "difference_zh": "来源几乎只保留无叶茎与根，目标的三片一组长叶和上端蓝色系列都没有来源对应。 来源根较粗、横向扩散且局部涂色；目标根更细、少且浅。",
+      "original_similarities": [
+        "两图都有细茎接到根冠，根由一处向下/侧方分出。",
+        "根的若干末端弯曲、变细。"
+      ],
+      "original_differences": [
+        "来源几乎只保留无叶茎与根，目标的三片一组长叶和上端蓝色系列都没有来源对应。",
+        "来源根较粗、横向扩散且局部涂色；目标根更细、少且浅。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "仅根冠和几条弯曲根线有可比部分。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          3380,
+          1260,
+          650,
+          620
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3380,1260,650,620/650,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3380,1260,650,620/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006132",
+        "manifest_label": "30r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006132/full/full/0/default.jpg",
+        "full_image_sha256": "df1a0812c502a83e77529d664416c5fec91f23353fd83f75f9d40c12fceb03b6",
+        "object_region_xywh": [
+          663,
+          708,
+          1737,
+          2948
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006132/663,708,1737,2948/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006132/663,708,1737,2948/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006132",
+          "manifest_label": "30r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006132/full/full/0/default.jpg",
+          "full_image_sha256": "df1a0812c502a83e77529d664416c5fec91f23353fd83f75f9d40c12fceb03b6",
+          "object_region_xywh": [
+            663,
+            708,
+            1737,
+            2948
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006132/663,708,1737,2948/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006132/663,708,1737,2948/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89r1_31__f33r",
+      "fragment_id": 31,
+      "source_folio": "f89r1",
+      "target_folio": "f33r",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图均有数条红棕色长根从中央分流，夹有较浅色内部线。",
+      "difference_zh": "来源根条主要长距离下垂，目标还有两条很长的水平侧伸部，并以带内部线痕的膨大轮廓结束。 目标的多片尖叶、大圆终端及中央长轴，来源没有。 来源根附近存在淡淡卷曲线痕，无法可靠分清前景细节与透印，不用其作为独特匹配证据。",
+      "original_similarities": [
+        "两图均有数条红棕色长根从中央分流，夹有较浅色内部线。"
+      ],
+      "original_differences": [
+        "来源根条主要长距离下垂，目标还有两条很长的水平侧伸部，并以带内部线痕的膨大轮廓结束。",
+        "目标的多片尖叶、大圆终端及中央长轴，来源没有。",
+        "来源根附近存在淡淡卷曲线痕，无法可靠分清前景细节与透印，不用其作为独特匹配证据。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "ambiguous",
+      "comparison_scope": "只比较红棕根线；保留来源标签附着歧义。",
+      "target_unique": true,
+      "notes": [
+        "沿用source_attachment_status=ambiguous；不因目标图形而重选来源字串或对象。"
+      ],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          3610,
+          2560,
+          570,
+          1110
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3610,2560,570,1110/570,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/3610,2560,570,1110/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006138",
+        "manifest_label": "33r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006138/full/full/0/default.jpg",
+        "full_image_sha256": "28e6d9f02b9ca96b85275b7c6dd6e94453d3a2f5c6038d9966933d0229da9e74",
+        "object_region_xywh": [
+          230,
+          692,
+          2305,
+          2950
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006138/230,692,2305,2950/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006138/230,692,2305,2950/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006138",
+          "manifest_label": "33r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006138/full/full/0/default.jpg",
+          "full_image_sha256": "28e6d9f02b9ca96b85275b7c6dd6e94453d3a2f5c6038d9966933d0229da9e74",
+          "object_region_xywh": [
+            230,
+            692,
+            2305,
+            2950
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006138/230,692,2305,2950/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006138/230,692,2305,2950/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89r2_35__f35v",
+      "fragment_id": 35,
+      "source_folio": "f89r2",
+      "target_folio": "f35v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图都有多条细柄通向宽阔、圆裂边缘的绿色冠部。 两图基部有粗而横向伸展的根状部分，末端弯曲。",
+      "difference_zh": "来源冠部近贴根冠、结构压缩；目标有很长直立轴，另有许多成组小圆及几片侧叶。 目标根沿横向轴有多处下行分枝；来源含更明显的回环/交叉形状和少数大分枝。 来源折线穿过冠与根，局部比例和轮廓不易精确比较。",
+      "original_similarities": [
+        "两图都有多条细柄通向宽阔、圆裂边缘的绿色冠部。",
+        "两图基部有粗而横向伸展的根状部分，末端弯曲。"
+      ],
+      "original_differences": [
+        "来源冠部近贴根冠、结构压缩；目标有很长直立轴，另有许多成组小圆及几片侧叶。",
+        "目标根沿横向轴有多处下行分枝；来源含更明显的回环/交叉形状和少数大分枝。",
+        "来源折线穿过冠与根，局部比例和轮廓不易精确比较。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "比较宽圆裂叶冠和粗横向根。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006233",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+        "full_image_sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+        "object_region_xywh": [
+          6200,
+          170,
+          1400,
+          830
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006233/6200,170,1400,830/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006233/6200,170,1400,830/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006143",
+        "manifest_label": "35v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006143/full/full/0/default.jpg",
+        "full_image_sha256": "564412e99b04406f51afe2c8f9ab20320518b3e71b91deee48fb16ee1ad3ffbd",
+        "object_region_xywh": [
+          666,
+          166,
+          2080,
+          3507
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006143/666,166,2080,3507/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006143/666,166,2080,3507/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006143",
+          "manifest_label": "35v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006143/full/full/0/default.jpg",
+          "full_image_sha256": "564412e99b04406f51afe2c8f9ab20320518b3e71b91deee48fb16ee1ad3ffbd",
+          "object_region_xywh": [
+            666,
+            166,
+            2080,
+            3507
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006143/666,166,2080,3507/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006143/666,166,2080,3507/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89v2_50__f10v",
+      "fragment_id": 50,
+      "source_folio": "f89v2",
+      "target_folio": "f10v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图都从一个较粗基部伸出多条弯曲、渐尖的分枝。",
+      "difference_zh": "来源根冠呈较小近团块状，多根向下/右弯；目标根是明显楔形主体并向右伸出长叉。 来源上部无可比绿叶，目标成列宽叶和两个蓝色终端均缺失。 这类分根形状在其他手稿图中也可见，此审查未做排他性验证。",
+      "original_similarities": [
+        "两图都从一个较粗基部伸出多条弯曲、渐尖的分枝。"
+      ],
+      "original_differences": [
+        "来源根冠呈较小近团块状，多根向下/右弯；目标根是明显楔形主体并向右伸出长叉。",
+        "来源上部无可比绿叶，目标成列宽叶和两个蓝色终端均缺失。",
+        "这类分根形状在其他手稿图中也可见，此审查未做排他性验证。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "来源基本为根部；只与目标根部比较。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006234",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006234/full/full/0/default.jpg",
+        "full_image_sha256": "b6b0dd8ba7cd316f3b09a8b156d1eed0eb36ad8ec9086b975969f4f8f7dd5406",
+        "object_region_xywh": [
+          800,
+          280,
+          530,
+          820
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006234/800,280,530,820/530,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006234/800,280,530,820/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006095",
+        "manifest_label": "10v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006095/full/full/0/default.jpg",
+        "full_image_sha256": "5cff25a923f5e8173a2a8ad21ec247d7c9bd090ac379322d5dda4d17be916403",
+        "object_region_xywh": [
+          1230,
+          1159,
+          1538,
+          2508
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006095/1230,1159,1538,2508/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006095/1230,1159,1538,2508/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006095",
+          "manifest_label": "10v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006095/full/full/0/default.jpg",
+          "full_image_sha256": "5cff25a923f5e8173a2a8ad21ec247d7c9bd090ac379322d5dda4d17be916403",
+          "object_region_xywh": [
+            1230,
+            1159,
+            1538,
+            2508
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006095/1230,1159,1538,2508/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006095/1230,1159,1538,2508/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89v2_52__f40v",
+      "fragment_id": 52,
+      "source_folio": "f89v2",
+      "target_folio": "f40v",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "P",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "来源呈三处相邻红棕色膨大/冠部并向下伸出细长根；左下图也有约三处主要膨大根端。 右图根部同样有多处红棕膨大部和细连接，但数量更多。",
+      "difference_zh": "来源膨大部靠上呈横列，细长根向下；两个目标均把膨大部画在细连接的较低处，连通次序并不相同。 左图有三片显著绿叶；右图有巨大多圈终端和宽绿叶，来源均未呈现。 仅凭三处或多处红色形状不能判定作者指定左图还是右图。",
+      "original_similarities": [
+        "来源呈三处相邻红棕色膨大/冠部并向下伸出细长根；左下图也有约三处主要膨大根端。",
+        "右图根部同样有多处红棕膨大部和细连接，但数量更多。"
+      ],
+      "original_differences": [
+        "来源膨大部靠上呈横列，细长根向下；两个目标均把膨大部画在细连接的较低处，连通次序并不相同。",
+        "左图有三片显著绿叶；右图有巨大多圈终端和宽绿叶，来源均未呈现。",
+        "仅凭三处或多处红色形状不能判定作者指定左图还是右图。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "将来源三处红色冠/根连接与两个目标根群分别比较，保持未决。",
+      "target_unique": false,
+      "notes": [
+        "两个目标对象区域都保存；不根据局部相似任选一图作为文本匹配目标。"
+      ],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006234",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006234/full/full/0/default.jpg",
+        "full_image_sha256": "b6b0dd8ba7cd316f3b09a8b156d1eed0eb36ad8ec9086b975969f4f8f7dd5406",
+        "object_region_xywh": [
+          2140,
+          220,
+          350,
+          650
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006234/2140,220,350,650/350,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006234/2140,220,350,650/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006153",
+        "manifest_label": "40v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006153/full/full/0/default.jpg",
+        "full_image_sha256": "bce0c42319b096126ad9fe0558ecfb8a61335867cbd1869e0865eaacf54c1087",
+        "object_region_xywh": [
+          360,
+          168,
+          2306,
+          3482
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006153/360,168,2306,3482/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006153/360,168,2306,3482/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006153",
+          "manifest_label": "40v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006153/full/full/0/default.jpg",
+          "full_image_sha256": "bce0c42319b096126ad9fe0558ecfb8a61335867cbd1869e0865eaacf54c1087",
+          "object_region_xywh": [
+            360,
+            2162,
+            961,
+            1489
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006153/360,2162,961,1489/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006153/360,2162,961,1489/full/0/default.jpg",
+          "description": "左下较小图形：三片绿叶及三个主要膨大根端"
+        },
+        {
+          "oid": "1006153",
+          "manifest_label": "40v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006153/full/full/0/default.jpg",
+          "full_image_sha256": "bce0c42319b096126ad9fe0558ecfb8a61335867cbd1869e0865eaacf54c1087",
+          "object_region_xywh": [
+            1249,
+            168,
+            1417,
+            3482
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006153/1249,168,1417,3482/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006153/1249,168,1417,3482/full/0/default.jpg",
+          "description": "右侧大图形：巨大圆盘终端、宽绿叶及多枚膨大根端"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89v2_54__f48v",
+      "fragment_id": 54,
+      "source_folio": "f89v2",
+      "target_folio": "f48v",
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "来源和目标都有不规则、较深分裂且带圆钩端的绿色叶形。 来源主根簇经一条延伸部连接到较小次根簇；目标页底也有主、次两个相连根簇。",
+      "difference_zh": "来源只画少量大叶、涂色根冠和较粗连接；目标叶片沿长枝多层重复，根部多为浅色细线。 目标上方两组小杯状终端，来源没有。 根簇数量和连接这一粗粒度相似不保证笔画细节或植物身份相同。",
+      "original_similarities": [
+        "来源和目标都有不规则、较深分裂且带圆钩端的绿色叶形。",
+        "来源主根簇经一条延伸部连接到较小次根簇；目标页底也有主、次两个相连根簇。"
+      ],
+      "original_differences": [
+        "来源只画少量大叶、涂色根冠和较粗连接；目标叶片沿长枝多层重复，根部多为浅色细线。",
+        "目标上方两组小杯状终端，来源没有。",
+        "根簇数量和连接这一粗粒度相似不保证笔画细节或植物身份相同。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "比较深裂叶形与主/次根簇。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006234",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006234/full/full/0/default.jpg",
+        "full_image_sha256": "b6b0dd8ba7cd316f3b09a8b156d1eed0eb36ad8ec9086b975969f4f8f7dd5406",
+        "object_region_xywh": [
+          3070,
+          310,
+          860,
+          1090
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006234/3070,310,860,1090/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006234/3070,310,860,1090/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006169",
+        "manifest_label": "48v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006169/full/full/0/default.jpg",
+        "full_image_sha256": "c0ecc85912878c5c27ad64d560dd088e703ea95e68a87aaecb112a4aabcbe516",
+        "object_region_xywh": [
+          738,
+          541,
+          1598,
+          2925
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006169/738,541,1598,2925/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006169/738,541,1598,2925/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006169",
+          "manifest_label": "48v",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006169/full/full/0/default.jpg",
+          "full_image_sha256": "c0ecc85912878c5c27ad64d560dd088e703ea95e68a87aaecb112a4aabcbe516",
+          "object_region_xywh": [
+            738,
+            541,
+            1598,
+            2925
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006169/738,541,1598,2925/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006169/738,541,1598,2925/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
+    },
+    {
+      "pair_id": "f89v2_56__f24r",
+      "fragment_id": 56,
+      "source_folio": "f89v2",
+      "target_folio": "f24r",
+      "comparison_decision": "limited_or_ambiguous",
+      "batch": "order",
+      "candidate_locators": [],
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两图根状结构都从一处汇合点分出多条长而弯曲的条状分枝。",
+      "difference_zh": "来源根较粗、红棕涂色并向横侧回绕、交叉；目标根多为未着色细线、向下扇状伸展。 目标多条长轴、下垂绿色叶和两个大终端，来源片段没有完整对应。 来源右邻大绿叶及淡透印不能自动并入本片段。",
+      "original_similarities": [
+        "两图根状结构都从一处汇合点分出多条长而弯曲的条状分枝。"
+      ],
+      "original_differences": [
+        "来源根较粗、红棕涂色并向横侧回绕、交叉；目标根多为未着色细线、向下扇状伸展。",
+        "目标多条长轴、下垂绿色叶和两个大终端，来源片段没有完整对应。",
+        "来源右邻大绿叶及淡透印不能自动并入本片段。"
+      ],
+      "lexical_scope": "order_candidate_not_scored",
+      "attachment_status": "clear",
+      "comparison_scope": "只比较根簇，来源上部不完整。",
+      "target_unique": true,
+      "notes": [],
+      "canvas_note": null,
+      "source": {
+        "oid": "1006234",
+        "manifest_label": "见完整画布",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006234/full/full/0/default.jpg",
+        "full_image_sha256": "b6b0dd8ba7cd316f3b09a8b156d1eed0eb36ad8ec9086b975969f4f8f7dd5406",
+        "object_region_xywh": [
+          1500,
+          1300,
+          1170,
+          850
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006234/1500,1300,1170,850/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006234/1500,1300,1170,850/full/0/default.jpg",
+        "description": null
+      },
+      "target": {
+        "oid": "1006120",
+        "manifest_label": "24r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006120/full/full/0/default.jpg",
+        "full_image_sha256": "3700fe396154e836b0acd3da86aef1d307f9d2da773208e476ee9db2e80de9e6",
+        "object_region_xywh": [
+          538,
+          314,
+          1882,
+          3293
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006120/538,314,1882,3293/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006120/538,314,1882,3293/full/0/default.jpg",
+        "description": null
+      },
+      "target_regions": [
+        {
+          "oid": "1006120",
+          "manifest_label": "24r",
+          "source_url": "https://collections.library.yale.edu/iiif/2/1006120/full/full/0/default.jpg",
+          "full_image_sha256": "3700fe396154e836b0acd3da86aef1d307f9d2da773208e476ee9db2e80de9e6",
+          "object_region_xywh": [
+            538,
+            314,
+            1882,
+            3293
+          ],
+          "crop_url": "https://collections.library.yale.edu/iiif/2/1006120/538,314,1882,3293/700,/0/default.jpg",
+          "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006120/538,314,1882,3293/full/0/default.jpg",
+          "description": "本页主要连续植物状图形"
+        }
+      ]
     }
   ],
-  "gallery_scope": "Source record order, not ranked by lexical scores. Only the selected two official Yale IIIF crops are loaded; author overview images are not published.",
+  "boundary": {
+    "rules": [
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL0R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 0
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 368,
+          "value": 0.002717391304347826
+        },
+        "delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 3312,
+          "value": -0.00030193236714975844
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL0R1",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL1R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 8832,
+          "value": -0.00011322463768115942
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL0R2",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -5,
+          "den": 1408,
+          "value": -0.0035511363636363635
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL1R1",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R0_bL2R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL0R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL0R1",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 368,
+          "value": 0.002717391304347826
+        },
+        "delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 2208,
+          "value": -0.0004528985507246377
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL1R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL0R2",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 8832,
+          "value": -0.00011322463768115942
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL1R1",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -7,
+          "den": 17664,
+          "value": -0.000396286231884058
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R1_bL2R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 6624,
+          "value": -0.00015096618357487922
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL0R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -37,
+          "den": 344448,
+          "value": -0.00010741824600520253
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL0R1",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL1R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 7,
+          "den": 1104,
+          "value": 0.006340579710144928
+        },
+        "delta": {
+          "num": -7,
+          "den": 1104,
+          "value": -0.006340579710144928
+        },
+        "conditional_delta": {
+          "num": -799,
+          "den": 618240,
+          "value": -0.001292378364389234
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL0R2",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1472,
+          "value": 0.0006793478260869565
+        },
+        "delta": {
+          "num": -1,
+          "den": 1472,
+          "value": -0.0006793478260869565
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 4784,
+          "value": -0.00020903010033444816
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL1R1",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R0_bL2R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 5888,
+          "value": -0.00016983695652173913
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL0R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 17,
+          "den": 1104,
+          "value": 0.015398550724637682
+        },
+        "delta": {
+          "num": -17,
+          "den": 1104,
+          "value": -0.015398550724637682
+        },
+        "conditional_delta": {
+          "num": -95491,
+          "den": 34908480,
+          "value": -0.0027354671415083095
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL0R1",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -15,
+          "den": 81328,
+          "value": -0.0001844383238245131
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL1R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 7,
+          "den": 1104,
+          "value": 0.006340579710144928
+        },
+        "delta": {
+          "num": -7,
+          "den": 1104,
+          "value": -0.006340579710144928
+        },
+        "conditional_delta": {
+          "num": -193,
+          "den": 200928,
+          "value": -0.0009605430801082975
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL0R2",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 184,
+          "value": 0.005434782608695652
+        },
+        "delta": {
+          "num": -1,
+          "den": 184,
+          "value": -0.005434782608695652
+        },
+        "conditional_delta": {
+          "num": -16897,
+          "den": 15301440,
+          "value": -0.0011042751531881968
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL1R1",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 368,
+          "value": 0.002717391304347826
+        },
+        "delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "conditional_delta": {
+          "num": -185,
+          "den": 255024,
+          "value": -0.000725421921074095
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL0R2_bL2R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 1656,
+          "value": -0.0006038647342995169
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL0R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -41,
+          "den": 342240,
+          "value": -0.00011979897148200093
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL0R1",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 368,
+          "value": 0.002717391304347826
+        },
+        "delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "conditional_delta": {
+          "num": -497,
+          "den": 1722240,
+          "value": -0.0002885776662950576
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL1R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 8832,
+          "value": -0.00011322463768115942
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL0R2",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 13248,
+          "value": -7.548309178743961e-05
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL1R1",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 3,
+          "den": 368,
+          "value": 0.008152173913043478
+        },
+        "delta": {
+          "num": -3,
+          "den": 368,
+          "value": -0.008152173913043478
+        },
+        "conditional_delta": {
+          "num": -949,
+          "den": 463680,
+          "value": -0.002046670117322291
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL1R1_bL2R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL0R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 35,
+          "den": 736,
+          "value": 0.04755434782608696
+        },
+        "delta": {
+          "num": -35,
+          "den": 736,
+          "value": -0.04755434782608696
+        },
+        "conditional_delta": {
+          "num": -80943779,
+          "den": 10943808480,
+          "value": -0.007396308072087168
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL0R1",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 184,
+          "value": 0.005434782608695652
+        },
+        "delta": {
+          "num": -1,
+          "den": 184,
+          "value": -0.005434782608695652
+        },
+        "conditional_delta": {
+          "num": -2567,
+          "den": 7650720,
+          "value": -0.00033552397682832467
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL1R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 73,
+          "den": 2208,
+          "value": 0.03306159420289855
+        },
+        "delta": {
+          "num": -73,
+          "den": 2208,
+          "value": -0.03306159420289855
+        },
+        "conditional_delta": {
+          "num": -62878789,
+          "den": 16316899200,
+          "value": -0.003853599156879023
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL0R2",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 368,
+          "value": 0.002717391304347826
+        },
+        "delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "conditional_delta": {
+          "num": -43,
+          "den": 107640,
+          "value": -0.00039947974730583424
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL1R1",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -25,
+          "den": 119232,
+          "value": -0.00020967525496511005
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "ZL",
+        "rule": {
+          "id": "qL2R0_bL2R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 7,
+          "den": 276,
+          "value": 0.025362318840579712
+        },
+        "delta": {
+          "num": -7,
+          "den": 276,
+          "value": -0.025362318840579712
+        },
+        "conditional_delta": {
+          "num": -361397,
+          "den": 59675616,
+          "value": -0.006056024624865205
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL0R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 0
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 5,
+          "den": 1104,
+          "value": 0.004528985507246377
+        },
+        "delta": {
+          "num": -5,
+          "den": 1104,
+          "value": -0.004528985507246377
+        },
+        "conditional_delta": {
+          "num": -181,
+          "den": 503424,
+          "value": -0.0003595378845664887
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL0R1",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL1R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 276,
+          "value": 0.0036231884057971015
+        },
+        "delta": {
+          "num": -1,
+          "den": 276,
+          "value": -0.0036231884057971015
+        },
+        "conditional_delta": {
+          "num": -511,
+          "den": 397440,
+          "value": -0.0012857286634460547
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL0R2",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 2208,
+          "value": -0.0004528985507246377
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL1R1",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R0_bL2R0",
+          "label_cut": [
+            0,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 11,
+        "invalid_labels": 0,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL0R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1472,
+          "value": 0.0006793478260869565
+        },
+        "delta": {
+          "num": -1,
+          "den": 1472,
+          "value": -0.0006793478260869565
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 14720,
+          "value": -6.793478260869565e-05
+        },
+        "conditional_candidates": 10
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL0R1",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 11,
+          "den": 1104,
+          "value": 0.009963768115942028
+        },
+        "delta": {
+          "num": -11,
+          "den": 1104,
+          "value": -0.009963768115942028
+        },
+        "conditional_delta": {
+          "num": -47137,
+          "den": 57264480,
+          "value": -0.0008231455170814438
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL1R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL0R2",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 4784,
+          "value": -0.00020903010033444816
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL1R1",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 5,
+          "den": 1104,
+          "value": 0.004528985507246377
+        },
+        "delta": {
+          "num": -5,
+          "den": 1104,
+          "value": -0.004528985507246377
+        },
+        "conditional_delta": {
+          "num": -217,
+          "den": 132480,
+          "value": -0.0016379830917874396
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R1_bL2R0",
+          "label_cut": [
+            0,
+            1
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1104,
+          "value": 0.0009057971014492754
+        },
+        "delta": {
+          "num": -1,
+          "den": 1104,
+          "value": -0.0009057971014492754
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 3312,
+          "value": -0.00030193236714975844
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL0R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 1
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 7,
+          "den": 1104,
+          "value": 0.006340579710144928
+        },
+        "delta": {
+          "num": -7,
+          "den": 1104,
+          "value": -0.006340579710144928
+        },
+        "conditional_delta": {
+          "num": -114461,
+          "den": 320480160,
+          "value": -0.00035715471435111617
+        },
+        "conditional_candidates": 10
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL0R1",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL1R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 3,
+          "den": 368,
+          "value": 0.008152173913043478
+        },
+        "delta": {
+          "num": -3,
+          "den": 368,
+          "value": -0.008152173913043478
+        },
+        "conditional_delta": {
+          "num": -159083,
+          "den": 132612480,
+          "value": -0.0011996080610211044
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL0R2",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 1472,
+          "value": 0.0006793478260869565
+        },
+        "delta": {
+          "num": -1,
+          "den": 1472,
+          "value": -0.0006793478260869565
+        },
+        "conditional_delta": {
+          "num": -1,
+          "den": 7728,
+          "value": -0.00012939958592132506
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL1R1",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R0_bL2R0",
+          "label_cut": [
+            1,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 10,
+        "invalid_labels": 1,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 276,
+          "value": 0.0036231884057971015
+        },
+        "delta": {
+          "num": -1,
+          "den": 276,
+          "value": -0.0036231884057971015
+        },
+        "conditional_delta": {
+          "num": -59,
+          "den": 44160,
+          "value": -0.001336050724637681
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL0R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 1,
+        "source_leaves_hit": [
+          "f99"
+        ],
+        "target_leaves_hit": [
+          "f44"
+        ],
+        "target_rate": {
+          "num": 1,
+          "den": 12,
+          "value": 0.08333333333333333
+        },
+        "control_rate": {
+          "num": 49,
+          "den": 2208,
+          "value": 0.022192028985507248
+        },
+        "delta": {
+          "num": 45,
+          "den": 736,
+          "value": 0.06114130434782609
+        },
+        "conditional_delta": {
+          "num": 29357961728903,
+          "den": 5622608531764224,
+          "value": 0.00522141307954286
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL0R1",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 5,
+          "den": 1104,
+          "value": 0.004528985507246377
+        },
+        "delta": {
+          "num": -5,
+          "den": 1104,
+          "value": -0.004528985507246377
+        },
+        "conditional_delta": {
+          "num": -929,
+          "den": 2202480,
+          "value": -0.0004217972467400385
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL1R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 13,
+          "den": 1104,
+          "value": 0.01177536231884058
+        },
+        "delta": {
+          "num": -13,
+          "den": 1104,
+          "value": -0.01177536231884058
+        },
+        "conditional_delta": {
+          "num": -3040551293,
+          "den": 2197705023360,
+          "value": -0.0013835120094285445
+        },
+        "conditional_candidates": 8
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL0R2",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 17,
+          "den": 1104,
+          "value": 0.015398550724637682
+        },
+        "delta": {
+          "num": -17,
+          "den": 1104,
+          "value": -0.015398550724637682
+        },
+        "conditional_delta": {
+          "num": -1267,
+          "den": 728640,
+          "value": -0.0017388559508124725
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL1R1",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 276,
+          "value": 0.0036231884057971015
+        },
+        "delta": {
+          "num": -1,
+          "den": 276,
+          "value": -0.0036231884057971015
+        },
+        "conditional_delta": {
+          "num": -51,
+          "den": 64768,
+          "value": -0.0007874258893280632
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL0R2_bL2R0",
+          "label_cut": [
+            0,
+            2
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 8,
+        "invalid_labels": 3,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 138,
+          "value": 0.007246376811594203
+        },
+        "delta": {
+          "num": -1,
+          "den": 138,
+          "value": -0.007246376811594203
+        },
+        "conditional_delta": {
+          "num": -128833,
+          "den": 183246336,
+          "value": -0.0007030590778087918
+        },
+        "conditional_candidates": 5
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL0R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -157,
+          "den": 1538976,
+          "value": -0.00010201588588775914
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL0R1",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 3,
+          "den": 368,
+          "value": 0.008152173913043478
+        },
+        "delta": {
+          "num": -3,
+          "den": 368,
+          "value": -0.008152173913043478
+        },
+        "conditional_delta": {
+          "num": -5481649,
+          "den": 12178246080,
+          "value": -0.00045011810107880494
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL1R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL0R2",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL1R1",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 69,
+          "value": 0.014492753623188406
+        },
+        "delta": {
+          "num": -1,
+          "den": 69,
+          "value": -0.014492753623188406
+        },
+        "conditional_delta": {
+          "num": -10184443,
+          "den": 5039274240,
+          "value": -0.0020210138434537746
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL1R1_bL2R0",
+          "label_cut": [
+            1,
+            1
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_delta": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL0R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            0
+          ],
+          "total_cut": 2
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 35,
+          "den": 552,
+          "value": 0.06340579710144928
+        },
+        "delta": {
+          "num": -35,
+          "den": 552,
+          "value": -0.06340579710144928
+        },
+        "conditional_delta": {
+          "num": -14300709101,
+          "den": 1892981217600,
+          "value": -0.007554596404887224
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL0R1",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            1
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 138,
+          "value": 0.007246376811594203
+        },
+        "delta": {
+          "num": -1,
+          "den": 138,
+          "value": -0.007246376811594203
+        },
+        "conditional_delta": {
+          "num": -123799,
+          "den": 364730688,
+          "value": -0.0003394257847587533
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL1R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            1,
+            0
+          ],
+          "total_cut": 3
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 1,
+        "source_leaves_hit": [
+          "f100"
+        ],
+        "target_leaves_hit": [
+          "f13"
+        ],
+        "target_rate": {
+          "num": 1,
+          "den": 12,
+          "value": 0.08333333333333333
+        },
+        "control_rate": {
+          "num": 101,
+          "den": 2208,
+          "value": 0.04574275362318841
+        },
+        "delta": {
+          "num": 83,
+          "den": 2208,
+          "value": 0.03759057971014493
+        },
+        "conditional_delta": {
+          "num": -298975483393,
+          "den": 857104959110400,
+          "value": -0.00034882015348891506
+        },
+        "conditional_candidates": 9
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL0R2",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            0,
+            2
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 276,
+          "value": 0.0036231884057971015
+        },
+        "delta": {
+          "num": -1,
+          "den": 276,
+          "value": -0.0036231884057971015
+        },
+        "conditional_delta": {
+          "num": -1549,
+          "den": 4504320,
+          "value": -0.00034389208581983517
+        },
+        "conditional_candidates": 7
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL1R1",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            1,
+            1
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 552,
+          "value": 0.0018115942028985507
+        },
+        "delta": {
+          "num": -1,
+          "den": 552,
+          "value": -0.0018115942028985507
+        },
+        "conditional_delta": {
+          "num": -19,
+          "den": 129536,
+          "value": -0.00014667737154150197
+        },
+        "conditional_candidates": 6
+      },
+      {
+        "version": "IT",
+        "rule": {
+          "id": "qL2R0_bL2R0",
+          "label_cut": [
+            2,
+            0
+          ],
+          "body_cut": [
+            2,
+            0
+          ],
+          "total_cut": 4
+        },
+        "candidates": 11,
+        "valid_labels": 9,
+        "invalid_labels": 2,
+        "target_hit_candidates": 0,
+        "source_leaves_hit": [],
+        "target_leaves_hit": [],
+        "target_rate": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "control_rate": {
+          "num": 1,
+          "den": 23,
+          "value": 0.043478260869565216
+        },
+        "delta": {
+          "num": -1,
+          "den": 23,
+          "value": -0.043478260869565216
+        },
+        "conditional_delta": {
+          "num": -7027061,
+          "den": 941402880,
+          "value": -0.007464456662805196
+        },
+        "conditional_candidates": 6
+      }
+    ],
+    "loo": {
+      "ZL": {
+        "test_delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "baseline_delta": {
+          "num": -1,
+          "den": 368,
+          "value": -0.002717391304347826
+        },
+        "gain_vs_baseline": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "folds": [
+          {
+            "held_source_leaf": "f100",
+            "selected_rule": {
+              "id": "qL0R0_bL0R1",
+              "label_cut": [
+                0,
+                0
+              ],
+              "body_cut": [
+                0,
+                1
+              ],
+              "total_cut": 1
+            },
+            "train_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [
+              "f99r_94__f96v"
+            ],
+            "train_candidates": 7,
+            "test_candidates": 3
+          },
+          {
+            "held_source_leaf": "f102",
+            "selected_rule": {
+              "id": "qL0R0_bL0R1",
+              "label_cut": [
+                0,
+                0
+              ],
+              "body_cut": [
+                0,
+                1
+              ],
+              "total_cut": 1
+            },
+            "train_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [],
+            "train_candidates": 7,
+            "test_candidates": 4
+          },
+          {
+            "held_source_leaf": "f89",
+            "selected_rule": {
+              "id": "qL0R0_bL0R1",
+              "label_cut": [
+                0,
+                0
+              ],
+              "body_cut": [
+                0,
+                1
+              ],
+              "total_cut": 1
+            },
+            "train_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [],
+            "train_candidates": 10,
+            "test_candidates": 1
+          },
+          {
+            "held_source_leaf": "f99",
+            "selected_rule": {
+              "id": "qL0R0_bL0R0",
+              "label_cut": [
+                0,
+                0
+              ],
+              "body_cut": [
+                0,
+                0
+              ],
+              "total_cut": 0
+            },
+            "train_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "test_delta": {
+              "num": -1,
+              "den": 92,
+              "value": -0.010869565217391304
+            },
+            "baseline_delta": {
+              "num": -1,
+              "den": 92,
+              "value": -0.010869565217391304
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [
+              "f100r_116__f96v"
+            ],
+            "train_candidates": 7,
+            "test_candidates": 3
+          }
+        ]
+      },
+      "IT": {
+        "test_delta": {
+          "num": -5,
+          "den": 1104,
+          "value": -0.004528985507246377
+        },
+        "baseline_delta": {
+          "num": -5,
+          "den": 1104,
+          "value": -0.004528985507246377
+        },
+        "gain_vs_baseline": {
+          "num": 0,
+          "den": 1,
+          "value": 0.0
+        },
+        "folds": [
+          {
+            "held_source_leaf": "f100",
+            "selected_rule": {
+              "id": "qL0R2_bL0R0",
+              "label_cut": [
+                0,
+                2
+              ],
+              "body_cut": [
+                0,
+                0
+              ],
+              "total_cut": 2
+            },
+            "train_delta": {
+              "num": 21,
+              "den": 172,
+              "value": 0.12209302325581395
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": -1,
+              "den": 138,
+              "value": -0.007246376811594203
+            },
+            "gain_vs_baseline": {
+              "num": 1,
+              "den": 138,
+              "value": 0.007246376811594203
+            },
+            "purged_pair_ids": [
+              "f99r_94__f96v"
+            ],
+            "train_candidates": 7,
+            "test_candidates": 3
+          },
+          {
+            "held_source_leaf": "f102",
+            "selected_rule": {
+              "id": "qL0R2_bL0R0",
+              "label_cut": [
+                0,
+                2
+              ],
+              "body_cut": [
+                0,
+                0
+              ],
+              "total_cut": 2
+            },
+            "train_delta": {
+              "num": 121,
+              "den": 1512,
+              "value": 0.08002645502645503
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [],
+            "train_candidates": 7,
+            "test_candidates": 4
+          },
+          {
+            "held_source_leaf": "f89",
+            "selected_rule": {
+              "id": "qL0R2_bL0R0",
+              "label_cut": [
+                0,
+                2
+              ],
+              "body_cut": [
+                0,
+                0
+              ],
+              "total_cut": 2
+            },
+            "train_delta": {
+              "num": 15,
+              "den": 184,
+              "value": 0.08152173913043478
+            },
+            "test_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "baseline_delta": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "gain_vs_baseline": {
+              "num": 0,
+              "den": 1,
+              "value": 0.0
+            },
+            "purged_pair_ids": [],
+            "train_candidates": 10,
+            "test_candidates": 1
+          },
+          {
+            "held_source_leaf": "f99",
+            "selected_rule": {
+              "id": "qL2R0_bL1R0",
+              "label_cut": [
+                2,
+                0
+              ],
+              "body_cut": [
+                1,
+                0
+              ],
+              "total_cut": 3
+            },
+            "train_delta": {
+              "num": 85,
+              "den": 1032,
+              "value": 0.08236434108527131
+            },
+            "test_delta": {
+              "num": -5,
+              "den": 276,
+              "value": -0.018115942028985508
+            },
+            "baseline_delta": {
+              "num": -1,
+              "den": 92,
+              "value": -0.010869565217391304
+            },
+            "gain_vs_baseline": {
+              "num": -1,
+              "den": 138,
+              "value": -0.007246376811594203
+            },
+            "purged_pair_ids": [
+              "f100r_116__f96v"
+            ],
+            "train_candidates": 7,
+            "test_candidates": 3
+          }
+        ]
+      }
+    },
+    "hits": [
+      {
+        "version": "IT",
+        "rule": "qL0R2_bL0R0",
+        "fragment_id": 95,
+        "pair_id": "f99v_95__f44r",
+        "label": [
+          {
+            "locator": "f99v.2",
+            "raw": "otoldy",
+            "words": [
+              "otoldy"
+            ]
+          }
+        ],
+        "core": [
+          "o",
+          "t",
+          "o",
+          "l"
+        ],
+        "target_folio": "f44r",
+        "target_opportunities": 17,
+        "positions": [
+          {
+            "word": "otol",
+            "units": [
+              "o",
+              "t",
+              "o",
+              "l"
+            ],
+            "folio": "f44r",
+            "locator": "f44r.3",
+            "source_line": 1157,
+            "slot": 3
+          }
+        ]
+      },
+      {
+        "version": "IT",
+        "rule": "qL2R0_bL1R0",
+        "fragment_id": 133,
+        "pair_id": "f100v_133__f13v",
+        "label": [
+          {
+            "locator": "f100v.3",
+            "raw": "opchor",
+            "words": [
+              "opchor"
+            ]
+          }
+        ],
+        "core": [
+          "c",
+          "h",
+          "o",
+          "r"
+        ],
+        "target_folio": "f13v",
+        "target_opportunities": 22,
+        "positions": [
+          {
+            "word": "kchor",
+            "units": [
+              "k",
+              "c",
+              "h",
+              "o",
+              "r"
+            ],
+            "folio": "f13v",
+            "locator": "f13v.10",
+            "source_line": 327,
+            "slot": 4
+          }
+        ]
+      }
+    ],
+    "image_traces": [
+      {
+        "fragment_id": 95,
+        "target_folio": "f44r",
+        "locator": "f44r.3",
+        "slot_zero_based": 3,
+        "transcription_rows": {
+          "ZL": {
+            "locator": "f44r.3",
+            "source_line": 1886,
+            "kind": "+P0",
+            "type": "P0",
+            "uncertain_space": false,
+            "raw": "oair.ekokeey.kshotol.otal.daiin.ototaykal",
+            "tokens": [
+              "oair",
+              "ekokeey",
+              "kshotol",
+              "otal",
+              "daiin",
+              "ototaykal"
+            ]
+          },
+          "IT": {
+            "locator": "f44r.3",
+            "source_line": 1157,
+            "kind": "+P0",
+            "type": "P0",
+            "uncertain_space": false,
+            "raw": "oair.ekokeey.kshotol.otol.daiin.otota.ykal",
+            "tokens": [
+              "oair",
+              "ekokeey",
+              "kshotol",
+              "otol",
+              "daiin",
+              "otota",
+              "ykal"
+            ]
+          }
+        },
+        "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006160",
+        "official_image_url": "https://collections.library.yale.edu/iiif/2/1006160/full/full/0/default.jpg",
+        "dimensions": [
+          2799,
+          3728
+        ],
+        "official_image_sha256": "f9cd059bb34057bf9635a1d1443cafd3b358cdb64ec0c5e1ff73bfc091da0eb3",
+        "context_region_xywh": [
+          300,
+          330,
+          1450,
+          650
+        ],
+        "region_kind": "approximate_paragraph_context_not_precise_line_segmentation",
+        "image_inspection_scope": "Full official image viewed for text-region and line-layout localization only; no glyph-reading adjudication; no transcription change.",
+        "semantic_status": "exploratory_unverified"
+      },
+      {
+        "fragment_id": 133,
+        "target_folio": "f13v",
+        "locator": "f13v.10",
+        "slot_zero_based": 4,
+        "transcription_rows": {
+          "ZL": {
+            "locator": "f13v.10",
+            "source_line": 561,
+            "kind": "+P0",
+            "type": "P0",
+            "uncertain_space": true,
+            "raw": "y,ol.chy.kchey.kchor.dal<$>",
+            "tokens": [
+              "y",
+              "ol",
+              "chy",
+              "kchey",
+              "kchor",
+              "dal"
+            ]
+          },
+          "IT": {
+            "locator": "f13v.10",
+            "source_line": 327,
+            "kind": "+P0",
+            "type": "P0",
+            "uncertain_space": false,
+            "raw": "y.ol.chy.kchey.kchor.dal<$>",
+            "tokens": [
+              "y",
+              "ol",
+              "chy",
+              "kchey",
+              "kchor",
+              "dal"
+            ]
+          }
+        },
+        "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006099",
+        "official_image_url": "https://collections.library.yale.edu/iiif/2/1006099/full/full/0/default.jpg",
+        "dimensions": [
+          2812,
+          3770
+        ],
+        "official_image_sha256": "79ac3ff85ed178229cd4bafc6332c606684dd0eba37221758a7ec430c86544f0",
+        "context_region_xywh": [
+          700,
+          2200,
+          1800,
+          550
+        ],
+        "region_kind": "approximate_paragraph_context_not_precise_line_segmentation",
+        "image_inspection_scope": "Full official image viewed for text-region and line-layout localization only; no glyph-reading adjudication; no transcription change.",
+        "semantic_status": "exploratory_unverified"
+      }
+    ],
+    "scope": "Post-result exploration on exposed materials. Leave-one-source-leaf selection is an internal diagnostic, not blind confirmation.",
+    "visual_review_status": "Four word locations and two target lines localized; a/o glyph and y/ol boundary remain ambiguous. Outcome-guided, not blinded; no transcription changes.",
+    "visual": {
+      "overall_zh": "4 个词与 2 条目标行定位均清楚，未发现候选位置错配；a/o 字形与 y/ol 词界各保留 ambiguous，未据图改动转写。两项 IT 命中仍受版本/纳入规则影响。未支持其为稳定语义桥，也未因此证明无语义。",
+      "items": [
+        {
+          "id": "f99v_95__f44r",
+          "q15_number": 95,
+          "ZL_source_comment": "95b",
+          "source_locator": "f99v.2",
+          "source_versions": {
+            "ZL": "otoldy",
+            "IT": "otoldy"
+          },
+          "source_image_id": "1006247",
+          "source_word_approx_bbox_xywh": [
+            595,
+            190,
+            155,
+            110
+          ],
+          "source_word_crop": "assets/f99v_otoldy.jpg",
+          "source_context_crop": "assets/f99v_upper.jpg",
+          "source_localization": "clear",
+          "source_observation_zh": "最上排左端细长红根对象上方偏左的短标签。可见起始环、高杆和后续低矮/带尾笔画；与给定 otoldy 候选相容。这是候选引导定位，不声称完成独立逐字转写。",
+          "target_locator": "f44r.3",
+          "target_display_slot_one_based": 4,
+          "target_versions": {
+            "ZL": "otal",
+            "IT": "otol"
+          },
+          "target_image_id": "1006160",
+          "target_line_approx_bbox_xywh": [
+            345,
+            565,
+            1245,
+            110
+          ],
+          "target_word_approx_bbox_xywh": [
+            990,
+            585,
+            120,
+            85
+          ],
+          "target_line_crop": "assets/f44r_line3.jpg",
+          "target_word_crop": "assets/f44r_otal_otol.jpg",
+          "target_variant_context_crop": "assets/f44r_ao_context.jpg",
+          "target_context_crop": "assets/f44r_upper_text.jpg",
+          "target_localization": "clear",
+          "variant_adjudication": "ambiguous",
+          "candidate_mapping_error_found": false,
+          "target_observation_zh": "上部正文第3行第4个词组，前后留白可见。争议为高杆后的低矮环形字。其小环和短右侧笔势可见，墨迹/连接方式不提供这次复核可据以排除 a 或 o 的唯一判据。同一裁区保留前词结尾和后词 daiin 作为邻近字形背景；不凭使截取相等与否选择读法。",
+          "consequence_zh": "IT otoldy 删右2后与 otol 相等，但 ZL otal 不等。图像确认位置，未消除版本条件；不能将此命中改写为两版共同或原图已确定的匹配。"
+        },
+        {
+          "id": "f100v_133__f13v",
+          "q15_number": 133,
+          "source_locator": "f100v.3",
+          "source_versions": {
+            "ZL": "opchor",
+            "IT": "opchor"
+          },
+          "source_image_id": "1006249",
+          "source_panel": "Left f100v panel of f100v & f101r joint canvas",
+          "source_word_approx_bbox_xywh": [
+            2070,
+            615,
+            165,
+            105
+          ],
+          "source_word_crop": "assets/f100v_opchor.jpg",
+          "source_context_crop": "assets/f100v_upper_panel.jpg",
+          "source_localization": "clear",
+          "source_observation_zh": "联合画布左侧 f100v 面，顶排第3个植物状对象根部右侧的短标签，位于成簇绿叶下方。起始环、高杆与后续横连/环形/尾笔可见，与 opchor 候选相容；未独立重定字母。",
+          "target_locator": "f13v.10",
+          "target_display_slot_one_based": 5,
+          "target_versions": {
+            "ZL": "kchor",
+            "IT": "kchor"
+          },
+          "target_full_line_versions": {
+            "ZL": "y,ol.chy.kchey.kchor.dal<$>",
+            "IT": "y.ol.chy.kchey.kchor.dal<$>"
+          },
+          "target_image_id": "1006099",
+          "target_line_approx_bbox_xywh": [
+            775,
+            2620,
+            835,
+            115
+          ],
+          "target_word_approx_bbox_xywh": [
+            1265,
+            2628,
+            200,
+            95
+          ],
+          "target_line_crop": "assets/f13v_line10.jpg",
+          "target_word_crop": "assets/f13v_kchor.jpg",
+          "target_gap_crop": "assets/f13v_y_ol_gap.jpg",
+          "target_context_crop": "assets/f13v_lower_text.jpg",
+          "target_localization": "clear",
+          "word_candidate_visual_support": "compatible, not independently established transcription",
+          "word_boundary_adjudication": "ambiguous",
+          "candidate_mapping_error_found": false,
+          "target_observation_zh": "下部正文左栏最后一行，kchor 在给定两版按显示分隔的第5槽，实际字群清楚可定位。行首 y 与 ol 之间确有空白，o 与 l 之间距离更小；ol 与后续 chy 的空白稍宽。行首字符形状及倾斜也影响单轴间距，不能用可见白缝直接判为有确定语言意义的词界。",
+          "gap_manual_approximate_native_pixels": {
+            "y_to_ol": [
+              20,
+              30
+            ],
+            "inside_ol": [
+              5,
+              12
+            ],
+            "ol_to_chy": [
+              25,
+              40
+            ],
+            "method": "Visual estimates on native 310x135 official crop; NOT segmented measurements, uncertainty intervals, or a threshold classifier."
+          },
+          "consequence_zh": "两版 kchor 本身一致。IT 保留全行，ZL 的 y,ol 不确定边界使冻结 strict_space 规则排除整行，差异来自行资格，而非 ZL 把目标词读成别字。白缝不足以取消逗号标记。命中仍须标签删左2和正文删左1才有 chor 核；不能解释成已知词干。"
+        }
+      ],
+      "crops": [
+        {
+          "name": "f99v_upper",
+          "image_id": "1006247",
+          "region_xywh": [
+            500,
+            80,
+            2150,
+            650
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006247/500,80,2150,650/full/0/default.jpg",
+          "file": "assets/f99v_upper.jpg",
+          "sha256": "6c961c27b6f126dadad52b3d6017b581b6690b3ab69c0cd18b00684fbd458f62",
+          "size": [
+            2150,
+            650
+          ]
+        },
+        {
+          "name": "f100v_upper_panel",
+          "image_id": "1006249",
+          "region_xywh": [
+            650,
+            80,
+            2150,
+            950
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006249/650,80,2150,950/full/0/default.jpg",
+          "file": "assets/f100v_upper_panel.jpg",
+          "sha256": "3ab53d2494bbb669347f32cdb37d2cf7a410fe284f6159ff28f713796e75a568",
+          "size": [
+            2150,
+            950
+          ]
+        },
+        {
+          "name": "f44r_upper_text",
+          "image_id": "1006160",
+          "region_xywh": [
+            300,
+            300,
+            1450,
+            750
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006160/300,300,1450,750/full/0/default.jpg",
+          "file": "assets/f44r_upper_text.jpg",
+          "sha256": "e8f9d6f79cf730ce50761c2b3a1ebea3be47e805747f4c36dee43932fe014863",
+          "size": [
+            1450,
+            750
+          ]
+        },
+        {
+          "name": "f13v_lower_text",
+          "image_id": "1006099",
+          "region_xywh": [
+            700,
+            2180,
+            1900,
+            650
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006099/700,2180,1900,650/full/0/default.jpg",
+          "file": "assets/f13v_lower_text.jpg",
+          "sha256": "43534be031b1fda625c5603e741513bbd279e6480b616f8753ff87feea8b7eb8",
+          "size": [
+            1900,
+            650
+          ]
+        },
+        {
+          "name": "f99v_otoldy",
+          "image_id": "1006247",
+          "region_xywh": [
+            575,
+            175,
+            205,
+            135
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006247/575,175,205,135/full/0/default.jpg",
+          "file": "assets/f99v_otoldy.jpg",
+          "sha256": "2a935d257ce95e3677b2a8120c313909f745e873c9fc375b91f682962213526c",
+          "size": [
+            205,
+            135
+          ]
+        },
+        {
+          "name": "f100v_opchor",
+          "image_id": "1006249",
+          "region_xywh": [
+            2030,
+            590,
+            230,
+            150
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006249/2030,590,230,150/full/0/default.jpg",
+          "file": "assets/f100v_opchor.jpg",
+          "sha256": "6a640ee6fa9a115a39c9cd3c602f75b04e8fb527ca7d91314be793135107df59",
+          "size": [
+            230,
+            150
+          ]
+        },
+        {
+          "name": "f44r_line3",
+          "image_id": "1006160",
+          "region_xywh": [
+            340,
+            555,
+            1290,
+            120
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006160/340,555,1290,120/full/0/default.jpg",
+          "file": "assets/f44r_line3.jpg",
+          "sha256": "6a2a11e08d4b8baaacb4b332203fa8d5cb8eb317b50659fc2d515c18ab1ea709",
+          "size": [
+            1290,
+            120
+          ]
+        },
+        {
+          "name": "f44r_otal_otol",
+          "image_id": "1006160",
+          "region_xywh": [
+            970,
+            570,
+            165,
+            110
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006160/970,570,165,110/full/0/default.jpg",
+          "file": "assets/f44r_otal_otol.jpg",
+          "sha256": "ea3c1212c7750ff6240233e6c5fb23050976b3f0c3155efd82f91fd31f87006b",
+          "size": [
+            165,
+            110
+          ]
+        },
+        {
+          "name": "f44r_ao_context",
+          "image_id": "1006160",
+          "region_xywh": [
+            820,
+            565,
+            480,
+            125
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006160/820,565,480,125/full/0/default.jpg",
+          "file": "assets/f44r_ao_context.jpg",
+          "sha256": "28a415d4996e00750fe4f2ccd9586654d297f076c5af42645149ae930e12de20",
+          "size": [
+            480,
+            125
+          ]
+        },
+        {
+          "name": "f13v_line10",
+          "image_id": "1006099",
+          "region_xywh": [
+            750,
+            2600,
+            890,
+            160
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006099/750,2600,890,160/full/0/default.jpg",
+          "file": "assets/f13v_line10.jpg",
+          "sha256": "4b0fd04b655f1c1c8e16ad79758f6981448cb5298f321c3e43e506a0f21229bd",
+          "size": [
+            890,
+            160
+          ]
+        },
+        {
+          "name": "f13v_kchor",
+          "image_id": "1006099",
+          "region_xywh": [
+            1250,
+            2610,
+            235,
+            135
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006099/1250,2610,235,135/full/0/default.jpg",
+          "file": "assets/f13v_kchor.jpg",
+          "sha256": "5abe8d8b6c3a1bd9ff27167b591135e544d80faaeb4faf149e2558c87a29bff0",
+          "size": [
+            235,
+            135
+          ]
+        },
+        {
+          "name": "f13v_y_ol_gap",
+          "image_id": "1006099",
+          "region_xywh": [
+            755,
+            2610,
+            310,
+            135
+          ],
+          "url": "https://collections.library.yale.edu/iiif/2/1006099/755,2610,310,135/full/0/default.jpg",
+          "file": "assets/f13v_y_ol_gap.jpg",
+          "sha256": "5f3068ca32f776d9add1b89e2e42f1c26c5d933df76097c89c2f477696d8c85c",
+          "size": [
+            310,
+            135
+          ]
+        }
+      ]
+    }
+  },
+  "gallery_scope": "Two separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered batch: 12 pairs, 11 scored; order batch: 12 unscored pairs. Only the selected pair images load (two normally, three for two unresolved target objects). Author overview images are not published.",
   "scope": "Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim."
 }

@@ -8,7 +8,7 @@
 
 ## 当前内容
 
-- [七小时研究：让文字接到对象上](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html)：第二个固定窗口为 2026-11-18 09:06:13–16:06:13 UTC（芝加哥 03:06:13–10:06:13 CST）。整叶对照的六个结果包已通过独立数值复算；主 exact 超过排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。条件排列参照没有提供可靠词义锚点，也不能证明手稿无意义。原图对象审查与固定变换继续进行；页面是保存快照，不是后台监视。
+- [七小时研究：让文字接到对象上](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html)：第二个固定窗口为 2026-11-18 09:06:13–16:06:13 UTC（芝加哥 03:06:13–10:06:13 CST）。整叶对照、跨页完整词与固定变换、已知英文草药书测量校准均完成独立数值复算。跨页11条指定查询在8条件、10规则下全未命中；它们只来自4个来源叶和10个独特目标页，不是880次独立证据。另加的36种有限边界规则只在IT版产生两个不同规则的单例，四折内部检验没有留出增益。网页提供12组官方原图并列、相似与差异、全部反例及可下载记录。未建立可靠词义锚点，也不能证明手稿无意义；窗口内仍在补原图测量记录，页面是保存快照。
 
 - [标签能否接到正文与词义？](https://haibinlai.github.io/Voynich-manuscript/label-body.html)：新一轮完整标签与同类异叶正文对照，六种字形替换、分层和独立复算。精确同词有约0.12–0.15个百分点的本页优势，主要在浴疗类；尚未确认对象名称或读音。[更新研究计划](research/research_next/label_body/plan.txt)明确下一步需收集的图像对象证据和固定读法检验。
 
@@ -67,6 +67,14 @@ python3 scripts/verify_release.py --replay anchor copy allograph metadata --outp
 后续参数共享包可用 `--replay parameter --output /tmp/voynich-parameter-replay-new` 复算保存的完整词费用；这是独立 NumPy 评分，不重新训练模型或选参。
 
 新的合成观察器校准可用 `--replay synthetic` 单独复算；该入口只读取保存的合成样本，不评分新的手稿目标。
+
+第二窗口的跨页完整词与边界实验可独立复算；输出必须使用仓库外的新目录，不覆盖原审核：
+
+```sh
+python3 scripts/verify_release.py --replay crossplant boundary --output /tmp/voynich-semantic-replay-new
+```
+
+这会重建保存的全部机会、位置、权重和边界实验内部四折选择；它不认证植物身份或字读，也不产生新盲测。默认完整性核验同时给出首轮历史状态和第二窗口的 `current_window` 状态。
 
 结果和解释在 `research/study20/研究报告.txt`、`research/research7h/阶段一研究报告.txt`，文献在 `research/research7h/literature/`。
 

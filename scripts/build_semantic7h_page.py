@@ -2,7 +2,7 @@
 
 Run again after session.json and approved records change. Optional research
 publication.json may provide reviewed public `findings` (list of strings) and
-`modules` overrides keyed images/literature/leaf_controls/abbreviations/crossplant/known_herbal, with
+`modules` overrides keyed images/literature/leaf_controls/abbreviations/crossplant/known_herbal/boundary_bridge, with
 status/title/summary/details/links/metrics/table. This builder deliberately does
 not discover result files or infer that a computation or audit has passed.
 Status values: planned, running, awaiting_review, partial, complete, blocked.
@@ -13,6 +13,7 @@ Only links to existing local site files or https URLs are published.
 from pathlib import Path
 from datetime import datetime, timezone
 import hashlib
+import gzip
 import json
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,6 +45,12 @@ support = read('design/leaf_controls/support_v1.json', {})
 cross_visual = read('visual/crossplant/crossplant_visual_review_v1.json', {})
 cross_receipt = read('visual/crossplant/verification_receipt.json', {})
 publication = read('publication.json', {})
+boundary_projection = read('design/boundary_bridge/publication_projection_v1.json', {})
+boundary_audit = read('design/boundary_bridge/audit_v1.json', {})
+boundary_visual = read('visual/boundary_hits/review.json', {})
+boundary_visual_receipt = read('visual/boundary_hits/receipt.json', {})
+order_visual = read('visual/order_targets/review_v1.json', {})
+order_receipt = read('visual/order_targets/verification_receipt_v1.json', {})
 snapshot = datetime.now(timezone.utc)
 start = datetime.fromisoformat(session['start_utc'].replace('Z','+00:00'))
 elapsed = max(0, int((snapshot-start).total_seconds()))
@@ -123,6 +130,12 @@ modules = {
         'summary':'校准数据须通过独立复核后再展示；不能据此推断伏尼契语言或成功率。',
         'details':[], 'metrics':[], 'links':[],
     },
+    'boundary_bridge':{
+        'title':'固定短边界：统一规则能否跨来源复现？',
+        'status':'awaiting_review',
+        'summary':'完整结果须经独立复核后展示；无效标签与缺少机会不当作观察到的语义缺席。',
+        'details':[], 'metrics':[], 'links':[],
+    },
 }
 for version, vv in support.get('versions', {}).items():
     primary = vv.get('main_HI1', {})
@@ -141,6 +154,7 @@ for item in modules.values():
 
 download_names = [
     ('窗口起止与阶段记录','session.json'),('本轮研究计划','plan.txt'),
+    ('当前阶段解释与下一步门槛','stage-assessment.txt'),
     ('原图几何观察','geometry-review.txt'),('外部植物配对候选','plant-pairs.json'),
     ('整叶对照协议','leaf-controls-protocol.txt'),('共同支持盘点','support.json'),
 ]
@@ -172,7 +186,7 @@ if cross_visual:
     assert cross_receipt['boxes_within_bounds']==24
     for row in cross_visual['records']:
         item={k:row[k] for k in ['pair_id','fragment_id','source_folio','target_folio','candidate_locators','comparison_decision']}
-        item.update(prior_grade=row['prior_hypothesis']['grade'],prior_source=row['prior_hypothesis']['source_url'],
+        item.update(batch='numbered',prior_grade=row['prior_hypothesis']['grade'],prior_source=row['prior_hypothesis']['source_url'],
                     similarity_zh=visual_notes[row['fragment_id']][0],difference_zh=visual_notes[row['fragment_id']][1],
                     original_similarities=row['visible_similarities'],original_differences=row['visible_differences_and_missing_evidence'],
                     lexical_scope='multiword_group_not_in_main' if row['fragment_id']==110 else 'singleword_candidate',
@@ -189,6 +203,98 @@ if cross_visual:
             display_width=min(700,w)
             item[side].update(crop_url=base+'/'+region+'/'+str(display_width)+',/0/default.jpg',native_crop_url=base+'/'+region+'/full/0/default.jpg')
         gallery.append(item)
+
+if gallery:
+    cross_root=SOURCE/'design/crossplant'
+    complete=read('design/crossplant/run_v2/complete.json')
+    audit=read('design/crossplant/audit_v1.json')
+    assert audit['status']=='PASS' and audit['failure_count']==0
+    assert hashlib.sha256((cross_root/'run_v2/complete.json').read_bytes()).hexdigest()==audit['complete_sha256']
+    for version in ['ZL','IT']:
+        name=f'{version}__strict_space__page_HI.json.gz'
+        raw=(cross_root/'run_v2'/name).read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==complete['files'][name]
+        seen.append({'path':'design/crossplant/run_v2/'+name,'sha256':complete['files'][name]})
+        scores=json.loads(gzip.decompress(raw))
+        assert scores['boundary']=='strict_space' and scores['control']=='page_HI'
+        for candidate in scores['candidates']:
+            row=next(r for r in gallery if r['pair_id']==candidate['pair_id'])
+            result=candidate['models']['exact']['target']
+            row.setdefault('exact_check',{})[version]={k:result[k] for k in ['opportunities','matches','rate','query_length']}
+
+if order_visual:
+    order_root=SOURCE/'visual/order_targets'
+    assert order_receipt['status']=='PASS_GEOMETRY_RECORD_INTEGRITY'
+    assert order_receipt['pair_count']==12 and order_receipt['target_object_regions']==14
+    assert hashlib.sha256((order_root/'review_v1.json').read_bytes()).hexdigest()==order_receipt['files']['review_v1.json']
+    def image_region(original,box,source=False,description=None):
+        full_url=original['official_image_url'];oid=full_url.split('/')[5]
+        x,y,w,h=box; width,height=original['full_size']
+        assert 0<=x<x+w<=width and 0<=y<y+h<=height
+        base=f'https://collections.library.yale.edu/iiif/2/{oid}'
+        assert full_url==base+'/full/full/0/default.jpg'
+        region=','.join(map(str,box))
+        label=original.get('manifest_label',{})
+        label=' / '.join(v for values in label.values() for v in values) if isinstance(label,dict) else label
+        return {'oid':oid,'manifest_label':label or '见完整画布','source_url':full_url,'full_image_sha256':original['full_sha256'],
+                'object_region_xywh':box,'crop_url':f'{base}/{region}/{min(700,w)},/0/default.jpg',
+                'native_crop_url':f'{base}/{region}/full/0/default.jpg','description':description}
+    for row in sorted(order_visual['records'],key=lambda r:r['fragment_id']):
+        item={k:row[k] for k in ['pair_id','fragment_id','source_folio','target_folio','comparison_decision']}
+        item.update(batch='order',candidate_locators=[],prior_grade=row['prior_hypothesis']['source_grade'],
+                    prior_source=row['prior_hypothesis']['source_url'],
+                    similarity_zh=' '.join(row['visible_similarities']),difference_zh=' '.join(row['visible_differences_and_missing_parts']),
+                    original_similarities=row['visible_similarities'],original_differences=row['visible_differences_and_missing_parts'],
+                    lexical_scope='order_candidate_not_scored',attachment_status=row['source']['attachment_status_inherited'],
+                    comparison_scope=row['comparison_scope'],target_unique=row['target_correspondence_unique'],
+                    notes=row['notes'],canvas_note=None)
+        item['source']=image_region(row['source'],row['source']['object_reading_bbox_xywh'],True)
+        item['target']=image_region(row['target'],row['target']['object_reading_bbox_xywh'])
+        item['target_regions']=[image_region(row['target'],r['bbox_xywh'],description=r['description']) for r in row['target']['visible_object_regions']]
+        gallery.append(item)
+
+boundary={}
+if boundary_projection:
+    assert boundary_audit['status']=='PASS' and boundary_audit['failure_count']==0
+    assert boundary_projection['independent_audit']['receipt_sha256']==hashlib.sha256((SOURCE/'design/boundary_bridge/audit_v1.json').read_bytes()).hexdigest()
+    rules=[]
+    for r in boundary_projection['rule_table']:
+        rules.append({k:r[k] for k in ['version','rule','candidates','valid_labels','invalid_labels','target_hit_candidates','source_leaves_hit','target_leaves_hit','target_rate','control_rate','delta']} |
+                     {'conditional_delta':r['conditional']['value'],'conditional_candidates':r['conditional']['candidates']})
+    loo={}
+    for version,record in boundary_projection['loo'].items():
+        folds=[]
+        for f in record['folds']:
+            folds.append(dict(held_source_leaf=f['held_source_leaf'],selected_rule=f['selected_rule'],
+                              train_delta=f['train']['source_leaf']['delta']['value'],
+                              test_delta=f['test']['source_leaf']['delta']['value'],
+                              baseline_delta=f['baseline_test']['source_leaf']['delta']['value'],
+                              gain_vs_baseline=f['gain_vs_baseline'],purged_pair_ids=f['purged_pair_ids'],
+                              train_candidates=f['train']['candidate_count'],test_candidates=f['test']['candidate_count']))
+        loo[version]={'test_delta':record['test_delta'],'baseline_delta':record['baseline_delta'],
+                      'gain_vs_baseline':boundary_audit['version_summaries'][version]['cv']['change'],'folds':folds}
+    hits=[]
+    for h in boundary_projection['target_hits']:
+        hits.append({k:h[k] for k in ['version','rule','fragment_id','pair_id','label','core','target_folio','target_opportunities','positions']})
+    boundary={'rules':rules,'loo':loo,'hits':hits,
+              'image_traces':boundary_projection['image_traces']['records'],
+              'scope':'Post-result exploration on exposed materials. Leave-one-source-leaf selection is an internal diagnostic, not blind confirmation.',
+              'visual_review_status':'Four-word close image review pending; existing traces establish only approximate text-region localization.'}
+    if boundary_visual:
+        visual_root=SOURCE/'visual/boundary_hits'
+        receipts={r['path']:r for r in boundary_visual_receipt['files']}
+        assert hashlib.sha256((visual_root/'review.json').read_bytes()).hexdigest()==receipts['review.json']['sha256']
+        assert boundary_visual['word_locations_reviewed']==4 and boundary_visual['target_lines_reviewed']==2
+        crops=[]
+        for filename in ['crop_receipt_v1.json','crop_receipt_v2.json']:
+            assert hashlib.sha256((visual_root/filename).read_bytes()).hexdigest()==receipts[filename]['sha256']
+            for crop in read('visual/boundary_hits/'+filename):
+                assert crop['sha256']==receipts[crop['file']]['sha256']
+                assert crop['url'].startswith('https://collections.library.yale.edu/iiif/2/')
+                crops.append(crop)
+        assert len(crops)==12
+        boundary['visual']={'overall_zh':boundary_visual['overall_zh'],'items':boundary_visual['items'],'crops':crops}
+        boundary['visual_review_status']='Four word locations and two target lines localized; a/o glyph and y/ol boundary remain ambiguous. Outcome-guided, not blinded; no transcription changes.'
 payload = {
     'schema_version':1,
     'snapshot_utc':snapshot.isoformat(),
@@ -204,7 +310,8 @@ payload = {
     'downloads':downloads,
     'sources':seen,
     'gallery':gallery,
-    'gallery_scope':'Source record order, not ranked by lexical scores. Only the selected two official Yale IIIF crops are loaded; author overview images are not published.',
+    'boundary':boundary,
+    'gallery_scope':'Two separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered batch: 12 pairs, 11 scored; order batch: 12 unscored pairs. Only the selected pair images load (two normally, three for two unresolved target objects). Author overview images are not published.',
     'scope':'Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim.',
 }
 text = json.dumps(payload,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
