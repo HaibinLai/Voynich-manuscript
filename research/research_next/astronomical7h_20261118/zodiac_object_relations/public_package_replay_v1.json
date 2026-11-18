@@ -1,0 +1,81 @@
+{
+  "schema": "full12_public_manifest_isolated_replay_v1",
+  "utc": "2026-11-18T20:27:50.989087+00:00",
+  "source_manifest_sha256": "7d13ba0532ae043a0225d6dc4bd032373a835ef3d0f41403b962521bbba2cb74",
+  "copied_files": 200,
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "build_aggregation_v1.py"
+      ],
+      "cwd_relative_to_repository": "research/research_next/astronomical7h_20261118/zodiac_object_relations",
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 9566740,
+      "root_output_byte_equal": true
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "independent_aggregation_audit/rebuild_v2.py",
+        "--snapshot",
+        "independent_aggregation_audit/complete_v1/input_selection.json",
+        "--output",
+        "replayed-independent"
+      ],
+      "cwd_relative_to_repository": "research/research_next/astronomical7h_20261118/zodiac_object_relations",
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 244,
+      "root_output_byte_equal": null
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "independent_aggregation_audit/compare_v1.py",
+        "--output",
+        "replayed-comparison.json"
+      ],
+      "cwd_relative_to_repository": "research/research_next/astronomical7h_20261118/zodiac_object_relations",
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 306,
+      "root_output_byte_equal": null
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "zodiac_object_relations/independent_aggregation_audit/interpretation_check/rebuild_v1.py",
+        "--output",
+        "replayed-id-join"
+      ],
+      "cwd_relative_to_repository": "research/research_next/astronomical7h_20261118",
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 258,
+      "root_output_byte_equal": null
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "zodiac_object_relations/independent_aggregation_audit/interpretation_check/compare_v1.py",
+        "--output",
+        "replayed-id-comparison.json"
+      ],
+      "cwd_relative_to_repository": "research/research_next/astronomical7h_20261118",
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 60,
+      "root_output_byte_equal": null
+    }
+  ],
+  "private_images_or_unlisted_source_files_used": false,
+  "all_commands_succeeded": true,
+  "scope": "Record reconstruction and comparison; no new image or semantic validation."
+}

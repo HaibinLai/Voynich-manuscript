@@ -1,0 +1,30 @@
+{
+  "schema": "independent_central_record_comparison_protocol_v1",
+  "utc": "2026-11-18T20:08:30.653249+00:00",
+  "inputs": {
+    "root": {
+      "path": "research/research_next/astronomical7h_20261118/central_annotation_sources/crosswalk_observations_v1.json",
+      "sha256": "4865fe5d0bc681a757f62cd101ddf875f856620c2c5b061b847f5887c6ddb764"
+    },
+    "observer": {
+      "path": "research/research_next/astronomical7h_20261118/central_annotation_sources/independent_coverage_review/observer_report_v1.json",
+      "sha256": "0e7ebbf8dd19fc24ba5c522472fe798a4e4612ebd2df27c02257ed1e0fd6f210"
+    }
+  },
+  "prior_read": "Both original observation schemas/records inspected; no root comparison result/code or root followup result read.",
+  "scope": "Compare all 13 original IDs, immutable original boxes, tri-state coverage, visual appearance, and direction descriptions. No new viewing, transcription, score or adjudication.",
+  "coverage_map": {
+    "root true": "yes",
+    "root false": "no",
+    "root null": "uncertain"
+  },
+  "appearance_map": "Manual record normalization: root located_candidate uses ordinary-alphabet-like annotation context; root not_month_annotation_candidate at f70v2:ZC02 explicitly describes Voynich-like forms. f72r2 wording is contextual rather than an explicit ordinary-letter phrase and is flagged. This is not independent script authentication.",
+  "directions_policy": "Manually encode only explicit clipping directions from original root coverage_observed_fact, preserving original prose. No direction inferred from yes. Observer _uncertain retained as qualifier, not promoted to definite.",
+  "root_tool_asymmetry": "Check original root exact_seed_boundary_followup receipt membership; compare with observer original native crop receipts for all 13. Context/detail views do not count as exact original-frame displays.",
+  "forbidden_before_comparison_freeze": [
+    "coverage_comparison_v1.json",
+    "root_coverage_followup_v1.json",
+    "compare_coverage_v1.py"
+  ],
+  "original_observations_immutable": true
+}

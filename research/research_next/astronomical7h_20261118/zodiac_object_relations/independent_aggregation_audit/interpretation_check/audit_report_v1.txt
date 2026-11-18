@@ -1,0 +1,52 @@
+注记位置、单一布局与视图类型：独立派生记录核查 v1
+
+结论：113项命名比较全部一致，0差异。没有新增图像观察、文字读法或语义评分。
+
+独立期望先保存于expected_v1，calculation_freeze.json的SHA为42b76826b6541f5ae04e4b074f48c337e0083324d10f99a436b64f51f9ba624c。此时尚未读取根派生脚本/结果；之后才只读审查根脚本并对照正式结果，未导入或执行根脚本。记录首次冻结的机器时间见该收据。
+
+固定分母仍是322处文字/疑似区。另一路源知情中央注记对应表有13处，12处为located_candidate、1处为not_month_annotation_candidate。这不是本代理的新识字结果，全部独立完整读法确认仍为false。按region_uid事后关联，9处single_layout_candidate全部落在这12个located_candidate之内，集合外为0。零只是已有分类的描述，不能证明集合外没有历史图文关系，也不能证明集合内已有可靠月份命名。
+
+全部九处单一布局ID及目标粒度如下；类型名来自原组件记录，不归一为同一语义角色。
+
+f70v1:supp:C_short_dark → f70v1:other:C_animal/central_figure
+  discovered_supplements中的中央图形alias；没有独立component_type字段，保留null。声明框[1390,1390,1965,1970]。
+f71v:supp:C_short_dark → f71v:C_animal/animal_body
+  central_quadruped_body；框[1200,1235,1655,1665]。
+f72r1:supp:C_short_dark → f72r1:C_animal/animal_body
+  central_quadruped_body；框[3000,1190,3400,1660]。
+f72r3:ZC01 → f72r3:R01/red_segmented_form
+  colored_segmented_nonhuman_form；框[6860,1435,7135,1600]。
+f72v3:ZC01 → f72v3:other:R01/animal
+  whole_central_animal_graphic；框[2010,1520,2560,2005]。
+f72v2:ZC01 → f72v2:C01/body
+  body_context；复核框明确为null。原seed框和观察事实另存，不把null静默补成新测框。
+f72v1:ZC01 → f72v1:R01/beam_cup_assembly
+  connected_beam_and_suspended_forms；框[1465,1480,1895,1845]。
+f73r:ZC01 → f73r:other:R01/quadruped
+  central_quadruped_graphic；框[1080,1690,1485,1965]。
+f73v:ZC01 → f73v:C01/body
+  body_or_container_context；框[1610,1500,1810,1930]。
+
+这些目标包含整体图形、动物本体、有色节状图形、组合器物及人体语境，粒度不一致。上述称呼只是原观察者的图形记录，不是物种、器物名称或历史身份的独立认证。每项完整target_record、原seed字段、事实与限制保存在expected_v1/expected.json。
+
+视图记录分组
+关系报告原797条收据=773条native_detail+24条overview_navigation_only。按显式display_mode分类，不以文件尺寸或准备清单推断实际观看。另一路crosswalk的29条视图未并入，也没有重新贴display_mode标签。
+f70v1：41+2=43；f70v2：86+2=88；f71r：39+2=41；f71v：42+2=44。
+f72r1：40+2=42；f72r2：79+2=81；f72r3：78+2=80；f72v3：73+2=75。
+f72v2：77+2=79；f72v1：72+2=74；f73r：76+2=78；f73v：70+2=72。
+式中前项为原生细节，后项为导航；重叠或重复视图不增加独立历史样本。
+
+全部text_to_object P边及来源关联
+f72v2:ZI01:relation:3：f72v2:ZI01 → f72v2:I02/body；不在located注记候选集合。
+f73r:ZO01:relation:3：f73r:ZO01 → f73r:O02/body；不在该集合。
+f73r:ZO02:relation:3：f73r:ZO02 → f73r:O03/body；不在该集合。
+f73r:ZI08:relation:3：f73r:ZI08 → f73r:I09/body；不在该集合。
+f73r:ZE01:relation:3：f73r:ZE01 → f73r:E02/body；不在该集合。
+f73r:ZC01:relation:1：f73r:ZC01 → f73r:other:R01/quadruped；属于该集合。
+
+六条中只有最后一条来源属于注记候选集合。其余五条不因不在中央注记集合中就变成无意义或已确证的伏尼契语标签。f73r中央边原报告保留脚端与文字重叠、墨迹角色未决，不能将这种接近提升为完整引线或名称认证。
+
+复算与边界
+rebuild_v1.py只从冻结aggregation及crosswalk按ID计算，expected_v1保留先读根结果之前的独立期望。compare_v1.py核对正式产物及冻结字节。根源码在期望冻结后只读检查，其ID连接/视图分类逻辑与说明一致，未发现实质计算错误。
+14项最小公开依赖和两个独立入口已复制到隔离临时包；重建结果除生成时间外逐值相同，比较113项全过。入口拒绝覆盖旧输出。后续回放仅复现固定计算，不重新获得未知结果地位；脚本不读根结果的字段描述程序输入行为，不能据此声称操作者没有先前曝光。
+本核查不认证月份、不认证词界、不新增译文。单一布局和文本命名是不同主张。

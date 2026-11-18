@@ -1,0 +1,9 @@
+from record_helpers import *
+from PIL import Image
+workspace=SOURCE.parents[3].parent;original=workspace/'output/voynich/research_next/astronomical7h_20261118/zodiac_visual/1006205.jpg';root=workspace/'output/voynich/research_next/astronomical7h_20261118/zodiac_object_relations/astronomical_site/f72v1';im=Image.open(original)
+items=[('V5:O06-O07',[2420,1880,2770,2280],['f72v1:O06/pointed_shape','f72v1:O07/body'],'Check neighboring bent-arm/head contours beside previous star without assuming another hand owns it.'),('V5:O07-O08',[2320,2150,2640,2490],['f72v1:O07/pointed_shape','f72v1:O08/body'],'Check gap between neighboring pointed rays and bent arm/head region at native scale.'),('V5:I03-I04',[1950,1780,2170,2130],['f72v1:I03/pointed_shape','f72v1:I04/body'],'Check competing inner body bent arm/head contours near previous pointed shape, independent of seeded pairing.')]
+p=HERE/'f72v1_prepared_views_v1.json';d=read(p)
+for short,box,uids,reason in items:
+ vid='f72v1:'+short;assert vid not in [v['view_id'] for v in d['views']];out=root/(vid.replace(':','_')+'.png');crop=im.crop(box);crop.save(out)
+ d['views'].append({'view_id':vid,'plan_view_id':vid,'original_sha256':sha(original),'crop_xyxy_original':box,'rotation_degrees':0,'native_dimensions_px':list(crop.size),'view_file_sha256':sha(out),'display_mode':'native_detail','planned_region_uids':uids,'private_file_workspace_relative':str(out.relative_to(workspace)),'preparation_status':'prepared_not_viewed','followup_reason':reason})
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');(HERE/'f72v1_view_plan_addendum_v1.json').write_text(json.dumps({'schema':'native_context_expansion_v1','panel':'f72v1','prepared_utc':datetime.now(timezone.utc).isoformat(),'views':d['views'][-3:],'preparation_is_not_viewing':True,'reason':'Explicit competitive-endpoint checks after native V4; original plan and seeds unchanged.'},ensure_ascii=False,indent=2)+'\n')
