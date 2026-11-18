@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+第三个固定七小时窗口正在进行：2026-11-18 **16:14:17–23:14:17 UTC**（芝加哥10:14:17–17:14:17 CST）。[圆图与次序页面](https://haibinlai.github.io/Voynich-manuscript/astronomical7h.html)可切换两路观察的64个近似阅读框，并查看全部十二短串的双版原行。两路可建立十二圆脸邻域的工作循环对应，但三处边界、中央7/8分组及外圈13/12覆盖差异仍保留，完整文本预测尚未执行。十二黄道图面已完整提取双版各335个位置，只涉及四个物理叶；两部已知语言圆图均尚不能直接作为短标签—正文校准。详见[协调记录](research/research_next/astronomical7h_20261118/reconciliation_report_v1.txt)、[几何审计](research/research_next/astronomical7h_20261118/publication/geometry-audit.txt)、[公开复算说明](research/research_next/astronomical7h_20261118/publication/README.txt)。这不是破译或整个窗口结题。
+
 第二个固定七小时研究窗口已于2026-11-18 16:06:21 UTC收束（登记终点16:06:13 UTC）；结题发布另做线上验收。先读[本轮结果报告](research/research_next/semantic7h_20261118/closure/research_result_report_v2.txt)、[六对增量图及尺度说明](research/research_next/semantic7h_20261118/closure/figures/caption.txt)与[终点记录](research/research_next/semantic7h_20261118/closure/window_endpoint_v1.json)。没有得到可靠词义或译文；95b框交集、Asarabacca解释和首轮观察流程偏差均保留更正。下一窗口天文图方案仍与本窗口分开登记。
 
 [最终验收已通过](research/research_next/semantic7h_20261118/publication_checks/window_final_acceptance_v1.json)：25项要求逐项记录；267个公开下载已核对，最终页面资产与线上结题状态也已验证。缓存修正防止新页面继续加载旧数据；[直接查看结题快照](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html?release=6fe9fb5)。
