@@ -829,7 +829,7 @@ def main():
             ("next_plan", "下一轮可证伪研究计划.txt", "downloads/next-research-plan.txt")])
     manifest = []
     for path in sorted(site.rglob("*")):
-        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js", ".zip", ".csv", ".pdf"} and path.name != "manifest.json":
+        if path.is_file() and path.suffix in {".json", ".txt", ".jpg", ".png", ".svg", ".html", ".css", ".js", ".zip", ".csv", ".pdf", ".gz"} and path.name != "manifest.json":
             manifest.append({"path": str(path.relative_to(site)), "bytes": path.stat().st_size,
                              "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     write(site / "data/manifest.json", {"files": manifest})

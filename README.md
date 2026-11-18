@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+- [标签能否接到正文与词义？](https://haibinlai.github.io/Voynich-manuscript/label-body.html)：新一轮完整标签与同类异叶正文对照，六种字形替换、分层和独立复算。精确同词有约0.12–0.15个百分点的本页优势，主要在浴疗类；尚未确认对象名称或读音。[更新研究计划](research/research_next/label_body/plan.txt)明确下一步需收集的图像对象证据和固定读法检验。
+
 - [我们找到了哪些规律？](https://haibinlai.github.io/Voynich-manuscript/findings.html) 一页阅读版，汇总原图词例、六对字形对照和证据边界。
 
 - [书手、插图类别和段首分层](https://haibinlai.github.io/Voynich-manuscript/gallows-strata.html)：统一比较六对在 l_a、c_h 里的偏向，逐删词型与词框，附六组同页原图及出处。

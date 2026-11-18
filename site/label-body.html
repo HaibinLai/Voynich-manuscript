@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="从字形结构走向可检验的指称关联：图旁标签在同页正文和相近异叶正文中的匹配，含双转写、六种替换、逐叶结果与下一步研究计划。">
+  <link rel="canonical" href="https://haibinlai.github.io/Voynich-manuscript/label-body.html">
+  <title>从标签走向词义 · 伏尼契手稿研究台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="label-body.css">
+  <script defer src="label-body.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#lb-main">跳到本轮研究</a>
+  <header class="site-header"><a class="wordmark" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契手稿<span class="wordmark-en">VOYNICH RESEARCH NOTEBOOK</span></span></a><a class="repo-link" href="https://github.com/HaibinLai/Voynich-manuscript">开放代码 ↗</a></header>
+  <nav class="main-nav" aria-label="研究导航"><a href="index.html#overview">研究首页</a><a href="findings.html">已有结构发现</a><a href="label-body.html" class="active" aria-current="page">从标签走向词义</a><a href="gallows-strata.html">字形分层与原图</a></nav>
+  <main id="lb-main" class="lb-main" tabindex="-1">
+    <header class="lb-hero">
+      <div><span class="eyebrow">NEXT STEP / FROM FORM TO REFERENCE</span><h1>一个图旁标签，<br>会在正文里再出现吗？</h1><p class="lb-intro">先建立文字与对象之间可检验的联系，再谈读音和词义。本轮固定标签词，比较它在本页与相近异叶正文里的出现比例。</p><div class="hero-actions"><a class="button" href="#lb-result">看本轮结果</a><a class="button secondary" href="#lb-plan">看更新后的研究计划</a></div></div>
+      <aside class="lb-idea"><p class="lb-kicker">这次跨出的一小步</p><div class="lb-process"><span>图旁短文本</span><b aria-hidden="true">↓</b><span>同页正文的同形词</span><b aria-hidden="true">↓</b><span class="lb-process-pending">对象与词义：仍待独立证据</span></div><p>出现相同词形，只能形成候选对应。局部复制、共同主题和书写习惯都可能产生这种联系。</p></aside>
+    </header>
+    <div class="lb-boundary"><strong>本轮是已见材料上的探索性复核。</strong> 两版来自同一部手稿；标签位置尚未被独立认证为对象名称。没有读音表、词义译文，也没有把匹配结果换算成破译成功率。</div>
+    <nav class="lb-jump" aria-label="本页小节"><a href="#lb-result">主结果</a><a href="#lb-leaves">逐叶与类别</a><a href="#lb-controls">六种替换</a><a href="#lb-robustness">稳健性</a><a href="#lb-candidates">候选与未命中</a><a href="#lb-plan">研究计划</a><a href="#lb-evidence">证据与下载</a></nav>
+    <div class="lb-toolbar"><label for="lb-version">查看转写版本</label><select id="lb-version" disabled><option value="ZL">ZL / EVA</option><option value="IT">IT / EVA</option></select><span id="lb-status" role="status" aria-live="polite">正在读取保存的实验结果。</span></div>
+
+    <section id="lb-result" class="lb-section"><span class="eyebrow">01 / SAME LABEL, DIFFERENT PAGES</span><h2>本页有小幅优势，范围很有限</h2><p>查询词保持不变。对照页须同书手、同插图类别、来自不同物理叶。每页命中次数除以该页同长度词次数，再按页和叶等权汇总；折页的多个分面不会充当多个独立对照叶。</p><div id="lb-metrics" class="lb-metrics"></div><div id="lb-main-description"></div><details class="lb-details"><summary>分母是什么？</summary><p>表中的“率”是：某标签词在正文的出现次数 ÷ 正文里与该标签具有相同 EVA 长度的可读词次数。目标先在页内平均标签，再在物理叶内平均页，最后各目标叶等权；对照先在每个异叶内平均页，再各异叶等权。“百分点”是两种率相减，不是相对提升百分比。原始标签命中数是辅助计数，不是主分析的加权率。</p><p>只纳入完整单词的图形相关标签；多词、备选读法和未知字形不补字。无本页同长度正文机会、无相近异叶对照均不能参与主比较；这不是证明它们没有含义。</p></details></section>
+
+    <section id="lb-leaves" class="lb-section"><span class="eyebrow">02 / WHERE THE DIFFERENCE COMES FROM</span><h2>优势并不遍布各类页面</h2><p>“浴疗／生物”类的平均差为正，“医药”类为负。插图类别是研究用分类，不是已经读出的章节名称。下图每行是一片物理叶的等权贡献，零线右侧偏向本页，左侧偏向对照。</p><div id="lb-sections" class="lb-table-wrap"></div><div id="lb-leaf-chart" class="lb-leaf-chart" role="img" aria-label="逐叶本页减对照命中率差"></div><details class="lb-details"><summary>查看逐叶数值表</summary><div id="lb-leaf-table" class="lb-table-wrap"></div></details></section>
+
+    <section id="lb-controls" class="lb-section"><span class="eyebrow">03 / ALL SIX PAIRS, SAME RULE</span><h2>放宽 k/t，是否只增加本页对应？</h2><p>每种替换只允许一个位置在指定的两个字形间变化，其余单位完全一致，同时保留精确匹配。七个模型用同一组标签和机会。新增差已经扣除异叶也变得更容易匹配的部分。</p><div id="lb-model-table" class="lb-table-wrap"></div><p class="lb-muted">f、p、k、t 是 EVA 字形代号。这里的额外对应没有证明异体、同音或同义；也不允许把本轮选出的优胜者称作独立验证。</p></section>
+
+    <section id="lb-robustness" class="lb-section"><span class="eyebrow">04 / SUPPORT, SENSITIVITY & CALIBRATION</span><h2>改变对照与计数，结果保留多少？</h2><div id="lb-sensitivity" class="lb-table-wrap"></div><div id="lb-delete"></div><div id="lb-calibration" class="lb-calibration"></div><p>程序能识别大幅植入的复制关联，独立随机标签的平均差接近零。手稿的小幅正差落在人造独立标签的种子波动范围内，但这个人造机制不是手稿的零假设，不能据此裁决手稿是否显著。本轮尚未建立适用于真实词频和页间关联的显著性检验，也未建立对当前弱信号的辨别力。</p><p class="lb-muted">删一叶范围是敏感性范围，不是置信区间。人工复制正控不衡量真实语义的检出率。结果后的共同样本与逐删标签词检查见<a href="downloads/label-body/report.txt">研究报告</a>，与预先登记的主实验分开。独立计算复核的范围与结果见<a href="downloads/label-body/audit.txt">审核记录</a>。</p></section>
+
+    <section id="lb-candidates" class="lb-section"><span class="eyebrow">05 / A READING QUEUE, NOT A DICTIONARY</span><h2>把命中和未命中一起留下</h2><p id="lb-candidate-counts"></p><p>以下按标签定位排序，分别展示前六个两版均命中与前六个两版均未命中的例子。这是依结果生成的阅读队列，不能充当确认样本。本轮没有新做对象级原图标注；正文定位来自公开转写。</p><h3>两版均在本页正文找到同词</h3><div id="lb-hits" class="lb-candidate-grid"></div><h3 class="lb-subhead">两版均没有本页同词命中</h3><div id="lb-no-hits" class="lb-candidate-grid"></div><p class="lb-muted">无命中不等于无指称：名称可能变形、缩写或出现在别处，也可能该短文本根本不是对象名称。所有候选可从<a href="downloads/label-body/candidates.json">完整候选表</a>追溯。</p></section>
+
+    <section id="lb-plan" class="lb-section"><span class="eyebrow">06 / UPDATED RESEARCH PLAN</span><h2>从候选对应，到能被反驳的读法</h2><p>选择这条路线，是因为它能把文字接到外部对象上，并清楚报告失败；不是因为已知它的破译成功概率最高。下一阶段的重点是增加独立证据，避免继续放宽字形规则来制造命中。</p><ol class="lb-roadmap"><li><span class="lb-step-state">本轮已运行</span><h3>筛查标签与正文的对应</h3><p>冻结完整词及六种单次替换，报告两版、全部分母、逐叶贡献和阴阳性校准。当前得到小幅局部关联，不能建立词义字典。</p></li><li><span class="lb-step-state">下一项优先工作</span><h3>独立标注图像对象与跨页对应</h3><p>图像比较者先不看候选词义与模型分数，记录标签属于哪个对象、边界是否明确，以及跨页图像是否可能描绘同一对象。命中和未命中都纳入，分歧保持未决。原图已经公开，新标注是新测量，不是未见文本。</p></li><li><span class="lb-step-state">有对应支持才进入</span><h3>冻结跨页可执行的书写规则</h3><p>在一部分对象对应上提出有限的变形、缩写或组合规则；事先固定允许变换、失败处理和替代对照，再检查未用于建规则的对象。若必须逐词补字、换语言或改规则，拒绝这一版方案。</p></li><li><span class="lb-step-state">词义与语言的门槛</span><h3>提出少量锚点，并验证连续文本</h3><p>图像与历史语言专家分别检查候选对象、时代相容性和固定读法。相同映射必须跨页复现，并对词形变化、组合关系或连续语法产生可失败的预测。几个像植物名的词，仍不足以证明整部手稿已读通。</p></li></ol><p>若新增对象标注不能支持跨页关系，暂停这条名称锚点路线，保留结果作为书写机制约束；不靠扩大自由度宣称成功。完整执行范围与失败判据见<a href="downloads/label-body/plan.txt">更新后的研究计划</a>。</p></section>
+
+    <section id="lb-evidence" class="lb-section"><span class="eyebrow">07 / PRIOR WORK & REPRODUCIBLE EVIDENCE</span><h2>已有先例，本轮改变的是比较口径</h2><p><a href="https://ic.unicamp.br/~stolfi/voynich/00-EXPORT/97-10-23-label-maps/source.html">Stolfi（1997）</a>已经做过标签与正文的字符串检索。<a href="https://arxiv.org/html/2610.34499v2">Zhang–Sheng（2026，§7）</a>的标签分析未支持简单的同页或跨章节植物对应。本轮使用完整 EVA 词、双版分列、书手／插图类别匹配及同长度机会校正，不能把数值差异称为推翻这些工作。</p><p><a href="https://www.voynich.nu/extra/labels.html">Zandbergen 的标签研究</a>提醒：图旁文本不必是名称或名词；<a href="https://www.voynich.nu/software/ivtt/IVTFF_format.pdf">IVTFF 规范</a>描述的是文字布局，不是语义对象的金标。</p><div class="lb-downloads"><a href="downloads/label-body/report.txt">中文研究报告</a><a href="downloads/label-body/protocol.txt">运行前登记的协议</a><a href="downloads/label-body/plan.txt">更新研究计划</a><a href="downloads/label-body/audit.txt">独立复算记录</a><a href="downloads/label-body/results.json">完整汇总结果</a><a href="downloads/label-body/candidates.json">全部候选与反例</a><a href="downloads/label-body/trials.json.gz">逐标签及对照记录</a><a href="downloads/label-body/calibration.json.gz">100 种子校准记录</a><a href="https://github.com/HaibinLai/Voynich-manuscript/tree/main/research/research_next/label_body">代码、来源与冻结哈希 ↗</a></div></section>
+    <noscript><p class="lb-boundary">交互表格需要 JavaScript。可直接阅读<a href="downloads/label-body/report.txt">中文报告</a>和<a href="downloads/label-body/plan.txt">研究计划</a>；本页不使用示例数值替代保存结果。</p></noscript>
+  </main>
+  <footer class="site-footer"><span>观察对应 · 保留反例 · 不把匹配当译文</span><span id="lb-snapshot">保存结果快照</span></footer>
+</body>
+</html>
