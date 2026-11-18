@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T15:59:56.071881+00:00",
-  "snapshot_elapsed_seconds": 24823,
+  "snapshot_utc": "2026-11-18T16:06:53.031139+00:00",
+  "snapshot_elapsed_seconds": 25240,
   "window": {
     "start_utc": "2026-11-18T09:06:13Z",
     "deadline_utc": "2026-11-18T16:06:13Z",
     "duration_hours": 7,
     "local_timezone": "America/Chicago",
     "local_window": "2026-11-18 03:06:13 to 10:06:13 CST",
-    "status": "active",
+    "status": "complete",
     "stage": 4
   },
   "window_history": [
@@ -21,6 +21,11 @@
       "observed_utc": "2026-11-18T14:43:54Z",
       "status": "active",
       "evidence": "User reactivated goal; root clock/get_goal confirmed active at this time. Original deadline retained."
+    },
+    {
+      "observed_utc": "2026-11-18T16:06:21.558787+00:00",
+      "status": "research_window_closed",
+      "evidence": "Fixed endpoint reached; original interruption retained."
     }
   ],
   "continuity_note_zh": "系统用量限制导致研究中断，14:43 UTC 用户恢复目标；原截止时间仍为 16:06:13 UTC。窗口经过时间不是连续计算时长，之前的中断和发布记录保留。",
@@ -43,7 +48,7 @@
     {
       "stage": 4,
       "title": "独立复核、发布与窗口结题",
-      "status": "running"
+      "status": "complete"
     }
   ],
   "modules": {
@@ -1388,7 +1393,7 @@
     }
   },
   "findings": [
-    "目前没有可靠译文或已确认词义。研究曾因系统用量限制中断，用户于 14:43 UTC 恢复目标；保持原定截止时间，不将窗口经过时间称为连续计算时长，也不把恢复视为完成。",
+    "第二个固定七小时窗口已于2026-11-18 16:06:21 UTC收束，登记终点为16:06:13 UTC。完成的是研究记录、对照与复核，没有可靠译文或已确认词义。系统用量中断与14:43 UTC恢复记录保留；七小时窗口不等于连续计算时长。最终发布另做线上验收。",
     "新增第二次已知转写视觉复查保留九处和16图上下文：95b两矩形实际相交，旧“框外”措辞已追加更正；f88r.5仍依赖行序，f99r第三个otoldy的局部右缘截对象。没有将复查视为盲确认或启动形态评分。",
     "新增定位工作：两版严格一致的跨叶重复Lf标签只有4簇、9位置，涉及4个物理叶；9处现已全部保留并记录工作归属，但没有观察到标签指示线。这里尚未做跨页形态评分，不能写成相同词已指向相同植物。",
     "英文17节零完整词命中已追加仅原文输入的第二次审读：两轮在7节主要使用泛称回指的描述上一致，但不证明名称绝不存在。A Sarabacca仅能确认拼接后等于标题字串；首字母分排还是冠词未决，不能叫已恢复真实名称。两轮解释不改原分数，不是语义金标。",
@@ -1438,7 +1443,7 @@
     },
     {
       "label": "本轮研究结果报告（结题以最终验收为准）",
-      "href": "downloads/semantic7h/research-result-report-v1.txt"
+      "href": "downloads/semantic7h/research-result-report-v2.txt"
     },
     {
       "label": "35条对象关系完整索引 v2",
@@ -1539,12 +1544,20 @@
     {
       "label": "已知语言圆图校准：两候选与尚缺证据（未运行）",
       "href": "downloads/semantic7h/known-circle-calibration-sources.txt"
+    },
+    {
+      "label": "最终内容核验与实际覆盖范围",
+      "href": "downloads/semantic7h/final-content-review-v1.txt"
+    },
+    {
+      "label": "固定窗口终点记录（发布验收另列）",
+      "href": "downloads/semantic7h/window-endpoint-v1.json"
     }
   ],
   "sources": [
     {
       "path": "session.json",
-      "sha256": "e00d032f69710c6213ff6040c6c655485bb96d5db765138c6bacb794db9f7c7f"
+      "sha256": "41cbcccf174818feb93074baffa1b1923515c8c47231c24e58e7c7f1074b8a9f"
     },
     {
       "path": "plan.txt",
@@ -1576,7 +1589,7 @@
     },
     {
       "path": "publication.json",
-      "sha256": "aad6d44788d46aac2e98089443ec402e496eb676557b8898dc1c2921f34d95b0"
+      "sha256": "c275676b8d508187a7fcbe8a320c57854c21fc3148da553c44ad4f4c812bd719"
     },
     {
       "path": "visual/choice_controls/result_v1.json",

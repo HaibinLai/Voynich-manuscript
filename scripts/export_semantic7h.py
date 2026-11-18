@@ -17,6 +17,10 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('closure/window_endpoint_v1.json','window-endpoint-v1.json'),
+    ('closure/final_content_review_v1.json','final-content-review-v1.json'),
+    ('closure/final_content_review_v1.txt','final-content-review-v1.txt'),
+    ('closure/research_result_report_v2.txt','research-result-report-v2.txt'),
     ('closure/known_circle_calibration_sources_v1.txt','known-circle-calibration-sources.txt'),
     ('closure/known_circle_calibration_sources_v1.json','known-circle-calibration-sources.json'),
     ('closure/research_result_report_v1.txt','research-result-report-v1.txt'),

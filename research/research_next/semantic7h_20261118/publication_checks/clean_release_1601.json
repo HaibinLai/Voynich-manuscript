@@ -1,0 +1,46 @@
+{
+  "utc": "2026-11-18T16:00:46.284564+00:00",
+  "commit": "71d056763b7d88d8150fe1387b6ca9dbf7395e41",
+  "scope": "clean tracked index only; builds and integrity, not new scientific scoring",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/export_semantic7h.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build_semantic7h_page.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build_site_data.py",
+        "--source",
+        "research"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify_release.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "site/semantic7h.js"
+      ],
+      "returncode": 0
+    }
+  ],
+  "passed": true
+}
