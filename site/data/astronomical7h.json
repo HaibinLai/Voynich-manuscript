@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T16:43:49.397894+00:00",
+  "snapshot_utc": "2026-11-18T17:05:03.211417+00:00",
   "window": {
     "start_utc": "2026-11-18T16:14:17.000Z",
     "deadline_utc": "2026-11-18T23:14:17.000Z",
@@ -9,13 +9,14 @@
     "status": "active",
     "stage": 2
   },
-  "status_note": "首轮圆图测量、固定校准来源及十二黄道图面粗角色观察已有结果；完整文本序列仍未过门槛，继续补查，七小时窗口保持进行中。",
+  "status_note": "已补查官方TIFF与用户PDF：未解决三处分界线疑问。人工方法核对单独展示，不是手稿得分。四幅黄道图的两路完整名册正在分别核查；七小时窗口继续。",
   "findings": [
     "尚未确认任何词义、读音、语种或可靠译文。",
     "两路观察均定位十二个圆脸邻近文字区，可作工作空间对应；它们对分界线、中央分组和外圈覆盖仍有分歧。",
     "全部十二短串与两版原行保留。没有删去分词困难位置，也没有执行真实文本命中或循环评分。",
     "十二黄道图面各版完整提取335个位置，只涉及四个物理叶。全部图面已做粗角色观察，299个目录短标签尚未逐项定位认证。",
-    "两部已知语言圆图原图可取得，但缺少独立短标签层及完整分区转写，当前可直接运行的该类校准基准为零。"
+    "两部已知语言圆图原图可取得，但缺少独立短标签层及完整分区转写，当前可直接运行的该类校准基准为零。",
+    "官方TIFF与JPEG为同一摄影、同为4972×3738；PDF对应嵌图为2000×1504。三处分界完整连续性仍未定，红字O06阅读框覆盖缺口已确认。"
   ],
   "stages": [
     {
@@ -76,7 +77,7 @@
           "title": "外圈红字：十二个来源记录 / 十三个粗区",
           "status": "unresolved",
           "details": [
-            "O06目前没有与引导阅读框相交，需要核查覆盖。",
+            "后续三图源补测确认O06内有红色笔迹，且未与旧引导阅读框相交；对应来源位置仍未知。",
             "不能据此断言新发现一个词，也不能删除额外观察区。"
           ]
         },
@@ -290,7 +291,7 @@
     },
     "spatial": {
       "status": "unresolved",
-      "summary": "画面顺时针相邻关系可作工作对照，尚不认证历史读序或完整扇区边界。下方原图图层保留两路自己的分组。",
+      "summary": "十二处可作工作空间对应，但完整扇区边界仍未确认。共同起点或共同方向未知本身不阻碍单图循环对照；两侧相对归属及文本范围不明才是实质缺口。尚未执行真实文本评分。",
       "records": [
         {
           "id": "cycle",
@@ -319,6 +320,27 @@
             "本阶段没有计算真实命中或循环分数。",
             "未定关系记为待核，不能记成无命中零，也不能删掉难例后宣称通过。"
           ]
+        },
+        {
+          "id": "source-sensitivity",
+          "title": "三种数字图源补测：没有新增空间分辨率",
+          "status": "complete",
+          "details": [
+            "官方JPEG与原始TIFF均为4972×3738，取景与细部位置一致；解码像素并非完全相同，不能称字节或像素一致。它们不是两次独立摄影。",
+            "用户PDF第202页已核为ImageID1006194，嵌图2000×1504。没有用放大插值或图像增强补出字迹。",
+            "三来源、四个预定局部共12个裁区均已查看。B07/B08/B09的完整墨线连续性仍未定；完成补测不等于边界通过。",
+            "O06内有真实红字，旧引导框仍未覆盖。此结论只针对阅读框，不新增词数、行数或来源位置。"
+          ]
+        },
+        {
+          "id": "coordinate-freedom",
+          "title": "方法澄清：共同起点不等于相对对应",
+          "status": "complete",
+          "details": [
+            "标签与正文同时换起点，原位匹配及全部错位得分不变；同时反向只重排错位的编号。一般结论来自求和换元证明。",
+            "只转动正文侧会改变谁对应谁，不能看过得分后挑最有利的对齐。跨图缺少相对锚点仍不能据最佳对齐确认读序。",
+            "这项方法核对不读取手稿词串，不解决当前边界、角色及分词问题，也不开放真实文本检验。"
+          ]
         }
       ],
       "sources": [
@@ -333,6 +355,14 @@
         {
           "label": "独立实现审计与覆盖缺口",
           "href": "https://github.com/HaibinLai/Voynich-manuscript/blob/main/research/research_next/astronomical7h_20261118/publication/geometry-audit.txt"
+        },
+        {
+          "label": "TIFF / JPEG / PDF补测报告",
+          "href": "https://github.com/HaibinLai/Voynich-manuscript/blob/main/research/research_next/astronomical7h_20261118/source_sensitivity/报告_v1.txt"
+        },
+        {
+          "label": "共同起点与方向的完整证明",
+          "href": "https://github.com/HaibinLai/Voynich-manuscript/blob/main/research/research_next/astronomical7h_20261118/method_preflight/invariance_report_v1.txt"
         }
       ]
     },
@@ -370,7 +400,7 @@
     },
     "zodiac": {
       "status": "partial",
-      "summary": "八幅画布、十二图面已全部做粗角色观察；双版各335个来源记录，36处环文、299处短标签，只涉及四个物理叶。每图一处邻接示例不代表299处全部认证。未见逐标签独立正文，共享环文不能直接分配给单个标签；完整序列仍未过门槛。",
+      "summary": "八幅画布、十二图面已全部做粗角色观察；双版各335个来源记录，36处环文、299处短标签，只涉及四个物理叶。每图一处邻接示例不代表299处全部认证。未见逐标签独立正文，共享环文不能直接分配给单个标签；完整序列仍未过门槛。 下一阶段固定核查f70v1、f71r、f71v、f72r1的全量名册，两路各自保存后再比较，不强迫图像区数等于来源记录数。",
       "records": [
         {
           "id": "f70v2",
@@ -789,6 +819,42 @@
       "href": "downloads/astronomical7h/zodiac-count-ledger.json"
     },
     {
+      "label": "source-sensitivity-report.txt",
+      "href": "downloads/astronomical7h/source-sensitivity-report.txt"
+    },
+    {
+      "label": "source-sensitivity-report.json",
+      "href": "downloads/astronomical7h/source-sensitivity-report.json"
+    },
+    {
+      "label": "four-panel-comparison-plan.txt",
+      "href": "downloads/astronomical7h/four-panel-comparison-plan.txt"
+    },
+    {
+      "label": "artificial-method-report.txt",
+      "href": "downloads/astronomical7h/artificial-method-report.txt"
+    },
+    {
+      "label": "coordinate-invariance-proof.txt",
+      "href": "downloads/astronomical7h/coordinate-invariance-proof.txt"
+    },
+    {
+      "label": "artificial-method-results.json",
+      "href": "downloads/astronomical7h/artificial-method-results.json"
+    },
+    {
+      "label": "coordinate-invariance-results.json",
+      "href": "downloads/astronomical7h/coordinate-invariance-results.json"
+    },
+    {
+      "label": "artificial-method-audit.txt",
+      "href": "downloads/astronomical7h/artificial-method-audit.txt"
+    },
+    {
+      "label": "supplement-readme.txt",
+      "href": "downloads/astronomical7h/supplement-readme.txt"
+    },
+    {
       "label": "原图阅读框与观察来源",
       "href": "downloads/astronomical7h/geometry-projection.json"
     }
@@ -819,8 +885,8 @@
       "sha256": "cc86ee36842d6a5f1bd6488843cc23b626e24c8123659c674f7434e7ca06fcaa"
     },
     {
-      "path": "research/research_next/astronomical7h_20261118/publication/snapshot_v1.json",
-      "sha256": "3a5307f49267bc3dc6e6b1343bd25f9bcb36a88ac098e5766173b9fdada1159e"
+      "path": "research/research_next/astronomical7h_20261118/publication/snapshot_v2.json",
+      "sha256": "a16a31d6cafeb3f8e1549685dc03850908ce7dc4afaeacf2b02db7c00dcfb81d"
     },
     {
       "path": "research/research_next/astronomical7h_20261118/publication/geometry_projection_v1.json",

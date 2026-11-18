@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-18T17:04:06.635519+00:00",
+  "status": "PASS_READ_ONLY_PUBLIC_REPLAY",
+  "original_executed_temporary_script_sha256": "140ea9c3cc06417865eaff126b7265e3cb017a4bf39e20a5a7542eef5dde44c8",
+  "public_replay_script": "audit_replay_v1.py",
+  "public_replay_script_sha256": "c0dd0ee44d9f1358673bf5a19d27b644220581953ce7f74a019d8e7fe89338aa",
+  "changes": [
+    "UsePath(__file__).resolve().parent instead ofmachine-specific absolute inputroot.",
+    "Remove oldtail that wroteaudit_receipt_v1.json/audit_v1.txt and printed compactsummary; emit fullcomputedJSON tostdout instead.",
+    "Add usage/provenance docstring; no change toindependent computations orinputlist."
+  ],
+  "not_only_path_replacement": true,
+  "execution": {
+    "cwd": "method_preflight (public repository directory)",
+    "command": [
+      "python3",
+      "-B",
+      "audit_replay_v1.py"
+    ],
+    "started_utc": "2026-11-18T17:04:04.614737+00:00",
+    "returncode": 0,
+    "stdout_bytes": 7516,
+    "stdout_sha256": "c3a4f256cfd406e5d2b868b1cef94de8186b9bbd8d81e13a0ffdff81a03b87d4",
+    "stderr_bytes": 0,
+    "cpu_seconds_reported": 1.995653
+  },
+  "comparison": {
+    "all_scientific_and_scope_fields_exactly_match_original_audit_receipt": true,
+    "excluded_runtime_or_provenance_fields": [
+      "started_utc",
+      "completed_utc",
+      "cpu_seconds",
+      "independent_check_program_sha256"
+    ]
+  },
+  "protected_originals": [
+    {
+      "path": "protocol_v1.txt",
+      "sha256_before_and_after": "3367d38b1e2325b0c1e87caebfa8387e85497aeb6211bc5c02b8b29bcdce823b"
+    },
+    {
+      "path": "run_v1.py",
+      "sha256_before_and_after": "e24661d54a82c11ea4e9c8f4c8c1c3cd6a1cc3c134a1148f6be91ac7c2a768ed"
+    },
+    {
+      "path": "results_v1.json",
+      "sha256_before_and_after": "f6d8b1a4b025b947d76bfd5e6a2cfff8ac7820b26479339e51c2f44473c82337"
+    },
+    {
+      "path": "report_v1.txt",
+      "sha256_before_and_after": "4fd7382ded6ca86320faa9c83beda5c17d9b005191db33d4418575a9d88ff2d9"
+    },
+    {
+      "path": "invariance_protocol_v1.txt",
+      "sha256_before_and_after": "f22081d5f172f27163c241f27520e037a35ec77ca476b246a61db47c92d1139d"
+    },
+    {
+      "path": "invariance_v1.py",
+      "sha256_before_and_after": "943436078be40947e3c26ed282784310fa39ea5f6ebdf49800890db750a16635"
+    },
+    {
+      "path": "invariance_results_v1.json",
+      "sha256_before_and_after": "72b48810c805a058ac781b40cb123e24e2aea40bfaa2de3053e924fe6a8ebe62"
+    },
+    {
+      "path": "invariance_report_v1.txt",
+      "sha256_before_and_after": "cf98e8f8254cf9b28b84c5e1bc17d217bc0e162e9f4cfd2dfb2c7ffe8edda09c"
+    },
+    {
+      "path": "audit_v1.txt",
+      "sha256_before_and_after": "e8c6a462c99d05bb36a14c4c8cd27c6d38df9bf8a5258635bce6d946c3ae00f6"
+    },
+    {
+      "path": "audit_receipt_v1.json",
+      "sha256_before_and_after": "833fa886d6e472b1b25894cbd1d77dbb60a4e7d06dfdbd6476dd50563dc7e0b3"
+    }
+  ],
+  "original_files_unchanged": true,
+  "new_manuscript_data_read": false,
+  "new_sibling_files_from_child_process": false,
+  "output_policy": "Script printsJSON tostdout only; use a shell redirection to a new outputpath if needed; script itself never writes."
+}
