@@ -1,0 +1,55 @@
+f103r 指定同框词形的有限原图核对
+
+范围与结论
+本次只核一页、三个给定原始locus、四个词位。主例为f103r.11的otain与okain；附例为f103r.4的qokedy及f103r.6的qotedy。已在Yale官方图像上定位，并查看官方IIIF返回的原生像素局部。四处笔迹均与给定转写相符；主例中两个不同高杆形态清楚可辨，同一行出现与o_ain框架相容的两种写法。附例的qokedy/qotedy也可辨读。
+这只是知道候选转写之后的一次辅助核对，不是盲转写、双人古文字学认证或全表误差率验证。两个版本描写的是同一实物，不能算两份独立手稿证据。没有读取其他匹配结果、重算统计量或变更筛选条件。
+
+一、来源与取得
+馆藏页：https://collections.library.yale.edu/catalog/2002046?child_oid=1006254
+官方manifest的Canvas标签为103r，Canvas：
+https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006254
+全页官方图像：
+https://collections.library.yale.edu/iiif/2/1006254/full/full/0/default.jpg
+尺寸2688×3805像素。取得时间以私有image_receipt.json为准：2026-11-18T07:09:51.971824+00:00。
+图像SHA256：28a65644ebf9a16dc41c073e6535117d924765fae6af474dbd1e3fe2b167beda。
+全页及三个上下文局部保存在工作区私有output/voynich/research_next/gallows_pairs/visual_check/；image_receipt.json和region_receipt.json记录URL、字节数、时间和SHA256。本文只给官方链接和坐标，不将这些下载件加入研究数据表。未做增强、补笔、灰度阈值化或生成式处理；局部由官方IIIF服务按原生像素返回。
+
+二、原locus与槽号
+下列行、槽均为从1开始的保存normalized page位置，不能当作以空白重新数出的现代词数。空槽/未知槽保留，未删除后重排。
+1. f103r.11：ZL第11行第3槽otain、第5槽okain。IT同locus第3槽otain、第6槽okain。差一槽的原因是ZL把中间写为lolshedy，IT分作lol、shedy；不能把ZL第5槽直接复制给IT。原转写源文件行号分别为ZL 6687、IT 4350。
+2. f103r.4：两版均第4行第2槽qokedy；源文件行号ZL 6675、IT 4343。
+3. f103r.6：两版均第6行第9槽qotedy；源文件行号ZL 6679、IT 4345。其右侧存在含问号的未知片段；本次不跨过它推定相邻词界，也不将该片段读成确定词。
+原始locus类型均为+P0。逐页保存文件中的loci、source_lines与原IVTFF对应行一致。本次只提取这三个给定locus的内容供对图。
+
+三、像素核对与近似定位
+坐标采用全页左上角为(0,0)，格式x,y,width,height。下列词框是人工导航备忘，非精确分割或重新拟合的字形框；上下文区域还包含邻行，以便复核行位。
+
+主例f103r.11：otain约(650,690,185,120)，okain约(1080,705,195,110)。先以左侧dar、oteey及中间lolshedy/lol.shedy确认行位，再核两处高杆。otain目标高杆上部可见向左展开的回环/横接；okain对应位置没有同样的左展回环，两者均有高起笔画和右侧部分。它们不是因同一模糊污点而被机械分成两类。两边的o及ain形态与给定读法相容，目标词之间有可见间距。当前扫描不能单凭笔画断言ain各最小构件究竟是独立历史字素，因此“框架相同”仍采用明确的EVA转写约定。
+官方上下文局部：
+https://collections.library.yale.edu/iiif/2/1006254/350,680,1100,160/full/0/default.jpg
+局部SHA256：9c2e8a1320cd0cdf0c56f98153a96806283dce03b4c657918d1f411ee4efafef。
+
+附例f103r.4：qokedy约(535,370,155,80)，在ychedy之后、okedy之前。目标高杆可辨，周围q/o和edy与转写相容。
+https://collections.library.yale.edu/iiif/2/1006254/330,335,1450,130/full/0/default.jpg
+局部SHA256：16a3801db7d6de3db6d68019a42a9f30231af882626755e4e0f5501d578017a7。
+
+附例f103r.6：qotedy约(1580,480,175,80)，在shcthy之后、右侧受损/未知串之前。目标处仍可分辨不同于上述k形的左展回环，给定qotedy读法得到局部图像支持；右侧污损不应用来补全未知串。
+https://collections.library.yale.edu/iiif/2/1006254/330,435,1510,135/full/0/default.jpg
+局部SHA256：bad6576651d76969c1b7073fc9a0474c444fc3f8f25593c6036ac941192c7b74。
+
+四、可以与不可以据此表达
+可以：在这个已指定的实例里，原图支持两种可区别的高杆写法存在于同页，主例还在同一行；它们的给定EVA词形仅k/t位置不同。跨版槽号差已追溯到中间分词差异。
+不可以：由同框或同页推出两种写法可任意互换、同音、同义、代表同一历史字母，或者宣布k/t只是书手个性。共同左右文可能容纳不同语法、词汇、密码或生成规则；本次没有语义真值，也未检验这些解释。指定例的视觉支持不能推广为所有匹配都正确，不能替代预定分层抽样和保留疑例的系统核验。
+
+五、可追溯输入（路径相对仓库根）
+research/research7h/visual_audit/yale_manifest.json
+SHA256 317d58fd9ea90392a83d9858a91eada3d0b41416a3c835857dc0154bd123a309
+research/research7h/final_reserve/reserve_v1/ZL3b-n_pages.json.gz
+SHA256 b4fbd7fcbf7e0f111a21d2d6c41631250999abc7d1f7ddbfbe512256412e7348
+research/research7h/final_reserve/reserve_v1/IT2a-n_pages.json.gz
+SHA256 dccb4f9de4c863d18341bb7cdaf4b066c267e00ae0388e2e771c2ca69dad3909
+research/sources/ZL3b-n.txt
+SHA256 bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc
+research/sources/IT2a-n.txt
+SHA256 7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5
+这些历史页已揭晓；此次读取saved reserve packet中的指定页，不构成新的盲确认。未启动概率评分或新统计检验。

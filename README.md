@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+- [六对高杆字形的左右文对照](https://haibinlai.github.io/Voynich-manuscript/gallows-pairs.html)：可浏览完全相同的词框、只差一位的近邻、同叶同词位的局部偏向，并追溯例词与页图。
+
 - [高杆字形六配对与位置分析](https://haibinlai.github.io/Voynich-manuscript/gallows-context.html)：在相同的转写和数据上分解 k/t 的预测变化，提供固定 λ、匹配 DF、逐事件与页面/叶组结果。复算数据和脚本见 [复现说明](research/research_next/gallows_context/REPRODUCE.txt)。
 
 - [后续参数共享对照](https://haibinlai.github.io/Voynich-manuscript/parameter-sharing.html)：146 个配置、292 个预定目标解；KT 在当前模型及三个训练近邻中占优，FP 未超过其控制均值。合成反例表明，正收益和相对排名均不能直接鉴定字形等值。完整概率独立复算覆盖 928 个数组；[研究包与复算说明](research/research_next/parameter_sharing/REPRODUCE.txt)。
@@ -141,6 +143,7 @@ python3 research/research7h/generator_controls/boundary_calibration/calibrate.py
 ```sh
 python3 scripts/build_report_page.py --source research
 python3 scripts/build_gallows_context_site.py
+python3 scripts/build_gallows_pairs_site.py
 python3 scripts/build_site_data.py --source research
 python3 -m http.server 8000 --directory site
 ```

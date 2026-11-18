@@ -1,0 +1,2471 @@
+{
+  "passed": true,
+  "manual_examples": 23,
+  "examples": [
+    {
+      "name": "exact_with_duplicate_rows_and_leaf_coverage",
+      "expectations": {
+        "f": 3,
+        "k": 1,
+        "f_leaves": 2,
+        "k_leaves": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 4,
+          "target_events": 4,
+          "target_records": 4,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 1,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "y",
+              "y"
+            ],
+            "left": [
+              "y"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 3,
+                "record_occurrences": 3,
+                "word_types": 1,
+                "leaves": 2,
+                "pages": 2,
+                "leaf_counts": {
+                  "A": 2,
+                  "C": 1
+                },
+                "page_counts": {
+                  "f1r": 2,
+                  "f2r": 1
+                }
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "B": 1
+                },
+                "page_counts": {
+                  "f1v": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "two_target_positions_are_not_two_independent_words",
+      "expectations": {
+        "events": 4,
+        "records": 2,
+        "frames": 3,
+        "edges": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 4,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 2,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 3,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 2,
+            "position": 0,
+            "remainder": [
+              "f"
+            ],
+            "left": [],
+            "right": [
+              "f"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "f"
+            ],
+            "left": [
+              "f"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              2
+            ]
+          },
+          {
+            "id": 2,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "k"
+            ],
+            "left": [
+              "k"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "hamming_one_neighbor",
+      "expectations": {
+        "edges": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "hamming_two_is_not_neighbor",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "z"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "z"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_remainder_different_position",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 0,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [],
+            "right": [
+              "a",
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "different_original_length",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "a"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "z"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "z"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "order_swap_is_distance_two",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "b"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "b"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "a"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "a"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "single_unit_empty_remainder",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 1,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 1,
+            "position": 0,
+            "remainder": [],
+            "left": [],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "nonpair_word_has_no_target",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 1,
+          "target_events": 0,
+          "target_records": 0,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 0,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": []
+      }
+    },
+    {
+      "name": "two_targets_different_positions",
+      "expectations": {
+        "edges": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 1,
+          "target_events": 2,
+          "target_records": 1,
+          "records_with_multiple_target_positions": 1,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 2,
+            "position": 0,
+            "remainder": [
+              "k"
+            ],
+            "left": [],
+            "right": [
+              "k"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": []
+          },
+          {
+            "id": 1,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "f"
+            ],
+            "left": [
+              "f"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "extended_units_are_atomic",
+      "expectations": {
+        "edges": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "@001;"
+            ],
+            "left": [
+              "@001;"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 2,
+            "position": 1,
+            "remainder": [
+              "@002;"
+            ],
+            "left": [
+              "@002;"
+            ],
+            "right": [],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "radius_one_is_not_connected_component_and_mass_overlaps",
+      "expectations": {
+        "edges": 2,
+        "global_f_events": 2,
+        "sum_closed_neighborhood_f_events": 4
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 3,
+          "undirected_hamming_one_edges": 2,
+          "candidate_pairs_tested": 3
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "x"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "x"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "x"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "x"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0,
+              2
+            ]
+          },
+          {
+            "id": 2,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "other_gallows_stay_original_units",
+      "expectations": {
+        "frames": 2,
+        "edges": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 2,
+          "target_events": 2,
+          "target_records": 2,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "p",
+              "y"
+            ],
+            "left": [
+              "p"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "t",
+              "y"
+            ],
+            "left": [
+              "t"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "global_exact_does_not_imply_local_support_and_duplicates_are_sensitivity_only",
+      "expectations": {
+        "primary": {
+          "f": {
+            "exact": 2,
+            "near_only": 0,
+            "unmatched": 0,
+            "exact_within_leaf": 0,
+            "exact_within_folio": 0
+          },
+          "k": {
+            "exact": 1,
+            "near_only": 0,
+            "unmatched": 0,
+            "exact_within_leaf": 0,
+            "exact_within_folio": 0
+          }
+        },
+        "sensitivity": {
+          "f": {
+            "exact": 1,
+            "near_only": 0,
+            "unmatched": 0,
+            "exact_within_leaf": 0
+          },
+          "k": {
+            "exact": 1,
+            "near_only": 0,
+            "unmatched": 0,
+            "exact_within_leaf": 0
+          }
+        }
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 1,
+          "undirected_hamming_one_edges": 0,
+          "candidate_pairs_tested": 0
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "y",
+              "y"
+            ],
+            "left": [
+              "y"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "B": 1
+                },
+                "page_counts": {
+                  "f2r": 1
+                }
+              }
+            },
+            "neighbors": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "anchored_classification_never_adds_neighbor_mass",
+      "expectations": {
+        "primary": {
+          "f": {
+            "exact": 0,
+            "near_only": 2,
+            "unmatched": 0,
+            "exact_within_leaf": 0,
+            "exact_within_folio": 0
+          },
+          "k": {
+            "exact": 0,
+            "near_only": 1,
+            "unmatched": 0,
+            "exact_within_leaf": 0,
+            "exact_within_folio": 0
+          }
+        }
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 0,
+          "exact_frames": 3,
+          "undirected_hamming_one_edges": 2,
+          "candidate_pairs_tested": 3
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "x"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "x"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "x"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "x"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0,
+              2
+            ]
+          },
+          {
+            "id": 2,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_f/k",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "k": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_f/p",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "p"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "p": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "p": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_f/t",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "t"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "t": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "t": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_k/p",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "k",
+          "p"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "k": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "p": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "p": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_k/t",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "k",
+          "t"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "k": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "t": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "t": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_algorithm_pair_p/t",
+      "expectations": {
+        "left_occurrences": 2,
+        "right_occurrences": 1
+      },
+      "actual": {
+        "pair": [
+          "p",
+          "t"
+        ],
+        "diagnostics": {
+          "input_records": 3,
+          "target_events": 3,
+          "target_records": 3,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 1,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "p": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              },
+              "t": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "p": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              },
+              "t": {
+                "occurrences": 1,
+                "record_occurrences": 1,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "leafA": 1
+                },
+                "page_counts": {
+                  "f1r": 1
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "within_leaf_complement_and_support_filter",
+      "expectations": {
+        "total": 6,
+        "comparable": 4,
+        "comparable_leaves": 2,
+        "difference": 0,
+        "after_dedup_comparable": 0
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 19,
+          "target_events": 19,
+          "target_records": 19,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 15,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 4,
+                "record_occurrences": 4,
+                "word_types": 1,
+                "leaves": 3,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 2,
+                  "C": 1,
+                  "D": 1
+                },
+                "page_counts": {
+                  "f1r": 4
+                }
+              },
+              "k": {
+                "occurrences": 2,
+                "record_occurrences": 2,
+                "word_types": 1,
+                "leaves": 1,
+                "pages": 1,
+                "leaf_counts": {
+                  "B": 2
+                },
+                "page_counts": {
+                  "f1r": 2
+                }
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 7,
+                "record_occurrences": 7,
+                "word_types": 1,
+                "leaves": 3,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 1,
+                  "B": 3,
+                  "D": 3
+                },
+                "page_counts": {
+                  "f1r": 7
+                }
+              },
+              "k": {
+                "occurrences": 6,
+                "record_occurrences": 6,
+                "word_types": 1,
+                "leaves": 3,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 3,
+                  "B": 1,
+                  "C": 2
+                },
+                "page_counts": {
+                  "f1r": 6
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "descriptive_strong_filter_can_be_driven_by_repeated_word_types",
+      "expectations": {
+        "strong_raw": true,
+        "strong_deduplicated": false,
+        "difference": 0.9,
+        "comparable": 40
+      },
+      "actual": {
+        "pair": [
+          "f",
+          "k"
+        ],
+        "diagnostics": {
+          "input_records": 80,
+          "target_events": 80,
+          "target_records": 80,
+          "records_with_multiple_target_positions": 0,
+          "repeated_source_identity_extra_records": 77,
+          "exact_frames": 2,
+          "undirected_hamming_one_edges": 1,
+          "candidate_pairs_tested": 1
+        },
+        "frames": [
+          {
+            "id": 0,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "a",
+              "y"
+            ],
+            "left": [
+              "a"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 40,
+                "record_occurrences": 40,
+                "word_types": 1,
+                "leaves": 4,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 10,
+                  "B": 10,
+                  "C": 10,
+                  "D": 10
+                },
+                "page_counts": {
+                  "f1r": 40
+                }
+              },
+              "k": {
+                "occurrences": 0,
+                "record_occurrences": 0,
+                "word_types": 0,
+                "leaves": 0,
+                "pages": 0,
+                "leaf_counts": {},
+                "page_counts": {}
+              }
+            },
+            "neighbors": [
+              1
+            ]
+          },
+          {
+            "id": 1,
+            "length": 3,
+            "position": 1,
+            "remainder": [
+              "b",
+              "y"
+            ],
+            "left": [
+              "b"
+            ],
+            "right": [
+              "y"
+            ],
+            "exact": {
+              "f": {
+                "occurrences": 4,
+                "record_occurrences": 4,
+                "word_types": 1,
+                "leaves": 4,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "page_counts": {
+                  "f1r": 4
+                }
+              },
+              "k": {
+                "occurrences": 36,
+                "record_occurrences": 36,
+                "word_types": 1,
+                "leaves": 4,
+                "pages": 1,
+                "leaf_counts": {
+                  "A": 9,
+                  "B": 9,
+                  "C": 9,
+                  "D": 9
+                },
+                "page_counts": {
+                  "f1r": 36
+                }
+              }
+            },
+            "neighbors": [
+              0
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "malformed_inputs_rejected": [
+    "",
+    "f k",
+    "F",
+    "@01;f",
+    [
+      "@001;f"
+    ],
+    [
+      "?"
+    ]
+  ],
+  "scope": "Synthetic artificial inputs only; no manuscript data loaded or statistics evaluated."
+}

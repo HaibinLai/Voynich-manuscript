@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "started_utc": "2026-11-18T07:09:30.535090+00:00",
+  "finished_utc": "2026-11-18T07:09:45.575210+00:00",
+  "python": "3.9.6 (default, Apr 17 2026, 18:15:52) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "command": [
+    "Voynich-manuscript/research/research_next/gallows_pairs/audit.py",
+    "--run",
+    "/tmp/voynich-pairs-final",
+    "--output",
+    "/tmp/voynich-pairs-independent-audit-v1"
+  ],
+  "counts": {
+    "exact_checks": 2501300,
+    "requirements": 413998,
+    "source_examples": 110148,
+    "numerical_checks": 164273,
+    "local_leaf_rows": 35584,
+    "candidate_frame_pairs_tested": 2532448
+  },
+  "max_absolute_numerical_error": 6.217248937900877e-15,
+  "numeric_absolute_tolerance": 1e-12,
+  "comparisons": 36,
+  "frames": 63256,
+  "edges": 60819,
+  "local_contexts": 18621,
+  "public_frames": 1920,
+  "public_near_examples": 288,
+  "public_local_contexts": 468,
+  "corpus": {
+    "ZL": {
+      "words": 33833,
+      "by_split": {
+        "train": 17754,
+        "dev": 6886,
+        "confirm": 5025,
+        "reserve": 4168
+      },
+      "pages": 204,
+      "leaves": 98
+    },
+    "IT": {
+      "words": 33896,
+      "by_split": {
+        "train": 17781,
+        "dev": 6905,
+        "confirm": 5047,
+        "reserve": 4163
+      },
+      "pages": 204,
+      "leaves": 98
+    }
+  },
+  "scope": [
+    "Python standard-library independent parser and direct all-pairs Hamming-1 graph; no production functions imported.",
+    "All original complete frames, all neighbor edges, anchored coverage classes, leaf counts, wordtype sensitivity, old-50-page subset.",
+    "All saved immediate-flank within-leaf contrasts recomputed with rational arithmetic, including eligibility, leave-one-leaf range and threshold status.",
+    "Saved example original word/target/source locator and exact unique Yale canvas mapping; no visual glyph verification or browser test.",
+    "Page summaries intentionally absent for leaf-word-position deduplication, whose representative source page is not unique.",
+    "Targets within a word, repeated types/rows, shared leaves and the two editions are not independent observations.",
+    "Exact overlap, near overlap and local preference are transcription-level descriptions, not semantic equivalence or decipherment."
+  ]
+}

@@ -1,0 +1,12 @@
+从仓库根目录执行，均使用标准库。
+python3 research/research_next/gallows_pairs/analyze.py --output /tmp/gallows-pairs-rebuilt
+python3 research/research_next/gallows_pairs/balanced.py /tmp/gallows-pairs-rebuilt /tmp/gallows-pairs-rebuilt/balanced.json
+
+freeze.json 验证事前协议和上轮输入的字节。revision.txt 记去重口径页字段和跨版汇总调整。analyze.py 写全框、恰1边及局部格。balanced.py 是主结果后对照，理论期望用人工枚举核对。将独立复算写入新目录：
+python3 research/research_next/gallows_pairs/audit.py --run research/research_next/gallows_pairs/saved --output /tmp/gallows-pairs-audit-rebuilt
+指标和检查范围见审核收据。archive 的例子坐标1起，原数据从0起。图像链接仅来自先前保存的唯一 Yale 画布页名。转写文件和页面不需要私有原书。
+
+发布网站和核对清单：
+python3 scripts/build_gallows_pairs_site.py
+python3 scripts/build_site_data.py --source research
+python3 scripts/verify_release.py

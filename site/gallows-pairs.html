@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="比较伏尼契手稿四种高杆字形在相同词长、相同位置和完整左右文中的词形记录，保留支持度、叶组、原词与原页来源。">
+  <title>高杆词形对照 · 伏尼契手稿研究台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallows-pairs.css">
+  <script defer src="gallows-pairs.js"></script>
+</head>
+<body class="gp-page">
+  <a class="skip-link" href="#gp-main">跳到词形对照</a>
+  <header class="site-header"><a class="wordmark" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契手稿<span class="wordmark-en">VOYNICH RESEARCH NOTEBOOK</span></span></a><a class="repo-link" href="https://github.com/HaibinLai/Voynich-manuscript" target="_blank" rel="noopener noreferrer">开放代码 ↗</a></header>
+  <nav class="main-nav" aria-label="研究导航"><a href="index.html#overview">研究首页</a><a href="index.html#concordance">全书词形索引</a><a href="gallows-context.html">高杆语境</a><a href="gallows-pairs.html" class="active" aria-current="page">高杆词形对照</a><a href="parameter-sharing.html">参数共享</a></nav>
+  <main id="gp-main" tabindex="-1">
+    <header class="gp-hero"><div><span class="eyebrow">FOLLOW-UP / WORD-FORM EVIDENCE</span><h1>同一词框里，<br>哪些写法都出现过？</h1><p class="hero-intro">比较相同词长与位置中的完整左、右文，再查看其余词框仅差一个单位的近邻。每条记录都要同时看原词、出现次数和叶组支持。</p><p class="small-text">f、p、k、t 是 EVA 转写标签。这里比较字形记录，不给它们指定读音或词义。</p></div><aside class="gp-boundary"><strong>记录相近，不等于可以互换</strong><p>两种词形都出现过，只能支持书面分布上的对应。它不证明抄写者真的替换过字形，更不证明两词同义、同音或属于同一字母。</p><a href="gallows-context.html">回看预测费用与语境 →</a></aside></header>
+    <div class="note-strip" id="gp-state" role="status" aria-live="polite">正在读取已保存的词形对照；没有预填数量或分析结论。</div>
+    <div id="gp-findings"></div>
+    <nav class="gp-jump" aria-label="本页小节"><a href="#gp-definition">怎样比较</a><a href="#gp-overview">六配对概览</a><a href="#gp-explorer">查原词与位置</a><a href="#gp-evidence">范围与来源</a></nav>
+
+    <section class="gp-section" id="gp-definition" aria-labelledby="gp-definition-title"><span class="eyebrow">01 / WHAT COUNTS AS A MATCH</span><h2 id="gp-definition-title">把其余位置都保留下来</h2><div class="gp-definition-grid"><figure class="gp-frame-diagram"><div class="gp-frame-line"><span>相同完整左文</span><b>k</b><span>相同完整右文</span></div><div class="gp-frame-line"><span>相同完整左文</span><b>t</b><span>相同完整右文</span></div><figcaption>定义示意，非手稿例词。中间标签是对照位置；其余原单位保持对应。</figcaption></figure><div><h3>完整词框</h3><p>同时固定长度、对照位置和其他位置，检查两侧写法的实际记录。一个词含多个相关位置时，不应把位置记录直接当成独立词次。</p><h3>词框汉明距离为 1 的近邻</h3><p>掩去对照位置后，剩余左右文恰有一个单位不同；加上对照字形的差异，<strong>两完整词共差两位</strong>。这类近邻不是完全相同词框里的另一写法，也不是实际替换的观察。</p></div></div><p id="gp-unit-note" class="gp-muted">长度按 EVA 原单位计数，包括整体记作一个单位的 @NNN; 编码；位置从 1 开始。它们不是已经识别的字母或音素。</p></section>
+
+    <section class="gp-section" id="gp-overview" aria-labelledby="gp-overview-title"><div class="section-heading"><div><span class="eyebrow">02 / ALL SIX PAIRS</span><h2 id="gp-overview-title">六个配对，保留相同口径</h2></div><p>同时报告有对应记录、出现偏向及未观察到另一写法的情况。前端不另设偏向阈值。</p></div><div id="gp-overview-results"><div class="gp-empty">等待保存的全配对汇总。</div></div></section>
+
+    <section class="gp-section" id="gp-explorer" aria-labelledby="gp-explorer-title"><span class="eyebrow">03 / READ THE ACTUAL RECORDS</span><h2 id="gp-explorer-title">查词形，也查它出现在哪里</h2>
+      <div class="gp-filters"><div class="field"><label for="gp-version">转写版本</label><select id="gp-version" disabled><option value="ZL">ZL / EVA</option><option value="IT">IT / EVA</option></select></div><div class="field"><label for="gp-pair">字形配对</label><select id="gp-pair" disabled><option value="f/k">f / k</option><option value="f/p">f / p</option><option value="f/t">f / t</option><option value="k/p">k / p</option><option value="k/t" selected>k / t</option><option value="p/t">p / t</option></select></div><div class="field"><label for="gp-view">查看方式</label><select id="gp-view" disabled><option value="frames">完整左右文词框</option><option value="neighbors">词框汉明 1 近邻</option><option value="local">即时邻域的叶内偏向</option></select></div><div class="field"><label for="gp-class">保存分类</label><select id="gp-class" disabled><option value="all">全部分类</option></select></div><div class="field"><label for="gp-length">单位长度</label><select id="gp-length" disabled><option value="all">全部长度</option></select></div><div class="field"><label for="gp-position">对照位置</label><select id="gp-position" disabled><option value="all">全部位置</option></select></div><div class="field gp-query-field"><label for="gp-query">查原词、词框（用 _ 留空）或页码</label><input id="gp-query" type="search" autocomplete="off" placeholder="输入后回车；按字面查找" disabled></div><div class="field"><label for="gp-support" id="gp-support-label">每侧最少叶组支持</label><select id="gp-support" disabled><option value="all">全部支持度</option></select></div></div>
+      <div class="note-strip"><strong>没有观察到，不等于不可能。</strong>稀有词框的空缺与常见词框的偏向不能混为一谈。分类只说明当前材料中的观察，点击原页也不意味着该处已完成独立字形认证。</div>
+      <div id="gp-view-note" class="gp-muted"></div><div class="gp-results-heading"><p id="gp-count" class="gp-muted" role="status" aria-live="polite">结果快照尚未载入。</p><button id="gp-export" class="button secondary small" type="button" disabled>下载全部筛选记录</button></div><div id="gp-records"><div class="gp-empty">等待实际词形、定位和支持记录。</div></div><nav id="gp-pagination" class="gp-pagination" aria-label="结果分页" hidden><button id="gp-prev" class="button secondary small" type="button">上一页</button><span id="gp-page-label"></span><button id="gp-next" class="button secondary small" type="button">下一页</button></nav>
+    </section>
+
+    <section class="gp-section" id="gp-evidence" aria-labelledby="gp-evidence-title"><span class="eyebrow">04 / SCOPE & PROVENANCE</span><h2 id="gp-evidence-title">读这些对应关系时，保留三条边界</h2><div class="gp-scope-grid"><article><span class="gp-step">01</span><h3>位置记录不是独立样本</h3><p>同一词、同一页或同一叶可能贡献多个记录。词次、词形、词框和叶组是不同分母，不能混算。</p></article><article><span class="gp-step">02</span><h3>偏向不直接揭示语法</h3><p>章节、书手、版面和转写差异可能影响分布。已观察的词形对应不能单独判定同音、语法功能或词义。</p></article><article><span class="gp-step">03</span><h3>原图入口必须有映射</h3><p>只使用来源数据提供的可靠原页链接。不为词形猜图片、补坐标，也不把图上近似位置当成逐字验证。</p></article></div><div id="gp-evidence-content"></div></section>
+    <noscript><div class="note-strip">交互对照需要 JavaScript。可查看<a href="data/gallows-pairs.json">保存的公开数据</a>；尚未接入的结果不会由示例替代。</div></noscript>
+  </main><footer class="site-footer"><span>原词与页位可追溯 · 支持度同时报告 · 不作词义鉴定</span><span id="gp-snapshot">等待保存快照</span></footer>
+</body>
+</html>
