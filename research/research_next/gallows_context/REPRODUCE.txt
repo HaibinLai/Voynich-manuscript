@@ -1,0 +1,23 @@
+从仓库根目录操作。读取同仓库的 parameter_sharing 冻结权重和输入，无需私有 PDF。
+完整输入身份、目标和规则见 freeze.json、scoring_freeze.json、protocol.txt。
+顺序由 config.tasks() 固定，索引 0 至 31。每个任务保留两次固定 λ 拟合及必要的匹配 DF 搜索。原拟合实现使用前轮 model.py 和 PyTorch float64。
+
+复算保存权重的预测费用需要 Python 和 NumPy。请使用新目录。
+python3 research/research_next/gallows_context/score.py --output /tmp/gallows-replay
+
+拟合可在复制的研究包中对每个索引调用，例如 NVIDIA GPU 或 CPU。
+python3 research/research_next/gallows_context/fit.py 0 --device cpu
+已发布 fit 目录有覆盖保护。复跑前为复制包的旧 fits 另行留档。独立复算器 audit.py 使用自己的概率与汇总实现。
+
+GPU 首次运行 32 个任务，全部固定 λ 权重收敛。ZL f/k 在匹配 DF50 的搜索中，λ=1 的 Armijo 线搜索报失败，缺有效括号。上一轮惩罚/目标/容差不变，将该任务在 CPU 上用完全相同代码重算。两格均匹配成功。GPU 原尝试保存在 attempts/zl_fk_gpu。调度避开上轮已出现运行错误的设备，全部原始路径仅在本地运维日志中。
+
+独立核验保存的分组、若干源结果和费用，输出到新目录。
+python3 research/research_next/gallows_context/audit.py --run research/research_next/gallows_context/saved --output /tmp/gallows-audit-rebuilt
+
+结果后的普通 ridge 降 λ 对照见 sensitivity_protocol.txt、sensitivity_fits 和 saved/sensitivity.json。重新汇总并以两条概率计算路径比对：
+python3 research/research_next/gallows_context/score_sensitivity.py --primary research/research_next/gallows_context/saved --output /tmp/gallows-sensitivity-rebuilt.json
+
+生成网站数据后更新站点清单。
+python3 scripts/build_gallows_context_site.py
+python3 scripts/build_site_data.py --source research
+python3 scripts/verify_release.py

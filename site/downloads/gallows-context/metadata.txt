@@ -1,0 +1,92 @@
+公开转写元数据：接口、覆盖与分层限制
+范围：仅查看公开源、既有记录的坐标/元数据和格式文档，没有读取gallows_context新评分，没有拟合或改变任何旧结果。
+
+一、稳定API（metadata.py，仅标准库）
+
+index = load_metadata(source_path, physical_pages=None, expected_sha256=None)
+annotation = annotate(row, index)
+report = coverage(rows, index)
+all_source_coverage = index_coverage(index)
+cross = compare_sources(zl_index, it_index)
+
+physical_pages采用既有规范化页对象：page['folio']、page['lines'][i]['loci']；若存在source_lines，必须与原IVTFF文件行号逐项一致。可之后用bind_physical_pages(index, pages)，返回新索引，不修改原索引。仅row['line']是零基物理行索引，不等于原locus编号或源文件行号。
+
+annotate的优先级为row.locator（也接受locus）、row.loci、已绑定physical line、页头。它返回新字典，不修改row，不使用word或概率得分。主要字段：
+hand：Davis书手H；illustration：插图类别I；
+currier_language：Currier A/B分类L；currier_hand：Currier旧书手C。
+raw_page_labels、raw_effective_labels保留原标签；provenance含源名、SHA、明确locus及生效标记源行。
+status='complete_HIL'仅表示H/I/L均已知，不承诺C存在；missing_fields仍逐项列缺失。
+existing_field_conflicts记录旧row标签与源解析不同。例如旧f115r行中的hand='@'不会盖过明确H=2/3。
+未决/缺失返回None；@绝不是第六位书手。混合物理行若不同locus的标签冲突，该字段返回None并要求提供准确locator，不按slot猜边界。未提供f115r的locator或物理行映射时，hand=None；不硬编码“第13行”推测。
+
+建议调用：
+idx = load_metadata(source, physical_pages=saved_pages, expected_sha256=pinned_sha)
+a = annotate({'folio':'f115r','line':0,'slot':0}, idx)
+# 在经核对的保存物理行映射下，hand='2'。
+若直接输入{'locator':'f115r.13'}，无需物理行映射即可解析hand='3'。
+未知folio返回missing_folio；重复定位、源页错配、未声明@的覆盖、正文中途标签等不明确结构显式报错。
+
+二、一手格式依据与用语
+
+René Zandbergen，IVTFF格式2.0.1、文档issue2.0.2（2025-07-08），Table6（印刷19–20页）与§6.8（25–26页）：
+https://voynich.nu/software/ivtt/IVTFF_format.pdf
+H从格式1.7起保留给Lisa Fagin Davis的五书手标签；C是Currier书手；L是Currier A/B分类；I是插图类别。文本标记从出现locus起持续，直至同变量新值或页尾；换页重置。页头@在首个覆盖前是未设置。
+
+I共有A天文（不含黄道）、B生物/浴疗惯称、C宇宙图、H植物、P药物、S仅边栏星、T纯文本、Z黄道。它们是视觉分类，不能称为已破译章节主题，也不强并成通俗“六章”。
+
+Davis作者方法说明强调人工古文字比较：
+https://ceur-ws.org/Vol-3313/keynote2.pdf
+本次网页工具因文件较大未取回，核对了此前保存的作者原文转文本中人工标注/主观判读说明。书手标签是有依据、可修订的归属判断，不是语义或语言真值。旧literature registry所录2020文章为10.1353/mns.2020.0011；本接口使用的是当前公开IVTFF中的映射，不声称重新实施Davis判读。
+
+一个需保留的差异：Table6列C为1–5、X、Z，但两份源的f105r/f105v明确给C=Y，旁注也写Currier hand Y。API保留Y，并发出value_not_listed_in_IVTFF_table6_C=Y警示，不将Y静默改Z或当缺失；这两个页的Davis H均为3。未据此断定格式文档或数据哪一方应改。
+
+三、完整公开源的覆盖
+
+ZL3b-n.txt：227个转写分区页头，5,385个loci。
+SHA256 bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc
+
+IT2a-n.txt：225个转写分区页头，5,215个loci。
+SHA256 7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5
+
+这些是页头/locus计数，不是独立物理叶数，也不是语言词数。正文、标签和环形文字均在源locus分母内；不能拿此覆盖率代替新模型目标词覆盖。
+
+页头H计数：
+版本   H1   H2  H3  H4  H5  @待覆盖
+ZL     113  46  33  27   7     1
+IT     113  46  32  26   7     1
+展开明确locus覆盖后，所有loci都有H：
+ZL H1=1754，H2=1371，H3=1221，H4=894，H5=145；
+IT H1=1748，H2=1371，H3=1219，H4=732，H5=145。
+
+I页头计数（A/B/C/H/P/S/T/Z）：
+ZL 8/19/11/129/16/25/7/12；
+IT 8/19/10/129/16/25/6/12。I无缺失。
+
+Currier L：
+ZL页头A114、B83、缺失30；loci A1821、B2809、缺失755。
+IT页头A114、B82、缺失29；loci A1815、B2648、缺失752。
+不能根据H、I、词形或另一页猜补这些A/B缺失值。
+
+Currier C：
+ZL缺失67页头/2087 loci；IT缺失66页头/2082 loci。
+两源均在f105r/v的75个loci使用上述Y，不把它当Davis类别。
+
+四、f115r覆盖与跨版一致性
+
+两源仅f115r有H覆盖：页头H=@；f115r.1设置H=2，f115r.13设置H=3，45个loci分别为前12与后33。源文件位置：
+ZL第8277/8297行；IT第5303/5315行。
+同一覆盖从源读取，不由词首高杆或统计分布反推。
+
+用既有metadata_sensitivity保存物理页绑定，核对45物理行与45loci一一对应。对本项目parameter_sharing保存训练记录的元数据计数：ZL456词次分为H2=128/H3=328；IT444分为120/324。旧记录的hand='@'全部被明确覆盖纠正；本次没有评分，计数不是分数影响上界。
+
+225个共有页头的H/I/L/C逐项完全相同；仅ZL有f116v和fRos页头。共有5,214个精确locator字符串的有效H/I/L/C也相同。不同版本分割可以不同，精确locator一致不等于已认证同一像素行；未配对项目不据此判错。标签可能采用共同编辑元数据，因此跨版一致不是两次独立历史归属验证。
+
+五、分层能回答什么
+
+已观察支持高度不平衡：两源I=P的16页全为H1，I=B的19页全为H2，A与Z类别全为H4；S类别24页为H3，另1页是混合H2/H3的f115r。Herbal/H类别才覆盖H1/H2/H3/H5多组，H4不在其中。ZL的H4有26页缺L，仅fRos为B；IT的26个H4页全缺L。H2、H5页全为B，而H1的112页为A、另1页缺L。
+
+因此，“控制章节后估计纯书手效应”或“按Currier辨识语言”不能由标签数量自动保证。应预先列出各目标实际支持的H×I×L单元、页和叶组数，报告空单元；跨组缺乏重叠时只能描述该联合层，不能归因单一因素。不要通过合并稀疏层、补标签或选择好看的层事后增加结论。缺失处理须事先固定并公开，不能把缺失当新的已知语言或书手。
+
+本模块的coverage可在最终caller目标记录上重算元数据覆盖，但不选择研究样本、不改split、不推断词义。所有原文已经公开/接触，元数据核查不恢复任何盲集。
+
+验证：人工小例覆盖@继承、换页、准确locator、零基物理行绑定、混合行拒绝猜测、C=Y保留、旧字段冲突和不修改输入；通过。真实源全量仅做上述元数据计数/对照及f115r保存坐标核对。没有读取gallows_context的新得分，也没有写除metadata.py和本说明以外的文件。

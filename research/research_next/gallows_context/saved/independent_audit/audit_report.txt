@@ -1,0 +1,8 @@
+独立逐事件数值审核：通过。
+只用 CPU NumPy 和保存权重，不重训、不导入原模型或评分函数。完整词包括原单位、EOS 及 OTHER 身份费。
+主表按完整词次；上下文按预测事件。每轴事件互斥，涉及词数可跨组重复。合成公开分组只核对 history 轴。
+数值一致不代表别名、语言或语义鉴定；固定 λ 与调 λ 的分解依赖比较路径，非因果归因。
+未独立重赋书手等辅助标注，未复算 Hessian/优化过程；结果后新增 D 模型不在本次范围。
+统计：{"exact_reused_weight_arrays": 116, "reconstructed_event_arrays": 408, "reconstructed_event_costs": 18176244, "reconstructed_word_arrays": 408, "reconstructed_word_costs": 3021492, "event_decomposition_arrays": 136, "event_decomposition_values": 6058748, "saved_event_arrays": 216, "saved_event_values": 6989328, "prior_word_arrays": 224, "prior_word_values": 1710746, "old_receipt_error_arrays": 188, "old_receipt_error_values": 188, "group_sum_arrays": 15048, "group_sum_values": 15048, "word_mean_arrays": 408, "word_mean_values": 408, "reported_decomposition_arrays": 5016, "reported_decomposition_values": 5016, "event_mean_arrays": 14640, "event_mean_values": 14640, "axis_partition_arrays": 2448, "axis_partition_values": 2448, "core_axis_partitions": 816, "combined_event_arrays": 72, "combined_event_values": 3987396, "drop_one_leaf_arrays": 24, "drop_one_leaf_values": 48, "task_df_comparisons": 64, "tasks": 32, "saved_word_arrays": 120, "saved_word_values": 1200000}
+最大绝对误差：{"event_decomposition": 0.0, "saved_event": 3.552713678800501e-15, "prior_word": 2.1316282072803006e-14, "old_receipt_error": 7.105427357601002e-15, "group_sum": 1.9667822925839573e-11, "word_mean": 2.1510571102112408e-15, "reported_decomposition": 2.2737367544323206e-13, "event_mean": 3.552713678800501e-15, "axis_partition": 2.2737367544323206e-13, "combined_event": 3.552713678800501e-15, "drop_one_leaf": 1.9984014443252818e-15, "saved_word": 1.0658141036401503e-14}
+失败数：0；详见 errors.json。

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e7">
+  <meta name="description" content="高杆字形参数共享的六配对与语境分解：区分匹配DF、固定正则化强度和重新匹配强度的预测费用变化。">
+  <title>高杆字形与语境 · 伏尼契手稿研究台</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallows-context.css">
+  <script defer src="gallows-context.js"></script>
+</head>
+<body class="gc-page">
+  <a class="skip-link" href="#gc-main">跳到语境研究内容</a>
+  <header class="site-header"><a class="wordmark" href="index.html#overview"><span class="seal" aria-hidden="true">V</span><span>伏尼契手稿<span class="wordmark-en">VOYNICH RESEARCH NOTEBOOK</span></span></a><a class="repo-link" href="https://github.com/HaibinLai/Voynich-manuscript" target="_blank" rel="noopener noreferrer">开放代码 ↗</a></header>
+  <nav class="main-nav" aria-label="研究导航"><a href="index.html#overview">七小时研究</a><a href="index.html#manuscript">原图与转写</a><a href="parameter-sharing.html">参数共享</a><a href="gallows-context.html" class="active" aria-current="page">高杆字形与语境</a><a href="report.html">首轮报告</a></nav>
+  <main id="gc-main" tabindex="-1">
+    <header class="gc-hero"><div><span class="eyebrow">FOLLOW-UP / GALLOWS & CONTEXT</span><h1>预测的改善，<br>出现在哪些语境？</h1><p class="hero-intro">先比较四种高杆字形的六个配对，再查看 k / t 的费用变化落在哪些预测位置。把共享方向的效果，与改变整体正则化强度的效果分开看。</p><p class="small-text">f、p、k、t 是 EVA 转写标签，不是已经认出的拉丁读音。</p></div><aside class="gc-boundary"><strong>这是后续探索</strong><p>手稿分区均已用于研究或公开，没有新的盲测。预测改善不证明同音、异体、词义或某一生成机制。</p><a href="parameter-sharing.html">先读参数共享对照 →</a></aside></header>
+    <div id="gc-state" class="note-strip" role="status" aria-live="polite">正在读取保存快照；页面不运行模型，也不以零填补缺失结果。</div>
+    <div id="gc-findings"></div>
+    <nav class="gc-jump" aria-label="本页小节"><a href="#gc-comparison">六配对</a><a href="#gc-context">语境分解</a><a href="#gc-calibration">已知答案</a><a href="#gc-evidence">口径与核验</a></nav>
+
+    <section class="gc-section" id="gc-method" aria-labelledby="gc-method-title"><span class="eyebrow">01 / TWO DIFFERENT COMPARISONS</span><h2 id="gc-method-title">同一预测改善，拆成两步</h2><div class="gc-method-grid"><article><span class="gc-step">A</span><h3>固定基础强度 λ</h3><p>沿用普通 ridge 的 λ 加入配对软融合，比较完整词费用。基础强度相同，局部 DF 仍可能改变。</p></article><article><span class="gc-step">B</span><h3>再匹配局部 DF</h3><p>把融合模型的 λ 调到预定 DF，比较这一步额外的费用变化。相同 DF 不是相同函数空间或相同泛化容量。</p></article></div><p class="gc-equation"><span>匹配 DF 的总收益</span><b>=</b><span>固定 λ 的收益</span><b>+</b><span>重新匹配 λ 的变化</span></p><p class="gc-muted">三项都允许为负。这里是两个保存模型之间的费用分解，不能把各项直接当作独立的因果效应。</p></section>
+
+    <section class="gc-section" id="gc-comparison" aria-labelledby="gc-comparison-title"><div class="section-heading"><div><span class="eyebrow">02 / ALL SIX PAIRS</span><h2 id="gc-comparison-title">六个配对，使用同一口径</h2></div><p>每条边使用相同的额外融合系数 r = 10。全部配对按方案顺序展示，不按结果挑选或排名。</p></div>
+      <div class="gc-filters"><div class="field"><label for="gc-version">转写版本</label><select id="gc-version" disabled><option value="ZL">ZL / EVA</option><option value="IT">IT / EVA</option></select></div><div class="field"><label for="gc-df">局部 DF 目标</label><select id="gc-df" disabled><option value="50">DF 50</option><option value="150">DF 150</option></select></div><div class="field"><label for="gc-split">已见评价分区</label><select id="gc-split" disabled><option value="confirm_reserve">旧 confirm + reserve · 主描述</option><option value="confirm">旧 confirm</option><option value="reserve">旧 reserve</option><option value="dev">旧 dev · 诊断</option></select></div><div class="field"><label for="gc-metric">图中比较</label><select id="gc-metric" disabled><option value="matched">匹配 DF 的总收益</option><option value="fixed">固定 λ 的收益</option><option value="retune">重新匹配 λ 的变化</option></select></div></div>
+      <p class="gc-muted">本区单位：bits / 完整词；正数表示后一个条件更省预测费用。原输出身份与 EOS 仍要计费。λ 和实际 DF 随完整结果列出。</p><div id="gc-pair-results" class="gc-results"><p>结果快照尚未载入。</p></div>
+    </section>
+
+    <section class="gc-section" id="gc-sensitivity" hidden aria-labelledby="gc-sensitivity-title"><span class="eyebrow">POST-RESULT / ADDITIONAL SENSITIVITY</span><h2 id="gc-sensitivity-title">结果后追加：只调整普通 ridge 的 λ</h2><div class="note-strip"><strong>这项比较在看到主结果后登记。</strong>把普通 ridge 也重新拟合到融合模型使用的 λ，检查仅改变基础强度能得到多少改善。它的实际 DF 通常不同，不替换上面的匹配 DF 主比较，也不是新增盲测。</div><p class="gc-muted">同 λ 融合优势 = 这个新 ridge 的成本 − 融合模型成本。正数仍只表示这一条比较路径的预测费用下降。</p><div id="gc-sensitivity-results"></div></section>
+
+    <section class="gc-section" id="gc-context" aria-labelledby="gc-context-title"><div class="section-heading"><div><span class="eyebrow">03 / WHERE THE COST CHANGES</span><h2 id="gc-context-title">k / t：哪些预测事件发生变化？</h2></div><p>沿用上方版本、DF 与评价分区。每次只看一种分组轴，避免混淆不同分母。</p></div>
+      <div class="gc-context-tools"><div class="field"><label for="gc-axis">分组方式</label><select id="gc-axis" disabled><option value="history">最近三位是否含配对字形</option><option value="position">词内预测位置</option><option value="event">首字 / 正文单位 / EOS</option><option value="history_event">历史 × 事件类型</option><option value="history_nearest">最近相关历史的位置</option><option value="target">当前预测目标</option><option value="hand">Davis 书手标签</option><option value="section">插图类别</option><option value="currier">Currier A/B 标签</option><option value="line_role">行位角色</option><option value="folio">转写页面</option><option value="leaf">叶组</option></select></div><div class="field"><label for="gc-context-pair">已保存的语境配对</label><select id="gc-context-pair" disabled><option value="k/t">k / t</option></select></div></div>
+      <div class="note-strip"><strong>这里改用预测事件作分母。</strong>同一分组轴内，事件互不重叠；“涉及词数”是至少含一个该组事件的词数，同一个词可以出现于多组，不能把这些词数相加。不同分组轴也不能叠加。总费用变化另列为 bits。</div>
+      <div id="gc-axis-description" class="gc-muted"></div><div id="gc-context-results" class="gc-results"><p>结果快照尚未载入。</p></div>
+    </section>
+
+    <section class="gc-section" id="gc-calibration" aria-labelledby="gc-calibration-title"><span class="eyebrow">04 / KNOWN-ANSWER CHECK</span><h2 id="gc-calibration-title">用已知机制约束解释</h2><p>本次诊断预先固定两个种子、五个机制和 AB / CD 两个配对，沿用独立抽取但已经使用过的测试样本。软融合保留原身份；即使两个符号并非别名，收缩也可能改善有限样本预测。样本和机制都很有限，不能用“收益为正”直接鉴定异体字。</p><details class="study-details" id="gc-synthetic-details"><summary>展开已保存的全部合成条件</summary><div id="gc-synthetic-results"><p>结果快照尚未载入。</p></div></details></section>
+
+    <section class="gc-section" id="gc-evidence" aria-labelledby="gc-evidence-title"><span class="eyebrow">05 / SCOPE & EVIDENCE</span><h2 id="gc-evidence-title">能复核什么，还不能说明什么</h2><div class="gc-scope-grid"><article><h3>保存分数的描述</h3><p>主比较使用旧 confirm 与 reserve 合并分区；两版转写来自同一手稿，不是独立样本。部分权重复用，不把复用计作新的独立重复。</p></article><article><h3>完整词与事件费用</h3><p>完整词费用包括原输出、EOS 与适用的稀有身份费。事件分组用于定位费用变化；它不替代完整词评分，也不是完整档案压缩率。</p></article><article><h3>元数据与共同支持</h3><p>书手、插图类别、Currier 类别及行位可能相互混杂。这些标签未用于本轮模型拟合。按标签分组的差异，不自动证明某一因素独立导致收益。缺失类别、范围及样本量应一并阅读。</p></article></div><div id="gc-evidence-content"></div></section>
+    <noscript><div class="note-strip">交互查看需要 JavaScript。可阅读<a href="data/gallows-context.json">公开保存快照</a>；尚未发布的结果不会在此补造。</div></noscript>
+  </main><footer class="site-footer"><span>原字形保留 · 不同分母分开报告 · 不作译文鉴定</span><span id="gc-snapshot">等待保存快照</span></footer>
+</body>
+</html>

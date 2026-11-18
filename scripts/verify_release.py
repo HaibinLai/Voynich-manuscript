@@ -92,6 +92,9 @@ def verify_snapshot():
     if (parameter/'manifest.json').exists():
         definitions.append((parameter/'manifest.json', parameter, dict(container='files')))
         definitions.append((parameter/'freeze.json', parameter, dict(container='files')))
+    gallows = REPO/'research/research_next/gallows_context'
+    if (gallows/'manifest.json').exists():
+        definitions.append((gallows/'manifest.json', gallows, dict(container='files')))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
