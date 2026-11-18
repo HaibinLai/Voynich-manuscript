@@ -1,0 +1,795 @@
+{
+  "schema": "f67_spacing_comparison_v1",
+  "inputs": [
+    {
+      "input": "f67_word_boundaries/review_v1.json",
+      "input_sha256": "e9dc6129d25c335a6bb475588e85e35553ea5734c9608578f11d6c56e25a60d8",
+      "output": "guided_observation_v1.json",
+      "output_sha256": "e9dc6129d25c335a6bb475588e85e35553ea5734c9608578f11d6c56e25a60d8",
+      "transform": "Local private path prefixes only; JSON reserialized; raw strings and scientific observations unchanged."
+    },
+    {
+      "input": "f67_spacing_image/observations_v1.json",
+      "input_sha256": "a1d5fd8970892ca8592318ce3a40355b71db3a4ce24f7ec463bb2fa81a3a06ea",
+      "output": "image_observation_v1.json",
+      "output_sha256": "a1d5fd8970892ca8592318ce3a40355b71db3a4ce24f7ec463bb2fa81a3a06ea",
+      "transform": "Local private path prefixes only; JSON reserialized; raw strings and scientific observations unchanged."
+    }
+  ],
+  "records": [
+    {
+      "locator": "f67r2.52",
+      "image_id": "W01",
+      "reading_bbox_xywh": [
+        3195,
+        1255,
+        95,
+        180
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.52,@Ls>    qotoear",
+        "IT": "<f67r2.52,@Ls>    qotoear"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "未见可独立支持的内部切分",
+      "image_assessment": "没有一个远大于其他内部间隙、且可稳定作为粗切分的空白带。右侧低笔迹之间能见到小空隙，但不能按空隙大小可靠分出字内/字间/词间。",
+      "guided_grouping_alternatives": [
+        "qotoear（整串保留；不认证单词性）"
+      ],
+      "image_grouping_alternatives": [
+        "保留整条为一个视觉串，内部按独立笔迹岛细分。",
+        "若把密集左段与右侧低笔迹另分，切点并无唯一优势；不能指定确定词界。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.53",
+      "image_id": "W02",
+      "reading_bbox_xywh": [
+        3275,
+        1085,
+        225,
+        170
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.53,&Ls>    dchdar",
+        "IT": "<f67r2.53,&Ls>    dchodar"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [
+        {
+          "id": "W02G1",
+          "oriented_local_xyxy": [
+            75,
+            118,
+            98,
+            150
+          ],
+          "original_image_xyxy": [
+            3320,
+            1173,
+            3343,
+            1205
+          ],
+          "status": "candidate_not_dominant",
+          "description": "左下较密墨迹与随后沿斜轴的小痕之间有可见间隔；窗口含两边相邻笔迹以定位，不是全白掩膜。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "无新增词界；字符读法未决",
+      "image_assessment": "该间隔的投影受斜轴和长笔画影响，尚不能证明比其他字符内部间隔属于不同类型。",
+      "guided_grouping_alternatives": [
+        "dchdar（ZL原串）",
+        "dchodar（IT原串）"
+      ],
+      "image_grouping_alternatives": [
+        "整条斜向视觉串。",
+        "在低端密集痕之后切成两个粗块；中部小痕仍可分别计作更细墨迹岛。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.54",
+      "image_id": "W03",
+      "reading_bbox_xywh": [
+        3515,
+        1010,
+        210,
+        95
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.54,&Ls>    y,saldal",
+        "IT": "<f67r2.54,&Ls>    ysaldal"
+      },
+      "guided_candidate_regions": [
+        {
+          "id": "G54a",
+          "bbox": [
+            3543,
+            1023,
+            28,
+            58
+          ],
+          "source_reference": "ZL y,saldal：逗号之后/首分量之后的工作位置；IT无界",
+          "alignment": "已知转写引导的粗候选，不是EVA字形对齐认证",
+          "evidence": "初始弯曲分量与后续短链有背景空隙；邻笔外伸使空隙宽度随高度变化。",
+          "stable_word_boundary": false,
+          "word_boundary_truth": null,
+          "false_status_means": "Not established by this observation, not evidence that the boundary is absent."
+        }
+      ],
+      "image_candidate_windows": [
+        {
+          "id": "W03G1",
+          "oriented_local_xyxy": [
+            61,
+            57,
+            77,
+            94
+          ],
+          "original_image_xyxy": [
+            3546,
+            1037,
+            3562,
+            1074
+          ],
+          "status": "visible_candidate",
+          "description": "左侧孤立墨迹和右侧较密组合之间，可见一处较显眼的小空白；其附近有左痕的弯曲延伸。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [
+        {
+          "guided_candidate": "G54a",
+          "image_candidate": "W03G1",
+          "guided_xyxy": [
+            3543,
+            1023,
+            3571,
+            1081
+          ],
+          "image_xyxy": [
+            3546,
+            1037,
+            3562,
+            1074
+          ],
+          "rectangle_intersection_px2": 592,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        }
+      ],
+      "guided_assessment": "候选空白可定位，词间/笔画间性质未决",
+      "image_assessment": "可以提出左段/右段的视觉切分，但空白宽度仍与其他笔画间隙同量级，无法稳定认定为词间。",
+      "guided_grouping_alternatives": [
+        "ysaldal",
+        "y|saldal"
+      ],
+      "image_grouping_alternatives": [
+        "一条短视觉串，左端只是其中较分离的墨迹。",
+        "按该空白分为左侧墨迹与右侧组合两个粗块。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.55",
+      "image_id": "W04",
+      "reading_bbox_xywh": [
+        3755,
+        1020,
+        200,
+        100
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.55,&Ls>    ytodal",
+        "IT": "<f67r2.55,&Ls>    ytodal"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "未见可独立支持的内部切分",
+      "image_assessment": "主串内部有常规小分离，没有唯一突出的宽空白。浅色墨迹边缘与纸纹混合，无法建立稳定词间距门槛。",
+      "guided_grouping_alternatives": [
+        "ytodal（整串保留；不认证单词性）"
+      ],
+      "image_grouping_alternatives": [
+        "整条保持一个视觉串。",
+        "在任一低墨迹岛处进一步细分均属字形级候选，未见支持某个粗词级切法的充分间隔证据。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.56",
+      "image_id": "W05",
+      "reading_bbox_xywh": [
+        3970,
+        1150,
+        120,
+        160
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.56,&Ls>    tol.daiin",
+        "IT": "<f67r2.56,&Ls>    tol.daiin"
+      },
+      "guided_candidate_regions": [
+        {
+          "id": "G56a",
+          "bbox": [
+            4008,
+            1188,
+            50,
+            32
+          ],
+          "source_reference": "ZL/IT tol.daiin：点号；候选在上端钩形组与后续圆/低位组之间",
+          "alignment": "粗候选；没有逐字笔画对齐",
+          "evidence": "原生0/90度视图能看到组间局部背景；相邻斜向笔的投影范围重叠，空隙与内部笔形分离不能稳定二分。",
+          "stable_word_boundary": false,
+          "word_boundary_truth": null,
+          "false_status_means": "Not established by this observation, not evidence that the boundary is absent."
+        }
+      ],
+      "image_candidate_windows": [
+        {
+          "id": "W05G1",
+          "oriented_local_xyxy": [
+            66,
+            83,
+            86,
+            115
+          ],
+          "original_image_xyxy": [
+            4005,
+            1186,
+            4037,
+            1206
+          ],
+          "status": "candidate_not_dominant",
+          "description": "左下开头小组与后面的高环/立笔之间有斜向空隙；沿斜基线观察与水平投影不同。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [
+        {
+          "guided_candidate": "G56a",
+          "image_candidate": "W05G1",
+          "guided_xyxy": [
+            4008,
+            1188,
+            4058,
+            1220
+          ],
+          "image_xyxy": [
+            4005,
+            1186,
+            4037,
+            1206
+          ],
+          "rectangle_intersection_px2": 522,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        }
+      ],
+      "guided_assessment": "共同点号位置可检查，词界仍未认证",
+      "image_assessment": "可看见起始小组较分开，但空白与高笔画本身的内部留白难作可靠分类。",
+      "guided_grouping_alternatives": [
+        "tol|daiin",
+        "toldaiin（仅示意无切口备选，不改源文本）"
+      ],
+      "image_grouping_alternatives": [
+        "整体是一条斜向视觉串。",
+        "把起始低小组与后续高/低笔画分成两块；这不等于两个词。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.57",
+      "image_id": "W06",
+      "reading_bbox_xywh": [
+        4050,
+        1305,
+        110,
+        200
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.57,&Ls>    otar,dy",
+        "IT": "<f67r2.57,&Ls>    otardy"
+      },
+      "guided_candidate_regions": [
+        {
+          "id": "G57a",
+          "bbox": [
+            4090,
+            1424,
+            55,
+            28
+          ],
+          "source_reference": "ZL otar,dy：逗号候选；IT otardy",
+          "alignment": "粗候选；不认证otar或dy笔形身份",
+          "evidence": "中段与终端圆/弯尾组之间有局部背景；不能据此稳定支持分词而排除连串。",
+          "stable_word_boundary": false,
+          "word_boundary_truth": null,
+          "false_status_means": "Not established by this observation, not evidence that the boundary is absent."
+        }
+      ],
+      "image_candidate_windows": [
+        {
+          "id": "W06G1",
+          "oriented_local_xyxy": [
+            160,
+            45,
+            175,
+            78
+          ],
+          "original_image_xyxy": [
+            4112,
+            1435,
+            4145,
+            1450
+          ],
+          "status": "visible_candidate",
+          "description": "中段较低笔迹与右端笔迹之间有可见空白，是该框内较明显的粗分组候选之一。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [
+        {
+          "guided_candidate": "G57a",
+          "image_candidate": "W06G1",
+          "guided_xyxy": [
+            4090,
+            1424,
+            4145,
+            1452
+          ],
+          "image_xyxy": [
+            4112,
+            1435,
+            4145,
+            1450
+          ],
+          "rectangle_intersection_px2": 495,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        }
+      ],
+      "guided_assessment": "候选空白可定位，词间/笔画间性质未决",
+      "image_assessment": "切分成左右两段在图形上合理；仍不能据单例断定这是词界，而非两个相邻字形之间的正常分隔。",
+      "guided_grouping_alternatives": [
+        "otardy",
+        "otar|dy"
+      ],
+      "image_grouping_alternatives": [
+        "整条为一个视觉串。",
+        "在候选空白处拆为左/中段与右端两组。",
+        "右端两枚分离墨迹还可按更细图形粒度拆开；没有依据把这定成额外词数。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.58",
+      "image_id": "W07",
+      "reading_bbox_xywh": [
+        4040,
+        1545,
+        95,
+        190
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.58,&Ls>    cho.dal,g",
+        "IT": "<f67r2.58,&Ls>    chodalg"
+      },
+      "guided_candidate_regions": [
+        {
+          "id": "G58a",
+          "bbox": [
+            4060,
+            1630,
+            65,
+            50
+          ],
+          "source_reference": "ZL cho.dal,g 第一处点号的工作核查区；IT无界",
+          "alignment": "位置是含邻笔的候选区，不能唯一对齐到cho后",
+          "evidence": "弧形/小圆组之间有数个局部空白；没有稳定可选的唯一切线。",
+          "stable_word_boundary": false,
+          "word_boundary_truth": null,
+          "false_status_means": "Not established by this observation, not evidence that the boundary is absent."
+        },
+        {
+          "id": "G58b",
+          "bbox": [
+            4085,
+            1590,
+            65,
+            40
+          ],
+          "source_reference": "ZL cho.dal,g 第二处逗号的工作核查区；IT无界",
+          "alignment": "位置是含邻笔的候选区，不能唯一对齐到dal后",
+          "evidence": "末段外伸与邻接圆弧改变局部空隙；词界和字形内部/字间分离仍不可稳定区分。",
+          "stable_word_boundary": false,
+          "word_boundary_truth": null,
+          "false_status_means": "Not established by this observation, not evidence that the boundary is absent."
+        }
+      ],
+      "image_candidate_windows": [
+        {
+          "id": "W07G1",
+          "oriented_local_xyxy": [
+            90,
+            40,
+            107,
+            72
+          ],
+          "original_image_xyxy": [
+            4093,
+            1605,
+            4125,
+            1622
+          ],
+          "status": "visible_candidate",
+          "description": "左端小组与中间较深墨迹之间有显眼空隙。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        },
+        {
+          "id": "W07G2",
+          "oriented_local_xyxy": [
+            122,
+            60,
+            138,
+            87
+          ],
+          "original_image_xyxy": [
+            4078,
+            1637,
+            4105,
+            1653
+          ],
+          "status": "candidate_not_dominant",
+          "description": "中间较深墨迹与右下组合之间也存在间隔；沿斜方向定位，窗口不是保证无墨的条带。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [
+        {
+          "guided_candidate": "G58a",
+          "image_candidate": "W07G1",
+          "guided_xyxy": [
+            4060,
+            1630,
+            4125,
+            1680
+          ],
+          "image_xyxy": [
+            4093,
+            1605,
+            4125,
+            1622
+          ],
+          "rectangle_intersection_px2": 0,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        },
+        {
+          "guided_candidate": "G58a",
+          "image_candidate": "W07G2",
+          "guided_xyxy": [
+            4060,
+            1630,
+            4125,
+            1680
+          ],
+          "image_xyxy": [
+            4078,
+            1637,
+            4105,
+            1653
+          ],
+          "rectangle_intersection_px2": 432,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        },
+        {
+          "guided_candidate": "G58b",
+          "image_candidate": "W07G1",
+          "guided_xyxy": [
+            4085,
+            1590,
+            4150,
+            1630
+          ],
+          "image_xyxy": [
+            4093,
+            1605,
+            4125,
+            1622
+          ],
+          "rectangle_intersection_px2": 544,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        },
+        {
+          "guided_candidate": "G58b",
+          "image_candidate": "W07G2",
+          "guided_xyxy": [
+            4085,
+            1590,
+            4150,
+            1630
+          ],
+          "image_xyxy": [
+            4078,
+            1637,
+            4105,
+            1653
+          ],
+          "rectangle_intersection_px2": 0,
+          "meaning": "Candidate-window proximity only; not blank-pixel intersection, word boundary, or accuracy."
+        }
+      ],
+      "guided_assessment": "两个候选切口均未定，且逐字符对齐不足",
+      "image_assessment": "多个空隙使两组或三组都可成立；没有稳定证据说明哪一个间隙是词间、哪一个只是字间。",
+      "guided_grouping_alternatives": [
+        "chodalg",
+        "cho|dalg",
+        "chodal|g",
+        "cho|dal|g"
+      ],
+      "image_grouping_alternatives": [
+        "整个斜向串作为一个图形单元。",
+        "在第一空白处分为两组。",
+        "在两个候选空白处按图形粒度分为三组；不认定三词。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.59",
+      "image_id": "W08",
+      "reading_bbox_xywh": [
+        3780,
+        1740,
+        230,
+        195
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.59,&Ls>    ytchodly",
+        "IT": "<f67r2.59,&Ls>    ytchodyy"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [
+        {
+          "id": "W08G1",
+          "oriented_local_xyxy": [
+            111,
+            88,
+            135,
+            113
+          ],
+          "original_image_xyxy": [
+            3905,
+            1852,
+            3929,
+            1877
+          ],
+          "status": "uncertain_candidate",
+          "description": "高密集左段通往较低右段的过渡处有局部留白，但附近长弯笔使是否真正断开不稳。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "无新增词界；字符读法未决",
+      "image_assessment": "可提出左右粗分，但此处留白也可能只是高笔画形状的内部空间；不可稳定分为词距。",
+      "guided_grouping_alternatives": [
+        "ytchodly（ZL原串）",
+        "ytchodyy（IT原串）"
+      ],
+      "image_grouping_alternatives": [
+        "整体作为一条倾斜视觉串。",
+        "把高密集段与低笔迹列分成两粗块，边界仍不确定。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.60",
+      "image_id": "W09",
+      "reading_bbox_xywh": [
+        3585,
+        1880,
+        220,
+        110
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.60,&Ls>    octhys",
+        "IT": "<f67r2.60,&Ls>    octhys"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [
+        {
+          "id": "W09G1",
+          "oriented_local_xyxy": [
+            95,
+            66,
+            106,
+            91
+          ],
+          "original_image_xyxy": [
+            3729,
+            1929,
+            3740,
+            1954
+          ],
+          "status": "candidate_not_dominant",
+          "description": "左侧小孤立痕与随后高/密笔画之间可见窄空白。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "未见可独立支持的内部切分",
+      "image_assessment": "左痕单独成视觉组是合理替代，但窄空隙不比其他字形间距足够独特，不能确定词界。",
+      "guided_grouping_alternatives": [
+        "octhys（整串保留；不认证单词性）"
+      ],
+      "image_grouping_alternatives": [
+        "整条主串。",
+        "左侧独立小痕加右侧组合两组；右组合内部仍可分出墨迹岛。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.61",
+      "image_id": "W10",
+      "reading_bbox_xywh": [
+        3350,
+        1835,
+        245,
+        135
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.61,&Ls>    ytokar",
+        "IT": "<f67r2.61,&Ls>    ytokar"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "未见可独立支持的内部切分",
+      "image_assessment": "墨色深浅与笔画高低造成视觉块感，但未见唯一宽空白可将浅段/深段/末段稳定定成不同词。",
+      "guided_grouping_alternatives": [
+        "ytokar（整串保留；不认证单词性）"
+      ],
+      "image_grouping_alternatives": [
+        "全串按同一视觉串保留。",
+        "按墨色/高度可粗分浅段、深段、末端，但这是笔画外观分组，不是经间距证明的词分组。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.62",
+      "image_id": "W11",
+      "reading_bbox_xywh": [
+        3240,
+        1645,
+        150,
+        210
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.62,&Ls>    otolor",
+        "IT": "<f67r2.62,&Ls>    otolor"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [
+        {
+          "id": "W11G1",
+          "oriented_local_xyxy": [
+            164,
+            45,
+            192,
+            84
+          ],
+          "original_image_xyxy": [
+            3255,
+            1693,
+            3294,
+            1721
+          ],
+          "status": "uncertain_candidate",
+          "description": "靠近淡末端的位置有不均匀留白，但末端痕本身很淡，候选是否为独立文字组也不稳。",
+          "coordinate_uncertainty_px_approx": 8,
+          "pure_blank_mask": false,
+          "confirmed_word_boundary": null
+        }
+      ],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "未见可独立支持的内部切分",
+      "image_assessment": "不能从浅色末端与纸面纹理中确定稳定起止，因此词界及末端粗组数都保留不确定。",
+      "guided_grouping_alternatives": [
+        "otolor（整串保留；不认证单词性）"
+      ],
+      "image_grouping_alternatives": [
+        "把淡末端作为同一斜向串的继续。",
+        "把明显主体与淡末端另列两粗组；或将淡痕身份保留NA，不据此增词。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    },
+    {
+      "locator": "f67r2.63",
+      "image_id": "W12",
+      "reading_bbox_xywh": [
+        3180,
+        1455,
+        90,
+        155
+      ],
+      "identity_basis": "Both received this same prior reading envelope; not independent localization.",
+      "raw_versions": {
+        "ZL": "<f67r2.63,&Ls>    okodar",
+        "IT": "<f67r2.63,&Ls>    okadar"
+      },
+      "guided_candidate_regions": [],
+      "image_candidate_windows": [],
+      "all_same_target_candidate_pairs": [],
+      "guided_assessment": "无新增词界；字符读法未决",
+      "image_assessment": "内部多处小空白与字形内部留白相近，未见可靠的唯一粗切分位置；左端高笔画受到邻近图案干扰。",
+      "guided_grouping_alternatives": [
+        "okodar（ZL原串）",
+        "okadar（IT原串）"
+      ],
+      "image_grouping_alternatives": [
+        "保持为一个主视觉串。",
+        "左侧高笔画束与右侧低墨迹可作外观两组，但没有独立的明显词间空白支持。"
+      ],
+      "word_boundary_truth": null,
+      "not_a_single_word_proof_if_no_candidate": true
+    }
+  ],
+  "summary": {
+    "fixed_targets": 12,
+    "raw_source_lines": 24,
+    "guided_candidate_regions": 5,
+    "image_candidate_windows": 9,
+    "candidate_pairs": 7,
+    "positive_rectangle_pairs": 5,
+    "word_boundary_certifications": 0
+  },
+  "gate": "NO_STABLE_COMPLETE_WORD_BOUNDARY_ADJUDICATION_FROM_SPACING",
+  "new_manuscript_word_matching_computed": false,
+  "limits": [
+    "Same prior envelopes; not independent localization.",
+    "JPEG and TIFF are encodings of the same photograph, not independent evidence.",
+    "Same model system and exposed manuscript; not a new blind corpus or expert certification.",
+    "Candidates have different observation/selection granularity; counts are not votes.",
+    "Absence of a proposed cut does not prove a single word; visible gaps do not prove linguistic boundaries."
+  ]
+}

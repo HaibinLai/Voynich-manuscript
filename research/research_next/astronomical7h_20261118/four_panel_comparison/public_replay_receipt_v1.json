@@ -1,0 +1,69 @@
+{
+  "schema": "public_four_panel_replay_execution_receipt_v1",
+  "utc": "2026-11-18T17:22:27.599920+00:00",
+  "status": "PASS",
+  "command": "python3 research/research_next/astronomical7h_20261118/four_panel_comparison/audit_public_replay_v1.py",
+  "script_sha256": "7d7fb03b426a9272549e287b2edda415238f0ac06d7b2d5d69277d5d7560d409",
+  "inputs": [
+    {
+      "path": "image_observation_v1.json",
+      "sha256": "3524a497aa25a5dcea464aae01102adde88d14cf7057d398d83f8e0e7dcfec08"
+    },
+    {
+      "path": "guided_observation_v1.json",
+      "sha256": "6e2f2a6198ee9eae87b35c0d692f3eae941d57cd23b14b4e509dd65d7033655f"
+    },
+    {
+      "path": "projection_receipt_v1.json",
+      "sha256": "0489c4cb0983f0080dd2d9696d902838e5e1a2974c122bdfbe9b4f965697a3fc"
+    },
+    {
+      "path": "comparison_v1.json",
+      "sha256": "b44010208b0fa3224892186500c0a794f33e7464ea0c6012cb01d481e0fdfd00"
+    },
+    {
+      "path": "research/sources/ZL3b-n.txt",
+      "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc"
+    },
+    {
+      "path": "research/sources/IT2a-n.txt",
+      "sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5"
+    }
+  ],
+  "repository_run": {
+    "exit_code": 0,
+    "stdout_sha256": "398a3c741a941aae5b754b6c1a7dd7c4d336ddb0e076c9925ce0b1950ee6e719",
+    "checks_total": 7196,
+    "checks_passed": 7196,
+    "differences": 0
+  },
+  "isolated_public_only_run": {
+    "exit_code": 0,
+    "stdout_sha256": "190cdb01a9fbd3e19e955dd407cf61b96d60bb34f308f717f9baa910e4c9a195",
+    "copied_files": 7,
+    "science_inputs": 6,
+    "private_images_or_observer_files_present": false,
+    "all_copied_files_unchanged": true,
+    "all_substantive_result_fields_equal": true
+  },
+  "rectangle_pair_counts": {
+    "coarse": 900,
+    "fine": 1125,
+    "objects": 900,
+    "rings": 31
+  },
+  "rectangle_pairs_total": 2956,
+  "source_rows_checked": 142,
+  "source_role_counts": {
+    "Cc": 11,
+    "Lz": 60
+  },
+  "existing_private_audit_and_inputs_unchanged": true,
+  "omitted_checks": [
+    "No private original-image byte hashes or actual decoded dimensions checked.",
+    "No original-observer-to-public-projection field-by-field comparison; only public projection output hashes checked.",
+    "No private source-inventory object or private frozen input files read; raw lines and source location metadata are independently checked against the two public repository transcriptions.",
+    "No new visual reobservation, glyph/spacing/word-boundary certification, word similarity, semantic identity or historical reading-order inference."
+  ],
+  "output_policy": "Replay emits JSON to stdout only. This short receipt was written separately; existing audit files and frozen inputs were not modified."
+}
