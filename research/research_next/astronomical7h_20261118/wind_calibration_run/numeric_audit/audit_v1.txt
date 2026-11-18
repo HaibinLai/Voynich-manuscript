@@ -1,0 +1,35 @@
+已知语言风图：独立数值复算审核 v1
+
+结论：全覆盖通过，未发现数值、来源定位或NA政策差异。
+范围为目录条件 C；图像完整转写 I 仍为 NOT_READY。本审核者也是原图像侧观察者，代码独立实现不等于第三位盲专家或额外历史样本。
+
+程序顺序
+先冻结 protocol_v1.json 与四项输入摘要。只读 input_v1.json，以已知连续run的完整n-gram索引独立生成全部结果，冻结 independent_replay_freeze_v1.json 后才首次打开原 results_v1.json。未读取或导入原 engine_v1.py、run_conditional_v1.py；未重做N0或编辑判断。
+
+完整核查
+4个条件各12名称×12说明组，共576格、48相位、8个delta定义；4078项记录检查，0差异。
+核对30次全部已知出现见证的block、半开item范围、segment、token及source_interval；另核对全部496个来源item（含unknown屏障），未跨块或unknown匹配。
+所有112条 source_unknown→NA 格依赖边一致。8个有未知内容但已有确定完整出现的格正确为1，不能被未知内容降为NA。
+每个相位分母固定12；完整矩阵缺失时主/辅助delta点估计和精确排名/平局对象均为NA，不删行、不以NA=0、不选择最佳相位。
+每个矩阵144个线性系数及两端点满足 main = (12/11) × auxiliary。
+f2r.C10只映射f2r.P07的main+inner两块；f2r.C07仍为P04单块；f1v.C10仍为自己的单块。
+原f2r目录方向null未改写。S1只有登记的f1v.C08名称tokens改变，其余名称来源字段和所有说明组保留。
+
+结果（E0、S1逐一计算后均相同）
+f1v：1/0/NA = 0/132/12。全部12相位区间[0,1/12]，T0点估计NA；主delta[-1/12,1/12]，辅助delta[-11/144,11/144]。
+f2r：1/0/NA = 12/88/44。T0=1；其余11相位各[0,1/3]；主delta[2/3,1]，辅助delta[11/18,11/12]。完整delta点估计和精确排名/平局对象仍NA。
+
+界的解释保持不变
+共享未知来源影响多格，也共享于E0/S1，不能当成相互独立的伯努利变量。给出的线性界是在允许每个未知格任取0/1的放松下得到的外界；真实文字约束可能令端点不可达到，不能声称区间尖锐、端点/排名可同时实现。f2r主delta正下界仅表示C条件下在该放松的所有完成方式中仍有重复优势，不认证语义或物理全文。f1v跨零未定号。
+
+限制
+本输入所有完整名称均为单token；独立索引支持多token，但本次实际数据不能充当多token情形的经验验证。未新增文字、图像、语义判断，无p值、无新拼写、无N0或编辑重算；不解除伏尼契全文评分门槛。
+
+公开只读入口（只向stdout输出，不写任何输入或结果文件）
+python3 research/research_next/astronomical7h_20261118/wind_calibration_run/numeric_audit/replay_v1.py
+python3 research/research_next/astronomical7h_20261118/wind_calibration_run/numeric_audit/audit_stdout_v1.py
+
+完整机器报告：audit_v1.json
+独立计算全部格/相位/见证：independent_results_v1.json
+先算后比冻结：independent_replay_freeze_v1.json
+最终文件摘要：output_freeze_v1.json

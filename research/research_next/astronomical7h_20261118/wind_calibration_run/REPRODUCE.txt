@@ -1,0 +1,18 @@
+Conditional Latin wind-diagram calibration: public replay
+
+This release replays measurement from frozen conditional inputs. It does not certify a complete image transcription and does not score Voynich text. See report_v1.txt and input_contract_v1.txt before interpreting results.
+
+From the repository root, using Python 3.9 or later (standard library only):
+
+python3 -B research/research_next/astronomical7h_20261118/wind_calibration_run/run_conditional_v1.py
+python3 -B research/research_next/astronomical7h_20261118/wind_calibration_run/numeric_audit/replay_v1.py
+python3 -B research/research_next/astronomical7h_20261118/wind_calibration_run/numeric_audit/audit_stdout_v1.py
+
+These commands only emit JSON to stdout. Compare with results_v1.json, numeric_audit/independent_results_v1.json and numeric_audit/audit_v1.json respectively. The audit reports comparison mismatches; it is not a paleographic certification. The exact minimal 18-file dependency list and clean-directory replay evidence are in numeric_audit/public_package_files_v1.txt and public_package_v1.json.
+
+The input builder is retained as provenance and because the approved replay verifies its frozen hash. Reconstructing inputs from original catalogue acquisitions, editorial ledgers and image-review files is outside this minimal replay package. No claim is made that the whole source-acquisition chain is reconstructed by these commands.
+
+To rebuild the dedicated website data and download copies from this release:
+python3 scripts/build_wind_calibration_page.py
+
+The viewer builder verifies the reviewed release's source hashes. Its timestamp may change, while the underlying frozen measurements stay unchanged. The source notice is in ../wind_calibration_public/SOURCE_NOTICE.txt.

@@ -1,0 +1,136 @@
+{
+  "schema": "wind_conditional_input_independent_review_v1",
+  "completed_utc": "2026-11-18T18:10:20.840468+00:00",
+  "decision": "SUITABLE_FOR_EXPLICITLY_CONDITIONAL_C_PARTIAL_CONTENT_MEASUREMENT",
+  "substantive_input_or_adapter_errors_found": [],
+  "input_sha256": "c8a9d2edfed1a26352906d5cd984ce7e3317c4bbaf303852edf7e6b28832dce1",
+  "adapter_sha256": "c3ca257595d7f2441bb2585da5b793dda87e3b518c72760af1a82229faa6bb1d",
+  "engine_sha256": "c510c31123a3ef49e4e4fa5e36b7904c92121665ea095f331f662e316a57fbcf",
+  "scope": {
+    "source_fields": 48,
+    "source_annotation_spans": 39,
+    "embedded_field_copies": 96,
+    "crosswalk_records": 24,
+    "regimes": [
+      {
+        "regime": "E0",
+        "names": 24,
+        "groups": 24,
+        "blocks": 25,
+        "known_body_segments_retained": 27,
+        "unknown_body_segments_or_blocks": 5,
+        "editorial_unknown_fields": [
+          "f1v.description.C11",
+          "f2r.description.C01",
+          "f2r.description.C06",
+          "f2r.description.C12"
+        ]
+      },
+      {
+        "regime": "S1",
+        "names": 24,
+        "groups": 24,
+        "blocks": 25,
+        "known_body_segments_retained": 27,
+        "unknown_body_segments_or_blocks": 5,
+        "editorial_unknown_fields": [
+          "f1v.description.C11",
+          "f2r.description.C01",
+          "f2r.description.C06",
+          "f2r.description.C12"
+        ]
+      }
+    ],
+    "adapter_cases": [
+      {
+        "regime": "E0",
+        "folio": "f1v",
+        "names": 12,
+        "groups": 12,
+        "blocks": 12,
+        "unknown_barriers": 1,
+        "known_token_items": 35,
+        "every_item_and_source_map_checked": true
+      },
+      {
+        "regime": "E0",
+        "folio": "f2r",
+        "names": 12,
+        "groups": 12,
+        "blocks": 13,
+        "unknown_barriers": 4,
+        "known_token_items": 208,
+        "every_item_and_source_map_checked": true
+      },
+      {
+        "regime": "S1",
+        "folio": "f1v",
+        "names": 12,
+        "groups": 12,
+        "blocks": 12,
+        "unknown_barriers": 1,
+        "known_token_items": 35,
+        "every_item_and_source_map_checked": true
+      },
+      {
+        "regime": "S1",
+        "folio": "f2r",
+        "names": 12,
+        "groups": 12,
+        "blocks": 13,
+        "unknown_barriers": 4,
+        "known_token_items": 208,
+        "every_item_and_source_map_checked": true
+      }
+    ],
+    "input_normalization_independently_reimplemented": true,
+    "builder_logic_read_or_imported_or_executed": false,
+    "adapter_executable_scope": "assemble function AST only, with local inert record classes",
+    "engine_source_statically_read": true,
+    "engine_imported_or_called": false,
+    "root_scoring_branch_statically_reviewed_only": true,
+    "matrices_matches_phases_scores_computed": 0
+  },
+  "conditional_assumptions": [
+    "Given catalogue outer Latin components define names; not complete physical inscription certification.",
+    "Unmarked catalogue readings and their source-group association remain fixed. Editorial unknowns vary without replacing retained runs.",
+    "C06 retains Auroauster; the unknown bracket does not cover every alternative editorial replacement interpretation.",
+    "P07 catalogue quotation is assigned to its main block conditionally on word-level evidence; its inner block remains entirely unknown.",
+    "Unknown-cell relaxation yields potentially non-sharp outer bounds conditional on fixed readings, not probability intervals or bounds over all historical readings."
+  ],
+  "image_full_transcription_gate": "NOT_READY",
+  "static_dependency_review": {
+    "shared_unknown_identities": "Counts repeated body placeholder identities only; not all induced dependencies across matrix cells.",
+    "unknown_to_unresolved_matrix_cells": "Adapter separately reports unresolved cells for each identity; static review only, not yet executed.",
+    "known_witness_source_trace": "Segment interval plus within-segment token ordinal uniquely resolves exact original text spans through independent saved traces; not pixel coordinates."
+  },
+  "required_future_result_audit": "Independently recompute all actual cells and offsets after any separately approved first execution.",
+  "new_scoring_permission_issued_by_this_review": false,
+  "source_hashes_relative_to_window": {
+    "wind_calibration_run/input_contract_v1.txt": "85d949824bec7395af269f2ac48d6aac0f23e38fd157b47d09a0b8dc1d2e76c8",
+    "wind_calibration_run/input_freeze_v1.json": "695516a67f5c4409e9b8dc35379a5eec86df5d8c423560bf732e65a3d36d9999",
+    "wind_calibration_run/input_v1.json": "c8a9d2edfed1a26352906d5cd984ce7e3317c4bbaf303852edf7e6b28832dce1",
+    "wind_calibration_editorial/editorial_ledger_v2.json": "e96cd4f77507b64f14e0ea18d57b085ee06401c5a1a42437ee13188b24d4dba5",
+    "wind_calibration_editorial/id_crosswalk_v2.json": "d8f88fafc8d97cc599dccc3974e3312cd752f4a3b887d865f7ae508f5ee4c4e9",
+    "wind_calibration_alignment/alignment_v1.json": "92eb31d21b934ef447b2ada8bbcb75c4a1b361c8851c30f455acbe7f96ec68fd",
+    "wind_calibration_p07/observation_v1.json": "65ad1ebeaede771990b7fe830335b23aaa0d354366cd53ddf6ed58cb3e11313f",
+    "wind_calibration_p07/report_v1.txt": "332226bb330070611d4db3edb189ebf3e5a392683fe7ad6805c40fdd6073f73c",
+    "wind_calibration_text/catalog_text_v1.json": "120ef94a84f0ac47519ed8c1629bede19bf1e94d4c2b331bb34f9c30f0d1afba",
+    "wind_calibration_run/run_conditional_v1.py": "c3ca257595d7f2441bb2585da5b793dda87e3b518c72760af1a82229faa6bb1d",
+    "wind_calibration_run/adapter_freeze_v1.json": "74c9894a5d222bb7488325cafc0b7144503f877e86b9a3657ac36996f0252775",
+    "wind_calibration_run/adapter_validation_v1.json": "ab685a49a61f9b43933e3999f6dee5b0791574c6eb8f51149c8452eac1191f3f",
+    "wind_calibration_engine/engine_v1.py": "c510c31123a3ef49e4e4fa5e36b7904c92121665ea095f331f662e316a57fbcf",
+    "wind_calibration_engine/output_freeze_v1.json": "3806ced6fea68eab22ef8bdc55186ba9a406172caf66c3151b7ab4c9d8234cab",
+    "wind_calibration_run/input_review/run_v1/token_source_traces_v1.json": "741a1ada661aa8b4d14c3c28c1d917c69ce951ea4be023348bfa02c9221b2d9b"
+  },
+  "evidence_files_relative_to_review": {
+    "review_v1.txt": "69fbb4a1756c3aee8cb2991ad1b67d1f9c8ac381ab9a2b3496a1603a893694cf",
+    "run_v1/audit_receipt_v1.json": "32b8999ae0833c20ef25a0a4a323f3209ee0f24114f0de77ff9c580d2639f775",
+    "adapter_audit_receipt_v1.json": "f0a98d76e6dc3a5b703c297eb1980060f9351cf31c8baf51ad7fdd7e82a33cf6",
+    "public_replay_receipt_v1.json": "519ff5275ed3c4d845375af02e85990489a569ca128854eaee3833b7e26c54b8",
+    "audit_input_v1.py": "6920b5efb2dc48e96363dc130cfdb70c879e802d9b067133000886eef8ea3557",
+    "audit_adapter_v1.py": "00ff10f9a151da7c90c81bbcda3b6c66246153191168673c6b9357b8dc78ee00"
+  },
+  "private_source_policy": "Original catalogue HTML verified in private cache; only historical quoted text and source locations enter this package. No local absolute path in public reports.",
+  "primary_url": "https://ssh.thedigitalwalters.org/Data/WaltersManuscripts/html/W73/description.html"
+}
