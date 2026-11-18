@@ -1,6 +1,7 @@
 {
   "findings": [
     "目前没有可靠译文或已确认词义。研究曾因系统用量限制中断，用户于 14:43 UTC 恢复目标；保持原定截止时间，不将窗口经过时间称为连续计算时长，也不把恢复视为完成。",
+    "新增第二次已知转写视觉复查保留九处和16图上下文：95b两矩形实际相交，旧“框外”措辞已追加更正；f88r.5仍依赖行序，f99r第三个otoldy的局部右缘截对象。没有将复查视为盲确认或启动形态评分。",
     "新增定位工作：两版严格一致的跨叶重复Lf标签只有4簇、9位置，涉及4个物理叶；9处现已全部保留并记录工作归属，但没有观察到标签指示线。这里尚未做跨页形态评分，不能写成相同词已指向相同植物。",
     "英文17节零完整词命中已追加仅原文输入的第二次审读：两轮在7节主要使用泛称回指的描述上一致，但不证明名称绝不存在。A Sarabacca仅能确认拼接后等于标题字串；首字母分排还是冠词未决，不能叫已恢复真实名称。两轮解释不改原分数，不是语义金标。",
     "最新：固定两词拼接实验已独立复核。4 个条件下，11 个指定目标在正向相邻、反序相邻、隔一词拼接中均无命中；正向相邻拼接的新增覆盖为零。只约束这些有限规则，不说明手稿没有意义。",
@@ -689,8 +690,42 @@
         {
           "label": "干净副本重放收据",
           "href": "downloads/semantic7h/leaf-public-clean_validation_v1.json"
+        },
+        {
+          "label": "下载PNG图",
+          "href": "downloads/semantic7h/leaf-gains-leaf_gains.png"
+        },
+        {
+          "label": "下载SVG图",
+          "href": "downloads/semantic7h/leaf-gains-leaf_gains.svg"
+        },
+        {
+          "label": "全部12行精确值JSON",
+          "href": "downloads/semantic7h/leaf-gains-leaf_gains_values.json"
+        },
+        {
+          "label": "全部12行CSV",
+          "href": "downloads/semantic7h/leaf-gains-leaf_gains_values.csv"
+        },
+        {
+          "label": "完整图注与尺度限制",
+          "href": "downloads/semantic7h/leaf-gains-caption.txt"
+        },
+        {
+          "label": "图值与来源核验",
+          "href": "downloads/semantic7h/leaf-gains-leaf_gains_receipt.json"
+        },
+        {
+          "label": "图中36个量的独立算术核验",
+          "href": "downloads/semantic7h/leaf-gains-root-values-check.json"
         }
-      ]
+      ],
+      "figure": {
+        "src": "downloads/semantic7h/leaf-gains-leaf_gains.png",
+        "full": "downloads/semantic7h/leaf-gains-leaf_gains.svg",
+        "alt": "ZL和IT的f/k、f/p、f/t、k/p、k/t、p/t全部12行：原配对匹配率增量、整叶重新配对平均增量、两者之差。",
+        "caption": "全部12行、零值和负值保留。左/中列是原配对与允许整叶重配的匹配率增量，右列为两者之差；单位均为百分点，但右列横轴更窄，不能跨列比较柱长。加权匹配率不是页面二值覆盖率；重配集合包含恒等原配对。差值不是语义概率，也不是因果分解。"
+      }
     },
     "remaining_targets": {
       "title": "剩余11关系：补齐35条图像假说的观察",
@@ -942,10 +977,11 @@
       "details": [
         "全部1,030个标签位置并集保留。Lp类没有两版严格一致的完整单词；Lf有129个一致单词位置，其中一个otal属于既知#110多位置三词组，不能截成单对象标签。扣除该已知组成员为128；其余位置也不能仅凭词形一致认证归属。",
         "跨叶重复固定为okol、otaly、otoky、otoldy四簇，所有9位置保留。盘点时只有otoldy一簇的跨叶两端有既有框；随后对全部九处做定位，未删除此前无框的f99r.14。",
-        "原始转写重建的独立审核通过13,693项检查；它不认证对象框。后续图像定位是一个AI观察者在已知文字、行序和原图提示下进行，文件与坐标自检不是独立视觉复审。",
+        "原始转写重建的独立审核通过13,693项检查，它不认证对象框。首轮定位记录后，已由知晓原报告及转写的第二观察者复看全部九处、16图；这是引导复查，不是新的盲定位或九次独立确认。",
         "f99r与f99v属于同一物理叶；otaly、otoky共享f88/f99。四簇总共只有f88、f89、f99、f101四叶，不能用两两组合数扩增独立样本。",
         "9处都没有明确的标签到对象指示线。部分裁区含邻物、交叉线或背景墨迹；近似框是阅读区域，不是单株蒙版。clear仅指可工作定位，不等于读法、名称或对象身份正确。",
-        "下方逐处浏览冻结的官方裁区、两版原行和局限；没有形态分数，不据此推断同词同植物。下一步方案尚未执行，已见材料不称新的盲集。"
+        "下方逐处浏览冻结的官方裁区、两版原行和局限；没有形态分数，不据此推断同词同植物。下一步方案尚未执行，已见材料不称新的盲集。",
+        "第二观察者特别保留三项限制：f88r.5归属依赖已知行序，单看距离仍含混；f99r.14第三个otoldy的局部右缘截到对象，整页可补上下文；95b文字框与对象框交集为[642,195,113,105]，追加纠正旧“框外”描述。矩形相交不等于字迹与图形像素相交。"
       ],
       "table": {
         "headers": [
@@ -992,6 +1028,18 @@
         {
           "label": "定位冻结与范围",
           "href": "downloads/semantic7h/repeat-localization-complete.json"
+        },
+        {
+          "label": "第二次已知转写视觉复查（9处全留）",
+          "href": "downloads/semantic7h/repeat-guided_second_review_v1.txt"
+        },
+        {
+          "label": "16图与原件冻结核验",
+          "href": "downloads/semantic7h/repeat-guided_second_receipts_v1.json"
+        },
+        {
+          "label": "九处矩形独立算术核验（非第三视觉复审）",
+          "href": "downloads/semantic7h/repeat-guided-second-root-geometry-check.json"
         }
       ]
     },
@@ -1316,6 +1364,10 @@
   },
   "downloads": [
     {
+      "label": "本轮研究结果报告（结题以最终验收为准）",
+      "href": "downloads/semantic7h/research-result-report-v1.txt"
+    },
+    {
       "label": "35条对象关系完整索引 v2",
       "href": "downloads/semantic7h/object-registry-v2.txt"
     },
@@ -1406,6 +1458,14 @@
     {
       "label": "公开复现入口说明与命令",
       "href": "https://github.com/HaibinLai/Voynich-manuscript#readme"
+    },
+    {
+      "label": "下一窗口协议草案v2（预备，尚未启动）",
+      "href": "downloads/semantic7h/next-window-proposal-v2.txt"
+    },
+    {
+      "label": "已知语言圆图校准：两候选与尚缺证据（未运行）",
+      "href": "downloads/semantic7h/known-circle-calibration-sources.txt"
     }
   ]
 }

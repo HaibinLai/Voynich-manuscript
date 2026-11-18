@@ -163,7 +163,7 @@ for version, vv in support.get('versions', {}).items():
     if primary:
         modules['leaf_controls']['metrics'].append({'value':str(primary['eligible_leaves']),'label':f'{version} 设计中可比物理叶'})
 
-allowed = {'title','status','summary','details','links','metrics','table'}
+allowed = {'title','status','summary','details','links','metrics','table','figure'}
 states = {'planned','running','awaiting_review','partial','complete','blocked'}
 for key, value in publication.get('modules', {}).items():
     assert key in modules, 'Unknown publication module'
@@ -382,6 +382,8 @@ if repeated_review:
         'f99r.14':'原注释79保留；对象是首图组下右的浅色大横根，字组在上方凹陷空白。此前没有框的第三个otoldy位置仍保留。',
         'f99v.2':'原注释95b保留；字组在高容器右边第一个根形的茎冠左侧。容器自身是Lc/95a，没有并入植物对象。',
     }
+    second_rows={r['locator']:r for r in read('visual/repeated_label_localization/guided_second_review_v1.json')['records']}
+    assert set(second_rows)==set(repeated_complete['loci'])
     rows=[]
     for original in repeated_review['records']:
         assert original['retained'] and not original['semantic_gold'] and not original['new_shape_comparison_performed']
@@ -392,6 +394,8 @@ if repeated_review:
             assert 0<=x<x+w<=pic['width'] and 0<=y<y+h<=pic['height']
         row=dict(original)
         row['observation_zh']=repeated_notes[original['locator']]
+        row['second_guided_review']=second_rows[original['locator']]
+        assert row['second_guided_review']['image_sha256']==pic['sha256']
         row['display_contexts']=[]
         for crop in original['native_context_regions']:
             assert crop==repeated_crops[crop['name']]
@@ -407,7 +411,7 @@ if repeated_review:
     assert [r['locator'] for r in rows]==repeated_complete['loci'] and len(rows)==9
     repeated={'records':rows,'clusters':read('design/repeated_label_feasibility/clusters_v1.json'),
               'audit_checks':repeated_audit['checks'],'scope':repeated_review['scope'],
-              'visual_review_independent':False,'physical_leaf_count':4,'shape_scored':False}
+              'visual_review_independent':False,'second_guided_review_present':True,'physical_leaf_count':4,'shape_scored':False}
 payload = {
     'schema_version':1,
     'snapshot_utc':snapshot.isoformat(),

@@ -1,6 +1,6 @@
 """Export reviewed seven-hour records through an explicit public allowlist.
 
-No recursive directory copy; no unfinished crossplant results, local images,
+No recursive directory copy; no unfinished crossplant results, manuscript image caches,
 machine paths, credentials, or large permutation arrays are exported. Original
 report bytes are preserved, including its historical audit-in-progress wording;
 the later independent audit is exported separately and governs release status.
@@ -17,6 +17,25 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('closure/known_circle_calibration_sources_v1.txt','known-circle-calibration-sources.txt'),
+    ('closure/known_circle_calibration_sources_v1.json','known-circle-calibration-sources.json'),
+    ('closure/research_result_report_v1.txt','research-result-report-v1.txt'),
+    ('closure/figures/root_values_check_v1.json','leaf-gains-root-values-check.json'),
+    ('visual/repeated_label_localization/guided_second_root_geometry_check_v1.json','repeat-guided-second-root-geometry-check.json'),
+    ('visual/repeated_label_localization/guided_second_protocol_v1.json', 'repeat-guided_second_protocol_v1.json'),
+    ('visual/repeated_label_localization/guided_second_inputs_v1.json', 'repeat-guided_second_inputs_v1.json'),
+    ('visual/repeated_label_localization/guided_second_review_v1.json', 'repeat-guided_second_review_v1.json'),
+    ('visual/repeated_label_localization/guided_second_review_v1.txt', 'repeat-guided_second_review_v1.txt'),
+    ('visual/repeated_label_localization/guided_second_receipts_v1.json', 'repeat-guided_second_receipts_v1.json'),
+    ('closure/figures/leaf_gains.png', 'leaf-gains-leaf_gains.png'),
+    ('closure/figures/leaf_gains.svg', 'leaf-gains-leaf_gains.svg'),
+    ('closure/figures/leaf_gains_values.json', 'leaf-gains-leaf_gains_values.json'),
+    ('closure/figures/leaf_gains_values.csv', 'leaf-gains-leaf_gains_values.csv'),
+    ('closure/figures/caption.txt', 'leaf-gains-caption.txt'),
+    ('closure/figures/leaf_gains_validation.json', 'leaf-gains-leaf_gains_validation.json'),
+    ('closure/figures/leaf_gains_receipt.json', 'leaf-gains-leaf_gains_receipt.json'),
+    ('closure/next_window_protocol_proposal_v2.txt', 'next-window-proposal-v2.txt'),
+
     ('design/known_herbal_nohit_review/separated_text_review/source_only_packet_v1.json.gz', 'herbal-source-only-source_only_packet_v1.json.gz'),
     ('design/known_herbal_nohit_review/separated_text_review/input_freeze_v1.json', 'herbal-source-only-input_freeze_v1.json'),
     ('design/known_herbal_nohit_review/separated_text_review/observer_review_v1.json', 'herbal-source-only-observer_review_v1.json'),
@@ -562,10 +581,37 @@ assert len(source_text_checks['observer_literal_quote_checks'])==41
 assert len(source_text_checks['first_review_quote_checks'])==29
 assert len(source_text_checks['section_sha_checks'])==17
 
+guided_second=json.loads((REPEAT_LOCAL/'guided_second_receipts_v1.json').read_text())
+for row in guided_second['outputs']:assert sha(REPEAT_LOCAL/row['asset'])==row['sha256'],row['asset']
+assert guided_second['checks']['all_nine_retained'] and guided_second['checks']['all_16_images_viewed']
+assert guided_second['checks']['95b_bbox_intersection_xywh']==[642,195,113,105]
+FIGURES=SOURCE/'closure/figures'
+figure_receipt=json.loads((FIGURES/'leaf_gains_receipt.json').read_text())
+assert figure_receipt['source_sha256']==sha(SOURCE/figure_receipt['source'])
+assert figure_receipt['rows']==12 and not figure_receipt['new_experiment']
+for name,row in figure_receipt['files'].items():assert sha(FIGURES/name)==row['sha256'],name
+figure_values=json.loads((FIGURES/'leaf_gains_values.json').read_text())
+assert len(figure_values['rows'])==12 and figure_values['source_sha256']==figure_receipt['source_sha256']
+
+guided_root_check=json.loads((REPEAT_LOCAL/'guided_second_root_geometry_check_v1.json').read_text())
+assert guided_root_check['passed'] and not guided_root_check['semantic_scoring']
+assert len(guided_root_check['checks'])==38 and all(r['passed'] for r in guided_root_check['checks'])
+for name,expected in guided_root_check['inputs'].items():assert sha(REPEAT_LOCAL/name)==expected,name
+
+figure_root_check=json.loads((FIGURES/'root_values_check_v1.json').read_text())
+assert figure_root_check['passed'] and len(figure_root_check['checks'])==36
+assert all(r['passed'] for r in figure_root_check['checks'])
+assert figure_root_check['inputs']['values_json']==sha(FIGURES/'leaf_gains_values.json')
+assert figure_root_check['inputs']['summary']==sha(SOURCE/'design/leaf_controls/run_v2/summary.json')
+
 staged=[]
 for source_name, destination in FILES:
     path=SOURCE/source_name
     raw=path.read_bytes()
+    if source_name=='closure/figures/leaf_gains.png':
+        assert raw.startswith(bytes([137,80,78,71,13,10,26,10]))
+        staged.append((source_name,destination,raw))
+        continue
     text=(gzip.decompress(raw) if source_name.endswith('.gz') else raw).decode('utf-8-sig')
     if source_name.endswith(('.json','.json.gz')):
         text=json.dumps(json.loads(text),ensure_ascii=False)
@@ -580,7 +626,7 @@ for source_name,destination,raw in staged:
     receipt.append({'path':destination,'source':source_name,'bytes':len(raw),
                     'sha256':hashlib.sha256(raw).hexdigest(),'transformation':'none'})
 manifest={'created_utc':datetime.now(timezone.utc).isoformat(),
-          'scope':'Explicit public text/JSON allowlist; no author thumbnails, image files or large score arrays. Leaf, crossplant, known-herbal and boundary independent audits checked against saved hashes. Boundary image records and all 12 official crop hashes verified; crops are linked to official URLs rather than exported here. Crossplant audit canonical source is the documented public traceback-path projection, not a new audit.',
+          'scope':'Explicit public text/JSON and reviewed scientific chart allowlist; no author thumbnails, manuscript image caches or large score arrays. Leaf, crossplant, known-herbal and boundary independent audits checked against saved hashes. Boundary image records and all 12 official crop hashes verified; crops are linked to official URLs rather than exported here. Crossplant audit canonical source is the documented public traceback-path projection, not a new audit.',
           'files':receipt,'audit_sha256':sha(LEAF/'leaf_audit_v1.json'),
           'crossplant_audit_sha256':sha(CROSS/'audit_v1.json'),
           'crossplant_projection_sha256':sha(CROSS/'publication_projection.json'),
