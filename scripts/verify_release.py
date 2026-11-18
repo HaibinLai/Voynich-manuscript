@@ -104,6 +104,9 @@ def verify_snapshot():
     labels = REPO/'research/research_next/label_body'
     if (labels/'manifest.json').exists():
         definitions.append((labels/'manifest.json', labels, dict(container='files')))
+    semantic = REPO/'site/downloads/semantic7h'
+    if (semantic/'manifest.json').exists():
+        definitions.append((semantic/'manifest.json', semantic, dict(container='files')))
     checks = [check_manifest(path, base, **options) for path, base, options in definitions]
     session = json.loads((RESEARCH/'session.json').read_text())
     return dict(passed=True, checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),

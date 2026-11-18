@@ -1,0 +1,118 @@
+{
+  "id": "davis2022_bare_gallows_expansion_audit_v1",
+  "status": "candidate operationalization, not adopted or tested experiment",
+  "source": {
+    "url": "https://ceur-ws.org/Vol-3313/keynote2.pdf",
+    "title": "Voynich Paleography",
+    "author": "Lisa Fagin Davis",
+    "section": "5.1",
+    "pdf_pages": [
+      7,
+      8,
+      9
+    ],
+    "sha256": "cd56145b65b802b2503151957cd9e1ecf0846e992212b6ce6210e0a84f6bc14a",
+    "access": "previously saved author PDF and text inspected; current web fetch rejected for size"
+  },
+  "maps": {
+    "author_expansion": {
+      "f": [
+        "t",
+        "e"
+      ],
+      "p": [
+        "k",
+        "e"
+      ]
+    },
+    "swapped_equal_length_control": {
+      "f": [
+        "k",
+        "e"
+      ],
+      "p": [
+        "t",
+        "e"
+      ]
+    },
+    "no_e_sensitivity": {
+      "f": [
+        "t"
+      ],
+      "p": [
+        "k"
+      ]
+    },
+    "identity": {}
+  },
+  "protected_sequences": [
+    "cth",
+    "ckh",
+    "cfh",
+    "cph"
+  ],
+  "operation": "one simultaneous pass over original units; protect each exact bench sequence; expand unprotected f/p; leave all other units and word boundaries unchanged; never recursively rewrite outputs",
+  "scope_caveat": "Exact-string bench protection is an analyst operationalization, not a complete visual classifier for rare ligatures. Uncertain or alternative readings should be missing under a frozen rule, not resolved for success.",
+  "reverse_rule": "No forced reverse contraction. Optional abbreviation does not require every te/ke to contract.",
+  "author_corollaries": {
+    "no_te_or_ke_followed_by_gallows": [
+      "kef",
+      "kep",
+      "ket",
+      "kek",
+      "tef",
+      "tep",
+      "tet",
+      "tek"
+    ],
+    "not_contracted": [
+      "tee",
+      "kee",
+      "ted",
+      "ked"
+    ]
+  },
+  "reported_exceptions": [
+    {
+      "form": "pe",
+      "status": "author reports two examples; locators unspecified in this passage"
+    },
+    {
+      "form": "qopdy",
+      "folio": "f75v",
+      "location": "top",
+      "status": "author reports one example despite pd corollary"
+    },
+    {
+      "form": "double gallows",
+      "folio": "f104v",
+      "status": "author reports one instance but possible intervening space"
+    }
+  ],
+  "source_internal_issue": {
+    "pdf_page": 8,
+    "issue": "Main-text ket/tep -> kt/tp examples disagree with declared p=ke/f=te mapping; footnote 19 gives the consistent correspondence ket->pt and tep->fp. Retain discrepancy; do not implement a third rule."
+  },
+  "source_examples": [
+    {
+      "input": "fachys",
+      "output": "teachys",
+      "folio": "f1r"
+    },
+    {
+      "input": "kchdpy",
+      "output": "kchdkey",
+      "folio": "f116r"
+    },
+    {
+      "short": "opalar",
+      "expanded": "okealar",
+      "folios": [
+        "f71v",
+        "f72r"
+      ],
+      "status": "author cites Camilleri crib candidate, not independently confirmed referent"
+    }
+  ],
+  "assessment": "Expansion is a glyph-sequence hypothesis, not a phonetic or semantic decoding. Existence of another word after expansion is not enough; report same-budget controls, position and scribe strata, frequencies, and original-form recovery when using compression."
+}

@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "snapshot_utc": "2026-11-18T09:26:53.127680+00:00",
+  "snapshot_elapsed_seconds": 1240,
+  "window": {
+    "start_utc": "2026-11-18T09:06:13Z",
+    "deadline_utc": "2026-11-18T16:06:13Z",
+    "duration_hours": 7,
+    "local_timezone": "America/Chicago",
+    "local_window": "2026-11-18 03:06:13 to 10:06:13 CST",
+    "status": "active",
+    "stage": 2
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "title": "原图对象与证据设计",
+      "status": "partial"
+    },
+    {
+      "stage": 2,
+      "title": "整叶对照与固定变换",
+      "status": "running"
+    },
+    {
+      "stage": 3,
+      "title": "跨页对象约束与候选读法",
+      "status": "planned"
+    },
+    {
+      "stage": 4,
+      "title": "独立复核、发布与窗口结题",
+      "status": "running"
+    }
+  ],
+  "modules": {
+    "images": {
+      "title": "十二个位置：文字属于哪个对象？",
+      "status": "partial",
+      "summary": "十二位置的带转写引导记录已冻结，保留无法可靠定位和指物不清的情况；几何记录与引导记录不是独立双盲复现，也不是十二个名称认证。",
+      "details": [
+        "12 个位置来自上一轮既定命中／未命中队列，选择依赖已有结果，不是确认样本。几何记录仅描述文字、图形和邻接；引导记录使用既有转写，不是独立释读。",
+        "流程偏差：主评审在冻结自身记录前收到几何评审摘要，未实现原计划的两份观察各自冻结后再协调。几何评审在获得语言／统计信息前已冻结；主评审是受摘要影响的观察。",
+        "仅 otor 的标签与正文第一行对应形已并看；其余正文命中仍主要是转写索引，没有逐一核图。f75v 上方为两行一组，下方行对齐本来就不确定，不能把每个短串都认作单独人物名。",
+        "近似框是阅读区域，不是逐字分割；f67r2 五个未可靠定位位置不提供看似精确的字框。困难例保留，不从旧统计中删除。"
+      ],
+      "metrics": [
+        {
+          "value": "2",
+          "label": "邻接较清楚的候选"
+        },
+        {
+          "value": "5",
+          "label": "可定位，但指物不清"
+        },
+        {
+          "value": "5",
+          "label": "单独行位未可靠定位"
+        }
+      ],
+      "links": [
+        {
+          "label": "带转写引导的十二位置记录",
+          "href": "downloads/semantic7h/guided-image-review.txt"
+        },
+        {
+          "label": "仅几何观察记录",
+          "href": "downloads/semantic7h/geometry-review.txt"
+        },
+        {
+          "label": "原图审查协议",
+          "href": "downloads/semantic7h/visual-protocol.txt"
+        },
+        {
+          "label": "耶鲁官方原图 · 67r",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/full/full/0/default.jpg"
+        },
+        {
+          "label": "耶鲁官方原图 · 68r",
+          "href": "https://collections.library.yale.edu/iiif/2/1006196/full/full/0/default.jpg"
+        },
+        {
+          "label": "耶鲁官方原图 · 75v",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/full/full/0/default.jpg"
+        }
+      ]
+    },
+    "literature": {
+      "title": "跨页植物图：先核出处，再核标签",
+      "status": "partial",
+      "summary": "35 条外部图像配对的标签资格已盘点，图像对象复核和跨页词形检验尚未完成。",
+      "details": [
+        "12 条有原转写 Petersen 编号注记，12 条从对象与标签次序提出候选；所有候选保留，未依正文命中筛选。",
+        "9 条相应植物对象没有自己的植物标签，不能借用旁边容器标签；2 条对象—标签映射未知。多位置、多词和双版分词差异保留。",
+        "来源编号支持仍不等于本轮图像确认，更不等于植物学名。最优先候选集中在少数物理叶，泛化材料有限。"
+      ],
+      "metrics": [
+        {
+          "value": "35",
+          "label": "保留的来源配对假说"
+        },
+        {
+          "value": "12 / 12",
+          "label": "来源编号支持 / 次序候选"
+        },
+        {
+          "value": "9 / 2",
+          "label": "无对应植物标签 / 归属未知"
+        }
+      ],
+      "links": [
+        {
+          "label": "35 条配对与出处",
+          "href": "downloads/semantic7h/plant-pairs.json"
+        },
+        {
+          "label": "逐条标签支持",
+          "href": "downloads/semantic7h/label-support.json"
+        },
+        {
+          "label": "资格与排除说明",
+          "href": "downloads/semantic7h/label-support-notes.txt"
+        }
+      ]
+    },
+    "leaf_controls": {
+      "title": "整叶对照：六个包已计算并通过独立复算",
+      "status": "complete",
+      "summary": "主比较、同册帖限制、跨版共同长度各做 ZL / IT 两版，共六包；七个总模型、六个增量与同步最大增量完整保留。没有据优胜配对定音。",
+      "details": [
+        "把每片物理叶的标签与正文分别汇成袋；固定组内共同词长，词长等权，再将整叶袋双射重新配对。真实词形、词频和同叶重复被保留。当前只有医药 6 叶与浴疗 7 叶可比，不能推广至全部标签。",
+        "主比较精确上尾比例为 ZL 0.503、IT 0.407；k/t 新增量上尾为 0.262、0.293。下表数值仅定位观察值在规定的完整有限排列参照中所处位置；可交换性仍是前提，不是语义概率。",
+        "主／共同长度比较完整枚举 3,628,800 个分配，同册帖严格方案 241,920 个。严格方案固定主词长后限制允许配对，不能引用早期支持盘点中扩长度的计数作正式分母。",
+        "叶号相邻、标签类型组成、同主题和复制仍可能相关。同 H/I/Q 没有认证随机性；不把上尾比例当作无意义的证据。六对单独上尾属于探索性多项比较，同步最大增量只检验全局零假设。",
+        "与上一轮单页率不同，本轮以整叶袋和共同长度重新定义比较。不能直接相减宣称某项混杂造成了前一轮优势。两版仍是同一部手稿的测量敏感性。",
+        "独立实现复算全部六包、分组排列、联合尾数和整数／有理数分母，审核 PASS；它没有重新认证原始转写提取、对象对应、历史含义或可交换性。原报告生成时的“审核进行中”是历史状态，后附独立审核收据为当前记录。"
+      ],
+      "metrics": [
+        {
+          "value": "13",
+          "label": "每个正式包的可比物理叶"
+        },
+        {
+          "value": "6",
+          "label": "完成并独立复算的结果包"
+        },
+        {
+          "value": "3,628,800",
+          "label": "每版主比较完整分配数"
+        }
+      ],
+      "links": [
+        {
+          "label": "六包全部七模型与六配对增量",
+          "href": "downloads/semantic7h/leaf-report.txt"
+        },
+        {
+          "label": "精确分数与尾数 JSON",
+          "href": "downloads/semantic7h/leaf-summary.json"
+        },
+        {
+          "label": "独立审核 PASS 与范围",
+          "href": "downloads/semantic7h/leaf-audit.txt"
+        },
+        {
+          "label": "可交换性诊断",
+          "href": "downloads/semantic7h/leaf-exchangeability.json"
+        },
+        {
+          "label": "复现说明",
+          "href": "downloads/semantic7h/leaf-reproduce.txt"
+        }
+      ],
+      "table": {
+        "headers": [
+          "版本／条件",
+          "标签位置",
+          "exact 差（百分点）",
+          "条件上尾",
+          "k/t 增量差（百分点）",
+          "增量条件上尾"
+        ],
+        "rows": [
+          [
+            "ZL / 主比较 HI",
+            "148",
+            "−0.00740",
+            "0.503",
+            "+0.05955",
+            "0.262"
+          ],
+          [
+            "ZL / 固定主长度＋册帖",
+            "148",
+            "−0.01663",
+            "0.539",
+            "+0.05199",
+            "0.283"
+          ],
+          [
+            "ZL / 跨版共同长度",
+            "148",
+            "−0.00740",
+            "0.503",
+            "+0.05955",
+            "0.262"
+          ],
+          [
+            "IT / 主比较 HI",
+            "182",
+            "+0.02097",
+            "0.407",
+            "+0.05364",
+            "0.293"
+          ],
+          [
+            "IT / 固定主长度＋册帖",
+            "182",
+            "+0.01518",
+            "0.424",
+            "+0.04393",
+            "0.334"
+          ],
+          [
+            "IT / 跨版共同长度",
+            "153",
+            "+0.02475",
+            "0.397",
+            "+0.05745",
+            "0.282"
+          ]
+        ]
+      }
+    },
+    "abbreviations": {
+      "title": "变长缩略：先固定规则，再看命中",
+      "status": "planned",
+      "summary": "一手来源与适用边界正在核对；固定变长缩略实验尚未运行。",
+      "details": [
+        "与等长 k/t 配对分开：有文献依据的缩略可能改变单位数，不能沿用等长词框的结论。",
+        "先登记可展开的位置、组合字形例外、恢复原写法的方式与同预算替代对照。",
+        "不按目标词临时加字；只公布完整规则对全部预定目标的结果，保留失败。"
+      ],
+      "metrics": [],
+      "links": []
+    }
+  },
+  "findings": [
+    "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
+    "k/t 放宽后，原配对和重新配对都更容易命中；扣除排列平均新增量后只余约 0.054–0.060 个百分点。这个结果约束了简单同形锚点解释，不证明手稿无意义。",
+    "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
+    "外部文献 35 条植物图配对已逐条盘点标签支持：12 条有来源编号、12 条仅次序候选、9 条没有对应植物标签、2 条未知。来源编号仍不等于本轮原图认证。"
+  ],
+  "plan": "第二个七小时窗口：从标签关联走向固定读法\n2026-11-18 09:06:13–16:06:13 UTC；芝加哥03:06:13–10:06:13 CST。\n\n本轮目标\n把上一轮小幅同页词形关联变成有可追溯图像对象关系、有反例、有固定变换的可检验研究。尽量提出可复查的语义约束；不承诺七小时内能破译。旧全书转写、候选及统计全部已经接触，不重新称盲集。主研究的各阶段具体协议先冻结再计算；主阶段结束则继续下一个阶段，总窗口不自动延长。\n\n阶段1：原图对象与证据设计\n按上轮既定队列，审查前6个双版命中与前6个双版未命中的完整标签位置。保存整页来源、官方图像哈希、标签近似框、可能关联的对象、歧义、正文对应位置。队列依既有结果选出，不是确认样本。视觉评审区分文本引导定位和不看转写/得分的几何描述，AI多次评审不是多位领域专家。核对历史跨页植物对应和变长缩略的一手来源，标明作者假说与本轮观察。\n\n阶段2：保留真实语料结构的对照\n上轮均匀人造词只检查程序，不能充当手稿零假设。设计按物理叶分块、同书手/插图类别、保持词长机会的重新配对或精确枚举。先界定可交换性和共同支持，再决定能否给尾部概率；若支持不足，只报告描述差和敏感性。所有六对高杆变换使用同样预算。对有直接文献支持的变长缩略另立协议，绝不见词补字。\n\n阶段3：跨页对象约束\n只有可靠对象/标签关系才能参与读法验证。先保存图像对应及不同对象对照，再测试完整词、有限变换能否区分它们。根据对象材料决定小范围检验，不用相同数据一边选植物、一边验证名称。若无法可靠识别对象，明确停留在测量与书写机制层面，转做能消除当前假说的对照。不得制造读音、语种或金标。\n\n阶段4：完整复核与发布\n另一计算实现核对完整分母、对照、概率或枚举结果，保存失败与局限；报告经受和未经受的检验。阶段结果在审计后发布现有GitHub Pages，网站说明只是记录的快照。截止前收束正在进行的计算，保留未完成事项；达到七小时终点再结题本窗口。接近截止时不启动无法验收的长任务。\n\n结论门槛\n字形匹配 → 可靠对象关系 → 不依目标词临时变化的映射 → 跨页预测 → 连续语法和历史语言核验。前一层成立不意味着后一层已成立。跨页重复、局部复制和同主题词频都须作为替代解释。\n\n计算资源\n用户已授权必要时SSH计算节点和8卡V100。优先在本地完成图像与计数工作；只在已固定问题、校准和预算需要时使用大算力。按有意义的阶段进展更新，不用空等待填满窗口。\n",
+  "downloads": [
+    {
+      "label": "窗口起止与阶段记录",
+      "href": "downloads/semantic7h/session.json"
+    },
+    {
+      "label": "本轮研究计划",
+      "href": "downloads/semantic7h/plan.txt"
+    },
+    {
+      "label": "原图几何观察",
+      "href": "downloads/semantic7h/geometry-review.txt"
+    },
+    {
+      "label": "外部植物配对候选",
+      "href": "downloads/semantic7h/plant-pairs.json"
+    },
+    {
+      "label": "整叶对照协议",
+      "href": "downloads/semantic7h/leaf-controls-protocol.txt"
+    },
+    {
+      "label": "共同支持盘点",
+      "href": "downloads/semantic7h/support.json"
+    },
+    {
+      "label": "带转写引导的原图记录",
+      "href": "downloads/semantic7h/guided-image-review.txt"
+    },
+    {
+      "label": "整叶六包完整报告",
+      "href": "downloads/semantic7h/leaf-report.txt"
+    },
+    {
+      "label": "六包汇总 JSON",
+      "href": "downloads/semantic7h/leaf-summary.json"
+    },
+    {
+      "label": "独立数值审核",
+      "href": "downloads/semantic7h/leaf-audit.txt"
+    },
+    {
+      "label": "复现说明",
+      "href": "downloads/semantic7h/leaf-reproduce.txt"
+    },
+    {
+      "label": "外部配对标签资格说明",
+      "href": "downloads/semantic7h/label-support-notes.txt"
+    },
+    {
+      "label": "变长缩略来源与边界",
+      "href": "downloads/semantic7h/davis-scope.txt"
+    },
+    {
+      "label": "公开导出校验清单",
+      "href": "downloads/semantic7h/manifest.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "session.json",
+      "sha256": "1e73cd6e50538b32d99357b7b4e781f58d731a0558398da6ff10b78e93a37036"
+    },
+    {
+      "path": "plan.txt",
+      "sha256": "895b81355b8068728ed9a25a597f3158b7a9de41468f26a8e1b3b84a17361934"
+    },
+    {
+      "path": "visual/queue_v1.json",
+      "sha256": "d664a9e1e8bcf45c48d3cf62184766e02f93bcf050737de4afa65ae7f22c976c"
+    },
+    {
+      "path": "visual/geometry_review_v1.json",
+      "sha256": "916bca6ed59b5c7158b8025d1dea52f52963cd33c479db7156080e7f2383a0bc"
+    },
+    {
+      "path": "literature/plant_pairs.json",
+      "sha256": "b7e42a55f5d643a47aca156d550f11c4aae59da2ffd2e0d75efe4e5bb163a9af"
+    },
+    {
+      "path": "design/leaf_controls/support_v1.json",
+      "sha256": "5f4d7276ac062bd067ca2e21d98c2233b39ef85bc01e01787bd4beeca4b05577"
+    },
+    {
+      "path": "publication.json",
+      "sha256": "32013a7bd5ee9d2cdc24984c1dbc65a1108538674dc09444a5c8ae3fa8ac24c8"
+    }
+  ],
+  "scope": "Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim."
+}

@@ -1,0 +1,36 @@
+整叶对照：复现与审计入口
+
+先读protocol.txt、representation_change.txt与report.txt。
+当前完成结果是run_v2/；run_v1/为已记录的存储中止，不能作为已完成评分。
+仅需Python 3.9+标准库，无GPU或第三方模型。下列输出必须是尚不存在的新路径。
+
+完整重算（协议不改变）：
+python3 research/research_next/semantic7h_20261118/design/leaf_controls/run_compact.py --output /tmp/voynich-leaf-replay-new
+
+程序先比较原/紧凑实现的人工小例，再冻结全部依赖哈希，解析冻结输入、构造矩阵、枚举全部排列。
+依赖旧label_body/saved_v1/input.json.gz；新包run_v2/input.json.gz保留其原字节，含所有原字符串。
+run_v2/freeze.json中路径相对research/research_next/，而complete.json路径相对run_v2/。
+
+只重建机会支持（无词形命中）：
+python3 research/research_next/semantic7h_20261118/design/leaf_controls/support.py --output /tmp/voynich-leaf-support-new.json
+注意support_v1的strict_HIQ5是允许扩长度的设计历史；正式run_v2/selection.json已按protocol冻结主长度。
+
+只重建可交换性诊断（无词形命中）：
+python3 research/research_next/semantic7h_20261118/design/leaf_controls/diagnostics.py --output /tmp/voynich-leaf-metadata-new.json
+exchangeability_diagnostics.json的生成时间不同于重算；其versions及selection_sha256应一致。
+
+精确联合分布格式
+六个版本/支持包：ZL或IT × main_HI、strict_HIQ5、cross_version_lengths。
+每个.json.gz内groups固定顺序；每组leaves固定字典序，permutations为itertools.permutations(range(n))顺序，恒等映射在索引0。
+scores包含七模型每排列整数“叶行分数之和”，increments包含同一次排列相对exact的六增量。
+矩阵数值乘integer_scale成为整数；合并组时先把整数分数相加，再除所有组叶数之和乘integer_scale。
+这些整数可能超过JavaScript安全整数范围。网页如需精确操作应使用BigInt，或只展示预先核定的decimal字段。
+矩阵和汇总中的有理数对象含numerator、denominator（十进制整数字符串）与decimal（只供阅读）。
+
+主/跨版有720×5040=3,628,800个联合分配；严格有2×24×5040=241,920。
+全部分配由分组数组的笛卡尔积唯一重建。保留完整数组，不把有限随机抽样冒称全枚举。
+上尾含并列，tail_ge/assignments；tail_gt和ties另列，tail_ge=tail_gt+ties。
+总体方差使用完整有限分布，而非样本方差。
+max_increment_global_null必须在同一联合排列上先合成六增量，再取max，不能只拼各自边际分布。
+
+本实现自身toy核验通过不等于独立审计。主agent/另一实现负责独立复算保存矩阵、联合尾数和分母；发布时应另链接其审核收据。

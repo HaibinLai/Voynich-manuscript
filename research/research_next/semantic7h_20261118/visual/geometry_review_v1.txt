@@ -1,0 +1,303 @@
+Geometry review v1 — image-only geometric observation
+AI-assisted observer, not a historical-language expert.
+Coordinate format: [x,y,width,height], original full-image pixels; approximate reading zones, not glyph boxes.
+No transcription/translation/candidate-word/statistical input was read. Visible images contain script, so this is not complete text blindness.
+
+MAIN FINDINGS
+- No unambiguous explicit text-to-object leader was observed in the inspected pages/crops. This is an observation with visibility limits, not a proof that no such line exists anywhere.
+- page_01: sector boundaries and circular bands dominate; isolated radial strings, multi-line sector blocks, and continuous ring text are different units.
+- page_02: left/centre scattered motifs supply the strongest single-object adjacency cases; right circle mixes multi-object rows, continuous radial/circular text, compact clusters, and occasional single-object adjacency.
+- page_03: ten short groups occur in repeated spaces beside descending graphic outlines connected to ten heads and a shared upper structure. One-to-one semantic attachment is uncertain.
+- Nearest-object matching is not an independent semantic identification. Shared boundaries, rotated text, and interrupted prose can yield false label assignments.
+
+OBSERVATION REGIONS
+p01_left_prose | page_01 | bbox=[400, 380, 1850, 380]
+  Layout: continuous_horizontal_prose
+  Nearby: above left circular figure
+  Relation: page-level placement; assignment_uncertain=False; explicit leader=none_observed
+  Several continuous lines; do not split into object labels.
+p01_left_annulus | page_01 | bbox=[225, 710, 2250, 2400]
+  Layout: continuous_circular_text_bands
+  Nearby: entire left radial construction
+  Relation: annular containment; assignment_uncertain=False; explicit leader=none_observed
+  Bounding rectangle contains the whole circular figure because an annulus is not a rectangular text box. Multiple curved lines continue across radial sectors; not independent labels.
+p01_left_inner_short | page_01 | bbox=[410, 1000, 1770, 1750]
+  Layout: separated_rotated_short_strings
+  Nearby: alternating wedge spaces; rays and separate star-shaped motifs
+  Relation: sector containment; adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Short strings occur in radial compartments between the coloured central rays and outer text. Some neighbouring compartments contain one star-shaped motif; others contain two. Radial lines delimit compartments, not text-to-object arrows. Cannot establish one string per individual star.
+p01_left_short_top | page_01 | bbox=[1250, 1040, 130, 260]
+  Layout: single_rotated_short_string
+  Nearby: space between adjacent radial boundaries above central coloured rays
+  Relation: sector containment; assignment_uncertain=True; explicit leader=none_observed
+  Native crop shows this string in its own narrow wedge; one small star-shaped motif lies in a neighbouring wedge to its right.
+p01_left_short_upperleft | page_01 | bbox=[830, 1100, 170, 270]
+  Layout: single_rotated_short_string
+  Nearby: wedge beside a small star-shaped motif
+  Relation: sector containment; assignment_uncertain=True; explicit leader=none_observed
+  Nearby motif and coloured ray share the local neighbourhood; no leader from the writing.
+p01_right_outer_red | page_01 | bbox=[2530, 300, 2230, 2400]
+  Layout: spaced_red_circumferential_groups
+  Nearby: outer ring of right circular construction
+  Relation: ring/sector placement; assignment_uncertain=True; explicit leader=none_observed
+  Red groups are separated by gaps; some contain multiple word-like units. Do not infer individual motif names from colour or spacing.
+p01_right_sector_blocks | page_01 | bbox=[2680, 510, 2000, 1990]
+  Layout: several_short_lines_per_sector
+  Nearby: radially partitioned annular sectors and small face-bearing disks
+  Relation: sector containment; assignment_uncertain=True; explicit leader=none_observed
+  Multi-line sector blocks differ from isolated one-line labels. Boundaries extend between inner and outer areas; they are structural dividers.
+p01_right_top_sector | page_01 | bbox=[3340, 550, 430, 330]
+  Layout: three short curved/horizontal lines plus separated lower short string
+  Nearby: one red-sided small face-bearing disk below
+  Relation: same sector, multiple possible textual units; assignment_uncertain=True; explicit leader=none_observed
+  This block and lower nearby word share a sector with one disk; disk naming is uncertain.
+p01_right_disk_adjacent | page_01 | bbox=[3500, 1000, 270, 120]
+  Layout: isolated short string beneath a disk
+  Nearby: one red-sided small face-bearing disk immediately above
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Relative proximity is visually clear; semantic object assignment remains unproved.
+p01_right_inner | page_01 | bbox=[3290, 1130, 730, 720]
+  Layout: separated rotated short strings around inner disk
+  Nearby: central pointed radial ornament plus surrounding small disks
+  Relation: mixed inner-ring adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Nearest graphic depends on the string; there is no common explicit leader convention.
+p01_right_bottom_prose | page_01 | bbox=[2660, 2680, 2180, 320]
+  Layout: three long horizontal lines, middle red
+  Nearby: below right circular figure
+  Relation: page-level placement; assignment_uncertain=False; explicit leader=none_observed
+  Continuous baseline text, not isolated object labels.
+p02_left_top_prose | page_02 | bbox=[400, 360, 1830, 390]
+  Layout: continuous_horizontal_prose
+  Nearby: above left scattered motifs and face-bearing disk
+  Relation: page-level placement; assignment_uncertain=True; explicit leader=none_observed
+  Bottom prose line is interrupted by the top disk; short isolated line at left is ambiguous between paragraph ending and label.
+p02_middle_top_prose | page_02 | bbox=[2710, 380, 1660, 430]
+  Layout: continuous_horizontal_prose
+  Nearby: above central scattered motifs and face-bearing disk
+  Relation: page-level placement; assignment_uncertain=False; explicit leader=none_observed
+  Several lines; last line split by circular graphic. Not a list of independent motif labels.
+p02_left_scattered | page_02 | bbox=[300, 680, 2050, 1840]
+  Layout: many isolated short strings
+  Nearby: spaced individual star-shaped motifs
+  Relation: mostly single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Most strings occur just to the right of one motif, a few to the left. This differs strongly from the right-hand circle. The broad box is a layout-family region, not an exhaustive word inventory.
+p02_middle_scattered | page_02 | bbox=[2570, 1000, 1830, 1650]
+  Layout: many isolated short strings interspersed with unlabelled-looking motifs
+  Nearby: many individual star-shaped motifs
+  Relation: mostly single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Both labelled-looking and no-adjacent-text motifs appear. A motif may have pointed or rounded rays and a filled or open centre; no identity is inferred. Broad box is not a token inventory.
+p02_left_sample_a | page_02 | bbox=[800, 790, 200, 90]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [630, 730, 170, 150]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_b | page_02 | bbox=[1640, 730, 230, 110]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1480, 690, 180, 170]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_c | page_02 | bbox=[525, 1020, 210, 110]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [430, 960, 110, 180]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_d | page_02 | bbox=[1670, 965, 190, 110]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1520, 930, 160, 190]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_e | page_02 | bbox=[2070, 1040, 210, 120]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1920, 1030, 165, 180]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_f | page_02 | bbox=[960, 1140, 170, 105]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [820, 1060, 200, 185]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_g | page_02 | bbox=[1275, 1125, 195, 115]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1135, 1115, 160, 180]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_h | page_02 | bbox=[1630, 1230, 245, 130]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1470, 1230, 170, 190]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_i | page_02 | bbox=[2080, 1280, 215, 115]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [1940, 1280, 155, 170]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_j | page_02 | bbox=[810, 1390, 155, 95]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [700, 1315, 140, 175]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_left_sample_k | page_02 | bbox=[1110, 1400, 170, 110]
+  Layout: isolated one-line short string
+  Nearby: {'kind': 'one nearby star-shaped motif', 'approx_bbox_xywh': [960, 1370, 160, 180]}
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Native upper-left crop. Text lies to the right or lower right of the indicated motif. No separate leader; rays are part of motif outline.
+p02_center_left_of_motif | page_02 | bbox=[3300, 1405, 285, 125]
+  Layout: isolated one-line short string
+  Nearby: large filled-centre pointed motif to the right, around [3580,1470]
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Counterexample to an invariant text-on-right rule. Proximity is clear; leader absent.
+p02_right_circumference | page_02 | bbox=[4630, 470, 2580, 2650]
+  Layout: long curved text chain
+  Nearby: outer circumference enclosing many star-shaped motifs and central face-bearing disk
+  Relation: whole-diagram boundary; assignment_uncertain=False; explicit leader=none_observed
+  Treat as continuous circular writing; its proximity to individual outer motifs does not establish label pairings.
+p02_right_top_radial | page_02 | bbox=[5960, 630, 180, 900]
+  Layout: long radial text chain with visible gaps
+  Nearby: several rows of star-shaped motifs on left and isolated motifs on right
+  Relation: radial partition/row boundary; assignment_uncertain=True; explicit leader=none_observed
+  Not one isolated label per nearby motif; text extends past several objects.
+p02_right_upperleft_diagonal | page_02 | bbox=[5150, 840, 730, 810]
+  Layout: diagonal multi-unit text chain
+  Nearby: multiple star-shaped motifs arranged in rows
+  Relation: group/sector adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Near several separate motifs and a compact cluster; no unique object assignment.
+p02_right_compact_cluster | page_02 | bbox=[5140, 1300, 450, 295]
+  Layout: short strings surrounding compact motif cluster
+  Nearby: compact group of several small star-shaped motifs near [5250,1350]
+  Relation: cluster adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Writing is on more than one side of the cluster. Curved stroke leaves cluster vicinity toward central disk region; it is not visibly a text-origin leader, and its exact endpoint/function is uncertain.
+p02_right_small_single_1 | page_02 | bbox=[6360, 780, 170, 200]
+  Layout: isolated rotated short string
+  Nearby: single larger star-shaped motif below, around [6380,1000]
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Within right circle some genuine single-motif adjacency cases coexist with long chains.
+p02_right_small_single_2 | page_02 | bbox=[6220, 1100, 160, 215]
+  Layout: isolated rotated short string
+  Nearby: single larger star-shaped motif below, around [6210,1330]
+  Relation: single-object adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Relative proximity only; no leader.
+p02_right_horizontal_left | page_02 | bbox=[4760, 1690, 850, 120]
+  Layout: long horizontal text chain
+  Nearby: row of several star-shaped motifs below, central disk to right
+  Relation: multi-object row adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Single row of writing spans several motifs; avoid treating the nearest word as a proven label.
+p02_right_horizontal_right | page_02 | bbox=[6190, 1830, 930, 125]
+  Layout: long horizontal text chain
+  Nearby: several rows of star-shaped motifs above
+  Relation: multi-object row adjacency; assignment_uncertain=True; explicit leader=none_observed
+  Long baseline text is not equivalent to the isolated left/centre labels.
+p02_face_rings | page_02 | bbox=[900, 560, 5380, 2280]
+  Layout: text around or within five face-bearing circular/oval forms
+  Nearby: left top/bottom disks, middle top/bottom disks, right central disk
+  Relation: within/around single disk; assignment_uncertain=True; explicit leader=none_observed
+  This broad rectangle is a family extent, not one continuous region. Ring writing may contain multiple units and should not be collapsed to one short label. No reading or celestial identity assigned.
+p03_top_left_prose | page_03 | bbox=[500, 340, 1040, 730]
+  Layout: continuous_horizontal_prose
+  Nearby: left of vertical tube-like outline
+  Relation: wraps around graphic; assignment_uncertain=False; explicit leader=none_observed
+  Continuous lines, not labels for the tube.
+p03_top_right_prose | page_03 | bbox=[1630, 340, 920, 740]
+  Layout: continuous_horizontal_prose
+  Nearby: right of vertical tube-like outline
+  Relation: wraps around graphic; assignment_uncertain=False; explicit leader=none_observed
+  Continuous lines; the tube separates two text blocks.
+p03_middle_network | page_03 | bbox=[360, 1020, 1980, 1010]
+  Layout: ten separated two-line short groups
+  Nearby: common wide scalloped blue-tinted upper structure, ten descending narrow outlines, ten human figures in a common green enclosure
+  Relation: repeated local spaces within connected drawing; assignment_uncertain=True; explicit leader=none_observed
+  Ten people and ten short groups can be counted visually here, but equal counts alone do not determine pairing. The descending outlines meet heads and are connected to the common upper drawing. They are not text-origin arrows.
+p03_short_01 | page_03 | bbox=[590, 1295, 160, 155]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_02 | page_03 | bbox=[795, 1340, 160, 150]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_03 | page_03 | bbox=[1000, 1385, 170, 145]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_04 | page_03 | bbox=[1210, 1410, 175, 160]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_05 | page_03 | bbox=[1420, 1465, 80, 125]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_06 | page_03 | bbox=[1510, 1435, 135, 165]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_07 | page_03 | bbox=[1655, 1490, 125, 145]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_08 | page_03 | bbox=[1800, 1490, 145, 155]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_09 | page_03 | bbox=[1960, 1505, 135, 160]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  Between adjacent descending narrow outlines; text is to the right of the outline that reaches the corresponding left-to-right head position. More than one adjacent head/outline is a candidate referent.
+p03_short_10 | page_03 | bbox=[2130, 1500, 210, 175]
+  Layout: two short stacked lines
+  Nearby: shared upper structure, adjacent descending outlines, human figure(s) below
+  Relation: local adjacency in connected network; assignment_uncertain=True; explicit leader=none_observed
+  To the right of the rightmost descending outline, near the rightmost human figure; outer edge case reduces neighbours but does not establish whether text names a person, outline, section, or process.
+p03_middle_prose | page_03 | bbox=[450, 1880, 2100, 850]
+  Layout: continuous_horizontal_prose
+  Nearby: between upper human-figure row and lower enclosure
+  Relation: paragraph follows/wraps drawing; assignment_uncertain=False; explicit leader=none_observed
+  Left edge is traversed by a long curved tube-like outline. Line shortening is caused by drawing; it is not sufficient to identify labels.
+p03_lower_wrapped_prose | page_03 | bbox=[470, 2630, 2060, 720]
+  Layout: continuous lines shortened around lower illustration
+  Nearby: many human figures sharing a blue-tinted enclosure with curved connecting outlines
+  Relation: wrapped prose; multiple-object neighbourhood; assignment_uncertain=True; explicit leader=none_observed
+  Short fragments to left/above lower drawing remain aligned with surrounding prose. Treat isolated appearance as ambiguous, not as labels for nearest human figure.
+
+VIEWED INPUTS AND HASHES
+page_01: local_original_images/page_01.jpg
+  SHA256 0518312a566ee713a46c9887d8b8b9d7141d14095e360661789c1dad9b5c0d1c ; matches roster: True
+  Source: https://collections.library.yale.edu/iiif/2/1006194/full/full/0/default.jpg
+page_02: local_original_images/page_02.jpg
+  SHA256 4b0f31d1e08b8f026886aa599232b7dfcd33417b1eef43a44e619c3ebd21faa5 ; matches roster: True
+  Source: https://collections.library.yale.edu/iiif/2/1006196/full/full/0/default.jpg
+page_03: local_original_images/page_03.jpg
+  SHA256 654edf15a65d1a2bb0d7bb4995f8f6fba1625d5eed847c9b6969d1c44e385a23 ; matches roster: True
+  Source: https://collections.library.yale.edu/iiif/2/1006209/full/full/0/default.jpg
+Crop page_01_left_top, original xywh=[320, 690, 2030, 1050]
+  SHA256 64bb473f907fcea86c8922d38ffbf963c5b074b65e47c1d5eba59f1716698428
+  Source: https://collections.library.yale.edu/iiif/2/1006194/320,690,2030,1050/full/0/default.jpg
+Crop page_01_right_top, original xywh=[2630, 270, 2070, 1330]
+  SHA256 0235079d58c90002d27b0a4f478fdf686e52e3a9bbc1a0f8a19ab1b5150ac01c
+  Source: https://collections.library.yale.edu/iiif/2/1006194/2630,270,2070,1330/full/0/default.jpg
+Crop page_02_left_upper, original xywh=[260, 550, 2100, 1250]
+  SHA256 db203e7735addf398b0d15f67581c62f8ddbbd9aaa523ffb905eaa136031a1b0
+  Source: https://collections.library.yale.edu/iiif/2/1006196/260,550,2100,1250/full/0/default.jpg
+Crop page_02_center, original xywh=[2550, 820, 1840, 1580]
+  SHA256 940bf71f6cf11107f9076738f82c14a7e72a68dc9d9a1dec30029c3bb418aba4
+  Source: https://collections.library.yale.edu/iiif/2/1006196/2550,820,1840,1580/full/0/default.jpg
+Crop page_02_right_upper, original xywh=[4650, 550, 2580, 1430]
+  SHA256 5b5c1f03838aefd123af3ac1510a83d3d8563304e329c916a04f8fbe7f366dc8
+  Source: https://collections.library.yale.edu/iiif/2/1006196/4650,550,2580,1430/full/0/default.jpg
+Crop page_03_channels, original xywh=[420, 1010, 1960, 1010]
+  SHA256 b891b9f7ff22470b739f1c9eea54141f79f3987edb76b106fe4c93fb59a005bf
+  Source: https://collections.library.yale.edu/iiif/2/1006209/420,1010,1960,1010/full/0/default.jpg
+
+LIMITATIONS
+- No exhaustive per-word box inventory or full graphic topology tracing was attempted. All major layout families are covered, with native-crop examples and all ten page_03 middle short groups.
+- Whole-image views were display-downscaled. Six official native-size crops were additionally inspected; lower portions without crops rely on the whole-image view.
+- No stroke enhancement, contrast manipulation, rotation, OCR, or generated image reconstruction was used.
+- Graphic words such as star-shaped, face-bearing, human figure, and tube-like describe visible geometry; they do not establish historical subject identity.

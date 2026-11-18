@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+- [七小时研究：让文字接到对象上](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html)：第二个固定窗口为 2026-11-18 09:06:13–16:06:13 UTC（芝加哥 03:06:13–10:06:13 CST）。整叶对照的六个结果包已通过独立数值复算；主 exact 超过排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。条件排列参照没有提供可靠词义锚点，也不能证明手稿无意义。原图对象审查与固定变换继续进行；页面是保存快照，不是后台监视。
+
 - [标签能否接到正文与词义？](https://haibinlai.github.io/Voynich-manuscript/label-body.html)：新一轮完整标签与同类异叶正文对照，六种字形替换、分层和独立复算。精确同词有约0.12–0.15个百分点的本页优势，主要在浴疗类；尚未确认对象名称或读音。[更新研究计划](research/research_next/label_body/plan.txt)明确下一步需收集的图像对象证据和固定读法检验。
 
 - [我们找到了哪些规律？](https://haibinlai.github.io/Voynich-manuscript/findings.html) 一页阅读版，汇总原图词例、六对字形对照和证据边界。
