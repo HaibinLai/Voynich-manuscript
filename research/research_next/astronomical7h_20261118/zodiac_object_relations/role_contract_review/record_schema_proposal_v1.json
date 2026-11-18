@@ -1,0 +1,65 @@
+{
+  "schema": "proposed_block_role_record_schema_v1",
+  "required_fields": {
+    "region_uid": "exact original immutable ID",
+    "original_box_xyxy": "exact original immutable four integers",
+    "original_band": "metadata only, never inferred result",
+    "assessment_status": [
+      "not_evaluated",
+      "record_reviewed",
+      "record_reviewed_NA"
+    ],
+    "whole_window_evidence_scope": [
+      "full_window",
+      "partial_window",
+      "context_only",
+      "unknown"
+    ],
+    "writing_presence": [
+      "writing_like_supported",
+      "not_writing_explicitly_supported",
+      "uncertain",
+      "not_assessed"
+    ],
+    "role_observed_present": "zero or more defined supported roles; null when unassessed",
+    "role_candidates": "alternative unresolved role set; not observed role set",
+    "mixed_roles_observed": "boolean or null; true only observed simultaneity, not alternatives",
+    "field_boundary_basis": "specific preserved context/boundary/continuation observations, each with source pointer",
+    "inscription_complete_in_window": [
+      "yes",
+      "no",
+      "uncertain",
+      "not_assessed"
+    ],
+    "clipped_or_continuing_sides": "registered directions or unknown; no inferred glyph completion",
+    "full_block_grouping_notes": "all subgroup alternatives retained, none selected as parent replacement",
+    "candidate_object_ids_context_only": "original list or null, not required to be singleton",
+    "source_refs": "file + SHA256 + JSON pointer + quoted operative observation + evidence extent",
+    "conflicting_sources": "all preserved claims with scope; no vote resolution",
+    "primary_hypothesis_assessment": [
+      "supported_for_stated_scope",
+      "contradicted_for_stated_scope",
+      "NA",
+      "not_in_predeclared_domain",
+      "not_evaluated"
+    ],
+    "NA_reasons": [
+      "writing_graphic_uncertain",
+      "partial_window_record",
+      "field_boundary_unresolved",
+      "source_conflict",
+      "no_specific_spatial_record",
+      "other_explicit_reason"
+    ],
+    "shared_ink_or_overlap_dependency": "other original IDs if known; no object/word independence assumed"
+  },
+  "forbidden_NA_reasons": [
+    "unknown_word_meaning_alone",
+    "no_visible_leader_alone",
+    "multiple_candidate_objects_alone",
+    "unknown_historical_start_alone",
+    "more_than_one_subgroup_alone",
+    "source_locus_not_mapped_alone"
+  ],
+  "no_execution_this_turn": true
+}

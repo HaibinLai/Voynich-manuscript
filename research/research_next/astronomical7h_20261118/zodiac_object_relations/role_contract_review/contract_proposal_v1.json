@@ -1,0 +1,151 @@
+{
+  "schema": "fixed_all12_image_block_spatial_role_measurement_contract_proposal_v1",
+  "status": "DESIGN_ONLY_REQUIRES_ROOT_REVIEW_AND_FREEZE_BEFORE_EXECUTION",
+  "created_utc": "2026-11-18T20:40:59.927203+00:00",
+  "question": "固定粗图像窗口实际上采到哪些可区分的书写空间层？原名册中的外围短区是否都支持同一个开放人物带短写场角色？",
+  "rationale": "独有对象指称与共享空间场是不同命题；本合同测量前者所依赖的版面层，不假定必须先知道词义或文字连到单一对象。",
+  "not_original_sequence_goal_replacement": true,
+  "fixed_panel_order": [
+    "f70v1",
+    "f70v2",
+    "f71r",
+    "f71v",
+    "f72r1",
+    "f72r2",
+    "f72r3",
+    "f72v3",
+    "f72v2",
+    "f72v1",
+    "f73r",
+    "f73v"
+  ],
+  "universe": {
+    "seed_path": "research/research_next/astronomical7h_20261118/zodiac_object_relations/seed_roster_v1.json",
+    "seed_sha256": "0083a3a0544bf31a022747a074757282f5b1a5c8171f1c08c1d9642f6188b121",
+    "all_original_rows": 322,
+    "primary_coarse_rows": 312,
+    "supplementary_rows": 10,
+    "all_fine_alternatives_retained_as_context": 358,
+    "all_original_object_components_retained_as_context": 606,
+    "physical_dependencies": "8画布/4物理叶；不当322独立历史试验。",
+    "no_dropping": [
+      "central",
+      "external",
+      "unassigned",
+      "uncertain_or_graphic",
+      "NA_after_review",
+      "mixed-role blocks",
+      "clipped windows"
+    ]
+  },
+  "unit": {
+    "primary": "B_i = 每条原记录的整个固定原生像素窗口 original_box_xyxy，含框内所有可见内容；不先切成词，不挑子块。",
+    "pixel_convention": "[x0,x1) × [y0,y1), original unrotated native canvas coordinates; documented original coordinate conventions win if already explicitly different.",
+    "complete_window_vs_complete_inscription": "整块是预定采样范围完整，绝不等于整个历史文字串/字词已完整收入。后者另记yes/no/uncertain/not_assessed，非空间角色的通用入场条件。",
+    "context": "只引用各原报告已冻结的观察视图和上下文；框外内容可解释延续/图场，不加入B_i计量。",
+    "overlapping_windows": "原窗可能重叠或采到同一环文，不去重删项；记shared_ink_or_overlap_dependency，禁止作为独立词/命中计数。"
+  },
+  "role_vocabulary": {
+    "annular_figure_field_short_writing": "书写在含人物/尖形的开放图场空白内，原证据区分它与连续沿环书写；无需专属人物。",
+    "continuous_annular_writing_course": "原证据显示书写沿圆周/曲线持续延展或为其采样段；不要求框内是完整一句。",
+    "central_scene_annotation_field": "中央场景内书写，凭场景界/图形位置/空白分离描述；不推出图像名称。",
+    "external_upper_open_arc_field": "主圆外上部开放人物弧内书写场；不强制闭合。",
+    "page_margin_writing_field": "图面外页边书写场；无局部对象仍可成立。",
+    "other_explicit_spatial_field": "以上之外有具体边界事实，必须自由说明且不得事后并入有利类。",
+    "unresolved_writing_or_graphic": "尚不能稳定区分书写/图线；作为不确定记录，不是第七种已认证文字功能。"
+  },
+  "role_coding": {
+    "set_logic": "role_observed_present可多选（明确同时混入），role_candidates保留互斥备选；不可把候选集合非空等同角色成立。",
+    "whole_window_rule": "角色判断覆盖完整原块已记录的全部书写证据；若报告只谈一端/一子组，标partial，不能从最清楚子组外推整个B_i。",
+    "field_basis_required": [
+      "exact source file/hash/JSON pointer",
+      "specific boundary, course continuation, scene containment, or blank separation observation",
+      "evidence_scope full_window/partial_window/context_only/unknown"
+    ],
+    "disallowed_shortcuts": [
+      "ring_assignment_original当观测答案",
+      "最近角度/距离",
+      "guided唯一矩形相交",
+      "单个最高E/P关系",
+      "中央动物主题",
+      "词形或名称相似",
+      "固定semantic_ownership_certified=false"
+    ]
+  },
+  "falsifiable_primary_proposition": {
+    "id": "H_block_homogeneity",
+    "domain": "固定seed中原ring_assignment_original为outer/inner/middle的所有原粗槽；该域只由事先冻结字段定义。其余322范围仍完整记录各自角色，不充当被删去的困难项。",
+    "statement": "每个该域窗口的全部已观察书写成分都属于开放人物带短写场，并与连续环文、中央注记和页边场相区分。",
+    "support_per_row": "有明确整个窗口的书写场事实，role_observed_present只含annular_figure_field_short_writing，且没有未覆盖/未决的书写成分。多个组或多个候选对象可以同时满足。",
+    "contradiction_per_row": "原记录明确显示该框采到另一个空间层，例如连续环文；或明确同时混入别层。一个确证反例即否定全称同质命题，不删反例。",
+    "NA_per_row": "文字/图形未定、仅局部描述、场边界未定或报告冲突；不得把未看到改成缺席0。",
+    "outside_primary_domain": "中央/外附/未分配条目原样进入全表并编码角色，主命题栏标not_in_predeclared_domain而非伪造NA/阴性。",
+    "global_rule": "有确证反例→该全称命题不成立（NA仍留）；无反例且至少一NA→未决；全部域内条目得到充分整块支持才支持这个版面同质性命题。无统计分数/百分比/p值。",
+    "known_evidence_exposure": "f72v2:ZO13和ZO14原报告已经给出环文反例，故现有记录不支持此全称命题；这是已知结果下的测量诊断设计，不是未见数据预测。不能因此换域或删两项救回命题。"
+  },
+  "cross_panel_comparison": {
+    "allowed": "按同一词表并列全12完整块名册及各角色明确证据/混合/NA位置；可声明两图某些块具有同一宽空间角色，不要求这些块指同一个对象或每图只有同类。",
+    "not_allowed": "从局部同角色推成每图完整同角色有序文本序列；不挑两个漂亮图宣称Q5通过。",
+    "no_anchor_required": "这种无序空间角色比较不使用相位或历史第一项；无共同起点不是阻碍。",
+    "order_if_later_requested": "另冻结环层、实际邻接、开放端、全部缺项和不变量；不能从当前空间类或来源名单顺序生成循环。"
+  },
+  "minimum_execution_plan": [
+    "root审查并冻结合同和全322未评估模板；本次不执行逐项新编码。",
+    "仅从固定正式报告逐ID填空间角色和引用；一条不能被文献记录支持的判断留NA，不因表格需要强填。",
+    "完整检查全部ID、原框、中央/外部/NA和细分备选未丢；同时检验角色来自具体事实，不是原band或对象数量。",
+    "第二人复核所有确定支持/反例以及所有类别分歧；不是多数投票，保留原编码和理由。",
+    "若要减少剩余NA，必须另定图像查看子阶段及全部缺口优先顺序；当前不自动授权新看图或扩框。"
+  ],
+  "bounded_workload": "记录级全表一次编码约60–90分钟，另20–30分钟按明确判断与缺口复核；这是规划估计，不是已执行。预算不足则逐IDnot_evaluated保留，不把未做当NA_after_review。",
+  "stop_and_retain": "旧主目标/gate不变；合同完成或全称反例出现均不触发任何词串匹配。不得把块级结果改称已有序列合格。",
+  "field_availability": [
+    {
+      "field": "identity_and_fixed_window",
+      "available": "每项原ID、canvas、原xyxy、原band、roster_class、源指针和全12范围已齐。",
+      "missing": "无定义性缺口；须明确端点惯例为原生像素半开窗口[x0,x1)×[y0,y1)，不得静默改框。",
+      "inference_rule": "该完整窗口可以是测量单位，不能据此宣称完整单词/铭文。"
+    },
+    {
+      "field": "view_evidence_and_attention_scope",
+      "available": "review_status、viewed_view_ids、view_receipts及多数reviewed_context_extent_xyxy。",
+      "missing": "全表尚无统一whole_window_reviewed/部分覆盖/未知枚举；几何包住原框只证明视图范围，不自动证明逐处观察。",
+      "inference_rule": "仅原报告明确整块观察或其可靠视图声明支持full；否则partial或unknown，原reviewed不机械升级。"
+    },
+    {
+      "field": "observed_spatial_role",
+      "available": "observation_facts已含共享带、环文延续、中央场景、外部页边、损伤等具体描述。",
+      "missing": "尚无按统一角色词表逐块编码、精确事实引用和多角色与多候选分离的字段。",
+      "inference_rule": "可从原文作有依据的记录级编码；只有原band、角度夹邻或矩形相交时必须留NA。"
+    },
+    {
+      "field": "field_boundary_evidence",
+      "available": "context_regions_original、continuous_ring_writing_original、gap/damage与观察文字可定位候选边界。",
+      "missing": "缺统一extent-evidence字段；环文矩形包络不是环墨路径，缺精确界时不能做全块containment或面积百分比。",
+      "inference_rule": "本最小合同只编码原记录明确支持的关系；若后续要像素面积/边界积分，必须另冻面域/墨迹分层，不能由现有矩形补造。"
+    },
+    {
+      "field": "window_vs_inscription_extent",
+      "available": "部分条目明确出框延续、多个簇、环文采样或混线。",
+      "missing": "全表没有系统的可见串完整度与截断方向。",
+      "inference_rule": "串完整度未知不使固定窗口不存在；只有声称完整文字组或词出现时才需要该门槛。不能把窗口外墨迹加入单位。"
+    },
+    {
+      "field": "within_block_grouping",
+      "available": "358原细分备选、各粗区subgroup_candidates均保留。",
+      "missing": "缺统一的已观察多角色同时存在 versus 互斥候选角色。",
+      "inference_rule": "不选择最佳子组；父框只计一个机会，所有子组为解释证据而不是新样本。"
+    },
+    {
+      "field": "ordinary_annotation_layer",
+      "available": "资格账本已将普通字母样中央位置与ZC02分列，保留覆盖争议。",
+      "missing": "块级表需继承外观证据范围；不能新增读法/年代/日期认证。",
+      "inference_rule": "外观只作既有曝光注记，不按形似或词串决定空间角色。"
+    },
+    {
+      "field": "unique_referent_and_order",
+      "available": "候选对象、线状态、原几何遍历和开放弧记录。",
+      "missing": "原目标的独有对应/相对序列仍有缺口；本合同并不需要补全这些字段。",
+      "inference_rule": "对象竞争不自动产生空间角色NA；没有引线或历史起点未知也不自动产生NA。此合同不输出序列资格。"
+    }
+  ]
+}

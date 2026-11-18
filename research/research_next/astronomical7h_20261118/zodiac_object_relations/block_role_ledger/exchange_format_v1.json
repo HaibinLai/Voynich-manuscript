@@ -1,0 +1,32 @@
+{
+  "schema": "block_role_exchange_format_v1",
+  "utc": "2026-11-18T20:43:58.257690+00:00",
+  "does_not_change_scientific_contract": true,
+  "report_fields": [
+    "schema",
+    "observer_id",
+    "input_freeze_sha256",
+    "fixed_panel_order",
+    "rows",
+    "limits"
+  ],
+  "row_fields": "All fields in ../role_contract_review/record_schema_proposal_v1.json plus panel, canvas_id, roster_class, primary_proposition_domain and scope_justification",
+  "source_reference_fields": {
+    "file": "repository-relative path to a frozen source",
+    "sha256": "complete source file SHA256",
+    "json_pointer": "RFC6901 pointer into source JSON",
+    "original_field_value": "exact unmodified value at pointer (string/list/object allowed)",
+    "evidence_scope": "full_window|partial_window|context_only|unknown",
+    "interpretive_use": "Plain-language explanation of the specific assertion this field supports; no metadata-as-answer"
+  },
+  "field_boundary_basis": "List of objects {description, source_ref_indices}; references index this row source_refs. A field-boundary fact may support a broad scene role without a unique object.",
+  "scope_justification": "Per-row explanation of why facts concern the whole observed writing group, only a subset, context, or unknown; do not equate rectangle enclosure with attention.",
+  "outputs": [
+    "input_freeze_v1.json",
+    "report_v1.json",
+    "report_v1.txt",
+    "output_freeze_v1.json"
+  ],
+  "retained_original_fields": "ID, original box, band, original candidate list must equal frozen sources. Include all subgroup alternatives in full_block_grouping_notes or cite their exact source field, never silently pick one.",
+  "all_rows_required_even_NA": true
+}
