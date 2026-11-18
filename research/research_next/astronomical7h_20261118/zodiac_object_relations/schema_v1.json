@@ -1,0 +1,691 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Zodiac object relation observer panel report v1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "zodiac_object_relations_observer_panel_v1"
+    },
+    "panel": {
+      "enum": [
+        "f70v1",
+        "f70v2",
+        "f71r",
+        "f71v",
+        "f72r1",
+        "f72r2",
+        "f72r3",
+        "f72v3",
+        "f72v2",
+        "f72v1",
+        "f73r",
+        "f73v"
+      ]
+    },
+    "observer_id": {
+      "enum": [
+        "circle_spatial_observer",
+        "literature",
+        "astronomical_site"
+      ]
+    },
+    "input_freeze_sha256": {
+      "type": "string"
+    },
+    "seed_roster_sha256": {
+      "type": "string"
+    },
+    "original_sha256": {
+      "type": "string"
+    },
+    "panel_status": {
+      "enum": [
+        "not_reviewed",
+        "in_progress",
+        "reviewed",
+        "NA_after_review"
+      ]
+    },
+    "started_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stopped_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exposure_statement": {
+      "type": "string"
+    },
+    "text_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text_record"
+      }
+    },
+    "object_component_reviews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/component"
+      }
+    },
+    "relation_edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    },
+    "line_segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/segment"
+      }
+    },
+    "view_receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/view_receipt"
+      }
+    },
+    "context_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "discovered_supplements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "open_arc_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_not_reviewed_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "no_text_matching_or_semantic_score": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema",
+    "panel",
+    "observer_id",
+    "input_freeze_sha256",
+    "seed_roster_sha256",
+    "original_sha256",
+    "panel_status",
+    "started_utc",
+    "stopped_utc",
+    "exposure_statement",
+    "text_records",
+    "object_component_reviews",
+    "relation_edges",
+    "line_segments",
+    "view_receipts",
+    "context_reviews",
+    "discovered_supplements",
+    "open_arc_notes",
+    "remaining_not_reviewed_ids",
+    "limitations",
+    "no_text_matching_or_semantic_score"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "text_record": {
+      "type": "object",
+      "properties": {
+        "region_uid": {
+          "type": "string"
+        },
+        "review_status": {
+          "enum": [
+            "not_reviewed",
+            "in_progress",
+            "reviewed",
+            "NA_after_review"
+          ]
+        },
+        "viewed_view_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "text_status": {
+          "enum": [
+            "writing_like",
+            "uncertain_or_graphic",
+            "indeterminate",
+            null
+          ]
+        },
+        "candidate_object_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "no_candidate_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relation_edge_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "observation_facts": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_constraints": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "layout_association": {
+          "enum": [
+            "single_layout_candidate",
+            "multiple_layout_candidates",
+            "no_local_layout_candidate",
+            "indeterminate",
+            null
+          ]
+        },
+        "subgroup_candidates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object"
+          }
+        },
+        "damage_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "line_visibility_state": {
+          "enum": [
+            "explicit_connection_seen",
+            "partial_connection_seen",
+            "no_explicit_connection_observed_in_reviewed_views",
+            "indeterminate",
+            "not_reviewed"
+          ]
+        },
+        "reviewed_context_extent_xyxy": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        },
+        "unassessed_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "completion_or_NA_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "region_uid",
+        "review_status",
+        "viewed_view_ids",
+        "text_status",
+        "candidate_object_ids",
+        "relation_edge_ids",
+        "observation_facts",
+        "candidate_constraints",
+        "layout_association",
+        "subgroup_candidates",
+        "line_visibility_state",
+        "completion_or_NA_reason",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "component": {
+      "type": "object",
+      "properties": {
+        "component_uid": {
+          "type": "string"
+        },
+        "review_status": {
+          "enum": [
+            "not_reviewed",
+            "in_progress",
+            "reviewed",
+            "NA_after_review"
+          ]
+        },
+        "viewed_view_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reviewed_component_box_xyxy": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        },
+        "component_type_observed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "related_edge_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "missing_component_state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "competing_component_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "observation_facts": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "completion_or_NA_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "component_uid",
+        "review_status",
+        "viewed_view_ids",
+        "reviewed_component_box_xyxy",
+        "related_edge_ids",
+        "missing_component_state",
+        "completion_or_NA_reason"
+      ],
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "properties": {
+        "edge_uid": {
+          "type": "string"
+        },
+        "edge_kind": {
+          "enum": [
+            "text_to_object",
+            "body_to_pointed",
+            "other_graphic_connection"
+          ]
+        },
+        "source_uid": {
+          "type": "string"
+        },
+        "target_uid": {
+          "type": "string"
+        },
+        "endpoint_type_pair": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "evidence_level": {
+          "enum": [
+            "NA",
+            "N",
+            "P",
+            "E"
+          ]
+        },
+        "observed_endpoint_facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "segment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "competing_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "crossing_resolution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "line_visibility_state": {
+          "enum": [
+            "explicit_connection_seen",
+            "partial_connection_seen",
+            "no_explicit_connection_observed_in_reviewed_views",
+            "indeterminate",
+            "not_reviewed"
+          ]
+        },
+        "view_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reviewed_context_extent_xyxy": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "semantic_identity": {
+          "type": "null"
+        },
+        "semantic_ownership_certified": {
+          "const": false
+        }
+      },
+      "required": [
+        "edge_uid",
+        "edge_kind",
+        "source_uid",
+        "target_uid",
+        "endpoint_type_pair",
+        "evidence_level",
+        "observed_endpoint_facts",
+        "segment_ids",
+        "competing_object_ids",
+        "line_visibility_state",
+        "view_ids",
+        "limitations",
+        "semantic_identity",
+        "semantic_ownership_certified"
+      ],
+      "additionalProperties": false
+    },
+    "segment": {
+      "type": "object",
+      "properties": {
+        "segment_uid": {
+          "type": "string"
+        },
+        "type_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "visible_polyline_original_xy": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "endpoint_boxes_xyxy": {
+          "type": "array",
+          "items": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "breaks_or_occlusions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "crossings": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "branch_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "view_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "trace_complete": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "trace_stop_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "segment_uid",
+        "type_candidates",
+        "visible_polyline_original_xy",
+        "endpoint_boxes_xyxy",
+        "breaks_or_occlusions",
+        "crossings",
+        "branch_candidates",
+        "view_ids",
+        "trace_complete",
+        "trace_stop_reason"
+      ],
+      "additionalProperties": false
+    },
+    "view_receipt": {
+      "type": "object",
+      "properties": {
+        "view_id": {
+          "type": "string"
+        },
+        "plan_view_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "original_sha256": {
+          "type": "string"
+        },
+        "crop_xyxy_original": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        },
+        "rotation_degrees": {
+          "enum": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        "native_dimensions_px": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "view_file_sha256": {
+          "type": "string"
+        },
+        "displayed_at_utc": {
+          "type": "string"
+        },
+        "display_mode": {
+          "enum": [
+            "native_detail",
+            "overview_navigation_only"
+          ]
+        },
+        "covered_text_uids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "covered_component_uids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_coverage_note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "view_id",
+        "plan_view_id",
+        "original_sha256",
+        "crop_xyxy_original",
+        "rotation_degrees",
+        "native_dimensions_px",
+        "view_file_sha256",
+        "displayed_at_utc",
+        "display_mode",
+        "covered_text_uids",
+        "covered_component_uids",
+        "actual_coverage_note"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "x_execution_rules": [
+    "All assigned panel seed text and component IDs retained even if not reviewed. Original fields remain in the fixed seed, no source mutation.",
+    "No new observation starts before root freezes execution inputs and explicitly authorizes start.",
+    "not_reviewed entries have no invented evidence; candidates/relation fields stay null. No view plan entry counts as an observation receipt.",
+    "reviewed or NA_after_review requires actual viewed evidence and reason. Interrupted items use in_progress.",
+    "E certifies a visible graphic connection only and requires clear endpoints and no unresolved branch/break; body-to-pointed E never supplies text-to-object E.",
+    "View receipt SHA/time refer to actually displayed native source, never a merely prepared file. Overview cannot certify detail.",
+    "At 22:40 UTC observation cutoff stop; retain incomplete IDs honestly. Aggregate acceptance at 23:14 UTC retains all gaps."
+  ]
+}

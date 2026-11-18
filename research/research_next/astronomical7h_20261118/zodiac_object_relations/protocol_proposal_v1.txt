@@ -1,0 +1,134 @@
+全部十二图文字区—人物/星形对象关系：最小可执行复核提案 v1
+状态：仅供 root 审定的设计草案；未启动新图像观察，未冻结为执行协议。
+日期：2026-11-18。提出者为原图像侧观察者，不是第三位盲专家。
+
+1. 问题和结果边界
+本轮问的是：每个既有粗文字区域附近实际画了什么对象、哪些笔线可追踪到哪些端点、哪些关系只能由空间安排提出候选。区分文字→星形、文字→人物/容器、星形/星柄→手或身体、文字→其他图形，不能把其中一条边替代另一条。
+本轮不问这些字串是什么词、是否姓名、是否月份，或对象是什么历史/天文实体；不建立文字相似、命名、语义或统计分数。完整逐字转写及标签专属正文门槛不因本轮几何关系而打开。
+完成条件是固定名册逐项有证据记录或明确 NA、视图覆盖可核查、所有候选与分歧保留，而不是达到某个明确归属比例。没有明确文字连接线的记录也可以正常完成，不等待出现想要的关系。
+
+2. 固定十二图、输入和曝光
+固定图序：f70v1, f70v2, f71r, f71v, f72r1, f72r2, f72r3, f72v3, f72v2, f72v1, f73r, f73v。
+所有图均已观察，旧四图最初的选择条件和新八图的剩余全覆盖条件已曝光；原图文字可见，AI 预训练未知，两侧既有报告也已解隔离。此次是有背景的图像复核，不称盲集、独立识字或独立历史复制。
+设计依据为以下已冻结的公开图像投影及其源冻结：
+- four_panel_comparison/image_observation_v1.json
+  SHA-256 3524a497aa25a5dcea464aae01102adde88d14cf7057d398d83f8e0e7dcfec08
+- zodiac_remaining_comparison/image_observation_v1.json
+  SHA-256 20ea86198264dff4549a056e56c6c139b38ee76c50470aaa2d68d06979e5d194
+以上路径相对 research/research_next/astronomical7h_20261118/。
+执行前 root 应核对应 projection_receipt、原报告冻结和原图 SHA，冻结本轮白名单、schema、全部种子 ID、分工、每图必要视图区及本提案的最终版本。大图继续私有保存，公开报告用官方 URL、画布 ID、尺寸、SHA 和原图坐标指向证据。
+既有 guided 投影和矩形比较仅作为已曝光背景，不向操作视图叠加源词串、源钟点、唯一重叠结果或分数；不依赖其选择样本。执行记录不得复制 EVA 字串。旧 nearby_complex_candidates 只是同带角度夹邻，旧 source_sequence_neighbors 只是来源清单顺序，均不能作为本轮关系证据或候选集上限。
+
+3. 固定分母：先完整登记，再观察，不能挑成功项
+主单位为两个冻结 image 投影中全部 coarse_short_writing_areas 原行，共 312 项（旧四图 60，新八图 252）。使用 panel + 原区域 ID 全局标识；中央、外部、unassigned、含疑似图线、损伤或零 guided 重叠者一项不删。原框仅是上下文包络，不能当墨迹边界。
+细分备选共 358 项（旧 75、新 283），保留其粗父项和原备选框，不把最细划分默认为词。主分母一直是 312 粗项；若父项内不同片段呈现不同关系，分别写 subgroup_candidates，不能挑有明确关系的一片替代整项。
+旧四图的四个 C_short_dark 在 other_regions 而不在粗名册，必须另列固定补充文字区；同样保留已有页边文字/不明墨迹。由已冻结字段直接指定的补充十项为：
+  f70v1:C_short_dark, f70v1:M_bottom;
+  f71r:C_short_dark, f71r:M_top;
+  f71v:C_short_dark; f72r1:C_short_dark;
+  f70v2:top_margin_marks, f70v2:right_margin;
+  f72v2:R02; f73r:R03。
+这十项是补充待核区域，不认证都是文字，也不与 312 粗项混报为语言词数。这样固定有 322 条文字/疑似文字区域需要完成记录，不能因位于图外或缺少人物候选而跳过。
+所有 other_regions、gaps_and_damage、unfilled_or_uncertain_areas 另建上下文保留表，不删除“非正文”“未见文字”或其他叶片段。f72r1:H_underlying_marks 保持异层可见墨迹控制项，不能当本页文字或恢复材料。邻图/邻叶片段保留 off_target 状态，不补进本图人物/文字分母。
+36 条既有连续环文作为独立共享上下文层完整保留；不把整圈按人物数切成专属正文。中央图形、无人物的容器/星形、开放上弧和疑似非文字图案都允许成为对象候选或未分类上下文。
+若实际复核发现未登记区域，新增 supplemental_observation ID、来源视图和发现时点，单独追加并标记“种子名册外发现”；不回写旧框/旧计数，不把新增记录选择性并入主分母。原区域若更像图案，保留原行并填写 text_status=uncertain_or_graphic，不能删除。
+
+4. 对象与线段必须拆开登记
+既有 303 个 human_pointed_shape_complexes 是待复核邻域，不是已经认证的人物—星形配对。每个原复合 ID 固定保留，并拆成 component：body、container（若可分）、pointed_shape；原有 null 形状框保持 null，不能从邻近星形补齐。
+component ID 例如 f73v:O07/body、f73v:O07/pointed_shape，仅表示原名册来源。若实际看见一个 pointed_shape 可关联不同人物，则记录全部候选；不因父复合 ID 相同就认证相连。其他中央/页边图形使用 panel:other_region_id/component。需要新对象时另发 supplemental_object ID，原 ID 不重排。
+单独记录三种线索：
+(a) 星形轮廓/星柄/细长连接线；(b) 手臂、手、身体/衣物或容器轮廓；(c) 文字笔画、栏圈线、折痕/裂缝/污染或无法分类线。
+对每条可能相关线保留 segment ID、原图 polyline 采样点或分段框、可见起终点范围、线型不确定性、交叉/分叉、遮挡或断裂框、实际查看的 view ID。不是逐像素分割；采样折线只描记可见段，断处必须断开，禁止补线。
+先判断星柄是否确实接到手/身体，再独立判断文字是否有线接到星形/人物。即使星柄—手关系明确，也不能推出相邻文字命名此星或此人。
+
+5. 关系分层与缺失状态（执行前固定，不能按成功比例调整）
+每条文字区—对象候选边按可见证据分层，且另存端点类型，不使用一个混合“通过”标志：
+NA 未能判断：图像不足、损伤、线型不可分、端点不可见或尚未完成该项检查；必须区分各原因。
+N 空间邻近/共同局部：对象与文字位于同一可见局部或图形区室，未见可认证连接。可记录相邻、被同一容器包围、位于星柄旁等具体事实；仅角度夹邻、矩形相交或最近距离不足以提高级别。
+P 部分可追踪连接：看见朝向相关端点的一段或多段线，但端点、断裂、交叉/分叉或图文混线使完整关系未定。记录支持哪个端点及所有竞争去向。
+E 完整明确的图示连接：原生视图中可追踪同一条绘制线/连续图形连接至两个明确端点，无未解决断裂、交叉分支或端点竞争，且端点类型已区分。此级只证明“这条图示连接”，不证明词义、命名或作者意图。
+对于文字端点，线须明确从文字区域的边界/锚点引出或终止，并能与字形笔画及其他线分开；不能把粗框中恰好经过的一条身体线当文字引线。若只知道线穿过粗框而无法判定与文字的关系，最高 P 或 N，具体写明。
+单独的 line_visibility_state：explicit_connection_seen / partial_connection_seen / no_explicit_connection_observed_in_reviewed_views / indeterminate / not_reviewed。最后两类不是“无关系”；no_explicit_connection_observed 也不证明无归属，只说明所看视图未见显式线。
+允许一个文字区有多个 N/P/E 边，多个文字区涉及同一对象，以及没有对象候选。E 不强制唯一归属；看到一条明确连接也不能排除其他组织关系。不得做强制双射、按总人数补关系，或把开放弧闭合成环。
+
+6. 没有文字引线时如何研究“标签惯例”
+无引线不是任务失败，也不是否定标签惯例的证据。本轮另设 layout_association 字段，与 N/P/E 图示连接证据并列，不混成认证等级：
+- single_layout_candidate：在完整检查的局部中，文字被明确同一图形区室/边界/附着布局组织到一个对象候选，未见同样合理的竞争对象；必须记录分隔边界、包含关系和竞争对象排查范围。
+- multiple_layout_candidates：多种局部安排均可解释，全部列出。
+- no_local_layout_candidate / indeterminate：未见局部候选或证据不足；不解释为历史上没有归属。
+空间事实另以 observation_facts 记录：同容器/同隔间、可见边界分别围住哪些区域、文字局部基线的几何方向（非语言读向）、与对象轴线的相对方向、可见空白隔离、文字跨越或避让图线、竞争对象之间是否有分隔。空白只描述可见距离/形状，不自动证明分组；折痕造成的缺墨不能当有意空白。可据明确边界或不相容位置缩小候选集，但须逐项写 constraint 与仍保留的竞争对象；不能用角度最近替代这些事实。
+不使用“每人一词”、等角槽位、源行顺序或距离最短作为 single 的充分条件；仅有重复排布仍写为“布局候选”，不能叫已认证对象名称。没有明确区室且多对象近邻时保留 multiple/indeterminate，不能用惯例补出唯一关系。
+可以在全名册完成后描述某种排布在这些图中反复出现，并列出反例、NA 与竞争解释；这属于与标签使用相容的组织证据，不是名称、音值或语义的证据。本轮的具体成果应是可见空间事实、图示连接和被这些事实约束后的候选集，以及无法唯一化的原因；不能只给全表填一个 NOT_READY。该词仅保留用于尚未建立的完整转写/专属正文门槛，不覆盖本轮已经完成的观察。
+本提案既不把“所有标签必须有引线”设成永远过不了的词义门槛，也不预先承诺空间惯例就能解读文字。若将来研究语义或标签惯例的历史解释，须另定可检验问题、独立材料和反例；不得回头放宽本轮 N/P/E 定义来制造成功。
+
+7. 必要视图与实际操作
+每图均需：
+V0 原始完整画布实际显示一次，确认叶片、图外附项及邻图边界；V1 目标图完整总览；V2 覆盖目标和登记外附项的原生分块网格，块间至少 20% 重叠；V3 每条主项/补充项的原生局部（可复用同一视图覆盖多条，必须逐项记 view ID）。
+V3 初始上下文为原文字框四边各扩 200 原像素，裁至画布；必须包含字区本身和候选对象的完整相关组件。若对象/相关线出框，扩为原文字框与该组件/线段的并包络，再外扩 100 像素；超出单屏则连续原生分块，交叠处有坐标收据。不能把初始裁区外的对象当作已排除。
+每图所有对象组件都须在 V2/V3 中核查星柄—身体线，反向检查是否有未被文字项局部覆盖的连接；完整图扫描中有可见连接跨出局部时追踪到端点或明确停止原因。候选不得限于旧角度邻居。全图其他对象未获得候选边不等于逐对证否；schema 明确区分 reviewed_context_no_positive_evidence 与 not_individually_assessed。
+每条未明关系最多安排两次有理由的补充原生局部（扩大上下文或 90/180/270 度旋转），仍无法确定则填 NA/P/N，而不是持续寻找支持。若裁区中线段仍通向边缘，登记 trace_incomplete，不能宣称 E。已有官方原图若像素不够，只记录分辨率限制；不猜新图源。
+旋转只作阅读，必须记录原裁区 xyxy、旋转角、变换及文件 SHA；输出所有点和框映射回原始全画布像素。禁止增强、锐化、超分、生成修复、去噪、补线或伪造遮挡下延续。缩览仅用于导航，不能代替原生线段核查。新图像副本私有保存；不改原像素或冻结原框。
+
+逐图必要覆盖（下列均在统一 V0–V3 基础上追加；不是只检查列出的困难区）：
+图       canvas   原粗区/人物邻域   必须额外纳入的上下文
+f70v1    1006201   15/15            中央 C_short_dark/C_animal、I01 内独立尖形 D_container_pointed、M_bottom；内外两带的全部标签与对象。
+f70v2    1006200   31/29            左纵折、中央纵线、两处中央文字与中央图形/上下尖形、top_margin_marks/right_margin；邻叶片段保持 off_target。
+f71r     1006202   15/15            中央短文字、D_detached_rectangle 与附近对象分别核、M_top；全部内外带。
+f71v     1006203   15/15            中央短文字及中央场景、内外带全部对象；同画布邻图边界明确，不借邻图补端点。
+f72r1    1006203   15/15            中央短文字、穿孔 H_underlying_marks 与前表面分离；内外带全覆盖，不把下层墨迹当本图连接。
+f72r2    1006203   31/32            顶部五个外附人物的开放弧、左折及不完整尖形、中央两人、内外带；没有独立闭合的上弧周期假设。
+f72r3    1006203   32/30            外/中/内三带全部对象、右侧大折、中央与 unassigned 文字、左邻图边界；不给缺损线插值。
+f72v3    1006204   31/30            左折/污损贯穿的内外带及中央区、右邻图边界、下边界；浅墨或图斑难分者保留。
+f72v2    1006204   31/31            左接缝、右侧浅墨、中央人物、R02 上页边记号及南侧线交叠；无星形者保持 null。
+f72v1    1006205   33/30            真实穿孔与下层、右纵折、顶部擦抹、中央图形、两处 external 文字及下页边；孔中不补本页对象。
+f73r     1006206   31/30            顶部四人开放弧、中央图形及尖形、R03 页边记号、左邻叶片段、右浅墨带；不强制跨环转接。
+f73v     1006207   32/31            顶部开放弧、左上浅墨/黑斑、下左颜料遮挡与 null 尖形、中央人、unassigned 文字及下边界。
+每图各视图规划的具体原像素 bbox 和原图 SHA 在执行协议冻结后、看新的局部结果前生成；上述是固定覆盖要求，不因某图关系明确而减少该图主项。
+
+8. 最小记录 schema（推荐 JSON；空值不得改成零或 false）
+panel_record:
+  panel, canvas_id, dimensions_px, official_url, original_sha256, observer_id;
+  exposure_statement, seed_input_hashes, panel_coverage_views, panel_boundary/open_arc_notes;
+  text_records[], object_components[], line_segments[], context_regions[], discovered_supplements[];
+  all_seed_ids_accounted_for, unresolved_items[], freeze_time, artifact_hashes。
+text_record:
+  region_uid, original_source_path/json_pointer, original_id, original_box_xyxy;
+  roster_class=coarse_primary|fixed_supplement|discovered_supplement;
+  ring_assignment_original, text_status=writing_like|uncertain_or_graphic|indeterminate;
+  grouping_options_original, subgroup_candidates[]（child ID、原框、各候选关系，不选优）；
+  viewed_view_ids[], candidate_object_ids[]（可空，但必须有 no_candidate_reason）；
+  relation_edges[]（见下）、observation_facts[]、candidate_constraints[]、layout_association、reviewed_context_extent、unassessed_scope；
+  damage/occlusion_refs[], line_visibility_state, limitations, review_complete_or_NA_reason。
+object_component:
+  component_uid, original_complex_uid 或 other_region_uid, type=body|hand|container|pointed_shape|other|uncertain;
+  original_box_xyxy_or_null, reviewed_component_box_or_null（若需修正仅附加，不覆盖原框）；
+  view_ids[], body_to_pointed_edges[], missing_component_state, competing_component_ids[]。
+line_segment:
+  segment_uid, type_candidates[], visible_polyline_original_xy[], endpoint_boxes_xyxy[];
+  breaks/occlusions[], crossings[], branch_candidates[], view_ids[], trace_complete_or_reason。
+relation_edge:
+  text_region_uid, object_component_uid, endpoint_type_pair, evidence_level=NA|N|P|E;
+  segment_ids[], observed_endpoint_facts, competing_object_ids[], crossing_resolution;
+  line_visibility_state, layout_association_basis, reviewed_context_extent, limitations;
+  semantic_identity=null, semantic_ownership_certified=false（本轮不把图示连接认证成命名/语义；E 级可明确报告已见图示连接，single_layout_candidate 可报告被布局约束的候选）。
+body_to_pointed_edge 使用相同线证据结构，但单独命名，不得自动复制成 text→object 边。
+view_receipt:
+  view_id, official_source_url/original_sha256, crop_xyxy_original, rotation, native_dimensions;
+  displayed_at, view_file_sha256, covered_text_uids[], covered_component_uids[]。
+若另一观察者复核同一记录，另列 observer_record，不覆盖原判断；分歧写 disagreement_record 和最终仍不确定字段，不强迫协调。
+
+9. 两位观察者分图执行与工作量
+建议在执行冻结前确定分工，按整图分配，避免双方互相补齐单图中的好例子：
+A：f70v1、f70v2、f71r、f72r3、f72v2、f73r。主粗区 155，既有人物邻域 150。
+B：f71v、f72r1、f72r2、f72v3、f72v1、f73v。主粗区 157，既有人物邻域 153。
+这是一份资料被分担的复核，不是两份独立复制；两人都可能有先前曝光。各图完成先冻结完整记录，再发关系观察结果；允许沟通文件打不开、坐标规则等方法问题，不在未冻结时传递对具体线/对象关系的判断。
+最小可行工作量是 322 个文字/疑似文字区、303 个人物复合邻域组件检查、36 条环文上下文及所有既有 other_regions/损伤上下文。不是 12 张总览看完即完成。
+估计每人 5–8 小时的主动观察与记录（两人合计约 10–16 人时）：每图覆盖/对象核查约 20–30 分钟，每个文字区约 45–90 秒，复杂项有界补看，另留收据与完整性检查时间。只是排期估算，不能据此补齐未看项；若实际更慢则逐图冻结和报告剩余 ID。
+可分三批，每位每批两图，优先按各自上述清单顺序；每批约 1.5–3 小时，结束交完整冻结图而不是成功案例摘要。初批后只检查 schema 可执行性，不能按明确关系比例修改证据等级；必要协议修订另起版本、公开原因并完整保留先前结果。
+这份最小计划不默认包含第二人逐项再观察所有图。若 root 要检验观察一致性，应在执行前另指定全图/固定全部 ID 的重复复核子集或全量复核，并另算工时；不能事后只让另一人确认 E 级样本。
+
+10. 审核与发布前验收
+自动检查只用于完整性：固定十二图和全部 312 原粗 ID、十补充 ID、全部原备选/对象/上下文字段均有去向；每个完成项有实际查看收据；所有点框在原画布坐标；null、开放弧、竞争候选和不明线型无丢失。不得以角度、距离或 guided 重叠自动决定 N/P/E。
+报告按图给各状态数量和完整 ID 清单，同时给 NA 原因、无显式引线但有布局候选者、明确连接的端点类型与反例。数量只描述记录状态，绝不叫命名成功率。
+公开包只含安全相对路径、官方图源、原图/视图哈希、坐标与关系记录；不需要发布大图。保留所有版本、损伤、候选分组和未解决分歧。独立算术复算不能替代线条观察复核。
+root 审定并冻结后才进入实际观察。当前只提交此提案，不创建观察结果、不改变既有来源/冻结、网站或 git。

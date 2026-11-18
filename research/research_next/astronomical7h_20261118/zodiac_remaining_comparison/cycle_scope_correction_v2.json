@@ -1,0 +1,35 @@
+{
+  "schema": "cycle_scope_correction_v2",
+  "created_utc": "2026-11-18T18:33:33.067794+00:00",
+  "authoritative_interpretation": true,
+  "original_rule": "Cycle diagnostics are allowed only for explicitly supplied same geometric bands after a schema-only band crosswalk has been frozen and explained.",
+  "cause": "The implementer interpreted supplied band labels plus derived guided box-center angle order as sufficient. Guided input did not independently declare a corresponding geometric sequence. This was an implementation scope error under the existing protocol, not a new stricter gate added after seeing results.",
+  "timeline": [
+    "Protocol frozen by root before comparison.",
+    "Schema-only crosswalk froze the erroneous permission to derive guided center-angle order.",
+    "Full v1 output was frozen before reading its summary.",
+    "Root reminded the implementer of the existing supplied-sequence limitation.",
+    "v2 preserves every non-cycle field and marks all cycle comparisons uncomputed.",
+    "Root corrected the wording of the first addendum: this is enforcement of the original protocol, not a new policy requirement."
+  ],
+  "supersedes_interpretation_in": "cycle_evidence_addendum_v1.json",
+  "prior_artifacts_preserved": [
+    "band_crosswalk_v1.json",
+    "comparison_input_freeze_v1.json",
+    "compare_v1.py",
+    "comparison_v1.json",
+    "first_output_freeze_v1.json",
+    "cycle_evidence_addendum_v1.json",
+    "cycle_evidence_addendum_freeze_v1.json"
+  ],
+  "v1_status": "Archived exploratory box-center geometric invariance only; excluded from protocol-compliant complete-sequence conclusions. Not an independently supplied guided sequence.",
+  "v2_status": "Authoritative rectangle comparison; all cycle comparisons NOT_COMPUTED because independently declared guided geometric sequence is absent.",
+  "no_scientific_inputs_changed": true,
+  "not_claimed": [
+    "certified object ownership",
+    "same-role text sequence",
+    "historical reading order",
+    "glyph or word identity",
+    "independent historical replication"
+  ]
+}

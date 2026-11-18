@@ -1,0 +1,33 @@
+{
+  "utc": "2026-11-18T18:48:58.107260+00:00",
+  "scope": "Two v6 site builders in clean indexed public checkout; no source acquisition or new research computation",
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "scripts/build_zodiac_eight_page.py",
+        "--release-approval",
+        "research/research_next/astronomical7h_20261118/zodiac_remaining_comparison/publication_approval_v1.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"version\": \"b9119ada719c54a2\", \"preview\": false, \"panels\": 8, \"source_records\": 264, \"original_lines\": 528, \"downloads\": [\"image_observation_v1.json\", \"guided_observation_v1.json\", \"comparison_v2.json\", \"cycle_scope_correction_v2.json\", \"report_v2.txt\", \"public_manifest_v1.json\", \"output_freeze_v1.json\", \"independent-audit-report.json\", \"independent-audit-report.txt\"]}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "research/research_next/astronomical7h_20261118/publication/build_snapshot_v6.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Built astronomical7h snapshot ea79bbfc8f7881da; 66 explicitly selected downloads.\nsnapshot_v6 built; inherited downloads and prior scientific sections preserved.\n",
+      "stderr": ""
+    }
+  ],
+  "changed_data_keys": {
+    "zodiac-eight": [],
+    "astronomical7h": [
+      "snapshot_utc"
+    ]
+  },
+  "passed": true
+}

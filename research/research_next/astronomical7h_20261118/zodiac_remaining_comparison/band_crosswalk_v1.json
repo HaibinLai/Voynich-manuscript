@@ -1,0 +1,122 @@
+{
+  "schema": "remaining_eight_schema_band_crosswalk_v1",
+  "created_utc": "2026-11-18T18:28:43.857462+00:00",
+  "protocol_sha256": "30ba2de253f9fd0891553b8711f0a6fc5462668f1c81e4f1f6dbcde1f785a6cb",
+  "rectangle_results_computed": false,
+  "basis": "Names of explicitly supplied spatial bands and schema roles only; no rectangle overlaps, source strings, clocks, source order or count optimization used. Does not assert that band membership agrees for individual records.",
+  "panels": [
+    {
+      "panel": "f70v2",
+      "guided_to_image_band": {
+        "central_star_label": "central",
+        "inner_label_band": "inner",
+        "outer_label_band": "outer"
+      },
+      "image_bands_without_guided_schema_counterpart": [],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f72r2",
+      "guided_to_image_band": {
+        "inner_label_band": "inner",
+        "outer_label_band": "outer",
+        "top_extra_labels": "external"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f72r3",
+      "guided_to_image_band": {
+        "inner_label_band": "inner",
+        "middle_label_band": "middle",
+        "outer_label_band": "outer"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central",
+        "unassigned"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f72v3",
+      "guided_to_image_band": {
+        "inner_label_band": "inner",
+        "outer_label_band": "outer"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f72v2",
+      "guided_to_image_band": {
+        "inner_label_band": "inner",
+        "outer_label_band": "outer"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f72v1",
+      "guided_to_image_band": {
+        "inner_label_band": "inner",
+        "outer_label_band": "outer"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central",
+        "external"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f73r",
+      "guided_to_image_band": {
+        "inner_figure_ring": "inner",
+        "outer_figure_ring": "outer",
+        "top_extra_figures": "external"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central"
+      ],
+      "ring_band_crosswalk": null
+    },
+    {
+      "panel": "f73v",
+      "guided_to_image_band": {
+        "inner_figure_ring": "inner",
+        "outer_figure_ring": "outer",
+        "top_extra_figures": "external"
+      },
+      "image_bands_without_guided_schema_counterpart": [
+        "central",
+        "unassigned"
+      ],
+      "ring_band_crosswalk": null
+    }
+  ],
+  "cycle_policy": {
+    "eligible_bands": [
+      "outer",
+      "middle",
+      "inner"
+    ],
+    "excluded_bands": {
+      "external": "Open extra-figure or margin arrangement, not supplied closed circular band.",
+      "central": "Central/local regions are not a supplied cyclic label band.",
+      "unassigned": "No same-band assignment."
+    },
+    "representation": "Coarse short regions only. Finer split alternatives retained and compared but not selected as a certified cyclic unit system.",
+    "order": "Use image short_zone_clockwise_order_from_upward_ray; derive guided box-center angle clockwise from upward ray about image working_center_xy. Do not use source clocks or transcription order.",
+    "eligibility": "All declared records of the same band on both sides must have non-null boxes, equal nonzero count, and globally mutual-single-positive coarse candidate mapping fully confined to that band; image supplied order must enumerate every band region exactly once; no tied guided center direction. Otherwise not computed.",
+    "rotation": "If eligible, list all rotations that preserve the complete cyclic sequence of matched IDs; no textual phase, reversal, historical start or inter-ring connection."
+  },
+  "ring_policy": "Enumerate every Cc against every image continuous-ring outer envelope and, separately, every inner-envelope rectangle. Never infer annular ink agreement from nested disk intersections. No ring matching by closest size.",
+  "object_policy": "All image figure compounds retained. Guided descriptive object_candidates lack rectangles in every panel; no object Cartesian comparison or zero-object claim.",
+  "alternative_policy": "Keep NA working boxes as NA. Every explicit guided candidate_regions rectangle receives its own separate complete Cartesian comparisons against coarse and finer image rosters; never substitute it into primary results or choose a best alternative."
+}
