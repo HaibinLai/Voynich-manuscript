@@ -1,0 +1,17 @@
+跨图完整词实验的安全复算入口
+
+从仓库根使用Python标准库即可复算已保存证据。请将输出位置换成一个尚不存在的目录：
+python3 research/research_next/semantic7h_20261118/design/crossplant/replay_public.py --output ../crossplant-replay-new
+
+该入口调用冻结的独立audit.py函数，从已保存的原label_body输入和固定标签清单重新构造全部矩阵，对run_v2全8条件10模型逐项比较；写到新目录，不覆盖原审核。不要直接运行audit.py的历史命令入口，它固定写audit_v1文件，会覆盖公开审核。
+
+如需重跑主评分实现，须用绝对image-review-freeze路径及新的输出目录：
+python3 research/research_next/semantic7h_20261118/design/crossplant/run.py --execute --image-review-freeze "${PWD}/research/research_next/semantic7h_20261118/visual/crossplant/completed_image_freeze_v1.json" --output ../crossplant-primary-new
+
+原run_v1是相对路径调用失败，run_v2是成功的权威版本，主脚本和协议没有因此修改。未产生另一个随机分区或新的盲集。
+
+公开投影
+run_v1/failure.json以及audit_v1.json中包含该失败的异常文字。发布前仅将已知本机仓库路径前缀替换为repository；原字节在私人工作目录保留，source/public哈希在publication_projection.json。数值、规则、源码、run_v2冻结与结果字节均未改变；这不是一次新审核。复算会复制已公开的错误文字，不保证与私人原始异常字节相同。
+
+图像复现
+图像审核的完成文件和报告哈希均在库内；原图按visual/crossplant/assets_manifest.json记录的官方地址取回。资产公开范围见visual/crossplant/PUBLICATION_SCOPE.txt；不必先下载49份图片才能复算数字，但数字复算不会重新验证对象归属。

@@ -1,0 +1,44 @@
+已知英文草药书：独立提取与计算审核
+
+通过
+未导入主run.py。用独立DOM遍历重建所有标题/段落/字串与标记计数，再用有理数复算矩阵和控制。
+全部282个herb分节、119个主要单词标题、33,558个标题×正文矩阵格、357个控制集合及119个标题泄漏阳性检查通过。
+自身原样词命中102/119=6/7；未原样命中的17条不是“名字完全没有被提到”。
+Asarabacca事后例证：XML保留A与Sarabacca之间空格，固定规则得到a/sarabacca两词。这是测量/拼写边界问题；主结果没有被偷偷修正。
+正文排除note/head/gap/abbr；gap、abbr、未知glyph隔开两侧，EOL控制标记被删除；样式hi不自动插入词界，原有空格仍保留。独立结构检查未发现p嵌套或p处于排除标记内部。
+三个对照池、log2支持不足和等标题/等对照分节权重均逐项复核。完整计数与矩阵的整数/有理数均一致。
+本已知文本只校准当前检测器的行为，不能用其命中率与伏尼契手稿差值判断后者不是自然语言。
+
+{
+  "counts": {
+    "exact_values": 546740,
+    "rational_values": 67480,
+    "sections": 282,
+    "primary_headings": 119,
+    "matrix_cells": 33558,
+    "control_sets": 357,
+    "leakage_positive_targets": 119
+  },
+  "structural_checks": {
+    "herb_sections": 282,
+    "paragraphs": 1317,
+    "nested_herb_sections": 0
+  },
+  "max_float_difference": 0.0,
+  "log2_insufficient_controls": [
+    {
+      "id": 281,
+      "label": "wormwood",
+      "count": 0
+    }
+  ],
+  "post_result_measurement_example": {
+    "id": 12,
+    "label": "asarabacca",
+    "literal_matches": 0,
+    "source_excerpt": "<p>A <hi>Sarabacca</hi> hath many Heads rising from\nthe Roots, from whence come many\nsmooth Leaves, every one",
+    "explanation": "An explicit source-space between A and inline Sarabacca produces two tokens a/sarabacca. Zero whole-word match is a measurement/spelling boundary fact, not evidence the plant name or referent is absent.",
+    "normalization_changed": false
+  },
+  "errors": []
+}

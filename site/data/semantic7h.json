@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T09:26:53.127680+00:00",
-  "snapshot_elapsed_seconds": 1240,
+  "snapshot_utc": "2026-11-18T13:21:32.486388+00:00",
+  "snapshot_elapsed_seconds": 15319,
   "window": {
     "start_utc": "2026-11-18T09:06:13Z",
     "deadline_utc": "2026-11-18T16:06:13Z",
@@ -9,7 +9,7 @@
     "local_timezone": "America/Chicago",
     "local_window": "2026-11-18 03:06:13 to 10:06:13 CST",
     "status": "active",
-    "stage": 2
+    "stage": 3
   },
   "stages": [
     {
@@ -20,12 +20,12 @@
     {
       "stage": 2,
       "title": "整叶对照与固定变换",
-      "status": "running"
+      "status": "complete"
     },
     {
       "stage": 3,
       "title": "跨页对象约束与候选读法",
-      "status": "planned"
+      "status": "running"
     },
     {
       "stage": 4,
@@ -88,7 +88,7 @@
     "literature": {
       "title": "跨页植物图：先核出处，再核标签",
       "status": "partial",
-      "summary": "35 条外部图像配对的标签资格已盘点，图像对象复核和跨页词形检验尚未完成。",
+      "summary": "35 条外部图像配对的标签资格已盘点；其中来源编号支持的 12 对已有几何记录，11 个单词标签进入已复核的跨页检验，未把其余候选悄悄补入。",
       "details": [
         "12 条有原转写 Petersen 编号注记，12 条从对象与标签次序提出候选；所有候选保留，未依正文命中筛选。",
         "9 条相应植物对象没有自己的植物标签，不能借用旁边容器标签；2 条对象—标签映射未知。多位置、多词和双版分词差异保留。",
@@ -234,18 +234,196 @@
     },
     "abbreviations": {
       "title": "变长缩略：先固定规则，再看命中",
-      "status": "planned",
-      "summary": "一手来源与适用边界正在核对；固定变长缩略实验尚未运行。",
+      "status": "complete",
+      "summary": "固定变长缩略已在跨页 11 查询中执行并复核。Davis 原展开、交换展开和等长度假展开的主端点相同，均未新增目标命中；本批查询不能区分这三种规则。",
       "details": [
-        "与等长 k/t 配对分开：有文献依据的缩略可能改变单位数，不能沿用等长词框的结论。",
-        "先登记可展开的位置、组合字形例外、恢复原写法的方式与同预算替代对照。",
-        "不按目标词临时加字；只公布完整规则对全部预定目标的结果，保留失败。"
+        "11 个标签中只有 opchor 含裸 p；sochorcfhy 的 f 属于受保护组合 cfh。规则可影响的查询很少，不能把阴性结果推广为对作者所有缩略假说的反驳。",
+        "规范化在全书正文产生若干多原形碰撞，不是全空操作；但全书碰撞不是这批跨页对象的语义证据。",
+        "没有逐词补字或临时展开例外。变换后长度机会与支持集会变化，原形和展开后的条件率不能忽略分母变化直接比较。"
       ],
       "metrics": [],
-      "links": []
+      "links": [
+        {
+          "label": "作者规则与适用范围",
+          "href": "downloads/semantic7h/davis-scope.txt"
+        },
+        {
+          "label": "三种展开的完整结果",
+          "href": "downloads/semantic7h/crossplant-report.txt"
+        }
+      ]
+    },
+    "crossplant": {
+      "title": "跨页对象假说：固定词形桥梁没有建立",
+      "status": "complete",
+      "summary": "8 条件、10 个预定模型下，11 条指定目标查询全部为零命中。原样整词、六对裸高杆单次替换、Davis 展开及其两个对照都没有建立这批标签到指定草药正文的完整词形桥梁。",
+      "details": [
+        "12 对来源编号图像全部保留。#110 是两个位置、三个词的完整组，按协议不进入单词标签检验；11 条查询复用了 f96v 目标，不能当 11 个独立对象真值。",
+        "零机会与未命中分开：#212/f18v 和 #213/f23r 两版原长度机会为零，#240/f19r 在 ZL 也为零。完整词形缺席可记为零，条件命中率 m/N 必须为 NA；不能用 0/0 当语义反证。",
+        "主端点是指定页是否出现完整接受形；对照同目标书手／插图类别、异叶，按对照叶与来源叶汇总。没有给这批候选计算显著性。目标与对照的差是描述量，不是 p 值。",
+        "本轮保护 cth/ckh/cfh/cph 内部高杆，裸高杆替换只改一个位置。与旧整叶实验的规则、对象和分母不同，数值不能直接横比。",
+        "独立协议重建通过 5,970,031 项检查及 74,960 个页面×模型评分块，完整覆盖命中位置、机会、NA、权重、碰撞和删减。它没有重做原始转写提取，也不认证图像身份或标签语义归属。",
+        "公开审计副本仅投影历史错误回溯里的本机路径，源／公开哈希见投影收据；数值与规则未变，不是一次新审核。",
+        "结论只限制当前图像假说和完整词形规则。未找到重复标签，不等于标签无词义、图像假说必错或手稿不是语言。后续如改词干、缩略或复合标签，必须另立外部约束与协议。"
+      ],
+      "metrics": [
+        {
+          "value": "0 / 11",
+          "label": "每个条件模型的目标查询命中"
+        },
+        {
+          "value": "4 / 10",
+          "label": "来源物理叶 / 独特目标页"
+        },
+        {
+          "value": "8 × 10",
+          "label": "条件与规则，重复检查而非独立样本"
+        }
+      ],
+      "links": [
+        {
+          "label": "跨页检验完整报告",
+          "href": "downloads/semantic7h/crossplant-report.txt"
+        },
+        {
+          "label": "全部候选与机会／NA",
+          "href": "downloads/semantic7h/crossplant-summary.json"
+        },
+        {
+          "label": "独立审核 PASS",
+          "href": "downloads/semantic7h/crossplant-audit.txt"
+        },
+        {
+          "label": "数值审核 JSON",
+          "href": "downloads/semantic7h/crossplant-audit.json"
+        },
+        {
+          "label": "公开路径投影收据",
+          "href": "downloads/semantic7h/crossplant-publication-projection.json"
+        },
+        {
+          "label": "运行前协议",
+          "href": "downloads/semantic7h/crossplant-protocol.txt"
+        }
+      ],
+      "table": {
+        "headers": [
+          "固定规则",
+          "ZL 指定查询命中",
+          "IT 指定查询命中",
+          "条件覆盖"
+        ],
+        "rows": [
+          [
+            "完整词 exact",
+            "0 / 11",
+            "0 / 11",
+            "两种分词 × 两种对照"
+          ],
+          [
+            "裸 f/k 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 f/p 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 f/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 k/p 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 k/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "裸 p/t 单次替换",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "Davis 固定展开",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "交换展开对照",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ],
+          [
+            "等长度假展开对照",
+            "0 / 11",
+            "0 / 11",
+            "全部"
+          ]
+        ]
+      }
+    },
+    "known_herbal": {
+      "title": "已知英文草药书：匹配测量的校准",
+      "status": "complete",
+      "summary": "在固定 1652 年英文草药书的 TCP 转写中，119 个预定单词标题有 102 个在自身正文中原样出现。该校准说明检测器能识别这里的强关系，不提供伏尼契的期望命中率或语言鉴定。",
+      "details": [
+        "固定同一标题查询其余 281 个植物正文，按标题等权的平均命中率为 0.6250%；独立实现重建全部分节、完整矩阵和对照，审核通过。",
+        "17 个完整词未命中不能叫没有名称：Asarabacca 的原 XML 在正文写为 A 与 Sarabacca，之间有实际空格，固定分词保留 a / sarabacca，因此完整 asarabacca 查询为零。没有为这个例子改规则后重报主结果。",
+        "时代、语言、篇幅、标题与图旁标签的角色、转写质量和对象配对可信度不同；不能把 85.7% 套到伏尼契的 11 个零命中上计算二项概率。",
+        "来源是固定版本的 TCP CC0 键入编码文本，未发布其原页图像。"
+      ],
+      "metrics": [
+        {
+          "value": "119 / 282",
+          "label": "预定单词标题 / 全部植物分节"
+        },
+        {
+          "value": "102",
+          "label": "自身正文中完整词命中"
+        },
+        {
+          "value": "85.7143%",
+          "label": "此固定英文控制的自身命中率"
+        }
+      ],
+      "links": [
+        {
+          "label": "英文控制报告",
+          "href": "downloads/semantic7h/known-herbal-report.txt"
+        },
+        {
+          "label": "完整汇总",
+          "href": "downloads/semantic7h/known-herbal-summary.json"
+        },
+        {
+          "label": "独立审核",
+          "href": "downloads/semantic7h/known-herbal-audit.txt"
+        },
+        {
+          "label": "固定 TCP 来源与授权",
+          "href": "https://github.com/textcreationpartnership/A35365/tree/2b09f3e54d85c5faf0738f823648edf6f070cef8"
+        }
+      ]
     }
   },
   "findings": [
+    "跨页图像假说的词形桥梁未建立：8 条件、10 个固定规则下，11 条指定目标查询全部未命中。独立重建已通过；这 11 条只来自 4 个来源叶、10 个独特目标页，不能当 880 次独立证据。",
+    "12 对图像全部保留：6 对有局部形态可比处，6 对有限或含混；#110 多词组没有被拆词加入主检验。图廊显示相似与差异，不认证植物身份。已知英文草药书校准能检出强关系，但不能把其命中率套到伏尼契。",
     "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
     "k/t 放宽后，原配对和重新配对都更容易命中；扣除排列平均新增量后只余约 0.054–0.060 个百分点。这个结果约束了简单同形锚点解释，不证明手稿无意义。",
     "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
@@ -276,6 +454,30 @@
     {
       "label": "共同支持盘点",
       "href": "downloads/semantic7h/support.json"
+    },
+    {
+      "label": "十二对图像观察与限制",
+      "href": "downloads/semantic7h/crossplant-visual-review.txt"
+    },
+    {
+      "label": "跨页检验完整报告",
+      "href": "downloads/semantic7h/crossplant-report.txt"
+    },
+    {
+      "label": "跨页完整汇总与候选",
+      "href": "downloads/semantic7h/crossplant-summary.json"
+    },
+    {
+      "label": "跨页独立数值审核",
+      "href": "downloads/semantic7h/crossplant-audit.txt"
+    },
+    {
+      "label": "英文草药书控制报告",
+      "href": "downloads/semantic7h/known-herbal-report.txt"
+    },
+    {
+      "label": "英文控制独立审核",
+      "href": "downloads/semantic7h/known-herbal-audit.txt"
     },
     {
       "label": "带转写引导的原图记录",
@@ -313,7 +515,7 @@
   "sources": [
     {
       "path": "session.json",
-      "sha256": "1e73cd6e50538b32d99357b7b4e781f58d731a0558398da6ff10b78e93a37036"
+      "sha256": "6ad7778b040ec8ab122723f29757ade4e3876d529c2ea3f588f1a536e4220bb6"
     },
     {
       "path": "plan.txt",
@@ -336,9 +538,656 @@
       "sha256": "5f4d7276ac062bd067ca2e21d98c2233b39ef85bc01e01787bd4beeca4b05577"
     },
     {
+      "path": "visual/crossplant/crossplant_visual_review_v1.json",
+      "sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c"
+    },
+    {
+      "path": "visual/crossplant/verification_receipt.json",
+      "sha256": "58bc4313f2a0ad0e6d401564f80a04ac1bc7f1b9a28fc561a98e6b706e207e27"
+    },
+    {
       "path": "publication.json",
-      "sha256": "32013a7bd5ee9d2cdc24984c1dbc65a1108538674dc09444a5c8ae3fa8ac24c8"
+      "sha256": "1f5e912e5c66808678b9a45b457098aee1a8be39bc73e80848b9faeb6d1bd4f0"
     }
   ],
+  "gallery": [
+    {
+      "pair_id": "f89v2_61__f48r",
+      "fragment_id": 61,
+      "source_folio": "f89v2",
+      "target_folio": "f48r",
+      "candidate_locators": [
+        "f89v2.28"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q15/index.html",
+      "similarity_zh": "两边都有末端伸出细指状分叉的绿色圆叶形，并由细茎连到分枝。",
+      "difference_zh": "小图叶形少、根较粗；大图叶形更多，细根和上方淡色端部在小图中没有对应。",
+      "original_similarities": [
+        "Both include green units with a rounded body and several narrow finger-like extensions at one end.",
+        "Both show these units attached by thin stems to a central branching structure."
+      ],
+      "original_differences": [
+        "Source has very few painted units and a thick ochre branching root; target has many repeated green units and lightly drawn fine roots.",
+        "Target upper pale rounded terminal forms are absent from the small source.",
+        "Scale, number of units and root outline differ."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006234",
+        "manifest_label": "89v (part)",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006234/full/full/0/default.jpg",
+        "full_image_sha256": "b6b0dd8ba7cd316f3b09a8b156d1eed0eb36ad8ec9086b975969f4f8f7dd5406",
+        "object_region_xywh": [
+          2803,
+          2417,
+          1191,
+          1191
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006234/2803,2417,1191,1191/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006234/2803,2417,1191,1191/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006168",
+        "manifest_label": "48r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006168/full/full/0/default.jpg",
+        "full_image_sha256": "f34ccbd6fbb72b5a469ca16b1b07ded862be76e01e0dcf9133940ffdd10c672e",
+        "object_region_xywh": [
+          286,
+          762,
+          1620,
+          2454
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006168/286,762,1620,2454/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006168/286,762,1620,2454/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f99r_80__f51r",
+      "fragment_id": 80,
+      "source_folio": "f99r",
+      "target_folio": "f51r",
+      "candidate_locators": [
+        "f99r.20"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两个向下延伸的根状带交叉成窄环，再分成尖端。",
+      "difference_zh": "小片段短而圆，大图根更粗长、红褐色更重；花和特殊叶缘没有对应。交叉尖根形态并不独特。",
+      "original_similarities": [
+        "Two descending root-like ribbons cross to form a narrow loop and then separate into tapered ends."
+      ],
+      "original_differences": [
+        "The source is tiny and rounded at its upper end; target root is much thicker, longer and more strongly filled red-brown.",
+        "No target flowers or unusual projecting leaf margins appear in the source.",
+        "Crossing two tapered lobes is a low-specificity feature."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006246",
+        "manifest_label": "99r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006246/full/full/0/default.jpg",
+        "full_image_sha256": "f17eba5496a1b1d92f589c33ee9be256a379ec8d2bba3da1ebe2ff5a2e3e2901",
+        "object_region_xywh": [
+          518,
+          1081,
+          203,
+          394
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006246/518,1081,203,394/203,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006246/518,1081,203,394/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006174",
+        "manifest_label": "51r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006174/full/full/0/default.jpg",
+        "full_image_sha256": "d3335f9fe15abe0d4473e881f411f658fe7a4db70fcb03c13dad8a2f49cf6cc1",
+        "object_region_xywh": [
+          1205,
+          2552,
+          1228,
+          1158
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006174/1205,2552,1228,1158/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006174/1205,2552,1228,1158/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f99r_94__f96v",
+      "fragment_id": 94,
+      "source_folio": "f99r",
+      "target_folio": "f96v",
+      "candidate_locators": [
+        "f99r.46"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两边都有基部带凹口的三角叶形、小红色末端簇和粗褐根。",
+      "difference_zh": "小图横向且叶少，根有斜向色带；大图竖向、长枝下垂、叶多，根较紧凑。红簇排列也不同。",
+      "original_similarities": [
+        "Both have green angular/triangular leaf silhouettes with basal notches.",
+        "Both include small red clustered terminal marks on drooping portions and a thick brown root."
+      ],
+      "original_differences": [
+        "Source lies largely sideways, with a long horizontally banded root and few leaves; target is upright with numerous leaves on two long hanging branches.",
+        "Target root is a compact bent taper with fine offshoots; source root has repeated broad oblique paint bands and a more elongated body.",
+        "Number and arrangement of red terminal clusters differ."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006246",
+        "manifest_label": "99r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006246/full/full/0/default.jpg",
+        "full_image_sha256": "f17eba5496a1b1d92f589c33ee9be256a379ec8d2bba3da1ebe2ff5a2e3e2901",
+        "object_region_xywh": [
+          585,
+          2297,
+          2026,
+          1295
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006246/585,2297,2026,1295/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006246/585,2297,2026,1295/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006245",
+        "manifest_label": "96v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006245/full/full/0/default.jpg",
+        "full_image_sha256": "7aad14a896b53ddc78f3c7239d358389f215654c26fd9db7dfc43329439c1f15",
+        "object_region_xywh": [
+          953,
+          357,
+          1858,
+          3263
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f99v_95__f44r",
+      "fragment_id": 95,
+      "source_folio": "f99v",
+      "target_folio": "f44r",
+      "candidate_locators": [
+        "f99v.2"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "红色长主轴两侧长出许多细小钩状或尖状分枝。",
+      "difference_zh": "小片段短而近竖直，大图下轴长且弯曲；宽绿色／蓝色叶扇和上部端形在小图中缺失。",
+      "original_similarities": [
+        "Both have a reddish elongated main axis with many thin lateral hooked/tapered offshoots."
+      ],
+      "original_differences": [
+        "Source is short and almost vertical with a strongly painted centre; target has a long bent lower axis and more fine striated outlines.",
+        "Target fan of broad green/blue leaves and top terminal shape are absent.",
+        "Many other fragments use branching/tapered roots, so this similarity is not very specific."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006247",
+        "manifest_label": "99v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006247/full/full/0/default.jpg",
+        "full_image_sha256": "111f6dfc34b8ecb9230cb5a0d144afef4cbd788048ddda2f440108941c91d5e5",
+        "object_region_xywh": [
+          642,
+          128,
+          304,
+          572
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006247/642,128,304,572/304,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006247/642,128,304,572/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006160",
+        "manifest_label": "44r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006160/full/full/0/default.jpg",
+        "full_image_sha256": "f9cd059bb34057bf9635a1d1443cafd3b358cdb64ec0c5e1ff73bfc091da0eb3",
+        "object_region_xywh": [
+          466,
+          1703,
+          1703,
+          1866
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006160/466,1703,1703,1866/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006160/466,1703,1703,1866/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f99v_110__f34v",
+      "fragment_id": 110,
+      "source_folio": "f99v",
+      "target_folio": "f34v",
+      "candidate_locators": [
+        "f99v.27",
+        "f99v.28"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "两边都有粗横根段、向下弯的尖分枝和向上连接部。",
+      "difference_zh": "小图是少分枝的弯钩，大图根系向两边展开；圆盘叶列和上部结构没有对应，不能确定小钩对应大图哪一段。",
+      "original_similarities": [
+        "Source and target both have a thick horizontal root-like section with downturned tapered branches.",
+        "A vertical attachment rises from the thick portion in each."
+      ],
+      "original_differences": [
+        "Source is a single curved lobe with few short branches; target is a much larger branching root system extending both left and right with multiple connections.",
+        "Target has rows of rounded leaf-like disks and several upper terminals, absent in the source.",
+        "No unique subsegment mapping from the small hook to the complex target is demonstrable."
+      ],
+      "lexical_scope": "multiword_group_not_in_main",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006247",
+        "manifest_label": "99v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006247/full/full/0/default.jpg",
+        "full_image_sha256": "111f6dfc34b8ecb9230cb5a0d144afef4cbd788048ddda2f440108941c91d5e5",
+        "object_region_xywh": [
+          1030,
+          1620,
+          440,
+          540
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006247/1030,1620,440,540/440,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006247/1030,1620,440,540/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006141",
+        "manifest_label": "34v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006141/full/full/0/default.jpg",
+        "full_image_sha256": "2f68183982075a405f7e2cc11ea06b76b263f80f20f01083279e7f03dcb4f78a",
+        "object_region_xywh": [
+          480,
+          2473,
+          2329,
+          1224
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006141/480,2473,2329,1224/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006141/480,2473,2329,1224/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f100r_116__f96v",
+      "fragment_id": 116,
+      "source_folio": "f100r",
+      "target_folio": "f96v",
+      "candidate_locators": [
+        "f100r.2"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "都有由短柄连接的绿色三角或箭头形叶。",
+      "difference_zh": "小图主茎形成明显环圈，大图中央直立并有两根长下垂枝；大图红簇与根系在小图中缺失。",
+      "original_similarities": [
+        "Both include several green triangular/arrow-like leaves attached by short stalks."
+      ],
+      "original_differences": [
+        "Source main stem curls into a prominent loop; target has an upright central stem and two long downward branches.",
+        "Source lacks the target red clusters and its substantial root architecture.",
+        "Source leaves are few and small; target leaf series is long and differently arranged."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006248",
+        "manifest_label": "100r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006248/full/full/0/default.jpg",
+        "full_image_sha256": "6dcf72a0d7eac14da2232987c9cc1521e6d70c9f0f92d3eb39b55fc075520429",
+        "object_region_xywh": [
+          624,
+          201,
+          446,
+          513
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006248/624,201,446,513/446,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006248/624,201,446,513/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006245",
+        "manifest_label": "96v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006245/full/full/0/default.jpg",
+        "full_image_sha256": "7aad14a896b53ddc78f3c7239d358389f215654c26fd9db7dfc43329439c1f15",
+        "object_region_xywh": [
+          953,
+          357,
+          1858,
+          3263
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006245/953,357,1858,3263/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f100v_133__f13v",
+      "fragment_id": 133,
+      "source_folio": "f100v",
+      "target_folio": "f13v",
+      "candidate_locators": [
+        "f100v.3"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "绿色叶单元呈圆形或月牙形、相互重叠，部分向连接处内卷。",
+      "difference_zh": "小图卷叶沿细柄分开，大图是密集层叠的月牙簇，伴有黄褐色块和蓝色端部；根形与比例也不同。",
+      "original_similarities": [
+        "Both use overlapping rounded or crescent-like green leaf units; several curl inward near their attachment."
+      ],
+      "original_differences": [
+        "Source has multiple separately outlined curled units along thin stalks; target has dense layered crescent bands in large discrete clusters.",
+        "Target uses alternating green/ochre patches and blue terminal forms; source cluster is largely green and lacks comparable terminal forms.",
+        "Root shape and relative scale differ."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          1740,
+          170,
+          510,
+          680
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/1740,170,510,680/510,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/1740,170,510,680/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006099",
+        "manifest_label": "13v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006099/full/full/0/default.jpg",
+        "full_image_sha256": "79ac3ff85ed178229cd4bafc6332c606684dd0eba37221758a7ec430c86544f0",
+        "object_region_xywh": [
+          1172,
+          562,
+          1383,
+          3093
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006099/1172,562,1383,3093/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006099/1172,562,1383,3093/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f100v_136__f90v2",
+      "fragment_id": 136,
+      "source_folio": "f100v",
+      "target_folio": "f90v2",
+      "candidate_locators": [
+        "f100v.6"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "窄长绿色小叶沿数条侧枝重复排列，枝叶喷散形比根部更可比。",
+      "difference_zh": "小图紧凑且根细淡，大图高大、根呈扇形，并有三个大淡色端部；叶距、分枝数和比例不同。",
+      "original_similarities": [
+        "Both show repeated narrow elongated green leaflets arranged along several lateral branches.",
+        "The branching leafy spray is more comparable than the root portion."
+      ],
+      "original_differences": [
+        "Source is a compact leaf spray with a thin, faint root; target is tall and has a broad root fan.",
+        "Target has three large pale terminal forms; source does not.",
+        "Leaf spacing, branch count and proportions differ."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": {
+        "working_target_folio": "f90v2",
+        "official_manifest_label": "90r",
+        "oid": "1006236",
+        "resolution": "Parent supplied source-link plus three-canvas visual correspondence; this observer confirms visible three pale terminal forms, narrow leaflets and two lower text blocks on supplied canvas.",
+        "historical_recto_verso_adjudicated": false
+      },
+      "source": {
+        "oid": "1006249",
+        "manifest_label": "100v and 101r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006249/full/full/0/default.jpg",
+        "full_image_sha256": "72637b9770f40f7a8ff6b96a551e64775e88994ae69bafec0b43d48974364c33",
+        "object_region_xywh": [
+          1050,
+          810,
+          590,
+          760
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006249/1050,810,590,760/590,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006249/1050,810,590,760/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006236",
+        "manifest_label": "90r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006236/full/full/0/default.jpg",
+        "full_image_sha256": "f315895bc403e9b78bdda4d207789ed7b5a38654a47715e4571fdfc140c619c6",
+        "object_region_xywh": [
+          684,
+          137,
+          1870,
+          3490
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006236/684,137,1870,3490/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006236/684,137,1870,3490/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f102r2_212__f18v",
+      "fragment_id": 212,
+      "source_folio": "f102r2",
+      "target_folio": "f18v",
+      "candidate_locators": [
+        "f102r2.21"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "横向褐色长体带重复的上下突起，一端有直立的交织状颈部，下方有长回弯。",
+      "difference_zh": "小图较小且受折痕／损伤影响，突起数与比例不同；大图的大量绿叶和大型端部完全缺失。",
+      "original_similarities": [
+        "Both have an elongated horizontal brown body with repeated upward and downward projections.",
+        "Both have an upright hollow/intertwined-looking neck near one end and a long recurved continuation beneath the horizontal body."
+      ],
+      "original_differences": [
+        "The source is smaller, compressed, and damaged/folded nearby; counts and proportions of projections differ.",
+        "The target includes many green lobed leaves and a large terminal form, entirely absent from this root fragment."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          5280,
+          2470,
+          1540,
+          960
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/5280,2470,1540,960/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/5280,2470,1540,960/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006109",
+        "manifest_label": "18v",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006109/full/full/0/default.jpg",
+        "full_image_sha256": "a0f14ccc11f76d832def734e32e33dccea82222e0b198ac3d73c93e8d1fcc47f",
+        "object_region_xywh": [
+          850,
+          2600,
+          1740,
+          1080
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006109/850,2600,1740,1080/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006109/850,2600,1740,1080/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f102r2_213__f23r",
+      "fragment_id": 213,
+      "source_folio": "f102r2",
+      "target_folio": "f23r",
+      "candidate_locators": [
+        "f102r2.22"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "长横筒带重复圆形／椭圆结节轮廓和向下细枝。",
+      "difference_zh": "小图墨色淡、横过折痕，结节细节受限；大图还有两根高叶茎和蓝色端部，结节也更大更规则。",
+      "original_similarities": [
+        "Both show a long approximately horizontal cylinder with repeated rounded or oval node/cut-like outlines and downward thin offshoots."
+      ],
+      "original_differences": [
+        "Source paint and ink are faint and crossed by a fold; details of individual nodes are not equally visible.",
+        "Target has two tall leafy shoots and blue terminal forms; the source fragment supplies none of these.",
+        "Target node outlines are larger and more regular; the source is more compressed."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006251",
+        "manifest_label": "101v (part) and 102r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006251/full/full/0/default.jpg",
+        "full_image_sha256": "30fd529fc6bf8999d5be48024ee6a1676af55e8d66dc0a4f77993fe2565e9d94",
+        "object_region_xywh": [
+          6840,
+          2730,
+          1180,
+          740
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6840,2730,1180,740/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006251/6840,2730,1180,740/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006118",
+        "manifest_label": "23r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006118/full/full/0/default.jpg",
+        "full_image_sha256": "accaf5bdc2bcbbb97171d591f8352258329671eb68d095f4fe3f556979ff2e07",
+        "object_region_xywh": [
+          350,
+          2890,
+          2090,
+          600
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006118/350,2890,2090,600/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006118/350,2890,2090,600/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f102v2_225__f36r",
+      "fragment_id": 225,
+      "source_folio": "f102v2",
+      "target_folio": "f36r",
+      "candidate_locators": [
+        "f102v2.14"
+      ],
+      "comparison_decision": "limited_or_ambiguous",
+      "prior_grade": "S",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "绿色叶轮廓深凹，中心周围有圆形次级叶瓣。",
+      "difference_zh": "小图只有一片小卷叶，大图有许多更大、更深裂的多臂叶；花、长茎、根系均无对应，局部还有变暗损伤。",
+      "original_similarities": [
+        "Both include deeply indented green leaf silhouettes with rounded subsidiary lobes arranged around a centre."
+      ],
+      "original_differences": [
+        "Source is one small curled outline; target bears many larger multi-armed leaf units with deeper divisions.",
+        "Target flowers, long stems and root system have no counterpart in the fragment.",
+        "Some target parts are darkened/damaged, limiting outline comparison."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006252",
+        "manifest_label": "102v (part)",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006252/full/full/0/default.jpg",
+        "full_image_sha256": "8cdb1030d805b968932146124915cb0d86f7abf853167ffec028b59599820fad",
+        "object_region_xywh": [
+          1764,
+          820,
+          385,
+          373
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006252/1764,820,385,373/385,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006252/1764,820,385,373/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006144",
+        "manifest_label": "36r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006144/full/full/0/default.jpg",
+        "full_image_sha256": "807e9b5aa1ea72b90c39f71c5ae1cfa4aa0c303b4dd889340c2814f1cff62da2",
+        "object_region_xywh": [
+          605,
+          698,
+          1722,
+          2956
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006144/605,698,1722,2956/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006144/605,698,1722,2956/full/0/default.jpg"
+      }
+    },
+    {
+      "pair_id": "f102v1_240__f19r",
+      "fragment_id": 240,
+      "source_folio": "f102v1",
+      "target_folio": "f19r",
+      "candidate_locators": [
+        "f102v1.17"
+      ],
+      "comparison_decision": "suitable_for_partial_shape_comparison",
+      "prior_grade": "A",
+      "prior_source": "https://www.voynich.nu/q19/index.html",
+      "similarity_zh": "粗黄褐色根颈分出弯根，并有弓形绿色叶和长垂指状／梳状裂片。",
+      "difference_zh": "小图只有右上一片垂叶，大图下方有两大片，还多出高中央茎、小叶、侧簇和蓝色顶端；根的交叉细节不同。",
+      "original_similarities": [
+        "Both have a thick ochre central root neck opening into several curved root branches.",
+        "Both include a bowed green leaf shape with long hanging finger/comb-like divisions."
+      ],
+      "original_differences": [
+        "Source has one such hanging leaf at the upper right; target has two much larger lower fronds.",
+        "Target adds a tall central stem, small narrow leaves, clustered side terminals and a blue top form; these are absent in the source fragment.",
+        "Root branch count and crossing details differ."
+      ],
+      "lexical_scope": "singleword_candidate",
+      "canvas_note": null,
+      "source": {
+        "oid": "1006253",
+        "manifest_label": "102v (part)",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006253/full/full/0/default.jpg",
+        "full_image_sha256": "e3ed770ad77b1c1127b8e60b2ee2d9e226ab4089d4861b85dbf22299925397ce",
+        "object_region_xywh": [
+          1206,
+          1821,
+          745,
+          710
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006253/1206,1821,745,710/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006253/1206,1821,745,710/full/0/default.jpg"
+      },
+      "target": {
+        "oid": "1006110",
+        "manifest_label": "19r",
+        "source_url": "https://collections.library.yale.edu/iiif/2/1006110/full/full/0/default.jpg",
+        "full_image_sha256": "c05e13bd154a93d77e2f601f11d9bd886fdf4524a49dbae0339b0bd864f7283c",
+        "object_region_xywh": [
+          442,
+          618,
+          1943,
+          2870
+        ],
+        "crop_url": "https://collections.library.yale.edu/iiif/2/1006110/442,618,1943,2870/700,/0/default.jpg",
+        "native_crop_url": "https://collections.library.yale.edu/iiif/2/1006110/442,618,1943,2870/full/0/default.jpg"
+      }
+    }
+  ],
+  "gallery_scope": "Source record order, not ranked by lexical scores. Only the selected two official Yale IIIF crops are loaded; author overview images are not published.",
   "scope": "Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim."
 }

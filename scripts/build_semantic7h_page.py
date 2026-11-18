@@ -2,7 +2,7 @@
 
 Run again after session.json and approved records change. Optional research
 publication.json may provide reviewed public `findings` (list of strings) and
-`modules` overrides keyed images/literature/leaf_controls/abbreviations, with
+`modules` overrides keyed images/literature/leaf_controls/abbreviations/crossplant/known_herbal, with
 status/title/summary/details/links/metrics/table. This builder deliberately does
 not discover result files or infer that a computation or audit has passed.
 Status values: planned, running, awaiting_review, partial, complete, blocked.
@@ -41,6 +41,8 @@ queue = read('visual/queue_v1.json', {})
 geometry = read('visual/geometry_review_v1.json', {})
 pairs = read('literature/plant_pairs.json', {})
 support = read('design/leaf_controls/support_v1.json', {})
+cross_visual = read('visual/crossplant/crossplant_visual_review_v1.json', {})
+cross_receipt = read('visual/crossplant/verification_receipt.json', {})
 publication = read('publication.json', {})
 snapshot = datetime.now(timezone.utc)
 start = datetime.fromisoformat(session['start_utc'].replace('Z','+00:00'))
@@ -103,6 +105,24 @@ modules = {
         'metrics':[],
         'links':[],
     },
+    'crossplant':{
+        'title':'跨页图像假说：从标签到指定正文',
+        'status':'awaiting_review',
+        'summary':'预定图像配对的几何记录已保存；完整词形实验正在独立复核，本快照尚不填入数值结论。',
+        'details':[
+            '12 对均保留于下方图廊，6 对适合局部形态比较，6 对证据有限或含混。局部形似不是同一历史植物的认证。',
+            '#110 是两个文本位置、三个词的完整组，未进入单词标签的主分析；图廊仍保留该对象。',
+            '几何评审接触了作者假说、编号表与标签支持，但没有读取跨页词形分数；不是完全不看文字的盲审。',
+        ],
+        'metrics':[],
+        'links':[],
+    },
+    'known_herbal':{
+        'title':'已知英文草药书：匹配测量的校准',
+        'status':'awaiting_review',
+        'summary':'校准数据须通过独立复核后再展示；不能据此推断伏尼契语言或成功率。',
+        'details':[], 'metrics':[], 'links':[],
+    },
 }
 for version, vv in support.get('versions', {}).items():
     primary = vv.get('main_HI1', {})
@@ -127,6 +147,48 @@ download_names = [
 downloads = [link for label,name in download_names
              if (link:=approved_link({'label':label,'href':f'downloads/semantic7h/{name}'}))]
 downloads += [link for r in publication.get('downloads',[]) if (link:=approved_link(r))]
+
+# Display translations summarize the frozen English observations. Original
+# statements remain available in the downloaded visual record; no new species
+# or identity judgments are introduced by the page presentation.
+visual_notes = {
+    61: ('两边都有末端伸出细指状分叉的绿色圆叶形，并由细茎连到分枝。', '小图叶形少、根较粗；大图叶形更多，细根和上方淡色端部在小图中没有对应。'),
+    80: ('两个向下延伸的根状带交叉成窄环，再分成尖端。', '小片段短而圆，大图根更粗长、红褐色更重；花和特殊叶缘没有对应。交叉尖根形态并不独特。'),
+    94: ('两边都有基部带凹口的三角叶形、小红色末端簇和粗褐根。', '小图横向且叶少，根有斜向色带；大图竖向、长枝下垂、叶多，根较紧凑。红簇排列也不同。'),
+    95: ('红色长主轴两侧长出许多细小钩状或尖状分枝。', '小片段短而近竖直，大图下轴长且弯曲；宽绿色／蓝色叶扇和上部端形在小图中缺失。'),
+    110: ('两边都有粗横根段、向下弯的尖分枝和向上连接部。', '小图是少分枝的弯钩，大图根系向两边展开；圆盘叶列和上部结构没有对应，不能确定小钩对应大图哪一段。'),
+    116: ('都有由短柄连接的绿色三角或箭头形叶。', '小图主茎形成明显环圈，大图中央直立并有两根长下垂枝；大图红簇与根系在小图中缺失。'),
+    133: ('绿色叶单元呈圆形或月牙形、相互重叠，部分向连接处内卷。', '小图卷叶沿细柄分开，大图是密集层叠的月牙簇，伴有黄褐色块和蓝色端部；根形与比例也不同。'),
+    136: ('窄长绿色小叶沿数条侧枝重复排列，枝叶喷散形比根部更可比。', '小图紧凑且根细淡，大图高大、根呈扇形，并有三个大淡色端部；叶距、分枝数和比例不同。'),
+    212: ('横向褐色长体带重复的上下突起，一端有直立的交织状颈部，下方有长回弯。', '小图较小且受折痕／损伤影响，突起数与比例不同；大图的大量绿叶和大型端部完全缺失。'),
+    213: ('长横筒带重复圆形／椭圆结节轮廓和向下细枝。', '小图墨色淡、横过折痕，结节细节受限；大图还有两根高叶茎和蓝色端部，结节也更大更规则。'),
+    225: ('绿色叶轮廓深凹，中心周围有圆形次级叶瓣。', '小图只有一片小卷叶，大图有许多更大、更深裂的多臂叶；花、长茎、根系均无对应，局部还有变暗损伤。'),
+    240: ('粗黄褐色根颈分出弯根，并有弓形绿色叶和长垂指状／梳状裂片。', '小图只有右上一片垂叶，大图下方有两大片，还多出高中央茎、小叶、侧簇和蓝色顶端；根的交叉细节不同。'),
+}
+gallery=[]
+if cross_visual:
+    visual_path=SOURCE/'visual/crossplant/crossplant_visual_review_v1.json'
+    assert hashlib.sha256(visual_path.read_bytes()).hexdigest()==cross_receipt['files']['crossplant_visual_review_v1.json']
+    assert cross_receipt['boxes_within_bounds']==24
+    for row in cross_visual['records']:
+        item={k:row[k] for k in ['pair_id','fragment_id','source_folio','target_folio','candidate_locators','comparison_decision']}
+        item.update(prior_grade=row['prior_hypothesis']['grade'],prior_source=row['prior_hypothesis']['source_url'],
+                    similarity_zh=visual_notes[row['fragment_id']][0],difference_zh=visual_notes[row['fragment_id']][1],
+                    original_similarities=row['visible_similarities'],original_differences=row['visible_differences_and_missing_evidence'],
+                    lexical_scope='multiword_group_not_in_main' if row['fragment_id']==110 else 'singleword_candidate',
+                    canvas_note=row.get('canvas_conflict'))
+        for side in ['source','target']:
+            original=row[side]
+            oid=original['oid'];box=original['object_region_xywh'];width,height=original['full_image_size']
+            x,y,w,h=box
+            assert 0<=x<x+w<=width and 0<=y<y+h<=height
+            base=f'https://collections.library.yale.edu/iiif/2/{oid}'
+            assert original['source_url']==base+'/full/full/0/default.jpg'
+            region=','.join(str(v) for v in box)
+            item[side]={k:original[k] for k in ['oid','manifest_label','source_url','full_image_sha256','object_region_xywh']}
+            display_width=min(700,w)
+            item[side].update(crop_url=base+'/'+region+'/'+str(display_width)+',/0/default.jpg',native_crop_url=base+'/'+region+'/full/0/default.jpg')
+        gallery.append(item)
 payload = {
     'schema_version':1,
     'snapshot_utc':snapshot.isoformat(),
@@ -141,6 +203,8 @@ payload = {
     'plan':plan,
     'downloads':downloads,
     'sources':seen,
+    'gallery':gallery,
+    'gallery_scope':'Source record order, not ranked by lexical scores. Only the selected two official Yale IIIF crops are loaded; author overview images are not published.',
     'scope':'Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim.',
 }
 text = json.dumps(payload,ensure_ascii=False,indent=2,allow_nan=False)+'\n'

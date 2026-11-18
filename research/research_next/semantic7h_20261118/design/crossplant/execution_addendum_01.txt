@@ -1,0 +1,7 @@
+Execution invocation correction, 2026-11-18
+
+Parent explicitly approved real execution after reviewing run.py/protocol_v1 and repeating 17 toy tests. Completed image gate: ../../visual/crossplant/completed_image_freeze_v1.json.
+
+run_v1 failed before input freeze and before analyze/read(INPUT), because the relative image-gate argument could not be expressed by pathlib.relative_to against the absolute repository root. Its failure.json and traceback remain intact. No real matching result was produced by that attempt.
+
+run_v2 uses identical run.py and protocol_v1 bytes, with the image-review-freeze argument and output path made absolute. This is only an invocation/path correction. No candidate, transformation, score, support, weight, or data selection changed. The new output directory preserves the failed run_v1. This addendum documents the error rather than silently replacing the failed attempt.
