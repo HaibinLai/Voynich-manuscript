@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_utc": "2026-11-18T15:06:59.564070+00:00",
-  "snapshot_elapsed_seconds": 21646,
+  "snapshot_utc": "2026-11-18T15:49:24.300060+00:00",
+  "snapshot_elapsed_seconds": 24191,
   "window": {
     "start_utc": "2026-11-18T09:06:13Z",
     "deadline_utc": "2026-11-18T16:06:13Z",
@@ -9,7 +9,7 @@
     "local_timezone": "America/Chicago",
     "local_window": "2026-11-18 03:06:13 to 10:06:13 CST",
     "status": "active",
-    "stage": 3
+    "stage": 4
   },
   "window_history": [
     {
@@ -28,7 +28,7 @@
     {
       "stage": 1,
       "title": "原图对象与证据设计",
-      "status": "partial"
+      "status": "complete"
     },
     {
       "stage": 2,
@@ -38,7 +38,7 @@
     {
       "stage": 3,
       "title": "跨页对象约束与候选读法",
-      "status": "running"
+      "status": "complete"
     },
     {
       "stage": 4,
@@ -47,12 +47,406 @@
     }
   ],
   "modules": {
+    "known_herbal_nohit_review": {
+      "title": "英文17条零完整词命中：缺少字串，不等于缺少指称",
+      "status": "complete",
+      "details": [
+        "全部17条原完整词命中仍为零，标题原本被评分排除。A Sarabacca 字串实例已曝光，不算新的盲案例；Marigold/Marigolds属于不同词形，Chelidonium等仅在原文明示称名时记录。",
+        "Bluebottles、Knapweed等异常正文串保留原样，未核印本，不能擅自判断是历史拼法还是XML转写问题。Moss等类别、Smallage等比较对象、Moonwort等并列配方对象不提升为别名。",
+        "第一观察者将7节记录为主要使用泛称或回指。这是读完固定文本后的解释，不是经过独立认证的名称不存在，也不排除缺字或难解词造成遗漏。",
+        "独立192项机械检查核验17节原XML字节切片、82段、29个短引及原评分资格/数值；该审核不认证类别解释。全部材料已计分，仅一个观察者的首轮语境判断，不是准确率、语义金标或伏尼契语言结论。",
+        "追加限定：A Sarabacca 仅确证去除空格后与标题 Asarabacca 字串相等。A 是名称首字母分排还是冠词，现有XML语境不能裁决，未核印本；不能将这一机械匹配称为已恢复真实名称。旧冻结报告原样保留，本条是后续解释修订，不改任何得分。",
+        "追加了一次只读原文的新上下文审读：新观察者未接收首轮解释，先冻结自身观察，再与首轮逐节对照。两轮在7节主要使用泛称回指的描述上一致；不是证明这些节绝无名称，也不是准确率或语义金标。",
+        "新对照保留全部17节，字段可重叠，名称变体、原文明示另名和泛称可以共存。41个新原文片段、29个首轮短引和17节字节哈希通过机械核验；没有重新认证类别解释，亦未重算旧得分。观察者模型可能有预训练接触，不称严格盲测或领域专家复核。"
+      ],
+      "links": [
+        {
+          "label": "全部17行定性表、短引与路径",
+          "href": "downloads/semantic7h/herbal-nohit-report_v1.md"
+        },
+        {
+          "label": "17节完整结构记录",
+          "href": "downloads/semantic7h/herbal-nohit-review_v1.json"
+        },
+        {
+          "label": "公版原XML精确切片",
+          "href": "downloads/semantic7h/herbal-nohit-source_packet_v1.json.gz"
+        },
+        {
+          "label": "独立引文与旧分数核验",
+          "href": "downloads/semantic7h/herbal-nohit-independent_quote_audit_v1.json"
+        },
+        {
+          "label": "本轮完整冻结",
+          "href": "downloads/semantic7h/herbal-nohit-complete_v1.json"
+        },
+        {
+          "label": "两轮全部17节对照与分歧",
+          "href": "downloads/semantic7h/herbal-source-only-reconciliation_v1.txt"
+        },
+        {
+          "label": "仅原文输入的独立冻结观察",
+          "href": "downloads/semantic7h/herbal-source-only-observer_review_v1.txt"
+        },
+        {
+          "label": "原文片段与哈希机械检查",
+          "href": "downloads/semantic7h/herbal-source-only-mechanical_checks_v1.json"
+        },
+        {
+          "label": "第二轮公版原文输入",
+          "href": "downloads/semantic7h/herbal-source-only-source_only_packet_v1.json.gz"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "17 / 82",
+          "label": "固定章节 / 已读正文段落"
+        },
+        {
+          "value": "29",
+          "label": "核验的短引文"
+        },
+        {
+          "value": "0",
+          "label": "新增得分或语义金标"
+        }
+      ],
+      "summary": "固定17节、82段正文已作逐节结果后阅读。记录分写、不同词形、原文明示另名、泛称回指及异常拼写；不回填分数，也不构成语义正确率。"
+    },
+    "davis2020_followup": {
+      "title": "文献补核：Davis 2020 的公开文本已读",
+      "status": "partial",
+      "details": [
+        "2020文字讨论初步字形特征与个别叶面归属的不确定性，并使用更强的五书手结论措辞；本轮不据此独立认证五位历史人物。",
+        "2022材料的样本数字、主观性和离群例措辞仍属于2022，未移植给2020。未取得PDF图版，不能把公开文本快照的哈希称为PDF哈希；全文缓存不公开复制。"
+      ],
+      "links": [
+        {
+          "label": "直接文本阅读补核与仍缺证据",
+          "href": "downloads/semantic7h/davis2020-report_v1.md"
+        },
+        {
+          "label": "准确来源链与访问记录",
+          "href": "downloads/semantic7h/davis2020-sources_v1.json"
+        },
+        {
+          "label": "追加报告收据",
+          "href": "downloads/semantic7h/davis2020-receipt_v1.json"
+        }
+      ],
+      "metrics": [],
+      "summary": "当前仍是部分完成：作者公开论文页的正文提取文本已直接阅读；原版PDF图版与精确注释样本数仍未核。这里的partial表示实质未核项目，区别于上方保留的首轮历史状态。旧审计和书手分组保持不变。"
+    },
+    "image_followups": {
+      "title": "补齐旧队列核图：五处环形标签与全部正文命中",
+      "status": "complete",
+      "details": [
+        "f67r2 的 .52、.55、.60、.61、.62 五处均已补上工作定位。整圈旋转检查表明 .52 约在10点方向；最上方不是起点。初次按暂定起点请求的裁区原样留档，网页只链接后续 acquisition_v2 上下文。",
+        "第二个已知转写和位置的AI观察者复看整页、整圈与五处局部，认为工作位置与脸形邻接总体相容；这是结果后引导复核，不是盲审或逐字认证。五处都未见文字到脸形的明确指示线，没有星名或天体身份结论。",
+        ".52 阅读框还包含邻标签尾部；.61、.62 脸形框略紧，可能裁掉少量外轮廓。因此只提供较大的官方v2上下文，不把脸形框裁成孤立对象；原坐标和限制均保留。五处原正文零命中不变。",
+        "f75v 五标签的全部32个版本条目对应17处墨迹，不是32次独立出现。17处均可定位：15处与冻结字组及边界相容，2处版本读法未决。该观察依赖已知转写，文件/坐标检查不是独立古文字核验。",
+        "f75v.12 保留 ZL qokal / IT qokol 的 a/o 分歧及前面分词差异，仍仅ZL命中；f75v.40后段保留 IT dal / ZL dol，仍仅IT命中。f75v.38同一 qokal 在两版slot不同，是前文分词差异，不是两次出现。",
+        "全页、5处正文上下文和17个字组局部均有记录。紧局部有时含邻行或高竖笔，应与上下文合看；没有据此改写转写、增减命中或重算得分。",
+        "追加分离观察采用新流程：引导定位先冻结；新观察者不接收转写、分数或旧几何描述，只看原图上下文；自身报告冻结后再解开编号。12处得到6个单一局部邻接候选、6个多候选。全部5个f75v标签位置均为多候选；这不是准确率或专家票数。",
+        "R06 / f67r2.52 的范围分歧保留：引导者针对给定短串可定位到红色圆脸旁；新观察者按整个较高阅读框判断，它还包含下一组文字，因此多候选。不能用命中分数裁决此分歧。",
+        "第二次流程分离不修复第一次提前交流摘要的偏差。图内可见文字、模型预训练接触未知，且裁框源于引导定位，仍不称严格盲审或独立定位认证。",
+        "f75v追加134项完整性复核核对全部32条来源及17位置引用/图像哈希。复核者仅另看两个争议局部，均未裁决a/o；其余15处视觉判断没有被独立重审。"
+      ],
+      "links": [
+        {
+          "label": "环形标签补查及历史尝试",
+          "href": "downloads/semantic7h/f67r2-followup-review_v1.txt"
+        },
+        {
+          "label": "环形标签第二观察者及框限",
+          "href": "downloads/semantic7h/f67r2-followup-independent_guided_check_v1.txt"
+        },
+        {
+          "label": "全部32版本/17位置记录",
+          "href": "downloads/semantic7h/f75v-body-review_f75v_v1.json"
+        },
+        {
+          "label": "正文补查说明",
+          "href": "downloads/semantic7h/f75v-body-review_f75v_v1.txt"
+        },
+        {
+          "label": "正文补查冻结",
+          "href": "downloads/semantic7h/f75v-body-completed_f75v_freeze_v1.json"
+        },
+        {
+          "label": "环形标签官方v2上下文 · 52",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/3090,1200,340,400/full/90/default.jpg"
+        },
+        {
+          "label": "环形标签官方v2上下文 · 55",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/3690,880,420,360/full/0/default.jpg"
+        },
+        {
+          "label": "环形标签官方v2上下文 · 60",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/3550,1850,390,310/full/180/default.jpg"
+        },
+        {
+          "label": "环形标签官方v2上下文 · 61",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/3320,1780,410,310/full/180/default.jpg"
+        },
+        {
+          "label": "环形标签官方v2上下文 · 62",
+          "href": "https://collections.library.yale.edu/iiif/2/1006194/3130,1620,370,330/full/90/default.jpg"
+        },
+        {
+          "label": "f75v官方正文上下文 · 上左",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/470,330,1080,750/full/0/default.jpg"
+        },
+        {
+          "label": "f75v官方正文上下文 · 上右",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/1600,320,970,790/full/0/default.jpg"
+        },
+        {
+          "label": "f75v官方正文上下文 · 中部上段",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/420,1900,2130,365/full/0/default.jpg"
+        },
+        {
+          "label": "f75v官方正文上下文 · 中部下段",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/420,2230,2130,470/full/0/default.jpg"
+        },
+        {
+          "label": "f75v官方正文上下文 · 下右",
+          "href": "https://collections.library.yale.edu/iiif/2/1006209/1450,2610,1100,780/full/0/default.jpg"
+        },
+        {
+          "label": "第二次全部12处几何对照",
+          "href": "downloads/semantic7h/geometry-second-reconciliation_v1.txt"
+        },
+        {
+          "label": "第二观察者完整冻结报告",
+          "href": "downloads/semantic7h/geometry-second-review_v1.txt"
+        },
+        {
+          "label": "双冻结与解号核验范围",
+          "href": "downloads/semantic7h/geometry-second-reconciliation_checks_v1.json"
+        },
+        {
+          "label": "f75v完整性复核与两图抽查范围",
+          "href": "downloads/semantic7h/body-root_completeness_check_v1.json"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "5 / 5",
+          "label": "环形标签工作定位"
+        },
+        {
+          "value": "32 → 17",
+          "label": "版本条目 → 墨迹位置"
+        },
+        {
+          "value": "15 / 2",
+          "label": "相容 / 读法未决位置"
+        }
+      ],
+      "summary": "追加记录补齐定位缺口，旧报告、转写和统计结果保留。引导核图不等于独立释读，也没有产生词义。",
+      "table": {
+        "headers": [
+          "补查对象",
+          "全部墨迹位置 / 状态",
+          "解释边界"
+        ],
+        "rows": [
+          [
+            "f67r2五处",
+            ".52 / .55 / .60 / .61 / .62：均工作定位",
+            "无指示线；不认证读字或天体名称"
+          ],
+          [
+            "qokal",
+            "6处：.7 / .12 / .13 / .38 / .39 / .65",
+            ".12仅ZL命中；.38两版slot不同但同一墨迹"
+          ],
+          [
+            "dal",
+            "6处：.3 / .7 / .40前段 / .40后段 / .46 / .48",
+            ".40后段仅IT命中"
+          ],
+          [
+            "olol / otedy / oteey",
+            "1 / 3 / 1处",
+            "原队列全部保留，无新增独立确认"
+          ]
+        ]
+      }
+    },
+    "repeat_comparison_support": {
+      "title": "九位置能提供多少比较？先核组合与依赖",
+      "status": "complete",
+      "details": [
+        "全部36对均保留；其中跨物理叶27对，同物理叶9对。27对共享九个对象和四个物理叶，不能当作27个独立试验。f99r/f99v仍算同叶。",
+        "六个跨叶层只有三个同时含同/异标签：f101–f88为1/2，f88–f99为2/10，f89–f99为2/2。另三层的8个异标签对完整保留；没有同标签对的层不能形成层内差值。",
+        "保持各叶标签多重集可列出72种重新分配，独立审核3,143项检查零差异。枚举验证组合支持，不证明可交换性；72不是获证的零分布，也不是样本量。",
+        "原有定位框含邻物与文字交叉，是否能公平隔离全部九对象尚未验证。后续提案仅为未来方案：须统一制备且全部通过门槛、冻结完整比较与评分规则后才考虑执行；当前没有制作掩膜或启动评分。",
+        "后续资格检查决定：本轮未启动九对象形态比较。尚无经审核的全九对象公平隔离方案；不是观察到负向形态结果，也不能推断未来无法隔离。保留全部九处，不只挑易处理图形。"
+      ],
+      "links": [
+        {
+          "label": "组合支持报告",
+          "href": "downloads/semantic7h/repeat-comparison-report_v1.txt"
+        },
+        {
+          "label": "全部36对与72种分配",
+          "href": "downloads/semantic7h/repeat-comparison-support_v1.json"
+        },
+        {
+          "label": "独立组合审核",
+          "href": "downloads/semantic7h/repeat-comparison-independent_audit_v1.txt"
+        },
+        {
+          "label": "未来比较提案（尚未执行）",
+          "href": "downloads/semantic7h/repeat-comparison-future-proposal.txt"
+        },
+        {
+          "label": "为何未启动形态比较",
+          "href": "downloads/semantic7h/repeat-comparison_gate_v1.txt"
+        },
+        {
+          "label": "资格门槛与固定来源",
+          "href": "downloads/semantic7h/repeat-comparison_gate_v1.json"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "27 = 5 + 22",
+          "label": "跨叶对 = 同标签 + 异标签"
+        },
+        {
+          "value": "9",
+          "label": "另保留的同叶对"
+        },
+        {
+          "value": "0",
+          "label": "已执行评分 / 显著性检验次数"
+        }
+      ],
+      "summary": "完成的是固定九位置的组合支持盘点。没有读取图像评分、没有相似度结果，也没有计算概率或显著性。",
+      "table": {
+        "headers": [
+          "跨叶层",
+          "同标签对",
+          "异标签对"
+        ],
+        "rows": [
+          [
+            "f101 / f88",
+            "1",
+            "2"
+          ],
+          [
+            "f101 / f89",
+            "0",
+            "1"
+          ],
+          [
+            "f101 / f99",
+            "0",
+            "4"
+          ],
+          [
+            "f88 / f89",
+            "0",
+            "3"
+          ],
+          [
+            "f88 / f99",
+            "2",
+            "10"
+          ],
+          [
+            "f89 / f99",
+            "2",
+            "2"
+          ]
+        ]
+      }
+    },
+    "repeated_labels": {
+      "title": "重复标签：先固定全部位置，再核对它们在哪里",
+      "status": "complete",
+      "details": [
+        "全部1,030个标签位置并集保留。Lp类没有两版严格一致的完整单词；Lf有129个一致单词位置，其中一个otal属于既知#110多位置三词组，不能截成单对象标签。扣除该已知组成员为128；其余位置也不能仅凭词形一致认证归属。",
+        "跨叶重复固定为okol、otaly、otoky、otoldy四簇，所有9位置保留。盘点时只有otoldy一簇的跨叶两端有既有框；随后对全部九处做定位，未删除此前无框的f99r.14。",
+        "原始转写重建的独立审核通过13,693项检查；它不认证对象框。后续图像定位是一个AI观察者在已知文字、行序和原图提示下进行，文件与坐标自检不是独立视觉复审。",
+        "f99r与f99v属于同一物理叶；otaly、otoky共享f88/f99。四簇总共只有f88、f89、f99、f101四叶，不能用两两组合数扩增独立样本。",
+        "9处都没有明确的标签到对象指示线。部分裁区含邻物、交叉线或背景墨迹；近似框是阅读区域，不是单株蒙版。clear仅指可工作定位，不等于读法、名称或对象身份正确。",
+        "下方逐处浏览冻结的官方裁区、两版原行和局限；没有形态分数，不据此推断同词同植物。下一步方案尚未执行，已见材料不称新的盲集。"
+      ],
+      "links": [
+        {
+          "label": "支持盘点及排除范围",
+          "href": "downloads/semantic7h/repeat-support-report.txt"
+        },
+        {
+          "label": "原始转写独立审核",
+          "href": "downloads/semantic7h/repeat-support-independent-audit.json"
+        },
+        {
+          "label": "全部九处定位说明",
+          "href": "downloads/semantic7h/repeat-localization-review.txt"
+        },
+        {
+          "label": "定位冻结与范围",
+          "href": "downloads/semantic7h/repeat-localization-complete.json"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "4 / 9 / 4",
+          "label": "重复簇 / 位置 / 物理叶"
+        },
+        {
+          "value": "9 / 0",
+          "label": "工作归属位置 / 明确指示线"
+        },
+        {
+          "value": "0",
+          "label": "形态评分与语义金标"
+        }
+      ],
+      "summary": "支持盘点与九处定位已保存。完成的是原始转写重建和图像位置记录；没有实施跨页形态比较，也没有建立词义。",
+      "table": {
+        "headers": [
+          "固定标签簇",
+          "全部位置",
+          "物理叶数"
+        ],
+        "rows": [
+          [
+            "okol",
+            "f101v.10 / f88r.15",
+            "2"
+          ],
+          [
+            "otaly",
+            "f88r.6 / f99v.6",
+            "2"
+          ],
+          [
+            "otoky",
+            "f88r.5 / f99v.9",
+            "2"
+          ],
+          [
+            "otoldy",
+            "f89r1.4 / f99r.14 / f99v.2",
+            "2"
+          ]
+        ]
+      }
+    },
     "herbal_context": {
       "title": "五个英文命中：看语境，不能只看是否同节",
       "status": "complete",
       "details": [
         "全部五个命中在结果后逐项解释，不挑例、不移除、不改变m/N、权重或主结果。短引文均在固定版本XML中验证出现；公开原文是1652年公版文本、TCP XML为CC0。",
-        "这是单一观察者对已知英文的语境解释，不是独立历史植物学标注，也不把两类巧合换算成检测器准确率。"
+        "这是单一观察者对已知英文的语境解释，不是独立历史植物学标注，也不把两类巧合换算成检测器准确率。",
+        "追加限定：A Sarabacca 仅确证去除空格后与标题 Asarabacca 字串相等。A 是名称首字母分排还是冠词，现有XML语境不能裁决，未核印本；不能将这一机械匹配称为已恢复真实名称。旧冻结报告原样保留，本条是后续解释修订，不改任何得分。"
       ],
       "links": [
         {
@@ -69,7 +463,7 @@
         }
       ],
       "metrics": [],
-      "summary": "字面命中、自身条目命中和语境中的名称指称是三个不同问题。相邻拼接既能恢复名称，也能合并无关词边界；他节出现也可能是真正的名称引用。伏尼契仍缺可检验这种差别的独立读法，不能拿字串命中直接当破译。",
+      "summary": "字面命中、自身条目命中和语境中的名称指称是三个不同问题。相邻拼接能产生与查询相等的字串，也能合并无关词边界；他节出现也可能是真正的名称引用。伏尼契仍缺可检验这种差别的独立读法，不能拿字串命中直接当破译。",
       "table": {
         "headers": [
           "查询／拼接",
@@ -82,7 +476,7 @@
             "asarabacca / a + sarabacca",
             "12 · ♂ Asarabacca.",
             "A Sarabacca hath many Heads",
-            "正文开头把名称分成 A 与 Sarabacca；拼接恢复与本节标题一致的字串。这是实验前已知的例子，不是新发现。"
+            "A 与 Sarabacca 拼接后等于本节标题字串；A 是首字母分排还是冠词未决，不能直接叫名称恢复。这是实验前已知的例子，不是新发现。"
           ],
           [
             "horstail / hors + tail",
@@ -112,16 +506,17 @@
       }
     },
     "herbal_space": {
-      "title": "英文校准：拆词可恢复名称，也会拼出巧合",
+      "title": "英文校准：拼接可补上字串匹配，也会拼出巧合",
       "status": "complete",
       "details": [
         "固定1652年英文草药书：282节、119个单词标题、1317段。每个标题对其余281节均等比较；正文分节不是独立试验，英文比例不能套给伏尼契。",
         "O→B：保守解析排除476词槽、涉及182节；3832个矩阵格只有机会数N变化，匹配数m和二元覆盖不变。不能把输入删减藏在拼接收益中，也不能认为解析规则永远无影响。",
         "B→B∪A：自身新增1/119；其他正文新增2/33439；净增279/33439，约0.834355个百分点。反序和隔词没有新增覆盖，所有规则保留。",
-        "全部五个相邻正序匹配保留，下方逐项展示语境：a + sarabacca 是已知名称分写；hors + tail 是名称由来的马尾比喻；night + shade 是另一条目中的名称比较；liquor + is、or + pine 是普通词边界碰撞。他节出现并不自动是假阳性。",
+        "全部五个相邻正序匹配保留，下方逐项展示语境：a + sarabacca 拼回标题字串，但分排或冠词解释未决；hors + tail 是名称由来的马尾比喻；night + shade 是另一条目中的名称比较；liquor + is、or + pine 是普通词边界碰撞。他节出现并不自动是假阳性。",
         "只有纯空白缝才允许拼接；不跨标点、XML屏障或段落，不跳过未知词。N=0时条件率为NA，主二元仍为0。union的机会是带机制标记的并集，不能当自然词频。",
         "此校准在 Asarabacca 已曝光之后设计；独立复算验证实现和全部位置，不是独立新例、盲审或语义认证。旧报告末尾“待审核”保留为历史记录，后附审核收据给出当前状态。",
-        "完整公开复现包已在仅含56份运行负载的干净目录实跑：全部268,464个矩阵格、7,201,776项检查，零差异。公开路径投影另列原件与公开副本哈希，保留原收据承诺；结果后五例语境解释不属于独立数值审核。"
+        "完整公开复现包已在仅含56份运行负载的干净目录实跑：全部268,464个矩阵格、7,201,776项检查，零差异。公开路径投影另列原件与公开副本哈希，保留原收据承诺；结果后五例语境解释不属于独立数值审核。",
+        "追加限定：A Sarabacca 仅确证去除空格后与标题 Asarabacca 字串相等。A 是名称首字母分排还是冠词，现有XML语境不能裁决，未核印本；不能将这一机械匹配称为已恢复真实名称。旧冻结报告原样保留，本条是后续解释修订，不改任何得分。"
       ],
       "links": [
         {
@@ -481,27 +876,27 @@
       ]
     },
     "images": {
-      "title": "十二个位置：文字属于哪个对象？",
+      "title": "首轮历史记录：十二个位置",
       "status": "partial",
-      "summary": "十二位置的带转写引导记录已冻结，保留无法可靠定位和指物不清的情况；几何记录与引导记录不是独立双盲复现，也不是十二个名称认证。",
+      "summary": "后续补查模块已追加5处环形标签工作定位、全部17处正文墨迹核图及第二次分离观察。以下计数、部分状态与限制专指首次冻结时点；保留历史过程，不代表当前仍缺这些定位。",
       "details": [
         "12 个位置来自上一轮既定命中／未命中队列，选择依赖已有结果，不是确认样本。几何记录仅描述文字、图形和邻接；引导记录使用既有转写，不是独立释读。",
         "流程偏差：主评审在冻结自身记录前收到几何评审摘要，未实现原计划的两份观察各自冻结后再协调。几何评审在获得语言／统计信息前已冻结；主评审是受摘要影响的观察。",
-        "仅 otor 的标签与正文第一行对应形已并看；其余正文命中仍主要是转写索引，没有逐一核图。f75v 上方为两行一组，下方行对齐本来就不确定，不能把每个短串都认作单独人物名。",
-        "近似框是阅读区域，不是逐字分割；f67r2 五个未可靠定位位置不提供看似精确的字框。困难例保留，不从旧统计中删除。"
+        "首次冻结时点：仅 otor 的标签与正文第一行对应形已并看；当时其余正文命中仍主要是转写索引，尚未逐一核图。后续f75v全部32版本条目/17处墨迹已补查，2处读法仍未决。图旁两行一组及下方绕排的指物歧义仍保留。",
+        "首次冻结时点：f67r2五个未可靠定位位置未提供字框。后续已补上5个工作定位，并记录邻字污染和过紧脸框；近似框始终是阅读区域，不是逐字分割或名称认证。困难例没有从旧统计删除。"
       ],
       "metrics": [
         {
           "value": "2",
-          "label": "邻接较清楚的候选"
+          "label": "首轮：邻接较清楚的候选"
         },
         {
           "value": "5",
-          "label": "可定位，但指物不清"
+          "label": "首轮：可定位，但指物不清"
         },
         {
           "value": "5",
-          "label": "单独行位未可靠定位"
+          "label": "首轮：单独行位未可靠定位"
         }
       ],
       "links": [
@@ -532,26 +927,26 @@
       ]
     },
     "literature": {
-      "title": "跨页植物图：先核出处，再核标签",
+      "title": "早期资格表：35条跨页植物图假说",
       "status": "partial",
-      "summary": "35 条外部图像配对的标签资格已盘点；其中来源编号支持的 12 对已有几何记录，11 个单词标签进入已复核的跨页检验，未把其余候选悄悄补入。",
+      "summary": "此卡保留早期标签资格表及当时的部分状态。后续35条历史关系的图像观察已全部补齐，按12＋12＋11三批展示；几何观察完成不认证对象身份，也没有将后续候选加入原11条单词检验。",
       "details": [
         "12 条有原转写 Petersen 编号注记，12 条从对象与标签次序提出候选；所有候选保留，未依正文命中筛选。",
-        "9 条相应植物对象没有自己的植物标签，不能借用旁边容器标签；2 条对象—标签映射未知。多位置、多词和双版分词差异保留。",
+        "早期资格表记9条无对应植物标签、2条对象—标签映射未知；下方9/2指标保留该历史时点。后续剩余11关系的来源补查细分为9条无独立标签、#188一条新空间候选及#40一条归属未决。新候选未评分，不能借容器标签或回填旧主集。",
         "来源编号支持仍不等于本轮图像确认，更不等于植物学名。最优先候选集中在少数物理叶，泛化材料有限。"
       ],
       "metrics": [
         {
           "value": "35",
-          "label": "保留的来源配对假说"
+          "label": "早期表：保留的来源配对假说"
         },
         {
           "value": "12 / 12",
-          "label": "来源编号支持 / 次序候选"
+          "label": "早期表：来源编号支持 / 次序候选"
         },
         {
           "value": "9 / 2",
-          "label": "无对应植物标签 / 归属未知"
+          "label": "早期表：无对应植物标签 / 归属未知"
         }
       ],
       "links": [
@@ -579,7 +974,8 @@
         "主／共同长度比较完整枚举 3,628,800 个分配，同册帖严格方案 241,920 个。严格方案固定主词长后限制允许配对，不能引用早期支持盘点中扩长度的计数作正式分母。",
         "叶号相邻、标签类型组成、同主题和复制仍可能相关。同 H/I/Q 没有认证随机性；不把上尾比例当作无意义的证据。六对单独上尾属于探索性多项比较，同步最大增量只检验全局零假设。",
         "与上一轮单页率不同，本轮以整叶袋和共同长度重新定义比较。不能直接相减宣称某项混杂造成了前一轮优势。两版仍是同一部手稿的测量敏感性。",
-        "独立实现复算全部六包、分组排列、联合尾数和整数／有理数分母，审核 PASS；它没有重新认证原始转写提取、对象对应、历史含义或可交换性。原报告生成时的“审核进行中”是历史状态，后附独立审核收据为当前记录。"
+        "独立实现复算全部六包、分组排列、联合尾数和整数／有理数分母，审核 PASS；它没有重新认证原始转写提取、对象对应、历史含义或可交换性。原报告生成时的“审核进行中”是历史状态，后附独立审核收据为当前记录。",
+        "完整公开重放入口现已补齐：干净副本重放历史独立实现，六个包29,911项检查无差异；仅运行时长不同、文本报告逐字相同。这是旧审核的重执行，不是另一个新实验。"
       ],
       "metrics": [
         {
@@ -615,6 +1011,14 @@
         {
           "label": "复现说明",
           "href": "downloads/semantic7h/leaf-reproduce.txt"
+        },
+        {
+          "label": "完整公开复现说明",
+          "href": "downloads/semantic7h/leaf-public-README.txt"
+        },
+        {
+          "label": "干净副本重放收据",
+          "href": "downloads/semantic7h/leaf-public-clean_validation_v1.json"
         }
       ],
       "table": {
@@ -843,7 +1247,8 @@
         "固定同一标题查询其余 281 个植物正文，按标题等权的平均命中率为 0.6250%；独立实现重建全部分节、完整矩阵和对照，审核通过。",
         "17 个完整词未命中不能叫没有名称：Asarabacca 的原 XML 在正文写为 A 与 Sarabacca，之间有实际空格，固定分词保留 a / sarabacca，因此完整 asarabacca 查询为零。没有为这个例子改规则后重报主结果。",
         "时代、语言、篇幅、标题与图旁标签的角色、转写质量和对象配对可信度不同；不能把 85.7% 套到伏尼契的 11 个零命中上计算二项概率。",
-        "来源是固定版本的 TCP CC0 键入编码文本，未发布其原页图像。"
+        "来源是固定版本的 TCP CC0 键入编码文本，未发布其原页图像。",
+        "完整公开重放入口现已补齐。无缓存、无网络的干净副本重放历史独立审核，33,558个矩阵格与历史字段一致；这是旧结果的可复现性核验，不是新增独立语义证据。"
       ],
       "metrics": [
         {
@@ -875,6 +1280,14 @@
         {
           "label": "固定 TCP 来源与授权",
           "href": "https://github.com/textcreationpartnership/A35365/tree/2b09f3e54d85c5faf0738f823648edf6f070cef8"
+        },
+        {
+          "label": "完整公开复现说明",
+          "href": "downloads/semantic7h/known-herbal-public-README.txt"
+        },
+        {
+          "label": "干净副本重放收据",
+          "href": "downloads/semantic7h/known-herbal-public-clean_validation_v1.json"
         }
       ]
     },
@@ -929,6 +1342,8 @@
   },
   "findings": [
     "目前没有可靠译文或已确认词义。研究曾因系统用量限制中断，用户于 14:43 UTC 恢复目标；保持原定截止时间，不将窗口经过时间称为连续计算时长，也不把恢复视为完成。",
+    "新增定位工作：两版严格一致的跨叶重复Lf标签只有4簇、9位置，涉及4个物理叶；9处现已全部保留并记录工作归属，但没有观察到标签指示线。这里尚未做跨页形态评分，不能写成相同词已指向相同植物。",
+    "英文17节零完整词命中已追加仅原文输入的第二次审读：两轮在7节主要使用泛称回指的描述上一致，但不证明名称绝不存在。A Sarabacca仅能确认拼接后等于标题字串；首字母分排还是冠词未决，不能叫已恢复真实名称。两轮解释不改原分数，不是语义金标。",
     "最新：固定两词拼接实验已独立复核。4 个条件下，11 个指定目标在正向相邻、反序相邻、隔一词拼接中均无命中；正向相邻拼接的新增覆盖为零。只约束这些有限规则，不说明手稿没有意义。",
     "新增三候选几何对照：12 题中，10 个文献目标唯一最高，2 个并列最高。它们只是相对于每题两个固定随机对照更可比，不是植物身份准确率；对照未匹配形态难度，单一 AI 观察也不提供超出随机的显著性结论。",
     "固定短边界探索已经独立复算：每版 36 条统一规则，ZL 无目标命中，IT 两条不同规则各命中一个候选；没有一条规则同时覆盖两项。两版四折来源叶留出的平均增益均为零，不能将两个单例拼成统一读法。",
@@ -938,9 +1353,9 @@
     "12 对图像全部保留：6 对有局部形态可比处，6 对有限或含混；#110 多词组没有被拆词加入主检验。图廊显示相似与差异，不认证植物身份。已知英文草药书校准能检出强关系，但不能把其命中率套到伏尼契。",
     "整叶对照已完成独立数值复算：在 13 个可比物理叶和共同词长下，精确标签关联超过完整排列均值的差为 ZL −0.00740、IT +0.02097 个百分点。本轮未得到可靠的整叶特有词义锚点。",
     "k/t 放宽后，原配对和重新配对都更容易命中；扣除排列平均新增量后只余约 0.054–0.060 个百分点。这个结果约束了简单同形锚点解释，不证明手稿无意义。",
-    "十二位置图像记录区分为：2 个邻接清楚候选、5 个可定位但指物不清、5 个单独位置未可靠定位。带转写评审在冻结前已接触几何摘要，不能称独立双盲复现。",
+    "十二位置的首轮历史记录为2个邻接清楚、5个可定位但指物不清、5个未可靠定位；后来已为这5个环形标签补齐工作定位。第二次先分别冻结再解号的12处观察得到6个单一局部邻接、6个多候选，R06范围分歧保留。首轮冻结前提前交流摘要的偏差仍成立，新增观察不追认修复，也不是严格双盲或名称认证。",
     "原始资格表的 35 条植物图配对全部已有来源观察：原12条来源编号、12条次序候选保持分组；剩余11关系补查得到9条无可独立归属标签、1条新空间候选（#188）、1条归属未决（#40）。新候选未评分，也没有回填旧主集。",
-    "书手 H 沿用既有分类作为操作性分组，并非已独立认证的历史身份。新增文献核查区分了同页字形变体与多书手判断，保留 Davis 2020 原文未能直接读取的范围限制。",
+    "书手 H 沿用既有分类作为操作性分组，并非已独立认证的历史身份。Davis 2020作者公开页面的正文文本现已直接补读；原版PDF图版、精确注释样本数字仍未核，五位历史书手也未经本轮独立认证。旧审计未读到2020原文的记录属于先前状态，2022数字没有移植给2020。",
     "英文两词校准已独立复算：自身覆盖102→102→103，新增的是已曝光的 Asarabacca。五个命中的语境并不相同：night + shade 在另一条目也是真名称引用；liquor + is 和 or + pine 则是普通词边界巧合。自身／他节位置不能代替语义判断。"
   ],
   "plan": "第二个七小时窗口：从标签关联走向固定读法\n2026-11-18 09:06:13–16:06:13 UTC；芝加哥03:06:13–10:06:13 CST。\n\n本轮目标\n把上一轮小幅同页词形关联变成有可追溯图像对象关系、有反例、有固定变换的可检验研究。尽量提出可复查的语义约束；不承诺七小时内能破译。旧全书转写、候选及统计全部已经接触，不重新称盲集。主研究的各阶段具体协议先冻结再计算；主阶段结束则继续下一个阶段，总窗口不自动延长。\n\n阶段1：原图对象与证据设计\n按上轮既定队列，审查前6个双版命中与前6个双版未命中的完整标签位置。保存整页来源、官方图像哈希、标签近似框、可能关联的对象、歧义、正文对应位置。队列依既有结果选出，不是确认样本。视觉评审区分文本引导定位和不看转写/得分的几何描述，AI多次评审不是多位领域专家。核对历史跨页植物对应和变长缩略的一手来源，标明作者假说与本轮观察。\n\n阶段2：保留真实语料结构的对照\n上轮均匀人造词只检查程序，不能充当手稿零假设。设计按物理叶分块、同书手/插图类别、保持词长机会的重新配对或精确枚举。先界定可交换性和共同支持，再决定能否给尾部概率；若支持不足，只报告描述差和敏感性。所有六对高杆变换使用同样预算。对有直接文献支持的变长缩略另立协议，绝不见词补字。\n\n阶段3：跨页对象约束\n只有可靠对象/标签关系才能参与读法验证。先保存图像对应及不同对象对照，再测试完整词、有限变换能否区分它们。根据对象材料决定小范围检验，不用相同数据一边选植物、一边验证名称。若无法可靠识别对象，明确停留在测量与书写机制层面，转做能消除当前假说的对照。不得制造读音、语种或金标。\n\n阶段4：完整复核与发布\n另一计算实现核对完整分母、对照、概率或枚举结果，保存失败与局限；报告经受和未经受的检验。阶段结果在审计后发布现有GitHub Pages，网站说明只是记录的快照。截止前收束正在进行的计算，保留未完成事项；达到七小时终点再结题本窗口。接近截止时不启动无法验收的长任务。\n\n结论门槛\n字形匹配 → 可靠对象关系 → 不依目标词临时变化的映射 → 跨页预测 → 连续语法和历史语言核验。前一层成立不意味着后一层已成立。跨页重复、局部复制和同主题词频都须作为替代解释。\n\n计算资源\n用户已授权必要时SSH计算节点和8卡V100。优先在本地完成图像与计数工作；只在已固定问题、校准和预算需要时使用大算力。按有意义的阶段进展更新，不用空等待填满窗口。\n",
@@ -1048,12 +1463,28 @@
     {
       "label": "历史对象索引 v1（保持不变）",
       "href": "downloads/semantic7h/object-registry.json"
+    },
+    {
+      "label": "固定九处重复标签原始行",
+      "href": "downloads/semantic7h/repeat-nine-roster.json"
+    },
+    {
+      "label": "九处原图定位与局限",
+      "href": "downloads/semantic7h/repeat-localization-review.json"
+    },
+    {
+      "label": "统一复现入口历史运行与字节核验",
+      "href": "downloads/semantic7h/unified-known-leaf-replays.json"
+    },
+    {
+      "label": "公开复现入口说明与命令",
+      "href": "https://github.com/HaibinLai/Voynich-manuscript#readme"
     }
   ],
   "sources": [
     {
       "path": "session.json",
-      "sha256": "eace1e83012695efe5e2ee1be5128c4f6aeb6793dd61b10d7c3d98965fb2be56"
+      "sha256": "e00d032f69710c6213ff6040c6c655485bb96d5db765138c6bacb794db9f7c7f"
     },
     {
       "path": "plan.txt",
@@ -1085,7 +1516,7 @@
     },
     {
       "path": "publication.json",
-      "sha256": "1732a2538bb31bcb57ead276dd612ccfa79a3a8edf0d4ab74528b15ea43ad339"
+      "sha256": "b49625ee72aba6f803d9ba36acc96f89867ea14d530cca0044864e8545390fd7"
     },
     {
       "path": "visual/choice_controls/result_v1.json",
@@ -1128,6 +1559,18 @@
       "sha256": "a2f79efbc263e935e8b3392010b8544fe270ea3b9af828ec4d1908682920b411"
     },
     {
+      "path": "visual/repeated_label_localization/review_v1.json",
+      "sha256": "e600e03a59779f6eb83c85a1c6e61cdf619dbdce6307b1b96d8f3c277a1aebaf"
+    },
+    {
+      "path": "visual/repeated_label_localization/completed_localization_freeze_v1.json",
+      "sha256": "78f7790f0b3d82572b87f3e91b17fa4622245d80845fb14c92cfdc518a14a98a"
+    },
+    {
+      "path": "design/repeated_label_feasibility/independent_audit_v1.json",
+      "sha256": "01053d3b9a231ae5a8e99acfcb44a7486853acc553a3a23dc7f3778497696036"
+    },
+    {
       "path": "design/crossplant/run_v2/complete.json",
       "sha256": "2206185f8d8c13566b7ee5d3181d8fb42abacc81e67b3b779c62882b278a75d7"
     },
@@ -1154,6 +1597,22 @@
     {
       "path": "visual/boundary_hits/crop_receipt_v2.json",
       "sha256": "208ea4577de63941e360f3e1d045a3e81e1d3cd3e69aee10b5e674f02024a6e5"
+    },
+    {
+      "path": "visual/repeated_label_localization/image_receipts_v1.json",
+      "sha256": "4aa9e5f4b908d8866068b3d8ccd0880f861d78d5cc190a5d1765d42ca6eb0581"
+    },
+    {
+      "path": "visual/repeated_label_localization/crop_receipts_v1.json",
+      "sha256": "b1ec9350d6aa34d5e894cf7f9fcf6a6ef2d9b60ce8aeee6d5f0c8bbe668b96e1"
+    },
+    {
+      "path": "visual/repeated_label_localization/additional_crop_receipts_v1.json",
+      "sha256": "d4bcdf2dc316c579c5d1aef144297a35258182a7ea35ba6780bd901d5c613ffb"
+    },
+    {
+      "path": "design/repeated_label_feasibility/clusters_v1.json",
+      "sha256": "f9697769c99ca858e7cce3b70e46892bce0154ec3fa891b9c825373b65098d9e"
     }
   ],
   "gallery": [
@@ -9233,6 +9692,1025 @@
     "unblinded_utc": "2026-11-18T13:44:31.335206+00:00",
     "audit_scope": "Independent bookkeeping and RNG/join/hash reimplementation. No image re-rating, no plant identity evaluation, no p value.",
     "audit_checks": 425
+  },
+  "repeated": {
+    "records": [
+      {
+        "locator": "f101v.10",
+        "query_from_frozen_roster": "okol",
+        "folio": "f101v",
+        "physical_leaf": "f101",
+        "original_raw_lines": {
+          "ZL": "<f101v.10,@Lf>    okol",
+          "IT": "<f101v.10,@Lf>    okol"
+        },
+        "raw_fragment_annotation": null,
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006250",
+          "url": "https://collections.library.yale.edu/iiif/2/1006250/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006250",
+          "canvas_label": "101v (part)",
+          "sha256": "1122f1b13afdf1509402334816f95e5e9baa2b6c94aa9e347b04aa2e4e54f36b",
+          "width": 2698,
+          "height": 3779
+        },
+        "label_approx_bbox_xywh": [
+          850,
+          845,
+          145,
+          100
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f101v_second_row_leftmost",
+            "approx_bbox_xywh": [
+              595,
+              920,
+              370,
+              500
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The short label is above the upper-right edge of the leftmost large single curved leaf in the second row. Its thin stem descends separately on the left. The next three-leaf drawing begins farther right and has its own label above its right side. Source locus order starts a new row at .10; the preceding nine labels extend across the logical page.",
+        "uncertainty_and_crop_limitations": "No leader line. The nearby right-hand plant and underlying green marks make rectangular isolation imperfect; source-guided spatial assignment is not independent label reading.",
+        "existing_box_recheck": null,
+        "panel_resolution": "Both frozen canvases were examined. The .10 word and second-row-leftmost drawing are on 1006250. 1006251 contains the continuation of the same logical page and later row labels; it is retained as checked, not selected as a replacement.",
+        "native_context_regions": [
+          {
+            "name": "f101v_250_top",
+            "image_id": "1006250",
+            "region_xywh": [
+              530,
+              70,
+              1850,
+              1360
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006250/530,70,1850,1360/full/0/default.jpg",
+            "sha256": "295157456437e83632a404d3a9f13adba44b59cd462e54ddb4e58ad134096a7e",
+            "bytes": 591533,
+            "cache_name": "f101v_250_top.jpg",
+            "utc": "2026-11-18T15:01:21.691010+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          },
+          {
+            "name": "f101v_251_left",
+            "image_id": "1006251",
+            "region_xywh": [
+              400,
+              150,
+              2380,
+              1500
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006251/400,150,2380,1500/full/0/default.jpg",
+            "sha256": "bf31ec75b5cf600c04ff97813ce063f6353b6da1e2be4da9d2667b30f6f8dec5",
+            "bytes": 780455,
+            "cache_name": "f101v_251_left.jpg",
+            "utc": "2026-11-18T15:01:22.270460+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          },
+          {
+            "name": "f101v_okol_context",
+            "image_id": "1006250",
+            "region_xywh": [
+              550,
+              730,
+              950,
+              760
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006250/550,730,950,760/full/0/default.jpg",
+            "sha256": "9288e789097457f4f83758e4f3644f561d966f7cc73a69470b6febec21fa021d",
+            "bytes": 177340,
+            "cache_name": "f101v_okol_context.jpg",
+            "utc": "2026-11-18T15:03:35.638372+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "工作画布为1006250，第二行最左的大型单叶及下垂细茎；字组在叶的上右侧。另一个f101v画布也已检查，属于延续部分，没有替换对象。",
+        "display_contexts": [
+          {
+            "name": "f101v_250_top",
+            "image_id": "1006250",
+            "region_xywh": [
+              530,
+              70,
+              1850,
+              1360
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006250/530,70,1850,1360/full/0/default.jpg",
+            "sha256": "295157456437e83632a404d3a9f13adba44b59cd462e54ddb4e58ad134096a7e",
+            "bytes": 591533,
+            "cache_name": "f101v_250_top.jpg",
+            "utc": "2026-11-18T15:01:21.691010+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006250/530,70,1850,1360/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "101v (part)"
+          },
+          {
+            "name": "f101v_251_left",
+            "image_id": "1006251",
+            "region_xywh": [
+              400,
+              150,
+              2380,
+              1500
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006251/400,150,2380,1500/full/0/default.jpg",
+            "sha256": "bf31ec75b5cf600c04ff97813ce063f6353b6da1e2be4da9d2667b30f6f8dec5",
+            "bytes": 780455,
+            "cache_name": "f101v_251_left.jpg",
+            "utc": "2026-11-18T15:01:22.270460+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006251/400,150,2380,1500/900,/0/default.jpg",
+            "is_working_canvas": false,
+            "canvas_label": "101v (part) and 102r"
+          },
+          {
+            "name": "f101v_okol_context",
+            "image_id": "1006250",
+            "region_xywh": [
+              550,
+              730,
+              950,
+              760
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006250/550,730,950,760/full/0/default.jpg",
+            "sha256": "9288e789097457f4f83758e4f3644f561d966f7cc73a69470b6febec21fa021d",
+            "bytes": 177340,
+            "cache_name": "f101v_okol_context.jpg",
+            "utc": "2026-11-18T15:03:35.638372+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006250/550,730,950,760/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "101v (part)"
+          }
+        ]
+      },
+      {
+        "locator": "f88r.15",
+        "query_from_frozen_roster": "okol",
+        "folio": "f88r",
+        "physical_leaf": "f88",
+        "original_raw_lines": {
+          "ZL": "<f88r.15,@Lf>     okol",
+          "IT": "<f88r.15,@Lf>     okol"
+        },
+        "raw_fragment_annotation": null,
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1037112",
+          "url": "https://collections.library.yale.edu/iiif/2/1037112/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1037112",
+          "canvas_label": "88r",
+          "sha256": "a1d21ccad0df430b47f3b3df2829bbefb8c4d1644cb70310e6d1de4b01c20013",
+          "width": 2714,
+          "height": 3735
+        },
+        "label_approx_bbox_xywh": [
+          1325,
+          1240,
+          160,
+          105
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f88r_fragment8",
+            "approx_bbox_xywh": [
+              1170,
+              1220,
+              675,
+              590
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The label occupies the open space above-left of the cut oval crown with downward roots and a curved stalk to a broad right leaf. The preceding label is farther left beside the preceding root; the following label is below-right beside the next drawing. Existing row-2 fragment-8 localization is consistent with this sequence.",
+        "uncertainty_and_crop_limitations": "No leader line. The contextual object rectangle contains portions of the narrow green leaf of the left neighbor and root lines of the right neighbor. It is not a clean isolated specimen mask.",
+        "existing_box_recheck": "Original object rectangle retained as a contextual region; its overlap with neighboring ink is now explicit.",
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f88r_middle",
+            "image_id": "1037112",
+            "region_xywh": [
+              900,
+              1150,
+              1150,
+              700
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/900,1150,1150,700/full/0/default.jpg",
+            "sha256": "697b60a0f56aecd19267e6fdabd15d2e55366ef139c46e6440b2d5580c2b566f",
+            "bytes": 166061,
+            "cache_name": "f88r_middle.jpg",
+            "utc": "2026-11-18T15:01:15.929969+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          },
+          {
+            "name": "f88r_okol_context",
+            "image_id": "1037112",
+            "region_xywh": [
+              1120,
+              1180,
+              800,
+              650
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/1120,1180,800,650/full/0/default.jpg",
+            "sha256": "0e5596dc284608e36e461ca767dc24cb780b6f23dc25bf5d54bfce5c73bc6da7",
+            "bytes": 111789,
+            "cache_name": "f88r_okol_context.jpg",
+            "utc": "2026-11-18T15:03:36.128646+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "保留既有#8截面根冠，字组在其上左空隙。对象框还包含左邻长叶和右邻根线，是上下文框，不是干净单株裁切。",
+        "display_contexts": [
+          {
+            "name": "f88r_middle",
+            "image_id": "1037112",
+            "region_xywh": [
+              900,
+              1150,
+              1150,
+              700
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/900,1150,1150,700/full/0/default.jpg",
+            "sha256": "697b60a0f56aecd19267e6fdabd15d2e55366ef139c46e6440b2d5580c2b566f",
+            "bytes": 166061,
+            "cache_name": "f88r_middle.jpg",
+            "utc": "2026-11-18T15:01:15.929969+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1037112/900,1150,1150,700/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "88r"
+          },
+          {
+            "name": "f88r_okol_context",
+            "image_id": "1037112",
+            "region_xywh": [
+              1120,
+              1180,
+              800,
+              650
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/1120,1180,800,650/full/0/default.jpg",
+            "sha256": "0e5596dc284608e36e461ca767dc24cb780b6f23dc25bf5d54bfce5c73bc6da7",
+            "bytes": 111789,
+            "cache_name": "f88r_okol_context.jpg",
+            "utc": "2026-11-18T15:03:36.128646+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1037112/1120,1180,800,650/800,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "88r"
+          }
+        ]
+      },
+      {
+        "locator": "f88r.6",
+        "query_from_frozen_roster": "otaly",
+        "folio": "f88r",
+        "physical_leaf": "f88",
+        "original_raw_lines": {
+          "ZL": "<f88r.6,@Lf>      otaly",
+          "IT": "<f88r.6,@Lf>      otaly"
+        },
+        "raw_fragment_annotation": null,
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1037112",
+          "url": "https://collections.library.yale.edu/iiif/2/1037112/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1037112",
+          "canvas_label": "88r",
+          "sha256": "a1d21ccad0df430b47f3b3df2829bbefb8c4d1644cb70310e6d1de4b01c20013",
+          "width": 2714,
+          "height": 3735
+        },
+        "label_approx_bbox_xywh": [
+          2050,
+          345,
+          190,
+          130
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f88r_top_row_fifth_label_object",
+            "approx_bbox_xywh": [
+              1700,
+              175,
+              660,
+              710
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The last short label in the top row is immediately right of the pale crown/root drawing and below its right green leaf. Five Lf labels follow the container label; this is the fifth. Pale root lines can be followed into the crown below the leaves.",
+        "uncertainty_and_crop_limitations": "No leader line. Some pale leftward roots approach the preceding paired brown root; the rectangle is a coarse context region, not segmentation. Label ordinal is not a new historical fragment number.",
+        "existing_box_recheck": null,
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f88r_top",
+            "image_id": "1037112",
+            "region_xywh": [
+              650,
+              150,
+              1750,
+              740
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/full/0/default.jpg",
+            "sha256": "eabdd1924b58ba54b764000ad2a50e20d56683cfe6da366ff1060a32d705d44c",
+            "bytes": 252345,
+            "cache_name": "f88r_top.jpg",
+            "utc": "2026-11-18T15:01:17.070728+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "顶部行最后的字组在浅色根冠右侧、右叶下方；依本行五对象、五标签的次序和连续根线定位。",
+        "display_contexts": [
+          {
+            "name": "f88r_top",
+            "image_id": "1037112",
+            "region_xywh": [
+              650,
+              150,
+              1750,
+              740
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/full/0/default.jpg",
+            "sha256": "eabdd1924b58ba54b764000ad2a50e20d56683cfe6da366ff1060a32d705d44c",
+            "bytes": 252345,
+            "cache_name": "f88r_top.jpg",
+            "utc": "2026-11-18T15:01:17.070728+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "88r"
+          }
+        ]
+      },
+      {
+        "locator": "f99v.6",
+        "query_from_frozen_roster": "otaly",
+        "folio": "f99v",
+        "physical_leaf": "f99",
+        "original_raw_lines": {
+          "ZL": "<f99v.6,@Lf>      <!99>otaly",
+          "IT": "<f99v.6,@Lf>      otaly"
+        },
+        "raw_fragment_annotation": "99",
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006247",
+          "url": "https://collections.library.yale.edu/iiif/2/1006247/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006247",
+          "canvas_label": "99v",
+          "sha256": "111f6dfc34b8ecb9230cb5a0d144afef4cbd788048ddda2f440108941c91d5e5",
+          "width": 2802,
+          "height": 3697
+        },
+        "label_approx_bbox_xywh": [
+          1760,
+          100,
+          170,
+          115
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f99v_annotation99",
+            "approx_bbox_xywh": [
+              1540,
+              95,
+              450,
+              480
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The label sits left of the tall curved stem of the brown spreading root and above that root. The following two labels occur left of the following red-root and forked-root stems in the same row. ZL inline 99 and source sequence place this between 98 and 100.",
+        "uncertainty_and_crop_limitations": "No leader line. The long green leaf from the preceding drawing reaches underneath the label area; nearest colored ink alone would be misleading. Assignment uses the full local stem/label sequence, not color or cross-page resemblance.",
+        "existing_box_recheck": null,
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f99v_top_right",
+            "image_id": "1006247",
+            "region_xywh": [
+              1560,
+              80,
+              1120,
+              840
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/full/0/default.jpg",
+            "sha256": "504a124ef5587469bf83a62f6e35f5689ec50b768114075faccc86a00aa98f03",
+            "bytes": 250296,
+            "cache_name": "f99v_top_right.jpg",
+            "utc": "2026-11-18T15:01:20.622355+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "原注释99保留；字组在褐色放射根弯茎左上。左邻长叶伸入字组下方，不能只按最近的有色像素归属。",
+        "display_contexts": [
+          {
+            "name": "f99v_top_right",
+            "image_id": "1006247",
+            "region_xywh": [
+              1560,
+              80,
+              1120,
+              840
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/full/0/default.jpg",
+            "sha256": "504a124ef5587469bf83a62f6e35f5689ec50b768114075faccc86a00aa98f03",
+            "bytes": 250296,
+            "cache_name": "f99v_top_right.jpg",
+            "utc": "2026-11-18T15:01:20.622355+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "99v"
+          }
+        ]
+      },
+      {
+        "locator": "f88r.5",
+        "query_from_frozen_roster": "otoky",
+        "folio": "f88r",
+        "physical_leaf": "f88",
+        "original_raw_lines": {
+          "ZL": "<f88r.5,@Lf>      otoky",
+          "IT": "<f88r.5,@Lf>      otoky"
+        },
+        "raw_fragment_annotation": null,
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1037112",
+          "url": "https://collections.library.yale.edu/iiif/2/1037112/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1037112",
+          "canvas_label": "88r",
+          "sha256": "a1d21ccad0df430b47f3b3df2829bbefb8c4d1644cb70310e6d1de4b01c20013",
+          "width": 2714,
+          "height": 3735
+        },
+        "label_approx_bbox_xywh": [
+          1710,
+          385,
+          160,
+          105
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f88r_top_row_fourth_label_object",
+            "approx_bbox_xywh": [
+              1440,
+              180,
+              305,
+              665
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The fourth Lf word follows the preceding root label and is right of the narrow paired brown root, before the pale last root. The top-row labels consistently occupy the space to the right of the corresponding root/stem; the fifth word is separately visible farther right.",
+        "uncertainty_and_crop_limitations": "No leader line. The word lies in a gap between two drawings; the local five-object/five-label row sequence is part of the assignment. The object rectangle may touch pale neighboring roots.",
+        "existing_box_recheck": null,
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f88r_top",
+            "image_id": "1037112",
+            "region_xywh": [
+              650,
+              150,
+              1750,
+              740
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/full/0/default.jpg",
+            "sha256": "eabdd1924b58ba54b764000ad2a50e20d56683cfe6da366ff1060a32d705d44c",
+            "bytes": 252345,
+            "cache_name": "f88r_top.jpg",
+            "utc": "2026-11-18T15:01:17.070728+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "顶部行第四个字组，在成对褐根右侧、最后浅色根之间；归属依局部次序，不依另一页是否相似。",
+        "display_contexts": [
+          {
+            "name": "f88r_top",
+            "image_id": "1037112",
+            "region_xywh": [
+              650,
+              150,
+              1750,
+              740
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/full/0/default.jpg",
+            "sha256": "eabdd1924b58ba54b764000ad2a50e20d56683cfe6da366ff1060a32d705d44c",
+            "bytes": 252345,
+            "cache_name": "f88r_top.jpg",
+            "utc": "2026-11-18T15:01:17.070728+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1037112/650,150,1750,740/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "88r"
+          }
+        ]
+      },
+      {
+        "locator": "f99v.9",
+        "query_from_frozen_roster": "otoky",
+        "folio": "f99v",
+        "physical_leaf": "f99",
+        "original_raw_lines": {
+          "ZL": "<f99v.9,@Lf>      <!102>otoky",
+          "IT": "<f99v.9,@Lf>      otoky"
+        },
+        "raw_fragment_annotation": "102",
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006247",
+          "url": "https://collections.library.yale.edu/iiif/2/1006247/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006247",
+          "canvas_label": "99v",
+          "sha256": "111f6dfc34b8ecb9230cb5a0d144afef4cbd788048ddda2f440108941c91d5e5",
+          "width": 2802,
+          "height": 3697
+        },
+        "label_approx_bbox_xywh": [
+          2300,
+          115,
+          195,
+          145
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f99v_annotation102",
+            "approx_bbox_xywh": [
+              2370,
+              145,
+              275,
+              765
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The final top-row label is above-left of the far-right elongated segmented root. Its upright strokes are separate from the thin radiating strokes that meet the root crown. The preceding word is above the separate large forked root; ZL 102 is the last entry before the following text block.",
+        "uncertainty_and_crop_limitations": "No leader line. Writing and fine crown strokes lie close together, so the label rectangle includes contextual strokes. The right-hand page edge limits empty margin.",
+        "existing_box_recheck": null,
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f99v_top_right",
+            "image_id": "1006247",
+            "region_xywh": [
+              1560,
+              80,
+              1120,
+              840
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/full/0/default.jpg",
+            "sha256": "504a124ef5587469bf83a62f6e35f5689ec50b768114075faccc86a00aa98f03",
+            "bytes": 250296,
+            "cache_name": "f99v_top_right.jpg",
+            "utc": "2026-11-18T15:01:20.622355+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "原注释102保留；字组在顶部最右细长分节根的冠部左上，与细线接近，标签框也不是文字分割蒙版。",
+        "display_contexts": [
+          {
+            "name": "f99v_top_right",
+            "image_id": "1006247",
+            "region_xywh": [
+              1560,
+              80,
+              1120,
+              840
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/full/0/default.jpg",
+            "sha256": "504a124ef5587469bf83a62f6e35f5689ec50b768114075faccc86a00aa98f03",
+            "bytes": 250296,
+            "cache_name": "f99v_top_right.jpg",
+            "utc": "2026-11-18T15:01:20.622355+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006247/1560,80,1120,840/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "99v"
+          }
+        ]
+      },
+      {
+        "locator": "f89r1.4",
+        "query_from_frozen_roster": "otoldy",
+        "folio": "f89r1",
+        "physical_leaf": "f89",
+        "original_raw_lines": {
+          "ZL": "<f89r1.4,@Lf>     otoldy",
+          "IT": "<f89r1.4,@Lf>     otoldy"
+        },
+        "raw_fragment_annotation": null,
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006233",
+          "url": "https://collections.library.yale.edu/iiif/2/1006233/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006233",
+          "canvas_label": "88v and 89r",
+          "sha256": "3b553c70d0c068cb39a276d391127165c5d9d868ec08e7f5eb2e73b32bb95d1e",
+          "width": 9078,
+          "height": 3777
+        },
+        "label_approx_bbox_xywh": [
+          4070,
+          355,
+          225,
+          110
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f89r1_fragment25",
+            "approx_bbox_xywh": [
+              3730,
+              170,
+              500,
+              760
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The word is right of the third top-row plant, whose lower branching roots connect to an upright stem and a small upper green terminal form. The preceding word is between the second and third drawings, while the next long word belongs to the following large horizontal drawing. Existing fragment-25 source-row mapping is retained.",
+        "uncertainty_and_crop_limitations": "No leader line. The label lies between the central drawing and the next horizontal root; row order and continuous stems provide the assignment. No interpretation of the plant or of the word is made.",
+        "existing_box_recheck": "Original approximate fragment-25 box is consistent with the observed stem/root boundaries and retained.",
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f89r1_top",
+            "image_id": "1006233",
+            "region_xywh": [
+              3500,
+              120,
+              1050,
+              950
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006233/3500,120,1050,950/full/0/default.jpg",
+            "sha256": "09723cbda6295dc534a17e24b08fd272c9d8e904bae3b4b4098f8ae0c2926b62",
+            "bytes": 205918,
+            "cache_name": "f89r1_top.jpg",
+            "utc": "2026-11-18T15:01:21.452522+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "保留既有#25中央直茎及下部根群，字组在其右侧；右邻横根有后续长字组，工作框依连续线条和次序。",
+        "display_contexts": [
+          {
+            "name": "f89r1_top",
+            "image_id": "1006233",
+            "region_xywh": [
+              3500,
+              120,
+              1050,
+              950
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006233/3500,120,1050,950/full/0/default.jpg",
+            "sha256": "09723cbda6295dc534a17e24b08fd272c9d8e904bae3b4b4098f8ae0c2926b62",
+            "bytes": 205918,
+            "cache_name": "f89r1_top.jpg",
+            "utc": "2026-11-18T15:01:21.452522+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006233/3500,120,1050,950/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "88v and 89r"
+          }
+        ]
+      },
+      {
+        "locator": "f99r.14",
+        "query_from_frozen_roster": "otoldy",
+        "folio": "f99r",
+        "physical_leaf": "f99",
+        "original_raw_lines": {
+          "ZL": "<f99r.14,@Lf>     <!79>otoldy",
+          "IT": "<f99r.14,@Lf>     otoldy"
+        },
+        "raw_fragment_annotation": "79",
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006246",
+          "url": "https://collections.library.yale.edu/iiif/2/1006246/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006246",
+          "canvas_label": "99r",
+          "sha256": "f17eba5496a1b1d92f589c33ee9be256a379ec8d2bba3da1ebe2ff5a2e3e2901",
+          "width": 2702,
+          "height": 3765
+        },
+        "label_approx_bbox_xywh": [
+          1945,
+          585,
+          200,
+          100
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f99r_annotation79",
+            "approx_bbox_xywh": [
+              1600,
+              525,
+              990,
+              340
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The word lies in the open upper concavity of the large pale horizontal root at the lower-right of the first illustration group. The adjacent lower-center root has its own label to the left. The separate upper red drawing also has an earlier top-row label. ZL 79 is the final label of this illustration group.",
+        "uncertainty_and_crop_limitations": "No leader line. An upper red root extends toward the label, but its own earlier label and the continuous outline of the lower pale root support the local assignment. Retained as the third occurrence in its cluster, not discarded.",
+        "existing_box_recheck": null,
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f99r_top_lower",
+            "image_id": "1006246",
+            "region_xywh": [
+              1040,
+              500,
+              1510,
+              370
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006246/1040,500,1510,370/full/0/default.jpg",
+            "sha256": "61d129e7071d06bb54f7aeae1ee92e942ece76cbe3c19d8ab2ca560ce058c3f0",
+            "bytes": 120744,
+            "cache_name": "f99r_top_lower.jpg",
+            "utc": "2026-11-18T15:01:16.325322+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "原注释79保留；对象是首图组下右的浅色大横根，字组在上方凹陷空白。此前没有框的第三个otoldy位置仍保留。",
+        "display_contexts": [
+          {
+            "name": "f99r_top_lower",
+            "image_id": "1006246",
+            "region_xywh": [
+              1040,
+              500,
+              1510,
+              370
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006246/1040,500,1510,370/full/0/default.jpg",
+            "sha256": "61d129e7071d06bb54f7aeae1ee92e942ece76cbe3c19d8ab2ca560ce058c3f0",
+            "bytes": 120744,
+            "cache_name": "f99r_top_lower.jpg",
+            "utc": "2026-11-18T15:01:16.325322+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006246/1040,500,1510,370/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "99r"
+          }
+        ]
+      },
+      {
+        "locator": "f99v.2",
+        "query_from_frozen_roster": "otoldy",
+        "folio": "f99v",
+        "physical_leaf": "f99",
+        "original_raw_lines": {
+          "ZL": "<f99v.2,@Lf>      <!95b>otoldy",
+          "IT": "<f99v.2,@Lf>      otoldy"
+        },
+        "raw_fragment_annotation": "95b",
+        "localization_status": "clear",
+        "status_definition": "Source-guided local spatial assignment only; not semantic or botanical identity, and not an independent blind transcription.",
+        "image": {
+          "image_id": "1006247",
+          "url": "https://collections.library.yale.edu/iiif/2/1006247/full/full/0/default.jpg",
+          "canvas_id": "https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006247",
+          "canvas_label": "99v",
+          "sha256": "111f6dfc34b8ecb9230cb5a0d144afef4cbd788048ddda2f440108941c91d5e5",
+          "width": 2802,
+          "height": 3697
+        },
+        "label_approx_bbox_xywh": [
+          580,
+          195,
+          175,
+          105
+        ],
+        "object_candidates": [
+          {
+            "object_id": "f99v_annotation95b",
+            "approx_bbox_xywh": [
+              642,
+              128,
+              304,
+              572
+            ],
+            "assignment": "working_local_attachment",
+            "same_object_other_selected_loci": []
+          }
+        ],
+        "explicit_label_connector_observed": false,
+        "spatial_evidence": "The word is to the left of the stem/crown of the first root immediately right of the tall container. The next split label lies across the next curved stem. The container has a separately classified Lc annotation 95a; the plant word retains the source suffix 95b.",
+        "uncertainty_and_crop_limitations": "No leader line. The historical image review used fragment ID 95, but this record preserves raw 95b and does not merge the container label 95a or its object.",
+        "existing_box_recheck": "Original coarse root box retained; label has its separate box outside the object rectangle.",
+        "panel_resolution": null,
+        "native_context_regions": [
+          {
+            "name": "f99v_top_left",
+            "image_id": "1006247",
+            "region_xywh": [
+              540,
+              90,
+              900,
+              650
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/540,90,900,650/full/0/default.jpg",
+            "sha256": "e8c25b05269fde8416b6da4073971b52689eb86cb5ca8aca7ba6f68617d02d01",
+            "bytes": 151049,
+            "cache_name": "f99v_top_left.jpg",
+            "utc": "2026-11-18T15:01:15.824527+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes"
+          }
+        ],
+        "new_shape_comparison_performed": false,
+        "species_identified": null,
+        "semantic_gold": false,
+        "retained": true,
+        "observation_zh": "原注释95b保留；字组在高容器右边第一个根形的茎冠左侧。容器自身是Lc/95a，没有并入植物对象。",
+        "display_contexts": [
+          {
+            "name": "f99v_top_left",
+            "image_id": "1006247",
+            "region_xywh": [
+              540,
+              90,
+              900,
+              650
+            ],
+            "url": "https://collections.library.yale.edu/iiif/2/1006247/540,90,900,650/full/0/default.jpg",
+            "sha256": "e8c25b05269fde8416b6da4073971b52689eb86cb5ca8aca7ba6f68617d02d01",
+            "bytes": 151049,
+            "cache_name": "f99v_top_left.jpg",
+            "utc": "2026-11-18T15:01:15.824527+00:00",
+            "transform": "Official native IIIF region response, unchanged bytes",
+            "display_url": "https://collections.library.yale.edu/iiif/2/1006247/540,90,900,650/900,/0/default.jpg",
+            "is_working_canvas": true,
+            "canvas_label": "99v"
+          }
+        ]
+      }
+    ],
+    "clusters": [
+      {
+        "subtype": "Lf",
+        "agreed_word": "okol",
+        "locators": [
+          "f101v.10",
+          "f88r.15"
+        ],
+        "physical_leaves": [
+          "f101",
+          "f88"
+        ],
+        "physical_leaf_count": 2,
+        "occurrences": 2,
+        "boxed_locators": [
+          "f88r.15"
+        ],
+        "boxed_physical_leaves": [
+          "f88"
+        ],
+        "unambiguous_box_locators": [
+          "f88r.15"
+        ],
+        "unambiguous_box_physical_leaves": [
+          "f88"
+        ]
+      },
+      {
+        "subtype": "Lf",
+        "agreed_word": "otaly",
+        "locators": [
+          "f88r.6",
+          "f99v.6"
+        ],
+        "physical_leaves": [
+          "f88",
+          "f99"
+        ],
+        "physical_leaf_count": 2,
+        "occurrences": 2,
+        "boxed_locators": [],
+        "boxed_physical_leaves": [],
+        "unambiguous_box_locators": [],
+        "unambiguous_box_physical_leaves": []
+      },
+      {
+        "subtype": "Lf",
+        "agreed_word": "otoky",
+        "locators": [
+          "f88r.5",
+          "f99v.9"
+        ],
+        "physical_leaves": [
+          "f88",
+          "f99"
+        ],
+        "physical_leaf_count": 2,
+        "occurrences": 2,
+        "boxed_locators": [],
+        "boxed_physical_leaves": [],
+        "unambiguous_box_locators": [],
+        "unambiguous_box_physical_leaves": []
+      },
+      {
+        "subtype": "Lf",
+        "agreed_word": "otoldy",
+        "locators": [
+          "f89r1.4",
+          "f99r.14",
+          "f99v.2"
+        ],
+        "physical_leaves": [
+          "f89",
+          "f99"
+        ],
+        "physical_leaf_count": 2,
+        "occurrences": 3,
+        "boxed_locators": [
+          "f89r1.4",
+          "f99v.2"
+        ],
+        "boxed_physical_leaves": [
+          "f89",
+          "f99"
+        ],
+        "unambiguous_box_locators": [
+          "f89r1.4",
+          "f99v.2"
+        ],
+        "unambiguous_box_physical_leaves": [
+          "f89",
+          "f99"
+        ]
+      }
+    ],
+    "audit_checks": 13693,
+    "scope": "All nine fixed loci localized with source text and row order visible. No cross-page morphology comparison, semantic score or botanical identification.",
+    "visual_review_independent": false,
+    "physical_leaf_count": 4,
+    "shape_scored": false
   },
   "gallery_scope": "Three separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered:12 pairs/11 scored; order:12 unscored; remaining:11 unscored relationships/10 source objects. Only selected pair images load, two normally and three for unresolved two-target pages. No botanical gold or author overview images.",
   "scope": "Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim."

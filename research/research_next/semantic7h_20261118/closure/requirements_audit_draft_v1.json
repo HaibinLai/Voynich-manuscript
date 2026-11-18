@@ -1,0 +1,2232 @@
+{
+  "schema": "requirements_audit_draft_v1",
+  "created_utc": "2026-11-18T15:14:40.735395+00:00",
+  "status": "PRE_DEADLINE_DRAFT_NOT_CLOSURE",
+  "deadline_utc": "2026-11-18T16:06:13Z",
+  "scope": "Independent requirements/receipt review of this seven-hour window. No scoring matrix rerun, no new image judgment, no online deployment certification. Prior work known; not blind. Only new closure draft files written.",
+  "basis": "Original plan.txt plus later protocol-bound deliverables; authorial claims, numerical replication, integrity checks and semantic certification distinguished.",
+  "requirements": [
+    {
+      "id": "W01",
+      "stage": 0,
+      "requirement": "严格保留 09:06:13–16:06:13 UTC 七小时窗口；各阶段继续推进，到终点才结题。",
+      "status": "PENDING_DEADLINE",
+      "authoritative_paths": [
+        "plan.txt",
+        "session.json",
+        "session_usage_limit_checkpoint.json"
+      ],
+      "observed": "session 仍 active；记录 14:11 用量限制观察及 14:43 用户恢复，原截止未延长。",
+      "limitations": "墙钟窗口不是连续计算时长；本初稿不是结题凭证。",
+      "remaining_action": "16:06:13 后记录实际终点、运行任务状态、未决事项及最终发布快照。"
+    },
+    {
+      "id": "W02",
+      "stage": 0,
+      "requirement": "协议先冻结再计算，保留已曝光范围；不把旧转写/候选称盲集。",
+      "status": "PASS_WITH_LIMITS",
+      "authoritative_paths": [
+        "design/leaf_controls/protocol.txt",
+        "design/crossplant/protocol_v1.txt",
+        "design/boundary_bridge/protocol_v1.txt",
+        "design/space_bridge/protocol_v1.txt",
+        "design/space_bridge_herbal/protocol_v1.txt"
+      ],
+      "observed": "各主实验有协议、freeze、complete 与审计绑定；独立核心和比较器适配记录分开。",
+      "limitations": "文件时间与哈希证明保存一致性，不能单独证明所有历史认知时序；已曝光的英文例及前期结果必须继续披露。",
+      "remaining_action": "最终文稿沿用探索性/已曝光措辞，不将独立实现等同盲测。"
+    },
+    {
+      "id": "S1A",
+      "stage": 1,
+      "requirement": "既定前六双版命中和前六双版未命中完整保留并核原图。",
+      "status": "PARTIAL",
+      "authoritative_paths": [
+        "visual/protocol_v1.txt",
+        "visual/queue_v1.json",
+        "visual/root_review_v1.json",
+        "visual/geometry_review_v1.json"
+      ],
+      "observed": "队列实际 6+6；引导记录 2 邻接清楚、5 指物不清、5 单独位置未可靠定位。",
+      "limitations": "f67r2.52/.55/.60/.61/.62 仍未逐位置可靠落框。无法定位是允许结果，但不能声称十二位置均核定。",
+      "remaining_action": "root 已收到准确五位置队列，正在决定补充原图尝试；新记录应另存且不改旧冻结。"
+    },
+    {
+      "id": "S1B",
+      "stage": 1,
+      "requirement": "保存来源、官方 hash、近似框、对象歧义、正文对应位置。",
+      "status": "PARTIAL",
+      "authoritative_paths": [
+        "visual/queue_v1.json",
+        "visual/root_review_v1.json",
+        "visual/root_assets_v3.json",
+        "visual/image_only_roster.json"
+      ],
+      "observed": "原图和上下文框有来源；五个未定位框为 null；全部历史正文命中 locator/slot 保存在队列。",
+      "limitations": "仅 otor/f68r1.1 slot6 已标签正文并看；f75v 五标签的其他正文命中尚未逐一核图。",
+      "remaining_action": "追加 qokal/dal/olol/otedy/oteey 正文位置核验或逐项说明无法判断；保留 ZL/IT slot 差异。"
+    },
+    {
+      "id": "S1C",
+      "stage": 1,
+      "requirement": "两份视觉观察各自冻结后才协调，区分分离上下文几何与带转写定位。",
+      "status": "DEVIATION_DISCLOSED",
+      "authoritative_paths": [
+        "visual/protocol_v1.txt",
+        "visual/geometry_review_v1.json",
+        "visual/root_review_v1.json"
+      ],
+      "observed": "几何记录在接触统计/语言前冻结；root 引导记录承认冻结前收到几何摘要。",
+      "limitations": "原计划双记录先冻结流程未实现，不能事后修复为独立重复；原图本身含文字，AI 也非领域专家。",
+      "remaining_action": "最终报告明确此偏差；后续审核不能抹去。"
+    },
+    {
+      "id": "S1D",
+      "stage": 1,
+      "requirement": "历史跨页配对与变长缩略核一手来源、假说等级及不可读范围。",
+      "status": "PASS_WITH_SOURCE_LIMITS",
+      "authoritative_paths": [
+        "literature/plant_pairs.json",
+        "literature/label_support.json",
+        "literature/davis_rules.json",
+        "literature/davis_scope.txt",
+        "literature/hand_attribution_audit/audit_v1.md"
+      ],
+      "observed": "35 配对保留作者 P/U/S/A 等级；Davis 2022 f→te,p→ke、bench 排除、反例及正文/脚注矛盾均记录。Timm 多版本与 Davis 2022 直接主张分开。",
+      "limitations": "Petersen 原档未复查；Davis 完整展开文档访问失败；Davis 2020 官方入口 403 未读，不以 2022 冒充。H 只是操作分组。",
+      "remaining_action": "保留精确来源和访问限制，不声称作者假说已证实或证伪。"
+    },
+    {
+      "id": "S2A",
+      "stage": 2,
+      "requirement": "用真实语料整叶重新配对，保持同 H/I、词长机会和物理叶结构。",
+      "status": "PASS_NUMERICAL",
+      "authoritative_paths": [
+        "design/leaf_controls/protocol.txt",
+        "design/leaf_controls/run_v2/selection.json",
+        "design/leaf_controls/exchangeability_diagnostics.json",
+        "design/leaf_controls/leaf_audit_v1.json"
+      ],
+      "observed": "独立重建 6 包×13 叶全部支持/矩阵；整叶池化、长度等权、严格 Q 不新增长度、跨版交集均审核。",
+      "limitations": "H/I/Q 不保证跨叶可交换；同主题、顺序、局部复制依赖仍在。不能把尾数当语义概率。",
+      "remaining_action": "最终分列描述差和依赖可交换性的条件尾数。"
+    },
+    {
+      "id": "S2B",
+      "stage": 2,
+      "requirement": "全部六对高杆变换同预算，报告全部增量与共同 max。",
+      "status": "PASS_NUMERICAL",
+      "authoritative_paths": [
+        "design/leaf_controls/protocol.txt",
+        "design/leaf_controls/leaf_audit_v1.json",
+        "design/crossplant/protocol_v1.txt",
+        "design/crossplant/audit_v1.json"
+      ],
+      "observed": "fk/fp/ft/kp/kt/pt 同支持及一次替换；七模型、六增量与同步 max 完整复算。跨页保持固定 11 权重及 inactive=0。",
+      "limitations": "整叶旧规则可改 bench 内高杆，跨页新规则保护 bench；这两轮口径不同，不得横比收益。max 参照不是每对强 FWER 或同音概率。",
+      "remaining_action": "报告差异和全部负/零结果；不要选择单对胜者。"
+    },
+    {
+      "id": "S2C",
+      "stage": 2,
+      "requirement": "联合枚举整数尾数、并列、矩、极值、恒等映射和字典顺序全部复核。",
+      "status": "PASS_NUMERICAL",
+      "authoritative_paths": [
+        "design/leaf_controls/leaf_audit_v1.json",
+        "design/leaf_controls/representation_change.txt",
+        "design/leaf_controls/run_v2/complete.json"
+      ],
+      "observed": "独立逐笛卡尔积累加整数/Fraction：主/跨版 3628800、严格 241920 联合分配；所有数组、分母与同步 max 核到。run_v1/v2 输入与选择一致。",
+      "limitations": "run_v1 约 3GB 内存与未曝光的历史陈述不能由剩余文件独立观察；表示压缩不等于更改统计或 Monte Carlo。",
+      "remaining_action": "保留中止/表示变更说明及无损重构数组。"
+    },
+    {
+      "id": "S2D",
+      "stage": 2,
+      "requirement": "变长缩略另协议、同长度预算控制、不得逐词补字。",
+      "status": "PASS_LIMITED_IDENTIFIABILITY",
+      "authoritative_paths": [
+        "literature/davis_scope.txt",
+        "design/crossplant/protocol_v1.txt",
+        "design/crossplant/audit_v1.json"
+      ],
+      "observed": "davis/交换/sham 三种单遍双边 canonicalization，保护 bench，保存所有碰撞/机会变化；8 条件×10 模型×11 固定候选全核。",
+      "limitations": "仅 opchor 标签含裸 p，另 f 在 bench；样本不足鉴别成套 f/p 规则。未声称识别音值。",
+      "remaining_action": "明确有限支持，不以零命中推广到全部缩略机制。"
+    },
+    {
+      "id": "S3A",
+      "stage": 3,
+      "requirement": "跨页图像先保存，再测试；跨页对象不是金标且不结果后挑植物。",
+      "status": "PASS_WITH_SEMANTIC_LIMITS",
+      "authoritative_paths": [
+        "visual/crossplant/crossplant_visual_review_v1.json",
+        "design/crossplant/run_v2/freeze.json",
+        "design/crossplant/protocol_v1.txt",
+        "object_registry_v2.json"
+      ],
+      "observed": "最初 12 配对图像冻结，#110 两位置三词整组不入主 11；不按形态等级删主样本；11 仅 4 来源叶/10 独特目标页。",
+      "limitations": "历史配对和邻接都不证明同一植物或名称；语义金标 0。不能把 880 条模型候选行视为独立试验。",
+      "remaining_action": "维持零读音/译名认证；后续专家对象证据须另行取得。"
+    },
+    {
+      "id": "S3B",
+      "stage": 3,
+      "requirement": "完整保存 35 关系图廊、相似与差异、困难例、多对象与来源依赖。",
+      "status": "PASS_RECORD_COVERAGE",
+      "authoritative_paths": [
+        "object_registry_v2.json",
+        "visual/crossplant/crossplant_visual_review_v1.json",
+        "visual/order_targets/review_v1.json",
+        "visual/remaining_targets/review_v1.json"
+      ],
+      "observed": "实际比对原 35 IDs 与 registry 全等；12+12+11 全保留，34 来源对象；三批分别 6/6、4/8、6/5 局部可比/有限含混。",
+      "limitations": "#150 两关系共源；f40v/f43v 双对象未硬配；#40 两目标保留；#31 归属不明；f90v2 工作画布仍保留 Yale 90r 标题冲突。下载原生全图不等于逐像素观察。",
+      "remaining_action": "最终图库应保持全部 35 与分组；不得将新 24 关系补进旧 11 评分。"
+    },
+    {
+      "id": "S3C",
+      "stage": 3,
+      "requirement": "保存不同对象对照，不以同数据选对象又验证名称。",
+      "status": "PASS_DESCRIPTIVE_ONLY",
+      "authoritative_paths": [
+        "visual/choice_controls/protocol_v1.txt",
+        "visual/choice_controls/audit_v1.json",
+        "visual/choice_controls/report_v1.txt"
+      ],
+      "observed": "12 题各 3 候选，共 36 评分、48 图；固定 23 页池/RNG/连接/哈希 425 检查；10 唯一最高、2 并列均保留。",
+      "limitations": "审计未独立重评图片；对照未匹配形态难度；可见文字、旧裁图、单 AI 及复用池使其非严格双盲，不给准确率/显著性。",
+      "remaining_action": "最终展示对照和并列；仅称相对可比程度。"
+    },
+    {
+      "id": "S3D",
+      "stage": 3,
+      "requirement": "按证据转有限机制反例，统一规则而不逐词追结果。",
+      "status": "PASS_EXPLORATORY",
+      "authoritative_paths": [
+        "design/boundary_bridge/audit_v1.json",
+        "design/boundary_bridge/protocol_v1.txt",
+        "visual/boundary_hits/review.txt"
+      ],
+      "observed": "双版各 36 规则、全部 72 行、8 折及 288 训练规则折核验；清除重复 target 与 held-source 全 target 叶训练 donor，精确 tie 规则。",
+      "limitations": "两 IT 单例用不同规则；平均留出增益 0 不等于每折 0；字形/空格争议仍在。已见结果后的探索不是外部盲验证。",
+      "remaining_action": "保持全规则/折及 invalid 与 N=0/NA 区分。"
+    },
+    {
+      "id": "S3E",
+      "stage": 3,
+      "requirement": "相邻拼接保持原 slots/屏障，完整词、正序、反序、gap2 分列。",
+      "status": "PASS_NUMERICAL",
+      "authoritative_paths": [
+        "design/space_bridge/protocol_v1.txt",
+        "design/space_bridge/audit_v1.json",
+        "design/space_bridge/audit_structure_reconstruction_v1.json"
+      ],
+      "observed": "4 条件×4 机制全 15088 页模型块、86670 机会、14305 行、120530 槽、8069 tags；3278237 检查无差异；union/gain 与额外位置分开。",
+      "limitations": "仅转写编码屏障可筛；未独立核所有漏标图形中断。IT 两空格口径相同非独立复制。全部指定目标零不排除所有语言机制。",
+      "remaining_action": "保留唯一 ZL packet 反序 donor opchor 命中及其 uncertain_space。"
+    },
+    {
+      "id": "S3F",
+      "stage": 3,
+      "requirement": "已知英文校准及后续空格机制保留输入变化与反例。",
+      "status": "PASS_NUMERICAL",
+      "authoritative_paths": [
+        "design/known_herbal/audit_v1.json",
+        "design/space_bridge_herbal/audit_v1.json",
+        "design/space_bridge_herbal/context_review_v1.json"
+      ],
+      "observed": "原校准 119×282 矩阵、357 控制、119 泄漏检查；后校准 XML 独立重建 119×282×8=268464 格与398452机会。O→B 删476词影响182节，own102→102→103；5 拼接全部保留。",
+      "limitations": "Asarabacca 事前已曝光，非新发现；horstail 已有完整覆盖；nightshade 他节为真名称引用，liquor is/or pine 是词界巧合。结果后语境解释非数值审计覆盖。英文率不能移植给手稿。",
+      "remaining_action": "最终显式 O→B→UA 与所有五例；不要把自身/他节等同真/假名称。"
+    },
+    {
+      "id": "S3G",
+      "stage": 3,
+      "requirement": "最新重复标签支持盘点保留全部与原始槽，不以多词/容器补样本。",
+      "status": "PASS_INVENTORY_ONLY",
+      "authoritative_paths": [
+        "design/repeated_label_feasibility/independent_audit_v1.json",
+        "design/repeated_label_feasibility/fixed_nine_roster_v1.json",
+        "design/repeated_label_feasibility/report_v1.txt"
+      ],
+      "observed": "独立原 IVTFF 提取 1030 locus 及全来源字段/资格；13693 检查与12 toy；固定4 Lf 簇9位置4物理叶，#110组成员排除对象单词资格。",
+      "limitations": "此审计不重评对象框；9不是独立对象样本，f99r/f99v同叶且簇复用 f88/f99。",
+      "remaining_action": "保留支持不足；不扩大近形或借 Lc/L0。"
+    },
+    {
+      "id": "S3H",
+      "stage": 3,
+      "requirement": "固定九位置原图定位全保留，不偷换为跨页形态或语义确认。",
+      "status": "PASS_LOCALIZATION_RECORD_ONLY",
+      "authoritative_paths": [
+        "visual/repeated_label_localization/protocol_v1.txt",
+        "visual/repeated_label_localization/review_v1.json",
+        "visual/repeated_label_localization/completed_localization_freeze_v1.json",
+        "visual/repeated_label_localization/verification_v1.json"
+      ],
+      "observed": "9 全保留，6 官方整页+10原生区域；原95b、第三 otoldy f99r.14、两个 f101v 候选保留；9工作空间归属、0明确指示线。",
+      "limitations": "验证只查坐标/元数据/hash，非独立视觉复审；已知转写和行序可见，没有跨页形态比较。框不是独立对象蒙版。",
+      "remaining_action": "下一形态研究必须先规定遮字/邻物处理/负控；本窗口不把定位成果写成重复标签指同物。"
+    },
+    {
+      "id": "S4A",
+      "stage": 4,
+      "requirement": "另一实现复核全部分母、对照、尾数、失败与局限。",
+      "status": "PASS_COVERAGE_WITH_STATED_LIMITS",
+      "authoritative_paths": [
+        "design/leaf_controls/leaf_audit_v1.json",
+        "design/crossplant/audit_v1.json",
+        "design/boundary_bridge/audit_v1.json",
+        "design/space_bridge/audit_v1.json",
+        "design/known_herbal/audit_v1.json",
+        "design/space_bridge_herbal/audit_v1.json"
+      ],
+      "observed": "已逐份读覆盖字段、错误列表、精度及输出收据，不只看 PASS；本次重新校验六主 complete 所列60文件哈希。",
+      "limitations": "多数手稿数值审计接受原冻结提取，非重做全部转写；英文和新重复盘点另做原源解析；AI多次实现不等于专家证据。",
+      "remaining_action": "最终列每份审核的实际范围，保留适配器失败与原主失败，不全称源头盲审。"
+    },
+    {
+      "id": "S4B",
+      "stage": 4,
+      "requirement": "公开包应无私有缓存依赖，干净复现证明具体版本。",
+      "status": "PASS_PARTIAL_PACKAGE_COVERAGE",
+      "authoritative_paths": [
+        "publication_checks/fresh_archive_f00055b.json",
+        "design/space_bridge/public_repro/replay_validation_v1.json",
+        "design/space_bridge/public_repro/release_manifest_v1.json",
+        "design/space_bridge_herbal/public_replay/clean_validation_receipt.json",
+        "design/space_bridge_herbal/public_package_receipt.json"
+      ],
+      "observed": "固定 f00055b archive 上 crossplant/boundary replay；space 仅allowlist及稀疏clone overlay重建；herbal 56运行依赖新目录完整独立replay 7201776检查零差异，最终58发布文件。",
+      "limitations": "本次核收据/文件而不重复大矩阵。当前证据不把所有模块统称已在最终发布 commit 重跑；leaf/known 有本地独立审计和入口，但此处未见它们最终公开快照独立clean replay收据。",
+      "remaining_action": "最终发布后绑定实际commit、允许文件与可达下载；若声称所有模块干净重放，补对应收据或缩小措辞。"
+    },
+    {
+      "id": "S4C",
+      "stage": 4,
+      "requirement": "发布原件保持可追溯，路径清理不悄改冻结证据。",
+      "status": "PASS_WITH_PROJECTION_RECORDS",
+      "authoritative_paths": [
+        "visual/order_targets/publication_projection.json",
+        "design/space_bridge/public_repro/path_projection_v1.json",
+        "design/space_bridge_herbal/public_replay/public_projection_receipt.json"
+      ],
+      "observed": "当前哈希检查识别 order_targets manifest/生成器两个历史hash不等；均由明确原hash→公开hash投影收据解释，视觉结论文件未改。space/herbal公开投影另存，原报告待审字样说明为历史。",
+      "limitations": "不能把旧 receipt 的原hash直接当当前公开文件hash；路径投影不提供新视觉确认。",
+      "remaining_action": "发布并链接投影收据；只按公开allowlist，勿 glob 私有路径/现代定位缩略图/文献全文。"
+    },
+    {
+      "id": "S4D",
+      "stage": 4,
+      "requirement": "阶段审计后发布现有 GitHub Pages，网站是快照，最终状态需核。",
+      "status": "PENDING_FINAL_PUBLICATION",
+      "authoritative_paths": [
+        "publication.json",
+        "publication_checks/fresh_archive_f00055b.json",
+        "publication_checks/remaining_gallery_ui_v1.json",
+        "publication_checks/unified_space_replay_v1.json"
+      ],
+      "observed": "已有发布快照/本地11项剩余图库23图加载和移动宽度检查；新增herbal包已交site代理。",
+      "limitations": "本角色未核最新线上部署；本地网页与旧commit收据不证明最后9定位、全部校准/语境及本初稿已经上线。",
+      "remaining_action": "root/site 交最终 commit/deploy/线上关键内容及下载校验收据；终点后再结题。"
+    },
+    {
+      "id": "C01",
+      "stage": 5,
+      "requirement": "结论门槛：字形→对象→固定映射→跨页预测→连续语法和历史语言，不越级。",
+      "status": "PASS_INTERPRETATION_LIMIT",
+      "authoritative_paths": [
+        "plan.txt",
+        "stage_assessment_v1.txt",
+        "object_registry_v2.json",
+        "publication.json"
+      ],
+      "observed": "未认证词义/物种/读音/译文；重复、复制、同主题、分词及转写误差均作为替代解释。",
+      "limitations": "当前只有测量、有限规则反证/约束及图像可比性；没有连续语法和历史语言核验。",
+      "remaining_action": "最终写明尚无可接受破译；不把零命中解释成手稿无意义。"
+    }
+  ],
+  "mechanical_current_checks": {
+    "receipt_files_checked": 14,
+    "committed_file_entries_checked": 231,
+    "exact_matches": 229,
+    "documented_projections": 2,
+    "unresolved": [],
+    "missing_referenced_files": [],
+    "coverage": {
+      "registry_ids_equal_original_35": true,
+      "registry_duplicates": 0,
+      "registry_actual_rows": 35,
+      "registry_actual_unique_sources": 34,
+      "registry_input_hashes": {
+        "literature/plant_pairs.json": true,
+        "literature/label_support.json": true,
+        "visual/crossplant/crossplant_visual_review_v1.json": true,
+        "visual/order_candidates/review.json": true,
+        "visual/order_targets/review_v1.json": true,
+        "visual/unresolved_sources/review.json": true,
+        "design/crossplant/run_v2/ZL__strict_space__page_HI.json.gz": true,
+        "design/crossplant/run_v2/IT__strict_space__page_HI.json.gz": true,
+        "visual/remaining_targets/review_v1.json": true,
+        "visual/remaining_targets/verification_receipt_v1.json": true
+      },
+      "queue_group_counts": {
+        "both_hit": 6,
+        "both_no_hit": 6
+      },
+      "nine_loci": [
+        "f101v.10",
+        "f88r.15",
+        "f88r.6",
+        "f99v.6",
+        "f88r.5",
+        "f99v.9",
+        "f89r1.4",
+        "f99r.14",
+        "f99v.2"
+      ]
+    }
+  },
+  "hash_commitment_checks": [
+    {
+      "receipt": "design/leaf_controls/run_v2/complete.json",
+      "receipt_sha256": "9acce22a07dca6f38c5a518ece36d573dc61d258d480a64f56dfbfc91741c1df",
+      "entries": [
+        {
+          "path": "IT_cross_version_lengths.json.gz",
+          "expected_sha256": "1a2c88dbd9c24f912f4a123525a80eecad4d64b14a1a5154a8e5631c2edd5260",
+          "current_sha256": "1a2c88dbd9c24f912f4a123525a80eecad4d64b14a1a5154a8e5631c2edd5260",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT_main_HI.json.gz",
+          "expected_sha256": "5695276b97cb850a47dc4162e471f0c0ed47aacd7057eda2ce577d41272d6ed0",
+          "current_sha256": "5695276b97cb850a47dc4162e471f0c0ed47aacd7057eda2ce577d41272d6ed0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT_strict_HIQ5.json.gz",
+          "expected_sha256": "7da469dee73ea6c585e98eb2c7c7684fb88fb5b8f0f1de7534383ed74ab3e8d1",
+          "current_sha256": "7da469dee73ea6c585e98eb2c7c7684fb88fb5b8f0f1de7534383ed74ab3e8d1",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_cross_version_lengths.json.gz",
+          "expected_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+          "current_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_main_HI.json.gz",
+          "expected_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+          "current_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_strict_HIQ5.json.gz",
+          "expected_sha256": "2ea4357c46f673bab959b57a6895685aa18e61f3044a367de7867c8edd865839",
+          "current_sha256": "2ea4357c46f673bab959b57a6895685aa18e61f3044a367de7867c8edd865839",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze.json",
+          "expected_sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+          "current_sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "input.json.gz",
+          "expected_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+          "current_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "selection.json",
+          "expected_sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+          "current_sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "summary.json",
+          "expected_sha256": "21c5b876bdc675782a49782bb69b4bee2596b38d183d28df155d9bc5ebfe9db1",
+          "current_sha256": "21c5b876bdc675782a49782bb69b4bee2596b38d183d28df155d9bc5ebfe9db1",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/crossplant/run_v2/complete.json",
+      "receipt_sha256": "2206185f8d8c13566b7ee5d3181d8fb42abacc81e67b3b779c62882b278a75d7",
+      "entries": [
+        {
+          "path": "IT__packet_tokens__page_HI.json.gz",
+          "expected_sha256": "67995ed7f9d5e952dd4a4686ffddefc6b2216a69848e15c389bf2b8785a79a68",
+          "current_sha256": "67995ed7f9d5e952dd4a4686ffddefc6b2216a69848e15c389bf2b8785a79a68",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT__packet_tokens__wholeleaf_HI.json.gz",
+          "expected_sha256": "40a8e8331b1d11120de27c18938b5138d31a6af09259d3a705a73ba2795b8646",
+          "current_sha256": "40a8e8331b1d11120de27c18938b5138d31a6af09259d3a705a73ba2795b8646",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT__strict_space__page_HI.json.gz",
+          "expected_sha256": "610ef0f983e260c8446dbf80306fa8ef714b881400ce6cf7ca863d5a0fd02981",
+          "current_sha256": "610ef0f983e260c8446dbf80306fa8ef714b881400ce6cf7ca863d5a0fd02981",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT__strict_space__wholeleaf_HI.json.gz",
+          "expected_sha256": "16c8957c644799b7062fb90724bd3d2e28f3eb6fd1d98f96a0ae02d813285b70",
+          "current_sha256": "16c8957c644799b7062fb90724bd3d2e28f3eb6fd1d98f96a0ae02d813285b70",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__packet_tokens__page_HI.json.gz",
+          "expected_sha256": "e01b2a82c53b8c70243d9661a62a3077be622628cac25ac724bd5ea9dc15bdbd",
+          "current_sha256": "e01b2a82c53b8c70243d9661a62a3077be622628cac25ac724bd5ea9dc15bdbd",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__packet_tokens__wholeleaf_HI.json.gz",
+          "expected_sha256": "b52585c40d1a855d43074decdec4cac8752e75fbe583732deea49f11033b8086",
+          "current_sha256": "b52585c40d1a855d43074decdec4cac8752e75fbe583732deea49f11033b8086",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__strict_space__page_HI.json.gz",
+          "expected_sha256": "04faa37578c0d2426e043ecc38bccd3c6160fbf89c7eb184ead97dbdea5cbff2",
+          "current_sha256": "04faa37578c0d2426e043ecc38bccd3c6160fbf89c7eb184ead97dbdea5cbff2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__strict_space__wholeleaf_HI.json.gz",
+          "expected_sha256": "c438a87a70c16e3de5231a26cec5d60513d45651f372c2ac4a08f8f321fa0c85",
+          "current_sha256": "c438a87a70c16e3de5231a26cec5d60513d45651f372c2ac4a08f8f321fa0c85",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "collisions__IT__packet_tokens.json.gz",
+          "expected_sha256": "8c03c30447a836b4a448945bfdb7c11fa10d01dff5d70b210bee55da1d2483d0",
+          "current_sha256": "8c03c30447a836b4a448945bfdb7c11fa10d01dff5d70b210bee55da1d2483d0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "collisions__IT__strict_space.json.gz",
+          "expected_sha256": "8c03c30447a836b4a448945bfdb7c11fa10d01dff5d70b210bee55da1d2483d0",
+          "current_sha256": "8c03c30447a836b4a448945bfdb7c11fa10d01dff5d70b210bee55da1d2483d0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "collisions__ZL__packet_tokens.json.gz",
+          "expected_sha256": "2ef050d24dd2dc15caf6696d5fa55f9c51ab934d642be3d3b14db8a8a67e6b43",
+          "current_sha256": "2ef050d24dd2dc15caf6696d5fa55f9c51ab934d642be3d3b14db8a8a67e6b43",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "collisions__ZL__strict_space.json.gz",
+          "expected_sha256": "44026664486acdbcf10c170c777b8eb47b3d86f5677a18b14a95e87c038833c2",
+          "current_sha256": "44026664486acdbcf10c170c777b8eb47b3d86f5677a18b14a95e87c038833c2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze.json",
+          "expected_sha256": "eb75731b7e58426419b166e31ae706516f603714b770fb31eacd53ba1119436a",
+          "current_sha256": "eb75731b7e58426419b166e31ae706516f603714b770fb31eacd53ba1119436a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__IT__packet_tokens.json.gz",
+          "expected_sha256": "ee298b3bd6f8ef728336bedc75fc2bb73ad71abc6c6bfdf227851ea00d326623",
+          "current_sha256": "ee298b3bd6f8ef728336bedc75fc2bb73ad71abc6c6bfdf227851ea00d326623",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__IT__strict_space.json.gz",
+          "expected_sha256": "ee298b3bd6f8ef728336bedc75fc2bb73ad71abc6c6bfdf227851ea00d326623",
+          "current_sha256": "ee298b3bd6f8ef728336bedc75fc2bb73ad71abc6c6bfdf227851ea00d326623",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__ZL__packet_tokens.json.gz",
+          "expected_sha256": "be9dbc1ee8733a44b384b61495fffb86a69ae7a5121711897309b9934e2a3e82",
+          "current_sha256": "be9dbc1ee8733a44b384b61495fffb86a69ae7a5121711897309b9934e2a3e82",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__ZL__strict_space.json.gz",
+          "expected_sha256": "7a7b5fa5c7734b82fea17deddcbcbc07d69befa745d0a196af8a67626eba1d90",
+          "current_sha256": "7a7b5fa5c7734b82fea17deddcbcbc07d69befa745d0a196af8a67626eba1d90",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/boundary_bridge/run_v1/complete.json",
+      "receipt_sha256": "71e106fe71ef0b082f3cbd2227aa6b8f4d60317b96d1f462b62544445b113e97",
+      "entries": [
+        {
+          "path": "IT_inventory.json.gz",
+          "expected_sha256": "8f5d2ea9bf143fc3436844bfdbec4763afb5887264b1c7dc0407e47cf2ecac4f",
+          "current_sha256": "8f5d2ea9bf143fc3436844bfdbec4763afb5887264b1c7dc0407e47cf2ecac4f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT_loo.json.gz",
+          "expected_sha256": "2e5640f1739cde8327e688330f86b76a3e026fe6bdd97f4f50b1fcceca545d4f",
+          "current_sha256": "2e5640f1739cde8327e688330f86b76a3e026fe6bdd97f4f50b1fcceca545d4f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT_main.json.gz",
+          "expected_sha256": "76a206454402e8bd1861a206efd05d3204601751e8c32417555c46cba907b22f",
+          "current_sha256": "76a206454402e8bd1861a206efd05d3204601751e8c32417555c46cba907b22f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_inventory.json.gz",
+          "expected_sha256": "b319e91c9e233cbde1c252bacf7a7ab611cb08a1477af302a232935a283c0fc0",
+          "current_sha256": "b319e91c9e233cbde1c252bacf7a7ab611cb08a1477af302a232935a283c0fc0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_loo.json.gz",
+          "expected_sha256": "e852711165c8fe39815c4a42240f1a203d1df25b377db4396e87a2d019beb1f7",
+          "current_sha256": "e852711165c8fe39815c4a42240f1a203d1df25b377db4396e87a2d019beb1f7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL_main.json.gz",
+          "expected_sha256": "8f82ede95f9af29473f0a52bf0f953f564011c54dcc8cae2183821b38b21bb72",
+          "current_sha256": "8f82ede95f9af29473f0a52bf0f953f564011c54dcc8cae2183821b38b21bb72",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze.json",
+          "expected_sha256": "8fec54ab8f3eeefafb0b13770a351616a2a1f5e24fd5b14bd497e0b02720a4e1",
+          "current_sha256": "8fec54ab8f3eeefafb0b13770a351616a2a1f5e24fd5b14bd497e0b02720a4e1",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "main_table_72.json",
+          "expected_sha256": "8a65176edd071e736c741a2c7fe849adc85336844f263d87b784b359e9bb0782",
+          "current_sha256": "8a65176edd071e736c741a2c7fe849adc85336844f263d87b784b359e9bb0782",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "main_table_partial.json",
+          "expected_sha256": "8a65176edd071e736c741a2c7fe849adc85336844f263d87b784b359e9bb0782",
+          "current_sha256": "8a65176edd071e736c741a2c7fe849adc85336844f263d87b784b359e9bb0782",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/space_bridge/run_v1/complete.json",
+      "receipt_sha256": "20e15c9bc97fbb757a6fd040bc7e6fecdf586262861b502ac684a64a9d0010dc",
+      "entries": [
+        {
+          "path": "IT__packet_tokens.json.gz",
+          "expected_sha256": "75e1c2248bce2e85e466c899cb9ee5dae9f8a514a5c85dfa0eaa963da4c99c26",
+          "current_sha256": "75e1c2248bce2e85e466c899cb9ee5dae9f8a514a5c85dfa0eaa963da4c99c26",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "IT__strict_space.json.gz",
+          "expected_sha256": "0debcfc90853eeccd68a5f87461631337b79c3b92d0eca0f8a8683f9a2488ffa",
+          "current_sha256": "0debcfc90853eeccd68a5f87461631337b79c3b92d0eca0f8a8683f9a2488ffa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__packet_tokens.json.gz",
+          "expected_sha256": "cd81402f68c979d0170b9700d4497f18e8f6292f013353f74f83534927d9ecd3",
+          "current_sha256": "cd81402f68c979d0170b9700d4497f18e8f6292f013353f74f83534927d9ecd3",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "ZL__strict_space.json.gz",
+          "expected_sha256": "958ad0c5ca47ddec1c40e69a33576cfc9aa522d77527b70e8f79d9d8ea50935f",
+          "current_sha256": "958ad0c5ca47ddec1c40e69a33576cfc9aa522d77527b70e8f79d9d8ea50935f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze.json",
+          "expected_sha256": "ecd1bc27a0acd676e6dd758b1cebb6dfae981c710be4f2037834e8ca7721eca9",
+          "current_sha256": "ecd1bc27a0acd676e6dd758b1cebb6dfae981c710be4f2037834e8ca7721eca9",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__IT__packet_tokens.json.gz",
+          "expected_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "current_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__IT__strict_space.json.gz",
+          "expected_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "current_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__ZL__packet_tokens.json.gz",
+          "expected_sha256": "7e40d13a6d2d73d4bfb9127c39bb5956c3735501be2452349ff6c24323b603ba",
+          "current_sha256": "7e40d13a6d2d73d4bfb9127c39bb5956c3735501be2452349ff6c24323b603ba",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "inventory__ZL__strict_space.json.gz",
+          "expected_sha256": "12ccd1d1d21e36eaac36789d820a253f38d2cdd24cef56016b5d2fb0832c680c",
+          "current_sha256": "12ccd1d1d21e36eaac36789d820a253f38d2cdd24cef56016b5d2fb0832c680c",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "summary_16.json",
+          "expected_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "current_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "summary_partial.json",
+          "expected_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "current_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/known_herbal/run_v1/complete.json",
+      "receipt_sha256": "64fd078d6ba050caeed9ae52e1e0a489fe309db3df98542fc6232ef2f989c1db",
+      "entries": [
+        {
+          "path": "freeze.json",
+          "expected_sha256": "5b29f8ed5f0ef4940268bb34caa6372403ff3a4e703942af10fbb76d6d9badb7",
+          "current_sha256": "5b29f8ed5f0ef4940268bb34caa6372403ff3a4e703942af10fbb76d6d9badb7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "rows.json.gz",
+          "expected_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "current_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "sections.json.gz",
+          "expected_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "current_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "summary.json",
+          "expected_sha256": "d163d26c0cf558f6c59db01632fed4d61ec628243f53852ed957efa52d1b4756",
+          "current_sha256": "d163d26c0cf558f6c59db01632fed4d61ec628243f53852ed957efa52d1b4756",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "toy.json",
+          "expected_sha256": "8a57ce5a9c46e94e61aec5ab2f78f5dfce1769192bf9174f97a0c33627802850",
+          "current_sha256": "8a57ce5a9c46e94e61aec5ab2f78f5dfce1769192bf9174f97a0c33627802850",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/space_bridge_herbal/run_v1/complete.json",
+      "receipt_sha256": "35dc8e17fe27f5e9f7c8169b2deaa8e02fe6f06d862979fe83fdafc5b692886f",
+      "entries": [
+        {
+          "path": "freeze.json",
+          "expected_sha256": "64c6f57f8f680076254ec67c8f995eab8a8f7e1136ecc1375011da55606a6a96",
+          "current_sha256": "64c6f57f8f680076254ec67c8f995eab8a8f7e1136ecc1375011da55606a6a96",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "identity.json",
+          "expected_sha256": "0d486dbe0a79d38c60299940c45dd212e89e07b8d84083b9d53c52a3a947c26d",
+          "current_sha256": "0d486dbe0a79d38c60299940c45dd212e89e07b8d84083b9d53c52a3a947c26d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "input_changes.json.gz",
+          "expected_sha256": "10cba6e708c6c9662e227005426e2a799a6cd6fb790eaf143653bcc93fc36eaa",
+          "current_sha256": "10cba6e708c6c9662e227005426e2a799a6cd6fb790eaf143653bcc93fc36eaa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "matrix.json.gz",
+          "expected_sha256": "69f3856200951dfce08a43007635d49ea522d40492fe6c213c76443c6da9c8d8",
+          "current_sha256": "69f3856200951dfce08a43007635d49ea522d40492fe6c213c76443c6da9c8d8",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "packet.json.gz",
+          "expected_sha256": "dc3c45976034021ed34b8275c52d4d082503e8edaa1758017933474b0ff7b9a7",
+          "current_sha256": "dc3c45976034021ed34b8275c52d4d082503e8edaa1758017933474b0ff7b9a7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "summary.json",
+          "expected_sha256": "63ab05c4f66ff76f0dedfbe0f483623a776a739f4cb0ed7883ccba63acab4c2a",
+          "current_sha256": "63ab05c4f66ff76f0dedfbe0f483623a776a739f4cb0ed7883ccba63acab4c2a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "toy.json",
+          "expected_sha256": "3591a13b2bcc4dea216c50ef08d9225d7a82d65bb23f9476add6c4d6a8e02830",
+          "current_sha256": "3591a13b2bcc4dea216c50ef08d9225d7a82d65bb23f9476add6c4d6a8e02830",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "transitions.json.gz",
+          "expected_sha256": "22722a8304bd71a315927cce61c2c621b6ad4ef75ee9749f4b722e1a6a233aeb",
+          "current_sha256": "22722a8304bd71a315927cce61c2c621b6ad4ef75ee9749f4b722e1a6a233aeb",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "visual/crossplant/verification_receipt.json",
+      "receipt_sha256": "58bc4313f2a0ad0e6d401564f80a04ac1bc7f1b9a28fc561a98e6b706e207e27",
+      "entries": [
+        {
+          "path": "protocol.txt",
+          "expected_sha256": "511dab7d33ade10d9394e924e198f2658ed06ce562b8ac545542d3fda44664f6",
+          "current_sha256": "511dab7d33ade10d9394e924e198f2658ed06ce562b8ac545542d3fda44664f6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "protocol_addendum_01.txt",
+          "expected_sha256": "0d8cab19a2f26308d182d976032f71890a956e10817b57b00f1b4f1f0d8923fd",
+          "current_sha256": "0d8cab19a2f26308d182d976032f71890a956e10817b57b00f1b4f1f0d8923fd",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "assets_manifest.json",
+          "expected_sha256": "b6b0425391be952415bea5f4ffa07729eeb681d2388a4a209544ce1651765ae6",
+          "current_sha256": "b6b0425391be952415bea5f4ffa07729eeb681d2388a4a209544ce1651765ae6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "source_roster.json",
+          "expected_sha256": "297371c4117b5efb5464d862bd9ed9a464edfa83dc9e0d4e561b12e71e13e5aa",
+          "current_sha256": "297371c4117b5efb5464d862bd9ed9a464edfa83dc9e0d4e561b12e71e13e5aa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "crossplant_visual_review_v1.json",
+          "expected_sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c",
+          "current_sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "crossplant_visual_review_v1.txt",
+          "expected_sha256": "a380d1028646176fc136641c00fb24e294a674dcae161b163480844722816ba2",
+          "current_sha256": "a380d1028646176fc136641c00fb24e294a674dcae161b163480844722816ba2",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "visual/order_targets/verification_receipt_v1.json",
+      "receipt_sha256": "fc9d61975d2d409155b16d2f662c9683e3d4aa2c9a63d9e79dfc89c4f932291f",
+      "entries": [
+        {
+          "path": "queue_v1.json",
+          "expected_sha256": "251458f71a61e319eb10e0432fcb76b7e8415b2b37e153ef250780957273e8b4",
+          "current_sha256": "251458f71a61e319eb10e0432fcb76b7e8415b2b37e153ef250780957273e8b4",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "protocol_v1.txt",
+          "expected_sha256": "1fe5448f8f1c42aee089d1ece62665759ef3249f039bf03ed5d3ccb3cfb674c0",
+          "current_sha256": "1fe5448f8f1c42aee089d1ece62665759ef3249f039bf03ed5d3ccb3cfb674c0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.json",
+          "expected_sha256": "105c4d6bdb4c87c2e88337c37e1c29b682ff865e82005ea4147c914a95f5385f",
+          "current_sha256": "105c4d6bdb4c87c2e88337c37e1c29b682ff865e82005ea4147c914a95f5385f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.txt",
+          "expected_sha256": "2994924588e99f252c06d0d5dc5176550e306d4fa40c3ad50fe02f11f4cd9c14",
+          "current_sha256": "2994924588e99f252c06d0d5dc5176550e306d4fa40c3ad50fe02f11f4cd9c14",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "assets_manifest.json",
+          "expected_sha256": "009a77f6a25224f20fae4c1f86ddaa27db39874eaa38132a62c812cab63de085",
+          "current_sha256": "3a8565899497384df378daea40d7bb67b699ab24d30f8051fa3e174f197587ae",
+          "status": "documented_path_projection_match"
+        },
+        {
+          "path": "write_review.py",
+          "expected_sha256": "bfcfdd8ae0f1da4d75ac14d687eead3be67d2680b509c443e98c2776785c84df",
+          "current_sha256": "4b8a399bed2357ae25f6af57bba6b0020c6d3a8c69ea87ffa6bcfd02cb7cdb07",
+          "status": "documented_path_projection_match"
+        }
+      ]
+    },
+    {
+      "receipt": "visual/remaining_targets/verification_receipt_v1.json",
+      "receipt_sha256": "a2f79efbc263e935e8b3392010b8544fe270ea3b9af828ec4d1908682920b411",
+      "entries": [
+        {
+          "path": "protocol_v1.txt",
+          "expected_sha256": "fc01554a4ca7ad48daef6deaff13fb72239aa6aebbd587df6844070e10e23ef0",
+          "current_sha256": "fc01554a4ca7ad48daef6deaff13fb72239aa6aebbd587df6844070e10e23ef0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "queue_v1.json",
+          "expected_sha256": "50322d670837cab8eb4d158b6c9c71c7e2bf103859f2ad0a82ec7519483baf80",
+          "current_sha256": "50322d670837cab8eb4d158b6c9c71c7e2bf103859f2ad0a82ec7519483baf80",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze_v1.json",
+          "expected_sha256": "1bd8fa0c2a3549055ab65fff2487e519076fa7b278f19811d306ff4100ee1f77",
+          "current_sha256": "1bd8fa0c2a3549055ab65fff2487e519076fa7b278f19811d306ff4100ee1f77",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "acquisition_v1.json",
+          "expected_sha256": "ae17be0a9451336f4189f7a07e95dc115dcd92cc2c8609e0b27d08b6913780a7",
+          "current_sha256": "ae17be0a9451336f4189f7a07e95dc115dcd92cc2c8609e0b27d08b6913780a7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "additional_context_acquisition_v1.json",
+          "expected_sha256": "91958c5bb114a134cbad57d25dd5f695627460a8af9664ce786658378e828539",
+          "current_sha256": "91958c5bb114a134cbad57d25dd5f695627460a8af9664ce786658378e828539",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "build_review.py",
+          "expected_sha256": "7331c94ad4e5a69a5d910ee6249d594ddd7681bcec00c53319694e6d47397933",
+          "current_sha256": "7331c94ad4e5a69a5d910ee6249d594ddd7681bcec00c53319694e6d47397933",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.json",
+          "expected_sha256": "8b906d73c7f450bf98d3113f431c1cccbd8a4f2f0db60ce2c0bcf0f6d25a2431",
+          "current_sha256": "8b906d73c7f450bf98d3113f431c1cccbd8a4f2f0db60ce2c0bcf0f6d25a2431",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.txt",
+          "expected_sha256": "23ef6324b610bb80b3c852a5e45aaef70162afa2d019318b069aa4dff46c1fdc",
+          "current_sha256": "23ef6324b610bb80b3c852a5e45aaef70162afa2d019318b069aa4dff46c1fdc",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "visual/repeated_label_localization/completed_localization_freeze_v1.json",
+      "receipt_sha256": "78f7790f0b3d82572b87f3e91b17fa4622245d80845fb14c92cfdc518a14a98a",
+      "entries": [
+        {
+          "path": "additional_crop_receipts_v1.json",
+          "expected_sha256": "d4bcdf2dc316c579c5d1aef144297a35258182a7ea35ba6780bd901d5c613ffb",
+          "current_sha256": "d4bcdf2dc316c579c5d1aef144297a35258182a7ea35ba6780bd901d5c613ffb",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "canvas_queue_v1.json",
+          "expected_sha256": "c72b9dfebd27edbc64edc479ec3513abd5bd9bf2f26a877bf3bd5f8b0c1c9358",
+          "current_sha256": "c72b9dfebd27edbc64edc479ec3513abd5bd9bf2f26a877bf3bd5f8b0c1c9358",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "crop_receipts_v1.json",
+          "expected_sha256": "b1ec9350d6aa34d5e894cf7f9fcf6a6ef2d9b60ce8aeee6d5f0c8bbe668b96e1",
+          "current_sha256": "b1ec9350d6aa34d5e894cf7f9fcf6a6ef2d9b60ce8aeee6d5f0c8bbe668b96e1",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "freeze_v1.json",
+          "expected_sha256": "53e2df5a372d3c698031e58cc561410ef1a98e2ac24f99f4acd32159a28d7399",
+          "current_sha256": "53e2df5a372d3c698031e58cc561410ef1a98e2ac24f99f4acd32159a28d7399",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "image_receipts_v1.json",
+          "expected_sha256": "4aa9e5f4b908d8866068b3d8ccd0880f861d78d5cc190a5d1765d42ca6eb0581",
+          "current_sha256": "4aa9e5f4b908d8866068b3d8ccd0880f861d78d5cc190a5d1765d42ca6eb0581",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "protocol_v1.txt",
+          "expected_sha256": "1504fe9023d940bd8c29a10ed58fc63b12ff106e8b19baa155a32c1798dba51f",
+          "current_sha256": "1504fe9023d940bd8c29a10ed58fc63b12ff106e8b19baa155a32c1798dba51f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "queue_v1.json",
+          "expected_sha256": "9659e0ff6fa20e09394245b97e1b354c4d75dea0f15826b676b7559f8c7313bf",
+          "current_sha256": "9659e0ff6fa20e09394245b97e1b354c4d75dea0f15826b676b7559f8c7313bf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.json",
+          "expected_sha256": "e600e03a59779f6eb83c85a1c6e61cdf619dbdce6307b1b96d8f3c277a1aebaf",
+          "current_sha256": "e600e03a59779f6eb83c85a1c6e61cdf619dbdce6307b1b96d8f3c277a1aebaf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "review_v1.txt",
+          "expected_sha256": "ec2ae2ca95f122c5d39b8d4cb5331b0267d45282639e8a7aec8ec26beb72d7c3",
+          "current_sha256": "ec2ae2ca95f122c5d39b8d4cb5331b0267d45282639e8a7aec8ec26beb72d7c3",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "verification_v1.json",
+          "expected_sha256": "27b16222aa739a62e5e1e54b60f49dda9848b83c9f75125dc406f4b7200cbda9",
+          "current_sha256": "27b16222aa739a62e5e1e54b60f49dda9848b83c9f75125dc406f4b7200cbda9",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "literature/manifest.json",
+      "receipt_sha256": "11e9449a2628474b04b4b1b530e2affcc586594f9639b4aea2541f8db02f0fb3",
+      "entries": [
+        {
+          "path": "build_label_support.py",
+          "expected_sha256": "fca2c58f901f8d5aa3f65bfc772e75f906ad1e3817053d4a5c0f8cb7f2f63826",
+          "current_sha256": "fca2c58f901f8d5aa3f65bfc772e75f906ad1e3817053d4a5c0f8cb7f2f63826",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "davis_rules.json",
+          "expected_sha256": "86af103503d2c4a68c25f648e30455c7aaf082c386e4dff32d544948a157cffe",
+          "current_sha256": "86af103503d2c4a68c25f648e30455c7aaf082c386e4dff32d544948a157cffe",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "davis_scope.txt",
+          "expected_sha256": "0cdfc2542a4aeed388e75846a8697c27213ee237d33567c6c832bd773265e31d",
+          "current_sha256": "0cdfc2542a4aeed388e75846a8697c27213ee237d33567c6c832bd773265e31d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "external_anchors.json",
+          "expected_sha256": "4e8cf0cc0776480712cd1e64ceb51f90090baa819a9a9961d10f48082b14ceee",
+          "current_sha256": "4e8cf0cc0776480712cd1e64ceb51f90090baa819a9a9961d10f48082b14ceee",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "external_constraints.txt",
+          "expected_sha256": "e6a50a54502a882c04b29027079edc04a329c3e3d18ecb50042b576291e4767d",
+          "current_sha256": "e6a50a54502a882c04b29027079edc04a329c3e3d18ecb50042b576291e4767d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "label_support.csv",
+          "expected_sha256": "c0d76158ce70dcf266c5e6215cb0187e81491bc17a90659151b0ad553c9fe423",
+          "current_sha256": "c0d76158ce70dcf266c5e6215cb0187e81491bc17a90659151b0ad553c9fe423",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "label_support.json",
+          "expected_sha256": "8ae2c7ce14bbbb06fea53c0effaed651893e21c5bd89e0bcefb7b3c933409830",
+          "current_sha256": "8ae2c7ce14bbbb06fea53c0effaed651893e21c5bd89e0bcefb7b3c933409830",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "label_support_notes.txt",
+          "expected_sha256": "7149d151cf9106865b745cef67b1405fb3957f99b8a165e4c2bd12a14275c29d",
+          "current_sha256": "7149d151cf9106865b745cef67b1405fb3957f99b8a165e4c2bd12a14275c29d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "plant_pairs.csv",
+          "expected_sha256": "7664d9789e767fcd0df4c9e0c8059c8b9dfa7684969c69ed2727c795f98ea3fa",
+          "current_sha256": "7664d9789e767fcd0df4c9e0c8059c8b9dfa7684969c69ed2727c795f98ea3fa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "plant_pairs.json",
+          "expected_sha256": "b7e42a55f5d643a47aca156d550f11c4aae59da2ffd2e0d75efe4e5bb163a9af",
+          "current_sha256": "b7e42a55f5d643a47aca156d550f11c4aae59da2ffd2e0d75efe4e5bb163a9af",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/known_herbal/manifest.json",
+      "receipt_sha256": "9e87ab2eaae9d0535b0a205585c2c0b658e3439b63678986db7983c789e59b2a",
+      "entries": [
+        {
+          "path": "A35365.xml.gz",
+          "expected_sha256": "f70e6c7ba5ff15091fc830e762ee461036d0c470551af0bc241988fd2f688936",
+          "current_sha256": "f70e6c7ba5ff15091fc830e762ee461036d0c470551af0bc241988fd2f688936",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "audit.py",
+          "expected_sha256": "cfde6ca466d6409895a933dad5c2b1882c13ee7d814d9467a155117ecfb55685",
+          "current_sha256": "cfde6ca466d6409895a933dad5c2b1882c13ee7d814d9467a155117ecfb55685",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "audit_v1.json",
+          "expected_sha256": "5bdde0d0567ada5a12d3da215e8d7c75a46279f7da5cd6c89d7a02ad5f27dcfd",
+          "current_sha256": "5bdde0d0567ada5a12d3da215e8d7c75a46279f7da5cd6c89d7a02ad5f27dcfd",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "audit_v1.txt",
+          "expected_sha256": "943b4711ac476b537e3c7363188a40a8e9710fcf1fd541ef9cfb58b05dd8f8c5",
+          "current_sha256": "943b4711ac476b537e3c7363188a40a8e9710fcf1fd541ef9cfb58b05dd8f8c5",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "protocol_v1.txt",
+          "expected_sha256": "ada5c56fd56b2ab9f3db06b1d62ef254b80807a443302cd6a58957f173d5f3f2",
+          "current_sha256": "ada5c56fd56b2ab9f3db06b1d62ef254b80807a443302cd6a58957f173d5f3f2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "report_v1.txt",
+          "expected_sha256": "254d44d177cec39cc5e7e2244e74c0152c9051be87bfb55fba516776ee743a77",
+          "current_sha256": "254d44d177cec39cc5e7e2244e74c0152c9051be87bfb55fba516776ee743a77",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run.py",
+          "expected_sha256": "daffb336cda04d85107a9f610eb1559b3da5a0a58f9ff70ab106d1f3ce9f1cb1",
+          "current_sha256": "daffb336cda04d85107a9f610eb1559b3da5a0a58f9ff70ab106d1f3ce9f1cb1",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/complete.json",
+          "expected_sha256": "64fd078d6ba050caeed9ae52e1e0a489fe309db3df98542fc6232ef2f989c1db",
+          "current_sha256": "64fd078d6ba050caeed9ae52e1e0a489fe309db3df98542fc6232ef2f989c1db",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/freeze.json",
+          "expected_sha256": "5b29f8ed5f0ef4940268bb34caa6372403ff3a4e703942af10fbb76d6d9badb7",
+          "current_sha256": "5b29f8ed5f0ef4940268bb34caa6372403ff3a4e703942af10fbb76d6d9badb7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/rows.json.gz",
+          "expected_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "current_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/sections.json.gz",
+          "expected_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "current_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/summary.json",
+          "expected_sha256": "d163d26c0cf558f6c59db01632fed4d61ec628243f53852ed957efa52d1b4756",
+          "current_sha256": "d163d26c0cf558f6c59db01632fed4d61ec628243f53852ed957efa52d1b4756",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "run_v1/toy.json",
+          "expected_sha256": "8a57ce5a9c46e94e61aec5ab2f78f5dfce1769192bf9174f97a0c33627802850",
+          "current_sha256": "8a57ce5a9c46e94e61aec5ab2f78f5dfce1769192bf9174f97a0c33627802850",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "source_provenance.json",
+          "expected_sha256": "b25cc7d1b9916c8f91fc0c29280709867ce9e12f9bff8c6a81884b51dfcecbd9",
+          "current_sha256": "b25cc7d1b9916c8f91fc0c29280709867ce9e12f9bff8c6a81884b51dfcecbd9",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/space_bridge/public_repro/release_manifest_v1.json",
+      "receipt_sha256": "a4917b7fc33e35268742e685117bbaec792c4a7fb4c8a2cfa9117abc00437eec",
+      "entries": [
+        {
+          "path": "research/research_next/label_body/saved_v1/input.json.gz",
+          "expected_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+          "current_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/REPRODUCE_PUBLIC.txt",
+          "expected_sha256": "2523b69a57af963454c6815f9f9b2f198b338d32a452dee1d0585747911b6c7f",
+          "current_sha256": "2523b69a57af963454c6815f9f9b2f198b338d32a452dee1d0585747911b6c7f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit.py",
+          "expected_sha256": "a71d07a28fdad7e5a8b5f9f8154f49e858716994a67727aaadc4c62163f536a6",
+          "current_sha256": "a71d07a28fdad7e5a8b5f9f8154f49e858716994a67727aaadc4c62163f536a6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_compare.py",
+          "expected_sha256": "a65caefe5fcb4baba08809c3171ed12c9b440961cdd810b957b5702d3961f976",
+          "current_sha256": "a65caefe5fcb4baba08809c3171ed12c9b440961cdd810b957b5702d3961f976",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_compare_attempt_01.py",
+          "expected_sha256": "21b2224308713bf4893d40e5613da22ab9a56a24c4d1c9d4bc0b3f8d633632ea",
+          "current_sha256": "21b2224308713bf4893d40e5613da22ab9a56a24c4d1c9d4bc0b3f8d633632ea",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_compare_attempt_02.py",
+          "expected_sha256": "0a66a8a2bb6eeca01220147b2d3cf01f265d2ed5cc09c71f771bc02ad8733d7c",
+          "current_sha256": "0a66a8a2bb6eeca01220147b2d3cf01f265d2ed5cc09c71f771bc02ad8733d7c",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_comparison_attempt_01.json",
+          "expected_sha256": "d364ddc5a2fc8f8327c268fb29c38df10ba15201dabdd38724bb8fd9a6b11606",
+          "current_sha256": "d364ddc5a2fc8f8327c268fb29c38df10ba15201dabdd38724bb8fd9a6b11606",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_comparison_attempt_02.json",
+          "expected_sha256": "90c1e10ad2643c90e3b535e0edcd0efa9a112c069d4bdc4e8bc75992bdeb7063",
+          "current_sha256": "90c1e10ad2643c90e3b535e0edcd0efa9a112c069d4bdc4e8bc75992bdeb7063",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_input_structure_v1.json",
+          "expected_sha256": "59e79314da45ca9ca39e655572cb6e800282f9a256664206f2b039e0fb550723",
+          "current_sha256": "59e79314da45ca9ca39e655572cb6e800282f9a256664206f2b039e0fb550723",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_numeric.py",
+          "expected_sha256": "c3340d964c464be7124ca2d524b2af8ac96c9ac4ae0b909620fbb4e0c134c23d",
+          "current_sha256": "c3340d964c464be7124ca2d524b2af8ac96c9ac4ae0b909620fbb4e0c134c23d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_plan_v1.txt",
+          "expected_sha256": "b349605c86fff343346b95f671882cb79125c041eb2a24bbe792d0cc4fe037b0",
+          "current_sha256": "b349605c86fff343346b95f671882cb79125c041eb2a24bbe792d0cc4fe037b0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_rebuilt_v1.json.gz",
+          "expected_sha256": "c18ec5f8bdc71bdf607f2cf806e765412da8923fed460a822114b0eacdca56a7",
+          "current_sha256": "c18ec5f8bdc71bdf607f2cf806e765412da8923fed460a822114b0eacdca56a7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_release_receipt_v1.json",
+          "expected_sha256": "a038dbcbf9d0d7f335f1648ce409ffab6c9b5003dbf2e5935d61558690498f9e",
+          "current_sha256": "a038dbcbf9d0d7f335f1648ce409ffab6c9b5003dbf2e5935d61558690498f9e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_structure_core_frozen_v1.py",
+          "expected_sha256": "a71d07a28fdad7e5a8b5f9f8154f49e858716994a67727aaadc4c62163f536a6",
+          "current_sha256": "a71d07a28fdad7e5a8b5f9f8154f49e858716994a67727aaadc4c62163f536a6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_structure_reconstruction_v1.json",
+          "expected_sha256": "b3217d9f75df3ca92fd87d242af95536849ecad8634dc903e5b894323e204ca9",
+          "current_sha256": "b3217d9f75df3ca92fd87d242af95536849ecad8634dc903e5b894323e204ca9",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_v1.json",
+          "expected_sha256": "6b23947ada87e2fe552b3af0ec5dab44db0279e5eb6f786f2927ccf383556a20",
+          "current_sha256": "6b23947ada87e2fe552b3af0ec5dab44db0279e5eb6f786f2927ccf383556a20",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/audit_v1.txt",
+          "expected_sha256": "4fc7e0585a88a00e5a2804cf2aa330ef3fbf39d72f301032bb5887364bd5877e",
+          "current_sha256": "4fc7e0585a88a00e5a2804cf2aa330ef3fbf39d72f301032bb5887364bd5877e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/delivery_manifest_v1.json",
+          "expected_sha256": "f0c507bd52fb388792353f3adf8026c993467db12f747ad19ad30614f1db3b8e",
+          "current_sha256": "f0c507bd52fb388792353f3adf8026c993467db12f747ad19ad30614f1db3b8e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/make_report.py",
+          "expected_sha256": "184367366326c841adf970d0c31890fb313b842e86f04f265f44479221ca4226",
+          "current_sha256": "184367366326c841adf970d0c31890fb313b842e86f04f265f44479221ca4226",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/proposal_v1.txt",
+          "expected_sha256": "ee5ed8c150cdf13caa3e0becb26f1a0cbbde07ee1f0c7778269744c15b2a38fb",
+          "current_sha256": "ee5ed8c150cdf13caa3e0becb26f1a0cbbde07ee1f0c7778269744c15b2a38fb",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/protocol_v1.txt",
+          "expected_sha256": "c7da33724d904ead34ba65a282a5a6d31a0af0aa5952736c83453ee651d382f2",
+          "current_sha256": "c7da33724d904ead34ba65a282a5a6d31a0af0aa5952736c83453ee651d382f2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_findings_manifest_v1.json",
+          "expected_sha256": "4702715405eb94bb922d1918be826b25ce88779f281be7b747e9ad3db08473e0",
+          "current_sha256": "4702715405eb94bb922d1918be826b25ce88779f281be7b747e9ad3db08473e0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/allowlist_v1.json",
+          "expected_sha256": "42d2cb9950356d45e79aa3522d50920d840d654ee43490f2789ac227ccfe4817",
+          "current_sha256": "42d2cb9950356d45e79aa3522d50920d840d654ee43490f2789ac227ccfe4817",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/audit_numeric_freeze.public.json",
+          "expected_sha256": "90ca2bed19fb5c4635955cbbb9abb927d53bb4a693f0f499a5060661ab82f202",
+          "current_sha256": "90ca2bed19fb5c4635955cbbb9abb927d53bb4a693f0f499a5060661ab82f202",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/path_projection_v1.json",
+          "expected_sha256": "9b965f11248aa2c02e176a72d9e70916fc86bd35915269c596b1bcbc02220a41",
+          "current_sha256": "9b965f11248aa2c02e176a72d9e70916fc86bd35915269c596b1bcbc02220a41",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/privacy_review_v1.json",
+          "expected_sha256": "067f5f136b91a646a939116eabe52562bc2d1dafe9882e5764b2d85b83784947",
+          "current_sha256": "067f5f136b91a646a939116eabe52562bc2d1dafe9882e5764b2d85b83784947",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/publish_files.txt",
+          "expected_sha256": "e256daf715fad40f5232abd2b0db7bf6818c16cf34a776da8d42c16c362bd57a",
+          "current_sha256": "e256daf715fad40f5232abd2b0db7bf6818c16cf34a776da8d42c16c362bd57a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/published_eight_lock_v1.json",
+          "expected_sha256": "dee46d88e8c72eebcd4ce6040f90c8d84f1ebd109da9a2d54ed236c4e32229f7",
+          "current_sha256": "dee46d88e8c72eebcd4ce6040f90c8d84f1ebd109da9a2d54ed236c4e32229f7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/public_repro/replay_validation_v1.json",
+          "expected_sha256": "cb9747c60ee326ae1b7fcbaa3591bfb5b0e511a3f790a77527a5277a7bc5cc2a",
+          "current_sha256": "cb9747c60ee326ae1b7fcbaa3591bfb5b0e511a3f790a77527a5277a7bc5cc2a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/publication_projection_v1.json",
+          "expected_sha256": "47a6980435fab3c802b6e582e8e95da3719acec6f9d8ddd2046921ba4eef12ac",
+          "current_sha256": "47a6980435fab3c802b6e582e8e95da3719acec6f9d8ddd2046921ba4eef12ac",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/replay_public.py",
+          "expected_sha256": "7d7c38d758381be3f21cfe52413139b0d6344977144224e1a0b29a5c43ebeb4e",
+          "current_sha256": "7d7c38d758381be3f21cfe52413139b0d6344977144224e1a0b29a5c43ebeb4e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/report_v1.txt",
+          "expected_sha256": "2c420780ef43115c222f03488a8970ef47e5436f8be41c38d8c4588adbe03b06",
+          "current_sha256": "2c420780ef43115c222f03488a8970ef47e5436f8be41c38d8c4588adbe03b06",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/review_receipt_v1.json",
+          "expected_sha256": "c0778293b08cdd5c92a7447f3a4c965122f957c587b681923fc446f72ec468fc",
+          "current_sha256": "c0778293b08cdd5c92a7447f3a4c965122f957c587b681923fc446f72ec468fc",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run.py",
+          "expected_sha256": "0aa7c56f72e941960f9e259ae372d353839e17cebeead1992a5fef1374ed9590",
+          "current_sha256": "0aa7c56f72e941960f9e259ae372d353839e17cebeead1992a5fef1374ed9590",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/IT__packet_tokens.json.gz",
+          "expected_sha256": "75e1c2248bce2e85e466c899cb9ee5dae9f8a514a5c85dfa0eaa963da4c99c26",
+          "current_sha256": "75e1c2248bce2e85e466c899cb9ee5dae9f8a514a5c85dfa0eaa963da4c99c26",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/IT__strict_space.json.gz",
+          "expected_sha256": "0debcfc90853eeccd68a5f87461631337b79c3b92d0eca0f8a8683f9a2488ffa",
+          "current_sha256": "0debcfc90853eeccd68a5f87461631337b79c3b92d0eca0f8a8683f9a2488ffa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/ZL__packet_tokens.json.gz",
+          "expected_sha256": "cd81402f68c979d0170b9700d4497f18e8f6292f013353f74f83534927d9ecd3",
+          "current_sha256": "cd81402f68c979d0170b9700d4497f18e8f6292f013353f74f83534927d9ecd3",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/ZL__strict_space.json.gz",
+          "expected_sha256": "958ad0c5ca47ddec1c40e69a33576cfc9aa522d77527b70e8f79d9d8ea50935f",
+          "current_sha256": "958ad0c5ca47ddec1c40e69a33576cfc9aa522d77527b70e8f79d9d8ea50935f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/complete.json",
+          "expected_sha256": "20e15c9bc97fbb757a6fd040bc7e6fecdf586262861b502ac684a64a9d0010dc",
+          "current_sha256": "20e15c9bc97fbb757a6fd040bc7e6fecdf586262861b502ac684a64a9d0010dc",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/freeze.json",
+          "expected_sha256": "ecd1bc27a0acd676e6dd758b1cebb6dfae981c710be4f2037834e8ca7721eca9",
+          "current_sha256": "ecd1bc27a0acd676e6dd758b1cebb6dfae981c710be4f2037834e8ca7721eca9",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/inventory__IT__packet_tokens.json.gz",
+          "expected_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "current_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/inventory__IT__strict_space.json.gz",
+          "expected_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "current_sha256": "4528de5a4174fa6ff4c8da4568e20232a02f96ed7b4512d9a1280a3783e136cf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/inventory__ZL__packet_tokens.json.gz",
+          "expected_sha256": "7e40d13a6d2d73d4bfb9127c39bb5956c3735501be2452349ff6c24323b603ba",
+          "current_sha256": "7e40d13a6d2d73d4bfb9127c39bb5956c3735501be2452349ff6c24323b603ba",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/inventory__ZL__strict_space.json.gz",
+          "expected_sha256": "12ccd1d1d21e36eaac36789d820a253f38d2cdd24cef56016b5d2fb0832c680c",
+          "current_sha256": "12ccd1d1d21e36eaac36789d820a253f38d2cdd24cef56016b5d2fb0832c680c",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/summary_16.json",
+          "expected_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "current_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/run_v1/summary_partial.json",
+          "expected_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "current_sha256": "57f75ba864cc2d4446e6ddfd504fe3e38cceae2547272d7e68d5aaf9f0108c89",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/support.py",
+          "expected_sha256": "8a15844f48c00a35a964b87c6015502ab8e5690ca1ab5d5618750f0dde433988",
+          "current_sha256": "8a15844f48c00a35a964b87c6015502ab8e5690ca1ab5d5618750f0dde433988",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/support_compact_v1.json",
+          "expected_sha256": "1ab15f6ab6311c5127bed5c695e2e4dc0fbf5dce7cc61c53736eff892fbb4ca2",
+          "current_sha256": "1ab15f6ab6311c5127bed5c695e2e4dc0fbf5dce7cc61c53736eff892fbb4ca2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/support_consistency_v1.json",
+          "expected_sha256": "5e211ef28671f11a36c0438ea220beffd064b270bb7ed01bca47a1cbdef1db43",
+          "current_sha256": "5e211ef28671f11a36c0438ea220beffd064b270bb7ed01bca47a1cbdef1db43",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/support_summary_v1.txt",
+          "expected_sha256": "cd1fee13a8d3ed6a2db0d5dfb5dce67e858b8699a5fc45147d9c3ff5c417190e",
+          "current_sha256": "cd1fee13a8d3ed6a2db0d5dfb5dce67e858b8699a5fc45147d9c3ff5c417190e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/support_v1.json",
+          "expected_sha256": "e53f332ec900b4b709bf7787e4771acc2e42812fcce3ff8db339543e59b455ec",
+          "current_sha256": "e53f332ec900b4b709bf7787e4771acc2e42812fcce3ff8db339543e59b455ec",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/test_run.py",
+          "expected_sha256": "d4f868e2007a55571e530d7f5d15478da26d72976ca0fd72a702ed1d4964c432",
+          "current_sha256": "d4f868e2007a55571e530d7f5d15478da26d72976ca0fd72a702ed1d4964c432",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/design/space_bridge/toy_receipt_v1.json",
+          "expected_sha256": "1ab07052e68ae7a9a257409aff5776fe45f29783e6ad1a0662681e655b21b686",
+          "current_sha256": "1ab07052e68ae7a9a257409aff5776fe45f29783e6ad1a0662681e655b21b686",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/literature/label_support.json",
+          "expected_sha256": "8ae2c7ce14bbbb06fea53c0effaed651893e21c5bd89e0bcefb7b3c933409830",
+          "current_sha256": "8ae2c7ce14bbbb06fea53c0effaed651893e21c5bd89e0bcefb7b3c933409830",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/assets_manifest.json",
+          "expected_sha256": "b6b0425391be952415bea5f4ffa07729eeb681d2388a4a209544ce1651765ae6",
+          "current_sha256": "b6b0425391be952415bea5f4ffa07729eeb681d2388a4a209544ce1651765ae6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/completed_image_freeze_v1.json",
+          "expected_sha256": "95b14c81a48d1d2865888ca869e733571c7c84a285804d0b5fdcf1f3b60c3218",
+          "current_sha256": "95b14c81a48d1d2865888ca869e733571c7c84a285804d0b5fdcf1f3b60c3218",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/crossplant_visual_review_v1.json",
+          "expected_sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c",
+          "current_sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/crossplant_visual_review_v1.txt",
+          "expected_sha256": "a380d1028646176fc136641c00fb24e294a674dcae161b163480844722816ba2",
+          "current_sha256": "a380d1028646176fc136641c00fb24e294a674dcae161b163480844722816ba2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/protocol.txt",
+          "expected_sha256": "511dab7d33ade10d9394e924e198f2658ed06ce562b8ac545542d3fda44664f6",
+          "current_sha256": "511dab7d33ade10d9394e924e198f2658ed06ce562b8ac545542d3fda44664f6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/protocol_addendum_01.txt",
+          "expected_sha256": "0d8cab19a2f26308d182d976032f71890a956e10817b57b00f1b4f1f0d8923fd",
+          "current_sha256": "0d8cab19a2f26308d182d976032f71890a956e10817b57b00f1b4f1f0d8923fd",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/source_roster.json",
+          "expected_sha256": "297371c4117b5efb5464d862bd9ed9a464edfa83dc9e0d4e561b12e71e13e5aa",
+          "current_sha256": "297371c4117b5efb5464d862bd9ed9a464edfa83dc9e0d4e561b12e71e13e5aa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "research/research_next/semantic7h_20261118/visual/crossplant/verification_receipt.json",
+          "expected_sha256": "58bc4313f2a0ad0e6d401564f80a04ac1bc7f1b9a28fc561a98e6b706e207e27",
+          "current_sha256": "58bc4313f2a0ad0e6d401564f80a04ac1bc7f1b9a28fc561a98e6b706e207e27",
+          "status": "exact_hash_match"
+        }
+      ]
+    },
+    {
+      "receipt": "design/space_bridge_herbal/public_replay/public_payload_manifest.json",
+      "receipt_sha256": "28b661501bd504bd6caf529c06d15a037a2738348759e1289b087fa10f3c44fe",
+      "entries": [
+        {
+          "path": "README.txt",
+          "expected_sha256": "5c03f33a2baec66e5e54043e2e9a9a91050b4758a87be1f8e0a493f22bcdf4ca",
+          "current_sha256": "5c03f33a2baec66e5e54043e2e9a9a91050b4758a87be1f8e0a493f22bcdf4ca",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/A35365.xml",
+          "expected_sha256": "bff4bd8569c5417e1fead6cc4c06b6e0be5b27eaf93295481feccaf524ee9acb",
+          "current_sha256": "bff4bd8569c5417e1fead6cc4c06b6e0be5b27eaf93295481feccaf524ee9acb",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/A35365.xml.gz",
+          "expected_sha256": "f70e6c7ba5ff15091fc830e762ee461036d0c470551af0bc241988fd2f688936",
+          "current_sha256": "f70e6c7ba5ff15091fc830e762ee461036d0c470551af0bc241988fd2f688936",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/manifest.json",
+          "expected_sha256": "9e87ab2eaae9d0535b0a205585c2c0b658e3439b63678986db7983c789e59b2a",
+          "current_sha256": "9e87ab2eaae9d0535b0a205585c2c0b658e3439b63678986db7983c789e59b2a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/protocol_v1.txt",
+          "expected_sha256": "ada5c56fd56b2ab9f3db06b1d62ef254b80807a443302cd6a58957f173d5f3f2",
+          "current_sha256": "ada5c56fd56b2ab9f3db06b1d62ef254b80807a443302cd6a58957f173d5f3f2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/run_v1/rows.json.gz",
+          "expected_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "current_sha256": "775a4ddc6a6c5b868d80b6077592a5e3381b1fb361de88570ab63f19a44a3310",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/run_v1/sections.json.gz",
+          "expected_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "current_sha256": "7c82f46b50b37e73187ccccb6f9d00445cc03204048461ca3bdc25fbadb9e73e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/known_herbal/source_provenance.json",
+          "expected_sha256": "b25cc7d1b9916c8f91fc0c29280709867ce9e12f9bff8c6a81884b51dfcecbd9",
+          "current_sha256": "b25cc7d1b9916c8f91fc0c29280709867ce9e12f9bff8c6a81884b51dfcecbd9",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/AUDIT_REPRODUCE.txt",
+          "expected_sha256": "d67b272f89607a514e6bbbc2c1d1634ac60fdf042a98ef64873c649013e62e30",
+          "current_sha256": "d67b272f89607a514e6bbbc2c1d1634ac60fdf042a98ef64873c649013e62e30",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/REPRODUCE.txt",
+          "expected_sha256": "86408affb4d6530390a50f2e6782418121458d4b26cfd7d09ffb56c0aee376c7",
+          "current_sha256": "86408affb4d6530390a50f2e6782418121458d4b26cfd7d09ffb56c0aee376c7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/SCHEMA.txt",
+          "expected_sha256": "cb8696c1d440827a2400745f64feca677f63848fd57739fd4f6c2e501fb64e89",
+          "current_sha256": "cb8696c1d440827a2400745f64feca677f63848fd57739fd4f6c2e501fb64e89",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/all_adjacent_matches.json",
+          "expected_sha256": "21166e1c08b781d2ead70e48c787be3ee04483010ac552588c071161f1039297",
+          "current_sha256": "21166e1c08b781d2ead70e48c787be3ee04483010ac552588c071161f1039297",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/approval_v1.txt",
+          "expected_sha256": "c67281820dc7082686fd68852cf310e82cb85e9f0bf9298b00fe9b32d02c7e0f",
+          "current_sha256": "c67281820dc7082686fd68852cf310e82cb85e9f0bf9298b00fe9b32d02c7e0f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_compare.py",
+          "expected_sha256": "0761a32ef85bb09691b8e33445ab3ffaaccdf11b4df82de31898619b99dc0889",
+          "current_sha256": "0761a32ef85bb09691b8e33445ab3ffaaccdf11b4df82de31898619b99dc0889",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_compare_attempt_01.py",
+          "expected_sha256": "6c1b0daf861969c8079052a0b6ada1b7350a7ce3f73447cdf748dee8a4633940",
+          "current_sha256": "6c1b0daf861969c8079052a0b6ada1b7350a7ce3f73447cdf748dee8a4633940",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_comparison_attempt_01.json",
+          "expected_sha256": "fff418687d55bf4599c1ca7447863827c54b428e8de0de91022dee8ba4bdfdcf",
+          "current_sha256": "fff418687d55bf4599c1ca7447863827c54b428e8de0de91022dee8ba4bdfdcf",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_core.py",
+          "expected_sha256": "6a4418dfc65ddf6f68c90e5b429e5e50a8e84231b808fe2e4557839aa21ca828",
+          "current_sha256": "6a4418dfc65ddf6f68c90e5b429e5e50a8e84231b808fe2e4557839aa21ca828",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_core_attempt_01.py",
+          "expected_sha256": "03e1bb0813ddac4d91bcd12cc5e9fd1abe083a59cf263abbc59e6bea9f0f6213",
+          "current_sha256": "03e1bb0813ddac4d91bcd12cc5e9fd1abe083a59cf263abbc59e6bea9f0f6213",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_release_receipt_v1.json",
+          "expected_sha256": "1e1a7cb199001b4a1241943e35edaf1e6adcbc2634437ce22fdc705ca0338ea9",
+          "current_sha256": "1e1a7cb199001b4a1241943e35edaf1e6adcbc2634437ce22fdc705ca0338ea9",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v1/failure.json",
+          "expected_sha256": "60da2d39a150e7294c8a95f598f7f3719f055a41f4cef8df38d17e54bcf0a2ae",
+          "current_sha256": "60da2d39a150e7294c8a95f598f7f3719f055a41f4cef8df38d17e54bcf0a2ae",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v1/freeze.json",
+          "expected_sha256": "6e2fe96b0f384d58f8addd315e0514b7b461b7df10c7080e28aa006811b3a672",
+          "current_sha256": "6e2fe96b0f384d58f8addd315e0514b7b461b7df10c7080e28aa006811b3a672",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/changes.json.gz",
+          "expected_sha256": "ab31deea58e3de422a33058b63baa793362c138ac352b3891d70aa222c6f9c18",
+          "current_sha256": "ab31deea58e3de422a33058b63baa793362c138ac352b3891d70aa222c6f9c18",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/complete.json",
+          "expected_sha256": "f9c1e8dc7406c929a46aab72d759439933460aa7ac7fd8e4e6676d0154fb3ae6",
+          "current_sha256": "f9c1e8dc7406c929a46aab72d759439933460aa7ac7fd8e4e6676d0154fb3ae6",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/freeze.json",
+          "expected_sha256": "e1481b92acb1c3c83f4466fc8b8d02fe016951f8a5e49f5e06565be8f9ec7f07",
+          "current_sha256": "e1481b92acb1c3c83f4466fc8b8d02fe016951f8a5e49f5e06565be8f9ec7f07",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/identity.json.gz",
+          "expected_sha256": "b946d49413b90c4a104479ea7018508d4b0bac36c753f267b69934439b76de46",
+          "current_sha256": "b946d49413b90c4a104479ea7018508d4b0bac36c753f267b69934439b76de46",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/matrix.json.gz",
+          "expected_sha256": "a45a181d694501ca33a1889c8db31f0ed47835859545af212759ca22fcf8fb2b",
+          "current_sha256": "a45a181d694501ca33a1889c8db31f0ed47835859545af212759ca22fcf8fb2b",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/packet.json.gz",
+          "expected_sha256": "171edc87de17167d75174d88eb783ea9c8ae3d8f966729d801b0db1d006275a4",
+          "current_sha256": "171edc87de17167d75174d88eb783ea9c8ae3d8f966729d801b0db1d006275a4",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_run_v2/summary.json.gz",
+          "expected_sha256": "281f4aa09630f911bdb3a6d6709c8b08ef67bb71408dccbf94d8e0d866e4ba9e",
+          "current_sha256": "281f4aa09630f911bdb3a6d6709c8b08ef67bb71408dccbf94d8e0d866e4ba9e",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_v1.json",
+          "expected_sha256": "b6cb9eb927d8fa99a8785edb608e9337b73c9f23df6a5312851dceed122f2869",
+          "current_sha256": "b6cb9eb927d8fa99a8785edb608e9337b73c9f23df6a5312851dceed122f2869",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/audit_v1.txt",
+          "expected_sha256": "f127db443125d7c0c0daa1f8c86cdbfd1919a7371e5d9fd53095957f345cf014",
+          "current_sha256": "f127db443125d7c0c0daa1f8c86cdbfd1919a7371e5d9fd53095957f345cf014",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/build_context_review.py",
+          "expected_sha256": "bce68115b2025cc2d8d0e1448a6ec3e78f33a42d4183da11c8a758326bdc7fc2",
+          "current_sha256": "bce68115b2025cc2d8d0e1448a6ec3e78f33a42d4183da11c8a758326bdc7fc2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/context_review_receipt_v1.json",
+          "expected_sha256": "14a0531ee7d6b970c816ff39bae107e87c449993570bf52d870b3fa020464396",
+          "current_sha256": "14a0531ee7d6b970c816ff39bae107e87c449993570bf52d870b3fa020464396",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/context_review_v1.json",
+          "expected_sha256": "387a420cf8657265686e6af53c9109a61aa13b48cac8df59802ade98ce44d4fd",
+          "current_sha256": "387a420cf8657265686e6af53c9109a61aa13b48cac8df59802ade98ce44d4fd",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/context_review_v1.txt",
+          "expected_sha256": "93ecf67c1e433620554d34f74c1bca6ee3998f18d024c1d4186d70b56d4f8181",
+          "current_sha256": "93ecf67c1e433620554d34f74c1bca6ee3998f18d024c1d4186d70b56d4f8181",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/make_report.py",
+          "expected_sha256": "95c87234da935a7648f0d4774c477561196357b034549c9a9bdf8c66e2eb2c65",
+          "current_sha256": "95c87234da935a7648f0d4774c477561196357b034549c9a9bdf8c66e2eb2c65",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/protocol_v1.txt",
+          "expected_sha256": "f5c1c0cc16a246889da05b7a7cea36d27de106f566f10b14d9c1352d4c44d178",
+          "current_sha256": "f5c1c0cc16a246889da05b7a7cea36d27de106f566f10b14d9c1352d4c44d178",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/report.txt",
+          "expected_sha256": "de421788ef24620734d23ea64fdd676d8362987c51a496f9150676c6ff62b43a",
+          "current_sha256": "de421788ef24620734d23ea64fdd676d8362987c51a496f9150676c6ff62b43a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/report_receipt.json",
+          "expected_sha256": "b1cb5cc9ec748e2e5edd8e11e795874d1d38e444b40cc63f0afd747ffd71c2a4",
+          "current_sha256": "b1cb5cc9ec748e2e5edd8e11e795874d1d38e444b40cc63f0afd747ffd71c2a4",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run.py",
+          "expected_sha256": "5f54ae46b5de40ef4b576741b0a0c7662f7d3eed239480f617b52637549ce5d0",
+          "current_sha256": "5f54ae46b5de40ef4b576741b0a0c7662f7d3eed239480f617b52637549ce5d0",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/complete.json",
+          "expected_sha256": "35dc8e17fe27f5e9f7c8169b2deaa8e02fe6f06d862979fe83fdafc5b692886f",
+          "current_sha256": "35dc8e17fe27f5e9f7c8169b2deaa8e02fe6f06d862979fe83fdafc5b692886f",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/freeze.json",
+          "expected_sha256": "64c6f57f8f680076254ec67c8f995eab8a8f7e1136ecc1375011da55606a6a96",
+          "current_sha256": "64c6f57f8f680076254ec67c8f995eab8a8f7e1136ecc1375011da55606a6a96",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/identity.json",
+          "expected_sha256": "0d486dbe0a79d38c60299940c45dd212e89e07b8d84083b9d53c52a3a947c26d",
+          "current_sha256": "0d486dbe0a79d38c60299940c45dd212e89e07b8d84083b9d53c52a3a947c26d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/input_changes.json.gz",
+          "expected_sha256": "10cba6e708c6c9662e227005426e2a799a6cd6fb790eaf143653bcc93fc36eaa",
+          "current_sha256": "10cba6e708c6c9662e227005426e2a799a6cd6fb790eaf143653bcc93fc36eaa",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/matrix.json.gz",
+          "expected_sha256": "69f3856200951dfce08a43007635d49ea522d40492fe6c213c76443c6da9c8d8",
+          "current_sha256": "69f3856200951dfce08a43007635d49ea522d40492fe6c213c76443c6da9c8d8",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/packet.json.gz",
+          "expected_sha256": "dc3c45976034021ed34b8275c52d4d082503e8edaa1758017933474b0ff7b9a7",
+          "current_sha256": "dc3c45976034021ed34b8275c52d4d082503e8edaa1758017933474b0ff7b9a7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/summary.json",
+          "expected_sha256": "63ab05c4f66ff76f0dedfbe0f483623a776a739f4cb0ed7883ccba63acab4c2a",
+          "current_sha256": "63ab05c4f66ff76f0dedfbe0f483623a776a739f4cb0ed7883ccba63acab4c2a",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/toy.json",
+          "expected_sha256": "3591a13b2bcc4dea216c50ef08d9225d7a82d65bb23f9476add6c4d6a8e02830",
+          "current_sha256": "3591a13b2bcc4dea216c50ef08d9225d7a82d65bb23f9476add6c4d6a8e02830",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/run_v1/transitions.json.gz",
+          "expected_sha256": "22722a8304bd71a315927cce61c2c621b6ad4ef75ee9749f4b722e1a6a233aeb",
+          "current_sha256": "22722a8304bd71a315927cce61c2c621b6ad4ef75ee9749f4b722e1a6a233aeb",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/support.py",
+          "expected_sha256": "697db17e668dcb217a242c5cf9bfbebc7ada28057222816b68452ee7c9769370",
+          "current_sha256": "697db17e668dcb217a242c5cf9bfbebc7ada28057222816b68452ee7c9769370",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/support_freeze_v1.json",
+          "expected_sha256": "6464e5a73f1cc1a93b720125b9fec6568dcb0f97d0c41c9bb30cf15c34efbcd5",
+          "current_sha256": "6464e5a73f1cc1a93b720125b9fec6568dcb0f97d0c41c9bb30cf15c34efbcd5",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/support_v1.json",
+          "expected_sha256": "8f68c8c9ca7d622918470ef1d040af229301578d4aef6448c1942774e1f085f2",
+          "current_sha256": "8f68c8c9ca7d622918470ef1d040af229301578d4aef6448c1942774e1f085f2",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "design/space_bridge_herbal/toy_v1.json",
+          "expected_sha256": "eb776b9a6e23d93ead13f5a991e9df70341dbe656939ae55d634ae8fc0532854",
+          "current_sha256": "eb776b9a6e23d93ead13f5a991e9df70341dbe656939ae55d634ae8fc0532854",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "public_build_failure_01.json",
+          "expected_sha256": "cc46c06e0ff7075e4c0157bb54c68d8270603c1ac7494415c19777ccf26355c7",
+          "current_sha256": "cc46c06e0ff7075e4c0157bb54c68d8270603c1ac7494415c19777ccf26355c7",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "public_projection_receipt.json",
+          "expected_sha256": "a69740a169a234e2154744d6e0b5f97e395403ac7d2ec9064de90aa27534cd2d",
+          "current_sha256": "a69740a169a234e2154744d6e0b5f97e395403ac7d2ec9064de90aa27534cd2d",
+          "status": "exact_hash_match"
+        },
+        {
+          "path": "replay_public.py",
+          "expected_sha256": "2bab5602045aea8aaa9dfceff70f313dadf44d05e5dafb784543bcb3124b5c76",
+          "current_sha256": "2bab5602045aea8aaa9dfceff70f313dadf44d05e5dafb784543bcb3124b5c76",
+          "status": "exact_hash_match"
+        }
+      ]
+    }
+  ],
+  "evidence_snapshot": [
+    {
+      "path": "design/boundary_bridge/audit_v1.json",
+      "sha256": "68a69d8392e4d28aa0b46fcf9a9f3ee3958f4ae21c017f81c413d0e1e573c4a3",
+      "bytes": 67373
+    },
+    {
+      "path": "design/boundary_bridge/protocol_v1.txt",
+      "sha256": "5866bd2c3a47c7a188110294a1e7f21c7444bab10a9163009216cefaf847d905",
+      "bytes": 5504
+    },
+    {
+      "path": "design/boundary_bridge/run_v1/complete.json",
+      "sha256": "71e106fe71ef0b082f3cbd2227aa6b8f4d60317b96d1f462b62544445b113e97",
+      "bytes": 889
+    },
+    {
+      "path": "design/crossplant/audit_v1.json",
+      "sha256": "cfb04e60f48fa670192a8b5d2abb4eb46e5ff6b4625ceb1c3ca0bca83ff72d2b",
+      "bytes": 68918
+    },
+    {
+      "path": "design/crossplant/protocol_v1.txt",
+      "sha256": "4864bdcca28d0b60d7381be5e4af7fab2b34b3354cd762abfb3f1edd2565a3bc",
+      "bytes": 7906
+    },
+    {
+      "path": "design/crossplant/run_v2/complete.json",
+      "sha256": "2206185f8d8c13566b7ee5d3181d8fb42abacc81e67b3b779c62882b278a75d7",
+      "bytes": 1891
+    },
+    {
+      "path": "design/crossplant/run_v2/freeze.json",
+      "sha256": "eb75731b7e58426419b166e31ae706516f603714b770fb31eacd53ba1119436a",
+      "bytes": 2709
+    },
+    {
+      "path": "design/known_herbal/audit_v1.json",
+      "sha256": "5bdde0d0567ada5a12d3da215e8d7c75a46279f7da5cd6c89d7a02ad5f27dcfd",
+      "bytes": 20635
+    },
+    {
+      "path": "design/known_herbal/manifest.json",
+      "sha256": "9e87ab2eaae9d0535b0a205585c2c0b658e3439b63678986db7983c789e59b2a",
+      "bytes": 2318
+    },
+    {
+      "path": "design/known_herbal/run_v1/complete.json",
+      "sha256": "64fd078d6ba050caeed9ae52e1e0a489fe309db3df98542fc6232ef2f989c1db",
+      "bytes": 483
+    },
+    {
+      "path": "design/leaf_controls/exchangeability_diagnostics.json",
+      "sha256": "55947ac96eef44b7a81367508a454c04ebd58315d2b7900660ce4c0d7107c122",
+      "bytes": 113406
+    },
+    {
+      "path": "design/leaf_controls/leaf_audit_v1.json",
+      "sha256": "85329a68b27d4de103ec7997c1fbc7e8166fd51d06684bd4ba10eba1a2caa465",
+      "bytes": 133949
+    },
+    {
+      "path": "design/leaf_controls/protocol.txt",
+      "sha256": "7d4c6b7a2a4e29ecf1ead5fa4a89075461183664e92ad100b514ab4f205db768",
+      "bytes": 6552
+    },
+    {
+      "path": "design/leaf_controls/representation_change.txt",
+      "sha256": "46ebb35ee2bff3cd9707d18eecca351ab2d3e14c3243670e2a57ca955f309200",
+      "bytes": 1556
+    },
+    {
+      "path": "design/leaf_controls/run_v2/complete.json",
+      "sha256": "9acce22a07dca6f38c5a518ece36d573dc61d258d480a64f56dfbfc91741c1df",
+      "bytes": 1423
+    },
+    {
+      "path": "design/leaf_controls/run_v2/selection.json",
+      "sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+      "bytes": 15759
+    },
+    {
+      "path": "design/repeated_label_feasibility/fixed_nine_roster_v1.json",
+      "sha256": "9659e0ff6fa20e09394245b97e1b354c4d75dea0f15826b676b7559f8c7313bf",
+      "bytes": 17362
+    },
+    {
+      "path": "design/repeated_label_feasibility/independent_audit_v1.json",
+      "sha256": "01053d3b9a231ae5a8e99acfcb44a7486853acc553a3a23dc7f3778497696036",
+      "bytes": 961
+    },
+    {
+      "path": "design/repeated_label_feasibility/report_v1.txt",
+      "sha256": "366c5b12d6b2a926a3b9126705e1937f439bcf6c064ddfd5b89b50d2bf4d7f8d",
+      "bytes": 3655
+    },
+    {
+      "path": "design/space_bridge/audit_structure_reconstruction_v1.json",
+      "sha256": "b3217d9f75df3ca92fd87d242af95536849ecad8634dc903e5b894323e204ca9",
+      "bytes": 1391
+    },
+    {
+      "path": "design/space_bridge/audit_v1.json",
+      "sha256": "6b23947ada87e2fe552b3af0ec5dab44db0279e5eb6f786f2927ccf383556a20",
+      "bytes": 9247
+    },
+    {
+      "path": "design/space_bridge/protocol_v1.txt",
+      "sha256": "c7da33724d904ead34ba65a282a5a6d31a0af0aa5952736c83453ee651d382f2",
+      "bytes": 4465
+    },
+    {
+      "path": "design/space_bridge/public_repro/path_projection_v1.json",
+      "sha256": "9b965f11248aa2c02e176a72d9e70916fc86bd35915269c596b1bcbc02220a41",
+      "bytes": 988
+    },
+    {
+      "path": "design/space_bridge/public_repro/release_manifest_v1.json",
+      "sha256": "a4917b7fc33e35268742e685117bbaec792c4a7fb4c8a2cfa9117abc00437eec",
+      "bytes": 15162
+    },
+    {
+      "path": "design/space_bridge/public_repro/replay_validation_v1.json",
+      "sha256": "cb9747c60ee326ae1b7fcbaa3591bfb5b0e511a3f790a77527a5277a7bc5cc2a",
+      "bytes": 4843
+    },
+    {
+      "path": "design/space_bridge/run_v1/complete.json",
+      "sha256": "20e15c9bc97fbb757a6fd040bc7e6fecdf586262861b502ac684a64a9d0010dc",
+      "bytes": 1130
+    },
+    {
+      "path": "design/space_bridge_herbal/audit_v1.json",
+      "sha256": "b6cb9eb927d8fa99a8785edb608e9337b73c9f23df6a5312851dceed122f2869",
+      "bytes": 10552
+    },
+    {
+      "path": "design/space_bridge_herbal/context_review_v1.json",
+      "sha256": "387a420cf8657265686e6af53c9109a61aa13b48cac8df59802ade98ce44d4fd",
+      "bytes": 4183
+    },
+    {
+      "path": "design/space_bridge_herbal/protocol_v1.txt",
+      "sha256": "f5c1c0cc16a246889da05b7a7cea36d27de106f566f10b14d9c1352d4c44d178",
+      "bytes": 5485
+    },
+    {
+      "path": "design/space_bridge_herbal/public_package_receipt.json",
+      "sha256": "4279d97d2b1c857f0faf4cecadf590361f28a06fa115f02c7781af8c9ac7b885",
+      "bytes": 1422
+    },
+    {
+      "path": "design/space_bridge_herbal/public_replay/clean_validation_receipt.json",
+      "sha256": "f3ec9a2fc51e03f8b5cf1a87576071362b6622eda804ed29be5b97660861efe2",
+      "bytes": 2038
+    },
+    {
+      "path": "design/space_bridge_herbal/public_replay/public_payload_manifest.json",
+      "sha256": "28b661501bd504bd6caf529c06d15a037a2738348759e1289b087fa10f3c44fe",
+      "bytes": 6978
+    },
+    {
+      "path": "design/space_bridge_herbal/public_replay/public_projection_receipt.json",
+      "sha256": "a69740a169a234e2154744d6e0b5f97e395403ac7d2ec9064de90aa27534cd2d",
+      "bytes": 23677
+    },
+    {
+      "path": "design/space_bridge_herbal/run_v1/complete.json",
+      "sha256": "35dc8e17fe27f5e9f7c8169b2deaa8e02fe6f06d862979fe83fdafc5b692886f",
+      "bytes": 745
+    },
+    {
+      "path": "literature/davis_rules.json",
+      "sha256": "86af103503d2c4a68c25f648e30455c7aaf082c386e4dff32d544948a157cffe",
+      "bytes": 3239
+    },
+    {
+      "path": "literature/davis_scope.txt",
+      "sha256": "0cdfc2542a4aeed388e75846a8697c27213ee237d33567c6c832bd773265e31d",
+      "bytes": 3909
+    },
+    {
+      "path": "literature/hand_attribution_audit/audit_v1.md",
+      "sha256": "aadae6da7012bef31d88101af0609e6cd119b5f70dd421b648a285efb343a953",
+      "bytes": 5806
+    },
+    {
+      "path": "literature/label_support.json",
+      "sha256": "8ae2c7ce14bbbb06fea53c0effaed651893e21c5bd89e0bcefb7b3c933409830",
+      "bytes": 43942
+    },
+    {
+      "path": "literature/manifest.json",
+      "sha256": "11e9449a2628474b04b4b1b530e2affcc586594f9639b4aea2541f8db02f0fb3",
+      "bytes": 1654
+    },
+    {
+      "path": "literature/plant_pairs.json",
+      "sha256": "b7e42a55f5d643a47aca156d550f11c4aae59da2ffd2e0d75efe4e5bb163a9af",
+      "bytes": 22118
+    },
+    {
+      "path": "object_registry_v2.json",
+      "sha256": "c0842576cf4e78a6466b886468aaea889540df39295e8642125bc4871442c609",
+      "bytes": 322623
+    },
+    {
+      "path": "plan.txt",
+      "sha256": "895b81355b8068728ed9a25a597f3158b7a9de41468f26a8e1b3b84a17361934",
+      "bytes": 2885
+    },
+    {
+      "path": "publication.json",
+      "sha256": "b6be04681494ea48d50f6855b1dbe642521a391c0c7ff252e13da1ed1062e18f",
+      "bytes": 44512
+    },
+    {
+      "path": "publication_checks/fresh_archive_f00055b.json",
+      "sha256": "becb6c86dd3e524b5f22c469056904b24d81b07b738bb5a9ad98b01983fa0a1d",
+      "bytes": 1517
+    },
+    {
+      "path": "publication_checks/remaining_gallery_ui_v1.json",
+      "sha256": "f8601d120ad2a1cb969be08ce8e9dd7b55e67b23399ba8bf8b5930dedfff33b8",
+      "bytes": 743
+    },
+    {
+      "path": "publication_checks/unified_space_replay_v1.json",
+      "sha256": "4701002c584e560bf2e720f730624739a3e309477ed5619b06815933a090c6e8",
+      "bytes": 671
+    },
+    {
+      "path": "session.json",
+      "sha256": "dcae86234a973e34a7b27c8566c6232ca2df30058d94997c8af32cf5120e2b32",
+      "bytes": 3162
+    },
+    {
+      "path": "session_usage_limit_checkpoint.json",
+      "sha256": "25303fef11adb254faf4cdbd58739ea75b977798c03701a444c04a5424fa4202",
+      "bytes": 2132
+    },
+    {
+      "path": "stage_assessment_v1.txt",
+      "sha256": "edb6e348090447f83cc3fdcbdbb57d39ec0a74b9e07a957d7faebf711a6afe12",
+      "bytes": 5102
+    },
+    {
+      "path": "visual/boundary_hits/review.txt",
+      "sha256": "cf958a3022d806b5254a573d681acb120306a493ac8eb0c1fc841f9ec24f6d72",
+      "bytes": 3734
+    },
+    {
+      "path": "visual/choice_controls/audit_v1.json",
+      "sha256": "5863e70a18fce408983f453da8cfa0d92b941dccdc898a0d09d8f1d09ffd586d",
+      "bytes": 45791
+    },
+    {
+      "path": "visual/choice_controls/protocol_v1.txt",
+      "sha256": "8b05e4e10235e5ab9d835103f1e6169bc2aec8bad2be855878a9ff266a09a681",
+      "bytes": 2692
+    },
+    {
+      "path": "visual/choice_controls/report_v1.txt",
+      "sha256": "e80a6dfbd0548b0a349a9942709623f905ee55899e5afbf4c65964d3619cede0",
+      "bytes": 1685
+    },
+    {
+      "path": "visual/crossplant/crossplant_visual_review_v1.json",
+      "sha256": "4d982a23e50e811fd892e0fdf96c792bec941fc730a83953acd557d9faea2d1c",
+      "bytes": 42836
+    },
+    {
+      "path": "visual/crossplant/verification_receipt.json",
+      "sha256": "58bc4313f2a0ad0e6d401564f80a04ac1bc7f1b9a28fc561a98e6b706e207e27",
+      "bytes": 1083
+    },
+    {
+      "path": "visual/geometry_review_v1.json",
+      "sha256": "916bca6ed59b5c7158b8025d1dea52f52963cd33c479db7156080e7f2383a0bc",
+      "bytes": 39657
+    },
+    {
+      "path": "visual/image_only_roster.json",
+      "sha256": "efc1ec53e7f98316b2ba0bdb9e1241f311f728604a692cc6778ef7b51cbafec5",
+      "bytes": 1044
+    },
+    {
+      "path": "visual/order_targets/publication_projection.json",
+      "sha256": "60e624e656aa0026c8149e53737d445f939091a02f99c607fd92dc5864a3c877",
+      "bytes": 1379
+    },
+    {
+      "path": "visual/order_targets/review_v1.json",
+      "sha256": "105c4d6bdb4c87c2e88337c37e1c29b682ff865e82005ea4147c914a95f5385f",
+      "bytes": 56978
+    },
+    {
+      "path": "visual/order_targets/verification_receipt_v1.json",
+      "sha256": "fc9d61975d2d409155b16d2f662c9683e3d4aa2c9a63d9e79dfc89c4f932291f",
+      "bytes": 1381
+    },
+    {
+      "path": "visual/protocol_v1.txt",
+      "sha256": "5809e18c14acf72507112f80f9bdd83f9b9d2ed53706aab9c9dd7d2f2557f21b",
+      "bytes": 1873
+    },
+    {
+      "path": "visual/queue_v1.json",
+      "sha256": "d664a9e1e8bcf45c48d3cf62184766e02f93bcf050737de4afa65ae7f22c976c",
+      "bytes": 49539
+    },
+    {
+      "path": "visual/remaining_targets/review_v1.json",
+      "sha256": "8b906d73c7f450bf98d3113f431c1cccbd8a4f2f0db60ce2c0bcf0f6d25a2431",
+      "bytes": 48004
+    },
+    {
+      "path": "visual/remaining_targets/verification_receipt_v1.json",
+      "sha256": "a2f79efbc263e935e8b3392010b8544fe270ea3b9af828ec4d1908682920b411",
+      "bytes": 1775
+    },
+    {
+      "path": "visual/repeated_label_localization/completed_localization_freeze_v1.json",
+      "sha256": "78f7790f0b3d82572b87f3e91b17fa4622245d80845fb14c92cfdc518a14a98a",
+      "bytes": 1446
+    },
+    {
+      "path": "visual/repeated_label_localization/protocol_v1.txt",
+      "sha256": "1504fe9023d940bd8c29a10ed58fc63b12ff106e8b19baa155a32c1798dba51f",
+      "bytes": 2168
+    },
+    {
+      "path": "visual/repeated_label_localization/review_v1.json",
+      "sha256": "e600e03a59779f6eb83c85a1c6e61cdf619dbdce6307b1b96d8f3c277a1aebaf",
+      "bytes": 28769
+    },
+    {
+      "path": "visual/repeated_label_localization/verification_v1.json",
+      "sha256": "27b16222aa739a62e5e1e54b60f49dda9848b83c9f75125dc406f4b7200cbda9",
+      "bytes": 5770
+    },
+    {
+      "path": "visual/root_assets_v3.json",
+      "sha256": "60d08888a7a34167eab12373c56fe1e1427152b9cb6093eadfbae68fef1f73de",
+      "bytes": 689
+    },
+    {
+      "path": "visual/root_review_v1.json",
+      "sha256": "f2a1222d0c83f55f181c79837e7b9b1a3088f57155377001f261f39e04a3f09e",
+      "bytes": 16318
+    }
+  ],
+  "urgent_remaining": [
+    "Complete or document attempted original five f67r2 localizations and f75v body-hit image checks in new addenda; never overwrite old records.",
+    "Final public snapshot including latest geometry/calibration and exact commit/deployment/download validation still pending.",
+    "At or after 16:06:13 UTC, record actual endpoint and any unfinished work; this draft cannot fulfill that condition."
+  ],
+  "historical_documents": [
+    "stage_assessment_v1.txt remaining-work paragraph predates completed 35 coverage; retain as history and use object_registry_v2/new localization for final statement.",
+    "repeated_label_feasibility/report_v1.txt describes pre-localization missing boxes; latest localization supersedes that availability fact, not its dependence/semantic limits.",
+    "Main herbal report pending-audit wording is original historical state; public README points to subsequent audit."
+  ],
+  "not_established": [
+    "Independent expert botanical or paleographic confirmation",
+    "Recovered sound values, plant names, language or translation",
+    "Strict double-blind visual replication",
+    "Independent samples equal to model rows or repeated target counts",
+    "Final complete public snapshot and reached deadline"
+  ]
+}

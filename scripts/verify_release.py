@@ -113,9 +113,14 @@ def verify_snapshot():
     if (current_research/'session.json').exists():
         leaf = current_research/'design/leaf_controls/run_v2'
         definitions.append((leaf/'complete.json', leaf, dict(container='files')))
+        leaf_public = current_research/'design/leaf_controls/public_repro/release_manifest_v1.json'
+        if leaf_public.exists():
+            definitions.append((leaf_public, REPO, dict(container='files')))
         herbal = current_research/'design/known_herbal'
         if (herbal/'manifest.json').exists():
             definitions.append((herbal/'manifest.json', herbal, dict(container='files')))
+        if (herbal/'public_repro/release_manifest_v1.json').exists():
+            definitions.append((herbal/'public_repro/release_manifest_v1.json', REPO, dict(container='files')))
         for name, version in [('crossplant', 'run_v2'), ('boundary_bridge', 'run_v1')]:
             run = current_research/'design'/name/version
             if (run/'complete.json').exists():
@@ -178,6 +183,10 @@ def replay_commands(output):
                   '--output', str(output/'space')],
         'herbal-space': ['research/research_next/semantic7h_20261118/design/space_bridge_herbal/public_replay/replay_public.py',
                          '--output', str(output/'herbal-space')],
+        'known-herbal': ['research/research_next/semantic7h_20261118/design/known_herbal/public_repro/replay_public.py',
+                         '--output', str(output/'known-herbal')],
+        'leaf': ['research/research_next/semantic7h_20261118/design/leaf_controls/public_repro/replay_public.py',
+                 '--output', str(output/'leaf')],
     }
 
 
@@ -187,7 +196,7 @@ def write(path, payload):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter', 'crossplant', 'boundary', 'space', 'herbal-space'],
+    parser.add_argument('--replay', nargs='+', choices=['anchor', 'copy', 'allograph', 'metadata', 'synthetic', 'parameter', 'crossplant', 'boundary', 'space', 'herbal-space', 'known-herbal', 'leaf'],
                         help='Run named independent saved-data replays after integrity checks')
     parser.add_argument('--output', type=Path, help='Required new directory for replay receipts and logs')
     args = parser.parse_args()

@@ -9,6 +9,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 import hashlib
 import json
+import gzip
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT/'research/research_next/semantic7h_20261118'
@@ -16,6 +17,108 @@ OUT = ROOT/'site/downloads/semantic7h'
 LEAF = SOURCE/'design/leaf_controls'
 
 FILES = [
+    ('design/known_herbal_nohit_review/separated_text_review/source_only_packet_v1.json.gz', 'herbal-source-only-source_only_packet_v1.json.gz'),
+    ('design/known_herbal_nohit_review/separated_text_review/input_freeze_v1.json', 'herbal-source-only-input_freeze_v1.json'),
+    ('design/known_herbal_nohit_review/separated_text_review/observer_review_v1.json', 'herbal-source-only-observer_review_v1.json'),
+    ('design/known_herbal_nohit_review/separated_text_review/observer_review_v1.txt', 'herbal-source-only-observer_review_v1.txt'),
+    ('design/known_herbal_nohit_review/separated_text_review/observer_freeze_v1.json', 'herbal-source-only-observer_freeze_v1.json'),
+    ('design/known_herbal_nohit_review/separated_text_review/reconciliation_v1.json', 'herbal-source-only-reconciliation_v1.json'),
+    ('design/known_herbal_nohit_review/separated_text_review/reconciliation_v1.txt', 'herbal-source-only-reconciliation_v1.txt'),
+    ('design/known_herbal_nohit_review/separated_text_review/mechanical_checks_v1.json', 'herbal-source-only-mechanical_checks_v1.json'),
+
+    ('publication_checks/unified_known_leaf_replays_v1.json', 'unified-known-leaf-replays.json'),
+    ('design/known_herbal/public_repro/README.txt', 'known-herbal-public-README.txt'),
+    ('design/known_herbal/public_repro/clean_validation_v1.json', 'known-herbal-public-clean_validation_v1.json'),
+    ('design/known_herbal/public_repro/release_manifest_v1.json', 'known-herbal-public-release_manifest_v1.json'),
+    ('design/leaf_controls/public_repro/README.txt', 'leaf-public-README.txt'),
+    ('design/leaf_controls/public_repro/clean_validation_v1.json', 'leaf-public-clean_validation_v1.json'),
+    ('design/leaf_controls/public_repro/release_manifest_v1.json', 'leaf-public-release_manifest_v1.json'),
+    ('visual/repeated_label_localization/comparison_gate_v1.json', 'repeat-comparison_gate_v1.json'),
+    ('visual/repeated_label_localization/comparison_gate_v1.txt', 'repeat-comparison_gate_v1.txt'),
+    ('visual/body_hit_followup/root_completeness_check_v1.json', 'body-root_completeness_check_v1.json'),
+    ('literature/davis2020_followup/report_v1.md', 'davis2020-report_v1.md'),
+    ('literature/davis2020_followup/sources_v1.json', 'davis2020-sources_v1.json'),
+    ('literature/davis2020_followup/receipt_v1.json', 'davis2020-receipt_v1.json'),
+    ('design/known_herbal_nohit_review/protocol_v1.txt', 'herbal-nohit-protocol_v1.txt'),
+    ('design/known_herbal_nohit_review/queue_v1.json', 'herbal-nohit-queue_v1.json'),
+    ('design/known_herbal_nohit_review/freeze_v1.json', 'herbal-nohit-freeze_v1.json'),
+    ('design/known_herbal_nohit_review/source_packet_v1.json.gz', 'herbal-nohit-source_packet_v1.json.gz'),
+    ('design/known_herbal_nohit_review/reading_packet_v1.txt', 'herbal-nohit-reading_packet_v1.txt'),
+    ('design/known_herbal_nohit_review/reading_compact_v1.txt', 'herbal-nohit-reading_compact_v1.txt'),
+    ('design/known_herbal_nohit_review/review_v1.json', 'herbal-nohit-review_v1.json'),
+    ('design/known_herbal_nohit_review/report_v1.md', 'herbal-nohit-report_v1.md'),
+    ('design/known_herbal_nohit_review/evidence_checks_v1.json', 'herbal-nohit-evidence_checks_v1.json'),
+    ('design/known_herbal_nohit_review/verification_v1.json', 'herbal-nohit-verification_v1.json'),
+    ('design/known_herbal_nohit_review/complete_v1.json', 'herbal-nohit-complete_v1.json'),
+    ('design/known_herbal_nohit_review/independent_quote_audit_v1.json', 'herbal-nohit-independent_quote_audit_v1.json'),
+    ('visual/separated_geometry_followup/protocol_v1.txt', 'geometry-second-protocol_v1.txt'),
+    ('visual/separated_geometry_followup/anonymous_queue_v1.json', 'geometry-second-anonymous_queue_v1.json'),
+    ('visual/separated_geometry_followup/guided_observation_freeze_v1.json', 'geometry-second-guided_observation_freeze_v1.json'),
+    ('visual/separated_geometry_followup/private_mapping_v1.json', 'geometry-second-private_mapping_v1.json'),
+    ('visual/separated_geometry_followup/review_v1.json', 'geometry-second-review_v1.json'),
+    ('visual/separated_geometry_followup/review_v1.txt', 'geometry-second-review_v1.txt'),
+    ('visual/separated_geometry_followup/review_freeze_v1.json', 'geometry-second-review_freeze_v1.json'),
+    ('visual/separated_geometry_followup/reconciliation_v1.json', 'geometry-second-reconciliation_v1.json'),
+    ('visual/separated_geometry_followup/reconciliation_v1.txt', 'geometry-second-reconciliation_v1.txt'),
+    ('visual/separated_geometry_followup/reconciliation_checks_v1.json', 'geometry-second-reconciliation_checks_v1.json'),
+
+    ('visual/f67r2_followup/protocol_v1.txt', 'f67r2-followup-protocol_v1.txt'),
+    ('visual/f67r2_followup/queue_v1.json', 'f67r2-followup-queue_v1.json'),
+    ('visual/f67r2_followup/freeze_v1.json', 'f67r2-followup-freeze_v1.json'),
+    ('visual/f67r2_followup/acquisition_v1.json', 'f67r2-followup-acquisition_v1.json'),
+    ('visual/f67r2_followup/acquisition_v2.json', 'f67r2-followup-acquisition_v2.json'),
+    ('visual/f67r2_followup/review_v1.json', 'f67r2-followup-review_v1.json'),
+    ('visual/f67r2_followup/review_v1.txt', 'f67r2-followup-review_v1.txt'),
+    ('visual/f67r2_followup/verification_v1.json', 'f67r2-followup-verification_v1.json'),
+    ('visual/f67r2_followup/independent_guided_check_v1.json', 'f67r2-followup-independent_guided_check_v1.json'),
+    ('visual/f67r2_followup/independent_guided_check_v1.txt', 'f67r2-followup-independent_guided_check_v1.txt'),
+    ('visual/body_hit_followup/protocol_f75v_v1.txt', 'f75v-body-protocol_f75v_v1.txt'),
+    ('visual/body_hit_followup/queue_f75v_v1.json', 'f75v-body-queue_f75v_v1.json'),
+    ('visual/body_hit_followup/freeze_f75v_v1.json', 'f75v-body-freeze_f75v_v1.json'),
+    ('visual/body_hit_followup/image_f75v_receipt_v1.json', 'f75v-body-image_f75v_receipt_v1.json'),
+    ('visual/body_hit_followup/crops_f75v_v1.json', 'f75v-body-crops_f75v_v1.json'),
+    ('visual/body_hit_followup/word_regions_f75v_v1.json', 'f75v-body-word_regions_f75v_v1.json'),
+    ('visual/body_hit_followup/review_f75v_v1.json', 'f75v-body-review_f75v_v1.json'),
+    ('visual/body_hit_followup/review_f75v_v1.txt', 'f75v-body-review_f75v_v1.txt'),
+    ('visual/body_hit_followup/verification_f75v_v1.json', 'f75v-body-verification_f75v_v1.json'),
+    ('visual/body_hit_followup/completed_f75v_freeze_v1.json', 'f75v-body-completed_f75v_freeze_v1.json'),
+    ('design/repeated_label_comparison_support/protocol_v1.txt', 'repeat-comparison-protocol_v1.txt'),
+    ('design/repeated_label_comparison_support/protocol_receipt_v1.json', 'repeat-comparison-protocol_receipt_v1.json'),
+    ('design/repeated_label_comparison_support/freeze_v1.json', 'repeat-comparison-freeze_v1.json'),
+    ('design/repeated_label_comparison_support/support_v1.json', 'repeat-comparison-support_v1.json'),
+    ('design/repeated_label_comparison_support/report_v1.txt', 'repeat-comparison-report_v1.txt'),
+    ('design/repeated_label_comparison_support/verification_v1.json', 'repeat-comparison-verification_v1.json'),
+    ('design/repeated_label_comparison_support/independent_rebuilt_v1.json', 'repeat-comparison-independent_rebuilt_v1.json'),
+    ('design/repeated_label_comparison_support/independent_core_freeze_v1.json', 'repeat-comparison-independent_core_freeze_v1.json'),
+    ('design/repeated_label_comparison_support/independent_audit_v1.json', 'repeat-comparison-independent_audit_v1.json'),
+    ('design/repeated_label_comparison_support/independent_audit_v1.txt', 'repeat-comparison-independent_audit_v1.txt'),
+    ('visual/repeated_label_localization/protocol_proposal_v1.txt', 'repeat-comparison-future-proposal.txt'),
+
+    ('design/repeated_label_feasibility/protocol_v1.txt','repeat-support-protocol.txt'),
+    ('design/repeated_label_feasibility/report_v1.txt','repeat-support-report.txt'),
+    ('design/repeated_label_feasibility/inventory_v1.json','repeat-label-inventory.json'),
+    ('design/repeated_label_feasibility/clusters_v1.json','repeat-clusters.json'),
+    ('design/repeated_label_feasibility/fixed_nine_roster_v1.json','repeat-nine-roster.json'),
+    ('design/repeated_label_feasibility/group_scope_v1.json','repeat-group-scope.json'),
+    ('design/repeated_label_feasibility/input_receipt_v1.json','repeat-support-input-receipt.json'),
+    ('design/repeated_label_feasibility/manifest_v1.json','repeat-support-manifest.json'),
+    ('design/repeated_label_feasibility/verification_v1.json','repeat-support-verification.json'),
+    ('design/repeated_label_feasibility/independent_audit_v1.json','repeat-support-independent-audit.json'),
+    ('design/repeated_label_feasibility/independent_rebuilt_support_v1.json','repeat-support-independent-rebuild.json'),
+    ('design/repeated_label_feasibility/independent_attempt_01.json','repeat-support-first-attempt.json'),
+    ('design/repeated_label_feasibility/implementation_attempt_01.txt','repeat-support-implementation-note.txt'),
+    ('visual/repeated_label_localization/protocol_v1.txt','repeat-localization-protocol.txt'),
+    ('visual/repeated_label_localization/queue_v1.json','repeat-localization-queue.json'),
+    ('visual/repeated_label_localization/canvas_queue_v1.json','repeat-localization-canvases.json'),
+    ('visual/repeated_label_localization/freeze_v1.json','repeat-localization-freeze.json'),
+    ('visual/repeated_label_localization/image_receipts_v1.json','repeat-localization-images.json'),
+    ('visual/repeated_label_localization/crop_receipts_v1.json','repeat-localization-crops.json'),
+    ('visual/repeated_label_localization/additional_crop_receipts_v1.json','repeat-localization-additional-crops.json'),
+    ('visual/repeated_label_localization/review_v1.json','repeat-localization-review.json'),
+    ('visual/repeated_label_localization/review_v1.txt','repeat-localization-review.txt'),
+    ('visual/repeated_label_localization/verification_v1.json','repeat-localization-verification.json'),
+    ('visual/repeated_label_localization/completed_localization_freeze_v1.json','repeat-localization-complete.json'),
+
     ('design/space_bridge_herbal/public_replay/README.txt','herbal-space-reproduce-public.txt'),
     ('design/space_bridge_herbal/public_replay/clean_validation_receipt.json','herbal-space-replay-validation.json'),
     ('design/space_bridge_herbal/public_replay/public_projection_receipt.json','herbal-space-public-projection.json'),
@@ -365,11 +468,107 @@ for name,expected in herbal_context_receipt['files'].items():
 assert len(herbal_context['rows'])==5 and herbal_context['matches_sha256']==sha(HERBAL_SPACE/'all_adjacent_matches.json')
 assert herbal_context['source_gzip_sha256']==sha(SOURCE/'design/known_herbal/A35365.xml.gz')
 
+REPEAT_SUPPORT=SOURCE/'design/repeated_label_feasibility'
+repeat_manifest=json.loads((REPEAT_SUPPORT/'manifest_v1.json').read_text())
+for name,expected in repeat_manifest['files'].items():
+    assert sha(REPEAT_SUPPORT/name)==expected,name
+repeat_audit=json.loads((REPEAT_SUPPORT/'independent_audit_v1.json').read_text())
+assert repeat_audit['status']=='PASS' and not repeat_audit['differences']
+assert sha(REPEAT_SUPPORT/'independent_inventory_audit.py')==repeat_audit['implementation_sha256']
+assert sha(REPEAT_SUPPORT/'independent_rebuilt_support_v1.json')==repeat_audit['rebuilt_support_sha256']
+for name,expected in repeat_audit['primary_files'].items():
+    assert sha(REPEAT_SUPPORT/name)==expected,name
+REPEAT_LOCAL=SOURCE/'visual/repeated_label_localization'
+repeat_complete=json.loads((REPEAT_LOCAL/'completed_localization_freeze_v1.json').read_text())
+assert repeat_complete['no_crosspage_shape_comparison'] and repeat_complete['no_semantic_gold']
+assert len(repeat_complete['loci'])==9 and not repeat_complete['independent_visual_review']
+for name,expected in repeat_complete['files'].items():
+    assert sha(REPEAT_LOCAL/name)==expected,name
+repeat_verification=json.loads((REPEAT_LOCAL/'verification_v1.json').read_text())
+assert repeat_verification['status']=='PASS' and all(row['passed'] for row in repeat_verification['checks'])
+assert sha(REPEAT_LOCAL/'queue_v1.json')==sha(REPEAT_SUPPORT/'fixed_nine_roster_v1.json')
+
+
+FOLLOW_RING=SOURCE/'visual/f67r2_followup'
+follow_ring_check=json.loads((FOLLOW_RING/'verification_v1.json').read_text())
+assert follow_ring_check['passed']
+for name,expected in follow_ring_check['files'].items():
+    assert sha(ROOT/name)==expected,name
+follow_ring_audit=json.loads((FOLLOW_RING/'independent_guided_check_v1.json').read_text())
+assert follow_ring_audit['status']=='GUIDED_WORKING_LOCATIONS_CONSISTENT_WITH_MINOR_BBOX_CAVEATS'
+assert follow_ring_audit['source_review_sha256']==sha(FOLLOW_RING/'review_v1.json')
+assert follow_ring_audit['source_verification_sha256']==sha(FOLLOW_RING/'verification_v1.json')
+assert len(follow_ring_audit['records'])==5 and all(r['working_location_consistent'] for r in follow_ring_audit['records'])
+FOLLOW_BODY=SOURCE/'visual/body_hit_followup'
+follow_body=json.loads((FOLLOW_BODY/'completed_f75v_freeze_v1.json').read_text())
+assert (follow_body['version_entries'],follow_body['physical_positions'],follow_body['guided_compatible_positions'],follow_body['located_but_reading_unresolved'])==(32,17,15,2)
+assert follow_body['no_transcription_change'] and follow_body['no_scores_recomputed']
+for name,expected in follow_body['files'].items():
+    assert sha(FOLLOW_BODY/name)==expected,name
+follow_body_checks=json.loads((FOLLOW_BODY/'verification_f75v_v1.json').read_text())
+assert follow_body_checks['status']=='PASS' and all(r['passed'] for r in follow_body_checks['checks'])
+REPEAT_COMPARISON=SOURCE/'design/repeated_label_comparison_support'
+comparison_audit=json.loads((REPEAT_COMPARISON/'independent_audit_v1.json').read_text())
+assert comparison_audit['status']=='PASS' and not comparison_audit['differences'] and comparison_audit['check_count']==3143
+assert sha(REPEAT_COMPARISON/'support_v1.json')==comparison_audit['primary_support_sha256']
+assert sha(REPEAT_COMPARISON/'independent_core_freeze_v1.json')==comparison_audit['independent_core_freeze_sha256']
+for name,expected in comparison_audit['files'].items():
+    assert sha(REPEAT_COMPARISON/name)==expected,name
+assert comparison_audit['summary']=={'objects':9,'all_pairs':36,'within_leaf':9,'cross_leaf':27,'assignments':72,'same_label_cross':5,'different_label_cross':22}
+
+
+for name in ['design/known_herbal/public_repro/release_manifest_v1.json','design/leaf_controls/public_repro/release_manifest_v1.json']:
+    for row in json.loads((SOURCE/name).read_text())['files']:
+        assert sha(ROOT/row['path'])==row['sha256'],row['path']
+assert json.loads((SOURCE/'design/known_herbal/public_repro/clean_validation_v1.json').read_text())['passed']
+assert json.loads((SOURCE/'design/leaf_controls/public_repro/clean_validation_v1.json').read_text())['status']=='PASS_CLEAN_PUBLIC_REPLAY'
+gate=json.loads((REPEAT_LOCAL/'comparison_gate_v1.json').read_text())
+assert gate['decision']=='NOT_STARTED_GATE_NOT_MET' and gate['image_similarity_scores_computed']==0
+for name,expected in gate['inputs'].items():assert sha(ROOT/name)==expected,name
+body_root=json.loads((FOLLOW_BODY/'root_completeness_check_v1.json').read_text())
+assert body_root['passed'] and body_root['checks']==134
+for name,expected in body_root['inputs'].items():assert sha(ROOT/name)==expected,name
+DAVIS=SOURCE/'literature/davis2020_followup'
+for row in json.loads((DAVIS/'receipt_v1.json').read_text())['files']:
+    assert sha(DAVIS/row['name'])==row['sha256'],row['name']
+NOHIT=SOURCE/'design/known_herbal_nohit_review'
+nohit_complete=json.loads((NOHIT/'complete_v1.json').read_text())
+assert nohit_complete['all17'] and not nohit_complete['new_scores_computed']
+for name,expected in nohit_complete['files'].items():assert sha(NOHIT/name)==expected,name
+nohit_audit=json.loads((NOHIT/'independent_quote_audit_v1.json').read_text())
+assert nohit_audit['passed'] and nohit_audit['checks']==192 and nohit_audit['sections']==17
+GEOMETRY_SECOND=SOURCE/'visual/separated_geometry_followup'
+geometry_freeze=json.loads((GEOMETRY_SECOND/'review_freeze_v1.json').read_text())
+assert sha(GEOMETRY_SECOND/'anonymous_queue_v1.json')==geometry_freeze['input_queue_sha256']
+for row in geometry_freeze['review_assets']:assert sha(GEOMETRY_SECOND/row['asset'])==row['sha256'],row['asset']
+geometry_checks=json.loads((GEOMETRY_SECOND/'reconciliation_checks_v1.json').read_text())
+assert geometry_checks['passed'] and geometry_checks['all12_mapped'] and geometry_checks['input_freeze_precedes_observer_freeze']
+
+unified_replays=json.loads((SOURCE/'publication_checks/unified_known_leaf_replays_v1.json').read_text())
+assert unified_replays['status']=='PASS_SAVED_UNIFIED_KNOWN_AND_LEAF_REPLAYS_VERIFIED'
+for case in unified_replays['cases']:
+    for row in case['files']:
+        assert sha(ROOT/row['path'])==row['sha256'],row['path']
+
+SOURCE_TEXT=SOURCE/'design/known_herbal_nohit_review/separated_text_review'
+source_text_checks=json.loads((SOURCE_TEXT/'mechanical_checks_v1.json').read_text())
+assert source_text_checks['status']=='pass' and source_text_checks['all17_retained']
+for row in source_text_checks['input_and_prior_assets_unchanged']:
+    root=SOURCE_TEXT if row['scope']=='separated_text_review' else SOURCE_TEXT.parent
+    assert row['unchanged'] and sha(root/row['asset'])==row['sha256'],row['asset']
+for row in source_text_checks['reconciliation_output_assets']:
+    assert sha(SOURCE_TEXT/row['asset'])==row['sha256'],row['asset']
+assert len(source_text_checks['observer_literal_quote_checks'])==41
+assert len(source_text_checks['first_review_quote_checks'])==29
+assert len(source_text_checks['section_sha_checks'])==17
+
 staged=[]
 for source_name, destination in FILES:
     path=SOURCE/source_name
     raw=path.read_bytes()
-    text=raw.decode('utf-8-sig')
+    text=(gzip.decompress(raw) if source_name.endswith('.gz') else raw).decode('utf-8-sig')
+    if source_name.endswith(('.json','.json.gz')):
+        text=json.dumps(json.loads(text),ensure_ascii=False)
     assert '/Users/' not in text and '/home/' not in text, f'Private path in {source_name}'
     assert 'BEGIN PRIVATE KEY' not in text and 'ghp_' not in text, f'Credential-like material in {source_name}'
     staged.append((source_name,destination,raw))

@@ -55,6 +55,9 @@ order_visual = read('visual/order_targets/review_v1.json', {})
 order_receipt = read('visual/order_targets/verification_receipt_v1.json', {})
 remaining_visual = read('visual/remaining_targets/review_v1.json', {})
 remaining_receipt = read('visual/remaining_targets/verification_receipt_v1.json', {})
+repeated_review = read('visual/repeated_label_localization/review_v1.json', {})
+repeated_complete = read('visual/repeated_label_localization/completed_localization_freeze_v1.json', {})
+repeated_audit = read('design/repeated_label_feasibility/independent_audit_v1.json', {})
 snapshot = datetime.now(timezone.utc)
 start = datetime.fromisoformat(session['start_utc'].replace('Z','+00:00'))
 elapsed = max(0, int((snapshot-start).total_seconds()))
@@ -65,6 +68,11 @@ stage_titles = {
     4:'独立复核、发布与窗口结题',
 }
 modules = {
+    'known_herbal_nohit_review':{'title':'英文零命中语境','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'davis2020_followup':{'title':'Davis2020文本补核','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'image_followups':{'title':'旧队列追加核图','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'repeat_comparison_support':{'title':'重复对象组合支持','status':'awaiting_review','details':[],'links':[],'metrics':[]},
+    'repeated_labels':{'title':'重复标签的位置盘点','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'herbal_context':{'title':'英文命中语境','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'herbal_space':{'title':'英文两词校准','status':'awaiting_review','details':[],'links':[],'metrics':[]},
     'remaining_targets':{'title':'剩余图像关系','status':'awaiting_review','details':[],'links':[],'metrics':[]},
@@ -353,6 +361,53 @@ if choice_result:
     choice={'questions':choice_result['questions'],'counts':choice_audit['counts'],'scope':choice_result['scope'],
             'review_frozen_utc':choice_result['review_frozen_utc'],'unblinded_utc':choice_result['unblinded_utc'],
             'audit_scope':choice_audit['scope'],'audit_checks':choice_audit['check_count']}
+repeated={}
+if repeated_review:
+    repeated_root=SOURCE/'visual/repeated_label_localization'
+    assert repeated_complete['status']=='completed_all_nine_localization_only'
+    assert repeated_complete['no_crosspage_shape_comparison'] and repeated_complete['no_semantic_gold']
+    assert hashlib.sha256((repeated_root/'review_v1.json').read_bytes()).hexdigest()==repeated_complete['files']['review_v1.json']
+    assert repeated_audit['status']=='PASS' and not repeated_audit['differences']
+    assert repeated_review['all_nine_retained'] and repeated_review['label_object_connector_count']==0
+    repeated_images={x['image_id']:x for x in read('visual/repeated_label_localization/image_receipts_v1.json')}
+    repeated_crops={x['name']:x for filename in ['crop_receipts_v1.json','additional_crop_receipts_v1.json'] for x in read('visual/repeated_label_localization/'+filename)}
+    repeated_notes={
+        'f101v.10':'工作画布为1006250，第二行最左的大型单叶及下垂细茎；字组在叶的上右侧。另一个f101v画布也已检查，属于延续部分，没有替换对象。',
+        'f88r.15':'保留既有#8截面根冠，字组在其上左空隙。对象框还包含左邻长叶和右邻根线，是上下文框，不是干净单株裁切。',
+        'f88r.6':'顶部行最后的字组在浅色根冠右侧、右叶下方；依本行五对象、五标签的次序和连续根线定位。',
+        'f99v.6':'原注释99保留；字组在褐色放射根弯茎左上。左邻长叶伸入字组下方，不能只按最近的有色像素归属。',
+        'f88r.5':'顶部行第四个字组，在成对褐根右侧、最后浅色根之间；归属依局部次序，不依另一页是否相似。',
+        'f99v.9':'原注释102保留；字组在顶部最右细长分节根的冠部左上，与细线接近，标签框也不是文字分割蒙版。',
+        'f89r1.4':'保留既有#25中央直茎及下部根群，字组在其右侧；右邻横根有后续长字组，工作框依连续线条和次序。',
+        'f99r.14':'原注释79保留；对象是首图组下右的浅色大横根，字组在上方凹陷空白。此前没有框的第三个otoldy位置仍保留。',
+        'f99v.2':'原注释95b保留；字组在高容器右边第一个根形的茎冠左侧。容器自身是Lc/95a，没有并入植物对象。',
+    }
+    rows=[]
+    for original in repeated_review['records']:
+        assert original['retained'] and not original['semantic_gold'] and not original['new_shape_comparison_performed']
+        pic=original['image']; known=repeated_images[pic['image_id']]
+        assert pic['sha256']==known['sha256'] and pic['url']==known['url']
+        for box in [original['label_approx_bbox_xywh']]+[o['approx_bbox_xywh'] for o in original['object_candidates']]:
+            x,y,w,h=box
+            assert 0<=x<x+w<=pic['width'] and 0<=y<y+h<=pic['height']
+        row=dict(original)
+        row['observation_zh']=repeated_notes[original['locator']]
+        row['display_contexts']=[]
+        for crop in original['native_context_regions']:
+            assert crop==repeated_crops[crop['name']]
+            canvas=repeated_images[crop['image_id']]
+            x,y,w,h=crop['region_xywh']
+            assert 0<=x<x+w<=canvas['width'] and 0<=y<y+h<=canvas['height']
+            base=f"https://collections.library.yale.edu/iiif/2/{crop['image_id']}"
+            region=','.join(map(str,crop['region_xywh']))
+            assert crop['url']==f'{base}/{region}/full/0/default.jpg'
+            row['display_contexts'].append({**crop,'display_url':f'{base}/{region}/{min(900,w)},/0/default.jpg',
+                'is_working_canvas':crop['image_id']==pic['image_id'],'canvas_label':canvas['canvas_label']})
+        rows.append(row)
+    assert [r['locator'] for r in rows]==repeated_complete['loci'] and len(rows)==9
+    repeated={'records':rows,'clusters':read('design/repeated_label_feasibility/clusters_v1.json'),
+              'audit_checks':repeated_audit['checks'],'scope':repeated_review['scope'],
+              'visual_review_independent':False,'physical_leaf_count':4,'shape_scored':False}
 payload = {
     'schema_version':1,
     'snapshot_utc':snapshot.isoformat(),
@@ -372,6 +427,7 @@ payload = {
     'gallery':gallery,
     'boundary':boundary,
     'choice':choice,
+    'repeated':repeated,
     'gallery_scope':'Three separately labeled batches, fragment number order within each, not ranked by lexical scores. Numbered:12 pairs/11 scored; order:12 unscored; remaining:11 unscored relationships/10 source objects. Only selected pair images load, two normally and three for unresolved two-target pages. No botanical gold or author overview images.',
     'scope':'Static saved evidence snapshot. No live monitoring, countdown, implied completion percentage, or semantic decoding claim.',
 }

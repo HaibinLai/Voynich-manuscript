@@ -159,6 +159,35 @@
     if(location.hash==='#s7-choice')$('s7-choice').scrollIntoView();
   }
 
+  function setupRepeated(record) {
+    if(!record?.records?.length)return;
+    const rows=record.records;
+    $('s7-repeated').hidden=false;
+    $('s7-repeat-locus').innerHTML=rows.map((r,i)=>`<option value="${i}">${esc(r.query_from_frozen_roster)} · ${esc(r.locator)}</option>`).join('');
+    let currentRow=rows[0],generation=0;
+    const renderContext=()=>{
+      const r=currentRow,c=r.display_contexts[Number($('s7-repeat-context').value)||0],current=++generation;
+      $('s7-repeat-image-state').textContent='正在加载所选官方阅读裁区。';
+      $('s7-repeat-image').innerHTML=`<figure><a class="s7-repeat-image-frame" href="${esc(c.url)}"><img id="s7-repeat-active-image" src="${esc(c.display_url)}" alt="${esc(r.locator)} · ${esc(c.canvas_label)}，官方原图的近似阅读裁区" decoding="async"></a><figcaption>馆藏画布：${esc(c.canvas_label)} · ${esc(c.image_id)}。${c.is_working_canvas?'当前工作归属画布。':'延续画布对照，不是当前归属画布。'}<div class="s7-links"><a href="${esc(c.url)}">原尺寸阅读裁区</a><a href="https://collections.library.yale.edu/iiif/2/${esc(c.image_id)}/full/full/0/default.jpg">该画布完整原图</a></div></figcaption></figure>`;
+      const img=$('s7-repeat-active-image');
+      const update=()=>{if(current!==generation)return;$('s7-repeat-image-state').textContent=img.naturalWidth>0?'官方裁区已加载。页面使用官方缩放版本；记录中的哈希对应原尺寸裁区。':'官方裁区暂未载入，可打开原尺寸裁区或完整原图。';};
+      img.addEventListener('load',update,{once:true});img.addEventListener('error',update,{once:true});if(img.complete)update();
+    };
+    const renderLocus=()=>{
+      const r=rows[Number($('s7-repeat-locus').value)||0];currentRow=r;
+      $('s7-repeat-context').innerHTML=r.display_contexts.map((c,i)=>`<option value="${i}">${esc(c.canvas_label)} · 裁区 ${i+1}${c.is_working_canvas?' · 工作画布':' · 延续对照'}</option>`).join('');
+      const working=r.display_contexts.map((c,i)=>c.is_working_canvas?i:-1).filter(i=>i>=0);
+      $('s7-repeat-context').value=String(working[working.length-1]);
+      const same=rows.filter(x=>x.query_from_frozen_roster===r.query_from_frozen_roster).map(x=>x.locator).join('、');
+      $('s7-repeat-observation').innerHTML=`<h3>${esc(r.query_from_frozen_roster)} · ${esc(r.locator)}</h3><p>${esc(r.observation_zh)}</p><p class="s7-muted">物理叶 ${esc(r.physical_leaf)}；原注释 ${r.raw_fragment_annotation==null?'无':esc(r.raw_fragment_annotation)}。该簇完整位置：${esc(same)}。</p><p class="s7-gallery-warning">工作定位 clear；未见明确指示线。这里的空间归属没有经过独立视觉复审，不是对象名称或同种植物的认证。</p>`;
+      $('s7-repeat-original').innerHTML=`<details class="s7-plan-details"><summary>核对两版原行、近似框与原始观察</summary><h4>冻结的原行</h4><pre>${Object.entries(r.original_raw_lines).map(([v,line])=>esc(v+': '+line)).join('\n')}</pre><p>标签近似框（x, y, 宽, 高）：${esc(r.label_approx_bbox_xywh.join(', '))}。工作画布：${esc(r.image.canvas_label)} / ${esc(r.image.image_id)}。</p>${r.object_candidates.map(o=>`<p>对象 ${esc(o.object_id)} 的近似框：${esc(o.approx_bbox_xywh.join(', '))}。</p>`).join('')}<p>这些坐标包含阅读上下文，不是像素分割或无邻物的单株图。</p><h4>空间证据（冻结英文原文）</h4><p>${esc(r.spatial_evidence)}</p><h4>限制</h4><p>${esc(r.uncertainty_and_crop_limitations)}</p>${r.existing_box_recheck?`<p>${esc(r.existing_box_recheck)}</p>`:''}${r.panel_resolution?`<p>${esc(r.panel_resolution)}</p>`:''}</details>`;
+      renderContext();
+    };
+    $('s7-repeat-locus').disabled=false;$('s7-repeat-context').disabled=false;
+    $('s7-repeat-locus').addEventListener('change',renderLocus);$('s7-repeat-context').addEventListener('change',renderContext);
+    renderLocus();
+  }
+
   function moduleMarkup(key, module) {
     let body = `<article class="s7-module" id="s7-${esc(key)}"><div class="s7-module-head"><h3>${esc(module.title)}</h3>${badge(module.status)}</div><p class="s7-module-summary">${esc(module.summary)}</p>`;
     if (module.metrics?.length) body += `<div class="s7-module-metrics">${module.metrics.map(r=>`<div class="s7-module-metric"><strong>${esc(r.value)}</strong><span>${esc(r.label)}</span></div>`).join('')}</div>`;
@@ -192,6 +221,7 @@
       setupGallery(data.gallery);
       setupBoundary(data.boundary);
       setupChoice(data.choice);
+      setupRepeated(data.repeated);
       if(location.hash.startsWith('#s7-')) document.getElementById(location.hash.slice(1))?.scrollIntoView();
       $('s7-load-state').textContent = '已载入保存记录。未审核的实验结果不会在此快照中预填。';
     } catch (error) {

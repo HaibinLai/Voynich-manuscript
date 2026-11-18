@@ -1,0 +1,64 @@
+{
+  "checked_utc": "2026-11-18T15:50:10.223432+00:00",
+  "scope": "current clean staged index; no private caches",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/export_semantic7h.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build_semantic7h_page.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build_site_data.py",
+        "--source",
+        "research"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify_release.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "site/semantic7h.js"
+      ],
+      "returncode": 0
+    }
+  ],
+  "passed": true,
+  "candidate_index_tree": "b28d76608e731e2f02fbe57aafd960323547d676",
+  "limitation": "Staged-tree reconstruction verifies build independence and recorded file integrity, not semantic claims; this receipt itself is added after the recorded tree.",
+  "prior_cli_attempt": {
+    "returncode": 2,
+    "reason": "build_site_data.py was first called without required --source research; corrected invocation passed. The failed private log is retained; no experiment rerun or source edits were made for this correction."
+  },
+  "ui_checks": {
+    "observed_utc": "2026-11-18T15:50:46.235784+00:00",
+    "scope": "Local served page: source-only interpretation and historical labels rendered; default nine-location image loaded at 900x720. Earlier all-nine selector and mobile QA separate.",
+    "historical_modules_explicit": true,
+    "current_asarabacca_ambiguity_visible": true,
+    "default_repeat_image_loaded": true
+  },
+  "published_inputs": {
+    "site/semantic7h.html": "adc20c5e07c137c6283e3973759cff70bdfe4d3cd53d441780abb26748c5c081",
+    "site/semantic7h.js": "e3c72cfe4b0d9723546d0daf55f0646d95537128c789da88527ca9da7f549c8a",
+    "site/data/semantic7h.json": "af9abe5c642757f7dbb8347c734ac4ff868531a4a30906b15f03d9d1e07a43f4",
+    "site/downloads/semantic7h/manifest.json": "59623f0f8b5fd2c7ef1b1d06553e5a36d79df356eb142aa0650dba66558054a8"
+  }
+}

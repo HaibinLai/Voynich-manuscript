@@ -10,6 +10,10 @@
 
 - [七小时研究：让文字接到对象上](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html)：第二个固定窗口为 2026-11-18 09:06:13–16:06:13 UTC（芝加哥 03:06:13–10:06:13 CST），曾因用量限制中断，14:43 UTC 恢复，窗口时间不等于连续计算时长。35条历史图像关系已逐项观察，分三批展示官方原图、相似与差异；没有认证植物身份。原11条跨页查询在完整词、固定替换和缩略检验中全部未命中；有限词首尾规则只有两个不同规则的单例，内部留出平均增益为零。新增两词拼接同样没有目标命中，已独立复算。英文校准的自身覆盖从102/119增至103/119，只新增事先已知的Asarabacca；全部五条拼接上下文保留，说明字串相等不等于名称指称。未建立可靠词义锚点，也不能证明手稿无意义。网站是保存快照。
 
+- [四簇九处重复标签定位](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html#s7-repeated)：全九位置保留，只有工作空间归属；对象隔离门槛尚未满足，没有形态评分。另补查原队列的五个天文标签及浴疗页17处正文墨迹，保留两处读法冲突；32个版本条目不是32处独立书写。
+
+- [本轮阶段结论](research/research_next/semantic7h_20261118/closure/findings_snapshot_1545.txt)：整叶重新配对后的k/t收益不足以构成语义锚点；17条英文零完整词命中的追加语境观察保留另名、回指和拼写差异。Asarabacca的字串连接不认证首字母分排或名称恢复，原分数未改。[下一窗口方向比较](research/research_next/semantic7h_20261118/closure/next_window_options_v1.txt)优先天文图空间与顺序约束，目前只是预备方案。
+
 - [标签能否接到正文与词义？](https://haibinlai.github.io/Voynich-manuscript/label-body.html)：新一轮完整标签与同类异叶正文对照，六种字形替换、分层和独立复算。精确同词有约0.12–0.15个百分点的本页优势，主要在浴疗类；尚未确认对象名称或读音。[更新研究计划](research/research_next/label_body/plan.txt)明确下一步需收集的图像对象证据和固定读法检验。
 
 - [我们找到了哪些规律？](https://haibinlai.github.io/Voynich-manuscript/findings.html) 一页阅读版，汇总原图词例、六对字形对照和证据边界。
@@ -75,6 +79,14 @@ python3 scripts/verify_release.py --replay crossplant boundary --output /tmp/voy
 ```
 
 这会重建保存的全部机会、位置、权重和边界实验内部四折选择；它不认证植物身份或字读，也不产生新盲测。默认完整性核验同时给出首轮历史状态和第二窗口的 `current_window` 状态。
+
+第二窗口的整叶对照、英文完整词校准及两种拼接实验也有安全入口；只重放旧材料，不改变历史结果：
+
+```sh
+python3 scripts/verify_release.py --replay leaf known-herbal space herbal-space --output /tmp/voynich-window2-replay-new
+```
+
+`leaf` 需要 NumPy；其余三项只需 Python 标准库。各包附有仅含公开输入的干净目录实跑记录；不要直接运行会覆盖历史收据的旧审计脚本。
 
 结果和解释在 `research/study20/研究报告.txt`、`research/research7h/阶段一研究报告.txt`，文献在 `research/research7h/literature/`。
 

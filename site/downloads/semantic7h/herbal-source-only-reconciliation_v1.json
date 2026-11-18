@@ -1,0 +1,424 @@
+{
+  "schema_version": "source_only_reconciliation_v1",
+  "created_utc": "2026-11-18T15:45:59.848994+00:00",
+  "status": "complete_append_only",
+  "site_summary_zh": "两轮17节语境审读在7节仅见泛称回指的记录上一致，并保留其他节的字面差异和原文明示另名；Asarabacca仅可确认 A 与 Sarabacca 分写，首字母分排还是冠词未决，这些是描述性对照而非准确率，不改原分数。",
+  "public_export_allowlist": [
+    "source_only_packet_v1.json.gz",
+    "input_freeze_v1.json",
+    "observer_review_v1.json",
+    "observer_review_v1.txt",
+    "observer_freeze_v1.json",
+    "reconciliation_v1.json",
+    "reconciliation_v1.txt",
+    "mechanical_checks_v1.json"
+  ],
+  "export_policy": "Only the eight explicitly named files in separated_text_review are included in this package. No parent directory files, private paths, scripts, mappings, or other reports are authorized by this list. Publishing action remains with the root task.",
+  "all17_retained": true,
+  "nonexclusive_descriptive_comparison": true,
+  "generic_only_descriptive_agreement": {
+    "section_ids": [
+      17,
+      90,
+      112,
+      151,
+      152,
+      172,
+      279
+    ],
+    "titles": [
+      "Balm",
+      "Ducksmeat",
+      "Foxglove",
+      "Lovage",
+      "Lungwort",
+      "Mousear",
+      "Woad"
+    ],
+    "count": 7,
+    "interpretation": "Describes matching observations on this fixed, selected packet only. Not accuracy, sensitivity, independent ground truth, or a manuscript result."
+  },
+  "asarabacca_required_qualification": {
+    "observed_literal_xml": "A <hi>Sarabacca</hi>",
+    "confirmed": "Only the separated literal strings A and Sarabacca are directly confirmed. Lowercasing and concatenating them reproduces the title string, which is a string operation only.",
+    "unresolved": [
+      "Initial-letter typesetting versus separate article",
+      "Printed page versus XML transcription details",
+      "Whether this demonstrates recovery of an intended historical name"
+    ],
+    "handling": "Qualify the prior name_split interpretation in this append-only reconciliation; do not edit either frozen report."
+  },
+  "limits": [
+    "The second source-only report was frozen before consulting the first report. This reconciliation is explicitly post-disclosure.",
+    "Not strict blinding or domain-expert validation; pretraining exposure unknown.",
+    "No original score was recalculated or repaired. No accuracy metric is produced.",
+    "Seven matching generic-only observations are descriptive and cannot establish correctness.",
+    "Original source XML archive SHA is carried as supplied metadata, not independently recomputed from the full archive; section XML bytes and package hashes were recomputed.",
+    "Byte offsets in this reconciliation refer to the supplied section original_xml_utf8 encoded as UTF-8, not to positions in the full source archive."
+  ],
+  "source_xml_sha256_as_supplied": "bff4bd8569c5417e1fead6cc4c06b6e0be5b27eaf93295481feccaf524ee9acb",
+  "rows": [
+    {
+      "source_section_id": 12,
+      "title": "Asarabacca",
+      "first_review_categories": [
+        "name_split"
+      ],
+      "first_review_interpretation": "首句把标题字串分成 A 与 Sarabacca；这是已曝光案例，不构成新盲性。",
+      "source_only_observer_observation": "正文没有 Asarabacca 完整词，但开头有分写的 A Sarabacca 称名样式，另有 This Herb 等回指。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "qualified_string_agreement_interpretation_unresolved",
+      "reconciliation_note": "两轮都观察到 A 与 Sarabacca 分写。首次 name_split 标签仅在字串层面成立；不能据此确证印本首字母分排、冠词结构、排版错误或真实名称恢复。追加限定保留旧报告原样。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_original_xml_sha256": "bd42681396c2cbb3a0e5ba2e4169083e8ae33bf658f66697aa84a5eb29c4b7b0"
+    },
+    {
+      "source_section_id": 17,
+      "title": "Balm",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "正文以此草、本草、It 等指回标题；未发现可由原文明示的另一个名称。",
+      "source_only_observer_observation": "本节实际可读文字中，对标题对象使用 THis Herb、hereof、It、The Leaves、The Herb 等回指，未见标题完整词或明示另名。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只观察到对标题对象的泛称/代词回指；其他名称是人物、制备或另述对象。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "9b052ced2a89ba32ccd54fffce87bff815e46ff1af000cfd5a55e2f3d229c22d"
+    },
+    {
+      "source_section_id": 39,
+      "title": "Bluebottles",
+      "first_review_categories": [
+        "explicit_alias_reference",
+        "variant_or_transcription_difference_unresolved"
+      ],
+      "first_review_interpretation": "原文 or 明示 Cornflower 与前串相联系；前串实际是 Bluel ot + 行末连字符标记 + tle，不擅改为 Bluebottle。标题到这个异常串的精确拼写原因尚不能区分印本与转写。",
+      "source_only_observer_observation": "完整标题词未重现；正文有异常拼写的称名串，并明示 or Cornflower。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_literal_variant_and_alternative",
+      "reconciliation_note": "两轮均保留 Bluel ot + 行末连字符标记 + tle 的异常串，并以 or Cornflower 作为原文明示替代称名；不校正异常串，印本与转录原因未决。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "719f020a841a1a088fae1590bb192f9547827005b3513b2dd2a1c747dbc95af1"
+    },
+    {
+      "source_section_id": 56,
+      "title": "Celandine",
+      "first_review_categories": [
+        "explicit_alias_reference"
+      ],
+      "first_review_interpretation": "It is called 直接建立称名联系；后面希腊词是排除的 foreign gap，未补其内容。",
+      "source_only_observer_observation": "未见标题完整词重提；正文直接写另一名称 Chelidonium，同时大量用 Herb/It 回指。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_explicit_alternative",
+      "reconciliation_note": "两轮均以 It is called Chelidonium 为明示称名证据；Greek word 后的 foreign gap 不补全，相关故事不作为现代鉴定。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "8eed0e5ea0e0cc1bf49de4a302f6b06abbf10dc656723dad47065e8445f2797e"
+    },
+    {
+      "source_section_id": 90,
+      "title": "Ducksmeat",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "只有指示语和 Herb 等泛称；未找到正文另名。",
+      "source_only_observer_observation": "根 head 中的标题是 Ducksmeat，前有 Moon 图形标记；正文只见 THis、It、herof、The fresh Herb、the Herb 等回指，未见明示另名。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只记录 THis、It、Herb 等主体回指；Barley Meal 为制备材料，Cancer/Moon 的归属修辞不作另名。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "6d7adf87c5b866a63cdf4dbda92dcf9800c0948c7f990eecda0e09e615d6d32c"
+    },
+    {
+      "source_section_id": 111,
+      "title": "Fluellin",
+      "first_review_categories": [
+        "spelling_or_inflection_variant",
+        "explicit_alias_reference"
+      ],
+      "first_review_interpretation": "同一节直接谈另一类 Lluellin，且明说旧称和后来名称；不是凭编辑距离推定。Fluellin 与 Lluellin 的原串保留。",
+      "source_only_observer_observation": "完整标题拼写未重提；正文有 Lluellin/LLUELLIN 和明确前名叙述，兼有泛称。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_variants_and_renaming_narrative",
+      "reconciliation_note": "两轮均保留 Fluellin 与 Lluellin/LLUELLIN 差异，以及 It was at first called Foemale Speedwel 的历史叙述；未核实故事，比较对象不作另名。",
+      "first_review_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_original_xml_sha256": "14674de687b23afc8be6352c849944188484a42d8245383ffbdaffb57ee08b8c"
+    },
+    {
+      "source_section_id": 112,
+      "title": "Foxglove",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "完整节以 This/It/the Herb 指回标题；未确认正文名称变体或别名。",
+      "source_only_observer_observation": "本节未见标题完整词或另名，正文用 THis、It、This Herb、the Herb、therof 等。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只记录主体泛称回指；Polipody 在另有用量的添加材料语境，不作别名。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "bee5efded74e09a4ce3d7dba0e7bd8df47a29143c8d8307c897c64e6ca1ba2f4"
+    },
+    {
+      "source_section_id": 125,
+      "title": "Hawkweed",
+      "first_review_categories": [
+        "spelling_or_inflection_variant"
+      ],
+      "first_review_interpretation": "描述段出现复数 Hawkweeds，功用段主体名词为 Howkweed；段落指称支持联系，未判断第二串是印本拼法还是转写差异。",
+      "source_only_observer_observation": "没有标题单数完整拼写的独立重复，但有复数 Hawkweeds 和 Howkweed，不能归为只有泛称。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_inflection_and_literal_variant",
+      "reconciliation_note": "两轮均记录 Hawkweeds 复数及 Howkweed 字面拼写；不将子串当标题完整词命中，不确定异常串来源。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_original_xml_sha256": "426de502b962e73680d4ddfac0d18c0cfbe1f98f00a57b76bf7b8fd3156779d6"
+    },
+    {
+      "source_section_id": 141,
+      "title": "Knapweed",
+      "first_review_categories": [
+        "variant_or_transcription_difference_unresolved"
+      ],
+      "first_review_interpretation": "同节功用段以 This Knaproeed 作主体；原串保留。可定位指称，但不能凭相似度把 Knaproeed 自动校正成 Knapweed。",
+      "source_only_observer_observation": "未见完整标题拼写，但明确存在 This Knaproeed 的称名，不能只记为泛称。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_unresolved_literal_difference",
+      "reconciliation_note": "首次 unresolved 差异标签与第二次 literal spelling 字段的措辞不同，但均保留 Knaproeed，不校正、不确定印本/转录原因；不是一个已解决的名称复原。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "41f9879f976d6489ddf34ed4319fb200896923a33f45dada3cb1678a61c69a41"
+    },
+    {
+      "source_section_id": 151,
+      "title": "Lovage",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "Smallage 是形态比较对象，不据此作别名；本节目标只用指示语、It、Herb、部位等称呼。",
+      "source_only_observer_observation": "正文未见完整标题词或显式另名；THis、It、the whol Plant、the Herb、Leavs 等承担回指。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只记录主体泛称；Smallage 为明确形态比较对象。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "617383c855ab5d85640394df43d3e6ad5184745215d05f6610705555b6d4793d"
+    },
+    {
+      "source_section_id": 152,
+      "title": "Lungwort",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "Moss 是类别泛称，不提升为名称同义词；末段缺字保持未知，不补读。",
+      "source_only_observer_observation": "正文未见完整标题词或专名另名，使用 THis、This、It、the Herb；a kind of Moss 是类别描述。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均将 Moss 视为类别描述，不作为专名；末尾缺字不补，主体以 This/It/Herb 回指。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_original_xml_sha256": "de5bb7bb449b3942e535918840eaf7b8f0c6c0841f7572c61404593a86bcb81e"
+    },
+    {
+      "source_section_id": 159,
+      "title": "Marigolds",
+      "first_review_categories": [
+        "spelling_or_inflection_variant"
+      ],
+      "first_review_interpretation": "标题 Marigolds 与正文修饰 Leaves 的单数形 Marigold；原评分要求完整相同词。",
+      "source_only_observer_observation": "正文有 Marigold Leaves，不能归为只有泛称；同时不是标题 Marigolds 完整词重复。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_number_variant",
+      "reconciliation_note": "两轮均记录标题 Marigolds 与正文 Marigold Leaves 的单复数差异；不回填原完整词分数。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "c121f2750a55f2a36c70f278d0fce47cae3055a8108651ef509d6d37c44fede1"
+    },
+    {
+      "source_section_id": 167,
+      "title": "Misselto",
+      "first_review_categories": [
+        "spelling_or_inflection_variant",
+        "explicit_alias_reference"
+      ],
+      "first_review_interpretation": "Misleto/Milleto 两种正文串均保留；called it 明确另名。正文 Birdlime 不在本次认定为同一植物别名。",
+      "source_only_observer_observation": "标题完整拼写未重提；正文有两个不同字面拼写及明示另名。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_variants_and_explicit_alternative",
+      "reconciliation_note": "两轮均保留 Misleto/Milleto，并记录 called it Lignam Sanctae Crucis, Wood of the holy Cross；首次另说明 Birdlime 未当别名，第二次列出的别名也未包含它。",
+      "first_review_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_original_xml_sha256": "4afbacb7428a50d0b5035e48fe892752ad30fe466e4d8a82ad913f7f46a18160"
+    },
+    {
+      "source_section_id": 172,
+      "title": "Mousear",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "Moonwort 在 and 后作为并列另一物，不当作 Mousear 别名；目标正文只用 This/the Herb 等回指。",
+      "source_only_observer_observation": "正文未见完整标题词或明示另名；THis、It、hereof、the green Herb、the Plant 等回指。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只记录主体泛称，Moonwort 在 this Herb and Moonwort 中是并列对象；比较物与配方并列物不算别名。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source_original_xml_sha256": "635ffb75570ed7f866ad3c605d4573cd4dc11ce351e37bab2609d0205721bf7b"
+    },
+    {
+      "source_section_id": 195,
+      "title": "Perwinkle",
+      "first_review_categories": [
+        "spelling_or_inflection_variant"
+      ],
+      "first_review_interpretation": "同节功用段直接用 Perwincle；保留与标题 Perwinkle 的不同字串，不回填旧分数。",
+      "source_only_observer_observation": "完整标题拼写未重现，但正文以 The Perwincle 直接称名。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_literal_spelling_difference",
+      "reconciliation_note": "两轮均记录正文 The Perwincle 与标题 Perwinkle 的字面差异，不自动校正。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "c7ff82d309a3fefa961eb953fa97d05ad641b97a0c14f275fc82e3acf1e0f80f"
+    },
+    {
+      "source_section_id": 279,
+      "title": "Woad",
+      "first_review_categories": [
+        "generic_or_pronominal_only"
+      ],
+      "first_review_interpretation": "正文只有 Plant、Herb、it 等指称；Bees 和其他描述对象不作为名称候选。",
+      "source_only_observer_observation": "正文未见完整标题词或明示另名，使用 IT、It、Plant、Herb、thereof 等回指。",
+      "source_only_observer_generic_only": true,
+      "reconciliation_status": "consistent_generic_reference",
+      "reconciliation_note": "两轮均只记录主体 Plant/Herb/It 回指；Plantaue 保留原拼写且只作比较对象。",
+      "first_review_evidence_indices": [
+        0,
+        1
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "23f951ea5e4466dcde07a429f2f97c37e0a7f609c120e47dc6e1e98bf2791c6a"
+    },
+    {
+      "source_section_id": 282,
+      "title": "Yarrow",
+      "first_review_categories": [
+        "explicit_alias_reference_source_qualified"
+      ],
+      "first_review_interpretation": "原文提出 Militaris 称名联系，但保留 perhaps therfore 的来源语气；不据外部知识添加其他名称。",
+      "source_only_observer_observation": "正文未直接重提标题完整词；有泛称回指，也有带限定的另名叙述。",
+      "source_only_observer_generic_only": false,
+      "reconciliation_status": "consistent_source_qualified_naming",
+      "reconciliation_note": "两轮均记录 Militaris 的称名叙述并保留 perhaps therfore；不把带限定的来源叙述变成无条件命名事实。",
+      "first_review_evidence_indices": [
+        0
+      ],
+      "observer_evidence_indices": [
+        0,
+        1
+      ],
+      "source_original_xml_sha256": "4c379bace0823578f6716651a00b3272f40f121643c32deb6ca05a1f5948351e"
+    }
+  ]
+}
