@@ -1,0 +1,90 @@
+{
+  "schema": "f72_corner_peer_visual_observation_v1",
+  "utc": "2026-11-18T17:38:34.841783+00:00",
+  "observer_exposure": "I am the original image-side observer and have seen the frozen four-panel geometry comparison. This is an independent observation only with respect to the withheld current root conclusion, not a third-party blind review or independent historical evidence. The corner was selected after the comparison.",
+  "inputs": {
+    "protocol_sha256": "25c6a65f74170dda11178e3a5fc6fec01a4f40d4779b01ab58d5ff1cb8bbe4fb",
+    "crop_receipts_sha256": "a1249b65d6a53c1184ffd0c455f44c492d16f9a9ac2c1b2d2aa91da89bc257bb",
+    "original_sha256": "45f7caf4b58744fdcd4928887661b56a135538a5a40a24fea6ca6c5239898269",
+    "displayed_views": [
+      {
+        "path": "context_native.png",
+        "sha256": "73f120c83ef71b0f7372eb4818972fe23e8422c800da3c2ecb33c47cce85ce2c",
+        "native_pixel_identity_reverified": true,
+        "actually_displayed": true,
+        "additional_rotation": 0
+      },
+      {
+        "path": "intersection_native.png",
+        "sha256": "d0f10c1902f62632c8aef301f98e1f159b93dd8bd81f6702441885eb6fd06f75",
+        "native_pixel_identity_reverified": true,
+        "actually_displayed": true,
+        "additional_rotation": 0
+      },
+      {
+        "path": "corner_context_native.png",
+        "sha256": "29562a0522820cc16c78a59803f41d19c3798f6ea0c546b77b260c9dccc4168b",
+        "native_pixel_identity_reverified": true,
+        "actually_displayed": true,
+        "additional_rotation": 0
+      }
+    ]
+  },
+  "excluded_inputs": "Did not read root_observation_v1.txt, root_freeze, or root interpretation for this corner review. No other target expanded.",
+  "fixed_intersection_xyxy": [
+    2850,
+    1740,
+    2930,
+    1755
+  ],
+  "intersection_pixels": [
+    80,
+    15
+  ],
+  "intersection_in_200x135_context_xyxy": [
+    60,
+    60,
+    140,
+    75
+  ],
+  "intersection_in_620x570_context_xyxy": [
+    420,
+    230,
+    500,
+    245
+  ],
+  "observations": {
+    "intersection_alone": {
+      "dark_strokes_visible": true,
+      "description": "Thin brown/dark oblique, angular line segments are visible against paper texture. At 80x15 the lines are truncated and do not independently identify a letter or string.",
+      "isolated_crop_role": "Not decidable from the tiny crop alone."
+    },
+    "context_200x135": {
+      "description": "The fixed strip falls across the upper pointed/ray-like outlines of the nearby star-shaped drawing. Those angular strokes visually continue into the multi-pointed outline surrounding a colored central patch below the strip. Curved writing-like marks are visible higher in the context, but their presence above is not evidence that this strip contains part of that writing.",
+      "supported_attribution": "Illustration outline / pointed rays is the supported explanation for the clearly visible strokes in the fixed intersection.",
+      "textual_boundary_established": false
+    },
+    "context_620x570": {
+      "description": "The same pointed drawing lies near a human/arm-like figure to the right and between neighboring writing groups. The broader context confirms that the corner of a generous text envelope can include drawing strokes. It does not establish which source label owns any isolated stroke.",
+      "label_ownership_established": false
+    }
+  },
+  "assessment": {
+    "classification": "VISIBLE_STROKES_CONTEXTUALLY_SUPPORTED_AS_ILLUSTRATION_OUTLINE",
+    "recognizable_label_writing_in_fixed_strip": "No independently recognizable label-writing portion identified in this inspection.",
+    "confidence_scope": "Contextual visual classification of the prominent lines only, not a pixel-level guarantee of no faint or superposed writing.",
+    "uncertainties": [
+      "The 15-pixel strip truncates strokes and cannot independently decide their function.",
+      "No letters were transcribed; no exact first/last glyph or parent string assigned.",
+      "Pale paper/ink and possible superposition prevent an absolute absence claim."
+    ]
+  },
+  "comparison_effect": {
+    "old_boxes_changed": false,
+    "positive_area_candidate_retained": true,
+    "intersection_1200_px2_retained": true,
+    "coarse_fine_candidate_matrices_or_mutual_counts_changed": false,
+    "word_hits_computed": false,
+    "interpretation": "Positive rectangle overlap proves only shared geometric area between broad envelopes. In this selected corner, prominent visible strokes are better explained by a nearby drawing; this does not license deleting the candidate, changing unique-candidate counts, or declaring complete word/object correspondence. Any segmentation revision needs a separate consistent protocol."
+  }
+}

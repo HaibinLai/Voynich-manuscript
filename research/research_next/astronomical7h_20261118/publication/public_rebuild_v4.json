@@ -1,0 +1,25 @@
+{
+  "utc": "2026-11-18T17:47:17.933752+00:00",
+  "base_commit": "e0e1bdc1f97cdcea94c778560d2bc765d9d19d7b",
+  "setup": "git archive HEAD plus exact reviewed v4 export list, in a temporary directory; no private source observation directories copied",
+  "commands": [
+    [
+      "python3",
+      "scripts/build_zodiac_four_page.py"
+    ],
+    [
+      "python3",
+      "research/research_next/astronomical7h_20261118/publication/build_snapshot_v4.py"
+    ]
+  ],
+  "passed": true,
+  "comparisons": {
+    "site/data/astronomical7h.json": [
+      "snapshot_utc only differs"
+    ],
+    "site/data/zodiac-four.json": [
+      "snapshot_utc only differs"
+    ]
+  },
+  "scientific_payload_identical": true
+}

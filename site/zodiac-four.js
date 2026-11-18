@@ -110,6 +110,7 @@
     $('z4-downloads').innerHTML=data.sources.map(row=>`<a href="downloads/zodiac-four/${esc(row.name)}">${esc({'image_observation_v1.json':'图像观察完整投影','guided_observation_v1.json':'来源定位与全部142原行','projection_receipt_v1.json':'投影内容核验收据','comparison_v1.json':'全部矩形对与候选','report_v1.txt':'完整协调报告','audit_v1.txt':'另一路实现审核','audit_v1.json':'审核完整数据','audit_addendum_v1.txt':'审核完成补记'}[row.name] || row.name)} ↗</a>`).join('');
     $('z4-snapshot').textContent=`发布快照生成于 ${data.snapshot_utc}。这是明确文件清单生成的静态记录，不监视后台审核状态。`;
     showPanel();$('z4-load-state').textContent='已读取四图记录：全部 60 条 Lz、11 条 Cc 与双版 142 原行保留；细分备选及损伤可逐图查看。';
+    if (location.hash === '#z4-corner-case') requestAnimationFrame(() => $('z4-corner-case').scrollIntoView({block:'start'}));
   }
   const version=document.querySelector('meta[name="zodiac-four-snapshot"]').content;
   fetch(`data/zodiac-four.json?v=${encodeURIComponent(version)}`,{cache:'no-store'}).then(response=>{if(!response.ok)throw new Error('load');return response.json();}).then(render).catch(()=>{$('z4-load-state').textContent='记录未能完整载入，请刷新或直接阅读下方下载文件；不会使用示例替代原记录。';});
