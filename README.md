@@ -10,6 +10,8 @@
 
 第二个固定七小时研究窗口已于2026-11-18 16:06:21 UTC收束（登记终点16:06:13 UTC）；结题发布另做线上验收。先读[本轮结果报告](research/research_next/semantic7h_20261118/closure/research_result_report_v2.txt)、[六对增量图及尺度说明](research/research_next/semantic7h_20261118/closure/figures/caption.txt)与[终点记录](research/research_next/semantic7h_20261118/closure/window_endpoint_v1.json)。没有得到可靠词义或译文；95b框交集、Asarabacca解释和首轮观察流程偏差均保留更正。下一窗口天文图方案仍与本窗口分开登记。
 
+[最终验收已通过](research/research_next/semantic7h_20261118/publication_checks/window_final_acceptance_v1.json)：25项要求逐项记录；267个公开下载已核对，最终页面资产与线上结题状态也已验证。缓存修正防止新页面继续加载旧数据；[直接查看结题快照](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html?release=6fe9fb5)。
+
 - [七小时研究：让文字接到对象上](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html)：第二个固定窗口为 2026-11-18 09:06:13–16:06:13 UTC（芝加哥 03:06:13–10:06:13 CST），曾因用量限制中断，14:43 UTC 恢复，窗口时间不等于连续计算时长。35条历史图像关系已逐项观察，分三批展示官方原图、相似与差异；没有认证植物身份。原11条跨页查询在完整词、固定替换和缩略检验中全部未命中；有限词首尾规则只有两个不同规则的单例，内部留出平均增益为零。新增两词拼接同样没有目标命中，已独立复算。英文校准的自身覆盖从102/119增至103/119，只新增事先已知的Asarabacca；全部五条拼接上下文保留，说明字串相等不等于名称指称。未建立可靠词义锚点，也不能证明手稿无意义。网站是保存快照。
 
 - [四簇九处重复标签定位](https://haibinlai.github.io/Voynich-manuscript/semantic7h.html#s7-repeated)：全九位置保留，只有工作空间归属；对象隔离门槛尚未满足，没有形态评分。另补查原队列的五个天文标签及浴疗页17处正文墨迹，保留两处读法冲突；32个版本条目不是32处独立书写。
