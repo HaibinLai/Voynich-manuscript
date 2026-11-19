@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+第八轮完成了标签—正文检验的人工复制校准与78个删叶对照。[交互网页](https://haibinlai.github.io/Voynich-manuscript/label-calibration7h.html)提供两版转写、三种条件、全部六对替换及各剂量结果。主条件下，8次复制尝试形成约0.07–0.08个百分点的新增关联，两版均为0/128次触发；64次尝试则均为128/128。**这是固定生成器下的检测能力，不是词义正确率；相同文字仍可来自机械复用，没有破译。** [一页研究结论](research/research_next/label_exchange7h_20261119/research_report_v2.txt)及[复算说明](research/research_next/label_exchange7h_20261119/REPRODUCE_v1.txt)保留完整范围和限制，整轮结题另见逐项验收。
+
 第七轮完成了六条目的固定范围复查，取得F03同一官方摄影来源的原尺寸区域图；F04/F06未取得新目标图。**端帽解释、缺损路线和完整单位清单仍有未决项，没有新增评分或译文。** [图像来源与端点网页](https://haibinlai.github.io/Voynich-manuscript/source-geometry7h.html)可对照69条既有记录、29次实际查看回执与另一代理的文本审查；这些数量不是独立样本或完整图形普查。详见[研究报告](research/research_next/source_geometry7h_20261119/research_report_v1.txt)和[后续历史语言证据需求](research/research_next/source_geometry7h_20261119/availability_and_next_evidence_v1.txt)。研究记录已经冻结，整轮结题以另行发布的逐项验收为准。
 
 第六轮研究冻结模型中的“补清哪些信息才能消除未定”。[交互网页](https://haibinlai.github.io/Voynich-manuscript/evidence-budget7h.html)覆盖六条目的全部64子集及共同解释的三种条件。**这是理想信息分析，没有新增图像观察或译文。** 两套实现的393600行、每行20字段完全一致，[干净公开包复算](research/research_next/evidence_budget7h_20261119/REPRODUCE_v1.txt)也已通过。

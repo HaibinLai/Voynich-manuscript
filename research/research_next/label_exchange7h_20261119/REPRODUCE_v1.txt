@@ -1,0 +1,32 @@
+第八轮：读取、复算与范围说明
+
+在仓库根目录运行；建议Python3.13，全部审计为标准库CPU计算，不需要GPU、网络或私有图片。三张科研图的重新渲染另需NumPy和Matplotlib。研究原件及全部输入通过input_freeze_v1.json、summary_v1/source_manifest.json、各stage complete.json绑定；不得改旧原件来让检查通过。
+
+先读research_report_v2.txt（一页结论）、protocol_v1.txt（冻结方法）和protocol_approval_v1.json（审查与批准时刻）。旧同页、旧整叶结果属于不同估计量；本轮不把原整叶重配对再报成新发现。两版转写不是两份独立手稿。
+
+可直接重做的独立复算
+从仓库根目录创建一个全新的输出目录，避免覆盖原审查收据：
+
+VOYNICH_REPLAY_DIR=$(mktemp -d)
+python research/research_next/label_exchange7h_20261119/code/independent_audit.py --audit A --repo-root . --output "$VOYNICH_REPLAY_DIR/audit_A.json"
+python research/research_next/label_exchange7h_20261119/code/independent_audit.py --audit D --repo-root . --output "$VOYNICH_REPLAY_DIR/audit_D.json"
+python research/research_next/label_exchange7h_20261119/code/independent_audit_B.py --audit B --repo-root . --output "$VOYNICH_REPLAY_DIR/audit_B.json"
+python research/research_next/label_exchange7h_20261119/code/independent_summary_audit.py --output "$VOYNICH_REPLAY_DIR/audit_summary.json"
+
+A重建人工8叶正控并核全部114拒绝区；D从原字符串重算全部78场景矩阵及各模型精确尾；B完整重放所有256种子的候选池、随机选择、16,384事件与2,048前缀，再按事先冻结的6种子×3剂量×3条件54包独立复算数值。B不是独立复算所有人工尾。summary逐行核266240保存指标及全部聚合、CP和图值。新收据时间/输出路径会不同，科学计数、分数和检查结论应一致。
+
+再次汇总与画图
+这两项不新生成试验或参考分布：
+python research/research_next/label_exchange7h_20261119/code/summarize_calibration.py --output "$VOYNICH_REPLAY_DIR/summary"
+python research/research_next/label_exchange7h_20261119/code/plot_calibration.py --output research/research_next/label_exchange7h_20261119/figures_local_replay
+
+绘图输出目前要求在本轮目录内；每个输出目录必须尚不存在。图的科学数值应一致，PNG/SVG元数据、软件渲染和生成时间不承诺跨环境字节一致。网页发布的字节核验是比较当次冻结文件和线上文件，与跨环境复算是两件事。
+
+主生成与评分程序
+copy_generator.py的prepare(version,input[version],selection['versions'][version])和generate(seed)不读外部文件、不评分；固定种子范围、排序、RNG调用顺序和失败处理写在模块常量中。initial_state与replay接口保留原null槽，生成文本只用影子词流，绝不把原raw行当作改写后文本。
+matrix_support.py的packet、apply_word_change与score_groups，exact_reference.py的ScalarReference，给出完整主评分算法；结构D*确保每个词次贡献精确。完整种子原输出在runs/copy/{ZL,IT}/seed_000..127.json.gz，带全部交换与每剂量各条件矩阵/统计，可逐项重新生成比较；没有缺失的私有词表或图像依赖。
+run_reference_checks.py/run_copy_calibration.py是原七小时窗口的现场执行器，含原时间截止与防覆盖保护，不能在未来直接当成覆盖已冻结runs的入口。上述独立复算命令不依赖原窗口日期。若自行重新实现全B数值，应保持协议和全部种子，不以改动后的生成器冒充本轮复现，也不把预定54包的独立审计夸大为全量独立数值审核。
+
+结果解释
+A的0.05大小只对人工均匀双射机制成立，不证明手稿历史配对可交换。B的检出率只对固定背景与本复制机制；K是尝试预算，实际成功次数和效应另列。K0是一个固定背景，不是128次独立阴性。CP为理想iid生成重复下的名义区间，不是手稿置信区间；按已实现效应分箱的比例只是条件描述。
+C的两个潜在解释共享同一份文字和统计，不能用该检验选出“有词义”的解释。全部六增量、旧负向类别、未知/缺失、不可交换条件、同AI已曝光限制均保留。
