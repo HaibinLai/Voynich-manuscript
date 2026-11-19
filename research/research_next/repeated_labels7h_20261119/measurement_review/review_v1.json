@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0",
+  "created_utc": "2026-11-19T05:07:34.440825+00:00",
+  "status": "bounded_method_review_complete",
+  "scope": "Method critique only; all numerical examples artificial.",
+  "inputs": [
+    {
+      "path": "measurement_design_draft_v1.txt",
+      "sha256": "977141524b51816d49c8234c13aacf5fcc1e2f2940c938b263af769226d3e0ab"
+    },
+    {
+      "path": "plan_v1.txt",
+      "sha256": "5afea440d028ab4e5042827e47d3d9f3dedc828eb9594612bbb83aa7113bf669"
+    }
+  ],
+  "prior_exposure": [
+    "Existing label list and old research descriptions were known.",
+    "Root coordination messages described planned four-feature implementation and synthetic checks; neither root code nor its check file was read."
+  ],
+  "not_read_or_performed": [
+    "New nine-location images or qualification reports",
+    "Assigning real morphological values",
+    "Real pair scoring",
+    "Root binary_bounds.py or synthetic_check_v1.json",
+    "Modification of root draft, plan, website or old reports"
+  ],
+  "recommendation": "Use four purely depicted-geometry features; preserve joint object/candidate constraints and signed common-presence/common-absence decomposition.",
+  "final_feature_proposal": [
+    {
+      "id": "G1",
+      "replaces": [
+        "F1",
+        "F5"
+      ],
+      "name": "local depicted widening",
+      "definition": "Traceable wide outline relative to an attached connector, width ratio >=3; no flat/solid judgement or not-F1 exclusion. Do not use terminal taper, corner or globally thinnest pixel as neck.",
+      "necessary_record": "Width and connector cross-sections, local direction, boundary alternatives, drawing style, threshold uncertainty.",
+      "limitation": "Ink-line width is a depiction feature, not biological diameter. Definability is not guaranteed."
+    },
+    {
+      "id": "G2",
+      "replaces": [
+        "F2"
+      ],
+      "name": "traceable three-arm connection",
+      "definition": "At least three separately traceable connector arms reach one visible joining region; undirected and independent of plant orientation.",
+      "necessary_record": "Joining-region and arm witnesses; distinguish connector arms from two edges of one outline.",
+      "limitation": "Crossing, overlap or concealed contact remains unknown when connectivity cannot be established."
+    },
+    {
+      "id": "G3",
+      "replaces": [
+        "F3"
+      ],
+      "name": "at least three slender ends",
+      "definition": "At least three distinct ends with traceable length from last attachment/fork to end, divided by maximum transverse width of the same extension, >=3.",
+      "necessary_record": "End witnesses, lengths/widths, count lower/upper bounds; single-ink-line drawing explicitly recorded.",
+      "limitation": "Unknown ownership or branching cannot manufacture distinct ends; paper geometry does not identify roots/leaves."
+    },
+    {
+      "id": "G4",
+      "replaces": [
+        "F4"
+      ],
+      "name": "repeated internal transverse lines",
+      "definition": "At least two distinct lines inside one traceable shaft each connect its two sides and occur sequentially along it.",
+      "necessary_record": "Shaft extent, two boundary-spanning line witnesses, excluded text/other-object/crack alternatives.",
+      "limitation": "No claim of biological compartments. Geometrically qualifying hatching cannot be removed solely by inferred function."
+    }
+  ],
+  "coding_rules": {
+    "positive": "One unambiguous belonging instance suffices within a fixed candidate; other missing portions need not invalidate it.",
+    "negative": "All possible qualifying instances ruled out across relevant complete candidate scope.",
+    "unknown": "Ambiguous visibility, assignment, extent or threshold; never filled with zero.",
+    "threshold_intervals": "For width threshold: w_lower >= 3*n_upper certifies passing; w_upper < 3*n_lower certifies failing for that instance; overlap retains uncertainty.",
+    "fixed_opportunities_if_adopted": 36,
+    "similarity_denominator_if_adopted": 4,
+    "unique_canonical_variables": "Report separately from 36 node-feature opportunities."
+  },
+  "estimand": {
+    "K": 4,
+    "stratum_count": 3,
+    "Tf": "(1/3) sum_s [mean_{same pairs in s} I(x_i=x_j) - mean_{different pairs in s} I(x_i=x_j)]",
+    "T": "(1/K) sum_f Tf",
+    "T11": "Same weights, replacing I(equal) by I(both 1).",
+    "T00": "Same weights, replacing I(equal) by I(both 0).",
+    "identity": "T=T11+T00",
+    "limits": [
+      "Equal leaf-pair-stratum average is not pooled all-cross-leaf-pair average.",
+      "Shared leaves/objects create dependence.",
+      "Feature correlation prevents interpreting four features as four independent lines of evidence.",
+      "Positive agreement contrast may be driven entirely by common absence.",
+      "No randomization p-value, causal claim or species/meaning inference."
+    ]
+  },
+  "bounds_review": {
+    "candidate_rule": "Choose one admissible global candidate assignment before optimizing features; preserve it across every pair and feature.",
+    "canonical_rule": "Same physical group and same feature share one variable. Shared fragments alone do not force all whole-group features equal.",
+    "sharp_factorization_requirement": "A(c)=CartesianProduct_f A_f(c).",
+    "lower": "min_c [(1/K) sum_f min_{x in A_f(c)} Tf(x)]",
+    "upper": "max_c [(1/K) sum_f max_{x in A_f(c)} Tf(x)]",
+    "proof": "For fixed c and a finite Cartesian domain, every individual feature minimizer/maximizer can be combined into a jointly feasible assignment. Then global candidate extrema are attained by one c.",
+    "nonseparable_case": "Joint constraints require joint optimization; removing them gives a declared conservative outer bound, not a feasible sharp bound.",
+    "conflict": "A canonical variable forced to both 0 and 1 gives an empty domain/input contradiction; do not average, silently drop or relabel it unknown.",
+    "enumeration_limit": "At most 2^9 assignments per feature per fixed candidate before canonical equalities; this does not bound the number of candidate combinations.",
+    "implementation_checks": [
+      "Retain candidate and complete canonical assignment attaining each bound.",
+      "Reconstruct each stratum, feature, T11/T00 and total from one witness.",
+      "Verify candidate admissibility, known values and all joint constraints.",
+      "Handle empty domains/zero denominators as explicit errors or defined unavailable states, never zero scores.",
+      "Verify full domain coverage independently; a caller separability flag is a declaration rather than a proof.",
+      "Keep exact rational arithmetic where possible."
+    ]
+  },
+  "independent_artificial_examples": [
+    {
+      "id": "A1",
+      "meaning": "Positive contrast driven by absence",
+      "node_order": [
+        "left_a",
+        "left_b",
+        "right_a",
+        "right_c"
+      ],
+      "same_pairs": [
+        [
+          0,
+          2
+        ]
+      ],
+      "different_pairs": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "x": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "T": "2/3",
+      "T11": "-1/3",
+      "T00": "1",
+      "scope": "One artificial stratum; may be duplicated into three identical hypothetical strata. Not real layer counts."
+    },
+    {
+      "id": "A2",
+      "meaning": "Imputing missing endpoints as absent selects a favorable completion",
+      "unknown_nodes": [
+        0,
+        2
+      ],
+      "fixed_nodes": {
+        "1": 1,
+        "3": 1
+      },
+      "completions": [
+        {
+          "x": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "T": "2/3",
+          "T11": "-1/3",
+          "T00": "1"
+        },
+        {
+          "x": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "T": "-2/3",
+          "T11": "-2/3",
+          "T00": "0"
+        },
+        {
+          "x": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "T": "-2/3",
+          "T11": "-2/3",
+          "T00": "0"
+        },
+        {
+          "x": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "T": "0",
+          "T11": "0",
+          "T00": "0"
+        }
+      ],
+      "exact_range": [
+        "-2/3",
+        "2/3"
+      ],
+      "incorrect_zero_imputation": "2/3"
+    },
+    {
+      "id": "A3",
+      "meaning": "One unknown must be shared across pairs",
+      "A": 0,
+      "B": 1,
+      "objective": "I(A=C)+I(B=C)",
+      "all_assignments": [
+        {
+          "C": 0,
+          "objective": 1
+        },
+        {
+          "C": 1,
+          "objective": 1
+        }
+      ],
+      "global_range": [
+        1,
+        1
+      ],
+      "incorrect_independent_pair_range": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "A4",
+      "meaning": "Cross-feature dependence invalidates sharp separate extrema",
+      "constraint": "x2=1-x1",
+      "objective": "(x1+x2)/2",
+      "all_assignments": [
+        {
+          "x1": 0,
+          "x2": 1,
+          "objective": "1/2"
+        },
+        {
+          "x1": 1,
+          "x2": 0,
+          "objective": "1/2"
+        }
+      ],
+      "global_range": [
+        "1/2",
+        "1/2"
+      ],
+      "relaxed_independent_feature_range": [
+        0,
+        1
+      ]
+    }
+  ],
+  "toy_verification": "Examples A1–A4 were evaluated independently with Python standard-library Fraction and complete stated binary enumerations, without importing root code. These check arithmetic only, not manuscript measurement capability.",
+  "concrete_misinterpretations": [
+    "Identical oval contours do not discriminate a thin sheet from a solid mass.",
+    "Two outline sides can be mistaken for branches.",
+    "Three nearby writing strokes can be mistaken for terminal structures.",
+    "Hatching can be mistaken for real biological segmentation.",
+    "Unavailable or undefined object can be mistaken for feature absence."
+  ],
+  "scope_boundary": "Undefined unit blocks the nine-location estimand under the existing plan. Defined units with unknown features may still yield honest deterministic bounds; do not add an all-clear-case exclusion gate."
+}
