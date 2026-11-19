@@ -1,0 +1,577 @@
+{
+  "schema": "fourth_window_requirements_evidence_v1",
+  "status": "PRE_CLOSE_AUDIT",
+  "recorded_utc": "2026-11-19T10:22:17.954528+00:00",
+  "scope": "Bounded evidence-coverage audit; no numerical rerun, no image rereading, no new historical independence claim. Only closure/requirements_evidence_v1.json and .txt written.",
+  "basis": [
+    "research/research_next/repeated_labels7h_20261119/plan_v1.txt",
+    "research/research_next/repeated_labels7h_20261119/requirements_review_v1.txt",
+    "research/research_next/repeated_labels7h_20261119/publication/phase_input_v5.json",
+    "research/research_next/repeated_labels7h_20261119/publication/live_v5.json",
+    "research/research_next/repeated_labels7h_20261119/publication/browser_v5.json"
+  ],
+  "previous_unique_gap": {
+    "id": "WITHIN_LEAF_STRATIFIED_DESCRIPTION",
+    "status": "CLOSED_IN_PUBLISHED_V5",
+    "requirement_id": "R05"
+  },
+  "requirements": [
+    {
+      "id": "R01",
+      "requirement": "固定九位置、四叶、12组与16完整候选",
+      "coverage": "COVERED",
+      "finding": "未改标签、换图或删困难位置；f99r/f99v仍为同叶。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/session_v1.json",
+          "fields": [
+            "fixed_nine_loci",
+            "four_labels"
+          ],
+          "sha256": "e68822702d55def515d5bd15d077b8683a9dc0f63a2142d368629a7c63ce297b"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json",
+          "fields": [
+            "nodes",
+            "features"
+          ],
+          "sha256": "a7b22bdb86807e57256c9c9c25425498dbf3cbf9dee5e3ecdf88453107d996ab"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/measurement_approval_v1.json",
+          "fields": [
+            "canonical_group_index",
+            "global_candidate_scenarios",
+            "accepted_scope"
+          ],
+          "sha256": "8aa3353a9fa0d37f1eb6b710a2eca9155f4ffd1ec05ce68ee2f97057126a3278"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "rows",
+            "candidate_inventory"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "requirement": "旧门槛、两轮定位、95b纠正与原图追溯",
+      "coverage": "COVERED",
+      "finding": "旧记录与知情曝光限制保留；新结果不抹去旧门槛未通过。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/baseline_snapshot_v1.json",
+          "fields": [
+            "rows/*/historical_sources",
+            "all_pairs"
+          ],
+          "sha256": "3a8e807627fee556d27a39bf2aad6a1a5a8c2aa0f6fc22f932a6894b8b5684d2"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "prior_comparison_gate",
+            "rows/*/prior_first_localization",
+            "rows/*/prior_second_localization",
+            "rows/*/prior_geometry_record"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "requirement": "评分前审查、测量合同与执行授权",
+      "coverage": "COVERED",
+      "finding": "冻结定义和代理质疑、全九执行批准已有记录；历史session初始授权false无需回改。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/measurement_review/review_v1.txt",
+          "fields": [
+            "四项最终建议",
+            "主量及其解释",
+            "极值算法审核"
+          ],
+          "sha256": "17df2c6b0b52d1bd237ef496ce124279e182542fb87cf47440172be417407f69"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json",
+          "fields": [
+            "frozen_utc",
+            "coding_rules",
+            "primary_estimand",
+            "bounds_contract"
+          ],
+          "sha256": "a7b22bdb86807e57256c9c9c25425498dbf3cbf9dee5e3ecdf88453107d996ab"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/measurement_approval_v1.json",
+          "fields": [
+            "approved_utc",
+            "approval",
+            "coder_instructions"
+          ],
+          "sha256": "8aa3353a9fa0d37f1eb6b710a2eca9155f4ffd1ec05ce68ee2f97057126a3278"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "requirement": "36对、27跨叶、9同叶及三混合叶对层",
+      "coverage": "COVERED",
+      "finding": "完整配对及主量权重为0的配对均存档公开；主量不以全部跨叶简单平均替代。已有结果字段覆盖三层分母与逐特征/逐层见证，本审计未重算。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json",
+          "fields": [
+            "all_pairs",
+            "mixed_strata"
+          ],
+          "sha256": "a7b22bdb86807e57256c9c9c25425498dbf3cbf9dee5e3ecdf88453107d996ab"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/replay_results_v1.json",
+          "fields": [
+            "counts",
+            "denominators",
+            "scenarios/*/all_pairs",
+            "scenarios/*/features/*/extrema"
+          ],
+          "sha256": "ea70becb73887818bac48c1ae4a187c6676ea42316e3bdc9009077a6eeba59cc"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "actual_results/pairs",
+            "actual_results/scenarios"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        },
+        {
+          "path": "site/repeated-labels7h.html",
+          "fields": [
+            "#r4-pairs-section"
+          ],
+          "sha256": "440103c6c2b9137f8c693a177250a0580151d24dadc43bc0e8a7f9584f8f060a"
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "requirement": "同叶分层——此前唯一实质报告缺口",
+      "coverage": "COVERED",
+      "finding": "已闭合。第五版单列四叶：f99为1同/5异，联合D99=[-11/20,7/10]并保留类别均值与同端点11/00分解；f88仅3异且差不可定义；f101/f89无对。九对全保留，不与主T合并。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/contract_v1.json",
+          "fields": [
+            "frozen_utc",
+            "strata",
+            "estimand",
+            "bounds",
+            "unchanged"
+          ],
+          "sha256": "8f50a374b6bbca4ac316fb96ddd7eff12950c5da1727f268320b60c534c634da"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/results_v1.json",
+          "fields": [
+            "strata",
+            "all_nine_same_leaf_pairs",
+            "global_bounds",
+            "scenarios/*/metrics",
+            "scenarios/*/feature_metrics"
+          ],
+          "sha256": "de6b8ba34689f6261256492695a4a20e76abde9b5a1e88ed8849df2b66b69440"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/report_v1.txt",
+          "fields": [
+            "四叶表",
+            "D99端点见证"
+          ],
+          "sha256": "c27b144483fc4c047b2930fe6bd36d58a1501877d2cf05673a777a43efab3d79"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/replay_comparison_v1.json",
+          "fields": [
+            "status",
+            "checks"
+          ],
+          "sha256": "385456f5b4602ec97c187726171686c43521af534b45f317b1b516b2ab860535"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "same_leaf_supplement"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/browser_v5.json",
+          "fields": [
+            "checks/local_and_live_same_leaf_four_strata",
+            "checks/local_and_live_missing_categories_undefined_not_zero"
+          ],
+          "sha256": "b8a1f1fdbc3a2220bf56eac8ec8b5b210f0b592feb880b8e44e49cd484721e37"
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "requirement": "全部未知、逐节点缺失与canonical变量共享",
+      "coverage": "COVERED",
+      "finding": "48格观察与16候选逐9节点四值/计数公开；144行/576值及8或9唯一组和逐特征未知变量的精确比较已有回执。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_observation/observation_v1.json",
+          "fields": [
+            "groups/*/features/*/value",
+            "groups/*/features/*/allowed",
+            "node_candidate_mapping",
+            "canonical_variable_policy"
+          ],
+          "sha256": "ddf09acc3050cc218cf08e357b0a77722e83c3f777782ff5ef86ce31ec214872"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/results_v1.json",
+          "fields": [
+            "scenarios/*/per_node_missingness",
+            "scenarios/*/unique_selected_canonical_groups",
+            "scenarios/*/unique_group_count",
+            "scenarios/*/unknown_canonical_variables_by_feature"
+          ],
+          "sha256": "de6b8ba34689f6261256492695a4a20e76abde9b5a1e88ed8849df2b66b69440"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/independent/missingness_comparison_v1.json",
+          "fields": [
+            "status",
+            "checks",
+            "exposure_update"
+          ],
+          "sha256": "d6733d4193a6f9a727fe6c002c7fcc07a58a212ce5ab5f7779adadc5d18f814a"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "same_leaf_supplement/scenarios",
+            "feature_definitions/matrix"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/browser_v5.json",
+          "fields": [
+            "checks/local_and_live_C16_both_selectors_synchronized",
+            "checks/C16_node_rows",
+            "checks/C16_unique_groups"
+          ],
+          "sha256": "b8a1f1fdbc3a2220bf56eac8ec8b5b210f0b592feb880b8e44e49cd484721e37"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "requirement": "全部候选与未知敏感性",
+      "coverage": "COVERED",
+      "finding": "16完整候选及共享允许域保留；21未知格和4归属歧义的50个单项假设明确为结果后规划，不改原值。无需补跑阈值扫描或寻找有利补全。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/primary_results_v1/uncertainty_priority_v1.json",
+          "fields": [
+            "design",
+            "records",
+            "all_single_resolution_outcomes_contain_zero",
+            "interpretation"
+          ],
+          "sha256": "b2a84b1bf733f4a5ad94dbb7ac2e3ce62f2c7c2179c4205036c933af52980dff"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "actual_results/scenarios",
+            "actual_results/uncertainty_planning"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R08",
+      "requirement": "独立数值复算、分解及独立性限度",
+      "coverage": "COVERED",
+      "finding": "主、四例对照、同叶补充均有既有精确比较。主比较脚本不覆盖的额外T11/T00/层输出分别由已保存端点直接核验支撑，不能把范围混写为该比较脚本全核；数值一致不增历史证据。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/primary_results_v1/replay_comparison_v1.json",
+          "fields": [
+            "status",
+            "checks",
+            "not_checked_by_this_script",
+            "interpretation"
+          ],
+          "sha256": "1738e4bb061c52ab2ff0013d9777c4fa1114f1c2607805fa4cc84911436c3f5f"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/repro_receipt_v1.json",
+          "fields": [
+            "direct_weight_witness_checks",
+            "all_checks_passed",
+            "T_endpoint_decompositions"
+          ],
+          "sha256": "0172bd823956ff176cf4e83efb3d63d762dfce6f26a3a6892bc19a55f57f1568"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/known_language_control/replay_comparison_v1.json",
+          "fields": [
+            "status",
+            "checks",
+            "scope"
+          ],
+          "sha256": "223bfaf5e4f0805f1bb6fdfb5f70146508583df75f4bb6ce61cc80b96138bb81"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/replay_comparison_v1.json",
+          "fields": [
+            "status",
+            "checks",
+            "scope"
+          ],
+          "sha256": "385456f5b4602ec97c187726171686c43521af534b45f317b1b516b2ab860535"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/independent/receipt_v1.json",
+          "fields": [
+            "supplemental_direct_weight_checks"
+          ],
+          "sha256": "b8fa47618726327083684206c313d5eba72cfa19ecec0697a85aa673a89b9211"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "requirement": "公开安全复现及不覆盖冻结输入",
+      "coverage": "COVERED",
+      "finding": "主+四例对照与同叶补充各有新目录重放入口、清单和通过回执；第五版页面直连说明。未在此次审计重新运行重放。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/REPRODUCE_PUBLIC.txt",
+          "fields": [
+            "公开命令",
+            "新目录与不覆盖说明"
+          ],
+          "sha256": "9c42a0afe89f1175ce64f1068fc883801aea30615b4b6fb11f139d0b0962b453"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/reproduction_manifest_v1.json",
+          "fields": [
+            "inputs",
+            "scope"
+          ],
+          "sha256": "c90f032af77f158f67c4e45ab9c7cc6e4c4fbb4a32a36092a491bd35dd6b0b44"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/public_replay_receipt_v1.json",
+          "fields": [
+            "status",
+            "inputs_unchanged",
+            "compared_main",
+            "compared_control"
+          ],
+          "sha256": "5e28b08436f4a69003e880dc073e7a6cdeeba7f98f3593f7ce66a2d855610dfe"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/REPRODUCE_PUBLIC.txt",
+          "fields": [
+            "公开命令"
+          ],
+          "sha256": "eb28c27acb413463e1f16fba177335f683915061cf52f7d4a47951ec3f5520d4"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/reproduction_manifest_v1.json",
+          "fields": [
+            "inputs"
+          ],
+          "sha256": "6236c84da5012a65a827cf1fa5fad7d6f77edff8922f6dd455a363ddcca1d7e7"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/public_replay_receipt_v1.json",
+          "fields": [
+            "status",
+            "original_files_unchanged",
+            "scope"
+          ],
+          "sha256": "cb5d7ca681aae7f6e0ec6284b7b9d161ebb7e8eb062dbe56336f6bbc26401c84"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "public_replay"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "requirement": "原始文献、阅读范围及有限预测",
+      "coverage": "COVERED",
+      "finding": "六条直接文献/馆藏条目保留具体出处、支持/不能支持与实际阅读范围，不追加解密或创新认证。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/literature/evidence_table_v1.json",
+          "fields": [
+            "schema_version",
+            "status",
+            "scope",
+            "entries"
+          ],
+          "sha256": "071847d8181b444e7bc7ee57b14155a8b2b32737e7fd13a1f69f6b4edaa4ec94"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/literature/scope_and_sources_v1.json",
+          "fields": [
+            "完整来源与阅读范围记录"
+          ],
+          "sha256": "8957fea85991cf5e5d3d23492c5eaa20ef0174426c23ced6752d0ba6ff0d7713"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "literature/entries"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "requirement": "图源、曝光与解释边界",
+      "coverage": "COVERED",
+      "finding": "来源/坐标/哈希和知情曝光保留；G3宽度截线限度披露。第五版不新增图像导出；六例后续仅资格，无形态评分，不增主样本。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_observation/hash_record_v1.json",
+          "fields": [
+            "actual_native_views",
+            "outputs",
+            "observer_exposure"
+          ],
+          "sha256": "5417cdc6c65c533d42164df9a511afa47ca108127bf7db8dee7aad1145d23e7b"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/feature_review_v1/audit_v1.txt",
+          "fields": [
+            "结论与限制"
+          ],
+          "sha256": "0d1a33c0f80512b516a45c63a7e911a4efb83bf9d59413af6f5d4ef30f8c194d"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/phase_input_v5.json",
+          "fields": [
+            "image_export_policy",
+            "followup_scope",
+            "old_primary_and_control_unchanged"
+          ],
+          "sha256": "8d719ca6b8d5792607fba5649c544289791d9190995ff0584f989cc76b040b14"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "native_view_inventory",
+            "actual_results/limits",
+            "actual_results/observation_exposure",
+            "known_language_followup"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "requirement": "原仓库及Pages版本发布与证据对应",
+      "coverage": "COVERED",
+      "finding": "第五版28项来源哈希全部匹配。live_v5记录89项200/哈希匹配，browser_v5记录四叶、未定义类别、C16联动等通过；当前本地HTML的后续变动须归根最终发布验收。",
+      "evidence": [
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/phase_input_v5.json",
+          "fields": [
+            "base_phase",
+            "sources",
+            "phase",
+            "no_observation_or_old_phase_mutation"
+          ],
+          "sha256": "8d719ca6b8d5792607fba5649c544289791d9190995ff0584f989cc76b040b14"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/live_v5.json",
+          "fields": [
+            "commit",
+            "checked_utc",
+            "checks",
+            "all_match"
+          ],
+          "sha256": "cb6e90d92dcdf4b3cee4b3e1cbc3370ed59622583b02153f89c4d9e4eeb45929"
+        },
+        {
+          "path": "research/research_next/repeated_labels7h_20261119/publication/browser_v5.json",
+          "fields": [
+            "published_commit",
+            "checked_utc",
+            "checks",
+            "scope"
+          ],
+          "sha256": "b8a1f1fdbc3a2220bf56eac8ec8b5b210f0b592feb880b8e44e49cd484721e37"
+        },
+        {
+          "path": "site/data/repeated-labels7h.json",
+          "fields": [
+            "publication",
+            "phase_history",
+            "sources"
+          ],
+          "sha256": "728f7f38dcf4d55df9904df36a2b04558fa6f44c42c3503a8cc8ee45af50cae4"
+        }
+      ]
+    }
+  ],
+  "specific_unresolved_required_reporting_gaps": [],
+  "publication_binding": {
+    "phase_source_count": 28,
+    "phase_source_hash_mismatches": [],
+    "recorded_live_checks": 89,
+    "recorded_all_200_match": true,
+    "published_commit": "93a2128c169bd190b7f54b9012f147824189398e",
+    "current_local_changes_since_published_receipt": [
+      {
+        "path": "site/repeated-labels7h.html",
+        "published_v5_sha256": "8d659a2ec4cefefc0b04d3dc34a5c34ee2dd23853df1b00010cf20135ab30967",
+        "current_local_sha256": "440103c6c2b9137f8c693a177250a0580151d24dadc43bc0e8a7f9584f8f060a"
+      }
+    ],
+    "basis_note": "Read existing publication receipts and bind local files; no fresh network or browser check in this audit."
+  },
+  "nonblocking_presentation_item": {
+    "path": "site/repeated-labels7h.html",
+    "#r4-result": "Local fallback has now been updated to actual results; this change is not bound to published live_v5 receipt yet.",
+    "#r4-literature-note": "Static fallback still retains old no-scoring wording; normal JavaScript updates it. This is presentation cleanup, not a missing research result."
+  },
+  "retained_limits": [
+    "Conditional local group assignment, not unique semantic attachment or species identification.",
+    "Relaxed binary bounds are not confidence intervals, p-values, or biological sharp bounds.",
+    "Shared informed observations underpin implementations; numerical agreement is not historical replication.",
+    "Four-entry known-language control and six-entry eligibility followup are separate and do not enlarge or validate the nine-locus primary."
+  ],
+  "root_owned_pending": [
+    "Final publication and byte/browser verification of any local page changes since live_v5.",
+    "Time/deadline audit for11:03:26,11:18:26 and11:48:26 UTC.",
+    "Final publication of closure artifacts and any whole-goal completion decision."
+  ],
+  "window_expiry_claimed": false,
+  "whole_goal_complete_claimed": false
+}
