@@ -1,0 +1,244 @@
+{
+  "schema": "outer_public_replay_acceptance_v1",
+  "status": "PASS_MINIMAL_GIT_EXPORT_FULL_BYTE_REPLAY",
+  "export_commit": "d654b4f0fe04a55f029022c81013c868681acfc2",
+  "scientific_source_commit": "86e2055917bfc5458339e5b0853f36530624fba2",
+  "all14_runtime_bytes_unchanged_between_commits": true,
+  "started_utc": "2026-11-19T12:54:15.891967+00:00",
+  "completed_utc": "2026-11-19T12:54:16.213171+00:00",
+  "interpreter": {
+    "command_default": "python",
+    "resolved_executable": "[REDACTED_INTERPRETER]/python",
+    "python_version": "3.13.7",
+    "numpy_version": "2.3.3",
+    "observed_command_version_line": "Python 3.13.7 NumPy 2.3.3"
+  },
+  "source_export_directory": "[REDACTED_TEMP_SOURCE]",
+  "output_directory": "[REDACTED_TEMP_OUTPUT]",
+  "export_method": "Read-only git archive exact14 runtime paths plus committed instruction; no working-tree copy, checkout, staging or Git writes.",
+  "runtime_file_count": 14,
+  "exported_file_count_before_run": 15,
+  "runtime_inventory": [
+    {
+      "path": "research/research_next/hierarchical7h_20261119/F_observation_v1/observation_v1.json",
+      "sha256": "796eca999b0bc756ed75bd5a37831fd0321777d79ba523d44825fa0d5d626b54"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/root_outer_numeric_approval_v1.json",
+      "sha256": "66c7cb0fc28838f52ac22f67f11607ad124790444fb260968158028c4b912545"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/outer_calibration_v1/input_v1.json",
+      "sha256": "b268047d31d36594db8f22dfdde7e7412ac38a8dfe954b740d3b6c1e941b9d7c"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_outer_v1/prepared_actual_v1/input_v1.json",
+      "sha256": "a21b35c228381160c9daee0b185644f4a969f83764c9541e78b7dea8b153c82c"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/run_outer_v1.py",
+      "sha256": "9f08c4eea69f4ad4049f4245b8115d34d725cdba933d8b6bb3c9bda4ca413a4e"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/build_outer_input_v1.py",
+      "sha256": "ac805c93c332dc9ba61ec4e37a5a6a0315d6204e61bb8966aa0cda3ed6417c27"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/run.py",
+      "sha256": "89db2625b1902b87ca1a1e5dda46f5fcc84762bb330a3a86112fbf8a141fd1dd"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/bounds.py",
+      "sha256": "b9bcfc6eb39c13bdc4397835d1b7f1a309b8f6afbc28962042f12a1aceb5e3a7"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/project.py",
+      "sha256": "28cd578ee3b9af17b46158d9bf8bdc1801af05a619b9fcaf18a6e19d438ba424"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_outer_v1/outer_runner_v1.py",
+      "sha256": "3e3cf6b1235e35474318f54614bfd06c30f65e3284b07921490476b73e980e09"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/replay.py",
+      "sha256": "f33b03147f24ee22544e660a0dc8ba94295baadc9469b7fe0d8d71e779ee9284"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/guarded_replay_v1.py",
+      "sha256": "a0092e889ea75f44a507868e2286823490b7090bd3c4a6487a27bf7a39366192"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py",
+      "sha256": "c65fc7cfab073dea2e2f5c67be22c71058bd6876c7f858e28f6ed6eadc777464"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/compare_outer_v1.py",
+      "sha256": "91afe60b36bdb0b8bc7cdab4a756b419cc74063601bd8cdc27d68456ca08621d"
+    }
+  ],
+  "instruction": {
+    "path": "research/research_next/hierarchical7h_20261119/OUTER_REPRODUCE_v1.txt",
+    "sha256": "c323cd5ed0c41673a96499ac9a8e3a5a8c6f7bdea0a70551d128a7a2e1c71d0f"
+  },
+  "archive_sha256": "21ca61ef46bd762ed4c0f8e916efc3bf99e68335bb6cc7e5b2a83e4809f3bc84",
+  "executed_command_exact_from_exported_instruction": "h5_w5=\"research/research_next/hierarchical7h_20261119\"\nh5_python=\"${H5_PYTHON:-python}\"\nh5_outer_dir=\"$(mktemp -d \"${TMPDIR:-/tmp}/hierarchical-outer-replay.XXXXXX\")\"\n\"$h5_python\" -c 'import sys, numpy; print(\"Python\", sys.version.split()[0], \"NumPy\", numpy.__version__)'\n\"$h5_python\" \"$h5_w5/run_outer_v1.py\" \\\n  --input \"$h5_w5/outer_calibration_v1/input_v1.json\" \\\n  --observation \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --approval \"$h5_w5/root_outer_numeric_approval_v1.json\" \\\n  --output-dir \"$h5_outer_dir/root\"\n\"$h5_python\" \"$h5_w5/independent_outer_v1/outer_runner_v1.py\" \\\n  --input \"$h5_w5/independent_outer_v1/prepared_actual_v1/input_v1.json\" \\\n  --observation \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --approval \"$h5_w5/root_outer_numeric_approval_v1.json\" \\\n  --output-dir \"$h5_outer_dir/independent\"\n\"$h5_python\" \"$h5_w5/compare_outer_v1.py\" \\\n  --root \"$h5_outer_dir/root/results.json\" \\\n  --independent \"$h5_outer_dir/independent/results_v1.json\" \\\n  --input \"$h5_w5/outer_calibration_v1/input_v1.json\" \\\n  --observation \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --output \"$h5_outer_dir/comparison.json\"\nprintf 'Outer replay output directory: %s\\n' \"$h5_outer_dir\"",
+  "command_exit_code": 0,
+  "stdout": "Python 3.13.7 NumPy 2.3.3\n{\"H\": {\"lower\": \"-3/8\", \"upper\": \"3/8\"}, \"H4\": {\"lower\": \"-1/2\", \"upper\": \"1/2\"}, \"H_minus_H4\": {\"lower\": \"-3/16\", \"upper\": \"3/16\"}}\n{\"output\": \"[REDACTED_TEMP_OUTPUT]/independent/results_v1.json\", \"prepared_only\": false}\n{\"schema\": \"outer_actual_comparison_v1\", \"all_pass\": true, \"endpoint_witnesses_checked\": 216, \"source_bindings_checked\": 1296, \"primary_denominators\": {\"same\": 2, \"different\": 4}, \"H4_denominators\": {\"same\": 2, \"different\": 2}, \"gate\": false, \"witness_ties_need_not_match\": true, \"claim\": \"Numerical/provenance agreement for the conditional outer model; no historical or image certification.\", \"checker_sha256\": \"91afe60b36bdb0b8bc7cdab4a756b419cc74063601bd8cdc27d68456ca08621d\"}\nOuter replay output directory: [REDACTED_TEMP_OUTPUT]\n",
+  "stderr": "",
+  "full_reference_comparisons": [
+    {
+      "role": "root",
+      "output_relative_path": "root/results.json",
+      "reference_git_path": "research/research_next/hierarchical7h_20261119/outer_calibration_v1/root_actual_v1/results.json",
+      "actual_sha256": "0534fcd80c63d5b01187d0e592f1ef4079e94acddd2f9bb5c8e635c964ad8104",
+      "reference_sha256": "0534fcd80c63d5b01187d0e592f1ef4079e94acddd2f9bb5c8e635c964ad8104",
+      "bytes_equal": true,
+      "full_json_equal": true,
+      "differences": [],
+      "fields_ignored": []
+    },
+    {
+      "role": "independent",
+      "output_relative_path": "independent/results_v1.json",
+      "reference_git_path": "research/research_next/hierarchical7h_20261119/independent_outer_v1/actual_v1/results_v1.json",
+      "actual_sha256": "4f0df5247b607d90ab92fe07fe964e463369f1b18d79c5bc2ceb957844f084bb",
+      "reference_sha256": "4f0df5247b607d90ab92fe07fe964e463369f1b18d79c5bc2ceb957844f084bb",
+      "bytes_equal": true,
+      "full_json_equal": true,
+      "differences": [],
+      "fields_ignored": []
+    },
+    {
+      "role": "comparison",
+      "output_relative_path": "comparison.json",
+      "reference_git_path": "research/research_next/hierarchical7h_20261119/outer_calibration_v1/comparison_v1.json",
+      "actual_sha256": "8eb670cf039335548fd5a8ef2a337de54a36f30a13de13012e9f0e8518675fe6",
+      "reference_sha256": "8eb670cf039335548fd5a8ef2a337de54a36f30a13de13012e9f0e8518675fe6",
+      "bytes_equal": true,
+      "full_json_equal": true,
+      "differences": [],
+      "fields_ignored": []
+    }
+  ],
+  "comparator_receipt": {
+    "schema": "outer_actual_comparison_v1",
+    "all_pass": true,
+    "levels": [
+      {
+        "level": "union",
+        "objectives": {
+          "H": {
+            "lower": "-3/8",
+            "upper": "3/8"
+          },
+          "H4": {
+            "lower": "-1/2",
+            "upper": "1/2"
+          },
+          "H_minus_H4": {
+            "lower": "-3/16",
+            "upper": "3/16"
+          }
+        },
+        "all_15_pair_bounds_match": true
+      },
+      {
+        "level": "terminal_region_reading",
+        "objectives": {
+          "H": {
+            "lower": "-9/32",
+            "upper": "9/32"
+          },
+          "H4": {
+            "lower": "-3/8",
+            "upper": "3/8"
+          },
+          "H_minus_H4": {
+            "lower": "-5/32",
+            "upper": "5/32"
+          }
+        },
+        "all_15_pair_bounds_match": true
+      },
+      {
+        "level": "opaque_boundary_reading",
+        "objectives": {
+          "H": {
+            "lower": "-3/8",
+            "upper": "3/8"
+          },
+          "H4": {
+            "lower": "-1/2",
+            "upper": "1/2"
+          },
+          "H_minus_H4": {
+            "lower": "-3/16",
+            "upper": "3/16"
+          }
+        },
+        "all_15_pair_bounds_match": true
+      }
+    ],
+    "endpoint_witnesses_checked": 216,
+    "source_bindings_checked": 1296,
+    "primary_denominators": {
+      "same": 2,
+      "different": 4
+    },
+    "H4_denominators": {
+      "same": 2,
+      "different": 2
+    },
+    "gate": false,
+    "witness_ties_need_not_match": true,
+    "claim": "Numerical/provenance agreement for the conditional outer model; no historical or image certification.",
+    "source_hashes": {
+      "root": "0534fcd80c63d5b01187d0e592f1ef4079e94acddd2f9bb5c8e635c964ad8104",
+      "independent": "4f0df5247b607d90ab92fe07fe964e463369f1b18d79c5bc2ceb957844f084bb",
+      "input": "b268047d31d36594db8f22dfdde7e7412ac38a8dfe954b740d3b6c1e941b9d7c",
+      "observation": "796eca999b0bc756ed75bd5a37831fd0321777d79ba523d44825fa0d5d626b54"
+    },
+    "checker_sha256": "91afe60b36bdb0b8bc7cdab4a756b419cc74063601bd8cdc27d68456ca08621d"
+  },
+  "private_pixels_accessed": false,
+  "science_or_approval_or_input_or_result_modified": false,
+  "all15_pairs_and_both_states_and_union_reproduced": true,
+  "boundaries": [
+    "Conditional conservative algebraic outer enclosure under accepted local facts and the retained g scope.",
+    "216 endpoint checks/1296 bindings compare two implementations of the same informed records, not independent images.",
+    "No arbitrary input copies or unrelated untracked working files exported.",
+    "Negative/zero-containing lower bounds do not prove a true zero or negative effect; strict literal-name branch remains separately undefined.",
+    "This is the requested public replay only; no additional scientific tests or new observations."
+  ],
+  "privacy_redaction": {
+    "status": "LOCAL_PATHS_REDACTED_BEFORE_PUBLICATION",
+    "private_original_bytes_sha256": "d4eb5a0272d23c1584b076a7aa5dd7bc4aeb76fd0b4d9a8bf061b09412e7f0c9",
+    "private_original_retention": "Retained separately outside the public research artifacts.",
+    "scope": "Machine-local interpreter and temporary source/output paths, including nested strings and stdout. Numeric values, source and result hashes, exact command template, and full-byte output comparisons are unchanged.",
+    "json_string_fields_changed": 4,
+    "path_occurrences_replaced": 5,
+    "replacements": [
+      {
+        "json_path": "$.interpreter.resolved_executable",
+        "replacement": "[REDACTED_INTERPRETER]/python"
+      },
+      {
+        "json_path": "$.source_export_directory",
+        "replacement": "[REDACTED_TEMP_SOURCE]"
+      },
+      {
+        "json_path": "$.output_directory",
+        "replacement": "[REDACTED_TEMP_OUTPUT]"
+      },
+      {
+        "json_path": "$.stdout",
+        "replacement": "[REDACTED_TEMP_OUTPUT]/independent/results_v1.json"
+      },
+      {
+        "json_path": "$.stdout",
+        "replacement": "[REDACTED_TEMP_OUTPUT]"
+      }
+    ],
+    "full_byte_comparison_scope": "The generated scientific output files and comparator receipt, not these subsequently redacted public acceptance files."
+  }
+}

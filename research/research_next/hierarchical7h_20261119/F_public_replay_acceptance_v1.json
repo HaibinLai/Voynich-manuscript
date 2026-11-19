@@ -6,8 +6,8 @@
   "completed_utc": "2026-11-19T12:31:21.528535+00:00",
   "python_version": "Python 3.9.6",
   "source_export_method": "Read-only git archive of exactly four committed runtime files; extract into a new temporary directory preserving repository paths. No checkout, index changes or Git writes.",
-  "source_export_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-public-source-h9fmv7ag",
-  "output_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-projection.l9ysEE",
+  "source_export_directory": "[REDACTED_TEMP_SOURCE]",
+  "output_directory": "[REDACTED_TEMP_OUTPUT]",
   "instruction_path": "research/research_next/hierarchical7h_20261119/F_REPRODUCE_v1.txt",
   "instruction_sha256": "9d39c66c183c25e237f9b799e9ce56892945af30a66d3cbe3f5d411044ff1606",
   "executed_command_exact_from_instruction": "h5_w5=\"research/research_next/hierarchical7h_20261119\"\nh5_f_replay_dir=\"$(mktemp -d \"${TMPDIR:-/tmp}/hierarchical-f-projection.XXXXXX\")\"\npython3 \"$h5_w5/method_engine/project.py\" \\\n  --input \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --output \"$h5_f_replay_dir/root_projection.json\"\npython3 \"$h5_w5/independent_engine/independent_projection_v1.py\" \\\n  --input \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --output-dir \"$h5_f_replay_dir/independent\"\npython3 \"$h5_w5/compare_projections_v1.py\" \\\n  --observation \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --primary \"$h5_f_replay_dir/root_projection.json\" \\\n  --independent \"$h5_f_replay_dir/independent/projection.json\" \\\n  --output \"$h5_f_replay_dir/comparison.json\"\nprintf 'F projection output directory: %s\\n' \"$h5_f_replay_dir\"",
@@ -32,7 +32,7 @@
   "source_archive_sha256": "e12734041049c774b6b52a3fd25f0259d1180661f76f1b5dc11996a3ef15e656",
   "minimal_source_file_count_before_run": 4,
   "command_exit_code": 0,
-  "stdout": "{\"output\": \"/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-projection.l9ysEE/independent\", \"domains\": {\"F01\": 3, \"F02\": 9, \"F03\": 9, \"F04\": 9, \"F05\": 3, \"F06\": 81}}\n{\"all_match\": true, \"origins\": 810}\nF projection output directory: /var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T//hierarchical-f-projection.l9ysEE\n",
+  "stdout": "{\"output\": \"[REDACTED_TEMP_OUTPUT]/independent\", \"domains\": {\"F01\": 3, \"F02\": 9, \"F03\": 9, \"F04\": 9, \"F05\": 3, \"F06\": 81}}\n{\"all_match\": true, \"origins\": 810}\nF projection output directory: [REDACTED_TEMP_OUTPUT]\n",
   "stderr": "",
   "output_files": [
     {
@@ -172,5 +172,36 @@
   },
   "private_images_accessed": false,
   "frozen_inputs_or_engines_modified": false,
-  "new_authorization_or_scientific_rule_implied": false
+  "new_authorization_or_scientific_rule_implied": false,
+  "privacy_redaction": {
+    "status": "CURRENT_PUBLIC_RECEIPT_METADATA_PATH_CORRECTION",
+    "original_bytes_sha256": "d8ab23ec392d5cb6bd8f17e365adb6f3cc381ee402f10135bf06b5087f2c259c",
+    "historical_commit_containing_original": "12cfa619c62499b2087e706551cddcd638189717",
+    "private_original_retained_outside_repository": true,
+    "scope": "Generic machine-local temporary directory strings in source/output directory fields and stdout only. No assertion of a secret leak.",
+    "string_fields_changed": 3,
+    "path_occurrences_replaced": 4,
+    "replacements": [
+      {
+        "json_path": "$.source_export_directory",
+        "replacement": "[REDACTED_TEMP_SOURCE]"
+      },
+      {
+        "json_path": "$.output_directory",
+        "replacement": "[REDACTED_TEMP_OUTPUT]"
+      },
+      {
+        "json_path": "$.stdout",
+        "replacement": "[REDACTED_TEMP_OUTPUT]/independent"
+      },
+      {
+        "json_path": "$.stdout",
+        "replacement": "[REDACTED_TEMP_OUTPUT]"
+      }
+    ],
+    "science_and_hashes_unchanged": true,
+    "history_rewritten": false,
+    "historical_original_remains_in_git": true,
+    "full_output_comparison_interpretation": "Existing scientific output comparisons remain unchanged; redaction changes only current public acceptance metadata bytes."
+  }
 }
