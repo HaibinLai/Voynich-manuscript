@@ -8,9 +8,9 @@
 
 ## 当前内容
 
-第四个固定七小时窗口正在进行：2026-11-19 **04:48:26–11:48:26 UTC**。[重复标签与图形对照](https://haibinlai.github.io/Voynich-manuscript/repeated-labels7h.html)保留四簇九位置、十二个候选图形组和十六种联合归属。完整48格中20项存在、7项不存在、21项未知；同标签相似度优势的保守范围为 **[−5/12, 53/120]**，两套数值实现一致，不能确定正负。这是条件性几何描述，没有得到词义。
+第四窗口原计划为2026-11-19 **04:48:26–11:48:26 UTC**；分析于 **10:35:02 UTC** 提前冻结，实际公开验收另记。保留计划与实际时间，不声称连续跑满七小时。[重复标签与图形对照](https://haibinlai.github.io/Voynich-manuscript/repeated-labels7h.html)保留四簇九位置、十二个候选图形组和十六种联合归属。完整48格中20项存在、7项不存在、21项未知；同标签相似度优势的保守范围为 **[−5/12, 53/120]**，两套数值实现一致，不能确定正负。这是条件性几何描述，没有得到词义。
 
-另用四个已有拉丁文名称的条目检查同一测量，得到 **[−1/4, 0]**；三项粗特征在这个小对照中无法区分名称。此对照与主研究分层、图形粒度不同，不合并或外推为一般识别率。详见[更新计划](research/research_next/repeated_labels7h_20261119/plan_update_v1.txt)、[主结果复算](research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/summary_v1.md)、[已知名称对照](research/research_next/repeated_labels7h_20261119/known_language_control/independent_v1/summary_v1.md)。网页为阶段快照，窗口尚未结题。
+另用四个已有拉丁文名称的条目检查同一测量，得到 **[−1/4, 0]**；三项粗特征在这个小对照中无法区分名称。此对照与主研究分层、图形粒度不同，不合并或外推为一般识别率。详见[更新计划](research/research_next/repeated_labels7h_20261119/plan_update_v1.txt)、[主结果复算](research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/summary_v1.md)、[已知名称对照](research/research_next/repeated_labels7h_20261119/known_language_control/independent_v1/summary_v1.md)。完整结果与限制见[研究交付报告](research/research_next/repeated_labels7h_20261119/closure/research_delivery_report_v1.txt)，实际收束依据见[收束记录](research/research_next/repeated_labels7h_20261119/closure/research_close_v1.json)。网页是保存的研究快照。
 
 第三窗口已按用户接受的延期交付结题，原截止未满足的记录保留：[接受记录](research/research_next/astronomical7h_20261118/closure/user_accepted_delayed_closure_v1.json)、[研究交付报告](research/research_next/astronomical7h_20261118/closure/research_delivery_report_v1.txt)、[圆图与次序页面](https://haibinlai.github.io/Voynich-manuscript/astronomical7h.html)。延期接受不改变原图歧义、科学限制或原截止事实。
 
@@ -67,6 +67,8 @@
 同叶补充按四个物理叶分别报告：[f99 的同／异标签一致率差为 −0.55 至 +0.70](research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/report_v1.txt)，仍不能确定方向；f88 没有同标签对，f101、f89 没有同叶对象对，对照差均不可定义。所有候选、共享未知及独立复算保留，主分析结果未改。
 
 另完成[六个新增条目的名称资格核查](research/research_next/repeated_labels7h_20261119/known_language_followup_v1/eligibility_v1.txt)：mentastrum 支持明确缩写展开与目录条件下的对应；marrubium 的 Morgan 原图首尾仍未核清；ruta 的限定词缺口保留。这批只核资格，没有形态评分，也不是新的盲测。
+
+还完成一次约5分31秒的[四例局部通道记录试验](research/research_next/repeated_labels7h_20261119/measurement_development_v1/report_v1.txt)：局部末端与入块端口可留下坐标，完整部件数和连接图仍未建立。四例数量上界及精确值全部未知，没有计算名称配对分数；下一步先处理载体、端区与细通道的层级，不能把更多局部计数直接当作更好的识别方法。
 
 ## 阅读与复现
 

@@ -1,0 +1,98 @@
+第四窗口：最终交付前要求—证据核对 v1
+状态：PRE_CLOSE_AUDIT
+记录时间：2026-11-19T10:22:17.954528+00:00
+
+结论：此前唯一明确实质报告缺口“同叶分层对照”已在第五版发布中闭合；此次未发现新的必需报告漏项。此结论不宣布窗口到期或整个目标完成。
+范围：不重算已通过数值、不重新看图、不改变冻结主结果、不增加实验或批准门槛。以下路径相对仓库根。
+
+R01 固定九位置、四叶、12组与16完整候选：COVERED
+未改标签、换图或删困难位置；f99r/f99v仍为同叶。
+  - research/research_next/repeated_labels7h_20261119/session_v1.json :: fixed_nine_loci, four_labels
+  - research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json :: nodes, features
+  - research/research_next/repeated_labels7h_20261119/measurement_approval_v1.json :: canonical_group_index, global_candidate_scenarios, accepted_scope
+  - site/data/repeated-labels7h.json :: rows, candidate_inventory
+
+R02 旧门槛、两轮定位、95b纠正与原图追溯：COVERED
+旧记录与知情曝光限制保留；新结果不抹去旧门槛未通过。
+  - research/research_next/repeated_labels7h_20261119/baseline_snapshot_v1.json :: rows/*/historical_sources, all_pairs
+  - site/data/repeated-labels7h.json :: prior_comparison_gate, rows/*/prior_first_localization, rows/*/prior_second_localization, rows/*/prior_geometry_record
+
+R03 评分前审查、测量合同与执行授权：COVERED
+冻结定义和代理质疑、全九执行批准已有记录；历史session初始授权false无需回改。
+  - research/research_next/repeated_labels7h_20261119/measurement_review/review_v1.txt :: 四项最终建议, 主量及其解释, 极值算法审核
+  - research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json :: frozen_utc, coding_rules, primary_estimand, bounds_contract
+  - research/research_next/repeated_labels7h_20261119/measurement_approval_v1.json :: approved_utc, approval, coder_instructions
+
+R04 36对、27跨叶、9同叶及三混合叶对层：COVERED
+完整配对及主量权重为0的配对均存档公开；主量不以全部跨叶简单平均替代。已有结果字段覆盖三层分母与逐特征/逐层见证，本审计未重算。
+  - research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json :: all_pairs, mixed_strata
+  - research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/replay_results_v1.json :: counts, denominators, scenarios/*/all_pairs, scenarios/*/features/*/extrema
+  - site/data/repeated-labels7h.json :: actual_results/pairs, actual_results/scenarios
+  - site/repeated-labels7h.html :: #r4-pairs-section
+
+R05 同叶分层——此前唯一实质报告缺口：COVERED
+已闭合。第五版单列四叶：f99为1同/5异，联合D99=[-11/20,7/10]并保留类别均值与同端点11/00分解；f88仅3异且差不可定义；f101/f89无对。九对全保留，不与主T合并。
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/contract_v1.json :: frozen_utc, strata, estimand, bounds, unchanged
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/results_v1.json :: strata, all_nine_same_leaf_pairs, global_bounds, scenarios/*/metrics, scenarios/*/feature_metrics
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/report_v1.txt :: 四叶表, D99端点见证
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/replay_comparison_v1.json :: status, checks
+  - site/data/repeated-labels7h.json :: same_leaf_supplement
+  - research/research_next/repeated_labels7h_20261119/publication/browser_v5.json :: checks/local_and_live_same_leaf_four_strata, checks/local_and_live_missing_categories_undefined_not_zero
+
+R06 全部未知、逐节点缺失与canonical变量共享：COVERED
+48格观察与16候选逐9节点四值/计数公开；144行/576值及8或9唯一组和逐特征未知变量的精确比较已有回执。
+  - research/research_next/repeated_labels7h_20261119/feature_observation/observation_v1.json :: groups/*/features/*/value, groups/*/features/*/allowed, node_candidate_mapping, canonical_variable_policy
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/results_v1.json :: scenarios/*/per_node_missingness, scenarios/*/unique_selected_canonical_groups, scenarios/*/unique_group_count, scenarios/*/unknown_canonical_variables_by_feature
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/independent/missingness_comparison_v1.json :: status, checks, exposure_update
+  - site/data/repeated-labels7h.json :: same_leaf_supplement/scenarios, feature_definitions/matrix
+  - research/research_next/repeated_labels7h_20261119/publication/browser_v5.json :: checks/local_and_live_C16_both_selectors_synchronized, checks/C16_node_rows, checks/C16_unique_groups
+
+R07 全部候选与未知敏感性：COVERED
+16完整候选及共享允许域保留；21未知格和4归属歧义的50个单项假设明确为结果后规划，不改原值。无需补跑阈值扫描或寻找有利补全。
+  - research/research_next/repeated_labels7h_20261119/primary_results_v1/uncertainty_priority_v1.json :: design, records, all_single_resolution_outcomes_contain_zero, interpretation
+  - site/data/repeated-labels7h.json :: actual_results/scenarios, actual_results/uncertainty_planning
+
+R08 独立数值复算、分解及独立性限度：COVERED
+主、四例对照、同叶补充均有既有精确比较。主比较脚本不覆盖的额外T11/T00/层输出分别由已保存端点直接核验支撑，不能把范围混写为该比较脚本全核；数值一致不增历史证据。
+  - research/research_next/repeated_labels7h_20261119/primary_results_v1/replay_comparison_v1.json :: status, checks, not_checked_by_this_script, interpretation
+  - research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/repro_receipt_v1.json :: direct_weight_witness_checks, all_checks_passed, T_endpoint_decompositions
+  - research/research_next/repeated_labels7h_20261119/known_language_control/replay_comparison_v1.json :: status, checks, scope
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/replay_comparison_v1.json :: status, checks, scope
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/independent/receipt_v1.json :: supplemental_direct_weight_checks
+
+R09 公开安全复现及不覆盖冻结输入：COVERED
+主+四例对照与同叶补充各有新目录重放入口、清单和通过回执；第五版页面直连说明。未在此次审计重新运行重放。
+  - research/research_next/repeated_labels7h_20261119/REPRODUCE_PUBLIC.txt :: 公开命令, 新目录与不覆盖说明
+  - research/research_next/repeated_labels7h_20261119/reproduction_manifest_v1.json :: inputs, scope
+  - research/research_next/repeated_labels7h_20261119/public_replay_receipt_v1.json :: status, inputs_unchanged, compared_main, compared_control
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/REPRODUCE_PUBLIC.txt :: 公开命令
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/reproduction_manifest_v1.json :: inputs
+  - research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/public_replay_receipt_v1.json :: status, original_files_unchanged, scope
+  - site/data/repeated-labels7h.json :: public_replay
+
+R10 原始文献、阅读范围及有限预测：COVERED
+六条直接文献/馆藏条目保留具体出处、支持/不能支持与实际阅读范围，不追加解密或创新认证。
+  - research/research_next/repeated_labels7h_20261119/literature/evidence_table_v1.json :: schema_version, status, scope, entries
+  - research/research_next/repeated_labels7h_20261119/literature/scope_and_sources_v1.json :: 完整来源与阅读范围记录
+  - site/data/repeated-labels7h.json :: literature/entries
+
+R11 图源、曝光与解释边界：COVERED
+来源/坐标/哈希和知情曝光保留；G3宽度截线限度披露。第五版不新增图像导出；六例后续仅资格，无形态评分，不增主样本。
+  - research/research_next/repeated_labels7h_20261119/feature_observation/hash_record_v1.json :: actual_native_views, outputs, observer_exposure
+  - research/research_next/repeated_labels7h_20261119/feature_review_v1/audit_v1.txt :: 结论与限制
+  - research/research_next/repeated_labels7h_20261119/publication/phase_input_v5.json :: image_export_policy, followup_scope, old_primary_and_control_unchanged
+  - site/data/repeated-labels7h.json :: native_view_inventory, actual_results/limits, actual_results/observation_exposure, known_language_followup
+
+R12 原仓库及Pages版本发布与证据对应：COVERED
+第五版28项来源哈希全部匹配。live_v5记录89项200/哈希匹配，browser_v5记录四叶、未定义类别、C16联动等通过；当前本地HTML的后续变动须归根最终发布验收。
+  - research/research_next/repeated_labels7h_20261119/publication/phase_input_v5.json :: base_phase, sources, phase, no_observation_or_old_phase_mutation
+  - research/research_next/repeated_labels7h_20261119/publication/live_v5.json :: commit, checked_utc, checks, all_match
+  - research/research_next/repeated_labels7h_20261119/publication/browser_v5.json :: published_commit, checked_utc, checks, scope
+  - site/data/repeated-labels7h.json :: publication, phase_history, sources
+
+发布绑定：phase_input_v5的28项来源本次文件哈希均匹配；live_v5已有89项200/匹配记录。当前本地仅HTML已较该发布回执变化，不能用旧回执认证新HTML；根的最终发布/验收需覆盖该变化。这是收尾发布状态，不是新的科学报告缺口。
+当前后备文案：#r4-result本地已改为实际结果说明；#r4-literature-note静态仍有评分前措辞，正常JS会更新。可随最终页面整理同步，不追加实验或批准条件。
+
+缺口闭合的核心：已有四叶分层表而不只是9对筛选；f99的1同/5异联合D99界、f88缺同标签而不可定义、无配对的f101/f89均明确。类别均值端点不能自由相减，共享变量不拆开，D99不混入主T。16候选逐节点144行/576值及8/9唯一组已保存精确比较。
+
+留给根：11:03:26禁止新长实验、11:18:26最终验收、11:48:26收束的时间审计，最终仓库/Pages发布与整个目标状态决定。本文件始终为PRE_CLOSE_AUDIT，不要求重跑已通过数值或再次看图。
