@@ -1,0 +1,16 @@
+第五轮条件外界：最小公开数值复算验收 v1
+状态：PASS_MINIMAL_GIT_EXPORT_FULL_BYTE_REPLAY。
+
+来源：从提交 d654b4f0fe04a55f029022c81013c868681acfc2 用 git archive 仅导出 14 个运行依赖与已提交 OUTER_REPRODUCE_v1.txt，共 15 文件。14 个运行依赖逐字节等于科学提交 86e2055917bfc5458339e5b0853f36530624fba2；未复制当前工作树或未跟踪文件。完整路径清单与各 SHA256 见 JSON 的 runtime_inventory，说明文件见 instruction。
+
+执行：在新导出根目录，原样执行已提交说明的唯一 sh 命令块，输出另一个新 mktemp 目录。解释器 [REDACTED_INTERPRETER]/python 3.13.7，NumPy 2.3.3。命令退出码 0；未读取私有图像、未修改科学代码、批准、输入或冻结结果。
+
+验证：主结果 root/results.json、独立结果 independent/results_v1.json、comparison.json 均与该提交中对应冻结记录完整 JSON 相同且逐字节相同。无忽略字段；差异列表均为空。比较器 all_pass=true，覆盖两个 g 状态及其并集、全部 15 对、216 个完整端点见证及 1296 个条目原像绑定。执行命令、输出位置、完整比较器收据、参考与重跑 SHA256 均保存在配套 JSON。
+
+边界：这是保留共享 g 的条件保守代数外界复现。条件乘积仅为包络，不把每个状态认证为真实几何完成，不恢复统计独立性，也不构成新的历史证据。正下界门槛未满足不能推出真实效应为零或负；严格图上完整名称分支的数学未定义与已运行的条件外界不同。第 15 对区间的计数勘误只纠正说明性计数，未改变本次复现的代码或数值。此次不追加其他实验。
+
+冻结摘要：
+OUTER_REPRODUCE_v1.txt SHA256 c323cd5ed0c41673a96499ac9a8e3a5a8c6f7bdea0a70551d128a7a2e1c71d0f
+outer_public_replay_acceptance_v1.json SHA256 2a7523717b78f49b506e4deff80cc9364a564a44edbf4e5af146ef42b2a7cf98
+
+公开前路径脱敏：原 JSON 原样留存在非公开 output 目录，其原始字节 SHA256 为 d4eb5a0272d23c1584b076a7aa5dd7bc4aeb76fd0b4d9a8bf061b09412e7f0c9。公开 JSON 共 4 个字符串字段、5 处本地路径（解释器、临时导出目录、临时输出目录及 stdout）替换为明确 REDACTED 标记；本 TXT 另替换 1 处解释器路径。数值、来源/结果哈希、完整比较器收据和实际输出文件均未改变。逐字节一致性指重跑科学输出及比较器文件，不指脱敏后的验收说明自身。

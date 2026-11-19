@@ -1,0 +1,439 @@
+{
+  "schema": "metric_information_loss_v1",
+  "status": "CONDITIONAL_ARTIFICIAL_ANALYSIS_NO_METRIC_CHANGE",
+  "assumptions": [
+    "Rooted full binary tree; an external B feeds its root through C.",
+    "Every node has an independently visible incoming C and bounded Z.",
+    "Leaves are free ends; every internal node is a visible J.",
+    "A node direct T is precisely a child that is a leaf.",
+    "No manuscript is assumed to satisfy this ideal model."
+  ],
+  "variables": {
+    "L": "leaf count",
+    "I": "internal node count",
+    "a_r": "internal nodes with exactly r leaf children, r in 0,1,2"
+  },
+  "formula": {
+    "raw": [
+      "L+a_0",
+      "a_1",
+      "a_2",
+      "I"
+    ],
+    "capped": "componentwise min(2,raw)",
+    "nontrivial_full_binary_identities": [
+      "L=I+1",
+      "I=a_0+a_1+a_2",
+      "L=a_1+2*a_2",
+      "a_2=a_0+1"
+    ],
+    "reduced_raw": [
+      "3*a_0+a_1+2",
+      "a_1",
+      "a_0+1",
+      "2*a_0+a_1+1"
+    ],
+    "single_leaf_exception": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "global_constant_for_nontrivial_full_binary": "Q0 capped=2",
+    "at_most_six_nontrivial_signatures": [
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        0,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2
+      ]
+    ],
+    "Q0_interpretation": "Includes leaves AND internal nodes with no leaf children; those internal nodes can have nonqualifying outgoing routes to further joins. Not bare-end count."
+  },
+  "families": [
+    {
+      "id": "perfect_balanced",
+      "parameters": "height h>=2",
+      "raw": [
+        "3*2^(h-1)-1",
+        0,
+        "2^(h-1)",
+        "2^h-1"
+      ],
+      "signature": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "loss": "Exact size and height unbounded within same signature."
+    },
+    {
+      "id": "single_spine_comb",
+      "parameters": "internal nodes m>=3",
+      "raw": [
+        "m+1",
+        "m-1",
+        1,
+        "m"
+      ],
+      "signature": [
+        2,
+        2,
+        1,
+        2
+      ],
+      "loss": "Exact size and spine depth unbounded within same signature."
+    },
+    {
+      "id": "two_combs_below_root",
+      "parameters": "p,q>=1; p+q>=4",
+      "raw": [
+        "p+q+3",
+        "p+q-2",
+        2,
+        "p+q+1"
+      ],
+      "signature": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "loss": "Different p/q allocations lose branching balance and height even before capping; total size also lost after capping."
+    }
+  ],
+  "artificial_examples": [
+    {
+      "id": "single_leaf_boundary",
+      "leaves": 1,
+      "internal_nodes": 0,
+      "height": 0,
+      "a": [
+        0,
+        0,
+        0
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "capped_signature": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "unordered_shape": "L"
+    },
+    {
+      "id": "single_fork_boundary",
+      "leaves": 2,
+      "internal_nodes": 1,
+      "height": 1,
+      "a": [
+        0,
+        0,
+        1
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "capped_signature": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "unordered_shape": "(L,L)"
+    },
+    {
+      "id": "perfect_h2",
+      "leaves": 4,
+      "internal_nodes": 3,
+      "height": 2,
+      "a": [
+        1,
+        0,
+        2
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        5,
+        0,
+        2,
+        3
+      ],
+      "capped_signature": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "unordered_shape": "((L,L),(L,L))"
+    },
+    {
+      "id": "perfect_h3",
+      "leaves": 8,
+      "internal_nodes": 7,
+      "height": 3,
+      "a": [
+        3,
+        0,
+        4
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        11,
+        0,
+        4,
+        7
+      ],
+      "capped_signature": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "unordered_shape": "(((L,L),(L,L)),((L,L),(L,L)))"
+    },
+    {
+      "id": "perfect_h4",
+      "leaves": 16,
+      "internal_nodes": 15,
+      "height": 4,
+      "a": [
+        7,
+        0,
+        8
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        23,
+        0,
+        8,
+        15
+      ],
+      "capped_signature": [
+        2,
+        0,
+        2,
+        2
+      ],
+      "unordered_shape": "((((L,L),(L,L)),((L,L),(L,L))),(((L,L),(L,L)),((L,L),(L,L))))"
+    },
+    {
+      "id": "comb_m3",
+      "leaves": 4,
+      "internal_nodes": 3,
+      "height": 3,
+      "a": [
+        0,
+        2,
+        1
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        4,
+        2,
+        1,
+        3
+      ],
+      "capped_signature": [
+        2,
+        2,
+        1,
+        2
+      ],
+      "unordered_shape": "(((L,L),L),L)"
+    },
+    {
+      "id": "comb_m4",
+      "leaves": 5,
+      "internal_nodes": 4,
+      "height": 4,
+      "a": [
+        0,
+        3,
+        1
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        5,
+        3,
+        1,
+        4
+      ],
+      "capped_signature": [
+        2,
+        2,
+        1,
+        2
+      ],
+      "unordered_shape": "((((L,L),L),L),L)"
+    },
+    {
+      "id": "comb_m6",
+      "leaves": 7,
+      "internal_nodes": 6,
+      "height": 6,
+      "a": [
+        0,
+        5,
+        1
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        7,
+        5,
+        1,
+        6
+      ],
+      "capped_signature": [
+        2,
+        2,
+        1,
+        2
+      ],
+      "unordered_shape": "((((((L,L),L),L),L),L),L)"
+    },
+    {
+      "id": "double_comb_p1_q3",
+      "leaves": 6,
+      "internal_nodes": 5,
+      "height": 4,
+      "a": [
+        1,
+        2,
+        2
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        7,
+        2,
+        2,
+        5
+      ],
+      "capped_signature": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unordered_shape": "((((L,L),L),L),(L,L))"
+    },
+    {
+      "id": "double_comb_p2_q2",
+      "leaves": 6,
+      "internal_nodes": 5,
+      "height": 3,
+      "a": [
+        1,
+        2,
+        2
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        7,
+        2,
+        2,
+        5
+      ],
+      "capped_signature": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unordered_shape": "(((L,L),L),((L,L),L))"
+    },
+    {
+      "id": "double_comb_p2_q4",
+      "leaves": 8,
+      "internal_nodes": 7,
+      "height": 5,
+      "a": [
+        1,
+        4,
+        2
+      ],
+      "raw_Q0_Q1_Q2_QJ": [
+        9,
+        4,
+        2,
+        7
+      ],
+      "capped_signature": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unordered_shape": "(((((L,L),L),L),L),((L,L),L))"
+    }
+  ],
+  "same_raw_different_shape_example": {
+    "ids": [
+      "double_comb_p1_q3",
+      "double_comb_p2_q2"
+    ],
+    "raw": [
+      7,
+      2,
+      2,
+      5
+    ],
+    "heights": [
+      4,
+      3
+    ],
+    "unordered_shapes_different": true
+  },
+  "limitations": [
+    "No F directory read, no images viewed, no K name scores.",
+    "Three families collide internally but have different signatures from one another.",
+    "No metric/cap/rule/sample change; no inference about actual F values or contrast sign.",
+    "Tree formulas only apply under listed ideal assumptions; hand-drawn local incidence records need not form trees.",
+    "Counts represent local relations; parent direct T and child incoming C can be the same physical channel without an extra physical channel."
+  ],
+  "verification": {
+    "script": "metric_information_loss_artificial_v1.py",
+    "script_sha256": "e49dbaa6ac60a884c1282b3519d376360020703370c7017a6e05b0d7e7b2c962",
+    "receipt": "metric_information_loss_artificial_v1/receipt_v1.json",
+    "receipt_sha256": "714d076c1c3ecd5fa700f26138d79bd462f027637ae22090b5bb2166ae5676ff",
+    "checks": {
+      "examples": 11,
+      "max_internal_nodes": 15,
+      "every_direct_node_count_equals_formula": true,
+      "all_three_families_have_signature_collisions": true,
+      "equal_raw_counts_different_unordered_shapes_and_heights": true
+    }
+  }
+}

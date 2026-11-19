@@ -1,0 +1,44 @@
+第五轮：公开K记录复算入口验收 v1
+
+结论：通过公开记录算术复算；README相对路径有一项轻微cwd说明缺口。不是像素/专家复核。
+导出commit：47e183bbc04c60bc54f8389453760a71b302d22a
+所有执行输入由该提交的Git对象显式导出，七个文件保留原目录/原文件名；临时目录在仓库外，执行后移除。未使用工作树科学输入、私有原图、F草稿或结果。
+
+实际命令（cwd为 research/research_next/hierarchical7h_20261119/method_engine）：
+python project.py --input ../K_development_v1/observation_v1.json --output readme_python_root.json  [exit=0]
+python ../independent_engine/independent_projection_v1.py --input ../K_development_v1/observation_v1.json --output-dir readme_python_independent  [exit=0]
+python -S project.py --input ../K_development_v1/observation_v1.json --output stdlib_only_python_root.json  [exit=0]
+python -S ../independent_engine/independent_projection_v1.py --input ../K_development_v1/observation_v1.json --output-dir stdlib_only_python_independent  [exit=0]
+python3 -S project.py --input ../K_development_v1/observation_v1.json --output stdlib_only_python3_root.json  [exit=0]
+python3 -S ../independent_engine/independent_projection_v1.py --input ../K_development_v1/observation_v1.json --output-dir stdlib_only_python3_independent  [exit=0]
+
+结果：主/独立投影的完整JSON对象各自与冻结输出相等；四域1/27/9/2及全部327个case_id/extra_index原像跨实现、对冻结结果均逐项相等。每个输出仍绑定原观察SHA。没有K名称对比。
+Python：README原样python实际为3.13.7；另用python -S（3.13.7）及python3 -S（3.9.6）成功复算。两投影只用标准库，不需NumPy或GPU。独立F评分程序导入NumPy，但本次没有运行评分或检验其安装；最低Python支持版本未单独证明。
+
+文档/网页检查：
+DOC_CWD：README示例使用 project.py 和 ../independent_engine 的相对路径，隐含当前目录为 W5/method_engine；没有显式cd行。网页“从仓库根目录获取”描述的是获取文件位置，不能理解为在仓库根直接执行README里的python project.py。
+先 cd research/research_next/hierarchical7h_20261119/method_engine，再将 OBSERVATION.json 替换为 ../K_development_v1/observation_v1.json；或在repo根给脚本/输入/输出完整相对路径。
+DOC_SHORT_FILENAMES：网页短下载名root-project.py、independent-projection.py等是查阅副本，不是可直接照README运行的原目录树；网页已明确保留原文件名/目录关系，并给每项仓库原路径。README占位符需换为实际输入和新的输出位置。
+
+
+建议精确操作：
+cd research/research_next/hierarchical7h_20261119/method_engine
+python project.py --input ../K_development_v1/observation_v1.json --output NEW_PROJECTION.json
+python ../independent_engine/independent_projection_v1.py --input ../K_development_v1/observation_v1.json --output-dir NEW_INDEPENDENT_PROJECTION_DIR
+输出名/目录必须尚不存在，主输出的父目录须已存在。以上只是可执行入口说明，不修改README或科学代码。
+
+七个导出文件：
+research/research_next/hierarchical7h_20261119/method_engine/README.txt SHA256 92f3101b1aac94fd57a83cd993e24a1cbc82f8d5b9c57239bfbe7bf6de918e84
+research/research_next/hierarchical7h_20261119/method_engine/project.py SHA256 28cd578ee3b9af17b46158d9bf8bdc1801af05a619b9fcaf18a6e19d438ba424
+research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py SHA256 c65fc7cfab073dea2e2f5c67be22c71058bd6876c7f858e28f6ed6eadc777464
+research/research_next/hierarchical7h_20261119/K_development_v1/observation_v1.json SHA256 37d232fb918afe874f305699841ad7d7223d5764cb6d601478186bb6d63544e3
+research/research_next/hierarchical7h_20261119/K_development_v1/root_projection_v1.json SHA256 6518e4ec0145e3fdf62ef6e3cb6f42b27415be30db118b7ac3152fe47b7b5f31
+research/research_next/hierarchical7h_20261119/K_development_v1/independent_projection_v1/projection.json SHA256 e8777b18ca9506d485ad2d1584daa7b6ceb525813581eb6bc16e7f409a9fb503
+research/research_next/hierarchical7h_20261119/K_development_v1/projection_comparison_v1.json SHA256 2520c1835b032058a8dde92de211e4b614464b0bd13a41868df23d454457e121
+
+网页四项短下载副本与Git原件字节一致；网页确有“保留原文件名与目录关系”“短文件名仅方便查阅”及逐项仓库原路径提示。精确源码/页面hash、六次命令、逐域逐原像范围见JSON。
+
+这是公开记录的算术复算验收，不是像素核验、原图分割或独立专家复核。
+两实现处理同一知情观察；一致不能认证局部排除、候选穷尽、原图可实现性或名称识别。
+未重跑依赖私有图像的来源像素审计；该能力不可由此公开包替代。
+未执行F评分，未验证完整未来F求界流程或NumPy安装。

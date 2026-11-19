@@ -1,0 +1,51 @@
+第五轮 F 公开复算 v1：仅逐条目代数投影与完整原像比较
+
+冻结来源提交：503e770f6ce09313bee07f5fc245b0212a7700fe。
+本说明不修改观察、指标或两套科学投影器。输入是已公开的固定F01–F06记录，不需要私有图片。
+需要Python 3及macOS/Linux的mktemp；以下适用于zsh/bash。两投影器与比较器只用Python标准库，不需要NumPy或GPU。
+
+从仓库根运行
+保留仓库原路径和文件名；网页短下载名不能直接当成源码路径。采用上面提交的下列四个文件即可组成最小运行包：
+- research/research_next/hierarchical7h_20261119/F_observation_v1/observation_v1.json
+- research/research_next/hierarchical7h_20261119/method_engine/project.py
+- research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py
+- research/research_next/hierarchical7h_20261119/compare_projections_v1.py
+
+可复制命令（cwd=仓库根，或保持同一相对目录结构的最小包根）：
+```sh
+h5_w5="research/research_next/hierarchical7h_20261119"
+h5_f_replay_dir="$(mktemp -d "${TMPDIR:-/tmp}/hierarchical-f-projection.XXXXXX")"
+python3 "$h5_w5/method_engine/project.py" \
+  --input "$h5_w5/F_observation_v1/observation_v1.json" \
+  --output "$h5_f_replay_dir/root_projection.json"
+python3 "$h5_w5/independent_engine/independent_projection_v1.py" \
+  --input "$h5_w5/F_observation_v1/observation_v1.json" \
+  --output-dir "$h5_f_replay_dir/independent"
+python3 "$h5_w5/compare_projections_v1.py" \
+  --observation "$h5_w5/F_observation_v1/observation_v1.json" \
+  --primary "$h5_f_replay_dir/root_projection.json" \
+  --independent "$h5_f_replay_dir/independent/projection.json" \
+  --output "$h5_f_replay_dir/comparison.json"
+printf 'F projection output directory: %s\n' "$h5_f_replay_dir"
+```
+
+每次mktemp新建输出目录；independent子目录预先不存在。比较器以独占创建方式写comparison.json，观察原件和仓库冻结结果不会被覆盖。输出保留在最后显示的临时位置，本说明不自动删除。
+
+验收应核什么
+六行unit_defined=true，完整四维域数依次为3/9/9/9/3/81；10个完整case共810个case_id/extra_index原像。
+比较器逐行核完整向量集合、每签名全部原像及逐case基数，不只比较域大小或四维边际；同时核输入SHA与主投影中的非空cross_entry_constraints原样保留。
+原像一致来自同一份知情观察，不认证图像边界、局部缺少、唯一分割、盲观察或名称识别。
+冻结参考为F_observation_v1/root_projection_v1.json、independent_projection_v1/projection.json及projection_comparison_v1.json；比较收据的checked_utc是本次运行时间，可与旧收据不同，其他可复现内容应一致。
+本次实际从指定Git提交导出四文件最小包执行的验收见F_public_replay_acceptance_v1.json/.txt。
+
+必须保留的联合范围限制
+F观察包含非空G_terminal_boundary_interpretation：只对F03部分父关系建立了共同解释状态到C1/C2的映射，全六同粒度条件化范围尚未完整认证。
+本入口只对每条目case作代数并集，并不建立全六共同可行状态，也不把六个边际域相乘送入评分。所有15对相似度、H、H4均未在此执行；“未执行”不是零分。严格图上完整名分支因缺少同/异名分母而数学未定义，是另一原因，不能混写。
+不能直接用边际乘积冒充保留约束的联合域，并不等于任何保守外域都不可能计算。若另行审查的包含证明能够保留共同g、F03 C1/C2等已知耦合并给出外层条件允许域，则可能有一个另行授权的有界计算任务。本说明不执行、不批准该任务，也不把历史calibration_outcome_v1的停止理由升级为数学不可能性。
+
+主投影原文的特别解释边界
+冻结project.py原样输出通用interpretation文字：
+“Common signatures diagnose zero contrast possibility, not name recognition.”
+它还列出边际共同签名。为逐值复现，应保留这些冻结输出；但在本F包存在非空全局约束时，边际共同向量不能单独证明共同状态可行，不能据此推H=0或声称已跑名称对比。本入口的比较通过只确认记录代数一致。
+
+原图、私有缓存或新图源不会被访问；来源像素一致性与人工可见性审查不在公开投影命令的能力范围。余项ALLOWED_SUPERSET是代数外包络，不是每个组合已由真实几何实现的证明。
