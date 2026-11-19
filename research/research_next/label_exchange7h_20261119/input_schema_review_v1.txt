@@ -1,0 +1,22 @@
+W8 冻结输入可实现性审查 v1
+
+结论：现有输入足以实现提案中的原folio、同EVA长度、同H/I/Q且不同物理叶供体规则。尚未建立任何新候选池，未计算供体数、词形命中、复制、矩阵或分数。本结论不保证某一标签实际有供体。审查绑定protocol_proposal_v1.txt当前SHA（见JSON）；v1提案需明确下列口径后出v2。
+
+实际字段检查
+两版页记录均有folio、leaf、H/I/Q；标签有locator、source_line、kind/type、raw、word、units；正文有相同原locus来源字段和tokens数组。完整扫描ZL的34,509个正文槽（676个null）、607标签，IT的33,972槽（76个null）、614标签：字段完整、所有非null串可按旧EVA单位拆回原串、所有标签显式units一致，版内正文坐标和标签locus均无重复。这里只核结构与字串自洽，不比较任何标签与正文词。
+每版主支持13叶覆盖30个folio记录，各叶跨面H/I/Q一致且已知，因而同HIQ/不同叶筛选可由现字段确定。主支持与共同长度必须直接用run_v2/selection.json，不能重用设计历史support_v1里扩长度的严格方案。
+
+必须明写的派生字段
+body slot不是显式字段：先对含null的原tokens数组作零基enumerate，再过滤null。不得先删空位再编号。body units也不是显式字段：按冻结 @三位数字; 或[a-z及apostrophe]扫描，扩展字形作为一个单位，串拼回必须相同；不能用字符串字符数当EVA长度。标签是完整单词locus，不是完整词义单位；其normalized slot如记0，必须标派生，不伪装已有原字段。
+查询去重只按版本/原folio/长度/word合并抽样身份，所有原标签locator仍保留。词在另一面出现不允许替代“自己原页”。模拟中的当前word/units可变，raw源串不得被重写或称重新转写。稳定排序需要把folio/locator自然序及整数slot写成明确固定函数，放进实现freeze。
+
+数值承接的一个必要修正
+旧integer_scale来自实际矩阵约分后的分母LCM，不是所有交换文本的结构公分母。根与方法审查方已决定v2改用D*=lcm(|L_g|·n_label(i,L)·N_body(j,L))；总统计还要除总叶数，删叶后用12。此处记录修正，不新计算分母覆盖或分数，不改旧结果。
+
+公开复现依赖
+已逐项核4份旧收据：label_body/saved_v1/freeze、complete与leaf_controls/run_v2/freeze、complete。路径可在现仓库解析，全部引用的文件哈希/有记录的字节数一致。前一freeze相对repo根，后一freeze相对research/research_next，两份complete相对各自结果目录。输入两副本字节完全相同。这个本地核对不代替远程发布或纯Git导出验收。
+W8最小运行输入应明确绑定原label_body input.gz、正式selection、六个旧包（矩阵/整数组）、原freeze/complete及相应协议/实现/审计。为保留来源重建链，应同时绑定ZL/IT原转写、build_corpus.py、study20/analyze.py与label_body/run.py；新运行可直接读包，无须执行旧评分入口。复用旧结果时把results/trials/calibration/supplement/audit及leaf summary一并列入输入或引用清单。机器JSON给出每项真实相对路径、SHA及用途。
+只复制W8文件夹不够；公开包须保留依赖布局或提供明确解析manifest，不通过悄悄改旧收据修路径。新增最终协议、排序/单位函数、引擎/回放及固定人工例在实现完成后另入freeze。旧unknown/mixed或多词/不确定标签不因模拟方便而恢复。
+
+范围
+同AI知情结构审查，非盲样本或历史转写认证。没有网络、图片显示、生成器、评分或供体可行性搜索。可进入v2实现审查；实际算法与守恒仍须按正式合同验证。

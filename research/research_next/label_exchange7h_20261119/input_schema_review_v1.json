@@ -1,0 +1,822 @@
+{
+  "schema_version": "input_schema_review_v1",
+  "created_utc": "2026-11-19T15:07:00.219567+00:00",
+  "status": "INPUT_FEASIBLE_PROTOCOL_V2_CLARIFICATIONS_REQUIRED",
+  "proposal": {
+    "path": "research/research_next/label_exchange7h_20261119/protocol_proposal_v1.txt",
+    "sha256": "229d68f0dfdeb23d2e2afd3dfa31f02c00c5e82d4ebd433f88a10e9dbb8c2719",
+    "role": "reviewed complete v1; not rewritten by this review"
+  },
+  "reviewer_scope": {
+    "informed_same_ai": true,
+    "old_input_and_results_exposed": true,
+    "new_word_matches": false,
+    "new_candidates_instantiated": false,
+    "new_matrix_or_scores": false,
+    "new_copy_or_simulation": false,
+    "image_or_network": false,
+    "work_done": "Parsed fields; scanned words into EVA units independently; checked coordinate uniqueness, selected-leaf metadata and file-receipt hashes. No query word searched in body and no donor feasibility counts calculated."
+  },
+  "field_contract": [
+    {
+      "field": "version",
+      "location": "top-level ZL/IT",
+      "rule": "Always part of a coordinate key; never align different token slots across versions automatically."
+    },
+    {
+      "field": "folio/physical_leaf/H/I/Q",
+      "location": "/{version}/pages/{page_index}",
+      "rule": "Explicit per-page fields. The selected 13 leaves per version each have single known H/I/Q across their 30 folio records."
+    },
+    {
+      "field": "body_locator/source_line/raw",
+      "location": "/{version}/pages/{page_index}/body/{locus_index}",
+      "rule": "Explicit source provenance and original locus string."
+    },
+    {
+      "field": "body_slot",
+      "location": "index in original tokens array",
+      "rule": "DERIVED zero-based enumerate including nulls. Filter non-null only after assigning slot. Version+folio+locator+slot is unique in each packet; not a glyph-pixel coordinate."
+    },
+    {
+      "field": "body_word",
+      "location": "body locus tokens[slot]",
+      "rule": "Explicit normalized string or null. Raw IVTFF is separate; no raw-string mutation in simulated text."
+    },
+    {
+      "field": "body_units/length",
+      "location": "derived from body_word",
+      "rule": "Use frozen EVA scanner @\\d{3};|[a-z']; require concatenation recovers word. Extended @nnn; counts as one unit, not len(word). No merge, extra normalization or uncertain-slot recovery."
+    },
+    {
+      "field": "label_locator/word/units",
+      "location": "/{version}/pages/{page_index}/labels/{label_index}",
+      "rule": "Explicit single-word-locus label. There is no explicit label slot field; normalized single-token slot may be called0 only if identified as derived. Keep all original locator/source_line/raw objects under de-duplicated query key."
+    }
+  ],
+  "actual_schema_checks": [
+    {
+      "version": "ZL",
+      "scope": "Entire stored packet field/unit validation, plus selected-leaf metadata; no label/body equality queries.",
+      "page_count": 227,
+      "counts": {
+        "body_loci": 3996,
+        "body_slots": 34509,
+        "non_null_body_tokens": 33833,
+        "null_body_slots": 676,
+        "label_loci": 607
+      },
+      "body_coordinate_duplicates": 0,
+      "label_coordinate_duplicates": 0,
+      "issues": [],
+      "selected_physical_leaves": 13,
+      "selected_folio_records": 30,
+      "selected_leaf_HIQ": {
+        "f100": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f101": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f102": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f75": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f77": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f78": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f80": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f82": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f83": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f84": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f88": [
+          [
+            "1",
+            "P",
+            "O"
+          ]
+        ],
+        "f89": [
+          [
+            "1",
+            "P",
+            "O"
+          ]
+        ],
+        "f99": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ]
+      },
+      "all_selected_leaf_HIQ_single_known": true
+    },
+    {
+      "version": "IT",
+      "scope": "Entire stored packet field/unit validation, plus selected-leaf metadata; no label/body equality queries.",
+      "page_count": 225,
+      "counts": {
+        "body_loci": 3995,
+        "body_slots": 33972,
+        "non_null_body_tokens": 33896,
+        "null_body_slots": 76,
+        "label_loci": 614
+      },
+      "body_coordinate_duplicates": 0,
+      "label_coordinate_duplicates": 0,
+      "issues": [],
+      "selected_physical_leaves": 13,
+      "selected_folio_records": 30,
+      "selected_leaf_HIQ": {
+        "f100": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f101": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f102": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ],
+        "f75": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f77": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f78": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f80": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f82": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f83": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f84": [
+          [
+            "2",
+            "B",
+            "M"
+          ]
+        ],
+        "f88": [
+          [
+            "1",
+            "P",
+            "O"
+          ]
+        ],
+        "f89": [
+          [
+            "1",
+            "P",
+            "O"
+          ]
+        ],
+        "f99": [
+          [
+            "1",
+            "P",
+            "S"
+          ]
+        ]
+      },
+      "all_selected_leaf_HIQ_single_known": true
+    }
+  ],
+  "candidate_construction_feasibility": {
+    "status": "All necessary structural fields exist; feasibility per actual query intentionally not computed.",
+    "steps": [
+      "Use authoritative main_HI selected leaf IDs and lengths per version.",
+      "Retain each supported label occurrence; group only query identity by(version, original folio, EVA length, original normalized word).",
+      "Attach the original folio metadata and physical leaf; preserve all source label locators and any repeated occurrences.",
+      "Source replacement pool is that exact folio, same length, current non-null token different from fixed query; no sibling foldout panel substituted.",
+      "Donor pool uses original selected13leaf/support-length coordinates, different physical leaf, exact same known H/I/Q, same length and current token equal to query.",
+      "For seed evolution maintain fixed source coordinates and original metadata; current mutable token strings alone change.",
+      "Record no-page-opportunity, no donor, no nonquery replacement, initial-empty and subsequently-empty separately; eligibility does not remove inference targets."
+    ],
+    "sorting_requirement": "Freeze one natural folio/locator ordering implementation and zero-based integer slot ordering before RNG use. Sort helper/hash belongs in W8 code freeze; dictionary iteration order is not the specification.",
+    "raw_vs_current_text": "Immutable raw packet remains provenance. Mutable per-slot word/units stream is simulation state, not a re-transcription of raw IVTFF.",
+    "qualification_limit": "This review proves constructibility, not that any particular label has a legal donor or replacement. Original mixed/unknown metadata and excluded ambiguous/multiword labels are not reinstated."
+  },
+  "protocol_clarifications": [
+    {
+      "id": "C1",
+      "priority": "required",
+      "issue": "body slot is derived from complete tokens list; units derived with old scanner.",
+      "resolution": "Root confirmed preserving original null-array index and units scanner; include explicitly in v2."
+    },
+    {
+      "id": "C2",
+      "priority": "required",
+      "issue": "Old integer_scale is computed from reduced observed matrix fractions, so not generically a structural common denominator after exchanges.",
+      "resolution": "Root and method reviewer agreed v2 uses D*=lcm(|L_g| * n_label(i,L) * N_body(j,L)) over eligible groups/source/target/length cells. Total score denominator additionally includes total leaf count; delete-leaf denominator uses12 not13. No old-scale coverage calculation or new score performed here."
+    },
+    {
+      "id": "C3",
+      "priority": "implementation_definition",
+      "issue": "Stable sort must be explicit and shared by calibration/replay.",
+      "resolution": "Freeze exact natural folio/locator key plus original zero-based slot; retain all query locator identities."
+    }
+  ],
+  "public_paths": {
+    "status": "All referenced local repository files present and matching original freeze/completion receipts. No live-network or clean-Git export test in this task.",
+    "receipt_checks": [
+      {
+        "receipt": "research/research_next/label_body/saved_v1/freeze.json",
+        "receipt_sha256": "2e0351d4fa0c6225aa9ebb91fe305059c7d471d61a1122dc63b2058a4707c228",
+        "path_base": ".",
+        "files": [
+          {
+            "stored_path": "research/research_next/label_body/protocol.txt",
+            "resolved_repo_path": "research/research_next/label_body/protocol.txt",
+            "exists": true,
+            "expected_sha256": "adf28b2e67e69e9640d3a314cd066ed1ed55715bec3304ccd804c974ccb996e6",
+            "actual_sha256": "adf28b2e67e69e9640d3a314cd066ed1ed55715bec3304ccd804c974ccb996e6",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "research/research_next/label_body/run.py",
+            "resolved_repo_path": "research/research_next/label_body/run.py",
+            "exists": true,
+            "expected_sha256": "8ee7eaa04db278cd507375a554324773c3c75bec407a58dac5acd73eaaa55835",
+            "actual_sha256": "8ee7eaa04db278cd507375a554324773c3c75bec407a58dac5acd73eaaa55835",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "research/build_corpus.py",
+            "resolved_repo_path": "research/build_corpus.py",
+            "exists": true,
+            "expected_sha256": "42987c0ea83f0229c48e60c80191f3292d9ba171622d6043ec02075c9c5e91e9",
+            "actual_sha256": "42987c0ea83f0229c48e60c80191f3292d9ba171622d6043ec02075c9c5e91e9",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "research/study20/analyze.py",
+            "resolved_repo_path": "research/study20/analyze.py",
+            "exists": true,
+            "expected_sha256": "b828ab5074646290931e1649bdcfb23c87eb8daac2e1978a9f45ef243a05ab38",
+            "actual_sha256": "b828ab5074646290931e1649bdcfb23c87eb8daac2e1978a9f45ef243a05ab38",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "research/sources/ZL3b-n.txt",
+            "resolved_repo_path": "research/sources/ZL3b-n.txt",
+            "exists": true,
+            "expected_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+            "actual_sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "research/sources/IT2a-n.txt",
+            "resolved_repo_path": "research/sources/IT2a-n.txt",
+            "exists": true,
+            "expected_sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+            "actual_sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+            "match": true,
+            "bytes_match": null
+          }
+        ],
+        "all_pass": true
+      },
+      {
+        "receipt": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/freeze.json",
+        "receipt_sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+        "path_base": "research/research_next",
+        "files": [
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/protocol.txt",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/protocol.txt",
+            "exists": true,
+            "expected_sha256": "7d4c6b7a2a4e29ecf1ead5fa4a89075461183664e92ad100b514ab4f205db768",
+            "actual_sha256": "7d4c6b7a2a4e29ecf1ead5fa4a89075461183664e92ad100b514ab4f205db768",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/representation_change.txt",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/representation_change.txt",
+            "exists": true,
+            "expected_sha256": "46ebb35ee2bff3cd9707d18eecca351ab2d3e14c3243670e2a57ca955f309200",
+            "actual_sha256": "46ebb35ee2bff3cd9707d18eecca351ab2d3e14c3243670e2a57ca955f309200",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/run_compact.py",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_compact.py",
+            "exists": true,
+            "expected_sha256": "a47b1e301079528714dd4541007c33a5f775795a1e171dc3912cdd3304ae3a7e",
+            "actual_sha256": "a47b1e301079528714dd4541007c33a5f775795a1e171dc3912cdd3304ae3a7e",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/run.py",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run.py",
+            "exists": true,
+            "expected_sha256": "407dd0cfb0a4787b4600eae5051a90757add50d58d9476d5f49d28da5629629a",
+            "actual_sha256": "407dd0cfb0a4787b4600eae5051a90757add50d58d9476d5f49d28da5629629a",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "label_body/saved_v1/input.json.gz",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/input.json.gz",
+            "exists": true,
+            "expected_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "actual_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/support.py",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/support.py",
+            "exists": true,
+            "expected_sha256": "79ee98a32214d16c53f9adb3d4db242bd7882b83b9228e2bf584570ae4101c6f",
+            "actual_sha256": "79ee98a32214d16c53f9adb3d4db242bd7882b83b9228e2bf584570ae4101c6f",
+            "match": true,
+            "bytes_match": null
+          },
+          {
+            "stored_path": "semantic7h_20261118/design/leaf_controls/support_v1.json",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/support_v1.json",
+            "exists": true,
+            "expected_sha256": "5f4d7276ac062bd067ca2e21d98c2233b39ef85bc01e01787bd4beeca4b05577",
+            "actual_sha256": "5f4d7276ac062bd067ca2e21d98c2233b39ef85bc01e01787bd4beeca4b05577",
+            "match": true,
+            "bytes_match": null
+          }
+        ],
+        "all_pass": true
+      },
+      {
+        "receipt": "research/research_next/label_body/saved_v1/complete.json",
+        "receipt_sha256": "27a6872ade3130a57e9ed3d1d6ea5da77c0176b4757d0ff1cb280368083649d7",
+        "path_base": "research/research_next/label_body/saved_v1",
+        "files": [
+          {
+            "stored_path": "calibration.json.gz",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/calibration.json.gz",
+            "exists": true,
+            "expected_sha256": "4c9b9c60219f8f06fde88403f87d792f3324555cf73ec0f92b1e1a3bad68d3a7",
+            "actual_sha256": "4c9b9c60219f8f06fde88403f87d792f3324555cf73ec0f92b1e1a3bad68d3a7",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "candidates.json",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/candidates.json",
+            "exists": true,
+            "expected_sha256": "db686dfddddd011db319a98c3b506abec6dc16a780ab4372bed8a3658aeb480c",
+            "actual_sha256": "db686dfddddd011db319a98c3b506abec6dc16a780ab4372bed8a3658aeb480c",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "freeze.json",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/freeze.json",
+            "exists": true,
+            "expected_sha256": "2e0351d4fa0c6225aa9ebb91fe305059c7d471d61a1122dc63b2058a4707c228",
+            "actual_sha256": "2e0351d4fa0c6225aa9ebb91fe305059c7d471d61a1122dc63b2058a4707c228",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "input.json.gz",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/input.json.gz",
+            "exists": true,
+            "expected_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "actual_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "results.json",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/results.json",
+            "exists": true,
+            "expected_sha256": "d5be2a85627a80faba44e6e7288fd57fe5a223fb8ee4571a03d54847f4c213a2",
+            "actual_sha256": "d5be2a85627a80faba44e6e7288fd57fe5a223fb8ee4571a03d54847f4c213a2",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "trials.json.gz",
+            "resolved_repo_path": "research/research_next/label_body/saved_v1/trials.json.gz",
+            "exists": true,
+            "expected_sha256": "c43ea942f4e82dd8ba104cfd315963237e09f451bc36cea7f84bf0f78ea1f2fa",
+            "actual_sha256": "c43ea942f4e82dd8ba104cfd315963237e09f451bc36cea7f84bf0f78ea1f2fa",
+            "match": true,
+            "bytes_match": true
+          }
+        ],
+        "all_pass": true
+      },
+      {
+        "receipt": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/complete.json",
+        "receipt_sha256": "9acce22a07dca6f38c5a518ece36d573dc61d258d480a64f56dfbfc91741c1df",
+        "path_base": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2",
+        "files": [
+          {
+            "stored_path": "IT_cross_version_lengths.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_cross_version_lengths.json.gz",
+            "exists": true,
+            "expected_sha256": "1a2c88dbd9c24f912f4a123525a80eecad4d64b14a1a5154a8e5631c2edd5260",
+            "actual_sha256": "1a2c88dbd9c24f912f4a123525a80eecad4d64b14a1a5154a8e5631c2edd5260",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "IT_main_HI.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_main_HI.json.gz",
+            "exists": true,
+            "expected_sha256": "5695276b97cb850a47dc4162e471f0c0ed47aacd7057eda2ce577d41272d6ed0",
+            "actual_sha256": "5695276b97cb850a47dc4162e471f0c0ed47aacd7057eda2ce577d41272d6ed0",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "IT_strict_HIQ5.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_strict_HIQ5.json.gz",
+            "exists": true,
+            "expected_sha256": "7da469dee73ea6c585e98eb2c7c7684fb88fb5b8f0f1de7534383ed74ab3e8d1",
+            "actual_sha256": "7da469dee73ea6c585e98eb2c7c7684fb88fb5b8f0f1de7534383ed74ab3e8d1",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "ZL_cross_version_lengths.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_cross_version_lengths.json.gz",
+            "exists": true,
+            "expected_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+            "actual_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "ZL_main_HI.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_main_HI.json.gz",
+            "exists": true,
+            "expected_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+            "actual_sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "ZL_strict_HIQ5.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_strict_HIQ5.json.gz",
+            "exists": true,
+            "expected_sha256": "2ea4357c46f673bab959b57a6895685aa18e61f3044a367de7867c8edd865839",
+            "actual_sha256": "2ea4357c46f673bab959b57a6895685aa18e61f3044a367de7867c8edd865839",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "freeze.json",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/freeze.json",
+            "exists": true,
+            "expected_sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+            "actual_sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "input.json.gz",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/input.json.gz",
+            "exists": true,
+            "expected_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "actual_sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "selection.json",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/selection.json",
+            "exists": true,
+            "expected_sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+            "actual_sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+            "match": true,
+            "bytes_match": true
+          },
+          {
+            "stored_path": "summary.json",
+            "resolved_repo_path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/summary.json",
+            "exists": true,
+            "expected_sha256": "21c5b876bdc675782a49782bb69b4bee2596b38d183d28df155d9bc5ebfe9db1",
+            "actual_sha256": "21c5b876bdc675782a49782bb69b4bee2596b38d183d28df155d9bc5ebfe9db1",
+            "match": true,
+            "bytes_match": true
+          }
+        ],
+        "all_pass": true
+      }
+    ],
+    "canonical_packet_alias_equal": true,
+    "published_layout_evidence": [
+      {
+        "path": "scripts/export_label_body.py",
+        "sha256": "4bbf6402662ad8b80202368c04f8084c1ec09fec7fd917a8ec712b66c1f3d6d6",
+        "role": "export entry source inspected"
+      },
+      {
+        "path": "research/research_next/semantic7h_20261118/design/leaf_controls/REPRODUCE.txt",
+        "sha256": "a19ee8fee0dd98382b83c1d846a38895241ddd0b87a8e7fc2c25ea3b0d229e85",
+        "role": "relative-root and public replay documentation read"
+      },
+      {
+        "path": "research/research_next/semantic7h_20261118/design/leaf_controls/public_repro/publish_files.txt",
+        "sha256": "dee13dc1b52533724ab60ce41d4a7d791e3e2655f42405bbcdcd54b7bbd152cb",
+        "role": "explicit public package list inspected"
+      }
+    ],
+    "rules": [
+      "Use repository-relative paths in new W8 input_freeze with explicit base; original label_body freeze is repo-relative, leaf freeze is relative to research/research_next, each complete receipt is relative to its saved result directory.",
+      "A W8 folder copied alone is insufficient unless all referenced relative dependencies are included or an explicit package-relative manifest resolves them.",
+      "Do not silently rewrite old receipts when repackaging. A new manifest should bind original hashes plus resolved paths.",
+      "Do not run old entry points merely to obtain mutable state; use canonical input snapshot. Source reconstruction needs build_corpus/analyze/rawsources and their frozen hashes.",
+      "Old support_v1 strict lengths differ from final protocol; run_v2/selection.json is authoritative."
+    ]
+  },
+  "recommended_input_freeze_files": [
+    {
+      "path": "research/research_next/label_body/saved_v1/input.json.gz",
+      "sha256": "970e2e03610c1786c67465c791fa0be3b57a41c8c1012247c375a2bca116b6aa",
+      "role": "canonical immutable raw/token packet for new body exchange; no need to reparse source at run time"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/selection.json",
+      "sha256": "36d378c3834a82152ee0f5c882cd7556d9439bfed60266ff30cfb229de5df013",
+      "role": "authoritative main/strict/cross-version eligibility and order; do not regenerate from historical support_v1"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_cross_version_lengths.json.gz",
+      "sha256": "1a2c88dbd9c24f912f4a123525a80eecad4d64b14a1a5154a8e5631c2edd5260",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_main_HI.json.gz",
+      "sha256": "5695276b97cb850a47dc4162e471f0c0ed47aacd7057eda2ce577d41272d6ed0",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/IT_strict_HIQ5.json.gz",
+      "sha256": "7da469dee73ea6c585e98eb2c7c7684fb88fb5b8f0f1de7534383ed74ab3e8d1",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_cross_version_lengths.json.gz",
+      "sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_main_HI.json.gz",
+      "sha256": "2f09f63ab1020dc881a16b8a964944ed96ed9b000ee4363873a9bf35a5dc0917",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/ZL_strict_HIQ5.json.gz",
+      "sha256": "2ea4357c46f673bab959b57a6895685aa18e61f3044a367de7867c8edd865839",
+      "role": "old exact rational matrices and full group integer arrays for A/D and zero-dose comparison"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/freeze.json",
+      "sha256": "8c4935a8d2b07c9c4d4ef11f8da6edc23a2a8febc5872371d0a3db1778234bdc",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/complete.json",
+      "sha256": "9acce22a07dca6f38c5a518ece36d573dc61d258d480a64f56dfbfc91741c1df",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/protocol.txt",
+      "sha256": "7d4c6b7a2a4e29ecf1ead5fa4a89075461183664e92ad100b514ab4f205db768",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/representation_change.txt",
+      "sha256": "46ebb35ee2bff3cd9707d18eecca351ab2d3e14c3243670e2a57ca955f309200",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run.py",
+      "sha256": "407dd0cfb0a4787b4600eae5051a90757add50d58d9476d5f49d28da5629629a",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_compact.py",
+      "sha256": "a47b1e301079528714dd4541007c33a5f775795a1e171dc3912cdd3304ae3a7e",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/support.py",
+      "sha256": "79ee98a32214d16c53f9adb3d4db242bd7882b83b9228e2bf584570ae4101c6f",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/support_v1.json",
+      "sha256": "5f4d7276ac062bd067ca2e21d98c2233b39ef85bc01e01787bd4beeca4b05577",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/leaf_audit_v1.json",
+      "sha256": "85329a68b27d4de103ec7997c1fbc7e8166fd51d06684bd4ba10eba1a2caa465",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/leaf_audit_v1.txt",
+      "sha256": "dbaf3077009541dce7dfc7a11cf4e228b9d6c959c06b565d86e0960087867a02",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/exchangeability_diagnostics.json",
+      "sha256": "55947ac96eef44b7a81367508a454c04ebd58315d2b7900660ce4c0d7107c122",
+      "role": "historical definition, dependency closure, audit or exchangeability scope; support_v1 is historical only"
+    },
+    {
+      "path": "research/research_next/label_body/protocol.txt",
+      "sha256": "adf28b2e67e69e9640d3a314cd066ed1ed55715bec3304ccd804c974ccb996e6",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/research_next/label_body/run.py",
+      "sha256": "8ee7eaa04db278cd507375a554324773c3c75bec407a58dac5acd73eaaa55835",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/freeze.json",
+      "sha256": "2e0351d4fa0c6225aa9ebb91fe305059c7d471d61a1122dc63b2058a4707c228",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/complete.json",
+      "sha256": "27a6872ade3130a57e9ed3d1d6ea5da77c0176b4757d0ff1cb280368083649d7",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/build_corpus.py",
+      "sha256": "42987c0ea83f0229c48e60c80191f3292d9ba171622d6043ec02075c9c5e91e9",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/study20/analyze.py",
+      "sha256": "b828ab5074646290931e1649bdcfb23c87eb8daac2e1978a9f45ef243a05ab38",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/sources/ZL3b-n.txt",
+      "sha256": "bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/sources/IT2a-n.txt",
+      "sha256": "7f27a8b0feed8f6de0a99900df6bf912dd1d295c38e5f830bac8b41c3f536fb5",
+      "role": "original extraction/normalization/source-provenance closure; historical scripts must not be run into old directories"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/results.json",
+      "sha256": "d5be2a85627a80faba44e6e7288fd57fe5a223fb8ee4571a03d54847f4c213a2",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/trials.json.gz",
+      "sha256": "c43ea942f4e82dd8ba104cfd315963237e09f451bc36cea7f84bf0f78ea1f2fa",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/calibration.json.gz",
+      "sha256": "4c9b9c60219f8f06fde88403f87d792f3324555cf73ec0f92b1e1a3bad68d3a7",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/saved_v1/candidates.json",
+      "sha256": "db686dfddddd011db319a98c3b506abec6dc16a780ab4372bed8a3658aeb480c",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/supplement_protocol.txt",
+      "sha256": "dd1c7780540aa5a933b4a311c2e218787465b3d5c90fae45fb3c2e850117fe1f",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/supplement.json",
+      "sha256": "20a95e5bd6c2464bad606e22a97f98d0d7f3f6ec3346b8e40803370aad627612",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/label_body/audit_v1.json",
+      "sha256": "b76a43e78f69dde452436935fe022ca9463e052bfbaa9c06803c2d02b9df4f3d",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    },
+    {
+      "path": "research/research_next/semantic7h_20261118/design/leaf_controls/run_v2/summary.json",
+      "sha256": "21c5b876bdc675782a49782bb69b4bee2596b38d183d28df155d9bc5ebfe9db1",
+      "role": "saved outputs and exclusions reused in W8 report; input/output receipt closure, not fresh empirical computation"
+    }
+  ],
+  "additional_when_frozen": [
+    "Final W8 protocol and approved review/approval receipts",
+    "All W8 implementation, sort/unit scanner adapters, mathematical validation fixtures and independent replay code actually invoked",
+    "Environment/Python random version and fixed seeds in execution receipt; do not treat environment as a mutable source file"
+  ],
+  "final_assessment": "Proceed to protocol v2 and code review. No missing source field prevents the proposed original-folio/same-length/same-HIQ-other-leaf mechanism. This is not approval of new empirical scoring and not proof of actual donor availability or historical exchangeability."
+}
