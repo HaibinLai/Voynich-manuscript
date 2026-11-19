@@ -1,0 +1,22 @@
+第四窗口：在新目录复算保存结果
+
+需要Python 3.9或更新版本，仅用标准库。无需GPU、原始PDF、图像下载或第三方包。
+从仓库根执行，输出目录必须尚不存在且位于仓库之外：
+
+python3 research/research_next/repeated_labels7h_20261119/reproduce_public.py --output ../voynich-fourth-replay-new
+
+程序先核对reproduction_manifest_v1.json中的固定输入，随后：
+1. 用先前分别编写的枚举程序重算主样本全部16候选、36配对、逐特征/逐层界及见证。
+2. 用四条目计算器重算已知名称对照的C/C11/C00、四项特征和六配对。
+3. 与保存结果逐项比较，重新核对原输入未变，在新目录写receipt.json。
+
+结果应为REPLAY_MATCHES_SAVED_RESULTS。验证完整记录见public_replay_receipt_v1.json。
+这里重放冻结二值观察的已核投影，不重新阅读字图、不改变未知、不产生新证据。
+主观察的独立投影和两实现比较分别见numeric_replay/actual_v1及primary_results_v1；
+对照的独立全矩阵枚举见known_language_control/independent_v1。
+
+不要为了复现而在原目录直接运行会重写历史文件的旧project_and_run.py、
+verify_and_receipt.py或replay_control.py。若需要修改代码或新提图像判读，
+先建立新的实验目录，保留本次冻结输入、失败与结论。
+
+此入口不证明植物身份、名称读法、几何区间精度或伏尼契词义。
