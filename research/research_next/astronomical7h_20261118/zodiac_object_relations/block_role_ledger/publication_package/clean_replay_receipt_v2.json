@@ -1,0 +1,75 @@
+{
+  "schema": "block_role_clean_replay_v2",
+  "source_allowlist_count": 131,
+  "package_control_files": [
+    "protocol_v2.txt",
+    "input_freeze_v2.json",
+    "allowlist_v2.json",
+    "verify_adjudication_sources_v2.py",
+    "adjudication_source_result_v2.json",
+    "clean_replay_v2.py",
+    "README_v2.txt"
+  ],
+  "total_copied_files": 138,
+  "explicit_allowlist_only": true,
+  "private_absolute_path_scan_clear": true,
+  "projection_needed": [],
+  "read_only_source_checks": true,
+  "copied_input_mutations": [],
+  "original_input_mutations": [],
+  "jobs": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/publication_package/clean_replay_v1.py"
+      ],
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "matches_expected_exit": true,
+      "stdout_byte_identical": true,
+      "stdout_sha256": "6fd3cdaed1509fae7ec7a64e1c7879ad84388f7f3f1eca7209976ec53fb770ce",
+      "frozen_stdout": "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/publication_package/clean_replay_receipt_v1.json",
+      "frozen_stdout_sha256": "6fd3cdaed1509fae7ec7a64e1c7879ad84388f7f3f1eca7209976ec53fb770ce",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/root_adjudication/build_v1.py"
+      ],
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "matches_expected_exit": true,
+      "stdout_byte_identical": true,
+      "stdout_sha256": "5ec01d6e00362fcf2d7e61a72c8b7362c0a7968835b9f536c809678b3e477a2c",
+      "frozen_stdout": "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/root_adjudication/report_v1.json",
+      "frozen_stdout_sha256": "5ec01d6e00362fcf2d7e61a72c8b7362c0a7968835b9f536c809678b3e477a2c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/publication_package/verify_adjudication_sources_v2.py"
+      ],
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "matches_expected_exit": true,
+      "stdout_byte_identical": true,
+      "stdout_sha256": "0c7963d3546947b7c097b7fa60625025a7733a75b5f397aeac4f23696f97ebd2",
+      "frozen_stdout": "research/research_next/astronomical7h_20261118/zodiac_object_relations/block_role_ledger/publication_package/adjudication_source_result_v2.json",
+      "frozen_stdout_sha256": "0c7963d3546947b7c097b7fa60625025a7733a75b5f397aeac4f23696f97ebd2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    }
+  ],
+  "all_pass": true,
+  "scope_limit": "Replays prior v1 clean package plus frozen root stdout builder and source checks only. No image reacquisition, image examination, scientific adjudication, or final merged judgment is reproduced. Original v1 exit 1 is the preserved finding, not a package failure."
+}

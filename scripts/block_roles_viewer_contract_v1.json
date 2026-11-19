@@ -1,0 +1,46 @@
+{
+  "schema": "block_roles_viewer_interface_contract_v1",
+  "purpose": "Presentation contract only; no scientific verdict is derived by the viewer.",
+  "payload_schema": "block_roles_viewer_v1",
+  "publication": {
+    "state": "DRAFT_UNAPPROVED, REVIEWED_DRAFT_PENDING_APPROVAL, or APPROVED_BOUNDED_FINDINGS",
+    "notice": "Chinese bounded status supplied by root",
+    "approval": "null in draft; otherwise repository-relative file, sha256 and exact approved input bindings"
+  },
+  "fixed_universe": "Exactly the frozen 322 IDs in panel order. Filtering never changes this universe or any scientific denominator.",
+  "panels": "panel, canvas_id, official_url, dimensions_px, original_panel_box_xyxy, original_image_sha256",
+  "row": {
+    "region_uid": "immutable ID",
+    "panel": "immutable panel ID",
+    "original": "box_xyxy, band_metadata_only, roster_class, full_seed_record, all_fine_alternatives (each exact original record)",
+    "coding_versions": "Array of {version_id, observer_id, source, record}. v1 remains exact; corrected v2 remains separate. source={file:repo-relative,sha256,json_pointer}.",
+    "corrections": "Array of {source, change_record}; exact change receipt for this ID, never silently apply a patch to v1.",
+    "cross_reviews": "Array of {review_id,reviewer,coding_version_id,source,role_review,whole_window_review,H_review,raw_record}. Each review is bound to the precise coding version; retain disagreement without votes.",
+    "cross_review_import_state": "NOT_IMPORTED, IMPORTED or NOT_APPLICABLE. Empty array does not mean agreement or no review happened.",
+    "root_adjudication": "null until explicitly supplied. Then {state:adjudicated,source,reviewed_version_ids,review_ids,decision_record,reason,raw_record}. decision_record uses the scientific role/scope/writing/H fields; no frontend consensus computation. display_record is an explicitly labeled selected-record context projection overlaid by exact root decision_record fields, with root source_refs. decision_record itself stays exact.",
+    "root_import_state": "NOT_IMPORTED or IMPORTED. Missing is not NA, rejected, or a scientific finding.",
+    "targeted_challenge_review": "Optional within root_adjudication for the eight frozen diagnostic cases only: {source,raw_record,exposure,scope,root_acceptance}; separate from cross_reviews. Original exact fields remain visible, not an independent vote or overwrite."
+  },
+  "source_reference_rule": "Exact original_field_value and RFC6901 pointer remain available within each record. UI must distinguish factual source fields from first/review/root interpretations.",
+  "uncertainty_rule": "unresolved_writing_or_graphic is a placeholder, never a certified role. V1 literal representation remains visible as historical data alongside correction receipt.",
+  "downloads": "Explicit array {label,url,sha256}; no recursive discovery. Paths are repository-relative; no local absolute paths/private images.",
+  "release_gate": "Final adapter must verify root approval plus every bound report/review/adjudication hash, all322 IDs, original boxes, all358 alternatives and immutable original candidates. It must not fill missing root judgments by copying latest coding or taking a majority.",
+  "display_rules": [
+    "Original judgments, cross reviews and root adjudication are separate columns.",
+    "No scientific aggregate counts or percentages in this viewer skeleton; pagination totals are navigation only.",
+    "Full window is not full inscription; absence of an independent leader is not absence of spatial role.",
+    "Role presence, alternative candidates, placeholder uncertainty, evidence extent and H are distinct fields.",
+    "SVG overlays use original canvas pixel boxes, never angular reassignment or semantic arrows."
+  ],
+  "release_approval_schema": {
+    "schema": "block_roles_release_approval_v1",
+    "approved_by": "root",
+    "release_approved": true,
+    "root_report_path": "repository-relative",
+    "root_report_sha256": "sha256",
+    "reviewed_manifest_path": "scripts/block_roles_reviewed_manifest_v1.json",
+    "reviewed_manifest_sha256": "sha256",
+    "scientific_status": "Root-supplied Chinese limitations; no sequence-gate upgrade."
+  },
+  "scientific_acceptance": "Root bounded acceptance source and exact record, separate from publication approval; mandatory limits remain visible."
+}
