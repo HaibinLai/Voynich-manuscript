@@ -1,0 +1,86 @@
+{
+  "schema": "independent_frozen_information_viewer_static_review_v1",
+  "status": "PASS_STATIC_SEMANTIC_REVIEW_NO_BROWSER_CLAIM",
+  "checked_utc": "2026-11-19T13:57:53.198980+00:00",
+  "bound_files": [
+    {
+      "path": "site/evidence-budget-adapter.js",
+      "sha256": "8cde13589c8427add26c9e8db3497f575c84b6762fb6e955f424f942c19d15f3"
+    },
+    {
+      "path": "site/evidence-budget7h.js",
+      "sha256": "06fe7f97235a678852ee126685a351fbf3ae35483f840871cb9ee4ffcc77de32"
+    },
+    {
+      "path": "site/data/evidence-budget7h.json",
+      "sha256": "6d36382c17aa2b5cacf74057d144ad66f1975dec5798d076f07e2443f4ded6e2"
+    }
+  ],
+  "reference_files": [
+    {
+      "path": "research/research_next/evidence_budget7h_20261119/root_actual_v1/manifest.json",
+      "sha256": "690a740923bc0c60e1ad2a45b48be959fb43aa761fb6e9aeaed706be0f7014df"
+    },
+    {
+      "path": "research/research_next/evidence_budget7h_20261119/root_actual_v1/summary.json",
+      "sha256": "0b409086359147560d81709f76f8d5051df91cfe78eafe9599091ef55b88cb71"
+    },
+    {
+      "path": "research/research_next/evidence_budget7h_20261119/publication/local_validation_v1.json",
+      "sha256": "a5a2fec2f742fda0c21adb1ea047e99c7a345e98707a78aec163ddf580483d18"
+    }
+  ],
+  "scope": {
+    "full_javascript_source_read": true,
+    "final_changed_functions_reread": true,
+    "all64_mapping_checked": true,
+    "all96_table_descriptor_bindings_checked": true,
+    "whole_page_summary_equals_frozen_formal_summary": true,
+    "global_signature_alphabets_and_g_order_match": true,
+    "provenance_payload_hash_checked": true,
+    "javascript_executed_by_reviewer": false,
+    "browser_used_by_reviewer": false,
+    "formal_analysis_rerun": false,
+    "files_modified_except_this_review": false
+  },
+  "semantic_findings": [
+    {
+      "topic": "all64_and_F02",
+      "finding": "lookup uses frozen mask/core mapping and global whole-signature alphabet. Only unobserved F02 multiplies count columns1..4 by its nine-element domain; selected F02 retains the requested vector. Summary feasible outcome factors come from the exact formal summary."
+    },
+    {
+      "topic": "shared_g",
+      "finding": "Unknown and each known g use separate tables. Witness chooses one state supporting all six entries simultaneously; no per-entry g selection. Compatible g bits are displayed without probability weighting."
+    },
+    {
+      "topic": "conflict_and_input_error",
+      "finding": "Schema errors are INPUT_ERROR; legal signatures outside the declared domain or incompatible with shared g return CONFLICT. Bounds and witness fields remain null; no fabricated zero or empty-set certification."
+    },
+    {
+      "topic": "complete_witness_origins",
+      "finding": "Mixed-radix core witness is expanded to all six signatures with observed/default F02; all observed vectors are checked. One g must support the full assignment. All compatible case/r links and original entry records are shown, source payload hashes checked, and full-observation table verifies each target becomes unique. This is provenance lookup, not new geometry adjudication."
+    },
+    {
+      "topic": "minimality",
+      "finding": "Global existence and guarantee groups read frozen summary. Local certificates keep the exact current observation projected to each subset and select all inclusion-minimal same-class results. Guarantee explicitly means no MIXED, not guaranteed positive. Known-g joint guarantee and singleton denominators remain visible."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "UI01",
+      "original_issue": "some_decisive buttons used any nonempty row and could select MIXED. Actual formal rows showed this for unknown masks12/20/24/48 and terminal masks12/20/24/36/48.",
+      "resolution": "Final minimality passes decisive; example filters class1 or3. Guarantee groups may still choose any nonempty row.",
+      "verified": "Final source read; builder DOM regression is separately attributed."
+    },
+    {
+      "id": "UI02",
+      "original_issue": "The empty-subset lookup accepted numeric/boolean assignment because Object.keys returned no keys. Normal selector UI always passed objects.",
+      "resolution": "Final lookup explicitly rejects typeof assignment not object before reading keys.",
+      "verified": "Final source read; no reviewer runtime/browser execution."
+    }
+  ],
+  "other_agent_validation": "Read and hash-bound publication/local_validation_v1.json; its adapter/simulated-DOM checks are that agent’s execution, not repeated here. Root separately owns actual browser/online acceptance.",
+  "remaining_material_issues_identified": [],
+  "exposure": "Same informed AI, knowledgeable about frozen results and independent implementation. Static semantic review is not independent historical evidence.",
+  "publication_policy": "Publish this review through Git, outside phase source inventory to avoid a data/review hash cycle."
+}

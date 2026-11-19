@@ -8,7 +8,11 @@
 
 ## 当前内容
 
-第五轮已启动，研究预算为2026-11-19 **10:47:18–17:47:18 UTC**，完整交付后可提前收束。先在四个已曝光条目上开发“载体—端区—细通道”的层级记录，再对固定六个后续候选做资格与校准；通过事先规定的条件后才返回伏尼契全九处。见[本轮计划](research/research_next/hierarchical7h_20261119/plan_v1.txt)、[时间及固定范围](research/research_next/hierarchical7h_20261119/session_v1.json)和[第五轮网页](https://haibinlai.github.io/Voynich-manuscript/hierarchical7h.html)。初版公开六例名称与来源资格、固定十五对、方法审查及K试记批准；此刻尚无第五轮新图形分数，网页为明确阶段的静态快照。
+第六轮研究冻结模型中的“补清哪些信息才能消除未定”。[交互网页](https://haibinlai.github.io/Voynich-manuscript/evidence-budget7h.html)覆盖六条目的全部64子集及共同解释的三种条件。**这是理想信息分析，没有新增图像观察或译文。** 两套实现的393600行、每行20字段完全一致，[干净公开包复算](research/research_next/evidence_budget7h_20261119/REPRODUCE_v1.txt)也已通过。
+
+单独补清任何一项都仍未定，包括F06的全部81种允许签名。共同解释未知时，F03/F04/F06是某些结果能够使原必要数值条件全部通过的唯一包含极小组合；6561种可行结果中657种全部通过、3744种全部不能通过、2160种仍未定。若要求任何可行结果都能判定通过或不通过，则须补清F01/F03/F04/F05/F06五项。**这些是有限模型基数，不是成功概率；通过数值门槛也不是破译。** 详见[解释与实际采集限制](research/research_next/evidence_budget7h_20261119/interpretation_report_v1.txt)、[全表核验](research/research_next/evidence_budget7h_20261119/root_actual_comparison_v1.json)及[本轮计划](research/research_next/evidence_budget7h_20261119/plan_v1.txt)。
+
+第五轮已于2026-11-19 **13:08:20 UTC** 提前结题，[完成记录](research/research_next/hierarchical7h_20261119/closure/goal_completed_v1.json)保留计划和实际时间。固定六例、十五对及两种共同解释的条件外界为 **H=[−3/8,3/8]、H4=[−1/2,1/2]**，必要门槛未通过，因此没有运行新的伏尼契评分。严格完整图上名称分支仍数学未定义。[第五轮网页](https://haibinlai.github.io/Voynich-manuscript/hierarchical7h.html)保留所有结果、原像、失败与勘误。
 
 第四窗口已结题（[完成记录](research/research_next/repeated_labels7h_20261119/closure/goal_completed_v1.json)）。原计划为2026-11-19 **04:48:26–11:48:26 UTC**；分析于 **10:35:02 UTC** 提前冻结，最终交付已通过[验收](research/research_next/repeated_labels7h_20261119/closure/final_acceptance_v1.json)。保留计划与实际时间，不声称连续跑满七小时。[重复标签与图形对照](https://haibinlai.github.io/Voynich-manuscript/repeated-labels7h.html)保留四簇九位置、十二个候选图形组和十六种联合归属。完整48格中20项存在、7项不存在、21项未知；同标签相似度优势的保守范围为 **[−5/12, 53/120]**，两套数值实现一致，不能确定正负。这是条件性几何描述，没有得到词义。
 

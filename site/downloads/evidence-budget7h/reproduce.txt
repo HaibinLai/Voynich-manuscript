@@ -1,0 +1,38 @@
+第六轮公开复现 v1：假设获得信息，非新增观测
+
+范围与环境
+从仓库根运行，或从保留相同相对目录的干净Git导出根运行。只需Python 3.10+及NumPy；独立分组引擎仅用标准库，主引擎和主人工测试用NumPy。不需要GPU、私有PNG、下载图像、网页服务或机器专属路径。
+本次原计算环境为Python 3.13.7、NumPy 2.3.3。若要求压缩字节和原收据完全一致，使用该环境；不同Python/zlib版本可能改变gzip头或压缩字节，不能把字节差异默默等同科学差异。冻结比较器也严格绑定独立审计的manifest哈希，故环境差异可能使其拒绝；应报告具体差异，不改原引擎/审计或跳过检查。
+
+最小文件清单
+public_replay_inventory_v1.json按仓库根相对路径列出运行所需文件与冻结SHA256；public_replay_paths_v1.txt供git archive精确导出。运行依赖包括两引擎、两人工测试、比较器、两冻结输入、批准、必要合同/审查/来源核验收据；主run会现场调用build_input_v1重建输入，因此必须包含W5的原观察、条件外域输入、outcome_v2及计数勘误四文件。单独复制两个run脚本不够。
+原结果表不属于最小运行依赖；运行会在新目录生成两套96张完整表及摘要。原完整结果仍公开保留供逐字节参考，不能把只核几个例子的包称为完整复现。
+
+一键完整复算
+下面唯一sh块可在仓库根或干净导出根原样执行。已有目录不会覆盖。H6_PYTHON可显式指定已有解释器；默认python。不要把此临时目录当作新的观察文件。
+
+```sh
+h6_w6="research/research_next/evidence_budget7h_20261119"
+h6_python="${H6_PYTHON:-python}"
+h6_replay_base="$(mktemp -d "${TMPDIR:-/tmp}/evidence-budget-replay.XXXXXX")"
+"$h6_python" "$h6_w6/public_replay_v1.py" --output-dir "$h6_replay_base/replay"
+printf 'Evidence-budget replay output directory: %s\n' "$h6_replay_base/replay"
+```
+
+脚本顺序为：两套人工验证；主正式run；独立正式run；冻结比较器；四个公开查询。全部正式运行核冻结批准/输入/代码绑定。比较覆盖96张表393600环境行、每行全部20列（含8个见证ID）、64×3摘要分母与全部最小集合，并绑定已发布的完整独立原像审计。
+输出root/manifest.json、independent/manifest_v1.json、comparison.json及public_replay_run_v1.json；四个查询JSON保留六条目赋值/共同g/原case-r来源和局部最小证书。已知g冲突查询为合法输入但空兼容集，零计数、界null，不能解读成分数0。
+
+单独入口与查询
+主run：root_engine/run_v1.py --input model_input_v1.json --approval root_information_numeric_approval_v1.json --output-dir 新目录；这里文件参数实际都应加上仓库根相对前缀research/research_next/evidence_budget7h_20261119/。
+独立run/query完整参数由public_replay_v1.py与independent_engine/README_v1.txt给出；run要求新输出目录，query使用已生成的independent目录。两者均传入冻结独立input、W5 observation、批准、artificial_checks_v2/receipt_v1.json。
+比较器：compare_actual_v1.py --root-results 主输出目录 --independent-results 独立输出目录 --output 新JSON文件。
+
+四个公开查询均是假设值：
+1. 未补任何条目、g未知：MIXED。
+2. 假设F06完整签名为[0,0,0,0]、g未知：MIXED；这不是新图像编码。
+3. 假设F01=[2,0,2,2]、F03=[2,2,0,2]、F04=[2,1,2,2]：NONE_JOINT_POSITIVE，局部最小证书mask13。此证书的三个条目不能删；不应以某些别的观测可用两例决定来替代它。
+4. 已知共同g=t却给F03=[2,2,0,2]：CONFLICT。
+
+解释限制
+正式结果是冻结保守代数外包中“若准确知道整条目四元组”的信息需求。模型基数不是概率、采集成功率或独立样本数；原像不是像素分割或几何可实现认证。知道g是条件思想实验，不保证可由照片测得。NONE不证明历史效应为零或负；ALL也只满足必要数值条件，不能解译词义或自动重启伏尼契评分。旧严格名称分支的数学未定义仍保留。
+本文件交付后，根提供科学source提交，再由只含清单文件的Git导出实际验收；最终验收收据另列提交、解释器/依赖、完整字节比较及任何差异，不提前宣称干净包已验收。
