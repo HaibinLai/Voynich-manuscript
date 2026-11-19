@@ -1,0 +1,64 @@
+第五轮共享解释条件外域：公开数值复算 v1
+
+科学输入/代码/批准/参考结果源提交：86e2055917bfc5458339e5b0853f36530624fba2。
+本入口只重现已批准的条件保守外域，所有文件使用仓库原路径；不需要原JPEG、私有裁图或图像工具。旧F_REPRODUCE_v1仍只做逐条目投影，本入口另含共享g外层、15对区间及H/H4/差。
+需要Python 3及其环境中已安装的NumPy，另需macOS/Linux的mktemp。以下适用于bash/zsh；默认使用python，可用环境变量H5_PYTHON指定已装NumPy的解释器。不要误用另一套没有NumPy的系统python3。实际验收的解释器/依赖版本见公开收据，不声称未测试版本也已验证。
+
+精确最小Git路径清单（14个运行文件）
+以下均以research/research_next/hierarchical7h_20261119/为前缀：
+1. F_observation_v1/observation_v1.json
+2. root_outer_numeric_approval_v1.json
+3. outer_calibration_v1/input_v1.json
+4. independent_outer_v1/prepared_actual_v1/input_v1.json
+5. run_outer_v1.py
+6. build_outer_input_v1.py
+7. method_engine/run.py
+8. method_engine/bounds.py
+9. method_engine/project.py
+10. independent_outer_v1/outer_runner_v1.py
+11. independent_engine/replay.py
+12. independent_engine/guarded_replay_v1.py
+13. independent_engine/independent_projection_v1.py
+14. compare_outer_v1.py
+必须从所列Git提交导出这些精确路径，保留目录结构；不要复制含无关未跟踪文件的工作树。完整仓库检出也可运行，但冻结输入和代码须符合批准的哈希绑定。网页短下载名不能替代原路径。
+
+可复制命令（cwd=仓库根，或保持相对目录的最小导出包根）：
+```sh
+h5_w5="research/research_next/hierarchical7h_20261119"
+h5_python="${H5_PYTHON:-python}"
+h5_outer_dir="$(mktemp -d "${TMPDIR:-/tmp}/hierarchical-outer-replay.XXXXXX")"
+"$h5_python" -c 'import sys, numpy; print("Python", sys.version.split()[0], "NumPy", numpy.__version__)'
+"$h5_python" "$h5_w5/run_outer_v1.py" \
+  --input "$h5_w5/outer_calibration_v1/input_v1.json" \
+  --observation "$h5_w5/F_observation_v1/observation_v1.json" \
+  --approval "$h5_w5/root_outer_numeric_approval_v1.json" \
+  --output-dir "$h5_outer_dir/root"
+"$h5_python" "$h5_w5/independent_outer_v1/outer_runner_v1.py" \
+  --input "$h5_w5/independent_outer_v1/prepared_actual_v1/input_v1.json" \
+  --observation "$h5_w5/F_observation_v1/observation_v1.json" \
+  --approval "$h5_w5/root_outer_numeric_approval_v1.json" \
+  --output-dir "$h5_outer_dir/independent"
+"$h5_python" "$h5_w5/compare_outer_v1.py" \
+  --root "$h5_outer_dir/root/results.json" \
+  --independent "$h5_outer_dir/independent/results_v1.json" \
+  --input "$h5_w5/outer_calibration_v1/input_v1.json" \
+  --observation "$h5_w5/F_observation_v1/observation_v1.json" \
+  --output "$h5_outer_dir/comparison.json"
+printf 'Outer replay output directory: %s\n' "$h5_outer_dir"
+```
+
+每次mktemp创建新父目录，两方各自创建尚不存在的root/independent子目录并拒绝覆盖已有输出；比较器独占创建comparison.json。原观察、批准、输入、代码和仓库参考结果不会被覆盖。输出保留在打印的临时目录，不自动删除。
+批准包含真实数值执行开关及原观察/输入/代码哈希。两方先从原观察重建本方完整条件输入，核对批准绑定，再运行原单层算法；不依赖私有图片来满足检查。
+
+应复现的完整范围
+两个共享g各保留六域及原case/extra。t域数3/9/4/9/3/81，o域数3/9/9/9/3/81，保留1458个带g局部原像。
+全部15对、H/H4/H−H4各上下端、每g与跨g取并、同g全六赋值/兼容原像/分维及恒等式都应保留。比较器核两方216个完整端点见证和1296个条目来源绑定；不同合法极值见证可因并列最优不同，但区间必须精确一致。
+参考结果：outer_calibration_v1/root_actual_v1/results.json、independent_outer_v1/actual_v1/results_v1.json、outer_calibration_v1/comparison_v1.json（均相对同一前缀）。它们不是运行必需依赖，验收可另从该提交读取作完整JSON/字节比较。
+预期精确并域：H=[−3/8,3/8]、H4=[−1/2,1/2]、H−H4=[−3/16,3/16]。是否逐字节一致、解释器/NumPy版本、提交与全部文件哈希，见outer_public_replay_acceptance_v1.json/.txt；任何差异须明确报告，不静默忽略字段。
+
+科学解释边界
+这是接受冻结局部事实、身份和g仅作用上游端帽T歧义后的保守代数包络。原非空跨条目约束保留在外层；内层乘积只是固定同一g后的放宽，不是统计独立或真实几何组合认证。全局上下界取各g的最小/最大，不平均g，也不把不同g条目值混拼。
+原始10个case/余项/别名出处不能删掉。代数原像不证明该extra就是同一真实完成的字面余项；某个端点不保证能由一张手稿图实现。
+两量下界均未严格正，事前必要数值门槛未满足；这不证明真实图形效应为零或负，不认证名称识别、统一精确测量或伏尼契返回。
+条件主分支已执行15对外域区间；严格图上完整名分支仍因名称分母不足而数学未定义。历史未执行决定原样保留，不与现在的条件外域结果混写。
+本次复算是公开记录算术复现，不是独立专家或盲图像证据；不触碰私有像素、网站或Git状态。
