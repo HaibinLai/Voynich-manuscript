@@ -64,6 +64,10 @@
 
 研究仍在进行。网站显示静态结果快照，更新时刻可见；它不是后台运行监控。
 
+同叶补充按四个物理叶分别报告：[f99 的同／异标签一致率差为 −0.55 至 +0.70](research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/report_v1.txt)，仍不能确定方向；f88 没有同标签对，f101、f89 没有同叶对象对，对照差均不可定义。所有候选、共享未知及独立复算保留，主分析结果未改。
+
+另完成[六个新增条目的名称资格核查](research/research_next/repeated_labels7h_20261119/known_language_followup_v1/eligibility_v1.txt)：mentastrum 支持明确缩写展开与目录条件下的对应；marrubium 的 Morgan 原图首尾仍未核清；ruta 的限定词缺口保留。这批只核资格，没有形态评分，也不是新的盲测。
+
 ## 阅读与复现
 
 第四窗口的主样本及拉丁名称对照可以一起安全复算，只需 Python 标准库，输出目录必须尚不存在且位于仓库之外：
@@ -73,6 +77,12 @@ python3 research/research_next/repeated_labels7h_20261119/reproduce_public.py --
 ```
 
 已实跑核对全部候选、配对与结果，原记录不变。详见[第四窗口复现说明](research/research_next/repeated_labels7h_20261119/REPRODUCE_PUBLIC.txt)。这只重放已保存的几何观察，不重新认证图像或词义。
+
+同叶补充有单独的[安全复算入口](research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/REPRODUCE_PUBLIC.txt)，已在干净目录实跑；同样不需要图像或第三方库：
+
+```sh
+python3 research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/reproduce_public.py --output ../voynich-same-leaf-replay-new
+```
 
 统一核验入口默认只检查公开清单的文件哈希，不需要安装第三方库，也不重新评分：
 
