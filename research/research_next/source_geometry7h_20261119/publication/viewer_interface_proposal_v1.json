@@ -1,0 +1,130 @@
+{
+  "schema": "source_geometry_viewer_interface_proposal_v1",
+  "status": "DRAFT_INTERFACE_NOT_SCIENTIFIC_CONTRACT",
+  "basis": "source_observation_protocol_v1 and two inherited inventories; no current observation values",
+  "source_ref": {
+    "required": [
+      "path",
+      "sha256",
+      "json_pointer"
+    ],
+    "optional": [
+      "original_field_value"
+    ],
+    "rules": [
+      "Repository-relative public path only; original values preserved.",
+      "Anonymous private-file alias may describe source identity but is never an image URL."
+    ]
+  },
+  "top_level": {
+    "schema": "source_geometry_viewer_v1 (future; current skeleton accepts preview_v1 only)",
+    "snapshot": {
+      "phase_path": "repository-relative explicit frozen input list",
+      "phase_sha256": "64 lowercase hex",
+      "release_state": "explicit frozen state, never inferred from file existence"
+    },
+    "inherited_payloads": "Exact copied inherited_sources and operational_scope_inventory with SHA, old/current split unchanged",
+    "current_source_qualification": "null until frozen; then three rows F03/F04/F06 with actual request ledger and source refs",
+    "current_observation_records": "null until frozen; then two named record packages, each actual record_kind=image_observation or text_review and actual scope",
+    "current_comparison": "null until frozen; comparison rows keyed by full entry_id+original_record_id+phenomenon, including absent/unreviewed status",
+    "common_g_mapping": "null until frozen; scoped conditional map and unresolved rule/ledger gaps; never one choice per cap/entry"
+  },
+  "source_qualification_row": {
+    "entry_id": "F03|F04|F06",
+    "source_refs": "source_ref[]",
+    "prior_attempt_refs": "all relevant old failure/placeholder references; no silent deletion",
+    "requests": [
+      {
+        "predecessor_page_url": "literal official page",
+        "predecessor_reference": "exact link or metadata pointer",
+        "requested_url": "literal URL",
+        "started_utc": "actual timestamp",
+        "finished_utc": "actual timestamp or null",
+        "http_status": "integer or null",
+        "final_url": "string or null",
+        "actual_media_type": "string or null",
+        "bytes": "integer or null",
+        "sha256": "string or null",
+        "decoded_dimensions_px": "[width,height] or null",
+        "identity_state": "supported|mismatch|unresolved|not_assessed",
+        "access_outcome": "actual frozen vocabulary; HTTP200 not synonymous with image",
+        "same_photograph_relation": "same|different|unresolved; not an independence claim"
+      }
+    ],
+    "retained_source_ids": "preserve original plus separately identified candidate files",
+    "availability_conclusion": "bounded factual scope; not globally nonexistent if not obtained"
+  },
+  "observation_package": {
+    "record_id": "unique frozen record package",
+    "observer": "actual agent identity; same AI/exposed disclosure",
+    "record_kind": "image_observation|text_review",
+    "input_bindings": "source_ref[]",
+    "view_receipts": [
+      {
+        "view_id": "original native-view ID",
+        "source_id": "bound source file",
+        "source_sha256": "exact source bytes",
+        "coordinate_dimensions_px": "[width,height]",
+        "xywh": "original coordinate system or null if no view",
+        "rotation_degrees": "recorded transform only",
+        "successful_display_utc": "actual display receipt or null",
+        "reviewed_scope": "scope actually read; generated crop alone is not viewed"
+      }
+    ],
+    "rows": [
+      {
+        "entry_id": "F01..F06",
+        "original_record_id": "preserve U/J/B/CAND/R/A/C/Z/T identity, not fabricated units",
+        "original_ref": "source_ref",
+        "phenomenon": "incoming_route|boundary|exposed_free_end|outgoing_route|local_exclusion|interior_visible_route|join|shared_identity|unallocated_scope",
+        "status": "supported|counterevidence|interpretation_unresolved|insufficient_pixels|not_viewed|missing_ledger|not_applicable",
+        "view_refs": "[] for text-only review; cannot fabricate view receipts",
+        "coverage_refs": "exact ranges and scope",
+        "observed_facts": "verbatim frozen original statement",
+        "interpretation": "separate from observed facts",
+        "local_exclusion": "scope/evidence/limitations or null; absence of certified T does not prove no route",
+        "aliases_and_dependencies": "all shared paths, children, mutually exclusive cases, optional brown affiliation",
+        "unresolved_scope": "explicit residual ranges",
+        "source_refs": "source_ref[]"
+      }
+    ]
+  },
+  "comparison_row": {
+    "key": [
+      "entry_id",
+      "original_record_id",
+      "phenomenon"
+    ],
+    "original_record_ref": "source_ref",
+    "record_a_refs": "source_ref[] or null (not connected/no matching record distinctly labeled)",
+    "record_b_refs": "source_ref[] or null",
+    "scope_overlap": "same|partial|different|not_established",
+    "agreement_or_difference": "original conclusions preserved, not majority vote",
+    "root_synthesis": "separate frozen synthesis source_ref, if supplied",
+    "limitations": "no whole-signature inference from a local agreement"
+  },
+  "g_mapping_row": {
+    "scope_ids": "explicit related original IDs/regions",
+    "shared_variable": "g_terminal_boundary; same g for applicable six-entry scope",
+    "inherited_map_refs": "old case-retention origins are not observed per-unit mapping",
+    "conditional_rows": "each g, retained original case/role and premises; all scopes retained",
+    "mapping_state": "inherited_only|conditionally_supported|unresolved|missing_parent_or_ledger|definition_change_required",
+    "observational_basis_refs": "local factual evidence/exclusion, separate from g premise",
+    "definition_change": "new version/diff if needed; never silently update W6 model"
+  },
+  "display_rules": [
+    "No private pixels, img, canvas, SVG manuscript redraw or network image fetch; official links only.",
+    "Null means no connected frozen value; not zero, false, unviewed or failure.",
+    "All six entries and complete inherited records remain reachable; all three source qualifications retain failures and unknowns.",
+    "Two actual observation packages cannot be labeled image observations if one is text review.",
+    "Old views/timestamps never counted as new observations.",
+    "Source-native navigation boxes not segmentation or calibrated boundaries.",
+    "No H/H4 calculations, conditioned scores or success percentages.",
+    "Actual frozen status is attached explicitly; skeleton does not poll workflow or guess background state."
+  ],
+  "initial_data_files": [
+    "site/data/source-geometry7h.json",
+    "site/data/source-geometry7h/inherited_sources_v1.json",
+    "site/data/source-geometry7h/operational_scope_inventory_v1.json"
+  ]
+}

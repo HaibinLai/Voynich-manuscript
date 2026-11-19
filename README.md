@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+第七轮完成了六条目的固定范围复查，取得F03同一官方摄影来源的原尺寸区域图；F04/F06未取得新目标图。**端帽解释、缺损路线和完整单位清单仍有未决项，没有新增评分或译文。** [图像来源与端点网页](https://haibinlai.github.io/Voynich-manuscript/source-geometry7h.html)可对照69条既有记录、29次实际查看回执与另一代理的文本审查；这些数量不是独立样本或完整图形普查。详见[研究报告](research/research_next/source_geometry7h_20261119/research_report_v1.txt)和[后续历史语言证据需求](research/research_next/source_geometry7h_20261119/availability_and_next_evidence_v1.txt)。研究记录已经冻结，整轮结题以另行发布的逐项验收为准。
+
 第六轮研究冻结模型中的“补清哪些信息才能消除未定”。[交互网页](https://haibinlai.github.io/Voynich-manuscript/evidence-budget7h.html)覆盖六条目的全部64子集及共同解释的三种条件。**这是理想信息分析，没有新增图像观察或译文。** 两套实现的393600行、每行20字段完全一致，[干净公开包复算](research/research_next/evidence_budget7h_20261119/REPRODUCE_v1.txt)也已通过。
 
 单独补清任何一项都仍未定，包括F06的全部81种允许签名。共同解释未知时，F03/F04/F06是某些结果能够使原必要数值条件全部通过的唯一包含极小组合；6561种可行结果中657种全部通过、3744种全部不能通过、2160种仍未定。若要求任何可行结果都能判定通过或不通过，则须补清F01/F03/F04/F05/F06五项。**这些是有限模型基数，不是成功概率；通过数值门槛也不是破译。** 详见[解释与实际采集限制](research/research_next/evidence_budget7h_20261119/interpretation_report_v1.txt)、[全表核验](research/research_next/evidence_budget7h_20261119/root_actual_comparison_v1.json)及[本轮计划](research/research_next/evidence_budget7h_20261119/plan_v1.txt)。

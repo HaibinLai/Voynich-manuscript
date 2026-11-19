@@ -1,0 +1,53 @@
+{
+  "schema": "seventh_root_metadata_execution_v1",
+  "status": "ROOT_APPROVED_EXPLICIT_METADATA_REQUESTS",
+  "actual_started_utc": "2026-11-19T14:15:50.331994+00:00",
+  "stage_stop_utc": "2026-11-19T14:45:50.331994+00:00",
+  "protocol_sha256": "8e153117ec47bb1cf53f577c43ccd5fa8092ef1a51fe1119e497c8f8974f10ef",
+  "review_sha256": "a7626c4a4b78eecfebf16c441c05384cae95794c0039c22a12a85284081610a2",
+  "inventory_sha256": "c1b3a876d9d3b81a061f3d939c4691ded3abd0fa23d40fa9d759fdced81b4278",
+  "fetch_script_sha256": "fd6626713414824c02c050405cd62b4242b5bd41f5649e9e96b6e2312c4bd2d4",
+  "requests": [
+    {
+      "id": "M10",
+      "entry_ids": [
+        "F03"
+      ],
+      "url": "https://iiif.bodleian.ox.ac.uk/iiif/image/93efb85d-bce4-41a6-bab7-015610e7d61e/2800,500,1334,2000/full/0/default.png",
+      "predecessor": {
+        "request_id": "M09",
+        "response_sha256": "722fa28277ff9a91d0abe255ccb670838e4a1fd7be2585915feced56c88e6578",
+        "relation": "Declared IIIF2 image service with native region and png support; one standard constructed region URL, not a guessed service/identifier"
+      },
+      "native_frame": [
+        4134,
+        2796
+      ],
+      "requested_region_xywh": [
+        2800,
+        500,
+        1334,
+        2000
+      ],
+      "size": "full",
+      "rotation": 0,
+      "quality": "default",
+      "format": "png",
+      "pixel_purpose": "Broad right-page region includes expected F03 location and surrounding anchors; target identity requires visual confirmation after freeze. Old coordinates are not reused as native region coordinates."
+    }
+  ],
+  "new_detail_reading_authorized_by_this_stage": false,
+  "stage_goal": "Check actual explicit official metadata and source relationships; no image content judgment.",
+  "created_utc": "2026-11-19T14:21:50.762292+00:00",
+  "followup_rationale": "M09 dereferencing the exact declared service identifier redirected to info.json: native dimensions4134x2796, maxWidth/maxHeight4000, level2 regionByPx. One bounded native-region request; no alternate photography claim, endpoint enumeration, upscaling or access workaround.",
+  "standard_reference": {
+    "url": "https://iiif.io/api/image/2.1/",
+    "sections": [
+      "2.1 image request syntax",
+      "4.1 x,y,w,h region",
+      "4.2 full unscaled region"
+    ],
+    "profile": "https://iiif.io/api/image/2/level2.json",
+    "profile_support": "regionByPx"
+  }
+}

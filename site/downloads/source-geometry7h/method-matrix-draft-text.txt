@@ -1,0 +1,113 @@
+第七轮共同方法适用矩阵 v1（观察前草案）
+状态：DRAFT_BEFORE_ROOT_OBSERVATION_PENDING_TEXT_REVIEW。
+本轮分工是“根图像操作记录＋另一代理文本/坐标/口径审查”，不是两份独立图像观察。所有新图支持/反证、当前可见性、新坐标和新视口均为PENDING_ROOT_FROZEN_OBSERVATION；不新增Q、case选择或分数。
+
+完整范围：18旧unit、14旧join（含候选）、2旧body全部逐行保留；另逐列全部直接子通道、断带候选、已知非T路线、代表候选和聚合未决。全部完整case、aliases、余项排除、coverage和空at_most_one原列表仍可回查。上述登记数不是完整形态普查。
+
+三类口径：
+A EXPLICIT_OLD_G_TO_CASE：F03原成组g=t→C1、g=o→C2。U04/U05上游资格变化；U01–U03及原J在完整case中不变。只有这些已有关系，不扩为F03侧/红余项完整映射。
+B CONDITIONAL_LOCAL_CASE_ONLY：F01/F02/F04/F05已有局部case与角色按旧前提引用；F02损伤连续性C1/C2/C3不能冒充g分支。其余旧case在外域两g保留，不等于已观测逐单位统一操作。
+C UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY：缺父单位、路由/身份/局部排除账本或聚合未决时，当前粒度不能映射；不能造新U/T或用不存在替代未知。F04下游单位可保留，但上游T的父单位清单缺失另列。
+
+逐例旧记录适用索引
+
+F01
+  unit U01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U03：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T03a（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T03b（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U04：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T04a（父U04）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T04b（父U04）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J03：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J04：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  aggregate_unresolved R01_green：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R01_red：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  完整case：F01_C1；覆盖：CV01_whole, CV01_local, CV01_fold
+
+F02
+  unit U01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U03：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T03a（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  uncertain_child T03b_candidate（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  uncertain_child T03c_candidate（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J03_candidate：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  aggregate_unresolved A02_fan：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R02_remaining：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  完整case：F02_C1, F02_C2, F02_C3；覆盖：CV02_all, CV02_local, CV02_gaps
+
+F03
+  unit U01：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  unit U02：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  unit U03：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  unit U04：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  direct_child T04a（父U04）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  direct_child T04b（父U04）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  known_nonqualifying_relation N04_caps（父U04）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  unit U05：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  direct_child T05a（父U05）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  known_nonqualifying_relation N05_up（父U05）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  known_nonqualifying_relation N05_cap（父U05）：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  join J01：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  join J02：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  join J03：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  aggregate_unresolved R03_side_regions：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R03_red：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved A03_endpoint_roles：EXPLICIT_OLD_G_TO_CASE；当前新图支持待根记录。
+  完整case：F03_C1, F03_C2；覆盖：CV03_all, CV03_caps, CV03_red, CV03_endpoint_roles
+
+F04
+  unit U01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  aggregate_unresolved R04_green：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R04_base：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved A04_endpoint_scope：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  完整case：F04_C1；覆盖：CV04_whole, CV04_upper, CV04_remainder
+
+F05
+  unit U01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U03：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T03a（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T03b（父U03）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  unit U04：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T04a（父U04）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  direct_child T04b（父U04）：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J01：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  join J02：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  body B_head1：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  body B_head3：CONDITIONAL_LOCAL_CASE_ONLY；当前新图支持待根记录。
+  aggregate_unresolved R05_heads：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R05_blue_base：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  完整case：F05_C1；覆盖：CV05_whole, CV05_spurs, CV05_base
+
+F06
+  aggregate_unresolved R06_green：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  representative_candidate CAND06_join_upper：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  representative_candidate CAND06_join_lower：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  representative_candidate CAND06_terminal：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved R06_brown：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  aggregate_unresolved A06_endpoint_scope：UNMAPPABLE_AT_CURRENT_UNIT_GRANULARITY；当前新图支持待根记录。
+  完整case：F06_C1, F06_C2；覆盖：CV06_whole, CV06_green, CV06_brown
+
+不可省略的原证据要求
+C：原生坐标路径、起止端口及两处相隔横截边界，或明确单笔线依据；损伤对齐不补连续，色/宽变化不造Z。Z：自然有界端区/附着区；多端口不推不透明内部连通。
+T：由Z到纸面可见自由端的全程直达路线，保留端框、两边/单线和共享尾ID；中间J/B及只到不透明边界分别处理。F05既查C入头与整个Z，也查外部墨尖，不能只取容易端点。
+Q0/Q1：相关周界/附着区的局部排除不可由未认证T替代；一个下游Q0不反推上游T。F03 o条件不删除到帽边界的路线，F02条件Q1不升为无条件实见恰一。
+J：至少三条分别可见的臂及真实局部联系，两条轮廓边不算两臂，宽体多端口不自动是J。B_head1=Z_U03与B_head3=Z_U04不复制为新区域或隐藏骨架。
+身份：完整候选、aliases、归属、互斥与余项排除一起保留；F03帽组、F02断带扇和F06褐色归属不得拆散择优。F06空固定账本但unit_defined=true，原三个CAND不升级成认证U/J。
+
+坐标与后续审查
+所有复制坐标仍属于旧原栅格。F03旧4000×2705与原生元数据4134×2796不能直接搬框或只按比例当精确配准。本草案不打开新文件，也不换算坐标；等待根冻结实际文件、视口和定位锚点。
+根观察稿冻结后才做正式逐项文本/坐标/口径审查：原ID范围、成功查看回执、坐标基准、现象/解释分离、排除和共享身份是否齐全，支持/未知/冲突是否一致。文本支持不算像素认证，不多数票认定真值。
+
+JSON记录数（只数既有记录）：{"aggregate_unresolved": 15, "body": 2, "direct_child": 12, "join": 14, "known_nonqualifying_relation": 3, "representative_candidate": 3, "uncertain_child": 2, "unit": 18}；case=10；coverage=19.
+method_application_matrix_v1.json SHA256 c2109f9308ee71fca81e3a3fc2456ab3ec2c65c0e080adbf8a71e90c9644584d
