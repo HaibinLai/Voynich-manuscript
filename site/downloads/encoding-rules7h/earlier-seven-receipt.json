@@ -1,0 +1,301 @@
+{
+  "schema": "independent_artificial_common_order_v1",
+  "status": "PASS",
+  "manuscript_input": false,
+  "tests": [
+    {
+      "id": "repeated_sandwich",
+      "words": [
+        "aba"
+      ],
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "feasible_orders": [],
+      "expected_feasible": false,
+      "PASS": true
+    },
+    {
+      "id": "sorted_repetition",
+      "words": [
+        "aab",
+        "abbc",
+        "cc"
+      ],
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            },
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "from": "a",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                1,
+                3
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      ],
+      "feasible_orders": [
+        "abc"
+      ],
+      "expected_feasible": true,
+      "PASS": true
+    },
+    {
+      "id": "across_word_opposition",
+      "words": [
+        "ab",
+        "ba"
+      ],
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "feasible_orders": [],
+      "expected_feasible": false,
+      "PASS": true
+    },
+    {
+      "id": "three_cycle",
+      "words": [
+        "ab",
+        "bc",
+        "ca"
+      ],
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "c",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 2,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "feasible_orders": [],
+      "expected_feasible": false,
+      "PASS": true
+    },
+    {
+      "id": "single_symbol",
+      "words": [
+        "aaa"
+      ],
+      "edges": [],
+      "feasible_orders": [
+        "a"
+      ],
+      "expected_feasible": true,
+      "PASS": true
+    },
+    {
+      "id": "independent_units",
+      "words": [
+        "a",
+        "b"
+      ],
+      "edges": [],
+      "feasible_orders": [
+        "ab",
+        "ba"
+      ],
+      "expected_feasible": true,
+      "PASS": true
+    },
+    {
+      "id": "descending_global",
+      "words": [
+        "ccb",
+        "bba"
+      ],
+      "edges": [
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "from": "c",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            },
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "feasible_orders": [
+        "cba"
+      ],
+      "expected_feasible": true,
+      "PASS": true
+    }
+  ],
+  "normalization_counterexample": {
+    "observed": "aba",
+    "external_normalization": "aab",
+    "meaning": "Internal sorting can remove a conflict without proving that observed text was historically sorted."
+  }
+}

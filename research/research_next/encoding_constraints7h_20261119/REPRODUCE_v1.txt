@@ -1,0 +1,16 @@
+第九轮复核说明
+
+本轮没有重新评分手稿。正式结论是严格零例外排序条件不具备直接归于作者宽模型的资格；一手来源定位与两份审查需由读者阅读原论文核对，代码不能认证历史含义。
+
+纯人工控制只需Python标准库，在仓库根目录执行。请使用新的输出目录，不覆盖原记录：
+
+VOYNICH_RULE_REPLAY_DIR=$(mktemp -d)
+python3 research/research_next/encoding_constraints7h_20261119/code/artificial_order_demo.py --output "$VOYNICH_RULE_REPLAY_DIR/demo.json"
+python3 research/research_next/encoding_constraints7h_20261119/code/independent_artificial_audit_v1.py --output "$VOYNICH_RULE_REPLAY_DIR/audit.json"
+
+第一条重新生成内置9例和F01；文件中生成时间不同，科学字段应一致。第二条独立审核仓库内冻结的人工结果，不是审核任意新路径的输出。它不导入主程序，完整枚举这些小字母表的全序并核原位置边与证书。先前另一代理的7例可单独运行：
+python3 research/research_next/encoding_constraints7h_20261119/independent_preflight/artificial_order_check_v1.py
+
+这些命令无网络、无私有图、无手稿词库、无密钥搜索。公开界面只展示保存的人工例子，用户选择不会新生成手稿结果。30个全序是有限人工审计覆盖数，不是研究样本数或解码候选数；最多两个可行全序也不保证有语言意义。None保留未知，不算成功或填零。
+
+作者论文的alphagram内部表示、固定顺序猜想和含转写噪声的真实数据是不同层次。一个人工循环仅验证严格数学条件，不证明该条件是作者完整假说，也不构成任何伏尼契反例。原论文PDF只从ACL链接阅读；此公开研究包未转载整篇论文或其插图。

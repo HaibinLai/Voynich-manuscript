@@ -1,0 +1,257 @@
+{
+  "schema": "ninth_independent_artificial_demo_audit_v1",
+  "status": "PASS",
+  "created_utc": "2026-11-19T15:49:56.064716+00:00",
+  "method": "Exhaustive alphabet permutations with direct adjacent-rank scans; independently reconstruct every unequal original-position edge; verify cycle original positions. No primary module import.",
+  "manuscript_input": false,
+  "sources": [
+    {
+      "path": "artificial_protocol_v1.txt",
+      "sha256": "7c10be6b2a6255841f30b63ffcb7622ec0c37cbf1930aba3da65c0bc9e8c4011"
+    },
+    {
+      "path": "artificial_code_freeze_v1.json",
+      "sha256": "0da78c2557f5f7bfab3bcffa56568dc18767e36cc3760b3800d9c7482bff4d4c"
+    },
+    {
+      "path": "code/artificial_order_demo.py",
+      "sha256": "34da3764cf4c0e24d2e39696c23b90a392d281decebf1f849b78a838b71de9cd"
+    },
+    {
+      "path": "artificial_demo_v1.json",
+      "sha256": "2c3520c1cb7a3755aff477844300ab288c8ef398aba6fd518aed0179b3ac9523"
+    },
+    {
+      "path": "code/independent_artificial_audit_v1.py",
+      "sha256": "cfdecf8c5eef11535a1fec08e0cd34051ee8dc306032db0c20c5887e0a52c139"
+    },
+    {
+      "path": "independent_preflight/artificial_order_check_v1.py",
+      "sha256": "609ad3b9a202679a1c9996fad7681dc269edf183e01f27b15fbb4b201a289feb"
+    },
+    {
+      "path": "independent_preflight/artificial_order_receipt_v1.json",
+      "sha256": "cf58f21d6e22cbd8d4a01233eb6d233a190b4ad30fefe6a4d438571b1646d2df"
+    }
+  ],
+  "cases": [
+    {
+      "id": "T01",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b",
+        "c"
+      ],
+      "permutations_exhaustively_examined": 6,
+      "all_feasible_orders_known_subset": [
+        "abc"
+      ],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 4,
+      "cycle_certificate_checked": false,
+      "unknown_word_count": 0,
+      "expected_status": "COMPATIBLE_STRICT_CONDITION",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T02",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 2,
+      "cycle_certificate_checked": true,
+      "unknown_word_count": 0,
+      "expected_status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T03",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 2,
+      "cycle_certificate_checked": true,
+      "unknown_word_count": 0,
+      "expected_status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T04",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b",
+        "c"
+      ],
+      "permutations_exhaustively_examined": 6,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 3,
+      "position_witness_count": 3,
+      "cycle_certificate_checked": true,
+      "unknown_word_count": 0,
+      "expected_status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T05",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b",
+        "c"
+      ],
+      "permutations_exhaustively_examined": 6,
+      "all_feasible_orders_known_subset": [
+        "abc",
+        "bac"
+      ],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 2,
+      "cycle_certificate_checked": false,
+      "unknown_word_count": 0,
+      "expected_status": "COMPATIBLE_STRICT_CONDITION",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T06",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [
+        "ab",
+        "ba"
+      ],
+      "distinct_constraint_edges": 0,
+      "position_witness_count": 0,
+      "cycle_certificate_checked": false,
+      "unknown_word_count": 0,
+      "expected_status": "COMPATIBLE_NO_CROSS_SYMBOL_INFORMATION",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T07",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [
+        "ab"
+      ],
+      "distinct_constraint_edges": 1,
+      "position_witness_count": 1,
+      "cycle_certificate_checked": false,
+      "unknown_word_count": 1,
+      "expected_status": "UNDETERMINED_MISSING_WORDS",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T08",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 2,
+      "cycle_certificate_checked": true,
+      "unknown_word_count": 1,
+      "expected_status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "all_unknown_policy": null
+    },
+    {
+      "id": "T09",
+      "status": "PASS",
+      "alphabet": [],
+      "permutations_exhaustively_examined": 0,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 0,
+      "position_witness_count": 0,
+      "cycle_certificate_checked": false,
+      "unknown_word_count": 1,
+      "expected_status": "UNDETERMINED_MISSING_WORDS",
+      "all_unknown_policy": "No alphabet or empty-order witness fabricated"
+    },
+    {
+      "id": "F01-strict",
+      "status": "PASS",
+      "alphabet": [
+        "a",
+        "b"
+      ],
+      "permutations_exhaustively_examined": 2,
+      "all_feasible_orders_known_subset": [],
+      "distinct_constraint_edges": 2,
+      "position_witness_count": 6,
+      "cycle_certificate_checked": true,
+      "unknown_word_count": 0,
+      "expected_status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "all_unknown_policy": null
+    }
+  ],
+  "scope": {
+    "protocol_cases": 9,
+    "free_reordering_cases": 1,
+    "explicit_free_position_permutations": 3,
+    "exhaustive_total_orders_examined": 30,
+    "original_position_edge_witnesses": 22,
+    "unknown_cases": [
+      "T07",
+      "T08",
+      "T09"
+    ],
+    "earlier_seven_cases_preserved_separately": true
+  },
+  "checks": {
+    "new_output": 1,
+    "freeze_binding": 1,
+    "frozen_file": 2,
+    "fixed_scope": 1,
+    "case_id": 9,
+    "fixed_input": 10,
+    "nonsemantic_artificial": 10,
+    "alphabet": 10,
+    "unknown_count": 10,
+    "complete_position_edge_multiset": 10,
+    "status": 10,
+    "tristate_full_compatibility": 10,
+    "first_two_order_witnesses": 10,
+    "no_spurious_cycle": 5,
+    "closed_simple_cycle": 5,
+    "cycle_witness_count": 5,
+    "cycle_edge": 11,
+    "cycle_original_positions": 11,
+    "cycle_recorded_provenance": 11,
+    "free_fixture": 1,
+    "free_permutation_count": 1,
+    "position_bijection": 3,
+    "position_permutation_replay": 3,
+    "same_multiset": 3,
+    "multiset_label": 1
+  },
+  "failures": [],
+  "limits": [
+    "Only these fixed artificial strings and atomic a/b/c symbols.",
+    "No manuscript scores, new glyph judgments, key or language inference.",
+    "Feasible orders with missing words apply to the known subset only; all unknown yields no order witness.",
+    "Cycle validity verified; no claim that returned cycle is shortest or reproduces primary DFS traversal.",
+    "Informed AI implementation audit, not independent historical evidence."
+  ]
+}

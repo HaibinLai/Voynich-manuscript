@@ -1,0 +1,153 @@
+{
+  "schema": "ninth_rule_eligibility_independent_review_v1",
+  "status": "NOT_APPLICABLE",
+  "status_target": "Attribution of an exception-free common total order over fixed present transcription units to the author broad model",
+  "created_utc": "2026-11-19T15:47:43.653965+00:00",
+  "reviewer": "informed AI agent independently reading the primary article; not a blind reviewer or external expert",
+  "primary_source": {
+    "title": "Decoding Anagrammed Texts Written in an Unknown Language and Script",
+    "authors": [
+      "Bradley Hauer",
+      "Grzegorz Kondrak"
+    ],
+    "year": 2016,
+    "url": "https://aclanthology.org/Q16-1006/",
+    "pdf_url": "https://aclanthology.org/Q16-1006.pdf",
+    "doi": "10.1162/tacl_a_00084",
+    "access": "Direct ACL HTML and full PDF text accessed via web tool on 2026-11-19; no reliance solely on another agent summary",
+    "actually_read": [
+      "Abstract and introduction pp75–76",
+      "§2.2 p77 substitution definition",
+      "§3.2–3.3 pp77–78 word boundaries and null padding",
+      "§4–4.4 pp79–81 and Figure3 caption",
+      "§5.1 p82 transcription scope",
+      "§5.3 pp83–84 distance definition, heuristic, lower bound and interpretation",
+      "§5.4 pp84–85 noise qualifications",
+      "§6 p85 fixed-order conjecture and unconstrained model"
+    ],
+    "short_quotations": [
+      {
+        "location": "§4 p79",
+        "text": "we impose no constraints on the letter transposition method"
+      },
+      {
+        "location": "§6 p85",
+        "text": "letters rearranged to follow a fixed order"
+      }
+    ],
+    "total_verbatim_English_words": 18
+  },
+  "eligibility_matrix": [
+    {
+      "id": "E01",
+      "requirement": "Known finite alphabet and stable atomic units",
+      "source_location": "§5.1 p82; §5.4 p84",
+      "source_support": "Currier transcription is specified for that experiment, while symbol segmentation remains uncertain.",
+      "strict_rule_status": "NOT_FIXED_FOR_MODERN_ZL_IT",
+      "gap": "No author-approved equivalence from Currier units to current EVA multicharacter units; do not silently substitute."
+    },
+    {
+      "id": "E02",
+      "requirement": "Single injective substitution shared across all included manuscript words",
+      "source_location": "§2.2 p77; §3.3 p78; §5.4 p84",
+      "source_support": "The ideal cipher is one-to-one. Practical alphabet lengths can require null padding; manuscript pages are deciphered separately and orthographic variants are entertained.",
+      "strict_rule_status": "IDEAL_MODEL_ONLY",
+      "gap": "This does not validate one exact key over the entire modern transcription or allow conflating aliases, nulls, and atomic units."
+    },
+    {
+      "id": "E03",
+      "requirement": "Preserved word boundaries and fixed reading convention",
+      "source_location": "§3.2 p78; §5.1 p82; §5.4 p84",
+      "source_support": "Word-based statistics require preserved separators; actual transcription is used but segmentation uncertainty is acknowledged.",
+      "strict_rule_status": "NOT_CERTIFIED_HISTORICALLY",
+      "gap": "The observed-word scope, uncertain breaks and handling of missing symbols must be an explicit new contract, not inferred historical facts."
+    },
+    {
+      "id": "E04",
+      "requirement": "Observed enciphered strings obey a common total order",
+      "source_location": "§4 pp79–80; §6 p85",
+      "source_support": "The decoding system admits arbitrary within-word transposition. The conclusion nevertheless conjectures a fixed order for the manuscript.",
+      "strict_rule_status": "CONJECTURE_PRESENT_NOT_EXCEPTION_FREE_CONTRACT",
+      "gap": "Do not erase the fixed-order sentence; do not upgrade it to every observed word having zero violations."
+    },
+    {
+      "id": "E05",
+      "requirement": "Internal alphagram normalization equals historical sorting",
+      "source_location": "§4.1–4.2 p80; Figure3(c,d)",
+      "source_support": "Sorted representations canonicalize anagrams inside the algorithm; the caption separates random anagrammed ciphertext from the later internal representation.",
+      "strict_rule_status": "FALSE_EQUIVALENCE",
+      "gap": "A transformation made by the analyst cannot establish that the scribe applied the same transformation."
+    },
+    {
+      "id": "E06",
+      "requirement": "Zero-error test threshold and exceptions fixed before testing",
+      "source_location": "§5.3 pp83–84; §5.4 pp84–85",
+      "source_support": "The paper measures degree of alphagram resemblance and discusses transcription/orthographic noise.",
+      "strict_rule_status": "NOT_SPECIFIED",
+      "gap": "A zero-tolerance rejection rule is an additional strict hypothesis, not a necessary condition of the noise-tolerant broad claim."
+    }
+  ],
+  "formal_necessary_condition": {
+    "conditional_status": "VALID_FOR_EXPLICIT_STRICT_MODEL",
+    "assumptions": [
+      "Finite complete words over fixed distinct atomic symbols",
+      "One shared injective relabeling and one shared total order",
+      "Observed sequence itself is nondecreasing, with repeated equal symbols permitted",
+      "No unmodeled deletion, insertion, local reversal, segmentation change or error"
+    ],
+    "construction": "For each complete word and each i<j with unequal units u_i,u_j add u_i→u_j with word and position witnesses. No self edge for equal units.",
+    "proof": "Any common total order must respect every edge, so a directed cycle is impossible. Conversely a finite acyclic graph has a topological total order, and every unequal pair in every word is increasing in it; equal symbols permit ties. Thus acyclicity is necessary and sufficient for the observed strings to be jointly sorted under these exact assumptions. This is not sufficient for language, a correct key, or semantics.",
+    "relabeling": "An injective substitution merely renames graph vertices; it cannot remove a cycle. A universal reversal reverses all edges and preserves cycle/noncycle status; adaptive per-word reversal changes the model.",
+    "uncertainty": "Do not delete unknowns and count the remaining text as a complete word. A subword conflict is conditional on both endpoint identities and their ordering; ambiguous identities require retained assignments, not a convenient choice.",
+    "scope_warning": "Arbitrary anagrams need not satisfy this condition. Noninjective mappings or unit merging change the theorem assumptions."
+  },
+  "heuristic_caution": {
+    "location": "§5.3 p83",
+    "reported_average_computed_distance": 0.996,
+    "use": "Prior published descriptive result only, not a new score.",
+    "not_inferred": "A positive heuristic solution value is an upper bound on the minimum and alone does not prove that the minimum is positive. The paper separately defines a pairwise lower bound. Pairwise opposition is sufficient for a two-cycle, but a three-cycle can exist without opposing pairs; neither a zero pairwise lower bound nor approximate optimization establishes a common order."
+  },
+  "prior_work_read": [
+    {
+      "path": "research/research7h/literature/candidate_claims.json",
+      "sha256": "640a24d20eeaee6c8be3c9e9f10a20fe5cd48dabe83bb78f24e76692e9a3da98"
+    },
+    {
+      "path": "research/research7h/literature/literature.json",
+      "sha256": "21b3bc46f019f97962bc17a7c78ca0785fb5a8035378555b58ced7762edf9f6c"
+    },
+    {
+      "path": "research/research7h/anchor_audit/研究说明.txt",
+      "sha256": "1e6521217868fcf8928631779d5d9d2f9ddf0bb097838bbb69ab58c852d2137c"
+    },
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/研究报告.txt",
+      "sha256": "8ba76ff19a6175679a916574d51366be85316dcada309b237327a4becc774f5b"
+    }
+  ],
+  "duplication_scope": "Old candidate registry already marks a model family rather than a complete fixed mapping; old Bax work concerns incomplete rule coverage; old English/Latin fixed-key ordered/bag searches do not implement the full Hebrew pipeline or certify common sorting. A bounded text search found no executed common-total-order certificate audit; no exhaustive absence or novelty claim.",
+  "artificial_only": {
+    "script": "research/research_next/encoding_constraints7h_20261119/independent_preflight/artificial_order_check_v1.py",
+    "script_sha256": "609ad3b9a202679a1c9996fad7681dc269edf183e01f27b15fbb4b201a289feb",
+    "receipt": "research/research_next/encoding_constraints7h_20261119/independent_preflight/artificial_order_receipt_v1.json",
+    "receipt_sha256": "cf58f21d6e22cbd8d4a01233eb6d233a190b4ad30fefe6a4d438571b1646d2df",
+    "cases": 7,
+    "status": "PASS",
+    "logic": "aba yields a→b and b→a; sorted repetitions pass; across-word and three-vertex cycles fail; one-symbol words do not create self-conflicts. External sorting aba to aab illustrates why preprocessing does not verify historical sorting."
+  },
+  "coordination": {
+    "literature_agent": "After my direct primary reading, exchanged findings with literature agent; independently flagged the final fixed-order sentence and heuristic-upper-bound caveat. Agreement about broad unconstrained model does not create independent historical evidence.",
+    "formal_other_agent_review_read": false
+  },
+  "decision": {
+    "new_manuscript_computation_allowed": false,
+    "necessary_action": "Stop author-attributed strict-model falsification in this branch; publish rule eligibility and artificial certificate logic.",
+    "not_claimed": [
+      "Author never mentioned a fixed order",
+      "Hauer–Kondrak broad model has been falsified",
+      "The strict model has been empirically refuted in this round",
+      "A language, reading or meaning has been identified"
+    ],
+    "next_falsifiable_prediction": "Only a future independently specified exact unit/word/error contract could predict that every admitted complete word has no witnessed directed-cycle conflict. A single certified cycle would reject that strict contract alone."
+  }
+}

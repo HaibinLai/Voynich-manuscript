@@ -1,0 +1,203 @@
+{
+  "schema_version": "source_rule_eligibility_v1",
+  "completed_utc": "2026-11-19T15:51:48.107971+00:00",
+  "status": "COMPLETE_SOURCE_PRECHECK",
+  "eligibility": "NOT_APPLICABLE",
+  "decision_scope": "不适用于把本项目现有转写全部词串的零例外共同排序检查，作为对Hauer–Kondrak宽模型或历史猜想的必要条件反驳。",
+  "historical_fixed_order_conjecture_present": true,
+  "strict_submodel_under_review": "单一全局单射替换；每个已固定边界、单位和读向的观测词均无例外地服从同一字母全序；不另加未知错误修补。",
+  "paper": {
+    "authors": [
+      "Bradley Hauer",
+      "Grzegorz Kondrak"
+    ],
+    "year": 2016,
+    "title_zh": "对未知语言编码的字母重排文本进行解码",
+    "venue": "Transactions of the Association for Computational Linguistics 4:75–86",
+    "doi": "10.1162/tacl_a_00084",
+    "landing_url": "https://aclanthology.org/Q16-1006/",
+    "pdf_url": "https://aclanthology.org/Q16-1006.pdf",
+    "retrieval": {
+      "url": "https://aclanthology.org/Q16-1006.pdf",
+      "final_url": "https://aclanthology.org/Q16-1006.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieval_started_utc": "2026-11-19T15:46:43.369373+00:00",
+      "retrieval_completed_utc": "2026-11-19T15:46:43.609549+00:00",
+      "bytes": 311970,
+      "sha256": "1f172d0af13cd1b2be3b261201d9a6ab03342f7c8fb4829d168c7d50e87818a6"
+    },
+    "public_export": "Metadata, limited excerpts and our review only; modern PDF, full extracted text and renders stay private."
+  },
+  "actual_read_scope": {
+    "text_read": "原始论文§§2.2、3.1–3.3、4–4.4、5.1–5.4及§6的相关段；完整图3、图5上下文。未声称逐字阅读所有参考文献或复现作者代码。",
+    "visually_displayed_printed_pages": [
+      79,
+      80,
+      82,
+      83,
+      84,
+      85
+    ],
+    "visual_receipt_sha256": "f1064be4bd596166b36780479eae1ad1b0e761feb16a9ceed1587cdd837c5660",
+    "private_receipt_alias": "private-output/encoding_constraints7h_20261119/source_rule_eligibility/actual_view_confirmation_v1.json",
+    "view_files": [
+      {
+        "printed_page": 79,
+        "render_sha256": "6732577a8b2c575683c0829fd6f52bcf3b879245b0768c49f078d4191905a65f"
+      },
+      {
+        "printed_page": 80,
+        "render_sha256": "0e35f51bc38e3953d884c787ad546c49af3aafa5fe0d7b0aa25f4ae3e332f26c"
+      },
+      {
+        "printed_page": 82,
+        "render_sha256": "08ab405cf0884e451035d9b1d2df3b363cc1467c85554a6039eec72047208436"
+      },
+      {
+        "printed_page": 83,
+        "render_sha256": "aa9c2d71ea9262874989316221c1e7aec0d19e3d91aa176161800018ff41109f"
+      },
+      {
+        "printed_page": 84,
+        "render_sha256": "f81a7fa4cfcbd74d17b51f48ce07e986cfe831fc4328a1f42fb3fe24ea1d2b1f"
+      },
+      {
+        "printed_page": 85,
+        "render_sha256": "a18882655e966ead52642da6f987fde29c2773e24f487f7476e6d9b830a6e3cd"
+      }
+    ],
+    "read_interval_utc": [
+      "2026-11-19T15:46:43.369373+00:00",
+      "2026-11-19T15:51:48.107971+00:00"
+    ],
+    "individual_display_times": "Not separately recorded; only actual display and completion confirmation are reported."
+  },
+  "author_material_access": {
+    "requested_url": "https://www.cs.ualberta.ca/~kondrak/",
+    "started_utc": "2026-11-19T15:47:59.810144+00:00",
+    "scope": "One ordinary request to author URL explicitly cited in paper footnote8; no endpoint guessing, no code execution.",
+    "http_status": 410,
+    "status": "HTTP_ERROR",
+    "completed_utc": "2026-11-19T15:48:00.930898+00:00",
+    "source_location": "Paper footnote8, p85",
+    "interpretation": "Exact cited author homepage returned HTTP410 in one ordinary request. No source-code contents were obtained or reviewed. A web-tool access failure preceded this; it was not itself an HTTP-status measurement."
+  },
+  "source_rule_matrix": [
+    {
+      "id": "R01",
+      "dimension": "一般解码器的词内重排",
+      "location": "§4, printed p79 / PDF p5",
+      "source_observation": "通用求解任务允许不受特定规则约束的词内字母重排。",
+      "strict_rule_eligibility": "NOT_APPLICABLE",
+      "why": "自由重排不蕴含所有收到的词串共享一个排序；不能从一般解码器推出严格子模型。"
+    },
+    {
+      "id": "R02",
+      "dimension": "算法内部的排序",
+      "location": "§§4.1–4.2, printed p80 / PDF p6; Figure 3",
+      "source_observation": "将词内符号排序用于比较、学习和解码的统一表示。图3区分传入的重排密文与后续规范表示。",
+      "strict_rule_eligibility": "NOT_APPLICABLE",
+      "why": "计算中主动排序不证明历史写手已经按相同顺序写出原密文。"
+    },
+    {
+      "id": "R03",
+      "dimension": "历史共同固定排序猜想",
+      "location": "§6, printed p85 / PDF p11",
+      "source_observation": "作者确实提出手稿可能为希伯来语或另一种辅音文字，并可能按固定顺序重排字母。",
+      "strict_rule_eligibility": "UNDETERMINED",
+      "why": "这是条件性解释；联合后文噪声讨论，不能直接升级为所有现代转写词、零例外的确定承诺。不是“全文未提固定排序”。"
+    },
+    {
+      "id": "R04",
+      "dimension": "单射性与单位",
+      "location": "§2.2 p77; §3.3 p78; §5.1 p82; §5.4 p84",
+      "source_observation": "一般替换模型定义一对一映射；实现对较短字母表填空符号。手稿实验采用35字符Currier转写，历史讨论仍容许字形或音素对应不确定。",
+      "strict_rule_eligibility": "UNDETERMINED",
+      "why": "一般密码定义不自动认证EVA码点、合字或真实图像字形的一对一对应；原实现细节也不能抹去。"
+    },
+    {
+      "id": "R05",
+      "dimension": "词界、预处理与元音",
+      "location": "§3.2 pp77–78; §4.3 pp80–81; §4.4 p81; §5.4 p84",
+      "source_observation": "部分方法依赖保留词界；已知语言实验有大小写/标点处理，辅音模型用候选语言的元辅音划分；手稿段落指出词和符号分割可能不准。",
+      "strict_rule_eligibility": "UNDETERMINED",
+      "why": "这些实验步骤未给出可以直接套于本项目双转写的唯一历史分词与单位规则。"
+    },
+    {
+      "id": "R06",
+      "dimension": "方向",
+      "location": "§5.4 p84, footnote5; §5.3 pp83–84",
+      "source_observation": "脚注说明希伯来语书写方向；排序距离另在转写上拟合顺序。",
+      "strict_rule_eligibility": "UNDETERMINED",
+      "why": "这不构成原图到单位串阅读方向和历史排序方向的完整规范。存在性排序检查本身不要求预知具体字母表顺序。"
+    },
+    {
+      "id": "R07",
+      "dimension": "排序距离与优化证据",
+      "location": "§5.3 pp83–84; Figure5",
+      "source_observation": "作者报告10,000词样本上启发式所得平均排序距离0.996，并讨论上下界。",
+      "strict_rule_eligibility": "NOT_APPLICABLE",
+      "why": "这个已找到的正距离是最优值的上界，不能单凭其非零证明全局最优非零。本审查不数字化图5、不提取下界证书、不计算新循环。"
+    },
+    {
+      "id": "R08",
+      "dimension": "例外、噪声及覆盖范围",
+      "location": "§5.1 p82; §5.4 pp84–85; §6 p85",
+      "source_observation": "主要手稿输入为43页VMS-B、17,597词次、95,465字符；作者承认输入噪声和多种解释。",
+      "strict_rule_eligibility": "UNDETERMINED",
+      "why": "没有给出适用于当前全部ZL/IT词串的零例外承诺、固定噪声预算或完整观测映射；词次数字不是已确认自然语言词数。"
+    }
+  ],
+  "shared_short_excerpts": [
+    {
+      "id": "Q1",
+      "location": "§4 p79",
+      "text": "we impose no constraints on the letter transposition method"
+    },
+    {
+      "id": "Q2",
+      "location": "§6 p85",
+      "text": "letters rearranged to follow a fixed order"
+    }
+  ],
+  "excerpt_word_count_whitespace": 16,
+  "excerpt_policy": "Only these two excerpts are used, matching the shared public excerpt selection; TXT uses paraphrase, not additional quotations.",
+  "our_necessary_condition_logic": [
+    "若严格模型和观测映射均成立，全局单射替换把某个明文字母全序拉回为观测单位全序。词内先后约束必须能同时满足；出现有向循环即可否定这组严格前提。",
+    "反向结论仅是存在相容全序，不提供密钥、语言、词界真值或译文；自由词内重排无需满足此先后条件。",
+    "无需预先知道具体历史全序即可检验存在性；真正未固定的是该全序是否对每一观测词无例外成立、所用单位/词界/读向与错误处理。",
+    "加入噪声、变体或多字符单位后，原始转写上的循环可能不再是宽模型的矛盾；不能先观察循环再删词或合字来决定应当检验什么。"
+  ],
+  "missing_source_commitments": [
+    "原稿字形到所检验单位的固定映射与适用转写",
+    "词界和读向的确定规则",
+    "对全部指定观测词无例外排序的承诺，或先定可检验的错误/例外范围",
+    "从作者Currier35实验输入到本项目ZL/IT输入的资格说明"
+  ],
+  "authorized_branch_consequence": "本来源资格预检不启动任何新手稿图约束、循环、计数或评分；人工逻辑示例可由原计划另分支说明，不能冒充手稿证据。",
+  "does_not_establish": [
+    "作者猜想为真或为假",
+    "希伯来语或其他语言被排除",
+    "自由重排、非单射或复杂符号编码被排除",
+    "论文全部流水线不可复现或已被本项目复现"
+  ],
+  "prior_exposure_and_coordination": "同一知情AI；已参与旧Hauer文献审查。此次重新读原始论文并实际显示六个相关页面。已与root及bounds_replay交换§6确有固定排序猜想、正启发式距离非最优正值证书的范围提醒；不是独立盲专家认证。未读取bounds最终审查文件来填本矩阵。",
+  "input_bindings": [
+    {
+      "path": "research/research_next/encoding_constraints7h_20261119/plan_v1.txt",
+      "sha256": "2e3ad681f09cc7f258aae88d62d3b5414733d8f7adaac4327b792dbb6eaf2da8"
+    },
+    {
+      "path": "research/research_next/encoding_constraints7h_20261119/session_v1.json",
+      "sha256": "deee7ebb3fb1d60e11f281e6216ed6e46507b6b36e250e45a0d1290c31989ef0"
+    },
+    {
+      "path": "research/research_next/encoding_constraints7h_20261119/next_direction_preflight_v1.txt",
+      "sha256": "e3a6e9cf7cf68e14ec33a626f3c13684198f4f584b41dd65f74663373d942987"
+    }
+  ],
+  "manuscript_data_read_for_new_analysis": false,
+  "new_manuscript_statistics_computed": false,
+  "author_code_executed": false
+}

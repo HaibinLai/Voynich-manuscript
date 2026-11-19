@@ -1,0 +1,20 @@
+纯人工共同顺序说明协议（不涉及手稿评分）
+
+仅使用以下预先列明的9个输入，字母a/b/c为人工原子符号，不代指EVA或任何真实语言。None代表整词完全未知，不删去未知后拼词。按列表次序，字符位置为0起始。
+T01 sorted_repetition: [aab,bcc]
+T02 within_word_cycle: [aba]
+T03 across_words_cycle: [ab,ba]
+T04 three_cycle: [ab,bc,ca]
+T05 two_orders: [ac,bc]
+T06 no_cross_symbol_information: [aa,bb]
+T07 unknown_and_compatible: [None,ab]
+T08 unknown_and_conflict: [None,aba]
+T09 all_unknown: [None]
+
+对每个完整人工词的每对位置i<j，若两个符号不同，加入先后有向边，保留全部词号与位置见证；相同符号不产生自环。DFS找确定性第一条循环，或按字母序回溯给最多两个拓扑序。没有环等价于这些已观察严格先后约束相容，绝不是文本具有语义的证明。不求最短循环、最优修正或最大相容子集。
+
+状态：有已知循环为INCOMPATIBLE_KNOWN_CONSTRAINTS，未知词不能消除这份已知证书。无环但存在None为UNDETERMINED_MISSING_WORDS；任何可行序仅适用于已知子集，不能当全输入通过。无None且有跨符号边为COMPATIBLE_STRICT_CONDITION；无边而有完全已知输入为COMPATIBLE_NO_CROSS_SYMBOL_INFORMATION。全未知不造字母表或全序见证。状态不以缺失填零。
+
+另给固定纯人工自由重排见证：aab、aba、baa三个观测串都可从aab经不同位置置换获得；其字母袋相同。它们不可能共同遵循一个a/b严格顺序，却被自由词内重排允许。因此严格条件不可以作为自由重排模型的必要条件。该逻辑反例不是手稿词例，亦不声称作者真实机制由此被证明。
+
+主实现只读本文件对应的内置9例及自身源码哈希，不读语料。运行前先冻结本协议、代码哈希和时刻。另一实现独立枚举全部小字母表排列，逐位置检查非降序，并核主循环每条边的原始位置及可行序。9例与另一代理先前7例分开保存；都不是新手稿统计。网页只展示保存例子，不允许上传或自动扫描手稿。

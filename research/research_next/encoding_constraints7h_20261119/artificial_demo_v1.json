@@ -1,0 +1,638 @@
+{
+  "schema": "ninth_artificial_order_demo_v1",
+  "created_utc": "2026-11-19T15:48:48.967039+00:00",
+  "status": "COMPLETED_PENDING_INDEPENDENT_AUDIT",
+  "freeze_sha256": "0da78c2557f5f7bfab3bcffa56568dc18767e36cc3760b3800d9c7482bff4d4c",
+  "manuscript_input": false,
+  "cases": [
+    {
+      "id": "T01",
+      "artificial": true,
+      "words": [
+        "aab",
+        "bcc"
+      ],
+      "nodes": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            },
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [],
+      "cycle_witnesses": [],
+      "at_most_two_orders_of_known_subset": [
+        "abc"
+      ],
+      "status": "COMPATIBLE_STRICT_CONDITION",
+      "full_input_compatibility": true,
+      "semantic_claim": false
+    },
+    {
+      "id": "T02",
+      "artificial": true,
+      "words": [
+        "aba"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [
+        "a",
+        "b",
+        "a"
+      ],
+      "cycle_witnesses": [
+        {
+          "from": "a",
+          "to": "b",
+          "word_index": 0,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "word_index": 0,
+          "positions_zero_based": [
+            1,
+            2
+          ]
+        }
+      ],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "full_input_compatibility": false,
+      "semantic_claim": false
+    },
+    {
+      "id": "T03",
+      "artificial": true,
+      "words": [
+        "ab",
+        "ba"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [
+        "a",
+        "b",
+        "a"
+      ],
+      "cycle_witnesses": [
+        {
+          "from": "a",
+          "to": "b",
+          "word_index": 0,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "word_index": 1,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        }
+      ],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "full_input_compatibility": false,
+      "semantic_claim": false
+    },
+    {
+      "id": "T04",
+      "artificial": true,
+      "words": [
+        "ab",
+        "bc",
+        "ca"
+      ],
+      "nodes": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "c",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 2,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "cycle_witnesses": [
+        {
+          "from": "a",
+          "to": "b",
+          "word_index": 0,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "word_index": 1,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        },
+        {
+          "from": "c",
+          "to": "a",
+          "word_index": 2,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        }
+      ],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "full_input_compatibility": false,
+      "semantic_claim": false
+    },
+    {
+      "id": "T05",
+      "artificial": true,
+      "words": [
+        "ac",
+        "bc"
+      ],
+      "nodes": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [],
+      "cycle_witnesses": [],
+      "at_most_two_orders_of_known_subset": [
+        "abc",
+        "bac"
+      ],
+      "status": "COMPATIBLE_STRICT_CONDITION",
+      "full_input_compatibility": true,
+      "semantic_claim": false
+    },
+    {
+      "id": "T06",
+      "artificial": true,
+      "words": [
+        "aa",
+        "bb"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 0,
+      "edges": [],
+      "cycle": [],
+      "cycle_witnesses": [],
+      "at_most_two_orders_of_known_subset": [
+        "ab",
+        "ba"
+      ],
+      "status": "COMPATIBLE_NO_CROSS_SYMBOL_INFORMATION",
+      "full_input_compatibility": true,
+      "semantic_claim": false
+    },
+    {
+      "id": "T07",
+      "artificial": true,
+      "words": [
+        null,
+        "ab"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 1,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [],
+      "cycle_witnesses": [],
+      "at_most_two_orders_of_known_subset": [
+        "ab"
+      ],
+      "status": "UNDETERMINED_MISSING_WORDS",
+      "full_input_compatibility": null,
+      "semantic_claim": false
+    },
+    {
+      "id": "T08",
+      "artificial": true,
+      "words": [
+        null,
+        "aba"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 1,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [
+        "a",
+        "b",
+        "a"
+      ],
+      "cycle_witnesses": [
+        {
+          "from": "a",
+          "to": "b",
+          "word_index": 1,
+          "positions_zero_based": [
+            0,
+            1
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "word_index": 1,
+          "positions_zero_based": [
+            1,
+            2
+          ]
+        }
+      ],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "full_input_compatibility": false,
+      "semantic_claim": false
+    },
+    {
+      "id": "T09",
+      "artificial": true,
+      "words": [
+        null
+      ],
+      "nodes": [],
+      "unknown_word_count": 1,
+      "edges": [],
+      "cycle": [],
+      "cycle_witnesses": [],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "UNDETERMINED_MISSING_WORDS",
+      "full_input_compatibility": null,
+      "semantic_claim": false
+    }
+  ],
+  "free_reordering_witness": {
+    "id": "F01",
+    "artificial": true,
+    "source_word": "aab",
+    "observed_words": [
+      "aab",
+      "aba",
+      "baa"
+    ],
+    "permutations_output_positions_from_input_zero_based": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        2,
+        0,
+        1
+      ]
+    ],
+    "same_multiset": true,
+    "strict_joint": {
+      "id": "F01-strict",
+      "artificial": true,
+      "words": [
+        "aab",
+        "aba",
+        "baa"
+      ],
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "unknown_word_count": 0,
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "witnesses": [
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            },
+            {
+              "word_index": 0,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            },
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "witnesses": [
+            {
+              "word_index": 1,
+              "positions_zero_based": [
+                1,
+                2
+              ]
+            },
+            {
+              "word_index": 2,
+              "positions_zero_based": [
+                0,
+                1
+              ]
+            },
+            {
+              "word_index": 2,
+              "positions_zero_based": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "cycle": [
+        "a",
+        "b",
+        "a"
+      ],
+      "cycle_witnesses": [
+        {
+          "from": "a",
+          "to": "b",
+          "word_index": 0,
+          "positions_zero_based": [
+            0,
+            2
+          ]
+        },
+        {
+          "from": "b",
+          "to": "a",
+          "word_index": 1,
+          "positions_zero_based": [
+            1,
+            2
+          ]
+        }
+      ],
+      "at_most_two_orders_of_known_subset": [],
+      "status": "INCOMPATIBLE_KNOWN_CONSTRAINTS",
+      "full_input_compatibility": false,
+      "semantic_claim": false
+    },
+    "claim": "Free per-word reordering permits this artificial observation; a common strict order does not. No manuscript or author mechanism is thereby proved."
+  },
+  "independent_audit_pending": true,
+  "limits": [
+    "All strings are artificial",
+    "Unknown words are not filled or counted as a pass",
+    "At most two orders are exhibited; not claimed to enumerate all",
+    "Strict incompatibility does not refute arbitrary anagrams or noise-tolerant historical hypotheses"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "ninth_clean_public_replay_v1",
+  "created_utc": "2026-11-19T15:53:34.155411+00:00",
+  "status": "PASS",
+  "copied_public_files": [
+    {
+      "path": "artificial_protocol_v1.txt",
+      "sha256": "7c10be6b2a6255841f30b63ffcb7622ec0c37cbf1930aba3da65c0bc9e8c4011"
+    },
+    {
+      "path": "artificial_code_freeze_v1.json",
+      "sha256": "0da78c2557f5f7bfab3bcffa56568dc18767e36cc3760b3800d9c7482bff4d4c"
+    },
+    {
+      "path": "code/artificial_order_demo.py",
+      "sha256": "34da3764cf4c0e24d2e39696c23b90a392d281decebf1f849b78a838b71de9cd"
+    },
+    {
+      "path": "artificial_demo_v1.json",
+      "sha256": "2c3520c1cb7a3755aff477844300ab288c8ef398aba6fd518aed0179b3ac9523"
+    },
+    {
+      "path": "code/independent_artificial_audit_v1.py",
+      "sha256": "cfdecf8c5eef11535a1fec08e0cd34051ee8dc306032db0c20c5887e0a52c139"
+    },
+    {
+      "path": "independent_preflight/artificial_order_check_v1.py",
+      "sha256": "609ad3b9a202679a1c9996fad7681dc269edf183e01f27b15fbb4b201a289feb"
+    },
+    {
+      "path": "independent_preflight/artificial_order_receipt_v1.json",
+      "sha256": "cf58f21d6e22cbd8d4a01233eb6d233a190b4ad30fefe6a4d438571b1646d2df"
+    }
+  ],
+  "scope": "Fresh directory with only the7 hash-bound public files, primary artificial output compared excluding timestamp; independent audit cases and checks compared exactly.",
+  "commands": [
+    "python3 code/artificial_order_demo.py --output NEW/demo.json",
+    "python3 code/independent_artificial_audit_v1.py --output NEW/audit.json"
+  ],
+  "primary_output_equal_except_created_utc": true,
+  "independent_audit_cases_checks_equal": true,
+  "private_images_or_manuscript_inputs": false,
+  "network_needed": false,
+  "libraries": "Python standard library"
+}
