@@ -1,0 +1,34 @@
+第五轮公开复算补充 v2：从仓库根运行K投影
+
+本补充只补足 method_engine/README.txt 中相对路径所需的工作目录说明；旧README、科学代码、输入和结果不修改。验收依据已提交公开文件，不需要私有图片。
+
+准备
+在仓库根目录运行下面整段命令；该目录下应存在 research/research_next/hierarchical7h_20261119/。保留仓库原目录和原文件名，不直接把网页短下载名当成源码目录。若使用下载副本，须按网页给出的仓库原路径恢复文件名/位置。
+需要 Python 3 与 macOS/Linux 的 mktemp；下列 shell 语法适用于 zsh/bash。两套投影仅使用 Python 标准库，不需要NumPy或GPU。已验证Python 3.9.6与3.13.7可运行投影，未宣称最低版本。
+
+可复制命令（cwd=仓库根）：
+```sh
+h5_w5="research/research_next/hierarchical7h_20261119"
+h5_replay_dir="$(mktemp -d "${TMPDIR:-/tmp}/hierarchical-k-replay.XXXXXX")"
+python3 "$h5_w5/method_engine/project.py" \
+  --input "$h5_w5/K_development_v1/observation_v1.json" \
+  --output "$h5_replay_dir/root_projection.json"
+python3 "$h5_w5/independent_engine/independent_projection_v1.py" \
+  --input "$h5_w5/K_development_v1/observation_v1.json" \
+  --output-dir "$h5_replay_dir/independent"
+printf 'K replay output directory: %s\n' "$h5_replay_dir"
+```
+
+每次mktemp创建新的输出目录；主输出为该目录中的 root_projection.json，独立输出为 independent/projection.json。独立子目录事前不存在，符合程序拒绝覆盖的条件；主输出父目录由mktemp创建。观察原件和仓库冻结结果不会被覆盖。最后一行显示实际输出位置，供检查后自行保留或清理；此说明不自动删除结果。
+
+读取的运行文件只有：
+- research/research_next/hierarchical7h_20261119/method_engine/project.py
+- research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py
+- research/research_next/hierarchical7h_20261119/K_development_v1/observation_v1.json
+
+核对依据：K_development_v1/root_projection_v1.json、independent_projection_v1/projection.json和projection_comparison_v1.json。应逐条目核完整四维域及每个签名下全部case_id/extra_index原像，不只比较域大小或四维边际。当前冻结K的域大小为1/27/9/2，全部327原像；完整输出各自可与其冻结投影JSON逐值比较。此执行补记的实际公开副本运行收据见 public_replay_command_acceptance_v1.json，完整入口验收见 public_replay_acceptance_v1.json/.txt。
+
+依赖与科学边界
+NumPy仅独立F评分实现需要，K投影不用。此补记没有可执行的冻结F评分输入，也没有运行F命令或生成F结果；不得把K观察当成F输入或从命令示例推断F已经完成。
+公开记录复算只验证已列ID、case、余项和封顶计数的算术关系。两个程序使用同一份知情观察，一致不是独立专家观察、局部排除认证、完整图形分割或名称识别成功。
+来源像素审计需要原JPEG和私有原像素视图；仅凭公开记录无法重做像素相等检查。本入口不读取私有图，不替代该审计，也不导出图片。

@@ -1,0 +1,420 @@
+{
+  "schema": "hierarchical_public_K_replay_acceptance_v1",
+  "completed_utc": "2026-11-19T12:04:04.531531+00:00",
+  "state": "PASS_PUBLIC_RECORD_ARITHMETIC_WITH_MINOR_CWD_DOCUMENTATION_NOTE",
+  "export_commit": "47e183bbc04c60bc54f8389453760a71b302d22a",
+  "export_source": "git show COMMIT:PATH only; no working-tree scientific input or private pixel access",
+  "exported_files": [
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/README.txt",
+      "sha256": "92f3101b1aac94fd57a83cd993e24a1cbc82f8d5b9c57239bfbe7bf6de918e84",
+      "bytes": 4322,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/method_engine/README.txt"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/project.py",
+      "sha256": "28cd578ee3b9af17b46158d9bf8bdc1801af05a619b9fcaf18a6e19d438ba424",
+      "bytes": 5049,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/method_engine/project.py"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py",
+      "sha256": "c65fc7cfab073dea2e2f5c67be22c71058bd6876c7f858e28f6ed6eadc777464",
+      "bytes": 8153,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/K_development_v1/observation_v1.json",
+      "sha256": "37d232fb918afe874f305699841ad7d7223d5764cb6d601478186bb6d63544e3",
+      "bytes": 145566,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/K_development_v1/observation_v1.json"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/K_development_v1/root_projection_v1.json",
+      "sha256": "6518e4ec0145e3fdf62ef6e3cb6f42b27415be30db118b7ac3152fe47b7b5f31",
+      "bytes": 42873,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/K_development_v1/root_projection_v1.json"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/K_development_v1/independent_projection_v1/projection.json",
+      "sha256": "e8777b18ca9506d485ad2d1584daa7b6ceb525813581eb6bc16e7f409a9fb503",
+      "bytes": 286097,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/K_development_v1/independent_projection_v1/projection.json"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/K_development_v1/projection_comparison_v1.json",
+      "sha256": "2520c1835b032058a8dde92de211e4b614464b0bd13a41868df23d454457e121",
+      "bytes": 1839,
+      "git_object_source": "47e183bbc04c60bc54f8389453760a71b302d22a:research/research_next/hierarchical7h_20261119/K_development_v1/projection_comparison_v1.json"
+    }
+  ],
+  "export_directory": "ephemeral external temporary directory; removed after execution; no machine path published",
+  "runtime_public_file_count": 7,
+  "commands": [
+    {
+      "run": "readme_python",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python",
+        "project.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output",
+        "readme_python_root.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_relative_to_cwd": "readme_python_root.json",
+      "output_sha256": "6518e4ec0145e3fdf62ef6e3cb6f42b27415be30db118b7ac3152fe47b7b5f31"
+    },
+    {
+      "run": "readme_python",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python",
+        "../independent_engine/independent_projection_v1.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output-dir",
+        "readme_python_independent"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"readme_python_independent\", \"domains\": {\"K01\": 1, \"K02\": 27, \"K03\": 9, \"K04\": 2}}",
+      "stderr": "",
+      "output_relative_to_cwd": "readme_python_independent/projection.json",
+      "output_sha256": "e8777b18ca9506d485ad2d1584daa7b6ceb525813581eb6bc16e7f409a9fb503"
+    },
+    {
+      "run": "stdlib_only_python",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python",
+        "-S",
+        "project.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output",
+        "stdlib_only_python_root.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_relative_to_cwd": "stdlib_only_python_root.json",
+      "output_sha256": "6518e4ec0145e3fdf62ef6e3cb6f42b27415be30db118b7ac3152fe47b7b5f31"
+    },
+    {
+      "run": "stdlib_only_python",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python",
+        "-S",
+        "../independent_engine/independent_projection_v1.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output-dir",
+        "stdlib_only_python_independent"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"stdlib_only_python_independent\", \"domains\": {\"K01\": 1, \"K02\": 27, \"K03\": 9, \"K04\": 2}}",
+      "stderr": "",
+      "output_relative_to_cwd": "stdlib_only_python_independent/projection.json",
+      "output_sha256": "e8777b18ca9506d485ad2d1584daa7b6ceb525813581eb6bc16e7f409a9fb503"
+    },
+    {
+      "run": "stdlib_only_python3",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python3",
+        "-S",
+        "project.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output",
+        "stdlib_only_python3_root.json"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_relative_to_cwd": "stdlib_only_python3_root.json",
+      "output_sha256": "6518e4ec0145e3fdf62ef6e3cb6f42b27415be30db118b7ac3152fe47b7b5f31"
+    },
+    {
+      "run": "stdlib_only_python3",
+      "cwd": "research/research_next/hierarchical7h_20261119/method_engine",
+      "argv": [
+        "python3",
+        "-S",
+        "../independent_engine/independent_projection_v1.py",
+        "--input",
+        "../K_development_v1/observation_v1.json",
+        "--output-dir",
+        "stdlib_only_python3_independent"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"stdlib_only_python3_independent\", \"domains\": {\"K01\": 1, \"K02\": 27, \"K03\": 9, \"K04\": 2}}",
+      "stderr": "",
+      "output_relative_to_cwd": "stdlib_only_python3_independent/projection.json",
+      "output_sha256": "e8777b18ca9506d485ad2d1584daa7b6ceb525813581eb6bc16e7f409a9fb503"
+    }
+  ],
+  "runs": [
+    {
+      "id": "readme_python",
+      "python": "Python 3.13.7",
+      "site_initialization_disabled": false,
+      "entries": [
+        {
+          "id": "K01",
+          "domain_size": 1,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 3,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K02",
+          "domain_size": 27,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 162,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K03",
+          "domain_size": 9,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K04",
+          "domain_size": 2,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        }
+      ],
+      "origin_count": 327,
+      "full_output_objects_equal_to_frozen": true,
+      "primary_bytes_equal_to_frozen": true,
+      "independent_bytes_equal_to_frozen": true
+    },
+    {
+      "id": "stdlib_only_python",
+      "python": "Python 3.13.7",
+      "site_initialization_disabled": true,
+      "entries": [
+        {
+          "id": "K01",
+          "domain_size": 1,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 3,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K02",
+          "domain_size": 27,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 162,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K03",
+          "domain_size": 9,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K04",
+          "domain_size": 2,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        }
+      ],
+      "origin_count": 327,
+      "full_output_objects_equal_to_frozen": true,
+      "primary_bytes_equal_to_frozen": true,
+      "independent_bytes_equal_to_frozen": true
+    },
+    {
+      "id": "stdlib_only_python3",
+      "python": "Python 3.9.6",
+      "site_initialization_disabled": true,
+      "entries": [
+        {
+          "id": "K01",
+          "domain_size": 1,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 3,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K02",
+          "domain_size": 27,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 162,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K03",
+          "domain_size": 9,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        },
+        {
+          "id": "K04",
+          "domain_size": 2,
+          "all_complete_vectors_equal": true,
+          "case_extra_origin_count": 81,
+          "all_case_extra_origins_equal": true,
+          "full_primary_entry_equal_to_frozen": true,
+          "full_independent_entry_equal_to_frozen": true
+        }
+      ],
+      "origin_count": 327,
+      "full_output_objects_equal_to_frozen": true,
+      "primary_bytes_equal_to_frozen": true,
+      "independent_bytes_equal_to_frozen": true
+    }
+  ],
+  "dependency_check": {
+    "projection_requires": "Python 3 standard library only; tested Python 3.13.7 and Python 3.9.6, including -S runs",
+    "imports": {
+      "method_engine/project.py": [
+        "argparse",
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "independent_engine/independent_projection_v1.py": [
+        "argparse",
+        "hashlib",
+        "json",
+        "pathlib"
+      ]
+    },
+    "numpy_needed_for_K_projection": false,
+    "independent_F_scoring_requires_numpy": true,
+    "F_scoring_dependency_basis": "README dependency statement and committed independent_engine/replay.py import numpy as np; F scoring not executed",
+    "minimum_supported_python_version": "Not established; only the two actual versions above tested",
+    "GPU_required": false
+  },
+  "committed_web_and_dependency_evidence": [
+    {
+      "path": "site/hierarchical7h.html",
+      "sha256": "0d55702261429b908b73661adcead24fa7c8971f1329c38f5ecea32addca0723",
+      "bytes": 11130
+    },
+    {
+      "path": "site/hierarchical7h.js",
+      "sha256": "7f740a13cd7c943e8c2022f8cd6a44e675d73276bd4a62f1e3ed57854cd88627",
+      "bytes": 5185
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/publication/phase_input_v2.json",
+      "sha256": "1f8f3cd1d5cd986062b575aabef23dbe12e1166b7eaa8644bdcfcedb49172002",
+      "bytes": 14871
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/replay.py",
+      "sha256": "f33b03147f24ee22544e660a0dc8ba94295baadc9469b7fe0d8d71e779ee9284",
+      "bytes": 9417
+    }
+  ],
+  "website_short_download_checks": [
+    {
+      "download_path": "site/downloads/hierarchical7h/root-project.py",
+      "original_path": "research/research_next/hierarchical7h_20261119/method_engine/project.py",
+      "sha256": "28cd578ee3b9af17b46158d9bf8bdc1801af05a619b9fcaf18a6e19d438ba424",
+      "bytes_equal_to_committed_original": true
+    },
+    {
+      "download_path": "site/downloads/hierarchical7h/independent-projection.py",
+      "original_path": "research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py",
+      "sha256": "c65fc7cfab073dea2e2f5c67be22c71058bd6876c7f858e28f6ed6eadc777464",
+      "bytes_equal_to_committed_original": true
+    },
+    {
+      "download_path": "site/downloads/hierarchical7h/k-observation.json",
+      "original_path": "research/research_next/hierarchical7h_20261119/K_development_v1/observation_v1.json",
+      "sha256": "37d232fb918afe874f305699841ad7d7223d5764cb6d601478186bb6d63544e3",
+      "bytes_equal_to_committed_original": true
+    },
+    {
+      "download_path": "site/downloads/hierarchical7h/root-engine-readme.txt",
+      "original_path": "research/research_next/hierarchical7h_20261119/method_engine/README.txt",
+      "sha256": "92f3101b1aac94fd57a83cd993e24a1cbc82f8d5b9c57239bfbe7bf6de918e84",
+      "bytes_equal_to_committed_original": true
+    }
+  ],
+  "documentation_findings": [
+    {
+      "id": "DOC_CWD",
+      "severity": "minor_invocation_clarity",
+      "description": "README示例使用 project.py 和 ../independent_engine 的相对路径，隐含当前目录为 W5/method_engine；没有显式cd行。网页“从仓库根目录获取”描述的是获取文件位置，不能理解为在仓库根直接执行README里的python project.py。",
+      "exact_requirement": "先 cd research/research_next/hierarchical7h_20261119/method_engine，再将 OBSERVATION.json 替换为 ../K_development_v1/observation_v1.json；或在repo根给脚本/输入/输出完整相对路径。",
+      "observed_wrong_cwd_probe": {
+        "argv": [
+          "python",
+          "project.py",
+          "--help"
+        ],
+        "cwd": "repository root",
+        "exit_code": 2,
+        "result": "cannot open project.py because project.py is in method_engine; absolute temporary path from stderr omitted"
+      }
+    },
+    {
+      "id": "DOC_SHORT_FILENAMES",
+      "severity": "documented_prerequisite",
+      "description": "网页短下载名root-project.py、independent-projection.py等是查阅副本，不是可直接照README运行的原目录树；网页已明确保留原文件名/目录关系，并给每项仓库原路径。README占位符需换为实际输入和新的输出位置。",
+      "gap_requiring_scientific_change": false
+    }
+  ],
+  "scope": {
+    "all_four_K_domains": [
+      1,
+      27,
+      9,
+      2
+    ],
+    "all_case_extra_origins": 327,
+    "main_and_independent_full_frozen_objects_equal": true,
+    "original_input_export_bytes_unchanged": true,
+    "images_opened_or_exported": false,
+    "F_drafts_or_results_read": false,
+    "name_scores_computed": false,
+    "scientific_code_or_old_outputs_modified": false,
+    "website_modified": false
+  },
+  "limits": [
+    "这是公开记录的算术复算验收，不是像素核验、原图分割或独立专家复核。",
+    "两实现处理同一知情观察；一致不能认证局部排除、候选穷尽、原图可实现性或名称识别。",
+    "未重跑依赖私有图像的来源像素审计；该能力不可由此公开包替代。",
+    "未执行F评分，未验证完整未来F求界流程或NumPy安装。"
+  ]
+}
