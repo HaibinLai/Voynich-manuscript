@@ -1,0 +1,13 @@
+同叶补充的安全公开复现
+
+从仓库根运行，仅需Python标准库。输出目录必须尚不存在且在仓库之外：
+
+python3 research/research_next/repeated_labels7h_20261119/same_leaf_supplement_v1/reproduce_public.py --output ../voynich-same-leaf-replay-new
+
+入口校验固定来源，在新目录复制最小输入和原独立程序，再运行该副本。
+这避免旧程序向历史研究目录写回结果。复制只含代码、合同及观察JSON，
+无需本机私有缓存、原始PDF或图像下载。
+
+程序逐字节比较全部同叶结果、逐节点缺失表及投影，并确认原文件未变。
+新目录receipt.json应显示CLEAN_COPY_REPLAY_MATCHES_SAVED_RESULTS。
+这是同一冻结观察的数值重放，不是新的图像读数或语义证据。

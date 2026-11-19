@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Read-only projection of the fourth-window initial freeze. No scientific measurements.
-Reads eleven initial inputs, ten v2 sources, and optional eight v3 sources plus view bytes.
-Only explicit frozen paths are read; ongoing matrices, inventories and numeric outputs are excluded.
+"""Read-only publication projection for explicit frozen fourth-window phases v2-v5.
+Verifies named inputs, historical phases, native view hashes and recorded numerical audits.
+Does not observe images, infer live progress, or compute new scientific scores.
 """
 import argparse,hashlib,json,re
 from datetime import datetime,timedelta
@@ -51,9 +51,42 @@ PHASE_V4_PATH=W/'publication/phase_input_v4.json'
 PHASE_V4_HASH='1f0b948636bfb144e988b84f7b53908e0d64416ac60d422ad78b86ec6c8ff50d'
 PHASE_V4_FINAL_PATH=W/'publication/phase_input_v4_final.json'
 PHASE_V4_FINAL_HASH='db1dcb858ea15832b249bb5ad1cd365322067a8ade97cd098ee9818e115765d5'
+PHASE_V5_PATH=W/'publication/phase_input_v5.json'
+PHASE_V5_HASH='8d719ca6b8d5792607fba5649c544289791d9190995ff0584f989cc76b040b14'
 def sha(b):return hashlib.sha256(b).hexdigest()
+def project_same_leaf_supplement(result,contract,payload,review=None):
+ """Validate frozen ledger against the displayed matrix; never calculate new bounds.
+
+ Called only when a future explicit publication phase includes the final sources.
+ A missing review stays pending; it cannot imply numerical verification.
+ """
+ assert result['schema']=='within_leaf_supplement_and_missingness_v1'
+ assert contract['schema']=='same_leaf_descriptive_supplement_contract_v1'
+ assert result['strata']==contract['strata']
+ assert [(s['leaf'],s['same'],s['different']) for s in result['strata']]==[('f101',0,0),('f88',0,3),('f89',0,0),('f99',1,5)]
+ groups={g['canonical_group_id']:g for g in payload['feature_definitions']['matrix']}
+ assignments={s['id']:s['assignment'] for s in payload['candidate_inventory']['global_scenarios']}
+ assert len(result['scenarios'])==16 and {s['id'] for s in result['scenarios']}==set(assignments)
+ loci=[r['locator'] for r in payload['rows']];compact=[]
+ for scenario in result['scenarios']:
+  assert scenario['assignment']==assignments[scenario['id']]
+  assert [r['locus'] for r in scenario['per_node_missingness']]==loci
+  selected=set(scenario['assignment'].values())
+  assert set(scenario['unique_selected_canonical_groups'])==selected
+  assert scenario['unique_group_count']==len(selected) and len(selected) in [8,9]
+  for row in scenario['per_node_missingness']:
+   gid=scenario['assignment'][row['locus']];assert row['canonical_group']==gid
+   values={fid:f['value'] for fid,f in groups[gid]['features'].items()}
+   assert row['values']==values
+   assert row['counts']=={'1':list(values.values()).count(1),'0':list(values.values()).count(0),'unknown':list(values.values()).count(None)}
+  assert scenario['unknown_canonical_variables_by_feature']=={fid:sum(groups[g]['features'][fid]['value'] is None for g in selected) for fid in ['G1','G2','G3','G4']}
+  compact.append({k:scenario[k] for k in ['id','assignment','metrics','per_node_missingness','unique_selected_canonical_groups','unique_group_count','unknown_canonical_variables_by_feature']})
+ assert len(result['all_nine_same_leaf_pairs'])==9
+ actual_pairs={(p['left'],p['right'],p['same_label']) for p in payload['actual_results']['pairs'] if not p['cross_leaf']}
+ assert {(p['left'],p['right'],p['same_label']) for p in result['all_nine_same_leaf_pairs']}==actual_pairs
+ return {'state':'POST_PRIMARY_DESCRIPTIVE_SUPPLEMENT','scope':result['scope'],'strata':result['strata'],'global_bounds':result['global_bounds'],'scenarios':compact,'interpretation':result['interpretation'],'review':review or {'state':'PENDING_FINAL_RECORD'},'source_url':'downloads/repeated-labels7h/same-leaf-results.json','contract_url':'downloads/repeated-labels7h/same-leaf-contract.json'}
 def main():
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--phase-input',required=True,help='Explicit frozen phase_input_v2.json, phase_input_v3.json or phase_input_v4.json; never infer live research state.');args=ap.parse_args()
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--phase-input',required=True,help='Explicit frozen phase_input_v2.json, phase_input_v3.json phase_input_v4_final.json or phase_input_v5.json; never infer live research state.');args=ap.parse_args()
  freeze_bytes=(ROOT/W/'input_freeze_v1.json').read_bytes();assert sha(freeze_bytes)==FREEZE_HASH
  freeze=json.loads(freeze_bytes);expected={s['path']:s['sha256'] for s in freeze['sources']}
  assert set(expected)=={str(p) for p,_,_ in INPUTS}
@@ -87,7 +120,7 @@ def main():
  if args.phase_input:
   requested=Path(args.phase_input)
   if requested.is_absolute():requested=requested.resolve().relative_to(ROOT)
-  assert requested in [PHASE_PATH,PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH],'Only explicit frozen phase inputs are permitted'
+  assert requested in [PHASE_PATH,PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH,PHASE_V5_PATH],'Only explicit frozen phase inputs are permitted'
   phase_bytes=(ROOT/PHASE_PATH).read_bytes();assert sha(phase_bytes)==PHASE_HASH
   phase=json.loads(phase_bytes);assert phase['schema']=='fourth_qualification_phase_publication_input_v2'
   assert phase['observation_scope_approved'] is True and phase['feature_coding_approved'] is False and phase['pair_scoring_approved'] is False
@@ -108,7 +141,7 @@ def main():
   payload['publication'].update({'state':phase['phase'],'stage_zh':phase['phase_zh'],'status_basis':'本轮已冻结 phase_input_v2；只更新观察授权与文献，没有接入本轮九处观察结果。'})
   payload['literature']={'state':'FROZEN_PRIMARY_SOURCE_NOTES','entries':entries,'source':{'file':str(W/'literature/evidence_table_v1.json'),'sha256':phase_expected[str(W/'literature/evidence_table_v1.json')]}}
   payload['results']['reason']='本轮只批准全九处知情资格观察；具体特征方案仍在审查，特征编码与对象对评分均未批准。'
- if requested in [PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH]:
+ if requested in [PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH,PHASE_V5_PATH]:
   v3_bytes=(ROOT/PHASE_V3_PATH).read_bytes();assert sha(v3_bytes)==PHASE_V3_HASH
   v3=json.loads(v3_bytes);assert v3['schema']=='fourth_feature_coding_phase_input_v3'
   assert v3['feature_coding_approved'] is True and v3['pair_scoring_approved_after_complete_matrix_freeze'] is True
@@ -169,7 +202,7 @@ def main():
   payload['publication'].update({'state':v3['phase'],'stage_zh':v3['phase_zh'],'status_basis':'显式 phase_input_v3，接入冻结九处资格与候选合同；不读取进行中特征矩阵。','new_observations_in_this_page':True})
   payload['results']={'state':'NOT_IN_THIS_SNAPSHOT','values':None,'reason':'四项纸面特征编码已获批准，矩阵仍在进行且未接入本页；须完整矩阵冻结后才可按合同评分。本页没有形态值、对象对分数或比较结论。'}
   blobs['phase-input-v3.json']=v3_bytes;sources.append({'file':str(PHASE_V3_PATH),'sha256':PHASE_V3_HASH,'label':'本页候选与编码阶段快照 v3','url':'downloads/repeated-labels7h/phase-input-v3.json','repository_url':'https://github.com/HaibinLai/Voynich-manuscript/blob/main/'+str(PHASE_V3_PATH)})
- if requested in [PHASE_V4_PATH,PHASE_V4_FINAL_PATH]:
+ if requested in [PHASE_V4_PATH,PHASE_V4_FINAL_PATH,PHASE_V5_PATH]:
   from fractions import Fraction
   v4_bytes=(ROOT/PHASE_V4_PATH).read_bytes();assert sha(v4_bytes)==PHASE_V4_HASH;v4=json.loads(v4_bytes)
   assert v4['schema']=='fourth_primary_results_phase_input_v4'
@@ -233,7 +266,7 @@ def main():
   payload['publication'].update({'state':v4['phase'],'stage_zh':v4['phase_zh'],'status_basis':'冻结观察与主结果，独立数值复算最终收据；视觉证据复核另行等待。'})
   payload['results']={'state':'COMPUTED_NUMERICALLY_REPLAYED','values':{'lower':primary['lower'],'upper':primary['upper']},'reason':'主量在固定候选与未知值的代数放宽中可正可负，全部十六候选情形均跨零。不是统计置信区间，也不证明图文关系不存在。'}
   blobs['phase-input-v4.json']=v4_bytes;sources.append({'file':str(PHASE_V4_PATH),'sha256':PHASE_V4_HASH,'label':'实际结果展示冻结输入 v4','url':'downloads/repeated-labels7h/phase-input-v4.json','repository_url':'https://github.com/HaibinLai/Voynich-manuscript/blob/main/'+str(PHASE_V4_PATH)})
- if requested==PHASE_V4_FINAL_PATH:
+ if requested in [PHASE_V4_FINAL_PATH,PHASE_V5_PATH]:
   final_bytes=(ROOT/PHASE_V4_FINAL_PATH).read_bytes();assert sha(final_bytes)==PHASE_V4_FINAL_HASH;final=json.loads(final_bytes)
   assert final['base_phase']=={'path':str(PHASE_V4_PATH),'sha256':PHASE_V4_HASH}
   for source in final['sources']:
@@ -260,6 +293,55 @@ def main():
   payload['phase_history'].append(payload['phase_input']);payload['phase_input']=final
   payload['publication'].update({'state':final['phase'],'stage_zh':final['phase_zh'],'status_basis':'冻结主结果、独立数值复算、有限视觉复核与单独报告的条件对照；原观察未改。'})
   blobs['phase-input-v4-final.json']=final_bytes;sources.append({'file':str(PHASE_V4_FINAL_PATH),'sha256':PHASE_V4_FINAL_HASH,'label':'v4 最终展示冻结输入','url':'downloads/repeated-labels7h/phase-input-v4-final.json','repository_url':'https://github.com/HaibinLai/Voynich-manuscript/blob/main/'+str(PHASE_V4_FINAL_PATH)})
+ if requested==PHASE_V5_PATH:
+  v5_bytes=(ROOT/PHASE_V5_PATH).read_bytes();assert sha(v5_bytes)==PHASE_V5_HASH;v5=json.loads(v5_bytes)
+  assert v5['schema']=='fourth_same_leaf_and_followup_publication_input_v5'
+  assert v5['base_phase']=={'path':str(PHASE_V4_FINAL_PATH),'sha256':PHASE_V4_FINAL_HASH}
+  assert v5['old_primary_and_control_unchanged'] is True
+  v5_paths={s['path']:s['sha256'] for s in v5['sources']};assert len(v5_paths)==len(v5['sources'])==28
+  for source in v5['sources']:
+   path=Path(source['path']);assert path.is_relative_to(W) and '..' not in path.parts
+   b=(ROOT/path).read_bytes();assert sha(b)==source['sha256'] and len(b)==source['bytes']
+   assert not any(t in b for t in [b'/Users/',b'/private/var/',b'/home/'])
+   name=source['download_name'];repo_url='https://github.com/HaibinLai/Voynich-manuscript/blob/main/'+str(path)
+   if name:
+    assert Path(name).name==name and name not in blobs;blobs[name]=b
+    if name.endswith('.json'):docs[name]=json.loads(b)
+   sources.append({'file':str(path),'sha256':sha(b),'label':source['label'],'url':'downloads/repeated-labels7h/'+name if name else repo_url,'repository_url':repo_url,'bytes':len(b),'delivery':'download' if name else 'repository_only'})
+  supplement=docs['same-leaf-results.json'];contract=docs['same-leaf-contract.json'];comparison=docs['same-leaf-comparison.json'];missingness=docs['same-leaf-missingness-comparison.json'];receipt=docs['same-leaf-independent-receipt.json']
+  assert supplement['contract_sha256']==receipt['contract_sha256']==sha(blobs['same-leaf-contract.json'])
+  assert supplement['implementation_sha256']==v5_paths[str(W/'same_leaf_supplement_v1/calculate.py')]
+  assert comparison['status']=='EXACT_FRACTIONS_MATCH' and missingness['status']=='EXACT_MATCH' and missingness['discrepancies']==receipt['discrepancies']==[]
+  for ref in comparison['inputs']:assert v5_paths[str(W/'same_leaf_supplement_v1'/ref['path'])]==ref['sha256']
+  for ref in missingness['inputs']:assert v5_paths[str(W/ref['path'])]==ref['sha256']
+  assert all(receipt['supplemental_direct_weight_checks'][k] is True for k in ['all_feature_endpoint_assignments_legal','direct_pair_weight_scores_match','all_candidate_feature_averages_match','global_full_candidate_envelope_matches'])
+  for ref in receipt['files']:assert v5_paths[str(W/ref['path'])]==ref['sha256']
+  for manifest,key in [('reproduction-manifest.json','inputs'),('same-leaf-reproduction-manifest.json','files')]:
+   for ref in docs[manifest][key]:
+    path=W/ref['path'];assert '..' not in path.parts and path.is_relative_to(W)
+    assert sha((ROOT/path).read_bytes())==ref['sha256']
+  assert docs['public-replay-receipt.json']['status']=='REPLAY_MATCHES_SAVED_RESULTS'
+  assert docs['public-replay-receipt.json']['inputs_unchanged'] is True
+  assert docs['public-replay-receipt.json']['manifest_sha256']==sha(blobs['reproduction-manifest.json'])
+  assert docs['same-leaf-public-replay-receipt.json']['status']=='CLEAN_COPY_REPLAY_MATCHES_SAVED_RESULTS'
+  assert docs['same-leaf-public-replay-receipt.json']['manifest_sha256']==sha(blobs['same-leaf-reproduction-manifest.json'])
+  assert docs['same-leaf-public-replay-receipt.json']['original_files_unchanged'] is True
+  assert all(c['exact_bytes_match'] is True for c in docs['same-leaf-public-replay-receipt.json']['checks'])
+  payload['same_leaf_supplement']=project_same_leaf_supplement(supplement,contract,payload,{'state':'EXACT_FRACTIONS_MATCH','numerical_comparison':comparison,'missingness_comparison':missingness,'independent_receipt':receipt,'public_replay_receipt':docs['same-leaf-public-replay-receipt.json']})
+  assert frac(supplement['global_bounds']['D99']['lower']['value'])==Fraction(-11,20) and frac(supplement['global_bounds']['D99']['upper']['value'])==Fraction(7,10)
+  followup=docs['followup-eligibility.json'];ff=docs['followup-output-freeze.json']
+  assert sha(blobs['followup-output-freeze.json'])=='483f7f2816f70a4d03294c15100104f9bb29a22072000179a1b210ef525a9daf'
+  for packet in [ff,docs['followup-input-freeze.json']]:
+   for ref in packet['files']:assert v5_paths[str(W/'known_language_followup_v1'/ref['path'])]==ref['sha256']
+  assert followup['input_freeze_sha256']==sha(blobs['followup-input-freeze.json']) and followup['candidate_roster_sha256']==sha(blobs['followup-candidate-roster.json'])
+  assert followup['status']=='bounded_eligibility_completed_no_scoring' and followup['all_candidates_retained'] is True and followup['replacements']==[]
+  assert [r['id'] for r in followup['rows']]==['F01','F02','F03','F04','F05','F06'] and all(r['morphology_coded'] is False for r in followup['rows'])
+  assert followup['old_control_unchanged']['sha256']==sha(blobs['control-observation.json']) and followup['old_control_unchanged']['matches_prior_freeze'] is True
+  payload['known_language_followup']={'state':'ELIGIBILITY_ONLY_NO_SCORING','record':followup,'source_url':'downloads/repeated-labels7h/followup-eligibility.json','report_url':'downloads/repeated-labels7h/followup-eligibility.txt'}
+  payload['public_replay']={'receipt':docs['public-replay-receipt.json'],'manifest':docs['reproduction-manifest.json'],'same_leaf_receipt':docs['same-leaf-public-replay-receipt.json'],'sources':[s for s in sources if s['file'] in [str(W/'REPRODUCE_PUBLIC.txt'),str(W/'same_leaf_supplement_v1/REPRODUCE_PUBLIC.txt'),str(W/'reproduce_public.py'),str(W/'same_leaf_supplement_v1/reproduce_public.py')]]}
+  payload['phase_history'].append(payload['phase_input']);payload['phase_input']=v5
+  payload['publication'].update({'state':v5['phase'],'stage_zh':v5['phase_zh'],'status_basis':'原主结果和四例对照保持不变；另列冻结的事后同叶描述及六例资格记录，后者没有形态评分。'})
+  blobs['phase-input-v5.json']=v5_bytes;sources.append({'file':str(PHASE_V5_PATH),'sha256':PHASE_V5_HASH,'label':'v5 最终增量冻结输入','url':'downloads/repeated-labels7h/phase-input-v5.json','repository_url':'https://github.com/HaibinLai/Voynich-manuscript/blob/main/'+str(PHASE_V5_PATH)})
  data=(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n').encode();assert not any(v in data for v in [b'/Users/',b'/private/var/',b'/home/'])
  site=ROOT/'site';out=site/'downloads/repeated-labels7h';out.mkdir(parents=True,exist_ok=True)
  for name,b in blobs.items():(out/name).write_bytes(b)
@@ -267,7 +349,7 @@ def main():
  p=site/'repeated-labels7h.html';html=p.read_text();html=re.sub(r'(<meta name="repeated-labels-snapshot" content=")[^"]*',r'\g<1>'+sha(data)[:16],html)
  for ext in ['js','css']:html=re.sub(r'repeated-labels7h\.'+ext+r'\?v=[a-zA-Z0-9_-]+','repeated-labels7h.'+ext+'?v='+sha((site/f'repeated-labels7h.{ext}').read_bytes())[:16],html)
  html=re.sub(r'(<strong id="r4-stage">)[^<]*',lambda m:m.group(1)+payload['publication']['stage_zh'],html)
- is_v3=requested in [PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH]
+ is_v3=requested in [PHASE_V3_PATH,PHASE_V4_PATH,PHASE_V4_FINAL_PATH,PHASE_V5_PATH]
  static_text={
   'r4-footer-stage':'固定九处 · 四项编码已批准 · 矩阵与分数未接入' if is_v3 else '固定九处 · 原图资格核对进行中 · 编码与评分未批准',
   'r4-result-heading':'特征矩阵与比较结果尚未接入。' if is_v3 else '形态比较未执行。',
@@ -275,9 +357,9 @@ def main():
   'r4-qualification-note':'本轮九处已完成候选范围核对；四处保留两个候选。条件单位资格不是唯一对象认证；形态值与分数尚未接入，不填零。' if is_v3 else '本轮逐位置结论尚未接入；待审查不是没有部件、NA 或零分，旧定位不能替代新测量资格。',
   'r4-approved-work':'九处局部候选范围已完成核对，正式批准十二个可复用图形组的四项纸面特征编码，保留全部十六种联合候选情形。特征矩阵仍在进行，本页没有形态值。' if is_v3 else '已批准全九处知情原图资格观察；逐处结论尚未接入本页。',
   'r4-not-approved':'完整矩阵冻结后才可按已批准合同计算描述量与条件范围；本页没有分数。像素相似度、物种、词义及显著性检验不在批准范围内。' if is_v3 else '形态特征编码、对象对相似度和显著性检验均未批准。'}
- if requested in [PHASE_V4_PATH,PHASE_V4_FINAL_PATH]:
+ if requested in [PHASE_V4_PATH,PHASE_V4_FINAL_PATH,PHASE_V5_PATH]:
   static_text.update({'r4-footer-stage':'固定九处 · 数值已精确复算 · 视觉证据复核待完成','r4-result-heading':'主范围 −5/12 至 53/120，全部候选情形跨零。','r4-approved-work':'已完成十二组四项特征记录，并计算全部十六候选情形及三十六对象对。独立实现已精确复算；未知值与既有候选全部保留。','r4-not-approved-title':'仍不能推出什么','r4-not-approved':'结果不是物种、词义或破译认证；代数外界不是置信区间或 p 值。视觉证据复核仍待正式记录。','r4-qualification-note':'局部候选范围有条件成立，不是唯一文字归属。九处全部保留；未知特征以未知显示，不填零。'})
- if requested==PHASE_V4_FINAL_PATH:
+ if requested in [PHASE_V4_FINAL_PATH,PHASE_V5_PATH]:
   static_text.update({'r4-footer-stage':'主结果与条件对照已复算 · 视觉复核保留测量限度','r4-not-approved':'视觉复核未提出明确改码反例，但G3缺最大宽度截线坐标；只支持图像相容，不是独立精密测量认证。结果不认证物种或词义。'})
  for element,value in static_text.items():html=re.sub(r'(<[^>]+id="'+element+r'"[^>]*>)[^<]*',lambda m:m.group(1)+value,html)
  p.write_text(html)
