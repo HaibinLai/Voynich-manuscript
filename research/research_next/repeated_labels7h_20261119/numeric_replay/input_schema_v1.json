@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frozen canonical binary domains for independent replay",
+  "type": "object",
+  "required": ["schema", "frozen", "groups"],
+  "properties": {
+    "schema": {"const": "canonical_allowed_domains_v1"},
+    "frozen": {"const": true},
+    "groups": {
+      "type": "object",
+      "minProperties": 12,
+      "maxProperties": 12,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["G1", "G2", "G3", "G4"],
+        "additionalProperties": false,
+        "properties": {
+          "G1": {"$ref": "#/$defs/domain"},
+          "G2": {"$ref": "#/$defs/domain"},
+          "G3": {"$ref": "#/$defs/domain"},
+          "G4": {"$ref": "#/$defs/domain"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "domain": {"type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true,
+               "items": {"type": "integer", "enum": [0, 1]}}
+  },
+  "$comment": "Core also requires exactly the 12 canonical IDs in measurement_approval_v1.json. No real feature values are supplied by this schema. Additional top-level provenance fields may be retained."
+}

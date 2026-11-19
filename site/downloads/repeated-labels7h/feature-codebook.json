@@ -1,0 +1,714 @@
+{
+  "schema": "fixed_nine_four_feature_codebook_v1",
+  "frozen_utc": "2026-11-19T05:09:30.667870+00:00",
+  "status": "DEFINITIONS_FROZEN_EXECUTION_NOT_YET_APPROVED",
+  "exposure": "Root and reviewers knew historical labels and localization descriptions; new qualification report and current-window images were not used by root to choose features. Not blind preregistration.",
+  "nodes": [
+    {
+      "id": "f101v.10",
+      "leaf": "f101",
+      "label": "okol"
+    },
+    {
+      "id": "f88r.15",
+      "leaf": "f88",
+      "label": "okol"
+    },
+    {
+      "id": "f88r.6",
+      "leaf": "f88",
+      "label": "otaly"
+    },
+    {
+      "id": "f99v.6",
+      "leaf": "f99",
+      "label": "otaly"
+    },
+    {
+      "id": "f88r.5",
+      "leaf": "f88",
+      "label": "otoky"
+    },
+    {
+      "id": "f99v.9",
+      "leaf": "f99",
+      "label": "otoky"
+    },
+    {
+      "id": "f89r1.4",
+      "leaf": "f89",
+      "label": "otoldy"
+    },
+    {
+      "id": "f99r.14",
+      "leaf": "f99",
+      "label": "otoldy"
+    },
+    {
+      "id": "f99v.2",
+      "leaf": "f99",
+      "label": "otoldy"
+    }
+  ],
+  "features": [
+    {
+      "id": "G1",
+      "replaces": [
+        "F1",
+        "F5"
+      ],
+      "name": "local depicted widening",
+      "definition": "Traceable wide outline relative to an attached connector, width ratio >=3; no flat/solid judgement or not-F1 exclusion. Do not use terminal taper, corner or globally thinnest pixel as neck.",
+      "necessary_record": "Width and connector cross-sections, local direction, boundary alternatives, drawing style, threshold uncertainty.",
+      "limitation": "Ink-line width is a depiction feature, not biological diameter. Definability is not guaranteed."
+    },
+    {
+      "id": "G2",
+      "replaces": [
+        "F2"
+      ],
+      "name": "traceable three-arm connection",
+      "definition": "At least three separately traceable connector arms reach one visible joining region; undirected and independent of plant orientation.",
+      "necessary_record": "Joining-region and arm witnesses; distinguish connector arms from two edges of one outline.",
+      "limitation": "Crossing, overlap or concealed contact remains unknown when connectivity cannot be established."
+    },
+    {
+      "id": "G3",
+      "replaces": [
+        "F3"
+      ],
+      "name": "at least three slender ends",
+      "definition": "At least three distinct ends with traceable length from last attachment/fork to end, divided by maximum transverse width of the same extension, >=3.",
+      "necessary_record": "End witnesses, lengths/widths, count lower/upper bounds; single-ink-line drawing explicitly recorded.",
+      "limitation": "Unknown ownership or branching cannot manufacture distinct ends; paper geometry does not identify roots/leaves."
+    },
+    {
+      "id": "G4",
+      "replaces": [
+        "F4"
+      ],
+      "name": "repeated internal transverse lines",
+      "definition": "At least two distinct lines inside one traceable shaft each connect its two sides and occur sequentially along it.",
+      "necessary_record": "Shaft extent, two boundary-spanning line witnesses, excluded text/other-object/crack alternatives.",
+      "limitation": "No claim of biological compartments. Geometrically qualifying hatching cannot be removed solely by inferred function."
+    }
+  ],
+  "feature_definition_detail": "measurement_review/review_v1.txt: the complete four-item definition and coding paragraphs are normative alongside this JSON.",
+  "feature_opportunities": 36,
+  "pair_similarity_denominator": 4,
+  "scoring": "Observed binary agreement; no organ identity, plant species or phonetic interpretation.",
+  "coding_rules": {
+    "positive": "One unambiguous belonging instance suffices within a fixed candidate; other missing portions need not invalidate it.",
+    "negative": "All possible qualifying instances ruled out across relevant complete candidate scope.",
+    "unknown": "Ambiguous visibility, assignment, extent or threshold; never filled with zero.",
+    "threshold_intervals": "For width threshold: w_lower >= 3*n_upper certifies passing; w_upper < 3*n_lower certifies failing for that instance; overlap retains uncertainty.",
+    "fixed_opportunities_if_adopted": 36,
+    "similarity_denominator_if_adopted": 4,
+    "unique_canonical_variables": "Report separately from 36 node-feature opportunities."
+  },
+  "required_evidence": {
+    "G1": "Native-image cross-sections and admissible widths; lower ratio >=3 for positive; threshold ambiguity unknown. Do not manufacture connector from tip taper.",
+    "G2": "One visible joining region with at least three distinct structural arms; outlined edges are not arms.",
+    "G3": "At least three owned end instances, last join-to-end lengths and maximum transverse widths or conservative bounds; count lower/upper and drawing style.",
+    "G4": "At least two separate cross-lines joining both sides of the same traced axis body; drawing purpose irrelevant."
+  },
+  "candidate_contract": "Pending full nine-location qualification. Canonical drawing groups and admissible global candidate scenarios must be frozen separately before any coding. Shared group-feature values remain shared across all pairs. Overlapping ink alone does not identify whole groups.",
+  "unknown_policy": "A defined unit with unknown feature gets allowed {0,1}; positive and negative evidence requirements follow normative review. Undefined unit blocks full-scope aggregate; not treated as binary missingness.",
+  "primary_estimand": "Mean over four features of the equally weighted three mixed physical-leaf-pair within-stratum same-label minus different-label agreement contrast.",
+  "mixed_strata": [
+    {
+      "leaf_pair": [
+        "f101",
+        "f88"
+      ],
+      "same_pairs": 1,
+      "different_pairs": 2
+    },
+    {
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "same_pairs": 2,
+      "different_pairs": 10
+    },
+    {
+      "leaf_pair": [
+        "f89",
+        "f99"
+      ],
+      "same_pairs": 2,
+      "different_pairs": 2
+    }
+  ],
+  "all_pairs": [
+    {
+      "left": "f101v.10",
+      "right": "f88r.15",
+      "leaf_pair": [
+        "f101",
+        "f88"
+      ],
+      "cross_leaf": true,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 1,
+        "denominator": 3,
+        "decimal": 0.3333333333333333
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f88r.6",
+      "leaf_pair": [
+        "f101",
+        "f88"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 6,
+        "decimal": -0.16666666666666666
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f99v.6",
+      "leaf_pair": [
+        "f101",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f88r.5",
+      "leaf_pair": [
+        "f101",
+        "f88"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 6,
+        "decimal": -0.16666666666666666
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f99v.9",
+      "leaf_pair": [
+        "f101",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f101",
+        "f89"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f101",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f101v.10",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f101",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f88r.6",
+      "leaf_pair": [
+        "f88",
+        "f88"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f99v.6",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f88r.5",
+      "leaf_pair": [
+        "f88",
+        "f88"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f99v.9",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f88",
+        "f89"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.15",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f99v.6",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 1,
+        "denominator": 6,
+        "decimal": 0.16666666666666666
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f88r.5",
+      "leaf_pair": [
+        "f88",
+        "f88"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f99v.9",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f88",
+        "f89"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.6",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f99v.6",
+      "right": "f88r.5",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f99v.6",
+      "right": "f99v.9",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f99v.6",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f89",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 6,
+        "decimal": -0.16666666666666666
+      }
+    },
+    {
+      "left": "f99v.6",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f99v.6",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.5",
+      "right": "f99v.9",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 1,
+        "denominator": 6,
+        "decimal": 0.16666666666666666
+      }
+    },
+    {
+      "left": "f88r.5",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f88",
+        "f89"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f88r.5",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f88r.5",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f88",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 30,
+        "decimal": -0.03333333333333333
+      }
+    },
+    {
+      "left": "f99v.9",
+      "right": "f89r1.4",
+      "leaf_pair": [
+        "f89",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": -1,
+        "denominator": 6,
+        "decimal": -0.16666666666666666
+      }
+    },
+    {
+      "left": "f99v.9",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f99v.9",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": false,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    },
+    {
+      "left": "f89r1.4",
+      "right": "f99r.14",
+      "leaf_pair": [
+        "f89",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 1,
+        "denominator": 6,
+        "decimal": 0.16666666666666666
+      }
+    },
+    {
+      "left": "f89r1.4",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f89",
+        "f99"
+      ],
+      "cross_leaf": true,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 1,
+        "denominator": 6,
+        "decimal": 0.16666666666666666
+      }
+    },
+    {
+      "left": "f99r.14",
+      "right": "f99v.2",
+      "leaf_pair": [
+        "f99",
+        "f99"
+      ],
+      "cross_leaf": false,
+      "same_label": true,
+      "contrast_weight_before_feature_average": {
+        "numerator": 0,
+        "denominator": 1,
+        "decimal": 0.0
+      }
+    }
+  ],
+  "decomposition": "Use the same weights to report T11 (both 1) and T00 (both 0), with T=T11+T00. Display complete feature/node/candidate witnesses for bounds.",
+  "bounds_contract": {
+    "type": "Conservative outer bounds over explicitly relaxed binary feature domains.",
+    "method": "For each full admissible candidate scenario enumerate shared canonical states per feature; average per-feature minima/maxima, then min/max across full scenarios. Never choose candidates per feature or per pair.",
+    "separability": "The computed relaxation is defined as a Cartesian product across features; no assertion that physical drawing configurations factorize. Report any known cross-feature implication or shared-ink constraint. If not encoded jointly, bounds are only outer bounds, not sharp attainable morphology bounds.",
+    "witness_limit": "Witnesses attain extrema only in the explicit algebraic relaxation, not necessarily in a realizable plant or drawing.",
+    "contradiction": "Conflicting reliable values for same canonical object-feature, empty admissible scenario, or undefined node must stop the aggregate. Do not average or relabel contradiction unknown."
+  },
+  "reporting": "All 36 pairs retained, including eight cross-leaf pairs outside mixed strata and nine same-leaf pairs. All four features and nine locations retained. Per-node missingness, candidate scenario count, shared-variable count, positive/negative evidence and each stratum denominator reported. No p-value, confidence interval, biological identity or proof of semantics.",
+  "execution_approval_required": "Root candidate/measurement approval must reference this SHA and complete qualification. This frozen definition alone authorizes no image feature coding or true pair scores.",
+  "sources": [
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/baseline_snapshot_v1.json",
+      "sha256": "3a8e807627fee556d27a39bf2aad6a1a5a8c2aa0f6fc22f932a6894b8b5684d2"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/measurement_design_draft_v1.txt",
+      "sha256": "977141524b51816d49c8234c13aacf5fcc1e2f2940c938b263af769226d3e0ab"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/measurement_review/review_v1.json",
+      "sha256": "7c6839cf44836e37b99f49976e2bd5752526e4992602b4e38e3eedcce80e3c50"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/measurement_review/review_v1.txt",
+      "sha256": "17df2c6b0b52d1bd237ef496ce124279e182542fb87cf47440172be417407f69"
+    }
+  ]
+}

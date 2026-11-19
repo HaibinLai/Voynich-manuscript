@@ -1,0 +1,138 @@
+{
+  "scope": "Every morphology value in this file is synthetic. No real feature matrix has been read.",
+  "tests": [
+    {
+      "name": "common_absence_can_drive_positive_contrast",
+      "T": {
+        "numerator": 2,
+        "denominator": 3,
+        "decimal": 0.6666666666666666
+      },
+      "T11": {
+        "numerator": -1,
+        "denominator": 3,
+        "decimal": -0.3333333333333333
+      },
+      "T00": {
+        "numerator": 1,
+        "denominator": 1,
+        "decimal": 1.0
+      }
+    },
+    {
+      "name": "unknown_not_imputed_zero",
+      "bounds": [
+        {
+          "numerator": -2,
+          "denominator": 3,
+          "decimal": -0.6666666666666666
+        },
+        {
+          "numerator": 2,
+          "denominator": 3,
+          "decimal": 0.6666666666666666
+        }
+      ]
+    },
+    {
+      "name": "global_shared_unknown",
+      "attainable_sums": [
+        1,
+        1
+      ],
+      "wrong_pairwise_bounds": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "canonical_reuse",
+      "bounds": [
+        {
+          "numerator": 0,
+          "denominator": 1,
+          "decimal": 0.0
+        },
+        {
+          "numerator": 2,
+          "denominator": 3,
+          "decimal": 0.6666666666666666
+        }
+      ],
+      "forced_self_agreement": {
+        "G1": {
+          "lower": 1,
+          "upper": 1
+        }
+      }
+    },
+    {
+      "name": "one_candidate_for_all_features",
+      "bounds": [
+        {
+          "numerator": 0,
+          "denominator": 1,
+          "decimal": 0.0
+        },
+        {
+          "numerator": 0,
+          "denominator": 1,
+          "decimal": 0.0
+        }
+      ],
+      "wrong_featurewise_candidate_bounds": [
+        {
+          "numerator": -2,
+          "denominator": 3,
+          "decimal": -0.6666666666666666
+        },
+        {
+          "numerator": 2,
+          "denominator": 3,
+          "decimal": 0.6666666666666666
+        }
+      ]
+    },
+    {
+      "name": "strict_input_failures",
+      "rejections": {
+        "empty_domain": "Empty or non-list domain",
+        "unfrozen": "Matrix must be frozen before computation",
+        "missing_feature": "Missing or extra feature",
+        "null_not_automatic_zero": "Non-binary domain",
+        "empty_candidate_set": "Empty scenario set",
+        "zero_mixed_denominators": "No mixed strata; contrast undefined"
+      }
+    },
+    {
+      "name": "joint_enumeration_oracle",
+      "random_trials": 40,
+      "seed": 11819,
+      "passed": true
+    }
+  ],
+  "fixed_design_integrity_only": {
+    "nodes": 9,
+    "features": 4,
+    "scenarios": 16,
+    "canonical_groups": 12,
+    "all_pairs": 36,
+    "cross_leaf_pairs": 27,
+    "mixed_layer_denominators": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "real_morphology_computed": false
+  },
+  "all_passed": true
+}
