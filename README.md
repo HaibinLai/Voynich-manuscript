@@ -8,7 +8,7 @@
 
 ## 当前内容
 
-第四窗口原计划为2026-11-19 **04:48:26–11:48:26 UTC**；分析于 **10:35:02 UTC** 提前冻结，实际公开验收另记。保留计划与实际时间，不声称连续跑满七小时。[重复标签与图形对照](https://haibinlai.github.io/Voynich-manuscript/repeated-labels7h.html)保留四簇九位置、十二个候选图形组和十六种联合归属。完整48格中20项存在、7项不存在、21项未知；同标签相似度优势的保守范围为 **[−5/12, 53/120]**，两套数值实现一致，不能确定正负。这是条件性几何描述，没有得到词义。
+第四窗口原计划为2026-11-19 **04:48:26–11:48:26 UTC**；分析于 **10:35:02 UTC** 提前冻结，最终交付已通过[验收](research/research_next/repeated_labels7h_20261119/closure/final_acceptance_v1.json)。保留计划与实际时间，不声称连续跑满七小时。[重复标签与图形对照](https://haibinlai.github.io/Voynich-manuscript/repeated-labels7h.html)保留四簇九位置、十二个候选图形组和十六种联合归属。完整48格中20项存在、7项不存在、21项未知；同标签相似度优势的保守范围为 **[−5/12, 53/120]**，两套数值实现一致，不能确定正负。这是条件性几何描述，没有得到词义。
 
 另用四个已有拉丁文名称的条目检查同一测量，得到 **[−1/4, 0]**；三项粗特征在这个小对照中无法区分名称。此对照与主研究分层、图形粒度不同，不合并或外推为一般识别率。详见[更新计划](research/research_next/repeated_labels7h_20261119/plan_update_v1.txt)、[主结果复算](research/research_next/repeated_labels7h_20261119/numeric_replay/actual_v1/summary_v1.md)、[已知名称对照](research/research_next/repeated_labels7h_20261119/known_language_control/independent_v1/summary_v1.md)。完整结果与限制见[研究交付报告](research/research_next/repeated_labels7h_20261119/closure/research_delivery_report_v1.txt)，实际收束依据见[收束记录](research/research_next/repeated_labels7h_20261119/closure/research_close_v1.json)。网页是保存的研究快照。
 
