@@ -1,0 +1,138 @@
+{
+  "schema": "known_language_four_entry_control_contract_v1",
+  "approved_utc": "2026-11-19T05:29:52.413742+00:00",
+  "approved_by": "root",
+  "scope": "Small conditional instrument check on four prequalified Latin named entries; does not replace or enlarge the fixed nine Voynich sample.",
+  "purpose": "Determine what the same four coarse geometric observations can or cannot distinguish on these historical-name examples, with all uncertainty retained. It is not a matched-null test, population sensitivity estimate or semantic decipherment.",
+  "nodes": [
+    {
+      "id": "K01",
+      "name": "cotilidon",
+      "manuscript": "Bodl130",
+      "physical_leaf": "Bodl130_f6",
+      "unit_definition": "Single central drawing on Bodl.130 f6r: blue-edged central greenish body, its attached lateral stalk/end structures, and attached ochre lower portion. No neighboring principal illustration is included.",
+      "qualification_pointer": "known_language_inventory/root_qualification_v1.json#/rows/0"
+    },
+    {
+      "id": "K02",
+      "name": "cotilidon",
+      "manuscript": "Ashmole1431",
+      "physical_leaf": "Ashmole1431_f13",
+      "unit_definition": "Upper plant drawing on the left page of the f13v–14r spread, next to the named entry: narrow central green body, attached lateral structures and red lower body with its own small extensions. The next branched plant below is excluded.",
+      "qualification_pointer": "known_language_inventory/root_qualification_v1.json#/rows/1"
+    },
+    {
+      "id": "K03",
+      "name": "achillea",
+      "manuscript": "Bodl130",
+      "physical_leaf": "Bodl130_f26",
+      "unit_definition": "The single central green drawing above/alongside the naming statement on Bodl.130 f26v, including connected upper structures and the attached red lower structure. Surrounding synonym and recipe text is separate.",
+      "qualification_pointer": "known_language_inventory/root_qualification_v1.json#/rows/2"
+    },
+    {
+      "id": "K04",
+      "name": "achillea",
+      "manuscript": "Ashmole1431",
+      "physical_leaf": "Ashmole1431_f23",
+      "unit_definition": "Upper-left blue drawing on the left page f23v: connected blue main body and appendages plus its attached red lower extension. The lower green ruta illustration and all right-page entries are excluded.",
+      "qualification_pointer": "known_language_inventory/root_qualification_v1.json#/rows/3"
+    }
+  ],
+  "features": [
+    "G1",
+    "G2",
+    "G3",
+    "G4"
+  ],
+  "feature_definition": "Exactly the frozen four main-study geometry definitions and G1 free-terminal ambiguity handling; no redefinition after seeing these drawings.",
+  "feature_opportunities": 16,
+  "all_pairs": [
+    {
+      "left": "K01",
+      "right": "K02",
+      "same_name": true,
+      "cross_manuscript": true,
+      "different_physical_leaves": true
+    },
+    {
+      "left": "K01",
+      "right": "K03",
+      "same_name": false,
+      "cross_manuscript": false,
+      "different_physical_leaves": true
+    },
+    {
+      "left": "K01",
+      "right": "K04",
+      "same_name": false,
+      "cross_manuscript": true,
+      "different_physical_leaves": true
+    },
+    {
+      "left": "K02",
+      "right": "K03",
+      "same_name": false,
+      "cross_manuscript": true,
+      "different_physical_leaves": true
+    },
+    {
+      "left": "K02",
+      "right": "K04",
+      "same_name": false,
+      "cross_manuscript": false,
+      "different_physical_leaves": true
+    },
+    {
+      "left": "K03",
+      "right": "K04",
+      "same_name": true,
+      "cross_manuscript": true,
+      "different_physical_leaves": true
+    }
+  ],
+  "contrast": "For each feature, mean equality on the 2 cross-manuscript same-name pairs minus mean equality on the 2 cross-manuscript different-name pairs; average equally across four features. Report C=C11+C00 with identical weights. The 2 within-manuscript different-name pairs remain descriptive.",
+  "blocking_level": "One manuscript-pair layer; four different physical leaves. This differs from the three physical-leaf-pair layers of the Voynich experiment and must be labeled explicitly. Never pool the two studies.",
+  "uncertainty": "Values 0/1/null with allowed singleton or {0,1}; unknown shared for each entry-feature across its incident pairs. Enumerate all admissible global binary states per feature (at most16), sum feature bounds/4. Cartesian relaxation only: conservative outer bounds, not confidence or geometry-sharp intervals.",
+  "coding_required": [
+    "All four named units and all sixteen entry-feature opportunities; no dropping a hard case, substituting K05–K08, merging names or adjusting thresholds.",
+    "Use exact pinned original JPEGs and permitted native reading crops. No image generation, enhancement, text removal, segmentation, rotation or rescaling measurements. Display resizing is not native coordinate measurement.",
+    "For every value record source image hash, native view and coordinate witnesses, reason, uncertainty and positive evidence or negative full-coverage evidence. G1/G3 ratio thresholds require conservative ranges.",
+    "All applicable main-study G1 free-terminal ambiguity cases remain unknown under the same rule; no specially relaxed calibration coding.",
+    "Do not calculate any same-name/different-name pair score before the complete observation matrix is frozen."
+  ],
+  "exposure": "Same AI observers know historical names and images; root has seen all four complete pages and native contexts. Source selection used name availability in bounded inventory, not morphology scores, but this is not blinded or representative.",
+  "historical_limits": [
+    "Name readings are qualified informed readings, not critical-edition/expert certification.",
+    "Body names and headings differ; four whole-entry illustrations are not four uniform short labels or pharmaceutical fragments.",
+    "Two manuscripts share a textual/drawing tradition; copying and conventions are possible. Names do not independently certify modern species.",
+    "Positive C would only characterize the four encoded entries; C near zero would not prove that true names lack meaning or that Voynich labels are meaningless."
+  ],
+  "delivery": "known_language_control/observation_v1.json plus brief notes and one evidence/hash receipt, then separate numerical calculation and audit. Main Voynich records unchanged.",
+  "inputs": [
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/known_language_inventory/inventory_v1.json",
+      "sha256": "268cc197a0614f72d9548bf8db26e25b03593a604b31f086645ccb73e475700d"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/known_language_inventory/root_qualification_v1.json",
+      "sha256": "60fce82bfad474e8e3d11c83614b8017890faa7189a13c5c5dc4c109637577d9"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/known_language_inventory/root_view_generation_v1.json",
+      "sha256": "81ef99ffc7e84bfaae45ff9dd89bf92c480a1ca25b065d2c9f5c2bad5bb311f1"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/feature_codebook_v1.json",
+      "sha256": "a7b22bdb86807e57256c9c9c25425498dbf3cbf9dee5e3ecdf88453107d996ab"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/measurement_review/review_v1.txt",
+      "sha256": "17df2c6b0b52d1bd237ef496ce124279e182542fb87cf47440172be417407f69"
+    },
+    {
+      "path": "research/research_next/repeated_labels7h_20261119/feature_definition_ambiguity_v1.json",
+      "sha256": "b3eedce30a3e2ff34492bc878b7cf7eaa7c0765e60c334af2d4a25a3b47e6b3a"
+    }
+  ],
+  "matrix_or_comparison_already_computed": false
+}

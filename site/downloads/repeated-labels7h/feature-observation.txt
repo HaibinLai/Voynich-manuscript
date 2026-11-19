@@ -1,0 +1,30 @@
+十二个canonical候选组的四项纸面几何编码 v1
+固定12组×4项=48机会；所有组、四项、九位置及16联合情形保留。f88_top_pale_spread只编码一次。
+本轮是已曝光下的同AI人工式图像编码，不是独立专家或盲测。没有制作遮罩、补画、改变候选、计算对象对分数或标签一致率。
+实际重看9个冻结原生视口，并新增查看11个有明确证据目的的原生矩形视口；所有20个视口均核与原JPEG解码裁切逐像素相等。完整画布上下文沿用上一阶段正式实际查看收据，不声称本步又看了全图。
+
+矩阵（null=未知，allowed=[0,1]；0/1分别为单值域）
+canonical_group_id | G1 | G2 | G3 | G4
+f101v_curved_green_group | null | 0 | 0 | 0
+f88_middle_crown_group | 1 | 1 | null | null
+f88_top_pale_spread | 1 | 1 | null | null
+f99v_high_curved_stem_group | null | 1 | 1 | 0
+f99v_green_blade_red_base_group | 1 | 1 | null | 0
+f88_top_brown_pair | null | 1 | 1 | null
+f99v_far_right_long_group | null | null | null | 1
+f89r1_upright_group | 1 | 1 | null | null
+f89r1_horizontal_neighbor | 1 | 1 | 1 | null
+f99r_lower_pale_horizontal_group | null | null | null | null
+f99r_upper_red_group | null | 1 | 1 | 0
+f99v_first_group_95b | null | 1 | 1 | 0
+
+可用性计数：阳性20，阴性7，未知21；不是标签关系或命中率。
+
+证据解释：
+每格均保留原图区域、实际视口、理由和不确定性；G1有横截线和保守宽度区间，G3有末端路径、长度／最大横宽区间及计数下／上界。区间是人工式读图保守范围，不是像素分割、实物尺寸或置信区间。G2列连接区与不同臂，G4阳性列同轴两条跨边界线；每个0另列全相关范围的阴性覆盖理由。
+G1自由终止连接段的定义适用歧义按根冻结补记统一保留null，不因尺寸对比明显就改1，也不新增“两端必须接结构”的0判据。红色上组的可能腰部尺寸跨阈值，同样未知。
+f89r1直立组的下部细线在额外原生细节中仍不能可靠区分为独立末端或宽轮廓一边；它不作为第三个细长末端见证，G3保留null。
+f99r浅色组的真实纸页截断和线／臂区别仍未解决；f99v长组冠部的字图混线仍保留；不因已有绘图组定义而填满0/1。
+跨特征及共享细线不被假设物理独立。未来放宽二值域的范围只能按冻结合同说明为代数外界，不能声称可共同实现的形态锐界。
+
+根可将同一冻结矩阵送两个数值实现。本观察者未计算同串／异串对象对相似度、T或任何p值。输入、实际查看时间、裁图坐标和输出SHA见hash_record_v1.json。
