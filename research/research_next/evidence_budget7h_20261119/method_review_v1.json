@@ -1,0 +1,118 @@
+{
+  "schema": "ideal_information_independent_method_review_v1",
+  "created_utc": "2026-11-19T13:20:15.165319+00:00",
+  "status": "TEXT_METHOD_ACCEPTED_PENDING_EXISTING_ARTIFICIAL_VALIDATION_AND_ROOT_AUTHORIZATION",
+  "reviewer": "bounds_replay",
+  "exposure": "Same informed AI agent; knows fifth-window names, results and prior independent numeric implementation. This is a separate textual reasoning review, not blind design, expert image judgment or independent historical evidence.",
+  "reviewed_files": [
+    {
+      "path": "session_v1.json",
+      "sha256": "c696b2e5c5467be13f32a8b1b9ae8dccb76e44011a6ff937f2bd1398ddfb394f",
+      "reading_scope": "Full text"
+    },
+    {
+      "path": "plan_v1.txt",
+      "sha256": "caab80ed75491d1592ee4cd65863c25e199212e2171af3f74f12103ffd74ad09",
+      "reading_scope": "Full text"
+    },
+    {
+      "path": "method_proposal_v1.json",
+      "sha256": "2dc3b512bde5113aa603bb841e4e2216f1fb4bde5f0bf9d68819af8056d8f339",
+      "reading_scope": "Full text"
+    },
+    {
+      "path": "method_proposal_v1.txt",
+      "sha256": "0a1df49fb9c3ed8dd5de5a4b7b162c34ffa0c2f9d5276a036fc2834f88d0c397",
+      "reading_scope": "Full text"
+    }
+  ],
+  "input_manifest_hash_check": {
+    "count": 13,
+    "all_match": true,
+    "scope": "Byte/hash verification only; prior files were not rescored."
+  },
+  "checks": [
+    {
+      "id": "R01",
+      "topic": "Whole-state joint positivity",
+      "proposal_fields": "classification.predicate; classification.ordered_rules; classification.equivalence",
+      "finding": "Accepted. Existence must count one state with both strict inequalities; two positive maxima do not suffice. For a nonempty finite fiber the two positive minima are exactly equivalent to all states jointly positive."
+    },
+    {
+      "id": "R02",
+      "topic": "Shared g and regime conditioning",
+      "proposal_fields": "frozen_model.tagged_state_definition; regimes; fibers.definition",
+      "finding": "Accepted. g is one global state label; unknown-g union and both known-g conditional regimes remain separate. No favorable g selection, cross-entry g mixing, or averaging."
+    },
+    {
+      "id": "R03",
+      "topic": "Deduplication and provenance",
+      "proposal_fields": "counts_and_denominators; frozen_model.case_provenance",
+      "finding": "Accepted. Numeric signatures are deduplicated within g, tagged and untagged full tuples counted separately, redundant case/r origins never weight states. P depends on signatures, so tag dedup changes counts but not extrema or class."
+    },
+    {
+      "id": "R04",
+      "topic": "All 64 subsets including F02",
+      "proposal_fields": "ideal_observation.subsets; ideal_observation.mask; F02_factorization",
+      "finding": "Accepted. F02 factorization requires all three stated premises, not only zero score coefficient. The append-v argument proves identical core fibers; state-count and feasible-observation factors are distinguished correctly. Full 64 decoder remains mandatory."
+    },
+    {
+      "id": "R05",
+      "topic": "Empty fibers and input semantics",
+      "proposal_fields": "fibers.ambient_query_alphabet; fibers.conflict; fibers.invalid_input; fibers.conflict_population",
+      "finding": "Accepted. A common global-union alphabet exposes known-g incompatibility. Schema-valid but incompatible input is CONFLICT with zero counts and null bounds; malformed input is INPUT_ERROR. No vacuous positive result or fabricated zero bounds."
+    },
+    {
+      "id": "R06",
+      "topic": "Minimal information definitions",
+      "proposal_fields": "minimality.primary_subset_existence_minimal; minimality.outcome_specific_minimal_certificate; minimality.guarantee_minimal",
+      "finding": "Accepted. Existence-minimal sets, value-specific certificates, and guarantee-minimal sets are distinct; all ties, empty/full subsets, singleton categories and both-known-g guarantees are retained. Inclusion minimality is distinguished from minimum cardinality."
+    },
+    {
+      "id": "R07",
+      "topic": "Scientific scope and information loss",
+      "proposal_fields": "ideal_observation.not_acquired; counts_and_denominators.no_probability; prohibitions; frozen_model.geometry_limit",
+      "finding": "Accepted. Counts are finite-model cardinalities only; no acquisition success probability, image attainability, hidden historical g, independent evidence or restored lost hierarchy is claimed. Positive certification remains only the necessary numeric condition within the inherited outer model."
+    },
+    {
+      "id": "R08",
+      "topic": "Inherited formulas and paired scope",
+      "proposal_fields": "frozen_model.branches; frozen_model.S_formula; frozen_model.H_minus_H4; frozen_model.all15_pairs",
+      "finding": "Accepted. H retains 2 same / 4 different, H4 retains 2 / 2, and difference uses the same assignment. The old 15-pair catalogue/intervals remain; no new conditional individual-pair computation is required by this goal."
+    },
+    {
+      "id": "R09",
+      "topic": "Completeness and reconstructible witnesses",
+      "proposal_fields": "required_outputs; real_analysis_acceptance",
+      "finding": "Accepted. Compact canonical tables are lossless only with complete dictionaries, all rows, 64 expansion, exact counts and queryable same-g six-entry witnesses with original case/r links. Independent comparison is required for the entire fiber table, not a sample."
+    },
+    {
+      "id": "R10",
+      "topic": "Artificial checks before formal analysis",
+      "proposal_fields": "validation_before_real_analysis.V01-V09; real_analysis_acceptance.approval",
+      "finding": "Accepted. Fixtures cover strict zero, no joint positive despite marginal maxima, shared-g conflict, redundant origins, unequal-g F02 counterexample, distinct minimalities and all64 direct-enumeration validation. These are scheduled checks, not claimed executed here."
+    }
+  ],
+  "material_fixes_required": [],
+  "new_approval_requirements_added": false,
+  "implementation_reminders_not_contract_changes": [
+    "Validate the F02 equal-domain/product premises from the actual frozen input before using factorization; otherwise reject that optimization.",
+    "When building unknown-g counts, deduplicate entire core tuples across g, not coordinates or observed tuples alone; restore full-six F02 counts using the stated separate factors.",
+    "Use the same compatible whole state for joint-positive and extremum witnesses; different objectives may have different valid extremizers.",
+    "Retain the strict-name branch as mathematically undefined where inherited; the conditional named-model information analysis does not repair name qualification.",
+    "Do not equate NONE_JOINT_POSITIVE with both marginal upper bounds being nonpositive, and do not classify an empty fiber as NONE."
+  ],
+  "formal_real_analysis_authorized_by_this_review": false,
+  "new_real_conditioned_scores_or_counts_computed": false,
+  "new_images_viewed": false,
+  "artificial_tests_executed_in_this_review": false,
+  "external_search_performed": false,
+  "scientific_files_modified": false,
+  "conclusion": "No material correction is needed before implementing the proposed artificial validation. Root may authorize formal analysis only through the already stated hash-bound approval after method/code/toy review; this review adds no new gate.",
+  "artificial_fixture_scope_clarification": {
+    "V02": "The explicit objective pairs (1/4,-1/4) and (-1/4,1/4) are abstract classifier records only. No claim they arise from the fixed four-dimensional Manhattan signature formula. A formula-derived fixture may supplement them with different exact values.",
+    "V07": "The binary A/B predicate is an abstract minimal-certificate logic fixture, not an asserted six-entry signature geometry.",
+    "V05": "This is the specified whole-signature, original-formula end-to-end fixture; it supplies the separate formula/aggregation validation.",
+    "input_semantics": "Wrong length/type/range is INPUT_ERROR; a correctly formed four-vector over {0,1,2} outside the entry global-union domain is CONFLICT."
+  }
+}
