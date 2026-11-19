@@ -1,0 +1,176 @@
+{
+  "schema": "f_public_projection_acceptance_v1",
+  "status": "PASS_PUBLIC_COMMIT_MINIMAL_PACKAGE_PROJECTION_ONLY",
+  "source_commit": "503e770f6ce09313bee07f5fc245b0212a7700fe",
+  "started_utc": "2026-11-19T12:31:21.408937+00:00",
+  "completed_utc": "2026-11-19T12:31:21.528535+00:00",
+  "python_version": "Python 3.9.6",
+  "source_export_method": "Read-only git archive of exactly four committed runtime files; extract into a new temporary directory preserving repository paths. No checkout, index changes or Git writes.",
+  "source_export_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-public-source-h9fmv7ag",
+  "output_directory": "/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-projection.l9ysEE",
+  "instruction_path": "research/research_next/hierarchical7h_20261119/F_REPRODUCE_v1.txt",
+  "instruction_sha256": "9d39c66c183c25e237f9b799e9ce56892945af30a66d3cbe3f5d411044ff1606",
+  "executed_command_exact_from_instruction": "h5_w5=\"research/research_next/hierarchical7h_20261119\"\nh5_f_replay_dir=\"$(mktemp -d \"${TMPDIR:-/tmp}/hierarchical-f-projection.XXXXXX\")\"\npython3 \"$h5_w5/method_engine/project.py\" \\\n  --input \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --output \"$h5_f_replay_dir/root_projection.json\"\npython3 \"$h5_w5/independent_engine/independent_projection_v1.py\" \\\n  --input \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --output-dir \"$h5_f_replay_dir/independent\"\npython3 \"$h5_w5/compare_projections_v1.py\" \\\n  --observation \"$h5_w5/F_observation_v1/observation_v1.json\" \\\n  --primary \"$h5_f_replay_dir/root_projection.json\" \\\n  --independent \"$h5_f_replay_dir/independent/projection.json\" \\\n  --output \"$h5_f_replay_dir/comparison.json\"\nprintf 'F projection output directory: %s\\n' \"$h5_f_replay_dir\"",
+  "runtime_files": [
+    {
+      "path": "research/research_next/hierarchical7h_20261119/F_observation_v1/observation_v1.json",
+      "sha256": "796eca999b0bc756ed75bd5a37831fd0321777d79ba523d44825fa0d5d626b54"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/method_engine/project.py",
+      "sha256": "28cd578ee3b9af17b46158d9bf8bdc1801af05a619b9fcaf18a6e19d438ba424"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/independent_engine/independent_projection_v1.py",
+      "sha256": "c65fc7cfab073dea2e2f5c67be22c71058bd6876c7f858e28f6ed6eadc777464"
+    },
+    {
+      "path": "research/research_next/hierarchical7h_20261119/compare_projections_v1.py",
+      "sha256": "ad54f8bfeb19bf29151e6c1da061f7474027fe95d96d9cde37ced1250ae667c2"
+    }
+  ],
+  "source_archive_sha256": "e12734041049c774b6b52a3fd25f0259d1180661f76f1b5dc11996a3ef15e656",
+  "minimal_source_file_count_before_run": 4,
+  "command_exit_code": 0,
+  "stdout": "{\"output\": \"/var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T/hierarchical-f-projection.l9ysEE/independent\", \"domains\": {\"F01\": 3, \"F02\": 9, \"F03\": 9, \"F04\": 9, \"F05\": 3, \"F06\": 81}}\n{\"all_match\": true, \"origins\": 810}\nF projection output directory: /var/folders/jw/87p_2sf50179n5vlvr_4vthm0000gn/T//hierarchical-f-projection.l9ysEE\n",
+  "stderr": "",
+  "output_files": [
+    {
+      "role": "primary",
+      "relative_output_path": "root_projection.json",
+      "sha256": "4ff0cfd4c1d713eebbb976def870aa0b895766f2a7412b2452f2ac69f8a9d88d"
+    },
+    {
+      "role": "independent",
+      "relative_output_path": "independent/projection.json",
+      "sha256": "d45c44aef007844040cbeef3e6b327e82bdc136ec81eff55423664a776ecd9c3"
+    },
+    {
+      "role": "comparison",
+      "relative_output_path": "comparison.json",
+      "sha256": "a0b935cb57f2f5f1c4e3152a4996f919698621be4b909e4bdc0dfae3cc49560b"
+    }
+  ],
+  "full_primary_json_matches_committed_reference": true,
+  "full_independent_json_matches_committed_reference": true,
+  "comparison_matches_committed_reference_except_checked_utc": true,
+  "comparison_volatile_fields_excluded": [
+    "checked_utc"
+  ],
+  "comparison": {
+    "schema": "per_entry_projection_comparison_v1",
+    "checked_utc": "2026-11-19T12:31:21.524929+00:00",
+    "all_match": true,
+    "entries": [
+      {
+        "id": "F01",
+        "domain_size": 3,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 1,
+        "origin_count": 81
+      },
+      {
+        "id": "F02",
+        "domain_size": 9,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 3,
+        "origin_count": 243
+      },
+      {
+        "id": "F03",
+        "domain_size": 9,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 2,
+        "origin_count": 162
+      },
+      {
+        "id": "F04",
+        "domain_size": 9,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 1,
+        "origin_count": 81
+      },
+      {
+        "id": "F05",
+        "domain_size": 3,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 1,
+        "origin_count": 81
+      },
+      {
+        "id": "F06",
+        "domain_size": 81,
+        "unit_defined": true,
+        "complete_domain_matches": true,
+        "all_case_extra_origins_match": true,
+        "all_case_base_counts_match": true,
+        "case_count": 2,
+        "origin_count": 162
+      }
+    ],
+    "checked_origin_count": 810,
+    "cross_entry_constraint_count": 1,
+    "primary_retains_constraints_verbatim": true,
+    "joint_scoring_authorized": false,
+    "pair_or_name_scores_computed": false,
+    "scope": "Complete marginal bookkeeping only; no Cartesian product or feasible common assignment asserted.",
+    "limitations": [
+      "Matching projections use the same informed observation and do not validate image interpretation.",
+      "Global interpretation constraints and incomplete mapping cannot be erased by arithmetic agreement."
+    ],
+    "inputs": [
+      {
+        "role": "observation",
+        "sha256": "796eca999b0bc756ed75bd5a37831fd0321777d79ba523d44825fa0d5d626b54"
+      },
+      {
+        "role": "primary",
+        "sha256": "4ff0cfd4c1d713eebbb976def870aa0b895766f2a7412b2452f2ac69f8a9d88d"
+      },
+      {
+        "role": "independent",
+        "sha256": "d45c44aef007844040cbeef3e6b327e82bdc136ec81eff55423664a776ecd9c3"
+      }
+    ],
+    "script_sha256": "ad54f8bfeb19bf29151e6c1da061f7474027fe95d96d9cde37ced1250ae667c2"
+  },
+  "domain_sizes": [
+    3,
+    9,
+    9,
+    9,
+    3,
+    81
+  ],
+  "all_case_extra_origins": 810,
+  "nonempty_cross_entry_constraint_count": 1,
+  "boundaries": {
+    "only_per_entry_algebraic_projection_and_comparison": true,
+    "global_cartesian_product_constructed": false,
+    "all15_pair_similarities_computed": false,
+    "H_computed": false,
+    "H4_computed": false,
+    "common_signature_field_claims_F_global_zero": false,
+    "strict_name_branch_mathematically_undefined_is_distinct_from_unexecuted_scores": true,
+    "future_reviewed_shared_g_outer_domain_ruled_out": false,
+    "scope": "The generic common-signature interpretation is preserved for exact reproduction, but marginal overlap is not a certificate of an actual common state under nonempty F constraints. This test neither executes nor rules out a separately reviewed shared-g outer-domain calculation."
+  },
+  "private_images_accessed": false,
+  "frozen_inputs_or_engines_modified": false,
+  "new_authorization_or_scientific_rule_implied": false
+}
