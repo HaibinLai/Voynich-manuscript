@@ -1,0 +1,121 @@
+{
+  "schema": "tenth_prepared_inputs_independent_audit_v1",
+  "status": "PASS",
+  "created_utc": "2026-11-19T16:20:39.783544+00:00",
+  "scope": "Prepared data_v1 only; no author execution, no formal calibration output/accuracy read or computed.",
+  "models": [
+    {
+      "language": "english",
+      "variant": "readme_lex",
+      "word_lm_entries": [
+        1306,
+        5189,
+        6706
+      ],
+      "char_lm_entries": [
+        27,
+        292,
+        1541
+      ],
+      "pattern_groups": 6275,
+      "candidate_entries": 13201
+    },
+    {
+      "language": "english",
+      "variant": "code_countfirst",
+      "word_lm_entries": [
+        1306,
+        5189,
+        6706
+      ],
+      "char_lm_entries": [
+        27,
+        417,
+        2071
+      ],
+      "pattern_groups": 6275,
+      "candidate_entries": 13201
+    },
+    {
+      "language": "latin",
+      "variant": "readme_lex",
+      "word_lm_entries": [
+        2868,
+        6893,
+        7133
+      ],
+      "char_lm_entries": [
+        24,
+        240,
+        1320
+      ],
+      "pattern_groups": 10840,
+      "candidate_entries": 16894
+    },
+    {
+      "language": "latin",
+      "variant": "code_countfirst",
+      "word_lm_entries": [
+        2868,
+        6893,
+        7133
+      ],
+      "char_lm_entries": [
+        24,
+        382,
+        2373
+      ],
+      "pattern_groups": 10840,
+      "candidate_entries": 16894
+    }
+  ],
+  "fixed_input_scope": {
+    "languages": 2,
+    "training_words_each": 8000,
+    "positive_cases": 4,
+    "positive_words_each": 80,
+    "twin_shared_input_words": 7,
+    "twin_distinct_histories": 2
+  },
+  "checks": {
+    "new_output": 1,
+    "formal_prepared_not_run": 1,
+    "all_prepared_file_hash": 61,
+    "source_hash": 2,
+    "source_inventory": 2,
+    "training8000_exact": 2,
+    "decoder_train_same": 2,
+    "LM_shape": 95805,
+    "LM_unique": 95805,
+    "LM_support": 30,
+    "LM_probability": 95805,
+    "LM_context_normalized": 30,
+    "decoder_emissions": 2,
+    "decoder_singletons": 2,
+    "decoder_candidate_states": 2,
+    "unique_pattern": 34230,
+    "candidate_scope": 34230,
+    "all_candidates_and_order": 4,
+    "alphabet26_order": 4,
+    "config_frozen_parameters": 4,
+    "fixed_cases": 1,
+    "seeded_bijection": 6,
+    "inverse_key": 6,
+    "80_7_length": 6,
+    "formal_source_interval": 4,
+    "permutation_provenance": 334,
+    "seeded_cipher_generation": 334,
+    "twin_fixture": 2
+  },
+  "bindings": {
+    "data_file_hashes": "49c7eba3cb290b14a2c64ab5a2eeb03a7d7ebb877de74e12ebe7539f87af4e82",
+    "prepare_code": "a1116f5e294c13d1234c4d3d3d81ad6beb33a543eb1bad421742e2d96a22e6ad",
+    "audit_code": "4556f3b5ef5a03c4e5b58b1d37b8c69f6868e63effc8c638c7a13b33a23ee024",
+    "own_independent_helper": "a5574856ef667ee50aa8fe60d4f2983a3067d6be91f41cc774cceb215ef5418b"
+  },
+  "limits": [
+    "Only intended finite training artifact and generation history verified; no claim of original2016 data/results reproduction.",
+    "Four positive snippets were exposed in older scale control; this audit does not restore blindness.",
+    "Probability text checked against exact relative frequency within1e-15; every conditional sum within1e-12."
+  ]
+}

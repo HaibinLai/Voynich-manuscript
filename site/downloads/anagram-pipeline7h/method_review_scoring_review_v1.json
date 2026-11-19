@@ -1,0 +1,368 @@
+{
+  "schema": "tenth_scoring_review_v1",
+  "created_utc": "2026-11-19T16:25:09.206917+00:00",
+  "status": "PASS_STATIC_AND_SAVED_TOY_RECOUNT",
+  "scope": "Independent scoring review only. Formal main decoding was started by root while this review was in progress; this agent did not inspect or score formal outputs.",
+  "formal_score_audit_status": "PENDING_SAVED_RESULTS",
+  "material_scoring_errors_found": [],
+  "checks": [
+    {
+      "id": "S01",
+      "topic": "主样本与双真值隔离",
+      "status": "PASS_STATIC",
+      "evidence": "code/score_calibration.py:60-86",
+      "finding": "P01-P04 每条件各4案例×80词；C01只解码一份密文，C01A/B 两个7词真值各列，positive=false 后不进入主组合计。语言选择按输入而非双历史计数；没有把 C01 当两个独立输入。",
+      "limit": "本次只动态核 toy，无 C01；正式结果未计分。"
+    },
+    {
+      "id": "S02",
+      "topic": "语言选择分母",
+      "status": "PASS_STATIC_AND_TOY",
+      "evidence": "code/score_calibration.py:76-79; /language_rows",
+      "finding": "语言对错按案例计算，PASS 后比较所选语种与真语种，失败为null。pattern为主要路由，unigram另列；不把两方法记录数作为案例数。",
+      "limit": "toy只有English一种候选，2/2只能核计数，不能验证语言识别能力；正式最多4主案例。"
+    },
+    {
+      "id": "S03",
+      "topic": "替换键类型及字符出现次数",
+      "status": "PASS_STATIC_AND_TOY",
+      "evidence": "code/score_calibration.py:12,29-37; /groups/*/mapping_types; /groups/*/mapping_weighted",
+      "finding": "类型分母为该密文实际出现的不同字符，不是全部26字母；加权分母为全部密文字符出现次数，不含空格。跨案例按各自独立密钥的类型机会求和，不将同一字母跨密钥去重。",
+      "limit": "correct映射不等于已恢复词内次序。"
+    },
+    {
+      "id": "S04",
+      "topic": "字母多重集与完整词",
+      "status": "PASS_STATIC_AND_TOY",
+      "evidence": "code/score_calibration.py:36-51",
+      "finding": "word_bags比较替换后的每个词与真词的全部字母及重数；exact_words逐位置比较完整字符串。均使用全部目标词次，OOV不从主分母剔除。无标点、词界恢复或文句语义评分。",
+      "limit": "仅给定规范化、已分词输入上的计分。"
+    },
+    {
+      "id": "S05",
+      "topic": "oracle两级区别",
+      "status": "PASS_STATIC_AND_TOY",
+      "evidence": "code/score_calibration.py:38-40,65-75,87-96",
+      "finding": "oracle_language提供真语种而仍求密钥和解词；同语种可复用原主输出且明确。oracle_truekey提供真语种及真钥，只评后续Viterbi，mapping为不适用；word_bags=100%是给定正确钥和生成史的前提，不是恢复成绩。",
+      "limit": "oracle不能替换主路由结果，不能视为独立重跑样本。"
+    },
+    {
+      "id": "S06",
+      "topic": "失败、null、覆盖和固定分母",
+      "status": "PASS_STATIC",
+      "evidence": "code/score_calibration.py:20-27,41-51,82-97; code/run_author_pipeline.py:119-163",
+      "finding": "无有效映射/解码输出时保留null；已评分率只汇总实际计分分母，同时列未评分案例。另给正确词数/全部计划词数作为已证实恢复比例，未评分项不被描述为实际零正确率。坏输出形状由runner拒绝。",
+      "limit": "原始toy没有进程超时/失败；本次没有动态伪造作者进程失败。整个未完成运行不会被本脚本当完整结果汇总。"
+    },
+    {
+      "id": "S07",
+      "topic": "词典命中与真值准确率",
+      "status": "PASS_STATIC_AND_TOY",
+      "evidence": "code/score_calibration.py:22-24,47-51; calibration/toy_scores_v1.json /rows/0",
+      "finding": "training_word_coverage、training_bag_coverage与output_training_word_hit单列。T01主readme_lex输出4/4在训练词典，只有3/4整词正确；master被stream替换，两者同袋，说明词典命中和袋命中均不足以证明正确。",
+      "limit": "覆盖所用词典为实际模型选定语言；未执行路由的fallback仅供真语种覆盖描述，不是预测。"
+    },
+    {
+      "id": "S08",
+      "topic": "旧toy与正式元数据版本",
+      "status": "PASS_WITH_VERSION_NOTE",
+      "evidence": "calibration/toy_scores_v1.json /bindings/scorer_sha256; code/score_calibration.py:87-96",
+      "finding": "旧toy scorer SHA 8af0cd3b… 将真钥条件mapping的两案例列入failed_or_unscored。正式scorer SHA 1502efe8…新增applicability/not_applicable_cases，并将该计数改为不适用、失败0；所有正确数/分母/率不变。独立v1原件和收据保留；v2按这两个确切SHA验证元数据，未知版本拒绝。",
+      "limit": "不改写旧toy，不声称旧元数据已回溯修正。"
+    },
+    {
+      "id": "S09",
+      "topic": "独立复算方式",
+      "status": "PASS_SAVED_TOY",
+      "evidence": "method_review/independent_score_audit_v2.py; method_review/toy_scoring_audit_v2.json",
+      "finding": "标准库重建truth encryption逆映射及每词显式置换史，以独立频数字典比多重集，逐位置重算并保留命中索引。核每行全部字段、组合计、原stdout及oracle复用；不导入作者程序或主scorer，不拟合/解码。",
+      "limit": "同一知情AI团队；这是独立实现的算术核验，不是盲验证、人工语言鉴定或算法成绩复现。"
+    }
+  ],
+  "toy_replay": {
+    "all_passed": true,
+    "input_hash_checks": 92,
+    "truth_histories": 2,
+    "score_rows_checked": 10,
+    "language_rows_checked": 4,
+    "groups_checked": 5,
+    "raw_output_checks": 10,
+    "oracle_reused_output_checks": 4,
+    "recomputed_groups": [
+      {
+        "condition": "primary",
+        "variant": "readme_lex",
+        "planned_cases": 2,
+        "planned_words": 8,
+        "mapping_types": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 9,
+          "total": 18,
+          "fraction": 0.5
+        },
+        "mapping_weighted": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 18,
+          "total": 37,
+          "fraction": 0.4864864864864865
+        },
+        "word_bags": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        },
+        "exact_words": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 4,
+          "total": 8,
+          "fraction": 0.5
+        },
+        "confirmed_exact_recovery_over_all_planned_words": {
+          "correct": 4,
+          "total": 8,
+          "fraction": 0.5
+        }
+      },
+      {
+        "condition": "primary",
+        "variant": "code_countfirst",
+        "planned_cases": 2,
+        "planned_words": 8,
+        "mapping_types": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 10,
+          "total": 18,
+          "fraction": 0.5555555555555556
+        },
+        "mapping_weighted": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 20,
+          "total": 37,
+          "fraction": 0.5405405405405406
+        },
+        "word_bags": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 7,
+          "total": 8,
+          "fraction": 0.875
+        },
+        "exact_words": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        },
+        "confirmed_exact_recovery_over_all_planned_words": {
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        }
+      },
+      {
+        "condition": "oracle_language",
+        "variant": "readme_lex",
+        "planned_cases": 2,
+        "planned_words": 8,
+        "mapping_types": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 9,
+          "total": 18,
+          "fraction": 0.5
+        },
+        "mapping_weighted": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 18,
+          "total": 37,
+          "fraction": 0.4864864864864865
+        },
+        "word_bags": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        },
+        "exact_words": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 4,
+          "total": 8,
+          "fraction": 0.5
+        },
+        "confirmed_exact_recovery_over_all_planned_words": {
+          "correct": 4,
+          "total": 8,
+          "fraction": 0.5
+        }
+      },
+      {
+        "condition": "oracle_language",
+        "variant": "code_countfirst",
+        "planned_cases": 2,
+        "planned_words": 8,
+        "mapping_types": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 10,
+          "total": 18,
+          "fraction": 0.5555555555555556
+        },
+        "mapping_weighted": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 20,
+          "total": 37,
+          "fraction": 0.5405405405405406
+        },
+        "word_bags": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 7,
+          "total": 8,
+          "fraction": 0.875
+        },
+        "exact_words": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        },
+        "confirmed_exact_recovery_over_all_planned_words": {
+          "correct": 5,
+          "total": 8,
+          "fraction": 0.625
+        }
+      },
+      {
+        "condition": "oracle_truekey",
+        "variant": "shared",
+        "planned_cases": 2,
+        "planned_words": 8,
+        "mapping_types": {
+          "scored_cases": 0,
+          "failed_or_unscored_cases": 2,
+          "correct": 0,
+          "total": 0,
+          "fraction": null
+        },
+        "mapping_weighted": {
+          "scored_cases": 0,
+          "failed_or_unscored_cases": 2,
+          "correct": 0,
+          "total": 0,
+          "fraction": null
+        },
+        "word_bags": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 8,
+          "total": 8,
+          "fraction": 1.0
+        },
+        "exact_words": {
+          "scored_cases": 2,
+          "failed_or_unscored_cases": 0,
+          "correct": 6,
+          "total": 8,
+          "fraction": 0.75
+        },
+        "confirmed_exact_recovery_over_all_planned_words": {
+          "correct": 6,
+          "total": 8,
+          "fraction": 0.75
+        }
+      }
+    ],
+    "recomputed_language_denominators": [
+      {
+        "method": "pattern",
+        "planned_cases": 2,
+        "scored_cases": 2,
+        "correct": 2,
+        "total": 2,
+        "fraction": 1.0
+      },
+      {
+        "method": "unigram",
+        "planned_cases": 2,
+        "scored_cases": 2,
+        "correct": 2,
+        "total": 2,
+        "fraction": 1.0
+      }
+    ]
+  },
+  "formal_replay_entry": "method_review/independent_score_audit_v2.py --data calibration/data_v1 --primary <frozen-primary-dir> --oracle <frozen-oracle-dir> --scores <frozen-scores.json> --out <new-audit.json>",
+  "source_files": [
+    {
+      "path": "code/score_calibration.py",
+      "sha256": "1502efe86d9af5972098e9ff9678ff34834194f3157a6e8e60b2b3f8e6c00b08"
+    },
+    {
+      "path": "code/run_author_pipeline.py",
+      "sha256": "81a10c0db577bd021300fc134a92e5eb07c8077307d457309415becddcb72ce4"
+    },
+    {
+      "path": "calibration/protocol_v2.txt",
+      "sha256": "c91e823844ae46dab2e6527e919c9842f1dd824749c3241ffcbbf6d4c2569e2b"
+    },
+    {
+      "path": "calibration/toy_scores_v1.json",
+      "sha256": "896a69d880a556dc9fa85590271c01bbb923b9576795beaf19c360a142aa7b05"
+    },
+    {
+      "path": "calibration/toy_data_v1/execution_inputs.json",
+      "sha256": "96531d17d89294c65d9b985ed39044ed90146c279cffa5313112585595db00e5"
+    },
+    {
+      "path": "calibration/toy_data_v1/file_hashes.json",
+      "sha256": "a5d5e599a9aeb1a953b4cf93f91174cf837d70d2eed26de4f58c3099f2eed472"
+    },
+    {
+      "path": "calibration/toy_primary_v1/results.json",
+      "sha256": "e9d6be768903133ce27813d489bcfeea4c53dcb090646b1eb776bce6e748af50"
+    },
+    {
+      "path": "calibration/toy_primary_v1/run_manifest.json",
+      "sha256": "9b7aef85f2a76abf328c3f983d3ca08fb52d011e0b28d8cc280b26c4dc60ba5d"
+    },
+    {
+      "path": "calibration/toy_oracle_v1/results.json",
+      "sha256": "8a7886639087531c5e5511f6c4ff1485a44cf379f64d3527ebd05790768c8145"
+    },
+    {
+      "path": "calibration/toy_oracle_v1/run_manifest.json",
+      "sha256": "aa5f39e5690c7321a10a12b77addcee2fbe6ad3ed6f27cc773a3d52e285e734b"
+    },
+    {
+      "path": "method_review/independent_score_audit_v1.py",
+      "sha256": "45213118b6705d4d1f2a3ed4220376d391fc79943eab2a39a9a145d224c5e59d"
+    },
+    {
+      "path": "method_review/toy_scoring_audit_v1.json",
+      "sha256": "c7894d4ff2d71429589077cd118bbe8aec466c99e05714e9ca18749ba59deccf"
+    },
+    {
+      "path": "method_review/independent_score_audit_v2.py",
+      "sha256": "67ce5fd02387221f9e964bea8a2f49b9aac6b7ed2521cbd0576a8d9828883fc4"
+    },
+    {
+      "path": "method_review/toy_scoring_audit_v2.json",
+      "sha256": "5e29112047d31cbe19783ddbbb8c3142bed6a95687fd63ace6279ea664af8f85"
+    }
+  ],
+  "source_scope_note": "Actual author core code is newly recovered; same-book test windows were previously exposed in old scale controls and are only held out from the new training interval. This is not original paper data/accuracy replication or a manuscript decipherment.",
+  "no_new_experiments": true
+}

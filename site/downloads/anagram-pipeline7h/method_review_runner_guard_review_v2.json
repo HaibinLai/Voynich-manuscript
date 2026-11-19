@@ -1,0 +1,17 @@
+{
+  "schema": "tenth_runner_guard_followup_review_v2",
+  "status": "PASS_STATIC_GUARD_CLOSED",
+  "created_utc": "2026-11-19T16:19:43.074003+00:00",
+  "runner_sha256": "81a10c0db577bd021300fc134a92e5eb07c8077307d457309415becddcb72ce4",
+  "protocol_v2_sha256": "c91e823844ae46dab2e6527e919c9842f1dd824749c3241ffcbbf6d4c2569e2b",
+  "prior_review_sha256": "ac347339fd3d926abb74bcbfd892127d6893393217aeff656141f87391d51f10",
+  "historical_toy_correction_sha256": "b636063289e1a36926ed74b0aabcc9b8b24db5b6ccd7ed22ca2a9c8ef93ce3dd",
+  "checks": [
+    "All phases skip truth bytes in initial generic hash check.",
+    "Oracle verifies primary manifest phase, primary results SHA, same current data manifest SHA, results phase and exact case order before any truth-file hash/read.",
+    "Only after these assertions oracle verifies all truth file hashes then opens oracle answers.",
+    "Primary remains answer-byte-free; oldtoy run/code bindings preserved in sidecar."
+  ],
+  "scope": "Static control-flow review of latest runner only; no replay of author programs, no formal test decoding. Assertions require ordinary Python execution without -O.",
+  "remaining_limit": "Toy scores were produced by historical runner version; current static guard validation must not relabel those runs as executed by the new SHA."
+}

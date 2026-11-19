@@ -1,0 +1,418 @@
+{
+  "schema": "tenth_new_training_adapter_v1",
+  "toy": false,
+  "sources": [
+    {
+      "language": "english",
+      "path": "research/study20/controls/english_alice.txt",
+      "sha256": "49a0b2726606e1290ac03a63978fa1dd1bd38a8d805704d98265f393533ea094",
+      "total_tokens": 26688,
+      "training_range": [
+        0,
+        8000
+      ]
+    },
+    {
+      "language": "latin",
+      "path": "research/study20/controls/latin_caesar.xml",
+      "sha256": "15ec3ef2a36352742ddb75d4f7da23a143899b6b60ee3a7ca3192d4917ca1568",
+      "total_tokens": 51296,
+      "training_range": [
+        0,
+        8000
+      ]
+    }
+  ],
+  "models": [
+    {
+      "language": "english",
+      "training_words": 8000,
+      "variants": {
+        "readme_lex": {
+          "word_lms": [
+            {
+              "n": 1,
+              "entries": 1306,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 5189,
+              "contexts": 1268,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 6706,
+              "contexts": 4973,
+              "normalized": true
+            }
+          ],
+          "char_lms": [
+            {
+              "n": 1,
+              "entries": 27,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 292,
+              "contexts": 27,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 1541,
+              "contexts": 291,
+              "normalized": true
+            }
+          ],
+          "patterns": {
+            "input_ngrams": 13201,
+            "pattern_groups": 6275,
+            "stderr": ""
+          },
+          "alphabet": [
+            "e",
+            "t",
+            "a",
+            "o",
+            "i",
+            "h",
+            "n",
+            "s",
+            "r",
+            "l",
+            "d",
+            "u",
+            "w",
+            "g",
+            "c",
+            "m",
+            "f",
+            "y",
+            "b",
+            "p",
+            "k",
+            "v",
+            "q",
+            "x",
+            "j",
+            "z"
+          ]
+        },
+        "code_countfirst": {
+          "word_lms": [
+            {
+              "n": 1,
+              "entries": 1306,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 5189,
+              "contexts": 1268,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 6706,
+              "contexts": 4973,
+              "normalized": true
+            }
+          ],
+          "char_lms": [
+            {
+              "n": 1,
+              "entries": 27,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 417,
+              "contexts": 27,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 2071,
+              "contexts": 416,
+              "normalized": true
+            }
+          ],
+          "patterns": {
+            "input_ngrams": 13201,
+            "pattern_groups": 6275,
+            "stderr": ""
+          },
+          "alphabet": [
+            "e",
+            "t",
+            "a",
+            "o",
+            "i",
+            "h",
+            "n",
+            "s",
+            "r",
+            "l",
+            "d",
+            "u",
+            "w",
+            "g",
+            "c",
+            "m",
+            "f",
+            "y",
+            "b",
+            "p",
+            "k",
+            "v",
+            "q",
+            "x",
+            "j",
+            "z"
+          ]
+        }
+      },
+      "decoder_lms": [
+        {
+          "n": 1,
+          "entries": 710,
+          "contexts": 1,
+          "normalized": true
+        },
+        {
+          "n": 2,
+          "entries": 4783,
+          "contexts": 710,
+          "normalized": true
+        },
+        {
+          "n": 3,
+          "entries": 7566,
+          "contexts": 4782,
+          "normalized": true
+        }
+      ],
+      "singleton_bags": 639,
+      "candidate_bags": 668
+    },
+    {
+      "language": "latin",
+      "training_words": 8000,
+      "variants": {
+        "readme_lex": {
+          "word_lms": [
+            {
+              "n": 1,
+              "entries": 2868,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 6893,
+              "contexts": 2784,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 7133,
+              "contexts": 6559,
+              "normalized": true
+            }
+          ],
+          "char_lms": [
+            {
+              "n": 1,
+              "entries": 24,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 240,
+              "contexts": 24,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 1320,
+              "contexts": 240,
+              "normalized": true
+            }
+          ],
+          "patterns": {
+            "input_ngrams": 16894,
+            "pattern_groups": 10840,
+            "stderr": ""
+          },
+          "alphabet": [
+            "e",
+            "i",
+            "u",
+            "t",
+            "s",
+            "a",
+            "r",
+            "n",
+            "o",
+            "m",
+            "c",
+            "l",
+            "p",
+            "d",
+            "q",
+            "b",
+            "v",
+            "g",
+            "f",
+            "h",
+            "x",
+            "k",
+            "y",
+            "j",
+            "w",
+            "z"
+          ]
+        },
+        "code_countfirst": {
+          "word_lms": [
+            {
+              "n": 1,
+              "entries": 2868,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 6893,
+              "contexts": 2784,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 7133,
+              "contexts": 6559,
+              "normalized": true
+            }
+          ],
+          "char_lms": [
+            {
+              "n": 1,
+              "entries": 24,
+              "contexts": 1,
+              "normalized": true
+            },
+            {
+              "n": 2,
+              "entries": 382,
+              "contexts": 24,
+              "normalized": true
+            },
+            {
+              "n": 3,
+              "entries": 2373,
+              "contexts": 382,
+              "normalized": true
+            }
+          ],
+          "patterns": {
+            "input_ngrams": 16894,
+            "pattern_groups": 10840,
+            "stderr": ""
+          },
+          "alphabet": [
+            "e",
+            "i",
+            "u",
+            "t",
+            "s",
+            "a",
+            "r",
+            "n",
+            "o",
+            "m",
+            "c",
+            "l",
+            "p",
+            "d",
+            "q",
+            "b",
+            "v",
+            "g",
+            "f",
+            "h",
+            "x",
+            "k",
+            "y",
+            "j",
+            "w",
+            "z"
+          ]
+        }
+      },
+      "decoder_lms": [
+        {
+          "n": 1,
+          "entries": 1013,
+          "contexts": 1,
+          "normalized": true
+        },
+        {
+          "n": 2,
+          "entries": 5176,
+          "contexts": 1013,
+          "normalized": true
+        },
+        {
+          "n": 3,
+          "entries": 7629,
+          "contexts": 5175,
+          "normalized": true
+        }
+      ],
+      "singleton_bags": 1898,
+      "candidate_bags": 971
+    }
+  ],
+  "cases": [
+    {
+      "id": "P01",
+      "cipher": "cipher/P01.txt",
+      "kind": "heldout_positive",
+      "word_count": 80
+    },
+    {
+      "id": "P02",
+      "cipher": "cipher/P02.txt",
+      "kind": "heldout_positive",
+      "word_count": 80
+    },
+    {
+      "id": "P03",
+      "cipher": "cipher/P03.txt",
+      "kind": "heldout_positive",
+      "word_count": 80
+    },
+    {
+      "id": "P04",
+      "cipher": "cipher/P04.txt",
+      "kind": "heldout_positive",
+      "word_count": 80
+    },
+    {
+      "id": "C01",
+      "cipher": "cipher/C01.txt",
+      "kind": "nonidentifiable_shared_input",
+      "word_count": 7
+    }
+  ],
+  "source_code_sha256": "a1116f5e294c13d1234c4d3d3d81ad6beb33a543eb1bad421742e2d96a22e6ad",
+  "core_author_code_modified": false
+}

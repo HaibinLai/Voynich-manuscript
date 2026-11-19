@@ -1,0 +1,175 @@
+{
+  "schema": "tenth_research_report_v1",
+  "created_utc": "2026-11-19T16:44:24.386492+00:00",
+  "status": "RESEARCH_COMPLETE_PUBLICATION_PENDING",
+  "goal_complete_claimed": false,
+  "headline": "原作者解码流程已找回：逐阶段校准恢复能力",
+  "summary": "找回并运行2016作者原始核心代码，用明确标记的新数据适配完成固定小样本测试。主配置精确整词恢复193/320（60.31%）；提供真语言与真密钥后的词内恢复为249/320（77.81%）。这些是已知答案校准结果，不是手稿翻译。",
+  "findings": [
+    {
+      "id": "F01",
+      "text": "主语言路由在已评分的4个正例中选对3个；候选只有英文和拉丁文，不能外推手稿语言。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+          "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "text": "主配置字符类型映射69/87（79.31%）、按出现次数加权映射1126/1477（76.24%）；词袋240/320（75.00%），精确整词193/320（60.31%）。不同指标不合成破解率。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+          "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "text": "提供正确语言后，README配置精确整词为246/320（76.88%）；再提供正确密钥，仅测试词内恢复时为249/320（77.81%）。后者词袋100%是输入前提，映射恢复未测试。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+          "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "text": "预先登记的频数优先训练诊断精确整词为193/320（60.31%），与README主配置并列，未依据成绩更换主分析。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+          "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "text": "C01用同一密文对应master与stream两个不同原文。两份真值各自计分，均不进入四段正例分母；输出某个可读词不能证明唯一原文。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/data_v1/truth/C01A.json",
+          "sha256": "479a081adbd30c6c6dc79ca3acd813e19007708a3f7722ffd3d4660a28c2c225"
+        },
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/data_v1/truth/C01B.json",
+          "sha256": "dcd2f38735ad3d86f577db46b31896ab0c99c547638c5462376bdc972fcd238a"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "text": "事后分层：真密钥条件下，训练词表内248词有246词正确，词表外72词只有3词正确。剩余错误中69词未被训练词表覆盖，2词是词表内候选选择错。这定位本配置的缺口，不证明扩词典一定有效。",
+      "evidence": [
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+          "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+        },
+        {
+          "path": "research/research_next/anagram_pipeline7h_20261119/calibration/error_attribution_v1.json",
+          "sha256": "1cc4e72acd8b8651efdf37057437bce756d4a76723a2c040f7a2c1e569046cec"
+        }
+      ]
+    }
+  ],
+  "scope_limits": [
+    "作者核心代码未修改；数据规范化、模型训练文件、接口、计分和本轮预算由我们新增。这不是原论文语料、全部语言或原成绩复现。",
+    "两语言各8000训练词，四段各80词均不属于本轮训练，但全部已在旧规模正控曝光；同书、非盲、非跨作者验证，样本量不足以提供广泛成功率。",
+    "固定插值、20词分块和两种训练表示属于本轮配置；未知词保留在分母，失败/null与不适用分开。正确率只使用实际已评分分母，另列320词保守恢复率。",
+    "来源审查早期的未执行状态、旧toy元数据与后续运行/更正分别保留。多个知情AI复核不是独立历史专家认证。",
+    "没有新增手稿评分、语种判定、读音或译文；本轮证明的是代码与限定已知答案实验可复查的范围。"
+  ],
+  "stage_runtime_summary": [
+    {
+      "stage": "语言选择（pattern主方法及unigram诊断）",
+      "script": "langid_probdist.pl",
+      "actual_processes": 10,
+      "completed_exit0": 10,
+      "timeouts": 0,
+      "nonzero_exits": 0,
+      "wall_seconds_sum": 0.3500091661699116,
+      "scope": "Formal saved processes only; reused oracle outputs are not additional executions. Exit0 is not semantic accuracy."
+    },
+    {
+      "stage": "字符替换求解（两种预注册训练表示）",
+      "script": "maspa_solver.pl",
+      "actual_processes": 12,
+      "completed_exit0": 12,
+      "timeouts": 0,
+      "nonzero_exits": 0,
+      "wall_seconds_sum": 1035.0729895009426,
+      "scope": "Formal saved processes only; reused oracle outputs are not additional executions. Exit0 is not semantic accuracy."
+    },
+    {
+      "stage": "上下文词内还原（包括明确标记的oracle）",
+      "script": "alphagram_solver.pl",
+      "actual_processes": 17,
+      "completed_exit0": 17,
+      "timeouts": 0,
+      "nonzero_exits": 0,
+      "wall_seconds_sum": 0.5604200407397002,
+      "scope": "Formal saved processes only; reused oracle outputs are not additional executions. Exit0 is not semantic accuracy."
+    }
+  ],
+  "score_audit_summary": {
+    "all_passed": true,
+    "score_rows_checked": 30,
+    "language_rows_checked": 10,
+    "groups_checked": 5,
+    "fresh_author_execution_claimed": false
+  },
+  "next_falsifiable_prediction": "下一项可失败预测：在不按测试答案选词、使用预先固定外部训练文本的条件下，扩充词表及模型应提高词内精确恢复率，而不只是增加字母袋命中；同时检验新增同袋歧义是否抵消收益。下一轮应隔离真密钥诊断、冻结新评价材料和基线，保留退化案例，不能因本轮69个错词未覆盖就断言可全部修复。",
+  "sources": [
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/sources/source_registry_v1.json",
+      "sha256": "3ea2ea996440e80a96bdf2635ddfb652e1b0ee85fac9d39f15e6b1980e525fee"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/sources/source_scope_review_v1.json",
+      "sha256": "f4551de10b8a5cfe26b7ae4c17b5c6410a60497eb5d878460229c7d1a6c8c99b"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/protocol_v2.txt",
+      "sha256": "c91e823844ae46dab2e6527e919c9842f1dd824749c3241ffcbbf6d4c2569e2b"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/formal_freeze_v1.json",
+      "sha256": "dcccd39915909d6e6327c6ef40a887719e85da9a28c2032be12fdca27457e867"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/scores_v1.json",
+      "sha256": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/independent_score_audit_v1.json",
+      "sha256": "41f11290f8c9a7aebcc7cd9de8c8378a760f354d9d9cf284a9471e2b28f3891e"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/fullrun_independent_audit_v1.json",
+      "sha256": "50c80c4658a176018ffb6e337151ca1c30de8f9b804689c00226759d02f76620"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/error_attribution_v1.json",
+      "sha256": "1cc4e72acd8b8651efdf37057437bce756d4a76723a2c040f7a2c1e569046cec"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/toy_independent_audit_v1.json",
+      "sha256": "6cd2f5d80026077a399f40b51e8cacdcec928047e20cdd9f3dcef6b07bc59657"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/prepared_independent_audit_v1.json",
+      "sha256": "869d731e3ea2db94f84387cdd4ec2a6e07e8e87bc7435cffe7f5a1c5cec668e2"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/viterbi_finite_bound_v1.json",
+      "sha256": "25eaa2f2af21d53026b8272ea72b7c67edbc5b689f9b4606aaf46ae5d985ca92"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/REPRODUCE_v1.txt",
+      "sha256": "6bcf77dfa720e9fe31f65f26ca8862135746eca06f72aa9fff264e0f1a4c9c5b"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "tenth_runner_static_review_v1",
+  "status": "REQUIRES_ORACLE_INPUT_BINDING_GUARD",
+  "created_utc": "2026-11-19T16:16:45.061075+00:00",
+  "code": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/code/run_author_pipeline.py",
+    "sha256": "24edef1585e12781dd1226aca555a65116d7c7d6c3a25060a03e671d27ce1aeb"
+  },
+  "protocol": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/calibration/protocol_v2.txt",
+    "sha256": "c91e823844ae46dab2e6527e919c9842f1dd824749c3241ffcbbf6d4c2569e2b"
+  },
+  "accepted": [
+    "Primary skips truth/ file bytes even in hash verification; no primary branch reads truth metadata. Reading truth hashes in the public manifest is not reading the answer bytes.",
+    "Each original program called with explicit2016 module directory, fixed Perl hash environment, data cwd, timeout and preserved stdin/stdout/stderr receipt.",
+    "RANK candidate distances plus RESULT author selection parsed; candidate coverage and finiteness failures preserved, no truth fallback.",
+    "recover_map aligns count-first canonical original ciphertext to output, checks functional/injective map, spacing and length, then verifies mapped word bags.",
+    "MASPA one independent process per case/variant; decoder receives20word blocks in one process, returned line/token counts and alphabet checked.",
+    "Oracle labels and reuse retain distinction; true-key oracle only after primary result existence, does not replace primary output.",
+    "Protocolv2 correctly discloses all four segments were seen in prior scale calibration; originalv1 and previous review preserved."
+  ],
+  "required_change": {
+    "id": "G01",
+    "scope": "Before opening truth in oracle phase",
+    "finding": "Existence of primary/results.json alone does not verify its frozen bytes or identity with current data. Comment says hash-bound, but current branch loads it without checking prior run_manifest.",
+    "fix": "Validate prior run_manifest phase and results_sha256, prior data_manifest_sha256 against current file_hashes.json, primary results phase and case IDs against current execution_inputs; then open truth. Preserve original source/run versions if already executed."
+  },
+  "additional_limits": [
+    "The runner checks output shape but does not expose/validate internal Viterbi numeric states. Record warnings and avoid claiming hidden dynamic-programming probabilities were independently finite.",
+    "Returned PASS statuses mean process/interface completion; they are not known-answer accuracy success. Independent scoring still required.",
+    "No execution or new input generation performed during this review; current artificial runtime remains root responsibility."
+  ],
+  "no_new_manuscript_analysis": true
+}

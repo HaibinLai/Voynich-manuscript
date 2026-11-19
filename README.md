@@ -8,6 +8,8 @@
 
 ## 当前内容
 
+第十轮找回并运行了 Hauer–Kondrak 的原作者核心代码，完成两语言、320词的已知答案校准。[交互网页](https://haibinlai.github.io/Voynich-manuscript/anagram-pipeline7h.html)分开呈现语言选择、字符映射、字母袋与精确整词。主自动流程恢复193/320词（60.31%）；提供真语言与真密钥时恢复249/320词（77.81%），剩余71错中69个真词未被训练词表覆盖。**这是新训练配置下、此前已曝光的训练外小样本校准，不是原论文成绩复现或手稿译文。** [一页结论](research/research_next/anagram_pipeline7h_20261119/research_report_v1.txt)与[复算说明](research/research_next/anagram_pipeline7h_20261119/REPRODUCE_v1.txt)保留原代码、全部运行、独立计分和限制；完整结题状态另见验收记录。
+
 第九轮完成了[编码规则适用性审查](https://haibinlai.github.io/Voynich-manuscript/encoding-rules7h.html)：Hauer–Kondrak论文确实提出固定排序猜想，但它并未给出现有转写逐词零例外的完整规则。因此，本轮没有把严格排序条件强加给作者宽模型，也没有新增手稿评分或译文。网页保留8项来源规则、6项前提审查与可切换的9个人工例子；[一页结论](research/research_next/encoding_constraints7h_20261119/research_report_v1.txt)和[复算说明](research/research_next/encoding_constraints7h_20261119/REPRODUCE_v1.txt)说明适用范围。人工结果已在只含7个公开文件的新目录复算一致，整轮结题另见逐项验收。
 
 第八轮完成了标签—正文检验的人工复制校准与78个删叶对照。[交互网页](https://haibinlai.github.io/Voynich-manuscript/label-calibration7h.html)提供两版转写、三种条件、全部六对替换及各剂量结果。主条件下，8次复制尝试形成约0.07–0.08个百分点的新增关联，两版均为0/128次触发；64次尝试则均为128/128。**这是固定生成器下的检测能力，不是词义正确率；相同文字仍可来自机械复用，没有破译。** [一页研究结论](research/research_next/label_exchange7h_20261119/research_report_v2.txt)及[复算说明](research/research_next/label_exchange7h_20261119/REPRODUCE_v1.txt)保留完整范围和限制，整轮结题另见逐项验收。

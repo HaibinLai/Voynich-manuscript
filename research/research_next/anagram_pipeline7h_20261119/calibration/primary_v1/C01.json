@@ -1,0 +1,172 @@
+{
+  "id": "C01",
+  "kind": "nonidentifiable_shared_input",
+  "routes": {
+    "pattern": {
+      "run_id": "C01_lang_pattern",
+      "method": "pattern",
+      "status": "PASS",
+      "language": "english",
+      "scores": {
+        "english": 0.402175424820157,
+        "latin": 0.689416831512625
+      },
+      "tie": false,
+      "author_self_report_accuracy_ignored": true,
+      "tied_languages": [
+        "english"
+      ]
+    },
+    "unigram": {
+      "run_id": "C01_lang_unigram",
+      "method": "unigram",
+      "status": "PASS",
+      "language": "latin",
+      "scores": {
+        "latin": 0.0744711861989906,
+        "english": 0.103755597058955
+      },
+      "tie": false,
+      "author_self_report_accuracy_ignored": true,
+      "tied_languages": [
+        "latin"
+      ]
+    }
+  },
+  "pipelines": [
+    {
+      "id": "C01",
+      "variant": "readme_lex",
+      "language": "english",
+      "label": "primary",
+      "maspa_run_id": "C01_primary_readme_lex_maspa",
+      "mapping_status": "PASS",
+      "mapping": {
+        "j": "h",
+        "v": "d",
+        "z": "a",
+        "i": "e",
+        "m": "s",
+        "p": "p",
+        "u": "r",
+        "n": "y",
+        "a": "l",
+        "s": "n",
+        "x": "i",
+        "e": "o"
+      },
+      "mapped_words": [
+        "adh",
+        "sdaerp",
+        "eys",
+        "aeilnd",
+        "ni",
+        "dha",
+        "oopr"
+      ],
+      "decoder": {
+        "run_id": "C01_primary_readme_lex_viterbi",
+        "status": "PASS",
+        "input_words": [
+          "hda",
+          "esprda",
+          "esy",
+          "lendia",
+          "ni",
+          "hda",
+          "oopr"
+        ],
+        "output_words": [
+          "had",
+          "spread",
+          "yes",
+          "denial",
+          "in",
+          "had",
+          "poor"
+        ],
+        "raw_output_word_count": 7,
+        "input_blocks": 1,
+        "warnings_observed": false,
+        "reason": null
+      },
+      "warnings_observed": false,
+      "author_solution_words": [
+        "hda",
+        "esprda",
+        "esy",
+        "lendia",
+        "ni",
+        "hda",
+        "oopr"
+      ]
+    },
+    {
+      "id": "C01",
+      "variant": "code_countfirst",
+      "language": "english",
+      "label": "primary",
+      "maspa_run_id": "C01_primary_code_countfirst_maspa",
+      "mapping_status": "PASS",
+      "mapping": {
+        "j": "h",
+        "v": "t",
+        "z": "e",
+        "i": "s",
+        "m": "a",
+        "p": "m",
+        "u": "r",
+        "n": "d",
+        "a": "l",
+        "s": "n",
+        "x": "i",
+        "e": "o"
+      },
+      "mapped_words": [
+        "eth",
+        "atesrm",
+        "sda",
+        "esilnt",
+        "ni",
+        "the",
+        "oomr"
+      ],
+      "decoder": {
+        "run_id": "C01_primary_code_countfirst_viterbi",
+        "status": "PASS",
+        "input_words": [
+          "hte",
+          "samrte",
+          "sad",
+          "lsntie",
+          "ni",
+          "hte",
+          "oomr"
+        ],
+        "output_words": [
+          "the",
+          "master",
+          "sad",
+          "listen",
+          "in",
+          "the",
+          "room"
+        ],
+        "raw_output_word_count": 7,
+        "input_blocks": 1,
+        "warnings_observed": false,
+        "reason": null
+      },
+      "warnings_observed": false,
+      "author_solution_words": [
+        "hte",
+        "samrte",
+        "sad",
+        "lsntie",
+        "ni",
+        "hte",
+        "oomr"
+      ]
+    }
+  ]
+}

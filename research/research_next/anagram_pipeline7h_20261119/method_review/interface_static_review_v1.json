@@ -1,0 +1,135 @@
+{
+  "schema": "tenth_static_source_interface_review_v1",
+  "status": "STATIC_INTERFACES_IDENTIFIED_PREPROCESSING_CHOICE_REQUIRES_FREEZE",
+  "created_utc": "2026-11-19T16:11:05.238085+00:00",
+  "author_source": {
+    "url": "https://github.com/bmhauer/hk-langid",
+    "commit": "e86ef47f79fef9a68438260436050a37e29d4c45",
+    "files": [
+      {
+        "path": "README",
+        "sha256": "47d5f1c7ca79091e952bd397b395318c5529d293307db1319c808b3963fca0ce"
+      },
+      {
+        "path": "maspa_solver.pl",
+        "sha256": "d04780346982a6eb767479784b154bfa66d82e5c3d3764eba849cc4b67a32b09"
+      },
+      {
+        "path": "Utils.pm",
+        "sha256": "8fba56fc43f0d5cdf60426d068be517f182b4aacbb4a5f5cd3a96da69cc844f8"
+      },
+      {
+        "path": "FreqAnalysis.pm",
+        "sha256": "9ee3937dc4480a0acb7add1eb10e14eac294d5b4b7892d7434806590ed8401ba"
+      },
+      {
+        "path": "JMSmoothing.pm",
+        "sha256": "2573a0f238cac5fa985274882ef3e874720b1181f64b7d4b9355dbdcaaecf94e"
+      },
+      {
+        "path": "ReadLM.pm",
+        "sha256": "43f7a5effdb897fbcd82bb1cca236a0f941020d2a0bc8574f5a7f0c368bab205"
+      },
+      {
+        "path": "alphagram_solver.pl",
+        "sha256": "da119ffc38db7faf2fd625e90d58866d7e18e68b5a9228060f5bd7bcc30e9fd5"
+      },
+      {
+        "path": "Alphagram.pm",
+        "sha256": "18c31451e58205ba7bc96febc7f6f0d33ad9d47c95b490734cfb27b91e3a7596"
+      },
+      {
+        "path": "Viterbi.pm",
+        "sha256": "7b1cc29f5626b9c80198caa7c375a21a48c4e7087bb05cb7af4876b4a8183acb"
+      },
+      {
+        "path": "langid_probdist.pl",
+        "sha256": "9bca13a7aadbdf5f0e5fcd133f70afce907d7d1b91ecd76faa5ca558e516c244"
+      }
+    ]
+  },
+  "original_solver_source": {
+    "url": "https://github.com/bmhauer/hhk-decipherment",
+    "commit": "2c7ad49cd4f4fa852168a8ce295bf739bf076adc",
+    "README_sha256": "13b6f059bcf026c96d45a52e9451cd1dd992e84ff9985531eaa72af514723c02"
+  },
+  "inspection": "Read original cloned code and READMEs; no subprocess of solver, preprocessing, or language identification executed. Only read-only git identity query.",
+  "findings": [
+    {
+      "id": "I01",
+      "location": "maspa_solver.pl:162–197; Utils.pm:22–35,119–146,261–270",
+      "finding": "令c为输入，u=APattern_wlpc(c)，p=Pattern(u)。最终非verbose输出为Decipher(p,key)，没有再排字；verbose最终SOLUTION相同。",
+      "adapter": "独立在c上重建u及首次出现编号映射alpha；按u与最终solution的对应位置恢复原密文字母→明文字母。每个符号的所有位置须一致、字母集/长度/空格一致、映射单射；再验证alpha与p位置一致。不得直接用原c位置对齐solution。缓存命中时也逐本行u恢复，不继承另一行原字母映射。",
+      "status": "STATICALLY_DERIVABLE_REQUIRES_ARTIFICIAL_ADAPTER_CHECK"
+    },
+    {
+      "id": "I02",
+      "location": "Utils.pm:119–146 vs Alphagram.pm:19–24; README maspa paragraph; maspa_solver.pl:347–349",
+      "finding": "APattern_wlpc按每词字符出现次数降序，次数并列按字母序；真正alphagram按字母序。abb在前者为bba、后者为abb。搜索候选评分使用前者，README要求的训练表示是后者，两者不相同。",
+      "adapter": "不得把二者写成同一表示。若新训练LM用计数优先形式对齐实码评分，须明确是本轮新预处理选择，不是已恢复原2016训练数据；若遵README用字典序，也须保留实码评分不一致事实。在正式校准前选择并冻结，不能后看准确率择优。无需改原核心代码。",
+      "status": "MATERIAL_PREPROCESSING_DISCREPANCY"
+    },
+    {
+      "id": "I03",
+      "location": "maspa_solver.pl:308–310; Utils.pm:37–60,178–217",
+      "finding": "patlst的模式键由Utils::APattern对整个1/2/3词ngram生成，包含跨词字符共现结构；不是逐词字母袋字符串或APattern_wlpc输出。",
+      "adapter": "在冻结训练文本选择的表示上枚举词ngram，以2016原Utils::APattern生成签名；TSV为order、pattern、候选ngram列表。按训练频数降序/预定平局排序排列候选，因为前半搜索直接取列表前p项。候选不得从测试补充。",
+      "status": "EXECUTABLE_DATA_INTERFACE"
+    },
+    {
+      "id": "I04",
+      "location": "maspa_solver.pl:63–95,126–146; JMSmoothing.pm:19–80; ReadLM.pm:34–76",
+      "finding": "maspa使用6个概率TSV、6插值权重、charcoeff、ngramlist、order共15config项；模型为条件概率而非log值。字符评分将空格替为下划线并逐字符展开；词评分保留连续词序。JMSmoothing自身不加句界。",
+      "adapter": "为新语料生成训练专属概率与权重，冻结数值而不声称原参数。字符LM须含下划线表示；word及char权重各自和为1，单词未知符号<u>有概率，确保可评分。唯一config键也由包装器检查，不能依赖只数15行。",
+      "status": "EXECUTABLE_DATA_INTERFACE"
+    },
+    {
+      "id": "I05",
+      "location": "alphagram_solver.pl:30–76,93–130; Viterbi.pm:118–235",
+      "finding": "maspa输出可作为decoder输入，decoder先按真正字典序生成每词alphagram。decoder隐状态及LM必须是真实训练词（含<u>），不是maspa计数优先词串；训练侧六文件为delint、三阶LM、alphagram→候选词表、单例映射。",
+      "adapter": "独立从同一冻结训练原词文本构造另一套decoder LM。包含<>u→<u>和<u>状态；按训练字母袋计数等于1处理.singleton映射，每个袋一个值，不按单词频次错误剔除同袋多个候选。Viterbi使用<s>与<\\s>边界，终止概率须可用。所有发射候选应在A1/Q里。",
+      "status": "STAGES_CAN_CONNECT_WITH_CORRECT_DISTINCT_TRAINING_REPRESENTATIONS"
+    },
+    {
+      "id": "I06",
+      "location": "alphagram_solver.pl:99–130; Viterbi.pm:118–235",
+      "finding": "未知袋先换<>u；解码后可能由单例表恢复，否则原袋字符串回填。Viterbi是概率乘积，每步乘1000，而非全程log概率；单token走另一分支。",
+      "adapter": "评分记录实际回填状态，不当词典恢复或省略OOV；主精确原词比较仍全分母。冻结句/行长度、单词控制、有限数诊断与超时处理，不依据输出再剪短或删失败；小规模短行先作接口验证，不能由源码存在推断运行已通过。",
+      "status": "RUNTIME_VALIDATION_PENDING"
+    },
+    {
+      "id": "I07",
+      "location": "FreqAnalysis.pm:18–27,40–55; Utils.pm:22–35",
+      "finding": "频率排序只接纳a-zA-Z；Pattern符号表超52后含数字，不能假装任意Unicode都可执行。目标字母不足时GetFreqKey把多余密文字母重复映到最后目标字母，单射会破坏。",
+      "adapter": "本轮若ASCII26校准，明确固定26个不同目标字母，输入不同符号≤26；所有解出的出现符号检查函数性和单射。目标order可含训练未出现字母，但无证据的映射不可算恢复。",
+      "status": "INPUT_DOMAIN_RESTRICTION_REQUIRED"
+    },
+    {
+      "id": "I08",
+      "location": "maspa_solver.pl:40–57,207–228,308–337; FreqAnalysis.pm:18–27",
+      "finding": "预算是m迭代、b束宽、p每模式候选上限；没有显式随机seed参数。Perl哈希顺序会影响并列频数及候选，内存缓存跨同一次进程多行存在。",
+      "adapter": "固定PERL_HASH_SEED、PERL_PERTURB_KEYS、Perl版本、输入行序、进程边界；每案例独立进程可避免跨案例缓存，但须事前声明。用-I显式指向2016模块目录避免2014同名Utils误载。输出与stderr完整保存；无verbose可直接接一行solution，有verbose只解析最终SOLUTION。",
+      "status": "BUDGET_AND_ENVIRONMENT_MUST_FREEZE"
+    },
+    {
+      "id": "I09",
+      "location": "langid_probdist.pl; README language-id sections; 2016paper §4.4 p81 Table2",
+      "finding": "分解模式语言识别入口存在，README lmopt段有复制笔误，须按实际脚本。原Table2 Both指已知语言条件下Steps2+3，不是包含语言路由的全流程准确率。",
+      "adapter": "固定小候选集合按pattern识别后真实路由，另报oracle正确语言分支。文件名真语言只用于作者脚本内评估，独立计分不要沿用不匹配命名的累计正确数，读取实际候选排名并核对外部真值。",
+      "status": "END_TO_END_AND_ORACLE_MUST_STAY_SEPARATE"
+    }
+  ],
+  "new_data_attribution": "Unmodified author runtime programs plus explicitly new public-corpus training preparation and evaluation wrapper. Not original2016 corpus/results reproduction; prepared2014 NYT models are not2016 alphagram training models.",
+  "recommended_mapping_proof": "u_i=symbol x at corresponding normalized position and final solution_i=y defines recovered map M(x)=y. Reject unequal token/character alignment, inconsistent repeated x, or duplicate y for different x before calling it a recovered injective key. Reapply M to original cipher for per-symbol truth comparison and compare word multisets; feed original final solution to the decoder whose alphagram step removes its arbitrary order.",
+  "minimal_before_run_checks": [
+    "Tiny artificial source-normalization/key-alignment fixture and repeated-symbol tests; not manuscript.",
+    "Training probabilities, candidates and sentinels validated by independent reader; never derive from test truth.",
+    "Runtime line length/finite-number limits fixed and smoke output preserved even if failed."
+  ],
+  "open_items": [
+    "Root must explicitly select README lexical or code-count-first maspa training representation and disclose choice.",
+    "Full author2016 training/test data and original derived LM files remain unavailable in this package.",
+    "Actual execution/build/small calibration approval is separate; this static review grants no empirical pass."
+  ],
+  "exposure": "Same informed AI; literature supplied source discovery and Table2 interpretation, then reviewer independently read local original interfaces. No new manuscript scoring."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "tenth_calibration_protocol_review_v1",
+  "status": "REQUIRES_THREE_NARROW_CLARIFICATIONS",
+  "created_utc": "2026-11-19T16:12:31.715415+00:00",
+  "protocol": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/calibration/protocol_draft_v1.txt",
+    "sha256": "5b58e274d292112f75eb1c2cd9a80c40d05c0cd02b0ed4992a262c49f83fa466"
+  },
+  "static_review": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/method_review/interface_static_review_v1.json",
+    "sha256": "9dd31c930089f0a70d815a03afd32721e04ef503424fbe41b8bc836e98b2a9ff"
+  },
+  "assessment": "Scientifically coherent new-data calibration using original runtime components. No need to replace primary design, add languages, or expand the experiment. Resolve these interface/metadata ambiguities before final freeze.",
+  "required_clarifications": [
+    {
+      "id": "M01",
+      "severity": "REQUIRED_CLARIFICATION",
+      "topic": "两套LM的控制标记隔离",
+      "finding": "开头训练词模型统一加句界的句子可被理解为也用于MASPA候选。maspa的Assume以单字符替换与固定26字母操作，patlst不可包含<s>、<\\s>、<u>等额外字符的候选。",
+      "minimum_fix": "明确20词句界及decoder未知替换仅用于Viterbi的自然词LM；MASPA训练/候选仅归一化[a-z]+词，候选不含控制标记，字符模型空格为_；MASPA word LM未知<u>若保留，只作为概率回退键，不作为patlst词或目标alphabet。Viterbi则显式有<>u→<u>发射和A1状态，以及起止概率。"
+    },
+    {
+      "id": "M02",
+      "severity": "REQUIRED_CLARIFICATION",
+      "topic": "路由平局与故障分母",
+      "finding": "候选文件顺序固定不完全定义原脚本哈希排序平局；仅写null失败不能保证汇总不会只取成功案例。",
+      "minimum_fix": "在任何输出前固定距离完全并列的规则（建议标TIE，按预定EN先进行操作路由并注明非唯一识别）；非有限距离/解析失败不得静默回退到真语言。汇总同时列预定案例/词数、已计分案例/词数、失败/未输出数；缺失准确率保留null，不把只对成功者的均值称全4案例准确率。"
+    },
+    {
+      "id": "M03",
+      "severity": "REQUIRED_CLARIFICATION",
+      "topic": "不可辨识对照与进程单位",
+      "finding": "4正例种子已给，但twin密钥/位置置换种子未编号；80词案例的MASPA输入行与每20词解码分块接口未完全显式。",
+      "minimum_fix": "事前固定twin独立种子或显式密钥/全部置换并冻结hash；明确每案例MASPA一个80词行（twin8词单行），每个条件独立进程，输出按20词块送decoder，不能改为每20词各求一把键。同一个twin输入只运行一次按两真值评分。"
+    }
+  ],
+  "accepted_elements": [
+    "原作者核心不改、新训练/调用/计分归我们，未冒称原论文数据或成绩。",
+    "主README词典序与预注册计数优先诊断均同预算全报，不后选替代主结果。",
+    "两语言pattern主路由、unigram诊断及lmopt替代不执行边界明确。",
+    "真实路由与真语言/真键oracle分开，全部正式非oracle输出先冻。",
+    "APattern_wlpc原cipher对齐法及一致性/单射/长度失败规则正确。",
+    "singleton按字母袋总频次1移除，同袋多个词留存，符合decoder接口。",
+    "OOV保留主分母、回填不冒称恢复，未知词不可补。",
+    "同来源新段只称非重叠，不称独立盲样本；旧72/24/24/976不改。",
+    "80词预分20词解码以限制数值风险，并保留失败；原句界损失明示。",
+    "人工小测试与正式4段分开，人工失败修包装层需保留版本与原失败。"
+  ],
+  "preflight_checks_before_real_scoring": [
+    "Verify normalized source lengths and actual train/test interval identities from saved manifests; no assumption from raw index names alone.",
+    "Check originalsource checksums/commit and all modules loaded from2016 directory; pure syntax success is not runtime success.",
+    "Validate allpatlst candidates have expected1–3word counts, actualUtils::APattern signature and matching normalized-letter support; allprobabilities finite and valid conditional tables.",
+    "OriginalViterbi runtime finite check is still needed:20word blocks reduce but do not mathematically eliminate overflow/underflow. Record any failure without repairing core or selecting output."
+  ],
+  "scope": "Static protocol/source review only; no new training generation, solver run, actual test metrics or manuscript input.",
+  "independence": "Same informed AI; literature source discoveries and originalTable2 interpretation acknowledged. Independent review does not certify historical interpretation."
+}

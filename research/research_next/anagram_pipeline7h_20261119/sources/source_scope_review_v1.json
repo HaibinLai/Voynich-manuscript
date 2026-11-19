@@ -1,0 +1,154 @@
+{
+  "schema_version": "calibration_source_scope_review_v1",
+  "reviewed_utc": "2026-11-19T16:15:28.840899+00:00",
+  "status": "NEEDS_EXPOSURE_WORDING_CORRECTION",
+  "scope": "Read-only source/split provenance review; no execution, data preparation, encryption, fit or scoring. Interval inclusion is record audit, not a new experiment.",
+  "input_bindings": [
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/code/prepare_calibration.py",
+      "sha256": "a1116f5e294c13d1234c4d3d3d81ad6beb33a543eb1bad421742e2d96a22e6ad"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/calibration/protocol_v1.txt",
+      "sha256": "39057212e0fca45607385c237ec1499bfbb9df70a226b4882376114fa5631443"
+    },
+    {
+      "path": "research/study20/analyze.py",
+      "sha256": "b828ab5074646290931e1649bdcfb23c87eb8daac2e1978a9f45ef243a05ab38"
+    },
+    {
+      "path": "research/research7h/cipher_controls/manifest_preparation.json",
+      "sha256": "3563634e34c8d03746410ac6b9caf791c2797d462d434466e07686978acfa413"
+    },
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/experiment.py",
+      "sha256": "fb7a3c0060eb0b0aa1c2123053591c21996bb1ab8289c03b0006fbaa527278ae"
+    },
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/scale_calibration.json",
+      "sha256": "68e4d77970c278baee45a90362023f50af709c7a07a1b123f51b18c53698f429"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/sources/source_registry_v1.json",
+      "sha256": "3ea2ea996440e80a96bdf2635ddfb652e1b0ee85fac9d39f15e6b1980e525fee"
+    }
+  ],
+  "findings": [
+    {
+      "id": "S01",
+      "severity": "material_wording",
+      "status": "needs_correction",
+      "location": "calibration/protocol_v1.txt line4",
+      "original_claim": "数据：仓库既有英文Alice与拉丁Caesar源及原规范化（NFKD/ascii小写，[a-z]+；XML排除note/head/speaker）。训练各前8000完整词，测试每种语言[12000,12080)、[16000,16080)，共4段，每段80词。训练区间、旧开发/测试区间不与这些新测试区间重叠；同书仍非跨作者证据。训练输出词模型按20词块加<s><s>和<\\s><\\s>；解码每20词一行以预先限制原Viterbi乘积数值风险，保留全部失败。原自然句界不保留，需作为限制。",
+      "issue": "Broad old-development/test non-overlap language omits the earlier same-scale positive controls. All four proposed windows have been used in those controls.",
+      "required_scope": "Only disjoint from the old72-search small dev/test windows; all four overlap prior scale calibration. Preserve fixed windows; disclose prior exposure rather than selecting new favorable data.",
+      "evidence": [
+        "research/research7h/cipher_controls/voynich_substitution/experiment.py:108–120",
+        "research/research7h/cipher_controls/voynich_substitution/scale_calibration.json /results/*/source_token_range"
+      ]
+    },
+    {
+      "id": "S02",
+      "status": "supported_by_static_read",
+      "claim": "Source-byte hashes match previously frozen Alice/Caesar sources; normalization steps in the new adapter correspond to old plain_words, including Gutenberg bounds, Alice start marker, XML removals, NFKD/ascii/lowercase and a-z tokenization.",
+      "limit": "No independent rerun comparing normalized token arrays was performed by this reviewer."
+    },
+    {
+      "id": "S03",
+      "status": "supported",
+      "claim": "Current train[0,8000) does not overlap new test[12000,12080) or[16000,16080).",
+      "limit": "This is within-current-experiment separation, not historical non-exposure or cross-book generalization."
+    },
+    {
+      "id": "S04",
+      "status": "supported",
+      "claim": "Adapter and protocol identify model preparation, fixed smoothing,20-word blocks, wrappers and scoring as ours; author core commit is separately fixed.",
+      "limit": "Any execution correctness or original-code invariance must be established by the separate execution/implementation audit."
+    },
+    {
+      "id": "S05",
+      "status": "supported",
+      "claim": "The genuinely new part is the acquired author core, including context-aware Viterbi anagram decoding, rather than another independent4gram key search or most-frequent bag lookup.",
+      "limit": "New-source calibration is not original-paper dataset/parameter/performance replication."
+    }
+  ],
+  "interval_records": [
+    {
+      "language": "english",
+      "new_test_interval_half_open": [
+        12000,
+        12080
+      ],
+      "current_training_interval_half_open": [
+        0,
+        8000
+      ],
+      "current_training_disjoint": true,
+      "old_scale_interval_half_open": [
+        8000,
+        25648
+      ],
+      "entire_new_interval_within_old_scale": true,
+      "old_scale_pointer": "/results/0/source_token_range"
+    },
+    {
+      "language": "english",
+      "new_test_interval_half_open": [
+        16000,
+        16080
+      ],
+      "current_training_interval_half_open": [
+        0,
+        8000
+      ],
+      "current_training_disjoint": true,
+      "old_scale_interval_half_open": [
+        8000,
+        25648
+      ],
+      "entire_new_interval_within_old_scale": true,
+      "old_scale_pointer": "/results/0/source_token_range"
+    },
+    {
+      "language": "latin",
+      "new_test_interval_half_open": [
+        12000,
+        12080
+      ],
+      "current_training_interval_half_open": [
+        0,
+        8000
+      ],
+      "current_training_disjoint": true,
+      "old_scale_interval_half_open": [
+        6000,
+        23648
+      ],
+      "entire_new_interval_within_old_scale": true,
+      "old_scale_pointer": "/results/2/source_token_range"
+    },
+    {
+      "language": "latin",
+      "new_test_interval_half_open": [
+        16000,
+        16080
+      ],
+      "current_training_interval_half_open": [
+        0,
+        8000
+      ],
+      "current_training_disjoint": true,
+      "old_scale_interval_half_open": [
+        6000,
+        23648
+      ],
+      "entire_new_interval_within_old_scale": true,
+      "old_scale_pointer": "/results/2/source_token_range"
+    }
+  ],
+  "safe_public_source_scope": "本轮真正新增的是取得固定版本的作者语言识别、MASPA替换和Viterbi重排核心代码，并用我们单独编写的训练/调用适配器校准。训练材料仍为旧项目的Alice与Caesar；四个80词评价片段全部曾用于旧规模正控，只有相对本轮前8000词训练区间的隔离，不能称新的盲集或独立复现。新插值、20词分块、两语言范围和预处理均明确属于本轮配置，不是原论文380语言/50测试案例或93.8%成绩复现；未触及手稿译文。",
+  "no_new_authoritative_source_needed": true,
+  "new_network_requests": 0,
+  "new_experiments": 0,
+  "reviewer_exposure": "Same informed AI; read old saved reports and code. All source corpora and old calibration work already exposed. Not an independent expert or blinded assessment."
+}

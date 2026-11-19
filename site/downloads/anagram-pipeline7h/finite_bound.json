@@ -1,0 +1,60 @@
+{
+  "schema": "tenth_independent_viterbi_finite_sufficient_bound_v1",
+  "status": "PASS_SUFFICIENT_RANGE_BOUND",
+  "created_utc": "2026-11-19T16:21:45.578629+00:00",
+  "code_sha256": "a86eebfdc22b31cc841149b071b9e55cf44cc93512b7079b33cdffaf3b37bf3b",
+  "input_manifest_sha256": "49c7eba3cb290b14a2c64ab5a2eeb03a7d7ebb877de74e12ebe7539f87af4e82",
+  "prepared_audit_sha256": "869d731e3ea2db94f84387cdd4ec2a6e07e8e87bc7435cffe7f5a1c5cec668e2",
+  "perl_numeric_config": [
+    "nvtype='double';",
+    "nvsize='8';"
+  ],
+  "scope": "Only unchanged trigram Viterbi on the frozen decoder model and predeclared nonempty7 or20token blocks. No author decoder executed; no accuracy computation.",
+  "derivation": [
+    "Every emission candidate and termination marker has positive unigram probability; missing bigram/trigram contributes zero, so transition probability >=0.3*minimum_target_unigram.",
+    "All stored conditional probabilities are <=1 and positive fixed interpolation weights sum to1, so mathematical transition probability <=1.",
+    "For T<=20 and T>=2 there are T+2<=22 transition factors including two termination factors. Each positive full path product is >=q^22. The forward recursion only adds a uniform positive1000^(T-2) scaling, at most1000^18=1e54.",
+    "Every candidate list nonempty and all transitions positive means each initialized/recurrent pair has a finite positive predecessor; negative-infinity max sentinels are replaced.",
+    "IEEE binary64 rounding allowance factor2 yields conservative product interval[q^22/2,2e54], far inside normal finite range; this is an arithmetic range bound, not an exact floating-point rounding proof or runtime/memory guarantee."
+  ],
+  "languages": [
+    {
+      "language": "english",
+      "nonempty_emission_bags": 668,
+      "possible_target_states_including_EOS": 709,
+      "minimum_positive_unigram_all_table": "10416666666666667/100000000000000000000",
+      "minimum_target_unigram": "10416666666666667/100000000000000000000",
+      "minimum_target_unigram_decimal": 0.00010416666666666667,
+      "transition_lower": "31250000000000001/1000000000000000000000",
+      "transition_lower_decimal": 3.125e-05,
+      "twenty_token_unscaled_product_lower": "770371977754894883564263516479769374847735344967613353133271446978693751318963591118189162377057180570447489656843607436697771433348368359285432021058524776347403930851220899020543653179515786752281414351273283995737983786966942507206113077705101575702428817818512208759784699271142482757568366351127624511718796997070312500000225585937500000000687500000000000001/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "twenty_token_unscaled_product_lower_decimal": 7.703719777548949e-100,
+      "rounding_conservative_lower_decimal": 3.8518598887744747e-100,
+      "rounding_conservative_upper": "2000000000000000000000000000000000000000000000000000000",
+      "lower_exceeds_minimum_normal_binary64": true,
+      "upper_below_maximum_binary64": true,
+      "all_candidates_and_markers_present": true
+    },
+    {
+      "language": "latin",
+      "nonempty_emission_bags": 971,
+      "possible_target_states_including_EOS": 1012,
+      "minimum_positive_unigram_all_table": "10416666666666667/100000000000000000000",
+      "minimum_target_unigram": "10416666666666667/100000000000000000000",
+      "minimum_target_unigram_decimal": 0.00010416666666666667,
+      "transition_lower": "31250000000000001/1000000000000000000000",
+      "transition_lower_decimal": 3.125e-05,
+      "twenty_token_unscaled_product_lower": "770371977754894883564263516479769374847735344967613353133271446978693751318963591118189162377057180570447489656843607436697771433348368359285432021058524776347403930851220899020543653179515786752281414351273283995737983786966942507206113077705101575702428817818512208759784699271142482757568366351127624511718796997070312500000225585937500000000687500000000000001/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "twenty_token_unscaled_product_lower_decimal": 7.703719777548949e-100,
+      "rounding_conservative_lower_decimal": 3.8518598887744747e-100,
+      "rounding_conservative_upper": "2000000000000000000000000000000000000000000000000000000",
+      "lower_exceeds_minimum_normal_binary64": true,
+      "upper_below_maximum_binary64": true,
+      "all_candidates_and_markers_present": true
+    }
+  ],
+  "limitations": [
+    "Does not cover longer lines, different models, zero unigram candidates, empty emissions, or single-token alternative decoder branch.",
+    "Does not prove correctness of recovered text, uniqueness, timeout behavior or absence of unrelated implementation faults."
+  ]
+}

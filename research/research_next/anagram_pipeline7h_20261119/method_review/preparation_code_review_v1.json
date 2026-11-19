@@ -1,0 +1,104 @@
+{
+  "schema": "tenth_preparation_code_static_review_v1",
+  "status": "PASS_STATIC_CODE_WITH_EXPOSURE_CORRECTION_REQUIRED",
+  "created_utc": "2026-11-19T16:15:39.740431+00:00",
+  "code": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/code/prepare_calibration.py",
+    "sha256": "a1116f5e294c13d1234c4d3d3d81ad6beb33a543eb1bad421742e2d96a22e6ad"
+  },
+  "protocol_review": {
+    "path": "research/research_next/anagram_pipeline7h_20261119/method_review/protocol_confirmation_v1.json",
+    "sha256": "9a770d334863d885bda92653140d049353320345604a57d9057e36a1b97b41da"
+  },
+  "findings": [
+    {
+      "id": "P01",
+      "status": "PASS_STATIC",
+      "topic": "条件概率",
+      "finding": "write_lms按各n的实际ngram计数，再以该n的前n-1词上下文后继总数作分母；unigram上下文为空，故总和1。每块分别枚举，不跨块。写17位有效数、检查正值≤1和逐上下文和接近1；这是本轮新MLE/插值输入，不是原训练过程。"
+    },
+    {
+      "id": "P02",
+      "status": "PASS_STATIC",
+      "topic": "decoder标记与单例",
+      "finding": "先按真实训练词的字母袋总计数判singleton；仅袋频1替<u>，再按20词块加<s><s>与<\\s><\\s>。emissions由替后词生成，因排序<u>得到<>u，字典中有<>u→<u>，且A1有状态；单例表唯一值。相同袋多个词因总频>1不被移除。"
+    },
+    {
+      "id": "P03",
+      "status": "PASS_STATIC",
+      "topic": "MASPA无控制标记",
+      "finding": "两variant仅转换原[a-z]+训练词；word LM按20词块，char LM为下划线连接后逐字符，patlst仅这些训练ngram。目标26字母固定、计数降序并按字母序解平局。decoder标记未进入这些输入。"
+    },
+    {
+      "id": "P04",
+      "status": "PASS_STATIC",
+      "topic": "模式与候选",
+      "finding": "只调用固定2016 Utils模块的APattern和APattern_pc，输出签名和对应保字符候选；按(n,pattern)合并候选频数，频率降序字典序平局。regex排除非a-z候选及多余空白。生成器未用测试词构造候选。实际生成后仍需逐记录检签名/次数/排序，不把本静态审查替代产物核验。"
+    },
+    {
+      "id": "P05",
+      "status": "PASS_STATIC",
+      "topic": "两训练表示",
+      "finding": "readme_lex字典序与code_countfirst频数降序/字母序平局分开生成；共用相同原明文decoder训练，未选结果换主方案。"
+    },
+    {
+      "id": "P06",
+      "status": "PASS_STATIC",
+      "topic": "已知生成史",
+      "finding": "独立Random(seed)生成26字母置换，Random(seed+100)生成逐词位置置换；同字母袋twin先排序编码袋再同seed置换，并以字符匹配反推两个原词位置的合法置换。检查双输入密文相同，保留不同truth。case-index与种子、顺序固定。"
+    },
+    {
+      "id": "P07",
+      "status": "PASS_STATIC_WITH_OUTPUT_GATE",
+      "topic": "输入与接口",
+      "finding": "源hash固定；规范化静态与旧study20/analyze.py一致。训练只传前8000词到build_models，正例切片固定；out已存在拒绝，失败保留部分目录。file_hashes绑定输出，source_code_sha256绑定适配器。实际准备后须核训练恰8000、4段各80、twin7、全token区间及模块hash，不能只信切片无越界。"
+    },
+    {
+      "id": "P08",
+      "status": "DOCUMENTARY_CORRECTION_REQUIRED",
+      "topic": "历史曝光",
+      "finding": "此前protocol只写旧开发/测试不重叠过宽。旧规模正控已覆盖英文[8000,25648)、拉丁[6000,23648)，均包含本轮12000/16000两段。它们仍不在本轮前8000训练内，也不与旧72项指定测试窗口重叠，但不是历史未见。",
+      "required_action": "根保存协议曝光勘误/新版本绑定，不换段、不跑旧统计、不影响本准备器有限新算法校准接口。"
+    },
+    {
+      "id": "P09",
+      "status": "CALLER_REQUIREMENT",
+      "topic": "语言路由输出",
+      "finding": "langid_probdist前部verbose距离和RESULT最小值仅4位小数，RANK行为Perl完整显示分数；RESULT的语言是原内部argmin。当前Pxx/C01输入名不等于语言名，可产生完整候选RANK。",
+      "required_action": "调用器解析全部RANK候选及RESULT，不能用舍入行选路由；缺候选/非有限值报失败。平局报告基于可得原分数并保留RESULT，不从RANK并列排序覆盖argmin。"
+    }
+  ],
+  "prior_exposure_evidence": [
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/scale_calibration.json",
+      "sha256": "68e4d77970c278baee45a90362023f50af709c7a07a1b123f51b18c53698f429",
+      "source_token_ranges": {
+        "english": [
+          8000,
+          25648
+        ],
+        "latin": [
+          6000,
+          23648
+        ]
+      }
+    },
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/experiment.py",
+      "sha256": "fb7a3c0060eb0b0aa1c2123053591c21996bb1ab8289c03b0006fbaa527278ae"
+    }
+  ],
+  "execution_scope": "No prepare, solver or new data statistic executed; static code read and existing metadata only. Syntax/runtime/output validation not asserted here.",
+  "original_code_unchanged": "No source files modified by reviewer.",
+  "blocking_code_bug_found": false,
+  "before_formal_scoring": [
+    "Resolve historical-exposure wording transparently.",
+    "Bind prepared files and validate exact lengths, probabilities, all patlst records and sentinel states.",
+    "Pass independent artificial adapter/runtime checks and root freeze."
+  ],
+  "limitations": [
+    "Caller/scoring code not yet reviewed.",
+    "Source normalization inherited from old pipeline; this does not independently establish philological normalization correctness.",
+    "Same informed AI audit, not new blind or historical expert validation."
+  ]
+}

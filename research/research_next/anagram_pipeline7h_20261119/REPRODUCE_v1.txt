@@ -1,0 +1,29 @@
+第十轮复算入口（研究结果、发布验收与实际完成时刻分别保留在收据中）
+
+目的与边界
+使用作者hk-langid固定commit e86ef47f79fef9a68438260436050a37e29d4c45的未修改核心代码，配我们生成的新训练模型和评价适配器。作者原实验数据未附在包中；这不是其原论文成绩复现，也不是手稿译文。原代码及许可在upstream/hk-langid；Bradley Hauer and Grzegorz Kondrak (2016), TACL4:75–86, https://aclanthology.org/Q16-1006/，原软件CC BY-SA4.0。源码归属/数据入口完整记录见sources/source_registry_v1.json。
+
+环境
+原运行使用Python3和Perl5.34.1（NV double/8byte）。Python只用标准库；作者Perl模块随包，用显式-I导入2016目录。PERL_HASH_SEED=0、PERL_PERTURB_KEYS=0由调用器固定。不需要GPU、网络、原作者私有语料或现代论文全文。请使用普通Python，不加-O（绑定校验使用assert）。
+
+已冻结输入
+calibration/data_v1/file_hashes.json列出全部输入SHA。主求解只读train/models/cipher和元数据，跳过truth字节，直到全部主结果保存；oracle运行先核主结果manifest/同一data/案例列表后才开truth。两个语言各8000训练词；4段80词仅在本轮训练外，均已在旧规模正控出现过，不称历史盲测。同书数据不证明跨作者或广泛语言识别能力。正式protocol_v2.txt、formal_freeze_v1.json规定预算和所有参数；旧v1曝光表述的更正保留。
+
+在仓库根目录运行，下列新输出目录不得已存在：
+
+VOYNICH_W10_REPLAY=$(mktemp -d)
+python research/research_next/anagram_pipeline7h_20261119/code/run_author_pipeline.py --data research/research_next/anagram_pipeline7h_20261119/calibration/data_v1 --out "$VOYNICH_W10_REPLAY/primary" --phase primary
+python research/research_next/anagram_pipeline7h_20261119/code/run_author_pipeline.py --data research/research_next/anagram_pipeline7h_20261119/calibration/data_v1 --out "$VOYNICH_W10_REPLAY/oracle" --phase oracle --primary "$VOYNICH_W10_REPLAY/primary"
+python research/research_next/anagram_pipeline7h_20261119/code/score_calibration.py --data research/research_next/anagram_pipeline7h_20261119/calibration/data_v1 --primary "$VOYNICH_W10_REPLAY/primary" --oracle "$VOYNICH_W10_REPLAY/oracle" --out "$VOYNICH_W10_REPLAY/scores.json"
+python research/research_next/anagram_pipeline7h_20261119/method_review/independent_score_audit_v2.py --data research/research_next/anagram_pipeline7h_20261119/calibration/data_v1 --primary "$VOYNICH_W10_REPLAY/primary" --oracle "$VOYNICH_W10_REPLAY/oracle" --scores "$VOYNICH_W10_REPLAY/scores.json" --out "$VOYNICH_W10_REPLAY/independent-audit.json"
+
+超时是每个进程的墙钟上限（MASPA180秒、其他60秒），跨机器负载可能改变超时状态，不能承诺所有机器逐位复现终止时刻。固定环境下，应比较语言选择、映射/词袋/词结果与失败记录，而不是时间字段。不得为了增加成功率缩短测试、改预算后覆盖原结果；新的设置须独立版本和协议。
+
+低成本人工验证
+将上面的data_v1换为toy_data_v1可跑两个短人工例子；它们只验证接口、歧义、未知词回填，不是正式4例成绩。calibration/clean_public_toy_replay_v1.json已记录从全新目录、只复制50个公开文件实际重跑原核心后的精确科学结果一致。独立toy审计穷举候选和语言模型得分，不能把语法接口PASS当作还原全对。
+
+重建训练文件
+code/prepare_calibration.py --out NEW_DIR从旧research/study20/controls中两个已公开原文生成新LM/cipher/truth；它不运行求解器。每次输出目录须新建，sourceSHA必须匹配；模型和输入与公开data_v1比较时忽略仅与输出位置有关的控制台信息。公开原文来源及其归属保留在research/study20/controls/sources.json及原文件头。当前冻结模型足以直接复算解码，无需重新取得原文。
+
+解读
+主分析为pattern选语言、README字典序训练表示；code_countfirst是预注册诊断，不能选成绩好的替代主结果。正确语言oracle与正确密钥oracle分别列；后者mapping=null属于未测试键恢复，词袋100%是提供真钥的前提。词典命中不是精确原词恢复。C01两份原文产生同一输入，其两份真值独立计分且不纳入四段主分母。

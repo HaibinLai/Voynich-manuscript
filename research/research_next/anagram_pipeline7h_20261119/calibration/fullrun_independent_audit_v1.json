@@ -1,0 +1,806 @@
+{
+  "schema": "tenth_independent_fullrun_integrity_audit_v1",
+  "status": "PASS_RUN_INTEGRITY",
+  "created_utc": "2026-11-19T16:42:12.651484+00:00",
+  "code_sha256": "186f8152957c3b20b22016d1d834bf7b7ea06130c5436e75616ba2d769dbd645",
+  "bindings": {
+    "calibration/formal_freeze_v1.json": "dcccd39915909d6e6327c6ef40a887719e85da9a28c2032be12fdca27457e867",
+    "calibration/primary_v1/run_manifest.json": "f826770db1ad566453bb8e36687a9eb27ae5a977eba39a2af87963327793e55e",
+    "calibration/oracle_v1/run_manifest.json": "d65885da68843fe1dd4efd8eae4997025a97df05297777f0a411fa68b3ec9a42",
+    "calibration/scores_v1.json": "bbd1019484e99ef0822cb300c0a2ac2022d8590c09c8c1cdfeb5d98216a750e0",
+    "calibration/independent_score_audit_v1.json": "41f11290f8c9a7aebcc7cd9de8c8378a760f354d9d9cf284a9471e2b28f3891e",
+    "calibration/viterbi_finite_bound_v1.json": "25eaa2f2af21d53026b8272ea72b7c67edbc5b689f9b4606aaf46ae5d985ca92"
+  },
+  "scope": {
+    "actual_author_processes": 39,
+    "processes_by_script": {
+      "langid_probdist.pl": 10,
+      "maspa_solver.pl": 12,
+      "alphagram_solver.pl": 17
+    },
+    "oracle_reused_primary_pipeline_results": 8,
+    "cases": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "C01"
+    ],
+    "variants": [
+      "readme_lex",
+      "code_countfirst"
+    ],
+    "new_author_solver_runs_executed_by_audit": 0,
+    "independent_accuracy_recomputation": "Not repeated: separate literature-agent score audit handles30rows/10language diagnostics/5groups. Saved aggregates below are attributed to those bound scores."
+  },
+  "checks": {
+    "new_output": 1,
+    "formal_frozen_file": 10,
+    "vendored_core_hash": 16,
+    "author_git_blob_identical": 16,
+    "frozen_cases_and_variants": 1,
+    "prepared_file_unchanged": 61,
+    "phase": 2,
+    "frozen_runner_used": 2,
+    "same_data_manifest": 2,
+    "results_manifest_binding": 2,
+    "all_five_cases": 2,
+    "run_full_file_hash": 168,
+    "log_id": 39,
+    "executed_script_hash": 39,
+    "module_source_path": 39,
+    "frozen_hash_environment": 39,
+    "process_completed": 39,
+    "freeze_before_run": 39,
+    "stream_hash": 117,
+    "no_stderr": 39,
+    "fixed_timeout": 39,
+    "within_budget": 39,
+    "all_primary_before_oracle": 9,
+    "frozen_cipher_lengths": 5,
+    "all_language_diagnostics": 5,
+    "language_interface_only_pass": 10,
+    "primary_two_variants": 5,
+    "actual_pattern_routing": 10,
+    "mapping_interface_only_pass": 12,
+    "decoder_interface_only_pass": 17,
+    "decoder_fixed_blocks": 17,
+    "actual_maspa_decoder_handoff": 12,
+    "oracle_primary_binding": 1,
+    "oracle_language_explicit": 5,
+    "oracle_two_variants": 5,
+    "required_reuse": 8,
+    "reuse_exact_fields": 8,
+    "truekey_condition_input": 5,
+    "oracle_rerun_only_wrong_route": 2,
+    "exact_log_coverage_no_extra": 2,
+    "exact_stage_command": 39,
+    "exact_stage_input": 39,
+    "scoring_source_bindings": 1,
+    "saved_score_coverage": 1,
+    "reported_route3of4": 1,
+    "physical_runs_and_reuse": 1
+  },
+  "actual_runs": [
+    {
+      "phase": "primary",
+      "id": "C01_lang_pattern",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/C01.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "pattern",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.048385333037003875,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "C01_lang_unigram",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/C01.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "unigram",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.021562500041909516,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "C01_primary_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 1.4262281670235097,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "C01_primary_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.02871887490618974,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "C01_primary_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 1.510634750011377,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "C01_primary_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.029062542016617954,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_lang_pattern",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P01.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "pattern",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.05128233297728002,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_lang_unigram",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P01.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "unigram",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.020675708074122667,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_primary_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 102.26818504196126,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_primary_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.029187707928940654,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_primary_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 100.52048720791936,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P01_primary_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.035144375055097044,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_lang_pattern",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P02.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "pattern",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.04499516705982387,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_lang_unigram",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P02.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "unigram",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.020908833015710115,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_primary_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 110.37756454199553,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_primary_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03382008301559836,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_primary_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 110.40775329200551,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P02_primary_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03515424998477101,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_lang_pattern",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P03.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "pattern",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.04787100001703948,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_lang_unigram",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P03.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "unigram",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.025434624985791743,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_primary_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/latin/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 110.44428533408791,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_primary_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03460362495388836,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_primary_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/latin/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 107.81330520799384,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P03_primary_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.035072708036750555,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_lang_pattern",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P04.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "pattern",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.04649099998641759,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_lang_unigram",
+      "script": "langid_probdist.pl",
+      "command_arguments": [
+        "-c",
+        "cipher/P04.txt",
+        "-p",
+        "train/*.tra",
+        "-d",
+        "unigram",
+        "-v"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.022402666974812746,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_primary_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 98.7490737088956,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_primary_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.0352434579981491,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_primary_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/english/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 98.443338333047,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "primary",
+      "id": "P04_primary_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03333099989686161,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "C01_oracle_truekey_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.032240667031146586,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P01_oracle_truekey_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03069225000217557,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P02_oracle_truekey_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/english/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.030612834030762315,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P03_oracle_truekey_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.0353810410015285,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P04_oracle_language_code_countfirst_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/code_countfirst/latin/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 96.50420070800465,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P04_oracle_language_code_countfirst_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.035525749903172255,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P04_oracle_language_readme_lex_maspa",
+      "script": "maspa_solver.pl",
+      "command_arguments": [
+        "-c",
+        "models/readme_lex/latin/model.config",
+        "-m",
+        "10",
+        "-b",
+        "10",
+        "-p",
+        "20"
+      ],
+      "timeout_seconds": 180,
+      "elapsed_seconds": 96.60793320799712,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P04_oracle_language_readme_lex_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03525587497279048,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    },
+    {
+      "phase": "oracle",
+      "id": "P04_oracle_truekey_viterbi",
+      "script": "alphagram_solver.pl",
+      "command_arguments": [
+        "models/shared/latin/base"
+      ],
+      "timeout_seconds": 60,
+      "elapsed_seconds": 0.03137300000526011,
+      "status": "COMPLETED_EXIT0",
+      "stderr_empty": true
+    }
+  ],
+  "bound_score_summary": [
+    {
+      "condition": "primary",
+      "variant": "readme_lex",
+      "planned_cases": 4,
+      "planned_words": 320,
+      "mapping_weighted_correct_total": [
+        1126,
+        1477
+      ],
+      "bag_correct_total": [
+        240,
+        320
+      ],
+      "exact_word_correct_total": [
+        193,
+        320
+      ]
+    },
+    {
+      "condition": "primary",
+      "variant": "code_countfirst",
+      "planned_cases": 4,
+      "planned_words": 320,
+      "mapping_weighted_correct_total": [
+        1102,
+        1477
+      ],
+      "bag_correct_total": [
+        240,
+        320
+      ],
+      "exact_word_correct_total": [
+        193,
+        320
+      ]
+    },
+    {
+      "condition": "oracle_language",
+      "variant": "readme_lex",
+      "planned_cases": 4,
+      "planned_words": 320,
+      "mapping_weighted_correct_total": [
+        1471,
+        1477
+      ],
+      "bag_correct_total": [
+        314,
+        320
+      ],
+      "exact_word_correct_total": [
+        246,
+        320
+      ]
+    },
+    {
+      "condition": "oracle_language",
+      "variant": "code_countfirst",
+      "planned_cases": 4,
+      "planned_words": 320,
+      "mapping_weighted_correct_total": [
+        1477,
+        1477
+      ],
+      "bag_correct_total": [
+        320,
+        320
+      ],
+      "exact_word_correct_total": [
+        249,
+        320
+      ]
+    },
+    {
+      "condition": "oracle_truekey",
+      "variant": "shared",
+      "planned_cases": 4,
+      "planned_words": 320,
+      "mapping_weighted_correct_total": [
+        0,
+        0
+      ],
+      "bag_correct_total": [
+        320,
+        320
+      ],
+      "exact_word_correct_total": [
+        249,
+        320
+      ]
+    }
+  ],
+  "reported_primary_language_correct_total": [
+    3,
+    4
+  ],
+  "report_interpretation": [
+    "All39 processes exited0 with empty stderr and expected frozen arguments; stagePASS means valid execution/interface, not correct language/key/words.",
+    "Main pattern+README result remains193/320 exact words60.3125%, with3/4 correct language routes. Do not select the unigram diagnostic or oracle path as replacement primary.",
+    "Providing correct language raises README to246/320; countfirst oracle recovers1477/1477 observed character positions and320/320 word bags but only249/320 original words. Correct-key decoder also249/320.",
+    "The latter equality is aggregate stage evidence; it does not prove every missing word is inherently unidentifiable or that another context model could not recover it. OOV, language-model preference and bag ambiguity must remain separate.",
+    "Countfirst is a preregistered code-aligned diagnostic under new training construction, not an established recovery of the authors2016 training method.",
+    "Four80word snippets from two already exposed books, held out only from this8000word training; not independent blind, cross-author, all-language, manuscript or original-paper result replication.",
+    "C01 has one ciphertext and two generation histories; count its two7word truths separately and outside320 main words.",
+    "Oracle true-key mapping accuracy is not applicable; its100% bag preservation is supplied information, not recovered-key success.",
+    "Truth isolation is supported by frozen code/control flow and recorded invocation inputs, not a new operating-system file-access trace."
+  ],
+  "failures": []
+}

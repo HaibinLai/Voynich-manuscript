@@ -1,0 +1,12 @@
+原流程静态接口审查：接口可连接，但训练表示存在必须公开的差异；尚未执行校准。
+
+1. maspa先u=APattern_wlpc(cipher)，再p=Pattern(u)，最后输出Decipher(p,key)。应将u逐位置与最终solution对齐以恢复原密文字母映射；验证长度/空格、重复符号一致性、单射，再应用到原cipher。不能直接原cipher对齐solution，也不能把最终输出本身当原词顺序。缓存命中仍按本行u恢复。
+2. APattern_wlpc并非普通alphagram：按词内频数降序、字母序解平局，例如abb变bba。README要求训练字典序alphagram，即abb。搜索实际按计数优先形式评分。新数据适配若选择实码一致的计数优先训练，必须明确是本轮新预处理，不冒称恢复2016原始训练；若按README，也保留差异。方案须先冻，不能结果择优。
+3. patlst签名由2016 Utils::APattern作用整个1/2/3词ngram，不是逐词alphagram或APattern_wlpc。候选按训练频数/预定平局排序，因为前半搜索直接取列表前p项。
+4. maspa要15项config：6个概率LM、6个插值权重、charcoeff、patlst、order；字符LM空格用下划线，JMSmoothing不自己加句界。decoder则用原训练词的trigram，另有alphagram→候选词和singleton表；两阶段训练表示不可混用。未知状态<>u→<u>及句界<s>/<\s>须正确派生。
+5. maspa输出可以直接接alphagram_solver，后者自行做真正字典序袋。OOV可能回填原字母袋，不得算自动恢复；singleton按袋出现一次，不是错误按每个词出现一次。
+6. 限定ASCII26校准并固定26个不同目标字母；目标字母不足时原GetFreqKey会重复使用最后字母，破坏单射。Pattern超过52符号还触发频率模块过滤风险。
+7. 冻结m/b/p预算、Perl版本与哈希环境、进程及行顺序；无随机种子CLI。用-I显式2016模块目录。Viterbi用概率乘积及每步×1000，须预定短行/finite诊断和失败保存，不能事后删溢出案例。
+8. 原论文Table2 Both为已知语言下Steps2+3，不能与新真实路由全流程混称。新校准应同时明示预测语言路由与oracle语言诊断。
+
+原代码可保持不改，自建公开训练侧车与评估包装层须标原创适配；旧2014 NYT模型不冒充2016数据。所有判断来自静态源码，无新运行、无手稿评分、无经验成功率。详细行号、commit与文件hash见JSON。

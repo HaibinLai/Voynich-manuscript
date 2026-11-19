@@ -1,0 +1,367 @@
+{
+  "schema": "tenth_independent_toy_viterbi_audit_v1",
+  "status": "PASS",
+  "created_utc": "2026-11-19T16:19:04.833490+00:00",
+  "code": {
+    "path": "code/independent_toy_audit_v1.py",
+    "sha256": "a5574856ef667ee50aa8fe60d4f2983a3067d6be91f41cc774cceb215ef5418b"
+  },
+  "scope": {
+    "dataset": "toy_data_v1 only",
+    "formal_cases_read_or_scored": false,
+    "training_tokens": 97,
+    "maspa_training_variants": 2,
+    "all_LM_probabilities_and_pattern_candidates_verified": true,
+    "actual_decoder_runs": 6,
+    "complete_candidate_paths_scored": 11,
+    "scoring": "Exact Fraction products of saved probability decimals, weights3/10,3/10,4/10; omit uniform1000^(T-2) factor which cannot change argmax; include two start/end states."
+  },
+  "rows": [
+    {
+      "run_id": "T01_primary_code_countfirst_viterbi",
+      "input_words": [
+        "eth",
+        "ieutq",
+        "maetrs",
+        "ssetr"
+      ],
+      "output_words": [
+        "the",
+        "quiet",
+        "stream",
+        "rests"
+      ],
+      "candidate_sequences": 2,
+      "all_candidates": [
+        {
+          "path": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "score": "4360581490115311360910682042583555938974455689088475032718753922792684329697576425059748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "path": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 1,
+      "strictly_better_than_other_paths": true,
+      "unknown_input_positions": []
+    },
+    {
+      "run_id": "T01_primary_readme_lex_viterbi",
+      "input_words": [
+        "eth",
+        "ieutq",
+        "maetrs",
+        "ssetr"
+      ],
+      "output_words": [
+        "the",
+        "quiet",
+        "stream",
+        "rests"
+      ],
+      "candidate_sequences": 2,
+      "all_candidates": [
+        {
+          "path": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "score": "4360581490115311360910682042583555938974455689088475032718753922792684329697576425059748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "path": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 1,
+      "strictly_better_than_other_paths": true,
+      "unknown_input_positions": []
+    },
+    {
+      "run_id": "T02_primary_code_countfirst_viterbi",
+      "input_words": [
+        "iiii",
+        "teh",
+        "temras",
+        "sster"
+      ],
+      "output_words": [
+        "iiii",
+        "the",
+        "master",
+        "rests"
+      ],
+      "candidate_sequences": 2,
+      "all_candidates": [
+        {
+          "path": [
+            "<u>",
+            "the",
+            "master",
+            "rests"
+          ],
+          "restored": [
+            "iiii",
+            "the",
+            "master",
+            "rests"
+          ],
+          "score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "path": [
+            "<u>",
+            "the",
+            "stream",
+            "rests"
+          ],
+          "restored": [
+            "iiii",
+            "the",
+            "stream",
+            "rests"
+          ],
+          "score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 2,
+      "strictly_better_than_other_paths": false,
+      "unknown_input_positions": [
+        0
+      ]
+    },
+    {
+      "run_id": "T02_primary_readme_lex_viterbi",
+      "input_words": [
+        "rrrr",
+        "teh",
+        "tenils",
+        "sstei"
+      ],
+      "output_words": [
+        "rrrr",
+        "the",
+        "silent",
+        "eisst"
+      ],
+      "candidate_sequences": 1,
+      "all_candidates": [
+        {
+          "path": [
+            "<u>",
+            "the",
+            "silent",
+            "<u>"
+          ],
+          "restored": [
+            "rrrr",
+            "the",
+            "silent",
+            "eisst"
+          ],
+          "score": "32963472477914998941176420131599095201646348189000238263939393048489398077236055275752385716277117969/3814697265625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "32963472477914998941176420131599095201646348189000238263939393048489398077236055275752385716277117969/3814697265625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 1,
+      "strictly_better_than_other_paths": true,
+      "unknown_input_positions": [
+        0,
+        3
+      ]
+    },
+    {
+      "run_id": "T01_oracle_truekey_viterbi",
+      "input_words": [
+        "the",
+        "euitq",
+        "tsaemr",
+        "ersst"
+      ],
+      "output_words": [
+        "the",
+        "quiet",
+        "stream",
+        "rests"
+      ],
+      "candidate_sequences": 2,
+      "all_candidates": [
+        {
+          "path": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "master",
+            "rests"
+          ],
+          "score": "4360581490115311360910682042583555938974455689088475032718753922792684329697576425059748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "path": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "restored": [
+            "the",
+            "quiet",
+            "stream",
+            "rests"
+          ],
+          "score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "14009527766115149331599485037235427604373612071084226869537486905964594075879331804234748857902291141/2384185791015625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 1,
+      "strictly_better_than_other_paths": true,
+      "unknown_input_positions": []
+    },
+    {
+      "run_id": "T02_oracle_truekey_viterbi",
+      "input_words": [
+        "zzzz",
+        "het",
+        "mrseta",
+        "rstse"
+      ],
+      "output_words": [
+        "zzzz",
+        "the",
+        "master",
+        "rests"
+      ],
+      "candidate_sequences": 2,
+      "all_candidates": [
+        {
+          "path": [
+            "<u>",
+            "the",
+            "master",
+            "rests"
+          ],
+          "restored": [
+            "zzzz",
+            "the",
+            "master",
+            "rests"
+          ],
+          "score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "path": [
+            "<u>",
+            "the",
+            "stream",
+            "rests"
+          ],
+          "restored": [
+            "zzzz",
+            "the",
+            "stream",
+            "rests"
+          ],
+          "score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "maximum_score": "864317821665015175467349062085716696512168765505188024919652551359841453925130712674222634212259993/9536743164062500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "number_of_optimal_paths": 2,
+      "strictly_better_than_other_paths": false,
+      "unknown_input_positions": [
+        0
+      ]
+    }
+  ],
+  "checks": {
+    "new_output": 1,
+    "toy_only_guard": 1,
+    "prepared_hash": 30,
+    "toy_training97": 1,
+    "LM_shape": 353,
+    "LM_unique": 353,
+    "LM_support": 15,
+    "LM_probability": 353,
+    "LM_context_normalized": 15,
+    "emission_exact": 1,
+    "unknown_sentinel": 1,
+    "singleton_exact": 1,
+    "all_states_in_A1": 1,
+    "pattern_unique": 68,
+    "candidate_alphabet_order": 68,
+    "all_pattern_candidates_independent": 2,
+    "config15": 2,
+    "alphabet26": 2,
+    "run_result_hash": 2,
+    "run_file_hash": 62,
+    "author_completed": 6,
+    "no_stderr": 6,
+    "line_count": 6,
+    "author_output_exact_optimum": 6,
+    "key_length": 4,
+    "key_consistency": 74,
+    "key_space": 12,
+    "key_identity_injective": 4,
+    "key_original_cipher": 4,
+    "key_word_bags": 4
+  },
+  "interpretation": [
+    "All six actual decoder outputs are optimal for their actual saved input and model, including OOV restore. This does not mean the original words were all recovered.",
+    "T01 master and stream have the same bag: a contextual preference may differ from generating truth even with true key. T02 oracle preserveszzzz; primary mapped OOV outputs can differ because key recovery failed.",
+    "No parameters or formal cases changed based on this audit."
+  ],
+  "bindings": {
+    "calibration/toy_data_v1/file_hashes.json": "a5d5e599a9aeb1a953b4cf93f91174cf837d70d2eed26de4f58c3099f2eed472",
+    "calibration/toy_primary_v1/run_manifest.json": "9b7aef85f2a76abf328c3f983d3ca08fb52d011e0b28d8cc280b26c4dc60ba5d",
+    "calibration/toy_oracle_v1/run_manifest.json": "aa5f39e5690c7321a10a12b77addcee2fbe6ad3ed6f27cc773a3d52e285e734b"
+  }
+}

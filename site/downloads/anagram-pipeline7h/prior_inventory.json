@@ -1,0 +1,169 @@
+{
+  "schema": "tenth_method_preflight_v1",
+  "status": "PROPOSAL_PENDING_SOURCE_AND_ROOT_PROTOCOL",
+  "created_utc": "2026-11-19T16:07:45.669426+00:00",
+  "new_experiments_executed": false,
+  "old_statistics_recomputed": false,
+  "read_scope": "Read old frozen reports, protocols and saved result-list lengths, and static dictionary reconstruction code; no solver or old statistic rerun. Prior direct reading of the 2016 paper retained from W9.",
+  "sources": [
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/plan_v1.txt",
+      "sha256": "1b63fe3c146c7170c3ca31f187705c07289b1bff7a9c0f892ed61b66a58125b6"
+    },
+    {
+      "path": "research/research_next/anagram_pipeline7h_20261119/session_v1.json",
+      "sha256": "987f4eea1d1bce27b5a79bfab417dcb573e5aa403ef3543e4dce53f19610e7e7"
+    },
+    {
+      "path": "research/research7h/cipher_controls/研究报告.txt",
+      "sha256": "157c1252d12701ea2dd6c8abb3279d3831dc526d7cdebd33bb47e9f3df7e9bb3"
+    },
+    {
+      "path": "research/research7h/cipher_controls/protocol.txt",
+      "sha256": "86ceba0067e6a93c709e8daf1bbe2613340d6fc43e0c54f09c85a3b42849ec3e"
+    },
+    {
+      "path": "research/research7h/cipher_controls/results.json",
+      "sha256": "33d60552bf3ff0cfa383cab766081b5ec85dd32dab283d02af8779636df10127"
+    },
+    {
+      "path": "research/research7h/cipher_controls/outcomes_with_bag_equivalences.json",
+      "sha256": "c941194cbb94e7a99b71e8a6e6cbbd9fa21e9a8b8862b6ea3034cec4f00d4301"
+    },
+    {
+      "path": "research/research7h/cipher_controls/dictionary_reconstruction.json",
+      "sha256": "d693f55df3cdc636ed91e4fef28c1f93af616b95d1d87d7c2f66439a2d7bf20d"
+    },
+    {
+      "path": "research/research7h/cipher_controls/summarize.py",
+      "sha256": "d7c31e8ee2fa81dc8e97f0a7eca3f75399f33ba27798c9354922eb1cf87edc33"
+    },
+    {
+      "path": "research/research7h/cipher_controls/补充探索报告.txt",
+      "sha256": "1ace6f2220120486aee8f85905f7eee3f905b0631690caf8c1ee49b93d21ed3e"
+    },
+    {
+      "path": "research/research7h/cipher_controls/voynich_substitution/研究报告.txt",
+      "sha256": "8ba76ff19a6175679a916574d51366be85316dcada309b237327a4becc774f5b"
+    },
+    {
+      "path": "research/research_next/encoding_constraints7h_20261119/source_rule_eligibility_v1.json",
+      "sha256": "b0e11923e68ea082e947e0368b0e509d3236218799095d1d420bb6976d1e607b"
+    }
+  ],
+  "prior_coverage": {
+    "72_searches": {
+      "saved_rows": 72,
+      "method": "Independent within-word character4gram with simulated annealing; not original Hauer–Kondrak pipeline."
+    },
+    "24_bag_equivalences": {
+      "saved_derived_rows": 24,
+      "not_independent_runs": true
+    },
+    "24_dictionary_reconstructions": {
+      "saved_rows": 24,
+      "method": "Post-primary deterministic most-frequent training-word per bag; no context decoder; exact original word rate only for A1_sorted, N1_global null."
+    },
+    "language_comparison": "Old supplement already compares English/Latin developer score ranks; new work cannot claim first language comparison. It did not validate original decomposition-pattern identification plus full decoder.",
+    "976_manuscript_fits": "Old report states all keys preserved and independently checked; here cited only, not reread/recomputed 976 searches or treated as new known-answer validation."
+  },
+  "new_value_if_source_complete": "Original modular pipeline with genuine context anagram decoding and separate language/key/bag/word accounting, including indistinguishable-original controls. Not merely more same-family key searches.",
+  "stage_matrix": [
+    {
+      "id": "S0",
+      "stage": "版本与预处理",
+      "required": "原作者链条、提交或原包hash、许可证/使用条款、环境/依赖、语料版本、单位/词界/大小写/标点/元音处理及可执行入口。",
+      "metric": "所有输入/训练派生物/参数可绑定；缺项明确NOT_AVAILABLE/NOT_EXECUTED，不补成论文原值。"
+    },
+    {
+      "id": "S1",
+      "stage": "语言选择",
+      "required": "原文§3三种方法区分；§4实际采用分解模式识别。候选集合固定，拒识/平局及语言模型得分可比性预先规定。",
+      "metric": "逐案例预测语言与真值，固定集合top1/并列/无输出；不能由已知正确语言替代端到端预测。单语言运行不测语言识别。"
+    },
+    {
+      "id": "S2",
+      "stage": "替换映射",
+      "required": "原§4.1组合字符/词trigram、候选变更与beam搜索，与旧词内4gram退火区别。",
+      "metric": "出现字符类型与位置加权的真映射恢复，报告分母；未出现单位不得算恢复，空/null输出不算正确。保留映射不可辨识对称性，不声称真键唯一。"
+    },
+    {
+      "id": "S3",
+      "stage": "逐词字母袋",
+      "required": "按每个原词位置比较解出的完整多重集，不比较内部规范排列与历史写法。",
+      "metric": "整词袋完全一致数/全部有效输入词数，分别列正确语言oracle及端到端输出。不能以训练词典可命中替代原词袋正确。"
+    },
+    {
+      "id": "S4",
+      "stage": "上下文整词恢复",
+      "required": "原§4.2隐藏词状态、词trigram及Viterbi与未知词处理；原§4.3元音恢复单列（若缺失则不声称abjad覆盖）。",
+      "metric": "精确原词恢复数/全部测试词；OOV/未知保留分母，并另报in-vocabulary上限与条件率。原词序、句首尾标记和分词评价合同固定。"
+    },
+    {
+      "id": "S5",
+      "stage": "完整流水线与阶段诊断",
+      "required": "预测语言→实际求键→实际袋→实际解词，不只报告成功阶段。另用oracle语言/真键/真袋隔离失败，明确这些是已知答案诊断。",
+      "metric": "逐案例全输出、失败阶段、无输出/超时、预算和整词准确率；真值诊断只在正式输出冻结后执行，不反馈选键或选模型。"
+    }
+  ],
+  "attribution_rules": [
+    {
+      "label": "AUTHOR_ORIGINAL",
+      "criteria": "能从作者论文/官方页面到包或仓库的可核链条，原代码版本和hash固定。仅运行成功不证明代码归属。"
+    },
+    {
+      "label": "AUTHOR_COMPONENT",
+      "criteria": "只实现语言识别、key solver或decoder之一；按阶段声明，缺少阶段不由自己的实现补齐后称原完整流水线。"
+    },
+    {
+      "label": "AUTHOR_DERIVED_MODIFIED",
+      "criteria": "有作者代码来源但自行修复/移植/接口修改；公开最小补丁、原包hash、实际运行版本hash及语义影响。"
+    },
+    {
+      "label": "INDEPENDENT_RECONSTRUCTION",
+      "criteria": "照论文重写或旧4gram/退火/最频词组合；可单独校准，但不能冒称作者原实现或本目标完整复现。"
+    },
+    {
+      "label": "UNVERIFIED_ATTRIBUTION",
+      "criteria": "第三方镜像/同名仓库无可核作者链接；不能凭标题或API相似升级归属。"
+    }
+  ],
+  "calibration_controls_proposed": [
+    {
+      "id": "P1",
+      "design": "未参与训练/调参的已知明文，经独立固定随机单射密钥和逐词位置置换生成；真实键与每词置换仅评估端持有。",
+      "purpose": "直接检验目标自由词内重排机制；简单替换可作廉价接口正控，但不能替代它。"
+    },
+    {
+      "id": "P2",
+      "design": "若取得作者decoder，真字母袋输入作独立组件诊断，采用同一已冻结训练模型与解码预算。",
+      "purpose": "把词义序列恢复与键恢复分开，不冒称全流水线成功。"
+    },
+    {
+      "id": "N1",
+      "design": "预列两份不同原词序列，逐词袋序列完全相同；用相同键并明确各自置换得到完全相同密文，保存双生成历史。",
+      "purpose": "相同输入不可能唯一识别两份潜在原文；可核输出一致性和每份真值准确率，不能给其中一份任意优先后称另一份算法错误或成功。"
+    },
+    {
+      "id": "N2",
+      "design": "可选固定全局打乱或词袋随机化对照，保持/改变哪些边际逐项声明，与正控同候选/搜索预算。",
+      "purpose": "记录词典命中/可输出性而不虚构唯一正确语义；旧N1_global已有，不重复做来冒充新增贡献。"
+    }
+  ],
+  "leakage_and_denominator_rules": [
+    "训练与测试按原始文档/段落或token区间分开并绑定hash；索引不重叠不等于跨作者泛化，规范化后重复片段须诊断。",
+    "训练词表/字符及词语言模型只能来自冻结训练语料；测试词可自然出现在训练词表，但不能从测试补OOV候选、拼写或词频。",
+    "全部旧72测试及976手稿材料已曝光。重用只作已曝光固定回放，不能称新盲保留集；新清单在任何运行和看输出前确定。",
+    "密钥、原文、置换索引和语言真值放评估侧；求解进程参数/工作目录接口记录，不能仅凭文件名不含truth断言无泄漏。",
+    "所有模型/候选语言/种子/重启/终止预算一次固定，所有失败保存；真键分数和oracle输入在输出锁定后作诊断。",
+    "固定平局、OOV、大小写/符号与长度不符处理；不看答案后改合字、选词或删难例。",
+    "主准确率使用全部预定案例及测试词分母；报告可执行失败和未执行不同状态，不因失败被删除而抬高率。小样本给逐例值，不把字符当独立重复。"
+  ],
+  "eligibility_before_real_run": [
+    "Source chain and actual implemented stages resolved; a single 410 only documents that one request, not global code absence.",
+    "Build and dependencies inspected separately from algorithm success; package license absence restricts redistribution, not a claim that files were never available.",
+    "Root freezes exact small candidate-language/case lists, source hashes, mechanism, all budgets and scores only after actual component limits known.",
+    "Stage unavailable remains NOT_EXECUTED; bounded source/dependency failure can complete the original declared failure branch with evidence."
+  ],
+  "coordination": "Sent root early difference between old4gram/most-frequency and context pipeline; requested literature agent exact code provenance, version/license and stage inventory. Awaiting actual source findings; no code absence conclusion. Same informed AI, not blind expert certification."
+}
